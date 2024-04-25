@@ -1,0 +1,247 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "OSCEM_instrument",
+    "description": "JSON Schema for electron microscopy instrument related metadata, broadly following the EMDB standard with some additions.",
+    "type": "object",
+    "properties": {
+        "Instrument":{
+        "type": "object",
+        "properties":{
+            "Microscope":{
+                "description":"Name/Type of the Microscope",
+                "type":"string"
+            },
+            "Illumination":{
+                "description": "Mode of illumination used during data collection",
+                "type":"string"
+            },
+            "Imaging":{
+                "description": "Mode of imaging used during data collection",
+                "type": "string"
+            },
+            "Electron_source":{
+                "description": "Type of electron source used in the microscope, typically FEG",
+                "type": "string"
+            },
+            "Acceleration_Voltage":{
+                "description": "Voltage used for the electron acceleration, in kV",
+                "type":"number"
+            },
+            "C2_Aperture":{
+                "description": "C2 aperture size used in data acquisition, in µm",
+                "type": "number"
+            },
+            "CS":{
+                "description": "Spherical aberration of the instrument, in mm",
+                "type": "number"
+            },
+            "Nominal_defocus":{
+                "type": "object",
+                "properties":{
+                    "Minimal": {
+                        "description": "Minimal defocus target set, in µm",
+                        "type": "number"
+                    },
+                    "Maximal":{
+                        "description": "Maximal defocus target set, in µm",
+                        "type": "number"
+                    }
+                }
+            },
+            "Calibrated_defocus":{
+                "type": "object",
+                "properties":{
+                    "Minimal": {
+                        "description": "Minimal defocus calculated, in µm",
+                        "type": "number"
+                    },
+                    "Maximal":{
+                        "description": "Maximal defocus calculated, in µm",
+                        "type": "number"
+                    }
+                }
+            },
+            "Nominal_magnification":{
+                "description": "Magnification level as indicated by the instrument, no unit",
+                "type": "number"
+            },
+            "Calibrated_magnification":{
+                "description": "Calculated magnification, no unit",
+                "type": "number"
+            },
+            "Holder":{
+                "description": "Speciman holder model",
+                "type": "string"
+            },
+            "Holder_cryogen":{
+                "description": "Type of cryogen used in the holder - if the holder is cooled seperately",
+                "type": "string"
+            },
+            "Temperature":{
+                "type": "object",
+                "properties":{
+                    "Minimal":{
+                        "description": "Minimal temperature during data collection, in Kelivn",
+                        "type": "number"
+                    },
+                    "Maximal":{
+                        "description": "Maximal temperature during data collection, in Kelivn",
+                        "type": "number"
+                    }
+                }
+            },
+            "Alignment_procedure":{
+                "description": "Procedure used for alignment during data acquisition",
+                "type":"string"
+            },
+            "Software":{
+                "description": "Software used for instrument control",
+                "type": "string"
+            },
+            "Detector":{
+                "description": "Make and model of the detector used",
+                "type": "string"
+            },
+            "Detector_mode":{
+                "description": "Operating mode of the detector",
+                "type": "string"
+            },
+            "Dose_per_image":{
+                "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom",
+                "type": "number"
+            },
+            "Energy_filter":{
+                "type": "object",
+                "properties": {
+                    "Used":{
+                        "description": "whether an energy filter was used during data acquisition",
+                        "type": "boolean"
+                    },
+                    "Model":{
+                        "description": "Make and model of the energy filter",
+                        "type": "string"
+                    },
+                    "Width":{
+                        "description": "Energy filter slit width, in eV",
+                        "type": "number"
+                    }
+                },
+                "required": ["Used", "Width"]
+            },
+            "Image_size":{
+                "type":"object",
+                "properties":{
+                    "Height":{
+                        "description": "Image height, in pixels",
+                        "type": "number"
+                    },
+                    "Width":{
+                        "description": "Image width, in pixels",
+                        "type": "number"
+                    }
+                }
+            },
+            "Datetime":{
+                "description": "Time and date of the data acquisition",
+                "type": "string"
+            },
+            "Exposure_time":{
+                "description": "Time of data acquisition per movie/tilt - in s",
+                "type":"number"
+            },
+            "Tilt_angle":{
+                "type":"object",
+                "properties":{
+                    "Minimal": {
+                        "description": "Minimal tilt angle in the tilt series",
+                        "type": "number"
+                    },
+                    "Maximal": {
+                        "description": "Maximal tilt angle in the tilt series",
+                        "type": "number"
+                    },
+                    "Increment": {
+                        "description": "Increment between tilts in tilt series - if they were taken in a linear fashion",
+                        "type": "number"
+                    }
+                }
+            },
+            "Cryogen": {
+                "description": "Cryogen used in cooling the instrument and sample, usually nitrogen",
+                "type": "string"
+            },
+            "Frames_per_movie":{
+                "description": "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors",
+                "type": "number"
+            },
+            "Grids_imaged": {
+                "description": "Number of grids imaged for this project - here with qualifier during this data acquisition",
+                "type": "number"
+            },
+            "Images_generated": {
+                "description" : "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted",
+                "type": "number"
+            },
+            "Binning": {
+                "description": "Level of binning on the images applied during data collection",
+                "type": "number"
+            },
+            "Pixel_size": {
+                "description": "Pixel size, in Angstrom",
+                "type": "number"
+            },
+            "Specialist_Optics": {
+                "description": "Any type of special optics, such as a phaseplate",
+                "type": "object",
+                "properties": {
+                    "Phaseplate": {
+                        "description": "Phaseplate is a special optics device that can be used to enhance contrast",
+                        "type": "object",
+                        "properties": {
+                            "Used": {
+                                "description": "Whether a phaseplate was used",
+                                "type": "boolean"
+                            },
+                            "Type":{
+                                "description": "What kind of phaseplate was used if any",
+                                "type": "string"
+                            }
+                        },
+                        "required": ["Used", "Type"]
+                }, 
+                "Spherical_Aberration_Corrector": {
+                    "type": "object",
+                    "properties":{
+                        "Used": {
+                            "description": "Whether any kind of spherical aberration corrector was used",
+                            "type": "boolean"
+                        },
+                        "Type": {
+                            "description": "What kind of spherical aberration corrector was used",
+                            "type": "string"
+                        }
+                    },
+                    "required": ["Used", "Type"]
+                },
+                "Chromatic_Aberration_Corrector":{
+                    "type": "object",
+                    "properties":{
+                        "Used": {
+                            "description": "Whether any kind of chromatic aberration corrector was used",
+                            "type": "boolean"
+                        },
+                        "Type": {
+                            "description": "What kind of chromatic aberration corrector was used",
+                            "type": "string"
+                        }
+                    },
+                    "required": ["Used", "Type"]    
+                }
+            }
+            }
+            
+        },
+        "required": ["Microscope", "Illumination", "Imaging", "Electron_source", "Acceleration_Voltage", "CS", "Detector", "Dose_per_image", "Datetime", "Binning", "Pixel_size" ]
+    }
+    }
+}
