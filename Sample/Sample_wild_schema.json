@@ -1,0 +1,119 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "OSCEM_sample",
+    "description": "JSON Schema for electron microscopy wild sample (as in collected from nature) and author related metadata.",
+    "type": "object",
+    "properties": {
+        "Grant": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Grant_ID": {
+                        "description": "Unique identifier for the grant, often a number and letter code",
+                        "type": "string"
+                    },
+                    "Funding_agency": {
+                        "description": "The organization responsible for the funding of this research",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Grant_ID",
+                    "Funding_agency"
+                ]
+            }
+        },
+        "Author": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "type": "object",
+                        "properties": {
+                            "FirstName": {
+                                "description": "Given Name of the author",
+                                "type": "string"
+                            },
+                            "LastName": {
+                                "description": "Surname of the author"
+                            }
+                        },
+                        "required": [
+                            "FirstName",
+                            "LastName"
+                        ]
+                    },
+                    "Email": {
+                        "description": "email address of the author",
+                        "type": "string"
+                    },
+                    "Phone": {
+                        "description": "Phone number of the author",
+                        "type": "string"
+                    },
+                    "ORCID": {
+                        "description": "ORCID of the author, a type of uniqe identifier",
+                        "type": "string"
+                    },
+                    "Organization": {
+                        "type": "object",
+                        "properties": {
+                            "Name_org": {
+                                "description": "Name of the organization",
+                                "type": "string"
+                            },
+                            "Type_org": {
+                                "description": "Type of organization, academic, commercial, governmental etc",
+                                "enum": [
+                                    "Academic",
+                                    "Commercial",
+                                    "Government",
+                                    "Other"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "Type_org"
+                        ]
+                    },
+                    "Country": {
+                        "description": "Country of the authors institution",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Name",
+                    "Email",
+                    "Phone",
+                    "ORCID",
+                    "Organization",
+                    "Country"
+                ]
+            }
+        },
+        "Sample": {
+            "type": "object",
+            "properties": {
+                "CollectionLocation": {
+                    "type": "string",
+                    "description": "Where the sample was obtained"
+                },
+                "CollectionDetails": {
+                    "type": "string",
+                    "description": "How the sample was obtained, general methodology, maybe aim"
+                },
+                "SamplePreparation": {
+                    "type": "string",
+                    "description": "Please explain in as much detail as possible as to what steps were performed on the sample prior to imaging."
+                }
+            }
+        }
+    },
+    "required": [
+        "Author",
+        "Grant",
+        "Sample"
+    ]
+}
