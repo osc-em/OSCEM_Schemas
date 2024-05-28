@@ -1,14 +1,13 @@
 # OSCEM_Schemas
+Schema defining the electron microscopy related fields required by the OSCEM standard.
+Definitions are split up in the three overarching categories: instrument, sample and processing.
+Current versions are work in progress, details might change.
 
-## Instruments
-Includes the most relevant fields required by the OSCEM standard
-### TODO
-Some minor additions might still be required pending decisions on the standard itself, i.e. Beamshift 
+## Instrument
+Mostly done including test jsons for validation purposes. Major additions once material sciences parts will be added.
 
 ## Sample
-initial draft present, will require some updates
-
-## Processing
+Draft ready, some updates probable.  Major additions once material sciences parts will be added.
 
 
 
