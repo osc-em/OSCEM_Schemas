@@ -1,0 +1,525 @@
+{
+    "$defs": {
+        "Acquisition": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Beamshift": {
+                    "$ref": "#/$defs/Beamshift",
+                    "description": "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "Beamtilt": {
+                    "$ref": "#/$defs/Beamtilt",
+                    "description": "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "Beamtiltgroups": {
+                    "description": "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.",
+                    "type": "integer"
+                },
+                "Binning_camera": {
+                    "description": "Level of binning on the images applied during data collection",
+                    "type": "number"
+                },
+                "Calibrated_defocus": {
+                    "$ref": "#/$defs/CalibratedDefocus",
+                    "description": "Machine estimated defocus, min and max values in \u00b5m. Has a tendency to be off."
+                },
+                "Calibrated_magnification": {
+                    "description": "Calculated magnification, no unit",
+                    "type": "integer"
+                },
+                "Cryogen": {
+                    "description": "Cryogen used in cooling the instrument and sample, usually nitrogen",
+                    "type": "string"
+                },
+                "Datetime": {
+                    "description": "Time and date of the data acquisition",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "Detector": {
+                    "description": "Make and model of the detector used",
+                    "type": "string"
+                },
+                "Detector_mode": {
+                    "description": "Operating mode of the detector",
+                    "type": "string"
+                },
+                "Dose_per_movie": {
+                    "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom",
+                    "type": "number"
+                },
+                "Energy_filter": {
+                    "$ref": "#/$defs/EnergyFilter",
+                    "description": "Wether an energy filter was used and its specifics."
+                },
+                "Exposure_time": {
+                    "description": "Time of data acquisition per movie/tilt - in s",
+                    "type": "number"
+                },
+                "Frames_per_movie": {
+                    "description": "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors",
+                    "type": "integer"
+                },
+                "GainRef_FlipRotate": {
+                    "description": "Whether and how you have to flip or rotate the gainref in order to align with your acquired images",
+                    "type": "string"
+                },
+                "Grids_imaged": {
+                    "description": "Number of grids imaged for this project - here with qualifier during this data acquisition",
+                    "type": "integer"
+                },
+                "Holder": {
+                    "description": "Speciman holder model",
+                    "type": "string"
+                },
+                "Holder_cryogen": {
+                    "description": "Type of cryogen used in the holder - if the holder is cooled seperately",
+                    "type": "string"
+                },
+                "Image_size": {
+                    "$ref": "#/$defs/ImageSize",
+                    "description": "The size of the image in pixels, height and width given."
+                },
+                "Images_generated": {
+                    "description": "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted",
+                    "type": "integer"
+                },
+                "Imageshift": {
+                    "description": "Movement of the Beam below the image in order to shift the image on the detector. Given in \u00b5m."
+                },
+                "Microscope_software": {
+                    "description": "Software used for instrument control,",
+                    "type": "string"
+                },
+                "Nominal_defocus": {
+                    "$ref": "#/$defs/NominalDefocus",
+                    "description": "Target defocus set, min and max values in \u00b5m."
+                },
+                "Nominal_magnification": {
+                    "description": "Magnification level as indicated by the instrument, no unit",
+                    "type": "integer"
+                },
+                "Pixel_size": {
+                    "description": "Pixel size, in Angstrom",
+                    "type": "number"
+                },
+                "Specialist_Optics": {
+                    "$ref": "#/$defs/SpecialistOptics",
+                    "description": "Any type of special optics, such as a phaseplate"
+                },
+                "Temperature": {
+                    "$ref": "#/$defs/Temperature",
+                    "description": "Temperature during data collection, in K with min and max values."
+                }
+            },
+            "required": [
+                "Detector",
+                "Dose_per_movie",
+                "Datetime",
+                "Binning_camera",
+                "Pixel_size"
+            ],
+            "title": "Acquisition",
+            "type": "object"
+        },
+        "Base": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Acquisition": {
+                    "$ref": "#/$defs/Acquisition"
+                }
+            },
+            "title": "Base",
+            "type": "object"
+        },
+        "Beamshift": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "X_max": {
+                    "type": "number"
+                },
+                "X_min": {
+                    "type": "number"
+                },
+                "Y_max": {
+                    "type": "number"
+                },
+                "Y_min": {
+                    "type": "number"
+                }
+            },
+            "title": "Beamshift",
+            "type": "object"
+        },
+        "Beamtilt": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "X_max": {
+                    "type": "number"
+                },
+                "X_min": {
+                    "type": "number"
+                },
+                "Y_max": {
+                    "type": "number"
+                },
+                "Y_min": {
+                    "type": "number"
+                }
+            },
+            "title": "Beamtilt",
+            "type": "object"
+        },
+        "CalibratedDefocus": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": "number"
+                },
+                "Minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": "number"
+                }
+            },
+            "title": "CalibratedDefocus",
+            "type": "object"
+        },
+        "ChromaticAberrationCorrector": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Type": {
+                    "description": "Details of a given specialist instrument",
+                    "type": "string"
+                },
+                "Used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Used",
+                "Type"
+            ],
+            "title": "ChromaticAberrationCorrector",
+            "type": "object"
+        },
+        "EnergyFilter": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Model": {
+                    "description": "Make and model of a specilized device",
+                    "type": "string"
+                },
+                "Used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                },
+                "Width": {
+                    "description": "The width of a given item - unit depends on item",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "Used",
+                "Width"
+            ],
+            "title": "EnergyFilter",
+            "type": "object"
+        },
+        "ImageSize": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Height": {
+                    "description": "The height of a given item - unit depends on item",
+                    "type": "integer"
+                },
+                "Width": {
+                    "description": "The width of a given item - unit depends on item",
+                    "type": "integer"
+                }
+            },
+            "title": "ImageSize",
+            "type": "object"
+        },
+        "Imagehift": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "X_max": {
+                    "type": "number"
+                },
+                "X_min": {
+                    "type": "number"
+                },
+                "Y_max": {
+                    "type": "number"
+                },
+                "Y_min": {
+                    "type": "number"
+                }
+            },
+            "title": "Imagehift",
+            "type": "object"
+        },
+        "NominalDefocus": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": "number"
+                },
+                "Minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": "number"
+                }
+            },
+            "title": "NominalDefocus",
+            "type": "object"
+        },
+        "Phaseplate": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Type": {
+                    "description": "Details of a given specialist instrument",
+                    "type": "string"
+                },
+                "Used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Used",
+                "Type"
+            ],
+            "title": "Phaseplate",
+            "type": "object"
+        },
+        "SpecialistOptics": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Chromatic_Aberration_Corrector": {
+                    "$ref": "#/$defs/ChromaticAberrationCorrector",
+                    "description": "Specialist device to correct for chromatic aberration of the microscope lenses"
+                },
+                "Phaseplate": {
+                    "$ref": "#/$defs/Phaseplate",
+                    "description": "Phaseplate is a special optics device that can be used to enhance contrast"
+                },
+                "Spherical_Aberration_Corrector": {
+                    "$ref": "#/$defs/SphericalAberrationCorrector",
+                    "description": "Specialist device to correct for spherical aberration of the microscope lenses"
+                }
+            },
+            "title": "SpecialistOptics",
+            "type": "object"
+        },
+        "SphericalAberrationCorrector": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Type": {
+                    "description": "Details of a given specialist instrument",
+                    "type": "string"
+                },
+                "Used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Used",
+                "Type"
+            ],
+            "title": "SphericalAberrationCorrector",
+            "type": "object"
+        },
+        "Temperature": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": "number"
+                },
+                "Minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": "number"
+                }
+            },
+            "title": "Temperature",
+            "type": "object"
+        },
+        "TiltAngle": {
+            "additionalProperties": false,
+            "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree.",
+            "properties": {
+                "Increment": {
+                    "type": "number"
+                },
+                "Maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": "number"
+                },
+                "Minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": "number"
+                }
+            },
+            "title": "TiltAngle",
+            "type": "object"
+        },
+        "Tomoacquisition": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Beamshift": {
+                    "$ref": "#/$defs/Beamshift",
+                    "description": "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "Beamtilt": {
+                    "$ref": "#/$defs/Beamtilt",
+                    "description": "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "Beamtiltgroups": {
+                    "description": "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.",
+                    "type": "integer"
+                },
+                "Binning_camera": {
+                    "description": "Level of binning on the images applied during data collection",
+                    "type": "number"
+                },
+                "Calibrated_defocus": {
+                    "$ref": "#/$defs/CalibratedDefocus",
+                    "description": "Machine estimated defocus, min and max values in \u00b5m. Has a tendency to be off."
+                },
+                "Calibrated_magnification": {
+                    "description": "Calculated magnification, no unit",
+                    "type": "integer"
+                },
+                "Cryogen": {
+                    "description": "Cryogen used in cooling the instrument and sample, usually nitrogen",
+                    "type": "string"
+                },
+                "Datetime": {
+                    "description": "Time and date of the data acquisition",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "Detector": {
+                    "description": "Make and model of the detector used",
+                    "type": "string"
+                },
+                "Detector_mode": {
+                    "description": "Operating mode of the detector",
+                    "type": "string"
+                },
+                "Dose_per_movie": {
+                    "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom",
+                    "type": "number"
+                },
+                "Energy_filter": {
+                    "$ref": "#/$defs/EnergyFilter",
+                    "description": "Wether an energy filter was used and its specifics."
+                },
+                "Exposure_time": {
+                    "description": "Time of data acquisition per movie/tilt - in s",
+                    "type": "number"
+                },
+                "Frames_per_movie": {
+                    "description": "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors",
+                    "type": "integer"
+                },
+                "GainRef_FlipRotate": {
+                    "description": "Whether and how you have to flip or rotate the gainref in order to align with your acquired images",
+                    "type": "string"
+                },
+                "Grids_imaged": {
+                    "description": "Number of grids imaged for this project - here with qualifier during this data acquisition",
+                    "type": "integer"
+                },
+                "Holder": {
+                    "description": "Speciman holder model",
+                    "type": "string"
+                },
+                "Holder_cryogen": {
+                    "description": "Type of cryogen used in the holder - if the holder is cooled seperately",
+                    "type": "string"
+                },
+                "Image_size": {
+                    "$ref": "#/$defs/ImageSize",
+                    "description": "The size of the image in pixels, height and width given."
+                },
+                "Images_generated": {
+                    "description": "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted",
+                    "type": "integer"
+                },
+                "Imageshift": {
+                    "description": "Movement of the Beam below the image in order to shift the image on the detector. Given in \u00b5m."
+                },
+                "Microscope_software": {
+                    "description": "Software used for instrument control,",
+                    "type": "string"
+                },
+                "Nominal_defocus": {
+                    "$ref": "#/$defs/NominalDefocus",
+                    "description": "Target defocus set, min and max values in \u00b5m."
+                },
+                "Nominal_magnification": {
+                    "description": "Magnification level as indicated by the instrument, no unit",
+                    "type": "integer"
+                },
+                "Pixel_size": {
+                    "description": "Pixel size, in Angstrom",
+                    "type": "number"
+                },
+                "Specialist_Optics": {
+                    "$ref": "#/$defs/SpecialistOptics",
+                    "description": "Any type of special optics, such as a phaseplate"
+                },
+                "Temperature": {
+                    "$ref": "#/$defs/Temperature",
+                    "description": "Temperature during data collection, in K with min and max values."
+                },
+                "TiltAxisAngle": {
+                    "description": "The tilt axis angle of a tomography series",
+                    "type": "number"
+                },
+                "Tilt_angle": {
+                    "$ref": "#/$defs/TiltAngle",
+                    "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree."
+                }
+            },
+            "required": [
+                "TiltAxisAngle",
+                "Tilt_angle",
+                "Detector",
+                "Dose_per_movie",
+                "Datetime",
+                "Binning_camera",
+                "Pixel_size"
+            ],
+            "title": "Tomoacquisition",
+            "type": "object"
+        }
+    },
+    "$id": "http://example.org/oscem_acquisition",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "OSCEMSample",
+    "type": "object",
+    "version": null
+}

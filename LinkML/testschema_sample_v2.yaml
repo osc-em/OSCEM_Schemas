@@ -1,0 +1,554 @@
+id: http://example.org/oscem_sample
+name: OSCEMSample
+description: >
+  LinkML schema for electron microscopy sample and author-related metadata, 
+  broadly following the EMDB standard with some additions.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: http://example.org/
+
+default_prefix: ex
+
+imports:
+  - linkml:types
+
+enums:
+  OrganizationTypeEnum:
+    title: OrganizationTypeEnum
+    permissible_values:
+      Academic:
+        description: Academic institution
+      Commercial:
+        description: Commercial entity
+      Government:
+        description: Government organization
+      Other:
+        description: Other types of organizations
+
+  MoleculeClassEnum:
+    title: MoleculeClassEnum
+    permissible_values:
+      Antibiotic:
+        description: Antibiotic
+      Carbohydrate:
+        description: Carbohydrate
+      Chimera:
+        description: Chimera
+      None of these:
+        description: None of these
+
+classes:
+  Grant:
+    title: Grant
+    description: A class representing a grant
+    slots:
+      - grant_id
+      - funding_agency
+    slot_usage:
+      grant_id:
+        alias: Grant_ID
+        required: true
+      funding_agency:
+        alias: Funding_agency
+        required: true
+
+  Author:
+    title: Author
+    description: A class representing an author
+    slots:
+      - name
+      - email
+      - phone
+      - orcid
+      - organization
+      - country
+      - role
+    slot_usage:
+      name:
+        alias: Name
+        required: true
+      email:
+        alias: Email
+        required: true
+      phone:
+        alias: Phone
+        required: true
+      orcid:
+        alias: ORCID
+        required: true
+      organization:
+        alias: Organization
+        required: true
+      country:
+        alias: Country
+        required: true
+
+  Name:
+    title: Name
+    description: A class representing the name of an author
+    slots:
+      - first_name
+      - last_name
+    slot_usage:
+      first_name:
+        alias: FirstName
+        required: true
+      last_name:
+        alias: LastName
+        required: true
+
+  Organization:
+    title: Organization
+    description: A class representing an organization
+    slots:
+      - name_org
+      - type_org
+    slot_usage:
+      name_org:
+        alias: Name_org
+      type_org:
+        alias: Type_org
+        required: true
+
+  OverallMolecule:
+    title: OverallMolecule
+    description: A class representing the overall molecule
+    slots:
+      - type
+      - name_sample
+      - source
+      - molecular_weight
+    slot_usage:
+      type:
+        alias: Type
+        required: true
+      name_sample:
+        alias: Name
+        required: true
+      source:
+        alias: Source
+        required: true
+      molecular_weight:
+        alias: Molecular_weight
+
+  Molecule:
+    title: Molecule
+    description: A class representing a molecule
+    slots:
+      - name_mol
+      - type
+      - class
+      - sequence
+      - natural_source
+      - taxonomy_id_source
+      - expression_system
+      - taxonomy_id_expression
+      - gene_name
+    slot_usage:
+      name_mol:
+        alias: Name
+        required: true
+      type:
+        alias: Type
+        required: true
+      class:
+        alias: Class
+        required: true
+      sequence:
+        alias: Sequence
+        required: true
+      natural_source:
+        alias: Natural_source
+        required: true
+      taxonomy_id_source:
+        alias: Taxonomy_ID_source
+        required: true
+      expression_system:
+        alias: Expression_system
+        required: true
+      taxonomy_id_expression:
+        alias: Taxonomy_ID_expression
+        required: true
+      gene_name:
+        alias: Gene_name
+
+  Ligand:
+    title: Ligand
+    description: A class representing a ligand
+    slots:
+      - present
+      - smile
+      - reference
+    slot_usage:
+      present:
+        alias: Present
+        required: true
+
+  Specimen:
+    title: Specimen
+    description: A class representing a specimen
+    slots:
+      - buffer
+      - concentration
+      - ph
+      - vitrification
+      - vitrification_cryogen
+      - humidity
+      - temperature
+      - staining
+      - embedding
+      - shadowing
+    slot_usage:
+      buffer:
+        alias: Buffer
+      concentration:
+        alias: Concentration
+      ph:
+        alias: pH
+        required: true
+      vitrification:
+        alias: Vitrification
+        required: true
+      vitrification_cryogen:
+        alias: Vitrification_cryogen
+        required: true
+      humidity:
+        alias: Humidity
+      temperature:
+        alias: Temperature
+      staining:
+        alias: Staining
+        required: true
+      embedding:
+        alias: Embedding
+        required: true
+      shadowing:
+        alias: Shadowing
+        required: true
+
+  Grid:
+    title: Grid
+    description: A class representing a grid
+    slots:
+      - manufacturer
+      - material
+      - mesh
+      - film_support
+      - film_material
+      - film_topology
+      - film_thickness
+      - pretreatment_type
+      - pretreatment_time
+      - pretreatment_pressure
+      - pretreatment_atmosphere
+    slot_usage:
+      manufacturer:
+        alias: Manufacturer
+      material:
+        alias: Material
+      mesh:
+        alias: Mesh
+      film_support:
+        alias: Film_support
+      film_material:
+        alias: Film_material
+      film_topology:
+        alias: Film_topology
+      film_thickness:
+        alias: Film_thickness
+      pretreatment_type:
+        alias: Pretreatment_type
+      pretreatment_time:
+        alias: Pretreatment_time
+      pretreatment_pressure:
+        alias: Pretreatment_pressure
+      pretreatment_atmosphere:
+        alias: Pretreatment_atmosphere
+
+  Sample:
+    title: Sample
+    description: A class representing a sample
+    slots:
+      - overall_molecule
+      - molecule
+      - ligands
+      - specimen
+      - grid
+    slot_usage:
+      overall_molecule:
+        alias: Overall_Molecule
+        required: true
+      molecule:
+        alias: Molecule
+        required: true
+      ligands:
+        alias: Ligands
+      specimen:
+        alias: Specimen
+        required: true
+      grid:
+        alias: Grid
+
+  OSCEMSample:
+    title: OSCEMSample
+    description: Main class for OSCEM sample schema
+    slots:
+      - grant
+      - author
+      - sample
+    slot_usage:
+      grant:
+        alias: Grant
+        required: true
+      author:
+        alias: Author
+        required: true
+      sample:
+        alias: Sample
+        required: true
+
+slots:
+  oscemsample:
+    range: OSCEMSample
+  grant_id:
+    title: Grant_ID
+    description: Unique identifier for the grant, often a number and letter code
+    range: string
+  funding_agency:
+    title: Funding_agency
+    description: The organization responsible for the funding of this research
+    range: string
+
+  first_name:
+    title: FirstName
+    description: Given name of the author
+    range: string
+  last_name:
+    title: LastName
+    description: Surname of the author
+    range: string
+
+  name:
+    title: Name
+    description: Full name of the author
+    range: Name
+  email:
+    title: Email
+    description: Email address of the author
+    range: string
+  phone:
+    title: Phone
+    description: Phone number of the author
+    range: string
+  orcid:
+    title: ORCID
+    description: ORCID of the author, a type of unique identifier
+    range: string
+  organization:
+    title: Organization
+    description: The organization the author is affiliated with
+    range: Organization
+  country:
+    title: Country
+    description: Country of the author's institution
+    range: string
+  role:
+    title: Role
+    description: Role of the author, i.e., principal investigator
+    range: string
+
+  name_org:
+    title: Name_org
+    description: Name of the organization
+    range: string
+  type_org:
+    title: Type_org
+    description: Type of organization, academic, commercial, governmental, etc.
+    range: OrganizationTypeEnum
+
+  type:
+    title: Type
+    description: Description of the overall supramolecular type, i.e., a complex
+    range: string
+  name_sample:
+    title: Name
+    description: Name of the full sample
+    range: string
+  source:
+    title: Source
+    description: Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
+    range: string
+  molecular_weight:
+    title: Molecular_weight
+    description: Molecular weight in Da
+    range: number
+
+  name_mol:
+    title: Name
+    description: Name of an individual molecule (often protein) in the sample
+    range: string
+  class:
+    title: Class
+    description: Class of the molecule
+    range: MoleculeClassEnum
+  sequence:
+    title: Sequence
+    description: Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here
+    range: string
+  natural_source:
+    title: Natural_source
+    description: Scientific name of the natural host organism
+    range: string
+  taxonomy_id_source:
+    title: Taxonomy_ID_source
+    description: Taxonomy ID of the natural source organism
+    range: string
+  expression_system:
+    title: Expression_system
+    description: Scientific name of the organism used to produce the molecule of interest
+    range: string
+  taxonomy_id_expression:
+    title: Taxonomy_ID_expression
+    description: Taxonomy ID of the expression system organism
+    range: string
+  gene_name:
+    title: Gene_name
+    description: Name of the gene of interest
+    range: string
+
+  present:
+    title: Present
+    description: Whether the model contains any ligands
+    range: boolean
+  smile:
+    title: SMILE
+    description: Provide a valid SMILE string of your ligand
+    range: string
+  reference:
+    title: Reference
+    description: Link to a reference of your ligand, i.e., CCD, PubChem, etc.
+    range: string
+
+  buffer:
+    title: Buffer
+    description: Name/composition of the (chemical) sample buffer during grid preparation
+    range: string
+  concentration:
+    title: Concentration
+    description: Concentration of the (supra)molecule in the sample, in M
+    range: number
+  ph:
+    title: pH
+    description: pH of the sample buffer
+    range: number
+  vitrification:
+    title: Vitrification
+    description: Whether the sample was vitrified
+    range: boolean
+  vitrification_cryogen:
+    title: Vitrification_cryogen
+    description: Which cryogen was used for vitrification
+    range: string
+  humidity:
+    title: Humidity
+    description: Environmental humidity just before vitrification, in %
+    range: number
+  temperature:
+    title: Temperature
+    description: Environmental temperature just before vitrification, in K
+    range: number
+  staining:
+    title: Staining
+    description: Whether the sample was stained
+    range: boolean
+  embedding:
+    title: Embedding
+    description: Whether the sample was embedded
+    range: boolean
+  shadowing:
+    title: Shadowing
+    description: Whether the sample was shadowed
+    range: boolean
+
+  manufacturer:
+    title: Manufacturer
+    description: Grid manufacturer
+    range: string
+  material:
+    title: Material
+    description: Material out of which the grid is made
+    range: string
+  mesh:
+    title: Mesh
+    description: Grid mesh in lines per inch
+    range: number
+  film_support:
+    title: Film_support
+    description: Whether a support film was used
+    range: boolean
+  film_material:
+    title: Film_material
+    description: Type of material the support film is made of
+    range: string
+  film_topology:
+    title: Film_topology
+    description: Topology of the support film
+    range: string
+  film_thickness:
+    title: Film_thickness
+    description: Thickness of the support film
+    range: string
+  pretreatment_type:
+    title: Pretreatment_type
+    description: Type of pretreatment of the grid, i.e., glow discharge
+    range: string
+  pretreatment_time:
+    title: Pretreatment_time
+    description: Length of time of the pretreatment in s
+    range: number
+  pretreatment_pressure:
+    title: Pretreatment_pressure
+    description: Pressure of the chamber during pretreatment, in Pa
+    range: number
+  pretreatment_atmosphere:
+    title: Pretreatment_atmosphere
+    description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
+    range: string
+
+  overall_molecule:
+    title: Overall_Molecule
+    description: Description of the overall molecule
+    range: OverallMolecule
+  molecule:
+    title: Molecule
+    description: List of molecule associated with the sample
+    range: Molecule
+    multivalued: true
+  ligands:
+    title: Ligands
+    description: List of ligands associated with the sample
+    range: Ligand
+    multivalued: true
+  specimen:
+    title: Specimen
+    description: Description of the specimen
+    range: Specimen
+  grid:
+    title: Grid
+    description: Description of the grid used
+    range: Grid
+
+  grant:
+    title: Grant
+    description: List of grants associated with the project
+    range: Grant
+    multivalued: true
+  author:
+    title: Author
+    description: List of authors associated with the project
+    range: Author
+    multivalued: true
+  sample:
+    title: Sample
+    description: Sample information
+    range: Sample

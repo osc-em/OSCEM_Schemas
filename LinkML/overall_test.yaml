@@ -1,0 +1,31 @@
+id: http://example.org/oscem_1
+name: OSCEM_test
+description: >
+  LinkML schema for electron microscopy related metadata, 
+  broadly following the EMDB standard with some additions.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: http://example.org/
+
+default_prefix: ex
+
+imports:
+  - linkml:types
+  - ./testschema_acquisition
+  - ./testschema_instrument
+  - ./testschema_sample_v2
+
+classes:
+  baseline:
+    tree_root: true
+    slots:
+      - Acquisition
+      - Instrument
+      - oscemsample
+    slot_usage:
+      Acquisition:
+        required: true
+      Instrument:
+        required: true
+      oscemsample:
+        required: true
