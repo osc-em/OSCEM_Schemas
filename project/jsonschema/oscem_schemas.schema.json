@@ -1,160 +1,895 @@
 {
     "$defs": {
+        "Acquisition": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Beamshift": {
+                    "$ref": "#/$defs/Beamshift",
+                    "description": "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "Beamtilt": {
+                    "$ref": "#/$defs/Beamtilt",
+                    "description": "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "Beamtiltgroups": {
+                    "description": "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.",
+                    "type": "integer"
+                },
+                "Binning_camera": {
+                    "description": "Level of binning on the images applied during data collection",
+                    "type": "number"
+                },
+                "Calibrated_defocus": {
+                    "$ref": "#/$defs/CalibratedDefocus",
+                    "description": "Machine estimated defocus, min and max values in \u00b5m. Has a tendency to be off."
+                },
+                "Calibrated_magnification": {
+                    "description": "Calculated magnification, no unit",
+                    "type": "integer"
+                },
+                "Cryogen": {
+                    "description": "Cryogen used in cooling the instrument and sample, usually nitrogen",
+                    "type": "string"
+                },
+                "Datetime": {
+                    "description": "Time and date of the data acquisition",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "Detector": {
+                    "description": "Make and model of the detector used",
+                    "type": "string"
+                },
+                "Detector_mode": {
+                    "description": "Operating mode of the detector",
+                    "type": "string"
+                },
+                "Dose_per_movie": {
+                    "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom",
+                    "type": "number"
+                },
+                "Energy_filter": {
+                    "$ref": "#/$defs/EnergyFilter",
+                    "description": "Wether an energy filter was used and its specifics."
+                },
+                "Exposure_time": {
+                    "description": "Time of data acquisition per movie/tilt - in s",
+                    "type": "number"
+                },
+                "Frames_per_movie": {
+                    "description": "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors",
+                    "type": "integer"
+                },
+                "GainRef_FlipRotate": {
+                    "description": "Whether and how you have to flip or rotate the gainref in order to align with your acquired images",
+                    "type": "string"
+                },
+                "Grids_imaged": {
+                    "description": "Number of grids imaged for this project - here with qualifier during this data acquisition",
+                    "type": "integer"
+                },
+                "Holder": {
+                    "description": "Speciman holder model",
+                    "type": "string"
+                },
+                "Holder_cryogen": {
+                    "description": "Type of cryogen used in the holder - if the holder is cooled seperately",
+                    "type": "string"
+                },
+                "Image_size": {
+                    "$ref": "#/$defs/ImageSize",
+                    "description": "The size of the image in pixels, height and width given."
+                },
+                "Images_generated": {
+                    "description": "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted",
+                    "type": "integer"
+                },
+                "Imageshift": {
+                    "description": "Movement of the Beam below the image in order to shift the image on the detector. Given in \u00b5m.",
+                    "type": "number"
+                },
+                "Microscope_software": {
+                    "description": "Software used for instrument control,",
+                    "type": "string"
+                },
+                "Nominal_defocus": {
+                    "$ref": "#/$defs/NominalDefocus",
+                    "description": "Target defocus set, min and max values in \u00b5m."
+                },
+                "Nominal_magnification": {
+                    "description": "Magnification level as indicated by the instrument, no unit",
+                    "type": "integer"
+                },
+                "Pixel_size": {
+                    "description": "Pixel size, in Angstrom",
+                    "type": "number"
+                },
+                "Specialist_Optics": {
+                    "$ref": "#/$defs/SpecialistOptics",
+                    "description": "Any type of special optics, such as a phaseplate"
+                },
+                "Temperature": {
+                    "$ref": "#/$defs/TemperatureRange",
+                    "description": "Temperature during data collection, in K with min and max values."
+                }
+            },
+            "required": [
+                "Detector",
+                "Dose_per_movie",
+                "Datetime",
+                "Binning_camera",
+                "Pixel_size"
+            ],
+            "title": "Acquisition",
+            "type": "object"
+        },
+        "Author": {
+            "additionalProperties": false,
+            "description": "A class representing an author",
+            "properties": {
+                "author_name": {
+                    "$ref": "#/$defs/AuthorName",
+                    "description": "Full name of the author"
+                },
+                "country": {
+                    "description": "Country of the author's institution",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "Email address of the author",
+                    "type": "string"
+                },
+                "orcid": {
+                    "description": "ORCID of the author, a type of unique identifier",
+                    "type": "string"
+                },
+                "organization": {
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization the author is affiliated with"
+                },
+                "phone": {
+                    "description": "Phone number of the author",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "Role of the author, i.e., principal investigator",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "author_name",
+                "email",
+                "phone",
+                "orcid",
+                "organization",
+                "country"
+            ],
+            "title": "Author",
+            "type": "object"
+        },
+        "AuthorName": {
+            "additionalProperties": false,
+            "description": "A class representing the name of an author",
+            "properties": {
+                "first_name": {
+                    "description": "Given name of the author",
+                    "type": "string"
+                },
+                "last_name": {
+                    "description": "Surname of the author",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "first_name",
+                "last_name"
+            ],
+            "title": "AuthorName",
+            "type": "object"
+        },
+        "Base": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Acquisition": {
+                    "$ref": "#/$defs/Acquisition"
+                }
+            },
+            "title": "Base",
+            "type": "object"
+        },
+        "Beamshift": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "X_max": {
+                    "type": "number"
+                },
+                "X_min": {
+                    "type": "number"
+                },
+                "Y_max": {
+                    "type": "number"
+                },
+                "Y_min": {
+                    "type": "number"
+                }
+            },
+            "title": "Beamshift",
+            "type": "object"
+        },
+        "Beamtilt": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "X_max": {
+                    "type": "number"
+                },
+                "X_min": {
+                    "type": "number"
+                },
+                "Y_max": {
+                    "type": "number"
+                },
+                "Y_min": {
+                    "type": "number"
+                }
+            },
+            "title": "Beamtilt",
+            "type": "object"
+        },
+        "CalibratedDefocus": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": "number"
+                },
+                "Minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": "number"
+                }
+            },
+            "title": "CalibratedDefocus",
+            "type": "object"
+        },
+        "ChromaticAberrationCorrector": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Type": {
+                    "description": "Details of a given specialist instrument",
+                    "type": "string"
+                },
+                "Used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Used",
+                "Type"
+            ],
+            "title": "ChromaticAberrationCorrector",
+            "type": "object"
+        },
         "EMDataset": {
             "additionalProperties": false,
-            "description": "Represents a EMDataset",
+            "description": "OSC-EM Metadata for a dataset",
             "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": "integer"
+                "Acquisition": {
+                    "$ref": "#/$defs/Acquisition"
                 },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": "string"
+                "Instrument": {
+                    "$ref": "#/$defs/Instrument"
                 },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": "string"
-                },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": "string"
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
+                "oscemsample": {
+                    "$ref": "#/$defs/OSCEMSample"
                 }
             },
             "required": [
-                "id"
+                "Acquisition",
+                "Instrument",
+                "oscemsample"
             ],
             "title": "EMDataset",
             "type": "object"
         },
-        "EMDatasetCollection": {
+        "EnergyFilter": {
             "additionalProperties": false,
-            "description": "A holder for EMDataset objects",
+            "description": "",
             "properties": {
-                "entries": {
-                    "additionalProperties": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/EMDataset__identifier_optional"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ]
-                    },
-                    "type": "object"
-                }
-            },
-            "title": "EMDatasetCollection",
-            "type": "object"
-        },
-        "EMDataset__identifier_optional": {
-            "additionalProperties": false,
-            "description": "Represents a EMDataset",
-            "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
+                "Model": {
+                    "description": "Make and model of a specilized device",
+                    "type": "string"
+                },
+                "Used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                },
+                "Width": {
+                    "description": "The width of a given item - unit depends on item",
                     "type": "integer"
-                },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": "string"
-                },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": "string"
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
                 }
             },
-            "required": [],
-            "title": "EMDataset",
+            "required": [
+                "Used",
+                "Width"
+            ],
+            "title": "EnergyFilter",
             "type": "object"
         },
-        "NamedThing": {
+        "Grant": {
             "additionalProperties": false,
-            "description": "A generic grouping for any identifiable entity",
+            "description": "A class representing a grant",
             "properties": {
-                "description": {
-                    "description": "A human-readable description for a thing",
+                "funding_agency": {
+                    "description": "The organization responsible for the funding of this research",
                     "type": "string"
                 },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
+                "grant_id": {
+                    "description": "Unique identifier for the grant, often a number and letter code",
                     "type": "string"
                 }
             },
             "required": [
-                "id"
+                "grant_id",
+                "funding_agency"
             ],
-            "title": "NamedThing",
+            "title": "Grant",
             "type": "object"
         },
-        "PersonStatus": {
+        "Grid": {
+            "additionalProperties": false,
+            "description": "A class representing a grid",
+            "properties": {
+                "film_material": {
+                    "description": "Type of material the support film is made of",
+                    "type": "string"
+                },
+                "film_support": {
+                    "description": "Whether a support film was used",
+                    "type": "boolean"
+                },
+                "film_thickness": {
+                    "description": "Thickness of the support film",
+                    "type": "string"
+                },
+                "film_topology": {
+                    "description": "Topology of the support film",
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "description": "Grid manufacturer",
+                    "type": "string"
+                },
+                "material": {
+                    "description": "Material out of which the grid is made",
+                    "type": "string"
+                },
+                "mesh": {
+                    "description": "Grid mesh in lines per inch",
+                    "type": "number"
+                },
+                "pretreatment_atmosphere": {
+                    "description": "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.",
+                    "type": "string"
+                },
+                "pretreatment_pressure": {
+                    "description": "Pressure of the chamber during pretreatment, in Pa",
+                    "type": "number"
+                },
+                "pretreatment_time": {
+                    "description": "Length of time of the pretreatment in s",
+                    "type": "number"
+                },
+                "pretreatment_type": {
+                    "description": "Type of pretreatment of the grid, i.e., glow discharge",
+                    "type": "string"
+                }
+            },
+            "title": "Grid",
+            "type": "object"
+        },
+        "ImageSize": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Height": {
+                    "description": "The height of a given item - unit depends on item",
+                    "type": "integer"
+                },
+                "Width": {
+                    "description": "The width of a given item - unit depends on item",
+                    "type": "integer"
+                }
+            },
+            "title": "ImageSize",
+            "type": "object"
+        },
+        "Imagehift": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "X_max": {
+                    "type": "number"
+                },
+                "X_min": {
+                    "type": "number"
+                },
+                "Y_max": {
+                    "type": "number"
+                },
+                "Y_min": {
+                    "type": "number"
+                }
+            },
+            "title": "Imagehift",
+            "type": "object"
+        },
+        "Instrument": {
+            "additionalProperties": false,
+            "description": "Instrument values, mostly constant across a data collection.",
+            "properties": {
+                "Acceleration_Voltage": {
+                    "description": "Voltage used for the electron acceleration, in kV",
+                    "type": "integer"
+                },
+                "C2_Aperture": {
+                    "description": "C2 aperture size used in data acquisition, in \u00b5m",
+                    "type": "integer"
+                },
+                "CS": {
+                    "description": "Spherical aberration of the instrument, in mm",
+                    "type": "number"
+                },
+                "Electron_source": {
+                    "description": "Type of electron source used in the microscope, such as FEG",
+                    "type": "string"
+                },
+                "Illumination": {
+                    "description": "Mode of illumination used during data collection",
+                    "type": "string"
+                },
+                "Imaging": {
+                    "description": "Mode of imaging used during data collection",
+                    "type": "string"
+                },
+                "Microscope": {
+                    "description": "Name/Type of the Microscope",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Microscope",
+                "Illumination",
+                "Imaging",
+                "Electron_source",
+                "Acceleration_Voltage",
+                "CS"
+            ],
+            "title": "Instrument",
+            "type": "object"
+        },
+        "Ligand": {
+            "additionalProperties": false,
+            "description": "A class representing a ligand",
+            "properties": {
+                "present": {
+                    "description": "Whether the model contains any ligands",
+                    "type": "boolean"
+                },
+                "reference": {
+                    "description": "Link to a reference of your ligand, i.e., CCD, PubChem, etc.",
+                    "type": "string"
+                },
+                "smile": {
+                    "description": "Provide a valid SMILE string of your ligand",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "present"
+            ],
+            "title": "Ligand",
+            "type": "object"
+        },
+        "Molecule": {
+            "additionalProperties": false,
+            "description": "A class representing a molecule",
+            "properties": {
+                "expression_system": {
+                    "description": "Scientific name of the organism used to produce the molecule of interest",
+                    "type": "string"
+                },
+                "gene_name": {
+                    "description": "Name of the gene of interest",
+                    "type": "string"
+                },
+                "molecular_class": {
+                    "$ref": "#/$defs/MoleculeClassEnum",
+                    "description": "Class of the molecule"
+                },
+                "name_mol": {
+                    "description": "Name of an individual molecule (often protein) in the sample",
+                    "type": "string"
+                },
+                "natural_source": {
+                    "description": "Scientific name of the natural host organism",
+                    "type": "string"
+                },
+                "sequence": {
+                    "description": "Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here",
+                    "type": "string"
+                },
+                "taxonomy_id_expression": {
+                    "description": "Taxonomy ID of the expression system organism",
+                    "type": "string"
+                },
+                "taxonomy_id_source": {
+                    "description": "Taxonomy ID of the natural source organism",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Description of the overall supramolecular type, i.e., a complex",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name_mol",
+                "type",
+                "molecular_class",
+                "sequence",
+                "natural_source",
+                "taxonomy_id_source",
+                "expression_system",
+                "taxonomy_id_expression"
+            ],
+            "title": "Molecule",
+            "type": "object"
+        },
+        "MoleculeClassEnum": {
             "description": "",
             "enum": [
-                "ALIVE",
-                "DEAD",
-                "UNKNOWN"
+                "Antibiotic",
+                "Carbohydrate",
+                "Chimera",
+                "None of these"
             ],
-            "title": "PersonStatus",
+            "title": "MoleculeClassEnum",
             "type": "string"
+        },
+        "NominalDefocus": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": "number"
+                },
+                "Minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": "number"
+                }
+            },
+            "title": "NominalDefocus",
+            "type": "object"
+        },
+        "OSCEMSample": {
+            "additionalProperties": false,
+            "description": "Main class for OSCEM sample schema",
+            "properties": {
+                "author": {
+                    "description": "List of authors associated with the project",
+                    "items": {
+                        "$ref": "#/$defs/Author"
+                    },
+                    "type": "array"
+                },
+                "grant": {
+                    "description": "List of grants associated with the project",
+                    "items": {
+                        "$ref": "#/$defs/Grant"
+                    },
+                    "type": "array"
+                },
+                "sample": {
+                    "$ref": "#/$defs/Sample",
+                    "description": "Sample information"
+                }
+            },
+            "required": [
+                "grant",
+                "sample"
+            ],
+            "title": "OSCEMSample",
+            "type": "object"
+        },
+        "Organization": {
+            "additionalProperties": false,
+            "description": "A class representing an organization",
+            "properties": {
+                "name_org": {
+                    "description": "Name of the organization",
+                    "type": "string"
+                },
+                "type_org": {
+                    "$ref": "#/$defs/OrganizationTypeEnum",
+                    "description": "Type of organization, academic, commercial, governmental, etc."
+                }
+            },
+            "required": [
+                "type_org"
+            ],
+            "title": "Organization",
+            "type": "object"
+        },
+        "OrganizationTypeEnum": {
+            "description": "",
+            "enum": [
+                "Academic",
+                "Commercial",
+                "Government",
+                "Other"
+            ],
+            "title": "OrganizationTypeEnum",
+            "type": "string"
+        },
+        "OverallMolecule": {
+            "additionalProperties": false,
+            "description": "A class representing the overall molecule",
+            "properties": {
+                "molecular_weight": {
+                    "description": "Molecular weight in Da",
+                    "type": "number"
+                },
+                "name_sample": {
+                    "description": "Name of the full sample",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Description of the overall supramolecular type, i.e., a complex",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "name_sample",
+                "source"
+            ],
+            "title": "OverallMolecule",
+            "type": "object"
+        },
+        "Phaseplate": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Type": {
+                    "description": "Details of a given specialist instrument",
+                    "type": "string"
+                },
+                "Used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Used",
+                "Type"
+            ],
+            "title": "Phaseplate",
+            "type": "object"
+        },
+        "Sample": {
+            "additionalProperties": false,
+            "description": "A class representing a sample",
+            "properties": {
+                "grid": {
+                    "$ref": "#/$defs/Grid",
+                    "description": "Description of the grid used"
+                },
+                "ligands": {
+                    "description": "List of ligands associated with the sample",
+                    "items": {
+                        "$ref": "#/$defs/Ligand"
+                    },
+                    "type": "array"
+                },
+                "molecule": {
+                    "description": "List of molecule associated with the sample",
+                    "items": {
+                        "$ref": "#/$defs/Molecule"
+                    },
+                    "type": "array"
+                },
+                "overall_molecule": {
+                    "$ref": "#/$defs/OverallMolecule",
+                    "description": "Description of the overall molecule"
+                },
+                "specimen": {
+                    "$ref": "#/$defs/Specimen",
+                    "description": "Description of the specimen"
+                }
+            },
+            "required": [
+                "overall_molecule",
+                "molecule",
+                "specimen"
+            ],
+            "title": "Sample",
+            "type": "object"
+        },
+        "SpecialistOptics": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Chromatic_Aberration_Corrector": {
+                    "$ref": "#/$defs/ChromaticAberrationCorrector",
+                    "description": "Specialist device to correct for chromatic aberration of the microscope lenses"
+                },
+                "Phaseplate": {
+                    "$ref": "#/$defs/Phaseplate",
+                    "description": "Phaseplate is a special optics device that can be used to enhance contrast"
+                },
+                "Spherical_Aberration_Corrector": {
+                    "$ref": "#/$defs/SphericalAberrationCorrector",
+                    "description": "Specialist device to correct for spherical aberration of the microscope lenses"
+                }
+            },
+            "title": "SpecialistOptics",
+            "type": "object"
+        },
+        "Specimen": {
+            "additionalProperties": false,
+            "description": "A class representing a specimen",
+            "properties": {
+                "buffer": {
+                    "description": "Name/composition of the (chemical) sample buffer during grid preparation",
+                    "type": "string"
+                },
+                "concentration": {
+                    "description": "Concentration of the (supra)molecule in the sample, in M",
+                    "type": "number"
+                },
+                "embedding": {
+                    "description": "Whether the sample was embedded",
+                    "type": "boolean"
+                },
+                "humidity": {
+                    "description": "Environmental humidity just before vitrification, in %",
+                    "type": "number"
+                },
+                "ph": {
+                    "description": "pH of the sample buffer",
+                    "type": "number"
+                },
+                "shadowing": {
+                    "description": "Whether the sample was shadowed",
+                    "type": "boolean"
+                },
+                "staining": {
+                    "description": "Whether the sample was stained",
+                    "type": "boolean"
+                },
+                "temperature": {
+                    "description": "Environmental temperature just before vitrification, in K",
+                    "minimum": 0.0,
+                    "type": "number"
+                },
+                "vitrification": {
+                    "description": "Whether the sample was vitrified",
+                    "type": "boolean"
+                },
+                "vitrification_cryogen": {
+                    "description": "Which cryogen was used for vitrification",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ph",
+                "vitrification",
+                "vitrification_cryogen",
+                "staining",
+                "embedding",
+                "shadowing"
+            ],
+            "title": "Specimen",
+            "type": "object"
+        },
+        "SphericalAberrationCorrector": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Type": {
+                    "description": "Details of a given specialist instrument",
+                    "type": "string"
+                },
+                "Used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Used",
+                "Type"
+            ],
+            "title": "SphericalAberrationCorrector",
+            "type": "object"
+        },
+        "TemperatureRange": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": "number"
+                },
+                "Minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": "number"
+                }
+            },
+            "title": "TemperatureRange",
+            "type": "object"
+        },
+        "Testschema": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "Instrument": {
+                    "$ref": "#/$defs/Instrument"
+                }
+            },
+            "title": "Testschema",
+            "type": "object"
+        },
+        "TiltAngle": {
+            "additionalProperties": false,
+            "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree.",
+            "properties": {
+                "Increment": {
+                    "type": "number"
+                },
+                "Maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": "number"
+                },
+                "Minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": "number"
+                }
+            },
+            "title": "TiltAngle",
+            "type": "object"
         }
     },
     "$id": "https://w3id.org/osc-em/oscem-schemas",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "description": "A holder for EMDataset objects",
+    "description": "OSC-EM Metadata for a dataset",
     "metamodel_version": "1.7.0",
     "properties": {
-        "entries": {
-            "additionalProperties": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/EMDataset__identifier_optional"
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
-            },
-            "type": "object"
+        "Acquisition": {
+            "$ref": "#/$defs/Acquisition"
+        },
+        "Instrument": {
+            "$ref": "#/$defs/Instrument"
+        },
+        "oscemsample": {
+            "$ref": "#/$defs/OSCEMSample"
         }
     },
+    "required": [
+        "Acquisition",
+        "Instrument",
+        "oscemsample"
+    ],
     "title": "oscem-schemas",
     "type": "object",
     "version": null

@@ -1,24 +1,242 @@
 # metamodel_version: 1.7.0
+type Acquisition
+  {
+    nominalDefocus: NominalDefocus
+    calibratedDefocus: CalibratedDefocus
+    nominalMagnification: Integer
+    calibratedMagnification: Integer
+    holder: String
+    holderCryogen: String
+    temperature: TemperatureRange
+    microscopeSoftware: String
+    detector: String!
+    detectorMode: String
+    dosePerMovie: Float!
+    energyFilter: EnergyFilter
+    imageSize: ImageSize
+    datetime: Datetime!
+    exposureTime: Float
+    cryogen: String
+    framesPerMovie: Integer
+    gridsImaged: Integer
+    imagesGenerated: Integer
+    binningCamera: Float!
+    pixelSize: Float!
+    specialistOptics: SpecialistOptics
+    beamshift: Beamshift
+    beamtilt: Beamtilt
+    imageshift: Float
+    beamtiltgroups: Integer
+    gainRefFlipRotate: String
+  }
+
+type Author
+  {
+    authorName: AuthorName!
+    email: String!
+    phone: String!
+    orcid: String!
+    organization: Organization!
+    country: String!
+    role: String
+  }
+
+type AuthorName
+  {
+    firstName: String!
+    lastName: String!
+  }
+
+type Base
+  {
+    acquisition: Acquisition
+  }
+
+type Beamshift
+  {
+    xMin: Float
+    xMax: Float
+    yMin: Float
+    yMax: Float
+  }
+
+type Beamtilt
+  {
+    xMin: Float
+    xMax: Float
+    yMin: Float
+    yMax: Float
+  }
+
+type CalibratedDefocus
+  {
+    minimal: Float
+    maximal: Float
+  }
+
+type ChromaticAberrationCorrector
+  {
+    used: Boolean!
+    type: String!
+  }
+
 type EMDataset
   {
-    id: Uriorcurie!
-    name: String
-    description: String
-    primaryEmail: String
-    birthDate: Date
-    ageInYears: Integer
-    vitalStatus: PersonStatus
+    acquisition: Acquisition!
+    instrument: Instrument!
+    oscemsample: OSCEMSample!
   }
 
-type EMDatasetCollection
+type EnergyFilter
   {
-    entries: [EMDataset]
+    used: Boolean!
+    model: String
+    width: Integer!
   }
 
-type NamedThing
+type Grant
   {
-    id: Uriorcurie!
-    name: String
-    description: String
+    grantId: String!
+    fundingAgency: String!
+  }
+
+type Grid
+  {
+    manufacturer: String
+    material: String
+    mesh: Float
+    filmSupport: Boolean
+    filmMaterial: String
+    filmTopology: String
+    filmThickness: String
+    pretreatmentType: String
+    pretreatmentTime: Float
+    pretreatmentPressure: Float
+    pretreatmentAtmosphere: String
+  }
+
+type ImageSize
+  {
+    height: Integer
+    width: Integer
+  }
+
+type Imagehift
+  {
+    xMin: Float
+    xMax: Float
+    yMin: Float
+    yMax: Float
+  }
+
+type Instrument
+  {
+    microscope: String!
+    illumination: String!
+    imaging: String!
+    electronSource: String!
+    accelerationVoltage: Integer!
+    c2Aperture: Integer
+    cS: Float!
+  }
+
+type Ligand
+  {
+    present: Boolean!
+    smile: String
+    reference: String
+  }
+
+type Molecule
+  {
+    nameMol: String!
+    type: String!
+    molecularClass: MoleculeClassEnum!
+    sequence: String!
+    naturalSource: String!
+    taxonomyIdSource: String!
+    expressionSystem: String!
+    taxonomyIdExpression: String!
+    geneName: String
+  }
+
+type NominalDefocus
+  {
+    minimal: Float
+    maximal: Float
+  }
+
+type Organization
+  {
+    nameOrg: String
+    typeOrg: OrganizationTypeEnum!
+  }
+
+type OSCEMSample
+  {
+    grant: [Grant]!
+    author: [Author]
+    sample: Sample!
+  }
+
+type OverallMolecule
+  {
+    type: String!
+    nameSample: String!
+    source: String!
+    molecularWeight: Float
+  }
+
+type Phaseplate
+  {
+    used: Boolean!
+    type: String!
+  }
+
+type Sample
+  {
+    overallMolecule: OverallMolecule!
+    molecule: [Molecule]!
+    ligands: [Ligand]
+    specimen: Specimen!
+    grid: Grid
+  }
+
+type SpecialistOptics
+  {
+    phaseplate: Phaseplate
+    sphericalAberrationCorrector: SphericalAberrationCorrector
+    chromaticAberrationCorrector: ChromaticAberrationCorrector
+  }
+
+type Specimen
+  {
+    buffer: String
+    concentration: Float
+    ph: Float!
+    vitrification: Boolean!
+    vitrificationCryogen: String!
+    humidity: Float
+    temperature: Float
+    staining: Boolean!
+    embedding: Boolean!
+    shadowing: Boolean!
+  }
+
+type SphericalAberrationCorrector
+  {
+    used: Boolean!
+    type: String!
+  }
+
+type TemperatureRange
+  {
+    minimal: Float
+    maximal: Float
+  }
+
+type Testschema
+  {
+    instrument: Instrument
   }
 

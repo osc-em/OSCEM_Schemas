@@ -1,26 +1,229 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// Represents a EMDataset
+message Acquisition
+ {
+  nominalDefocus nominalDefocus = 0
+  calibratedDefocus calibratedDefocus = 0
+  integer nominalMagnification = 0
+  integer calibratedMagnification = 0
+  string holder = 0
+  string holderCryogen = 0
+  temperatureRange temperature = 0
+  string microscopeSoftware = 0
+  string detector = 0
+  string detectorMode = 0
+  float dosePerMovie = 0
+  energyFilter energyFilter = 0
+  imageSize imageSize = 0
+  datetime datetime = 0
+  float exposureTime = 0
+  string cryogen = 0
+  integer framesPerMovie = 0
+  integer gridsImaged = 0
+  integer imagesGenerated = 0
+  float binningCamera = 0
+  float pixelSize = 0
+  specialistOptics specialistOptics = 0
+  beamshift beamshift = 0
+  beamtilt beamtilt = 0
+  float imageshift = 0
+  integer beamtiltgroups = 0
+  string gainRefFlipRotate = 0
+ }
+// A class representing an author
+message Author
+ {
+  authorName authorName = 0
+  string email = 0
+  string phone = 0
+  string orcid = 0
+  organization organization = 0
+  string country = 0
+  string role = 0
+ }
+// A class representing the name of an author
+message AuthorName
+ {
+  string firstName = 0
+  string lastName = 0
+ }
+message Base
+ {
+  acquisition acquisition = 0
+ }
+message Beamshift
+ {
+  float xMin = 0
+  float xMax = 0
+  float yMin = 0
+  float yMax = 0
+ }
+message Beamtilt
+ {
+  float xMin = 0
+  float xMax = 0
+  float yMin = 0
+  float yMax = 0
+ }
+message CalibratedDefocus
+ {
+  float minimal = 0
+  float maximal = 0
+ }
+message ChromaticAberrationCorrector
+ {
+  boolean used = 0
+  string type = 0
+ }
+// OSC-EM Metadata for a dataset
 message EMDataset
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  string primaryEmail = 0
-  date birthDate = 0
-  integer ageInYears = 0
-  personStatus vitalStatus = 0
+  acquisition acquisition = 0
+  instrument instrument = 0
+  oSCEMSample oscemsample = 0
  }
-// A holder for EMDataset objects
-message EMDatasetCollection
+message EnergyFilter
  {
- repeated  eMDataset entries = 0
+  boolean used = 0
+  string model = 0
+  integer width = 0
  }
-// A generic grouping for any identifiable entity
-message NamedThing
+// A class representing a grant
+message Grant
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
+  string grantId = 0
+  string fundingAgency = 0
+ }
+// A class representing a grid
+message Grid
+ {
+  string manufacturer = 0
+  string material = 0
+  float mesh = 0
+  boolean filmSupport = 0
+  string filmMaterial = 0
+  string filmTopology = 0
+  string filmThickness = 0
+  string pretreatmentType = 0
+  float pretreatmentTime = 0
+  float pretreatmentPressure = 0
+  string pretreatmentAtmosphere = 0
+ }
+message ImageSize
+ {
+  integer height = 0
+  integer width = 0
+ }
+message Imagehift
+ {
+  float xMin = 0
+  float xMax = 0
+  float yMin = 0
+  float yMax = 0
+ }
+// Instrument values, mostly constant across a data collection.
+message Instrument
+ {
+  string microscope = 0
+  string illumination = 0
+  string imaging = 0
+  string electronSource = 0
+  integer accelerationVoltage = 0
+  integer c2Aperture = 0
+  float cS = 0
+ }
+// A class representing a ligand
+message Ligand
+ {
+  boolean present = 0
+  string smile = 0
+  string reference = 0
+ }
+// A class representing a molecule
+message Molecule
+ {
+  string nameMol = 0
+  string type = 0
+  moleculeClassEnum molecularClass = 0
+  string sequence = 0
+  string naturalSource = 0
+  string taxonomyIdSource = 0
+  string expressionSystem = 0
+  string taxonomyIdExpression = 0
+  string geneName = 0
+ }
+message NominalDefocus
+ {
+  float minimal = 0
+  float maximal = 0
+ }
+// A class representing an organization
+message Organization
+ {
+  string nameOrg = 0
+  organizationTypeEnum typeOrg = 0
+ }
+// Main class for OSCEM sample schema
+message OSCEMSample
+ {
+ repeated  grant grant = 0
+ repeated  author author = 0
+  sample sample = 0
+ }
+// A class representing the overall molecule
+message OverallMolecule
+ {
+  string type = 0
+  string nameSample = 0
+  string source = 0
+  float molecularWeight = 0
+ }
+message Phaseplate
+ {
+  boolean used = 0
+  string type = 0
+ }
+// A class representing a sample
+message Sample
+ {
+  overallMolecule overallMolecule = 0
+ repeated  molecule molecule = 0
+ repeated  ligand ligands = 0
+  specimen specimen = 0
+  grid grid = 0
+ }
+message SpecialistOptics
+ {
+  phaseplate phaseplate = 0
+  sphericalAberrationCorrector sphericalAberrationCorrector = 0
+  chromaticAberrationCorrector chromaticAberrationCorrector = 0
+ }
+// A class representing a specimen
+message Specimen
+ {
+  string buffer = 0
+  float concentration = 0
+  float ph = 0
+  boolean vitrification = 0
+  string vitrificationCryogen = 0
+  float humidity = 0
+  float temperature = 0
+  boolean staining = 0
+  boolean embedding = 0
+  boolean shadowing = 0
+ }
+message SphericalAberrationCorrector
+ {
+  boolean used = 0
+  string type = 0
+ }
+message TemperatureRange
+ {
+  float minimal = 0
+  float maximal = 0
+ }
+message Testschema
+ {
+  instrument instrument = 0
  }

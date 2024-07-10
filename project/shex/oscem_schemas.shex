@@ -3,7 +3,7 @@ BASE <https://w3id.org/osc-em/oscem-schemas/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX schema1: <http://schema.org/>
+PREFIX ex: <http://example.org/>
 
 
 linkml:String xsd:string
@@ -44,32 +44,301 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<EMDataset> CLOSED {
-    (  $<EMDataset_tes> (  &<NamedThing_tes> ;
-          rdf:type [ schema1:Thing ] ? ;
-          schema1:email @linkml:String ? ;
-          schema1:birthDate @linkml:Date ? ;
-          <age_in_years> @linkml:Integer ? ;
-          <vital_status> [ <http://purl.obolibrary.org/obo/PATO_0001421> <http://purl.obolibrary.org/obo/PATO_0001422>
-             <https://w3id.org/osc-em/oscem-schemas/PersonStatus#UNKNOWN> ] ?
+ex:Acquisition CLOSED {
+    (  $ex:Acquisition_tes (  ex:Nominal_defocus @ex:NominalDefocus ? ;
+          ex:Calibrated_defocus @ex:CalibratedDefocus ? ;
+          ex:Nominal_magnification @linkml:Integer ? ;
+          ex:Calibrated_magnification @linkml:Integer ? ;
+          ex:Holder @linkml:String ? ;
+          ex:Holder_cryogen @linkml:String ? ;
+          ex:Temperature @ex:TemperatureRange ? ;
+          ex:Microscope_software @linkml:String ? ;
+          ex:Detector @linkml:String ;
+          ex:Detector_mode @linkml:String ? ;
+          ex:Dose_per_movie @linkml:Float ;
+          ex:Energy_filter @ex:EnergyFilter ? ;
+          ex:Image_size @ex:ImageSize ? ;
+          ex:Datetime @linkml:Datetime ;
+          ex:Exposure_time @linkml:Float ? ;
+          ex:Cryogen @linkml:String ? ;
+          ex:Frames_per_movie @linkml:Integer ? ;
+          ex:Grids_imaged @linkml:Integer ? ;
+          ex:Images_generated @linkml:Integer ? ;
+          ex:Binning_camera @linkml:Float ;
+          ex:Pixel_size @linkml:Float ;
+          ex:Specialist_Optics @ex:SpecialistOptics ? ;
+          ex:Beamshift @ex:Beamshift ? ;
+          ex:Beamtilt @ex:Beamtilt ? ;
+          ex:Imageshift @linkml:Float ? ;
+          ex:Beamtiltgroups @linkml:Integer ? ;
+          ex:GainRef_FlipRotate @linkml:String ?
        ) ;
-       rdf:type [ <EMDataset> ]
+       rdf:type [ ex:Acquisition ] ?
     )
 }
 
-<EMDatasetCollection> CLOSED {
-    (  $<EMDatasetCollection_tes> <entries> @<EMDataset> * ;
-       rdf:type [ <EMDatasetCollection> ] ?
+ex:Author CLOSED {
+    (  $ex:Author_tes (  ex:author_name @ex:AuthorName ;
+          ex:email @linkml:String ;
+          ex:phone @linkml:String ;
+          ex:orcid @linkml:String ;
+          ex:organization @ex:Organization ;
+          ex:country @linkml:String ;
+          ex:role @linkml:String ?
+       ) ;
+       rdf:type [ ex:Author ] ?
     )
 }
 
-<NamedThing>  (
-    CLOSED {
-       (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
-             schema1:description @linkml:String ?
-          ) ;
-          rdf:type [ schema1:Thing ]
-       )
-    } OR @<EMDataset>
-)
+ex:AuthorName CLOSED {
+    (  $ex:AuthorName_tes (  ex:first_name @linkml:String ;
+          ex:last_name @linkml:String
+       ) ;
+       rdf:type [ ex:AuthorName ] ?
+    )
+}
+
+ex:Base CLOSED {
+    (  $ex:Base_tes ex:Acquisition @ex:Acquisition ? ;
+       rdf:type [ ex:Base ] ?
+    )
+}
+
+ex:Beamshift CLOSED {
+    (  $ex:Beamshift_tes (  ex:X_min @linkml:Float ? ;
+          ex:X_max @linkml:Float ? ;
+          ex:Y_min @linkml:Float ? ;
+          ex:Y_max @linkml:Float ?
+       ) ;
+       rdf:type [ ex:Beamshift ] ?
+    )
+}
+
+ex:Beamtilt CLOSED {
+    (  $ex:Beamtilt_tes (  ex:X_min @linkml:Float ? ;
+          ex:X_max @linkml:Float ? ;
+          ex:Y_min @linkml:Float ? ;
+          ex:Y_max @linkml:Float ?
+       ) ;
+       rdf:type [ ex:Beamtilt ] ?
+    )
+}
+
+ex:CalibratedDefocus CLOSED {
+    (  $ex:CalibratedDefocus_tes (  ex:Minimal @linkml:Float ? ;
+          ex:Maximal @linkml:Float ?
+       ) ;
+       rdf:type [ ex:CalibratedDefocus ] ?
+    )
+}
+
+ex:ChromaticAberrationCorrector CLOSED {
+    (  $ex:ChromaticAberrationCorrector_tes (  ex:Used @linkml:Boolean ;
+          ex:Type @linkml:String
+       ) ;
+       rdf:type [ ex:ChromaticAberrationCorrector ] ?
+    )
+}
+
+<EMDataset> CLOSED {
+    (  $<EMDataset_tes> (  ex:Acquisition @ex:Acquisition ;
+          ex:Instrument @ex:Instrument ;
+          ex:oscemsample @ex:OSCEMSample
+       ) ;
+       rdf:type [ <EMDataset> ] ?
+    )
+}
+
+ex:EnergyFilter CLOSED {
+    (  $ex:EnergyFilter_tes (  ex:Used @linkml:Boolean ;
+          ex:Model @linkml:String ? ;
+          ex:Width @linkml:Integer
+       ) ;
+       rdf:type [ ex:EnergyFilter ] ?
+    )
+}
+
+ex:Grant CLOSED {
+    (  $ex:Grant_tes (  ex:grant_id @linkml:String ;
+          ex:funding_agency @linkml:String
+       ) ;
+       rdf:type [ ex:Grant ] ?
+    )
+}
+
+ex:Grid CLOSED {
+    (  $ex:Grid_tes (  ex:manufacturer @linkml:String ? ;
+          ex:material @linkml:String ? ;
+          ex:mesh @linkml:Float ? ;
+          ex:film_support @linkml:Boolean ? ;
+          ex:film_material @linkml:String ? ;
+          ex:film_topology @linkml:String ? ;
+          ex:film_thickness @linkml:String ? ;
+          ex:pretreatment_type @linkml:String ? ;
+          ex:pretreatment_time @linkml:Float ? ;
+          ex:pretreatment_pressure @linkml:Float ? ;
+          ex:pretreatment_atmosphere @linkml:String ?
+       ) ;
+       rdf:type [ ex:Grid ] ?
+    )
+}
+
+ex:ImageSize CLOSED {
+    (  $ex:ImageSize_tes (  ex:Height @linkml:Integer ? ;
+          ex:Width @linkml:Integer ?
+       ) ;
+       rdf:type [ ex:ImageSize ] ?
+    )
+}
+
+ex:Imagehift CLOSED {
+    (  $ex:Imagehift_tes (  ex:X_min @linkml:Float ? ;
+          ex:X_max @linkml:Float ? ;
+          ex:Y_min @linkml:Float ? ;
+          ex:Y_max @linkml:Float ?
+       ) ;
+       rdf:type [ ex:Imagehift ] ?
+    )
+}
+
+ex:Instrument CLOSED {
+    (  $ex:Instrument_tes (  ex:Microscope @linkml:String ;
+          ex:Illumination @linkml:String ;
+          ex:Imaging @linkml:String ;
+          ex:Electron_source @linkml:String ;
+          ex:Acceleration_Voltage @linkml:Integer ;
+          ex:C2_Aperture @linkml:Integer ? ;
+          ex:CS @linkml:Float
+       ) ;
+       rdf:type [ ex:Instrument ] ?
+    )
+}
+
+ex:Ligand CLOSED {
+    (  $ex:Ligand_tes (  ex:present @linkml:Boolean ;
+          ex:smile @linkml:String ? ;
+          ex:reference @linkml:String ?
+       ) ;
+       rdf:type [ ex:Ligand ] ?
+    )
+}
+
+ex:Molecule CLOSED {
+    (  $ex:Molecule_tes (  ex:name_mol @linkml:String ;
+          ex:type @linkml:String ;
+          ex:molecular_class [ <http://example.org/MoleculeClassEnum#Antibiotic>
+             <http://example.org/MoleculeClassEnum#Carbohydrate> <http://example.org/MoleculeClassEnum#Chimera>
+             <http://example.org/MoleculeClassEnum#None%20of%20these> ] ;
+          ex:sequence @linkml:String ;
+          ex:natural_source @linkml:String ;
+          ex:taxonomy_id_source @linkml:String ;
+          ex:expression_system @linkml:String ;
+          ex:taxonomy_id_expression @linkml:String ;
+          ex:gene_name @linkml:String ?
+       ) ;
+       rdf:type [ ex:Molecule ] ?
+    )
+}
+
+ex:NominalDefocus CLOSED {
+    (  $ex:NominalDefocus_tes (  ex:Minimal @linkml:Float ? ;
+          ex:Maximal @linkml:Float ?
+       ) ;
+       rdf:type [ ex:NominalDefocus ] ?
+    )
+}
+
+ex:Organization CLOSED {
+    (  $ex:Organization_tes (  ex:name_org @linkml:String ? ;
+          ex:type_org [ <http://example.org/OrganizationTypeEnum#Academic> <http://example.org/OrganizationTypeEnum#Commercial>
+             <http://example.org/OrganizationTypeEnum#Government> <http://example.org/OrganizationTypeEnum#Other> ]
+       ) ;
+       rdf:type [ ex:Organization ] ?
+    )
+}
+
+ex:OSCEMSample CLOSED {
+    (  $ex:OSCEMSample_tes (  ex:grant @ex:Grant + ;
+          ex:author @ex:Author * ;
+          ex:sample @ex:Sample
+       ) ;
+       rdf:type [ ex:OSCEMSample ] ?
+    )
+}
+
+ex:OverallMolecule CLOSED {
+    (  $ex:OverallMolecule_tes (  ex:type @linkml:String ;
+          ex:name_sample @linkml:String ;
+          ex:source @linkml:String ;
+          ex:molecular_weight @linkml:Float ?
+       ) ;
+       rdf:type [ ex:OverallMolecule ] ?
+    )
+}
+
+ex:Phaseplate CLOSED {
+    (  $ex:Phaseplate_tes (  ex:Used @linkml:Boolean ;
+          ex:Type @linkml:String
+       ) ;
+       rdf:type [ ex:Phaseplate ] ?
+    )
+}
+
+ex:Sample CLOSED {
+    (  $ex:Sample_tes (  ex:overall_molecule @ex:OverallMolecule ;
+          ex:molecule @ex:Molecule + ;
+          ex:ligands @ex:Ligand * ;
+          ex:specimen @ex:Specimen ;
+          ex:grid @ex:Grid ?
+       ) ;
+       rdf:type [ ex:Sample ] ?
+    )
+}
+
+ex:SpecialistOptics CLOSED {
+    (  $ex:SpecialistOptics_tes (  ex:Phaseplate @ex:Phaseplate ? ;
+          ex:Spherical_Aberration_Corrector @ex:SphericalAberrationCorrector ? ;
+          ex:Chromatic_Aberration_Corrector @ex:ChromaticAberrationCorrector ?
+       ) ;
+       rdf:type [ ex:SpecialistOptics ] ?
+    )
+}
+
+ex:Specimen CLOSED {
+    (  $ex:Specimen_tes (  ex:buffer @linkml:String ? ;
+          ex:concentration @linkml:Float ? ;
+          ex:ph @linkml:Float ;
+          ex:vitrification @linkml:Boolean ;
+          ex:vitrification_cryogen @linkml:String ;
+          ex:humidity @linkml:Float ? ;
+          ex:temperature @linkml:Float ? ;
+          ex:staining @linkml:Boolean ;
+          ex:embedding @linkml:Boolean ;
+          ex:shadowing @linkml:Boolean
+       ) ;
+       rdf:type [ ex:Specimen ] ?
+    )
+}
+
+ex:SphericalAberrationCorrector CLOSED {
+    (  $ex:SphericalAberrationCorrector_tes (  ex:Used @linkml:Boolean ;
+          ex:Type @linkml:String
+       ) ;
+       rdf:type [ ex:SphericalAberrationCorrector ] ?
+    )
+}
+
+ex:TemperatureRange CLOSED {
+    (  $ex:TemperatureRange_tes (  ex:Minimal @linkml:Float ? ;
+          ex:Maximal @linkml:Float ?
+       ) ;
+       rdf:type [ ex:TemperatureRange ] ?
+    )
+}
+
+ex:Testschema CLOSED {
+    (  $ex:Testschema_tes ex:Instrument @ex:Instrument ? ;
+       rdf:type [ ex:Testschema ] ?
+    )
+}
 
