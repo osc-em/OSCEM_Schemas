@@ -1,8 +1,8 @@
 ---
-id: http://example.org/oscem_acquisition
-name: OSCEMSample
+id: https://w3id.org/osc-em/acquisition
+name: OSCEMAcquisiton
 description: >
-  LinkML schema for electron microscopy sample and author-related metadata, 
+  LinkML schema for electron microscopy sample and author-related metadata,
   broadly following the EMDB standard with some additions.
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -12,7 +12,7 @@ default_prefix: ex
 
 imports:
   - linkml:types
-  - ./testschema_mixin_tomo
+  - ./tomography
 
 classes:
   base:
@@ -58,18 +58,18 @@ classes:
         required: true
       Pixel_size:
         required: true
-      
-  tomoacquisition:
-    is_a: acquisition
-    slots:
-      - TiltAxisAngle
-      - Tilt_angle
-    slot_usage:
-      TiltAxisAngle:
-        required: true
-      Tilt_angle:
-        required: true 
-        
+
+  # tomoacquisition:
+  #   is_a: acquisition
+  #   slots:
+  #     - TiltAxisAngle
+  #     - Tilt_angle
+  #   slot_usage:
+  #     TiltAxisAngle:
+  #       required: true
+  #     Tilt_angle:
+  #       required: true
+
   nominal_defocus:
     slots:
     - Minimal
@@ -78,7 +78,7 @@ classes:
     slots:
     - Minimal
     - Maximal
-  temperature:
+  temperature_range:
     slots:
     - Minimal
     - Maximal
@@ -150,13 +150,13 @@ classes:
 slots:
   Acquisition:
     range: acquisition
-  Nominal_defocus: 
+  Nominal_defocus:
     range: nominal_defocus
     description: Target defocus set, min and max values in µm.
-  Minimal: 
+  Minimal:
     description: Minimal value of a given dataset property
     range: float
-  Maximal: 
+  Maximal:
     description: Maximal value of a given dataset property
     range: float
   Calibrated_defocus:
@@ -171,28 +171,28 @@ slots:
   Holder:
     description: Speciman holder model
     range: string
-  Holder_cryogen: 
+  Holder_cryogen:
     description: Type of cryogen used in the holder - if the holder is cooled seperately
     range: string
-  Temperature: 
-    range: temperature
+  Temperature:
+    range: temperature_range
     description: Temperature during data collection, in K with min and max values.
   Microscope_software:
     description: Software used for instrument control,
-    range: string 
-  Detector: 
+    range: string
+  Detector:
     description: Make and model of the detector used
     range: string
-  Detector_mode: 
+  Detector_mode:
     description: Operating mode of the detector
     range: string
-  Dose_per_movie: 
+  Dose_per_movie:
     description: Average dose per image/movie/tilt - given in electrons per square Angstrom
     range: float
-  Energy_filter: 
+  Energy_filter:
     range: energy_filter
     description: Wether an energy filter was used and its specifics.
-  Used: 
+  Used:
     description: whether a specific instrument was used during data acquisition
     range: boolean
   Model:
@@ -204,7 +204,7 @@ slots:
   Height:
     description: The height of a given item - unit depends on item
     range: integer
-  Image_size: 
+  Image_size:
     range: image_size
     description: The size of the image in pixels, height and width given.
   Datetime:
@@ -261,13 +261,11 @@ slots:
     range: beamtilt
     description: Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
   Imageshift:
-    range: imageshift
+    range: float
     description: Movement of the Beam below the image in order to shift the image on the detector. Given in µm.
   Beamtiltgroups:
     range: integer
     description: Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.
   GainRef_FlipRotate:
-    range: string 
+    range: string
     description: Whether and how you have to flip or rotate the gainref in order to align with your acquired images
-
-

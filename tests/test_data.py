@@ -9,7 +9,7 @@ from oscem_schemas.datamodel.oscem_schemas import EMDatasetCollection
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 DATA_DIR = os.path.join(ROOT, "src", "data", "examples")
 
-EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR, '*.yaml'))
+EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR, '*.yaml')) + glob.glob(os.path.join(DATA_DIR, '*.json'))
 
 
 class TestData(unittest.TestCase):
