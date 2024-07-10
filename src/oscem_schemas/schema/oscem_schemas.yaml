@@ -1,96 +1,31 @@
----
-id: https://w3id.org/osc-em/oscem-schemas
-name: oscem-schemas
-title: oscem-schemas
-description: |-
-  Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
-license: BSD-3
-see_also:
-  - https://osc-em.github.io/oscem-schemas
-
+id: http://example.org/oscem_1
+name: OSCEM_test
+description: >
+  LinkML schema for electron microscopy related metadata, 
+  broadly following the EMDB standard with some additions.
 prefixes:
-  oscem_schemas: https://w3id.org/osc-em/oscem-schemas/
   linkml: https://w3id.org/linkml/
-  biolink: https://w3id.org/biolink/
-  schema: http://schema.org/
-  PATO: http://purl.obolibrary.org/obo/PATO_
-  example: https://example.org/
-default_prefix: oscem_schemas
-default_range: string
+  ex: http://example.org/
+
+default_prefix: ex
 
 imports:
   - linkml:types
+  - ./testschema_acquisition
+  - ./testschema_instrument
+  - ./testschema_sample_v2
 
 classes:
-
-  NamedThing:
-    description: >-
-      A generic grouping for any identifiable entity
-    slots:
-      - id
-      - name
-      - description
-    class_uri: schema:Thing
-
-  EMDataset:
-    is_a: NamedThing
-    description: >-
-      Represents a EMDataset
-    slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
-
-  EMDatasetCollection:
+  baseline:
     tree_root: true
-    description: >-
-      A holder for EMDataset objects
-    attributes:
-      entries:
-        range: EMDataset
-        multivalued: true
-        inlined: true
-
-slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
-
-enums:
-  PersonStatus:
-    permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+    slots:
+      - Acquisition
+      - Instrument
+      - oscemsample
+    slot_usage:
+      Acquisition:
+        required: true
+      Instrument:
+        required: true
+      oscemsample:
+        required: true
