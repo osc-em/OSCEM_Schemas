@@ -4,7 +4,7 @@ import glob
 import unittest
 
 from linkml_runtime.loaders import yaml_loader
-from oscem_schemas.datamodel.oscem_schemas import EMDatasetCollection
+from oscem_schemas.datamodel.oscem_schemas import EMDataset
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 DATA_DIR = os.path.join(ROOT, "src", "data", "examples")
@@ -18,5 +18,5 @@ class TestData(unittest.TestCase):
     def test_data(self):
         """Data test."""
         for path in EXAMPLE_FILES:
-            obj = yaml_loader.load(path, target_class=EMDatasetCollection)
+            obj = yaml_loader.load(path, target_class=EMDataset)
             assert obj

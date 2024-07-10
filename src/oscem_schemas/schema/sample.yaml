@@ -56,7 +56,7 @@ classes:
     title: Author
     description: A class representing an author
     slots:
-      - name
+      - author_name
       - email
       - phone
       - orcid
@@ -64,7 +64,7 @@ classes:
       - country
       - role
     slot_usage:
-      name:
+      author_name:
         # alias: Name
         required: true
       email:
@@ -83,7 +83,7 @@ classes:
         # alias: Country
         required: true
 
-  Name:
+  AuthorName:
     title: Name
     description: A class representing the name of an author
     slots:
@@ -137,7 +137,7 @@ classes:
     slots:
       - name_mol
       - type
-      - class
+      - molecular_class
       - sequence
       - natural_source
       - taxonomy_id_source
@@ -151,7 +151,7 @@ classes:
       type:
         # alias: Type
         required: true
-      class:
+      molecular_class:
         # alias: Class
         required: true
       sequence:
@@ -302,7 +302,7 @@ classes:
         required: true
       author:
         # alias: Author
-        required: true
+        required: false
       sample:
         # alias: Sample
         required: true
@@ -328,10 +328,10 @@ slots:
     description: Surname of the author
     range: string
 
-  name:
+  author_name:
     title: Name
     description: Full name of the author
-    range: Name
+    range: AuthorName
   email:
     title: Email
     description: Email address of the author
@@ -387,7 +387,7 @@ slots:
     title: Name
     description: Name of an individual molecule (often protein) in the sample
     range: string
-  class:
+  molecular_class:
     title: Class
     description: Class of the molecule
     range: MoleculeClassEnum
@@ -456,7 +456,8 @@ slots:
   temperature:
     title: Temperature
     description: Environmental temperature just before vitrification, in K
-    range: temperature_range
+    range: float
+    minimum_value: 0.0
   staining:
     title: Staining
     description: Whether the sample was stained
