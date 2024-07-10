@@ -1,0 +1,182 @@
+@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix oscem_schemas: <https://w3id.org/osc-em/oscem-schemas/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+oscem_schemas:EMDatasetCollection a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "EMDatasetCollection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom oscem_schemas:EMDataset ;
+            owl:onProperty oscem_schemas:entries ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty oscem_schemas:entries ] ;
+    skos:definition "A holder for EMDataset objects" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:EMDataset a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "EMDataset" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty oscem_schemas:age_in_years ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom oscem_schemas:PersonStatus ;
+            owl:onProperty oscem_schemas:vital_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty oscem_schemas:birth_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty oscem_schemas:birth_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty oscem_schemas:vital_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty oscem_schemas:age_in_years ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty oscem_schemas:vital_status ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty oscem_schemas:primary_email ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:string ;
+                    owl:withRestrictions ( [ xsd:pattern "^\\S+@[\\S+\\.]+\\S+" ] ) ] ;
+            owl:onProperty oscem_schemas:primary_email ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty oscem_schemas:age_in_years ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty oscem_schemas:primary_email ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty oscem_schemas:birth_date ],
+        oscem_schemas:NamedThing ;
+    skos:definition "Represents a EMDataset" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:NamedThing a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NamedThing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty oscem_schemas:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty oscem_schemas:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty oscem_schemas:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty oscem_schemas:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty oscem_schemas:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty oscem_schemas:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty oscem_schemas:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty oscem_schemas:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty oscem_schemas:description ] ;
+    skos:definition "A generic grouping for any identifiable entity" ;
+    skos:exactMatch schema1:Thing ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+PATO:0001421 a owl:Class,
+        oscem_schemas:PersonStatus ;
+    rdfs:label "ALIVE" ;
+    rdfs:subClassOf oscem_schemas:PersonStatus .
+
+PATO:0001422 a owl:Class,
+        oscem_schemas:PersonStatus ;
+    rdfs:label "DEAD" ;
+    rdfs:subClassOf oscem_schemas:PersonStatus .
+
+<https://w3id.org/osc-em/oscem-schemas/PersonStatus#UNKNOWN> a owl:Class,
+        oscem_schemas:PersonStatus ;
+    rdfs:label "UNKNOWN" ;
+    rdfs:subClassOf oscem_schemas:PersonStatus .
+
+oscem_schemas:entries a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "entries" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:age_in_years a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "age_in_years" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of years since birth" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:birth_date a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "birth_date" ;
+    rdfs:range linkml:Date ;
+    skos:definition "Date on which a person is born" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    skos:definition "A human-readable description for a thing" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "id" ;
+    rdfs:range linkml:Uriorcurie ;
+    skos:definition "A unique identifier for a thing" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    skos:definition "A human-readable name for a thing" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:primary_email a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "primary_email" ;
+    skos:definition "The main email address of a person" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:vital_status a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "vital_status" ;
+    rdfs:range oscem_schemas:PersonStatus ;
+    skos:definition "living or dead status" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+oscem_schemas:PersonStatus a owl:Class,
+        linkml:EnumDefinition ;
+    owl:unionOf ( PATO:0001421 PATO:0001422 <https://w3id.org/osc-em/oscem-schemas/PersonStatus#UNKNOWN> ) ;
+    linkml:permissible_values PATO:0001421,
+        PATO:0001422,
+        <https://w3id.org/osc-em/oscem-schemas/PersonStatus#UNKNOWN> .
+
+<https://w3id.org/osc-em/oscem-schemas> a owl:Ontology ;
+    rdfs:label "oscem-schemas" ;
+    dcterms:license "BSD-3" ;
+    dcterms:title "oscem-schemas" ;
+    rdfs:seeAlso <https://osc-em.github.io/oscem-schemas> ;
+    skos:definition "Schema for the Open Standards Community for Electron Microscopy (OSC-EM)" .
+
