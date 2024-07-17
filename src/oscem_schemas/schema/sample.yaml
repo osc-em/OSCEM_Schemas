@@ -13,18 +13,6 @@ imports:
   - linkml:types
 
 enums:
-  OrganizationTypeEnum:
-    title: OrganizationTypeEnum
-    permissible_values:
-      Academic:
-        description: Academic institution
-      Commercial:
-        description: Commercial entity
-      Government:
-        description: Government organization
-      Other:
-        description: Other types of organizations
-
   MoleculeClassEnum:
     title: MoleculeClassEnum
     permissible_values:
@@ -38,78 +26,6 @@ enums:
         description: None of these
 
 classes:
-  Grant:
-    title: Grant
-    description: A class representing a grant
-    slots:
-      - grant_id
-      - funding_agency
-    slot_usage:
-      grant_id:
-        # alias: Grant_ID
-        required: true
-      funding_agency:
-        # alias: Funding_agency
-        required: true
-
-  Author:
-    title: Author
-    description: A class representing an author
-    slots:
-      - author_name
-      - email
-      - phone
-      - orcid
-      - organization
-      - country
-      - role
-    slot_usage:
-      author_name:
-        # alias: Name
-        required: true
-      email:
-        # alias: Email
-        required: true
-      phone:
-        # alias: Phone
-        required: true
-      orcid:
-        # alias: ORCID
-        required: true
-      organization:
-        # alias: Organization
-        required: true
-      country:
-        # alias: Country
-        required: true
-
-  AuthorName:
-    title: Name
-    description: A class representing the name of an author
-    slots:
-      - first_name
-      - last_name
-    slot_usage:
-      first_name:
-        # alias: FirstName
-        required: true
-      last_name:
-        # alias: LastName
-        required: true
-
-  Organization:
-    title: Organization
-    description: A class representing an organization
-    slots:
-      - name_org
-      - type_org
-    slot_usage:
-      name_org:
-        # alias: Name_org
-      type_org:
-        # alias: Type_org
-        required: true
-
   OverallMolecule:
     title: OverallMolecule
     description: A class representing the overall molecule
@@ -289,83 +205,7 @@ classes:
       grid:
         # alias: Grid
 
-  OSCEMSample:
-    title: OSCEMSample
-    description: Main class for OSCEM sample schema
-    slots:
-      - grant
-      - author
-      - sample
-    slot_usage:
-      grant:
-        # alias: Grant
-        required: true
-      author:
-        # alias: Author
-        required: false
-      sample:
-        # alias: Sample
-        required: true
-
 slots:
-  oscemsample:
-    range: OSCEMSample
-  grant_id:
-    title: Grant_ID
-    description: Unique identifier for the grant, often a number and letter code
-    range: string
-  funding_agency:
-    title: Funding_agency
-    description: The organization responsible for the funding of this research
-    range: string
-
-  first_name:
-    title: FirstName
-    description: Given name of the author
-    range: string
-  last_name:
-    title: LastName
-    description: Surname of the author
-    range: string
-
-  author_name:
-    title: Name
-    description: Full name of the author
-    range: AuthorName
-  email:
-    title: Email
-    description: Email address of the author
-    range: string
-  phone:
-    title: Phone
-    description: Phone number of the author
-    range: string
-  orcid:
-    title: ORCID
-    description: ORCID of the author, a type of unique identifier
-    range: string
-  organization:
-    title: Organization
-    description: The organization the author is affiliated with
-    range: Organization
-  country:
-    title: Country
-    description: Country of the author's institution
-    range: string
-  role:
-    title: Role
-    description: Role of the author, i.e., principal investigator
-    range: string
-
-  name_org:
-    title: Name_org
-    description: Name of the organization
-    range: string
-  type_org:
-    title: Type_org
-    description: Type of organization, academic, commercial, governmental, etc.
-    range: OrganizationTypeEnum
-
   type:
     title: Type
     description: Description of the overall supramolecular type, i.e., a complex
@@ -538,17 +378,6 @@ slots:
     title: Grid
     description: Description of the grid used
     range: Grid
-
-  grant:
-    title: Grant
-    description: List of grants associated with the project
-    range: Grant
-    multivalued: true
-  author:
-    title: Author
-    description: List of authors associated with the project
-    range: Author
-    multivalued: true
   sample:
     title: Sample
     description: Sample information

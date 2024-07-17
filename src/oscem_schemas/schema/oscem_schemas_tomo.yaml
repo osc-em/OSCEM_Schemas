@@ -1,0 +1,56 @@
+---
+id: https://w3id.org/osc-em/oscem-schemas
+name: oscem-schemas
+title: oscem-schemas
+description: |-
+  Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
+license: CC-BY
+see_also:
+  - https://osc-em.github.io/oscem-schemas
+
+prefixes:
+  oscem_schemas: https://w3id.org/osc-em/oscem-schemas/
+  linkml: https://w3id.org/linkml/
+default_prefix: oscem_schemas
+default_range: string
+
+imports:
+  - linkml:types
+  - ./acquisition
+  - ./instrument
+  - ./sample
+  - ./tomography
+  - ./organizational
+
+classes:
+  EMDataset:
+    tree_root: true
+    description: |-
+      OSC-EM Metadata for a dataset
+    slots:
+      - Acquisition
+      - Instrument
+      - sample
+      - grants
+      - authors
+    slot_usage:
+      Acquisition:
+        required: true
+      Instrument:
+        required: true
+      sample:
+        required: true
+      grants:
+        required: true
+      authors:
+        required: true
+  Acquisition:
+    is_a: acquisition
+    slots:
+      - TiltAxisAngle
+      - Tilt_angle
+    slot_usage:
+      TiltAxisAngle:
+        required: true
+      Tilt_angle:
+        required: true
