@@ -2,7 +2,7 @@
 --     * Slot: id Description: 
 --     * Slot: Acquisition_id Description: 
 --     * Slot: Instrument_id Description: 
---     * Slot: oscemsample_id Description: 
+--     * Slot: sample_id Description: Sample information
 -- # Class: "tilt_angle" Description: "The min, max and increment of the tilt angle in a tomography session. Unit is degree."
 --     * Slot: id Description: 
 --     * Slot: Minimal Description: Minimal value of a given dataset property
@@ -108,27 +108,6 @@
 --     * Slot: Acceleration_Voltage Description: Voltage used for the electron acceleration, in kV
 --     * Slot: C2_Aperture Description: C2 aperture size used in data acquisition, in µm
 --     * Slot: CS Description: Spherical aberration of the instrument, in mm
--- # Class: "Grant" Description: "A class representing a grant"
---     * Slot: id Description: 
---     * Slot: grant_id Description: Unique identifier for the grant, often a number and letter code
---     * Slot: funding_agency Description: The organization responsible for the funding of this research
--- # Class: "Author" Description: "A class representing an author"
---     * Slot: id Description: 
---     * Slot: email Description: Email address of the author
---     * Slot: phone Description: Phone number of the author
---     * Slot: orcid Description: ORCID of the author, a type of unique identifier
---     * Slot: country Description: Country of the author's institution
---     * Slot: role Description: Role of the author, i.e., principal investigator
---     * Slot: author_name_id Description: Full name of the author
---     * Slot: organization_id Description: The organization the author is affiliated with
--- # Class: "AuthorName" Description: "A class representing the name of an author"
---     * Slot: id Description: 
---     * Slot: first_name Description: Given name of the author
---     * Slot: last_name Description: Surname of the author
--- # Class: "Organization" Description: "A class representing an organization"
---     * Slot: id Description: 
---     * Slot: name_org Description: Name of the organization
---     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
 -- # Class: "OverallMolecule" Description: "A class representing the overall molecule"
 --     * Slot: id Description: 
 --     * Slot: type Description: Description of the overall supramolecular type, i.e., a complex
@@ -181,21 +160,54 @@
 --     * Slot: overall_molecule_id Description: Description of the overall molecule
 --     * Slot: specimen_id Description: Description of the specimen
 --     * Slot: grid_id Description: Description of the grid used
--- # Class: "OSCEMSample" Description: "Main class for OSCEM sample schema"
+-- # Class: "Person" Description: ""
 --     * Slot: id Description: 
---     * Slot: sample_id Description: Sample information
+--     * Slot: name Description: name
+--     * Slot: first_name Description: first name
+--     * Slot: work_status Description: work status
+--     * Slot: email Description: email
+--     * Slot: work_phone Description: work phone
+-- # Class: "Author" Description: ""
+--     * Slot: id Description: 
+--     * Slot: orcid Description: ORCID of the author, a type of unique identifier
+--     * Slot: country Description: Country of the author's institution
+--     * Slot: role Description: Role of the author, i.e., principal investigator
+--     * Slot: name Description: name
+--     * Slot: first_name Description: first name
+--     * Slot: work_status Description: work status
+--     * Slot: email Description: email
+--     * Slot: work_phone Description: work phone
+-- # Class: "Institution" Description: "A class representing an organization"
+--     * Slot: id Description: 
+--     * Slot: name_org Description: Name of the organization
+--     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
+-- # Class: "Grant" Description: "Grant"
+--     * Slot: id Description: 
+--     * Slot: name Description: name
+--     * Slot: funder Description: funder
+--     * Slot: start_date Description: start date
+--     * Slot: end_date Description: end date
+--     * Slot: project_id Description: project id
+--     * Slot: budget_id Description: budget
+-- # Class: "QuantityValue" Description: "Value together with unit"
+--     * Slot: id Description: 
+--     * Slot: has_value Description: Value
+--     * Slot: has_unit Description: Unit
+-- # Class: "EMDataset_grants" Description: ""
+--     * Slot: EMDataset_id Description: Autocreated FK slot
+--     * Slot: grants_id Description: List of grants associated with the project
+-- # Class: "EMDataset_authors" Description: ""
+--     * Slot: EMDataset_id Description: Autocreated FK slot
+--     * Slot: authors_id Description: List of authors associated with the project
 -- # Class: "Sample_molecule" Description: ""
 --     * Slot: Sample_id Description: Autocreated FK slot
 --     * Slot: molecule_id Description: List of molecule associated with the sample
 -- # Class: "Sample_ligands" Description: ""
 --     * Slot: Sample_id Description: Autocreated FK slot
 --     * Slot: ligands_id Description: List of ligands associated with the sample
--- # Class: "OSCEMSample_grant" Description: ""
---     * Slot: OSCEMSample_id Description: Autocreated FK slot
---     * Slot: grant_id Description: List of grants associated with the project
--- # Class: "OSCEMSample_author" Description: ""
---     * Slot: OSCEMSample_id Description: Autocreated FK slot
---     * Slot: author_id Description: List of authors associated with the project
+-- # Class: "Author_institution" Description: ""
+--     * Slot: Author_id Description: Autocreated FK slot
+--     * Slot: institution_id Description: institution
 
 CREATE TABLE tilt_angle (
 	id INTEGER NOT NULL, 
@@ -288,24 +300,6 @@ CREATE TABLE instrument (
 	"CS" FLOAT NOT NULL, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "Grant" (
-	id INTEGER NOT NULL, 
-	grant_id TEXT NOT NULL, 
-	funding_agency TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "AuthorName" (
-	id INTEGER NOT NULL, 
-	first_name TEXT NOT NULL, 
-	last_name TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "Organization" (
-	id INTEGER NOT NULL, 
-	name_org TEXT, 
-	type_org VARCHAR(10) NOT NULL, 
-	PRIMARY KEY (id)
-);
 CREATE TABLE "OverallMolecule" (
 	id INTEGER NOT NULL, 
 	type TEXT NOT NULL, 
@@ -363,6 +357,39 @@ CREATE TABLE "Grid" (
 	pretreatment_atmosphere TEXT, 
 	PRIMARY KEY (id)
 );
+CREATE TABLE "Person" (
+	id INTEGER NOT NULL, 
+	name TEXT, 
+	first_name TEXT, 
+	work_status BOOLEAN, 
+	email TEXT, 
+	work_phone TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Author" (
+	id INTEGER NOT NULL, 
+	orcid TEXT NOT NULL, 
+	country TEXT NOT NULL, 
+	role TEXT, 
+	name TEXT NOT NULL, 
+	first_name TEXT, 
+	work_status BOOLEAN, 
+	email TEXT NOT NULL, 
+	work_phone TEXT NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Institution" (
+	id INTEGER NOT NULL, 
+	name_org TEXT, 
+	type_org VARCHAR(10) NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "QuantityValue" (
+	id INTEGER NOT NULL, 
+	has_value FLOAT, 
+	has_unit TEXT, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE specialist_optics (
 	id INTEGER NOT NULL, 
 	"Phaseplate_id" INTEGER, 
@@ -379,19 +406,6 @@ CREATE TABLE testschema (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("Instrument_id") REFERENCES instrument (id)
 );
-CREATE TABLE "Author" (
-	id INTEGER NOT NULL, 
-	email TEXT NOT NULL, 
-	phone TEXT NOT NULL, 
-	orcid TEXT NOT NULL, 
-	country TEXT NOT NULL, 
-	role TEXT, 
-	author_name_id INTEGER NOT NULL, 
-	organization_id INTEGER NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(author_name_id) REFERENCES "AuthorName" (id), 
-	FOREIGN KEY(organization_id) REFERENCES "Organization" (id)
-);
 CREATE TABLE "Sample" (
 	id INTEGER NOT NULL, 
 	overall_molecule_id INTEGER NOT NULL, 
@@ -401,6 +415,24 @@ CREATE TABLE "Sample" (
 	FOREIGN KEY(overall_molecule_id) REFERENCES "OverallMolecule" (id), 
 	FOREIGN KEY(specimen_id) REFERENCES "Specimen" (id), 
 	FOREIGN KEY(grid_id) REFERENCES "Grid" (id)
+);
+CREATE TABLE "Grant" (
+	id INTEGER NOT NULL, 
+	name TEXT, 
+	funder TEXT, 
+	start_date DATE, 
+	end_date DATE, 
+	project_id TEXT, 
+	budget_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(budget_id) REFERENCES "QuantityValue" (id)
+);
+CREATE TABLE "Author_institution" (
+	"Author_id" INTEGER, 
+	institution_id INTEGER NOT NULL, 
+	PRIMARY KEY ("Author_id", institution_id), 
+	FOREIGN KEY("Author_id") REFERENCES "Author" (id), 
+	FOREIGN KEY(institution_id) REFERENCES "Institution" (id)
 );
 CREATE TABLE acquisition (
 	id INTEGER NOT NULL, 
@@ -441,12 +473,6 @@ CREATE TABLE acquisition (
 	FOREIGN KEY("Beamshift_id") REFERENCES beamshift (id), 
 	FOREIGN KEY("Beamtilt_id") REFERENCES beamtilt (id)
 );
-CREATE TABLE "OSCEMSample" (
-	id INTEGER NOT NULL, 
-	sample_id INTEGER NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(sample_id) REFERENCES "Sample" (id)
-);
 CREATE TABLE "Sample_molecule" (
 	"Sample_id" INTEGER, 
 	molecule_id INTEGER NOT NULL, 
@@ -465,11 +491,11 @@ CREATE TABLE "EMDataset" (
 	id INTEGER NOT NULL, 
 	"Acquisition_id" INTEGER NOT NULL, 
 	"Instrument_id" INTEGER NOT NULL, 
-	oscemsample_id INTEGER NOT NULL, 
+	sample_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("Acquisition_id") REFERENCES acquisition (id), 
 	FOREIGN KEY("Instrument_id") REFERENCES instrument (id), 
-	FOREIGN KEY(oscemsample_id) REFERENCES "OSCEMSample" (id)
+	FOREIGN KEY(sample_id) REFERENCES "Sample" (id)
 );
 CREATE TABLE base (
 	id INTEGER NOT NULL, 
@@ -477,17 +503,17 @@ CREATE TABLE base (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("Acquisition_id") REFERENCES acquisition (id)
 );
-CREATE TABLE "OSCEMSample_grant" (
-	"OSCEMSample_id" INTEGER, 
-	grant_id INTEGER NOT NULL, 
-	PRIMARY KEY ("OSCEMSample_id", grant_id), 
-	FOREIGN KEY("OSCEMSample_id") REFERENCES "OSCEMSample" (id), 
-	FOREIGN KEY(grant_id) REFERENCES "Grant" (id)
+CREATE TABLE "EMDataset_grants" (
+	"EMDataset_id" INTEGER, 
+	grants_id INTEGER NOT NULL, 
+	PRIMARY KEY ("EMDataset_id", grants_id), 
+	FOREIGN KEY("EMDataset_id") REFERENCES "EMDataset" (id), 
+	FOREIGN KEY(grants_id) REFERENCES "Grant" (id)
 );
-CREATE TABLE "OSCEMSample_author" (
-	"OSCEMSample_id" INTEGER, 
-	author_id INTEGER, 
-	PRIMARY KEY ("OSCEMSample_id", author_id), 
-	FOREIGN KEY("OSCEMSample_id") REFERENCES "OSCEMSample" (id), 
-	FOREIGN KEY(author_id) REFERENCES "Author" (id)
+CREATE TABLE "EMDataset_authors" (
+	"EMDataset_id" INTEGER, 
+	authors_id INTEGER NOT NULL, 
+	PRIMARY KEY ("EMDataset_id", authors_id), 
+	FOREIGN KEY("EMDataset_id") REFERENCES "EMDataset" (id), 
+	FOREIGN KEY(authors_id) REFERENCES "Author" (id)
 );

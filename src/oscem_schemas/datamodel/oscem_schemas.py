@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-11T00:58:32
+# Generation date: 2024-07-24T15:44:54
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -22,8 +22,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Datetime, Float, Integer, String
-from linkml_runtime.utils.metamodelcore import Bool, XSDDateTime
+from linkml_runtime.linkml_model.types import Boolean, Date, Datetime, Double, Float, Integer, String
+from linkml_runtime.utils.metamodelcore import Bool, XSDDate, XSDDateTime
 
 metamodel_version = "1.7.0"
 version = None
@@ -35,6 +35,8 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 EX = CurieNamespace('ex', 'http://example.org/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 OSCEM_SCHEMAS = CurieNamespace('oscem_schemas', 'https://w3id.org/osc-em/oscem-schemas/')
+QUDT = CurieNamespace('qudt', 'http://example.org/UNKNOWN/qudt/')
+SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 DEFAULT_ = OSCEM_SCHEMAS
 
 
@@ -58,7 +60,9 @@ class EMDataset(YAMLRoot):
 
     Acquisition: Union[dict, "Acquisition"] = None
     Instrument: Union[dict, "Instrument"] = None
-    oscemsample: Union[dict, "OSCEMSample"] = None
+    sample: Union[dict, "Sample"] = None
+    grants: Union[Union[dict, "Grant"], List[Union[dict, "Grant"]]] = None
+    authors: Union[Union[dict, "Author"], List[Union[dict, "Author"]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.Acquisition):
@@ -71,10 +75,20 @@ class EMDataset(YAMLRoot):
         if not isinstance(self.Instrument, Instrument):
             self.Instrument = Instrument(**as_dict(self.Instrument))
 
-        if self._is_empty(self.oscemsample):
-            self.MissingRequiredField("oscemsample")
-        if not isinstance(self.oscemsample, OSCEMSample):
-            self.oscemsample = OSCEMSample(**as_dict(self.oscemsample))
+        if self._is_empty(self.sample):
+            self.MissingRequiredField("sample")
+        if not isinstance(self.sample, Sample):
+            self.sample = Sample(**as_dict(self.sample))
+
+        if self._is_empty(self.grants):
+            self.MissingRequiredField("grants")
+        if not isinstance(self.grants, list):
+            self.grants = [self.grants] if self.grants is not None else []
+        self.grants = [v if isinstance(v, Grant) else Grant(**as_dict(v)) for v in self.grants]
+
+        if self._is_empty(self.authors):
+            self.MissingRequiredField("authors")
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="institution", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -617,148 +631,6 @@ class Instrument(YAMLRoot):
 
 
 @dataclass
-class Grant(YAMLRoot):
-    """
-    A class representing a grant
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EX["Grant"]
-    class_class_curie: ClassVar[str] = "ex:Grant"
-    class_name: ClassVar[str] = "Grant"
-    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.Grant
-
-    grant_id: str = None
-    funding_agency: str = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.grant_id):
-            self.MissingRequiredField("grant_id")
-        if not isinstance(self.grant_id, str):
-            self.grant_id = str(self.grant_id)
-
-        if self._is_empty(self.funding_agency):
-            self.MissingRequiredField("funding_agency")
-        if not isinstance(self.funding_agency, str):
-            self.funding_agency = str(self.funding_agency)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Author(YAMLRoot):
-    """
-    A class representing an author
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EX["Author"]
-    class_class_curie: ClassVar[str] = "ex:Author"
-    class_name: ClassVar[str] = "Author"
-    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.Author
-
-    author_name: Union[dict, "AuthorName"] = None
-    email: str = None
-    phone: str = None
-    orcid: str = None
-    organization: Union[dict, "Organization"] = None
-    country: str = None
-    role: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.author_name):
-            self.MissingRequiredField("author_name")
-        if not isinstance(self.author_name, AuthorName):
-            self.author_name = AuthorName(**as_dict(self.author_name))
-
-        if self._is_empty(self.email):
-            self.MissingRequiredField("email")
-        if not isinstance(self.email, str):
-            self.email = str(self.email)
-
-        if self._is_empty(self.phone):
-            self.MissingRequiredField("phone")
-        if not isinstance(self.phone, str):
-            self.phone = str(self.phone)
-
-        if self._is_empty(self.orcid):
-            self.MissingRequiredField("orcid")
-        if not isinstance(self.orcid, str):
-            self.orcid = str(self.orcid)
-
-        if self._is_empty(self.organization):
-            self.MissingRequiredField("organization")
-        if not isinstance(self.organization, Organization):
-            self.organization = Organization(**as_dict(self.organization))
-
-        if self._is_empty(self.country):
-            self.MissingRequiredField("country")
-        if not isinstance(self.country, str):
-            self.country = str(self.country)
-
-        if self.role is not None and not isinstance(self.role, str):
-            self.role = str(self.role)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class AuthorName(YAMLRoot):
-    """
-    A class representing the name of an author
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EX["AuthorName"]
-    class_class_curie: ClassVar[str] = "ex:AuthorName"
-    class_name: ClassVar[str] = "AuthorName"
-    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.AuthorName
-
-    first_name: str = None
-    last_name: str = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.first_name):
-            self.MissingRequiredField("first_name")
-        if not isinstance(self.first_name, str):
-            self.first_name = str(self.first_name)
-
-        if self._is_empty(self.last_name):
-            self.MissingRequiredField("last_name")
-        if not isinstance(self.last_name, str):
-            self.last_name = str(self.last_name)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Organization(YAMLRoot):
-    """
-    A class representing an organization
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EX["Organization"]
-    class_class_curie: ClassVar[str] = "ex:Organization"
-    class_name: ClassVar[str] = "Organization"
-    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.Organization
-
-    type_org: Union[str, "OrganizationTypeEnum"] = None
-    name_org: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.type_org):
-            self.MissingRequiredField("type_org")
-        if not isinstance(self.type_org, OrganizationTypeEnum):
-            self.type_org = OrganizationTypeEnum(self.type_org)
-
-        if self.name_org is not None and not isinstance(self.name_org, str):
-            self.name_org = str(self.name_org)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class OverallMolecule(YAMLRoot):
     """
     A class representing the overall molecule
@@ -1069,56 +941,186 @@ class Sample(YAMLRoot):
 
 
 @dataclass
-class OSCEMSample(YAMLRoot):
+class Person(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = SCHEMA["Person"]
+    class_class_curie: ClassVar[str] = "schema:Person"
+    class_name: ClassVar[str] = "Person"
+    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.Person
+
+    name: Optional[str] = None
+    first_name: Optional[str] = None
+    work_status: Optional[Union[bool, Bool]] = None
+    email: Optional[str] = None
+    work_phone: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.first_name is not None and not isinstance(self.first_name, str):
+            self.first_name = str(self.first_name)
+
+        if self.work_status is not None and not isinstance(self.work_status, Bool):
+            self.work_status = Bool(self.work_status)
+
+        if self.email is not None and not isinstance(self.email, str):
+            self.email = str(self.email)
+
+        if self.work_phone is not None and not isinstance(self.work_phone, str):
+            self.work_phone = str(self.work_phone)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Author(Person):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EX["Author"]
+    class_class_curie: ClassVar[str] = "ex:Author"
+    class_name: ClassVar[str] = "Author"
+    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.Author
+
+    institution: Union[Union[dict, "Institution"], List[Union[dict, "Institution"]]] = None
+    orcid: str = None
+    country: str = None
+    name: str = None
+    email: str = None
+    work_phone: str = None
+    role: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.institution):
+            self.MissingRequiredField("institution")
+        self._normalize_inlined_as_dict(slot_name="institution", slot_type=Institution, key_name="type_org", keyed=False)
+
+        if self._is_empty(self.orcid):
+            self.MissingRequiredField("orcid")
+        if not isinstance(self.orcid, str):
+            self.orcid = str(self.orcid)
+
+        if self._is_empty(self.country):
+            self.MissingRequiredField("country")
+        if not isinstance(self.country, str):
+            self.country = str(self.country)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.email):
+            self.MissingRequiredField("email")
+        if not isinstance(self.email, str):
+            self.email = str(self.email)
+
+        if self._is_empty(self.work_phone):
+            self.MissingRequiredField("work_phone")
+        if not isinstance(self.work_phone, str):
+            self.work_phone = str(self.work_phone)
+
+        if self.role is not None and not isinstance(self.role, str):
+            self.role = str(self.role)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Institution(YAMLRoot):
     """
-    Main class for OSCEM sample schema
+    A class representing an organization
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX["OSCEMSample"]
-    class_class_curie: ClassVar[str] = "ex:OSCEMSample"
-    class_name: ClassVar[str] = "OSCEMSample"
-    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.OSCEMSample
+    class_class_uri: ClassVar[URIRef] = EX["Institution"]
+    class_class_curie: ClassVar[str] = "ex:Institution"
+    class_name: ClassVar[str] = "Institution"
+    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.Institution
 
-    grant: Union[Union[dict, Grant], List[Union[dict, Grant]]] = None
-    sample: Union[dict, Sample] = None
-    author: Optional[Union[Union[dict, Author], List[Union[dict, Author]]]] = empty_list()
+    type_org: Union[str, "OrganizationTypeEnum"] = None
+    name_org: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.grant):
-            self.MissingRequiredField("grant")
-        self._normalize_inlined_as_dict(slot_name="grant", slot_type=Grant, key_name="grant_id", keyed=False)
+        if self._is_empty(self.type_org):
+            self.MissingRequiredField("type_org")
+        if not isinstance(self.type_org, OrganizationTypeEnum):
+            self.type_org = OrganizationTypeEnum(self.type_org)
 
-        if self._is_empty(self.sample):
-            self.MissingRequiredField("sample")
-        if not isinstance(self.sample, Sample):
-            self.sample = Sample(**as_dict(self.sample))
+        if self.name_org is not None and not isinstance(self.name_org, str):
+            self.name_org = str(self.name_org)
 
-        self._normalize_inlined_as_dict(slot_name="author", slot_type=Author, key_name="author_name", keyed=False)
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Grant(YAMLRoot):
+    """
+    Grant
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = SCHEMA["Grant"]
+    class_class_curie: ClassVar[str] = "schema:Grant"
+    class_name: ClassVar[str] = "Grant"
+    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.Grant
+
+    name: Optional[str] = None
+    funder: Optional[str] = None
+    start_date: Optional[Union[str, XSDDate]] = None
+    end_date: Optional[Union[str, XSDDate]] = None
+    budget: Optional[Union[dict, "QuantityValue"]] = None
+    project_id: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.funder is not None and not isinstance(self.funder, str):
+            self.funder = str(self.funder)
+
+        if self.start_date is not None and not isinstance(self.start_date, XSDDate):
+            self.start_date = XSDDate(self.start_date)
+
+        if self.end_date is not None and not isinstance(self.end_date, XSDDate):
+            self.end_date = XSDDate(self.end_date)
+
+        if self.budget is not None and not isinstance(self.budget, QuantityValue):
+            self.budget = QuantityValue(**as_dict(self.budget))
+
+        if self.project_id is not None and not isinstance(self.project_id, str):
+            self.project_id = str(self.project_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class QuantityValue(YAMLRoot):
+    """
+    Value together with unit
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = QUDT["quantityValue"]
+    class_class_curie: ClassVar[str] = "qudt:quantityValue"
+    class_name: ClassVar[str] = "QuantityValue"
+    class_model_uri: ClassVar[URIRef] = OSCEM_SCHEMAS.QuantityValue
+
+    has_value: Optional[float] = None
+    has_unit: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.has_value is not None and not isinstance(self.has_value, float):
+            self.has_value = float(self.has_value)
+
+        if self.has_unit is not None and not isinstance(self.has_unit, str):
+            self.has_unit = str(self.has_unit)
 
         super().__post_init__(**kwargs)
 
 
 # Enumerations
-class OrganizationTypeEnum(EnumDefinitionImpl):
-
-    Academic = PermissibleValue(
-        text="Academic",
-        description="Academic institution")
-    Commercial = PermissibleValue(
-        text="Commercial",
-        description="Commercial entity")
-    Government = PermissibleValue(
-        text="Government",
-        description="Government organization")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other types of organizations")
-
-    _defn = EnumDefinition(
-        name="OrganizationTypeEnum",
-    )
-
 class MoleculeClassEnum(EnumDefinitionImpl):
 
     Antibiotic = PermissibleValue(
@@ -1141,6 +1143,25 @@ class MoleculeClassEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="None of these",
                 description="None of these"))
+
+class OrganizationTypeEnum(EnumDefinitionImpl):
+
+    Academic = PermissibleValue(
+        text="Academic",
+        description="Academic institution")
+    Commercial = PermissibleValue(
+        text="Commercial",
+        description="Commercial entity")
+    Government = PermissibleValue(
+        text="Government",
+        description="Government organization")
+    Other = PermissibleValue(
+        text="Other",
+        description="Other types of organizations")
+
+    _defn = EnumDefinition(
+        name="OrganizationTypeEnum",
+    )
 
 # Slots
 class slots:
@@ -1296,48 +1317,6 @@ slots.C2_Aperture = Slot(uri=EX.C2_Aperture, name="C2_Aperture", curie=EX.curie(
 slots.CS = Slot(uri=EX.CS, name="CS", curie=EX.curie('CS'),
                    model_uri=OSCEM_SCHEMAS.CS, domain=None, range=Optional[float])
 
-slots.oscemsample = Slot(uri=EX.oscemsample, name="oscemsample", curie=EX.curie('oscemsample'),
-                   model_uri=OSCEM_SCHEMAS.oscemsample, domain=None, range=Optional[Union[dict, OSCEMSample]])
-
-slots.grant_id = Slot(uri=EX.grant_id, name="grant_id", curie=EX.curie('grant_id'),
-                   model_uri=OSCEM_SCHEMAS.grant_id, domain=None, range=Optional[str])
-
-slots.funding_agency = Slot(uri=EX.funding_agency, name="funding_agency", curie=EX.curie('funding_agency'),
-                   model_uri=OSCEM_SCHEMAS.funding_agency, domain=None, range=Optional[str])
-
-slots.first_name = Slot(uri=EX.first_name, name="first_name", curie=EX.curie('first_name'),
-                   model_uri=OSCEM_SCHEMAS.first_name, domain=None, range=Optional[str])
-
-slots.last_name = Slot(uri=EX.last_name, name="last_name", curie=EX.curie('last_name'),
-                   model_uri=OSCEM_SCHEMAS.last_name, domain=None, range=Optional[str])
-
-slots.author_name = Slot(uri=EX.author_name, name="author_name", curie=EX.curie('author_name'),
-                   model_uri=OSCEM_SCHEMAS.author_name, domain=None, range=Optional[Union[dict, AuthorName]])
-
-slots.email = Slot(uri=EX.email, name="email", curie=EX.curie('email'),
-                   model_uri=OSCEM_SCHEMAS.email, domain=None, range=Optional[str])
-
-slots.phone = Slot(uri=EX.phone, name="phone", curie=EX.curie('phone'),
-                   model_uri=OSCEM_SCHEMAS.phone, domain=None, range=Optional[str])
-
-slots.orcid = Slot(uri=EX.orcid, name="orcid", curie=EX.curie('orcid'),
-                   model_uri=OSCEM_SCHEMAS.orcid, domain=None, range=Optional[str])
-
-slots.organization = Slot(uri=EX.organization, name="organization", curie=EX.curie('organization'),
-                   model_uri=OSCEM_SCHEMAS.organization, domain=None, range=Optional[Union[dict, Organization]])
-
-slots.country = Slot(uri=EX.country, name="country", curie=EX.curie('country'),
-                   model_uri=OSCEM_SCHEMAS.country, domain=None, range=Optional[str])
-
-slots.role = Slot(uri=EX.role, name="role", curie=EX.curie('role'),
-                   model_uri=OSCEM_SCHEMAS.role, domain=None, range=Optional[str])
-
-slots.name_org = Slot(uri=EX.name_org, name="name_org", curie=EX.curie('name_org'),
-                   model_uri=OSCEM_SCHEMAS.name_org, domain=None, range=Optional[str])
-
-slots.type_org = Slot(uri=EX.type_org, name="type_org", curie=EX.curie('type_org'),
-                   model_uri=OSCEM_SCHEMAS.type_org, domain=None, range=Optional[Union[str, "OrganizationTypeEnum"]])
-
 slots.type = Slot(uri=EX.type, name="type", curie=EX.curie('type'),
                    model_uri=OSCEM_SCHEMAS.type, domain=None, range=Optional[str])
 
@@ -1461,14 +1440,72 @@ slots.specimen = Slot(uri=EX.specimen, name="specimen", curie=EX.curie('specimen
 slots.grid = Slot(uri=EX.grid, name="grid", curie=EX.curie('grid'),
                    model_uri=OSCEM_SCHEMAS.grid, domain=None, range=Optional[Union[dict, Grid]])
 
-slots.grant = Slot(uri=EX.grant, name="grant", curie=EX.curie('grant'),
-                   model_uri=OSCEM_SCHEMAS.grant, domain=None, range=Optional[Union[Union[dict, Grant], List[Union[dict, Grant]]]])
-
-slots.author = Slot(uri=EX.author, name="author", curie=EX.curie('author'),
-                   model_uri=OSCEM_SCHEMAS.author, domain=None, range=Optional[Union[Union[dict, Author], List[Union[dict, Author]]]])
-
 slots.sample = Slot(uri=EX.sample, name="sample", curie=EX.curie('sample'),
                    model_uri=OSCEM_SCHEMAS.sample, domain=None, range=Optional[Union[dict, Sample]])
+
+slots.first_name = Slot(uri=EX.first_name, name="first_name", curie=EX.curie('first_name'),
+                   model_uri=OSCEM_SCHEMAS.first_name, domain=None, range=Optional[str])
+
+slots.work_status = Slot(uri=EX.work_status, name="work_status", curie=EX.curie('work_status'),
+                   model_uri=OSCEM_SCHEMAS.work_status, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.person = Slot(uri=SCHEMA.Person, name="person", curie=SCHEMA.curie('Person'),
+                   model_uri=OSCEM_SCHEMAS.person, domain=None, range=Optional[Union[dict, Person]])
+
+slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
+                   model_uri=OSCEM_SCHEMAS.email, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'))
+
+slots.work_phone = Slot(uri=SCHEMA.telephone, name="work_phone", curie=SCHEMA.curie('telephone'),
+                   model_uri=OSCEM_SCHEMAS.work_phone, domain=None, range=Optional[str])
+
+slots.name = Slot(uri=SCHEMA.name, name="name", curie=SCHEMA.curie('name'),
+                   model_uri=OSCEM_SCHEMAS.name, domain=None, range=Optional[str])
+
+slots.institution = Slot(uri=SCHEMA.Organization, name="institution", curie=SCHEMA.curie('Organization'),
+                   model_uri=OSCEM_SCHEMAS.institution, domain=None, range=Optional[Union[Union[dict, Institution], List[Union[dict, Institution]]]])
+
+slots.name_org = Slot(uri=EX.name_org, name="name_org", curie=EX.curie('name_org'),
+                   model_uri=OSCEM_SCHEMAS.name_org, domain=None, range=Optional[str])
+
+slots.type_org = Slot(uri=EX.type_org, name="type_org", curie=EX.curie('type_org'),
+                   model_uri=OSCEM_SCHEMAS.type_org, domain=None, range=Optional[Union[str, "OrganizationTypeEnum"]])
+
+slots.country = Slot(uri=EX.country, name="country", curie=EX.curie('country'),
+                   model_uri=OSCEM_SCHEMAS.country, domain=None, range=Optional[str])
+
+slots.role = Slot(uri=EX.role, name="role", curie=EX.curie('role'),
+                   model_uri=OSCEM_SCHEMAS.role, domain=None, range=Optional[str])
+
+slots.orcid = Slot(uri=EX.orcid, name="orcid", curie=EX.curie('orcid'),
+                   model_uri=OSCEM_SCHEMAS.orcid, domain=None, range=Optional[str])
+
+slots.funder = Slot(uri=EX.funder, name="funder", curie=EX.curie('funder'),
+                   model_uri=OSCEM_SCHEMAS.funder, domain=None, range=Optional[str])
+
+slots.start_date = Slot(uri=EX.start_date, name="start_date", curie=EX.curie('start_date'),
+                   model_uri=OSCEM_SCHEMAS.start_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.end_date = Slot(uri=EX.end_date, name="end_date", curie=EX.curie('end_date'),
+                   model_uri=OSCEM_SCHEMAS.end_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.budget = Slot(uri=EX.budget, name="budget", curie=EX.curie('budget'),
+                   model_uri=OSCEM_SCHEMAS.budget, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.has_unit = Slot(uri=QUDT.hasUnit, name="has_unit", curie=QUDT.curie('hasUnit'),
+                   model_uri=OSCEM_SCHEMAS.has_unit, domain=None, range=Optional[str])
+
+slots.has_value = Slot(uri=QUDT.hasQuantityKind, name="has_value", curie=QUDT.curie('hasQuantityKind'),
+                   model_uri=OSCEM_SCHEMAS.has_value, domain=None, range=Optional[float])
+
+slots.project_id = Slot(uri=SCHEMA.identifier, name="project_id", curie=SCHEMA.curie('identifier'),
+                   model_uri=OSCEM_SCHEMAS.project_id, domain=None, range=Optional[str])
+
+slots.grants = Slot(uri=EX.grants, name="grants", curie=EX.curie('grants'),
+                   model_uri=OSCEM_SCHEMAS.grants, domain=None, range=Optional[Union[Union[dict, Grant], List[Union[dict, Grant]]]])
+
+slots.authors = Slot(uri=EX.authors, name="authors", curie=EX.curie('authors'),
+                   model_uri=OSCEM_SCHEMAS.authors, domain=None, range=Optional[Union[Union[dict, Author], List[Union[dict, Author]]]])
 
 slots.EMDataset_Acquisition = Slot(uri=EX.Acquisition, name="EMDataset_Acquisition", curie=EX.curie('Acquisition'),
                    model_uri=OSCEM_SCHEMAS.EMDataset_Acquisition, domain=EMDataset, range=Union[dict, "Acquisition"])
@@ -1476,8 +1513,14 @@ slots.EMDataset_Acquisition = Slot(uri=EX.Acquisition, name="EMDataset_Acquisiti
 slots.EMDataset_Instrument = Slot(uri=EX.Instrument, name="EMDataset_Instrument", curie=EX.curie('Instrument'),
                    model_uri=OSCEM_SCHEMAS.EMDataset_Instrument, domain=EMDataset, range=Union[dict, "Instrument"])
 
-slots.EMDataset_oscemsample = Slot(uri=EX.oscemsample, name="EMDataset_oscemsample", curie=EX.curie('oscemsample'),
-                   model_uri=OSCEM_SCHEMAS.EMDataset_oscemsample, domain=EMDataset, range=Union[dict, "OSCEMSample"])
+slots.EMDataset_sample = Slot(uri=EX.sample, name="EMDataset_sample", curie=EX.curie('sample'),
+                   model_uri=OSCEM_SCHEMAS.EMDataset_sample, domain=EMDataset, range=Union[dict, "Sample"])
+
+slots.EMDataset_grants = Slot(uri=EX.grants, name="EMDataset_grants", curie=EX.curie('grants'),
+                   model_uri=OSCEM_SCHEMAS.EMDataset_grants, domain=EMDataset, range=Union[Union[dict, "Grant"], List[Union[dict, "Grant"]]])
+
+slots.EMDataset_authors = Slot(uri=EX.authors, name="EMDataset_authors", curie=EX.curie('authors'),
+                   model_uri=OSCEM_SCHEMAS.EMDataset_authors, domain=EMDataset, range=Union[Union[dict, "Author"], List[Union[dict, "Author"]]])
 
 slots.acquisition_Detector = Slot(uri=EX.Detector, name="acquisition_Detector", curie=EX.curie('Detector'),
                    model_uri=OSCEM_SCHEMAS.acquisition_Detector, domain=Acquisition, range=str)
@@ -1535,42 +1578,6 @@ slots.instrument_Acceleration_Voltage = Slot(uri=EX.Acceleration_Voltage, name="
 
 slots.instrument_CS = Slot(uri=EX.CS, name="instrument_CS", curie=EX.curie('CS'),
                    model_uri=OSCEM_SCHEMAS.instrument_CS, domain=Instrument, range=float)
-
-slots.Grant_grant_id = Slot(uri=EX.grant_id, name="Grant_grant_id", curie=EX.curie('grant_id'),
-                   model_uri=OSCEM_SCHEMAS.Grant_grant_id, domain=Grant, range=str)
-
-slots.Grant_funding_agency = Slot(uri=EX.funding_agency, name="Grant_funding_agency", curie=EX.curie('funding_agency'),
-                   model_uri=OSCEM_SCHEMAS.Grant_funding_agency, domain=Grant, range=str)
-
-slots.Author_author_name = Slot(uri=EX.author_name, name="Author_author_name", curie=EX.curie('author_name'),
-                   model_uri=OSCEM_SCHEMAS.Author_author_name, domain=Author, range=Union[dict, "AuthorName"])
-
-slots.Author_email = Slot(uri=EX.email, name="Author_email", curie=EX.curie('email'),
-                   model_uri=OSCEM_SCHEMAS.Author_email, domain=Author, range=str)
-
-slots.Author_phone = Slot(uri=EX.phone, name="Author_phone", curie=EX.curie('phone'),
-                   model_uri=OSCEM_SCHEMAS.Author_phone, domain=Author, range=str)
-
-slots.Author_orcid = Slot(uri=EX.orcid, name="Author_orcid", curie=EX.curie('orcid'),
-                   model_uri=OSCEM_SCHEMAS.Author_orcid, domain=Author, range=str)
-
-slots.Author_organization = Slot(uri=EX.organization, name="Author_organization", curie=EX.curie('organization'),
-                   model_uri=OSCEM_SCHEMAS.Author_organization, domain=Author, range=Union[dict, "Organization"])
-
-slots.Author_country = Slot(uri=EX.country, name="Author_country", curie=EX.curie('country'),
-                   model_uri=OSCEM_SCHEMAS.Author_country, domain=Author, range=str)
-
-slots.AuthorName_first_name = Slot(uri=EX.first_name, name="AuthorName_first_name", curie=EX.curie('first_name'),
-                   model_uri=OSCEM_SCHEMAS.AuthorName_first_name, domain=AuthorName, range=str)
-
-slots.AuthorName_last_name = Slot(uri=EX.last_name, name="AuthorName_last_name", curie=EX.curie('last_name'),
-                   model_uri=OSCEM_SCHEMAS.AuthorName_last_name, domain=AuthorName, range=str)
-
-slots.Organization_name_org = Slot(uri=EX.name_org, name="Organization_name_org", curie=EX.curie('name_org'),
-                   model_uri=OSCEM_SCHEMAS.Organization_name_org, domain=Organization, range=Optional[str])
-
-slots.Organization_type_org = Slot(uri=EX.type_org, name="Organization_type_org", curie=EX.curie('type_org'),
-                   model_uri=OSCEM_SCHEMAS.Organization_type_org, domain=Organization, range=Union[str, "OrganizationTypeEnum"])
 
 slots.OverallMolecule_type = Slot(uri=EX.type, name="OverallMolecule_type", curie=EX.curie('type'),
                    model_uri=OSCEM_SCHEMAS.OverallMolecule_type, domain=OverallMolecule, range=str)
@@ -1692,11 +1699,24 @@ slots.Sample_specimen = Slot(uri=EX.specimen, name="Sample_specimen", curie=EX.c
 slots.Sample_grid = Slot(uri=EX.grid, name="Sample_grid", curie=EX.curie('grid'),
                    model_uri=OSCEM_SCHEMAS.Sample_grid, domain=Sample, range=Optional[Union[dict, Grid]])
 
-slots.OSCEMSample_grant = Slot(uri=EX.grant, name="OSCEMSample_grant", curie=EX.curie('grant'),
-                   model_uri=OSCEM_SCHEMAS.OSCEMSample_grant, domain=OSCEMSample, range=Union[Union[dict, Grant], List[Union[dict, Grant]]])
+slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie('name'),
+                   model_uri=OSCEM_SCHEMAS.Author_name, domain=Author, range=str)
 
-slots.OSCEMSample_author = Slot(uri=EX.author, name="OSCEMSample_author", curie=EX.curie('author'),
-                   model_uri=OSCEM_SCHEMAS.OSCEMSample_author, domain=OSCEMSample, range=Optional[Union[Union[dict, Author], List[Union[dict, Author]]]])
+slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.curie('email'),
+                   model_uri=OSCEM_SCHEMAS.Author_email, domain=Author, range=str,
+                   pattern=re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'))
 
-slots.OSCEMSample_sample = Slot(uri=EX.sample, name="OSCEMSample_sample", curie=EX.curie('sample'),
-                   model_uri=OSCEM_SCHEMAS.OSCEMSample_sample, domain=OSCEMSample, range=Union[dict, Sample])
+slots.Author_work_phone = Slot(uri=SCHEMA.telephone, name="Author_work_phone", curie=SCHEMA.curie('telephone'),
+                   model_uri=OSCEM_SCHEMAS.Author_work_phone, domain=Author, range=str)
+
+slots.Author_orcid = Slot(uri=EX.orcid, name="Author_orcid", curie=EX.curie('orcid'),
+                   model_uri=OSCEM_SCHEMAS.Author_orcid, domain=Author, range=str)
+
+slots.Author_institution = Slot(uri=SCHEMA.Organization, name="Author_institution", curie=SCHEMA.curie('Organization'),
+                   model_uri=OSCEM_SCHEMAS.Author_institution, domain=Author, range=Union[Union[dict, "Institution"], List[Union[dict, "Institution"]]])
+
+slots.Author_country = Slot(uri=EX.country, name="Author_country", curie=EX.curie('country'),
+                   model_uri=OSCEM_SCHEMAS.Author_country, domain=Author, range=str)
+
+slots.Institution_type_org = Slot(uri=EX.type_org, name="Institution_type_org", curie=EX.curie('type_org'),
+                   model_uri=OSCEM_SCHEMAS.Institution_type_org, domain=Institution, range=Union[str, "OrganizationTypeEnum"])

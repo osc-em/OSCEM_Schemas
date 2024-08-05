@@ -19,13 +19,13 @@
     sh:property [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <http://example.org/Y_max> ],
+            sh:order 0 ;
+            sh:path <http://example.org/X_min> ],
         [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/X_min> ],
+            sh:order 1 ;
+            sh:path <http://example.org/X_max> ],
         [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -34,8 +34,8 @@
         [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/X_max> ] ;
+            sh:order 3 ;
+            sh:path <http://example.org/Y_max> ] ;
     sh:targetClass <http://example.org/Imagehift> .
 
 <http://example.org/Testschema> a sh:NodeShape ;
@@ -53,23 +53,59 @@
     sh:description "The min, max and increment of the tilt angle in a tomography session. Unit is degree." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
-            sh:description "Minimal value of a given dataset property" ;
+            sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/Minimal> ],
+            sh:order 1 ;
+            sh:path <http://example.org/Maximal> ],
         [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <http://example.org/Increment> ],
         [ sh:datatype xsd:float ;
-            sh:description "Maximal value of a given dataset property" ;
+            sh:description "Minimal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://example.org/Minimal> ] ;
+    sh:targetClass <http://example.org/TiltAngle> .
+
+<http://schema.org/Person> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:description "work status" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <http://example.org/work_status> ],
+        [ sh:datatype xsd:string ;
+            sh:description "name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://schema.org/name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "work phone" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <http://schema.org/telephone> ],
+        [ sh:datatype xsd:string ;
+            sh:description "first name" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <http://example.org/Maximal> ] ;
-    sh:targetClass <http://example.org/TiltAngle> .
+            sh:path <http://example.org/first_name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "email" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <http://schema.org/email> ;
+            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ] ;
+    sh:targetClass <http://schema.org/Person> .
 
 oscem_schemas:EMDataset a sh:NodeShape ;
     sh:closed true ;
@@ -81,104 +117,103 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <http://example.org/Acquisition> ],
-        [ sh:class <http://example.org/OSCEMSample> ;
-            sh:maxCount 1 ;
+        [ sh:class <http://schema.org/Grant> ;
+            sh:description "List of grants associated with the project" ;
             sh:minCount 1 ;
+            sh:name "Grants" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <http://example.org/oscemsample> ],
+            sh:order 3 ;
+            sh:path <http://example.org/grants> ],
+        [ sh:class <http://example.org/Author> ;
+            sh:description "List of authors associated with the project" ;
+            sh:minCount 1 ;
+            sh:name "Authors" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <http://example.org/authors> ],
         [ sh:class <http://example.org/Instrument> ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <http://example.org/Instrument> ] ;
+            sh:path <http://example.org/Instrument> ],
+        [ sh:class <http://example.org/Sample> ;
+            sh:description "Sample information" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Sample" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <http://example.org/sample> ] ;
     sh:targetClass oscem_schemas:EMDataset .
 
 <http://example.org/Author> a sh:NodeShape ;
     sh:closed true ;
-    sh:description "A class representing an author" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:name "Author" ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Email address of the author" ;
+            sh:description "first name" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Email" ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/email> ],
-        [ sh:class <http://example.org/Organization> ;
-            sh:description "The organization the author is affiliated with" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Organization" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <http://example.org/organization> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Role of the author, i.e., principal investigator" ;
-            sh:maxCount 1 ;
-            sh:name "Role" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <http://example.org/role> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Phone number of the author" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Phone" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <http://example.org/phone> ],
-        [ sh:datatype xsd:string ;
-            sh:description "ORCID of the author, a type of unique identifier" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "ORCID" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <http://example.org/orcid> ],
-        [ sh:class <http://example.org/AuthorName> ;
-            sh:description "Full name of the author" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Name" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <http://example.org/author_name> ],
+            sh:order 5 ;
+            sh:path <http://example.org/first_name> ],
         [ sh:datatype xsd:string ;
             sh:description "Country of the author's institution" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:name "Country" ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <http://example.org/country> ] ;
-    sh:targetClass <http://example.org/Author> .
-
-<http://example.org/AuthorName> a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A class representing the name of an author" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:name "Name" ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Given name of the author" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "FirstName" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/first_name> ],
+            sh:order 2 ;
+            sh:path <http://example.org/country> ],
         [ sh:datatype xsd:string ;
-            sh:description "Surname of the author" ;
+            sh:description "Role of the author, i.e., principal investigator" ;
+            sh:maxCount 1 ;
+            sh:name "Role" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <http://example.org/role> ],
+        [ sh:datatype xsd:string ;
+            sh:description "work phone" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:name "LastName" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <http://schema.org/telephone> ],
+        [ sh:datatype xsd:string ;
+            sh:description "ORCID of the author, a type of unique identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "ORCID" ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <http://example.org/last_name> ] ;
-    sh:targetClass <http://example.org/AuthorName> .
+            sh:path <http://example.org/orcid> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "work status" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <http://example.org/work_status> ],
+        [ sh:class <http://example.org/Institution> ;
+            sh:description "institution" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <http://schema.org/Organization> ],
+        [ sh:datatype xsd:string ;
+            sh:description "name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <http://schema.org/name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "email" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <http://schema.org/email> ;
+            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ] ;
+    sh:targetClass <http://example.org/Author> .
 
 <http://example.org/CalibratedDefocus> a sh:NodeShape ;
     sh:closed true ;
@@ -241,83 +276,18 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:path <http://example.org/Used> ] ;
     sh:targetClass <http://example.org/EnergyFilter> .
 
-<http://example.org/Grant> a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A class representing a grant" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:name "Grant" ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "The organization responsible for the funding of this research" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Funding_agency" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/funding_agency> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier for the grant, often a number and letter code" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Grant_ID" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/grant_id> ] ;
-    sh:targetClass <http://example.org/Grant> .
-
 <http://example.org/Grid> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A class representing a grid" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "Grid" ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Topology of the support film" ;
+            sh:description "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc." ;
             sh:maxCount 1 ;
-            sh:name "Film_topology" ;
+            sh:name "Pretreatment_atmosphere" ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <http://example.org/film_topology> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Grid mesh in lines per inch" ;
-            sh:maxCount 1 ;
-            sh:name "Mesh" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <http://example.org/mesh> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of material the support film is made of" ;
-            sh:maxCount 1 ;
-            sh:name "Film_material" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <http://example.org/film_material> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of pretreatment of the grid, i.e., glow discharge" ;
-            sh:maxCount 1 ;
-            sh:name "Pretreatment_type" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <http://example.org/pretreatment_type> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Grid manufacturer" ;
-            sh:maxCount 1 ;
-            sh:name "Manufacturer" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/manufacturer> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether a support film was used" ;
-            sh:maxCount 1 ;
-            sh:name "Film_support" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <http://example.org/film_support> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Length of time of the pretreatment in s" ;
-            sh:maxCount 1 ;
-            sh:name "Pretreatment_time" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <http://example.org/pretreatment_time> ],
+            sh:order 10 ;
+            sh:path <http://example.org/pretreatment_atmosphere> ],
         [ sh:datatype xsd:string ;
             sh:description "Thickness of the support film" ;
             sh:maxCount 1 ;
@@ -325,6 +295,20 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path <http://example.org/film_thickness> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Grid manufacturer" ;
+            sh:maxCount 1 ;
+            sh:name "Manufacturer" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://example.org/manufacturer> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Length of time of the pretreatment in s" ;
+            sh:maxCount 1 ;
+            sh:name "Pretreatment_time" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <http://example.org/pretreatment_time> ],
         [ sh:datatype xsd:float ;
             sh:description "Pressure of the chamber during pretreatment, in Pa" ;
             sh:maxCount 1 ;
@@ -333,50 +317,100 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:order 9 ;
             sh:path <http://example.org/pretreatment_pressure> ],
         [ sh:datatype xsd:string ;
+            sh:description "Type of pretreatment of the grid, i.e., glow discharge" ;
+            sh:maxCount 1 ;
+            sh:name "Pretreatment_type" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <http://example.org/pretreatment_type> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of material the support film is made of" ;
+            sh:maxCount 1 ;
+            sh:name "Film_material" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <http://example.org/film_material> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Topology of the support film" ;
+            sh:maxCount 1 ;
+            sh:name "Film_topology" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <http://example.org/film_topology> ],
+        [ sh:datatype xsd:string ;
             sh:description "Material out of which the grid is made" ;
             sh:maxCount 1 ;
             sh:name "Material" ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <http://example.org/material> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc." ;
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether a support film was used" ;
             sh:maxCount 1 ;
-            sh:name "Pretreatment_atmosphere" ;
+            sh:name "Film_support" ;
             sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path <http://example.org/pretreatment_atmosphere> ] ;
+            sh:order 3 ;
+            sh:path <http://example.org/film_support> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Grid mesh in lines per inch" ;
+            sh:maxCount 1 ;
+            sh:name "Mesh" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <http://example.org/mesh> ] ;
     sh:targetClass <http://example.org/Grid> .
 
 <http://example.org/ImageSize> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "The width of a given item - unit depends on item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/Width> ],
-        [ sh:datatype xsd:integer ;
             sh:description "The height of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <http://example.org/Height> ] ;
+            sh:path <http://example.org/Height> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of a given item - unit depends on item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <http://example.org/Width> ] ;
     sh:targetClass <http://example.org/ImageSize> .
+
+<http://example.org/Institution> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A class representing an organization" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Organization" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Name of the organization" ;
+            sh:maxCount 1 ;
+            sh:name "Name_org" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://example.org/name_org> ],
+        [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
+            sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Type_org" ;
+            sh:order 1 ;
+            sh:path <http://example.org/type_org> ] ;
+    sh:targetClass <http://example.org/Institution> .
 
 <http://example.org/Ligand> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A class representing a ligand" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "Ligand" ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Provide a valid SMILE string of your ligand" ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:description "Whether the model contains any ligands" ;
             sh:maxCount 1 ;
-            sh:name "SMILE" ;
+            sh:minCount 1 ;
+            sh:name "Present" ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/smile> ],
+            sh:order 0 ;
+            sh:path <http://example.org/present> ],
         [ sh:datatype xsd:string ;
             sh:description "Link to a reference of your ligand, i.e., CCD, PubChem, etc." ;
             sh:maxCount 1 ;
@@ -384,14 +418,13 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <http://example.org/reference> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether the model contains any ligands" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Provide a valid SMILE string of your ligand" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Present" ;
+            sh:name "SMILE" ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/present> ] ;
+            sh:order 1 ;
+            sh:path <http://example.org/smile> ] ;
     sh:targetClass <http://example.org/Ligand> .
 
 <http://example.org/Molecule> a sh:NodeShape ;
@@ -400,12 +433,21 @@ oscem_schemas:EMDataset a sh:NodeShape ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "Molecule" ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Name of the gene of interest" ;
+            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
             sh:maxCount 1 ;
-            sh:name "Gene_name" ;
+            sh:minCount 1 ;
+            sh:name "Expression_system" ;
             sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <http://example.org/gene_name> ],
+            sh:order 6 ;
+            sh:path <http://example.org/expression_system> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Description of the overall supramolecular type, i.e., a complex" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Type" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <http://example.org/type> ],
         [ sh:description "Class of the molecule" ;
             sh:in ( "Antibiotic" "Carbohydrate" "Chimera" "None of these" ) ;
             sh:maxCount 1 ;
@@ -413,6 +455,29 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:name "Class" ;
             sh:order 2 ;
             sh:path <http://example.org/molecular_class> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Taxonomy ID of the natural source organism" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Taxonomy_ID_source" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <http://example.org/taxonomy_id_source> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Scientific name of the natural host organism" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Natural_source" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <http://example.org/natural_source> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name of the gene of interest" ;
+            sh:maxCount 1 ;
+            sh:name "Gene_name" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <http://example.org/gene_name> ],
         [ sh:datatype xsd:string ;
             sh:description "Name of an individual molecule (often protein) in the sample" ;
             sh:maxCount 1 ;
@@ -430,112 +495,31 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:order 3 ;
             sh:path <http://example.org/sequence> ],
         [ sh:datatype xsd:string ;
-            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Expression_system" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <http://example.org/expression_system> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Scientific name of the natural host organism" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Natural_source" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <http://example.org/natural_source> ],
-        [ sh:datatype xsd:string ;
             sh:description "Taxonomy ID of the expression system organism" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:name "Taxonomy_ID_expression" ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
-            sh:path <http://example.org/taxonomy_id_expression> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Taxonomy ID of the natural source organism" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Taxonomy_ID_source" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <http://example.org/taxonomy_id_source> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Description of the overall supramolecular type, i.e., a complex" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Type" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/type> ] ;
+            sh:path <http://example.org/taxonomy_id_expression> ] ;
     sh:targetClass <http://example.org/Molecule> .
 
 <http://example.org/NominalDefocus> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
-            sh:description "Maximal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/Maximal> ],
-        [ sh:datatype xsd:float ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <http://example.org/Minimal> ] ;
-    sh:targetClass <http://example.org/NominalDefocus> .
-
-<http://example.org/OSCEMSample> a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "Main class for OSCEM sample schema" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:name "OSCEMSample" ;
-    sh:property [ sh:class <http://example.org/Author> ;
-            sh:description "List of authors associated with the project" ;
-            sh:name "Author" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <http://example.org/author> ],
-        [ sh:class <http://example.org/Sample> ;
-            sh:description "Sample information" ;
+            sh:path <http://example.org/Minimal> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Sample" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <http://example.org/sample> ],
-        [ sh:class <http://example.org/Grant> ;
-            sh:description "List of grants associated with the project" ;
-            sh:minCount 1 ;
-            sh:name "Grant" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <http://example.org/grant> ] ;
-    sh:targetClass <http://example.org/OSCEMSample> .
-
-<http://example.org/Organization> a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A class representing an organization" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:name "Organization" ;
-    sh:property [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
-            sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Type_org" ;
-            sh:order 1 ;
-            sh:path <http://example.org/type_org> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name of the organization" ;
-            sh:maxCount 1 ;
-            sh:name "Name_org" ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/name_org> ] ;
-    sh:targetClass <http://example.org/Organization> .
+            sh:order 1 ;
+            sh:path <http://example.org/Maximal> ] ;
+    sh:targetClass <http://example.org/NominalDefocus> .
 
 <http://example.org/OverallMolecule> a sh:NodeShape ;
     sh:closed true ;
@@ -543,13 +527,13 @@ oscem_schemas:EMDataset a sh:NodeShape ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "OverallMolecule" ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Name of the full sample" ;
+            sh:description "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:name "Name" ;
+            sh:name "Source" ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/name_sample> ],
+            sh:order 2 ;
+            sh:path <http://example.org/source> ],
         [ sh:datatype xsd:float ;
             sh:description "Molecular weight in Da" ;
             sh:maxCount 1 ;
@@ -558,21 +542,21 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:order 3 ;
             sh:path <http://example.org/molecular_weight> ],
         [ sh:datatype xsd:string ;
+            sh:description "Name of the full sample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Name" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <http://example.org/name_sample> ],
+        [ sh:datatype xsd:string ;
             sh:description "Description of the overall supramolecular type, i.e., a complex" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:name "Type" ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <http://example.org/type> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Source" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <http://example.org/source> ] ;
+            sh:path <http://example.org/type> ] ;
     sh:targetClass <http://example.org/OverallMolecule> .
 
 <http://example.org/Sample> a sh:NodeShape ;
@@ -580,13 +564,20 @@ oscem_schemas:EMDataset a sh:NodeShape ;
     sh:description "A class representing a sample" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "Sample" ;
-    sh:property [ sh:class <http://example.org/Grid> ;
-            sh:description "Description of the grid used" ;
-            sh:maxCount 1 ;
-            sh:name "Grid" ;
+    sh:property [ sh:class <http://example.org/Ligand> ;
+            sh:description "List of ligands associated with the sample" ;
+            sh:name "Ligands" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <http://example.org/grid> ],
+            sh:order 2 ;
+            sh:path <http://example.org/ligands> ],
+        [ sh:class <http://example.org/OverallMolecule> ;
+            sh:description "Description of the overall molecule" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Overall_Molecule" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <http://example.org/overall_molecule> ],
         [ sh:class <http://example.org/Molecule> ;
             sh:description "List of molecule associated with the sample" ;
             sh:minCount 1 ;
@@ -594,12 +585,6 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <http://example.org/molecule> ],
-        [ sh:class <http://example.org/Ligand> ;
-            sh:description "List of ligands associated with the sample" ;
-            sh:name "Ligands" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <http://example.org/ligands> ],
         [ sh:class <http://example.org/Specimen> ;
             sh:description "Description of the specimen" ;
             sh:maxCount 1 ;
@@ -608,31 +593,30 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <http://example.org/specimen> ],
-        [ sh:class <http://example.org/OverallMolecule> ;
-            sh:description "Description of the overall molecule" ;
+        [ sh:class <http://example.org/Grid> ;
+            sh:description "Description of the grid used" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Overall_Molecule" ;
+            sh:name "Grid" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <http://example.org/overall_molecule> ] ;
+            sh:order 4 ;
+            sh:path <http://example.org/grid> ] ;
     sh:targetClass <http://example.org/Sample> .
 
 <http://example.org/SpecialistOptics> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <http://example.org/ChromaticAberrationCorrector> ;
-            sh:description "Specialist device to correct for chromatic aberration of the microscope lenses" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <http://example.org/Chromatic_Aberration_Corrector> ],
-        [ sh:class <http://example.org/Phaseplate> ;
+    sh:property [ sh:class <http://example.org/Phaseplate> ;
             sh:description "Phaseplate is a special optics device that can be used to enhance contrast" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <http://example.org/Phaseplate> ],
+        [ sh:class <http://example.org/ChromaticAberrationCorrector> ;
+            sh:description "Specialist device to correct for chromatic aberration of the microscope lenses" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <http://example.org/Chromatic_Aberration_Corrector> ],
         [ sh:class <http://example.org/SphericalAberrationCorrector> ;
             sh:description "Specialist device to correct for spherical aberration of the microscope lenses" ;
             sh:maxCount 1 ;
@@ -647,6 +631,13 @@ oscem_schemas:EMDataset a sh:NodeShape ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "Specimen" ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "Name/composition of the (chemical) sample buffer during grid preparation" ;
+            sh:maxCount 1 ;
+            sh:name "Buffer" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://example.org/buffer> ],
+        [ sh:datatype xsd:string ;
             sh:description "Which cryogen was used for vitrification" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -654,6 +645,45 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path <http://example.org/vitrification_cryogen> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Concentration of the (supra)molecule in the sample, in M" ;
+            sh:maxCount 1 ;
+            sh:name "Concentration" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <http://example.org/concentration> ],
+        [ sh:datatype xsd:float ;
+            sh:description "pH of the sample buffer" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "pH" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <http://example.org/ph> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Environmental temperature just before vitrification, in K" ;
+            sh:maxCount 1 ;
+            sh:minInclusive 0e+00 ;
+            sh:name "Temperature" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <http://example.org/temperature> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether the sample was shadowed" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Shadowing" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <http://example.org/shadowing> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether the sample was embedded" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Embedding" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <http://example.org/embedding> ],
         [ sh:datatype xsd:boolean ;
             sh:description "Whether the sample was stained" ;
             sh:maxCount 1 ;
@@ -670,59 +700,13 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:order 5 ;
             sh:path <http://example.org/humidity> ],
         [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was shadowed" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Shadowing" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <http://example.org/shadowing> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Environmental temperature just before vitrification, in K" ;
-            sh:maxCount 1 ;
-            sh:minInclusive 0e+00 ;
-            sh:name "Temperature" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <http://example.org/temperature> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name/composition of the (chemical) sample buffer during grid preparation" ;
-            sh:maxCount 1 ;
-            sh:name "Buffer" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/buffer> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Concentration of the (supra)molecule in the sample, in M" ;
-            sh:maxCount 1 ;
-            sh:name "Concentration" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/concentration> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was embedded" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Embedding" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <http://example.org/embedding> ],
-        [ sh:datatype xsd:boolean ;
             sh:description "Whether the sample was vitrified" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:name "Vitrification" ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
-            sh:path <http://example.org/vitrification> ],
-        [ sh:datatype xsd:float ;
-            sh:description "pH of the sample buffer" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "pH" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <http://example.org/ph> ] ;
+            sh:path <http://example.org/vitrification> ] ;
     sh:targetClass <http://example.org/Specimen> .
 
 <http://example.org/SphericalAberrationCorrector> a sh:NodeShape ;
@@ -748,18 +732,78 @@ oscem_schemas:EMDataset a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
-            sh:description "Minimal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/Minimal> ],
-        [ sh:datatype xsd:float ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <http://example.org/Maximal> ] ;
+            sh:path <http://example.org/Maximal> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://example.org/Minimal> ] ;
     sh:targetClass <http://example.org/TemperatureRange> .
+
+<http://schema.org/Grant> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Grant" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "project id" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <http://schema.org/identifier> ],
+        [ sh:datatype xsd:string ;
+            sh:description "funder" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <http://example.org/funder> ],
+        [ sh:datatype xsd:date ;
+            sh:description "end date" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <http://example.org/end_date> ],
+        [ sh:datatype xsd:string ;
+            sh:description "name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://schema.org/name> ],
+        [ sh:class <qudt:quantityValue> ;
+            sh:description "budget" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <http://example.org/budget> ],
+        [ sh:datatype xsd:date ;
+            sh:description "start date" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <http://example.org/start_date> ] ;
+    sh:targetClass <http://schema.org/Grant> .
+
+<qudt:quantityValue> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Value together with unit" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:double ;
+            sh:description "Value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <qudt:hasQuantityKind> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <qudt:hasUnit> ] ;
+    sh:targetClass <qudt:quantityValue> .
 
 <http://example.org/Beamshift> a sh:NodeShape ;
     sh:closed true ;
@@ -772,18 +816,18 @@ oscem_schemas:EMDataset a sh:NodeShape ;
         [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://example.org/X_min> ],
+        [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <http://example.org/Y_min> ],
         [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
-            sh:path <http://example.org/Y_max> ],
-        [ sh:datatype xsd:float ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/X_min> ] ;
+            sh:path <http://example.org/Y_max> ] ;
     sh:targetClass <http://example.org/Beamshift> .
 
 <http://example.org/Beamtilt> a sh:NodeShape ;
@@ -792,11 +836,6 @@ oscem_schemas:EMDataset a sh:NodeShape ;
     sh:property [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/X_max> ],
-        [ sh:datatype xsd:float ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <http://example.org/Y_min> ],
         [ sh:datatype xsd:float ;
@@ -808,26 +847,31 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <http://example.org/X_min> ] ;
+            sh:path <http://example.org/X_min> ],
+        [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <http://example.org/X_max> ] ;
     sh:targetClass <http://example.org/Beamtilt> .
 
 <http://example.org/Phaseplate> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Details of a given specialist instrument" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://example.org/Type> ],
-        [ sh:datatype xsd:boolean ;
+    sh:property [ sh:datatype xsd:boolean ;
             sh:description "whether a specific instrument was used during data acquisition" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <http://example.org/Used> ] ;
+            sh:path <http://example.org/Used> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Details of a given specialist instrument" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <http://example.org/Type> ] ;
     sh:targetClass <http://example.org/Phaseplate> .
 
 <http://example.org/Acquisition> a sh:NodeShape ;
@@ -839,62 +883,73 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 26 ;
             sh:path <http://example.org/GainRef_FlipRotate> ],
-        [ sh:class <http://example.org/EnergyFilter> ;
-            sh:description "Wether an energy filter was used and its specifics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 11 ;
-            sh:path <http://example.org/Energy_filter> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <http://example.org/Nominal_magnification> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 25 ;
             sh:path <http://example.org/Beamtiltgroups> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
+        [ sh:class <http://example.org/SpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path <http://example.org/Specialist_Optics> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 17 ;
-            sh:path <http://example.org/Grids_imaged> ],
+            sh:order 7 ;
+            sh:path <http://example.org/Microscope_software> ],
         [ sh:datatype xsd:float ;
-            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path <http://example.org/Dose_per_movie> ],
-        [ sh:class <http://example.org/Beamtilt> ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 23 ;
-            sh:path <http://example.org/Beamtilt> ],
-        [ sh:class <http://example.org/NominalDefocus> ;
-            sh:description "Target defocus set, min and max values in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <http://example.org/Nominal_defocus> ],
+            sh:order 24 ;
+            sh:path <http://example.org/Imageshift> ],
         [ sh:class <http://example.org/TemperatureRange> ;
             sh:description "Temperature during data collection, in K with min and max values." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path <http://example.org/Temperature> ],
-        [ sh:datatype xsd:dateTime ;
-            sh:description "Time and date of the data acquisition" ;
+        [ sh:datatype xsd:integer ;
+            sh:description "Calculated magnification, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <http://example.org/Calibrated_magnification> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size, in Angstrom" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path <http://example.org/Datetime> ],
+            sh:order 20 ;
+            sh:path <http://example.org/Pixel_size> ],
+        [ sh:class <http://example.org/Beamtilt> ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 23 ;
+            sh:path <http://example.org/Beamtilt> ],
+        [ sh:class <http://example.org/EnergyFilter> ;
+            sh:description "Wether an energy filter was used and its specifics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 11 ;
+            sh:path <http://example.org/Energy_filter> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <http://example.org/Holder_cryogen> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 17 ;
+            sh:path <http://example.org/Grids_imaged> ],
         [ sh:class <http://example.org/Beamshift> ;
             sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
             sh:maxCount 1 ;
@@ -902,23 +957,29 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:order 22 ;
             sh:path <http://example.org/Beamshift> ],
         [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
+            sh:description "Operating mode of the detector" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path <http://example.org/Cryogen> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <http://example.org/Holder> ],
+            sh:order 9 ;
+            sh:path <http://example.org/Detector_mode> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 16 ;
             sh:path <http://example.org/Frames_per_movie> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <http://example.org/Nominal_magnification> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Speciman holder model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <http://example.org/Holder> ],
         [ sh:datatype xsd:float ;
             sh:description "Time of data acquisition per movie/tilt - in s" ;
             sh:maxCount 1 ;
@@ -926,47 +987,49 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:order 14 ;
             sh:path <http://example.org/Exposure_time> ],
         [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <http://example.org/Holder_cryogen> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Operating mode of the detector" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <http://example.org/Detector_mode> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <http://example.org/Microscope_software> ],
-        [ sh:class <http://example.org/CalibratedDefocus> ;
-            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <http://example.org/Calibrated_defocus> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Calculated magnification, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <http://example.org/Calibrated_magnification> ],
-        [ sh:class <http://example.org/SpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path <http://example.org/Specialist_Optics> ],
+            sh:order 15 ;
+            sh:path <http://example.org/Cryogen> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 18 ;
             sh:path <http://example.org/Images_generated> ],
+        [ sh:class <http://example.org/CalibratedDefocus> ;
+            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <http://example.org/Calibrated_defocus> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path <http://example.org/Dose_per_movie> ],
+        [ sh:class <http://example.org/ImageSize> ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 12 ;
+            sh:path <http://example.org/Image_size> ],
+        [ sh:class <http://example.org/NominalDefocus> ;
+            sh:description "Target defocus set, min and max values in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <http://example.org/Nominal_defocus> ],
+        [ sh:datatype xsd:dateTime ;
+            sh:description "Time and date of the data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path <http://example.org/Datetime> ],
         [ sh:datatype xsd:float ;
             sh:description "Level of binning on the images applied during data collection" ;
             sh:maxCount 1 ;
@@ -980,26 +1043,7 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 8 ;
-            sh:path <http://example.org/Detector> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pixel size, in Angstrom" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path <http://example.org/Pixel_size> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 24 ;
-            sh:path <http://example.org/Imageshift> ],
-        [ sh:class <http://example.org/ImageSize> ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 12 ;
-            sh:path <http://example.org/Image_size> ] ;
+            sh:path <http://example.org/Detector> ] ;
     sh:targetClass <http://example.org/Acquisition> .
 
 <http://example.org/Instrument> a sh:NodeShape ;
@@ -1007,39 +1051,19 @@ oscem_schemas:EMDataset a sh:NodeShape ;
     sh:description "Instrument values, mostly constant across a data collection." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Name/Type of the Microscope" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://example.org/Microscope> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Voltage used for the electron acceleration, in kV" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <http://example.org/Acceleration_Voltage> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "C2 aperture size used in data acquisition, in µm" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <http://example.org/C2_Aperture> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Mode of imaging used during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <http://example.org/Imaging> ],
-        [ sh:datatype xsd:string ;
             sh:description "Type of electron source used in the microscope, such as FEG" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <http://example.org/Electron_source> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Spherical aberration of the instrument, in mm" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <http://example.org/CS> ],
         [ sh:datatype xsd:string ;
             sh:description "Mode of illumination used during data collection" ;
             sh:maxCount 1 ;
@@ -1047,12 +1071,32 @@ oscem_schemas:EMDataset a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <http://example.org/Illumination> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Spherical aberration of the instrument, in mm" ;
+        [ sh:datatype xsd:integer ;
+            sh:description "C2 aperture size used in data acquisition, in µm" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <http://example.org/C2_Aperture> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name/Type of the Microscope" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <http://example.org/CS> ] ;
+            sh:order 0 ;
+            sh:path <http://example.org/Microscope> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Mode of imaging used during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <http://example.org/Imaging> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Voltage used for the electron acceleration, in kV" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <http://example.org/Acceleration_Voltage> ] ;
     sh:targetClass <http://example.org/Instrument> .
 

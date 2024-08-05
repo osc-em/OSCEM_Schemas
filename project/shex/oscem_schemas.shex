@@ -3,7 +3,9 @@ BASE <https://w3id.org/osc-em/oscem-schemas/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX schema1: <http://schema.org/>
 PREFIX ex: <http://example.org/>
+PREFIX qudt: <http://example.org/UNKNOWN/qudt/>
 
 
 linkml:String xsd:string
@@ -78,23 +80,17 @@ ex:Acquisition CLOSED {
 }
 
 ex:Author CLOSED {
-    (  $ex:Author_tes (  ex:author_name @ex:AuthorName ;
-          ex:email @linkml:String ;
-          ex:phone @linkml:String ;
+    (  $ex:Author_tes (  &ex:Person_tes ;
+          rdf:type [ schema1:Person ] ? ;
+          schema1:Organization @ex:Institution + ;
           ex:orcid @linkml:String ;
-          ex:organization @ex:Organization ;
           ex:country @linkml:String ;
-          ex:role @linkml:String ?
+          ex:role @linkml:String ? ;
+          schema1:name @linkml:String ;
+          schema1:email @linkml:String ;
+          schema1:telephone @linkml:String
        ) ;
        rdf:type [ ex:Author ] ?
-    )
-}
-
-ex:AuthorName CLOSED {
-    (  $ex:AuthorName_tes (  ex:first_name @linkml:String ;
-          ex:last_name @linkml:String
-       ) ;
-       rdf:type [ ex:AuthorName ] ?
     )
 }
 
@@ -143,7 +139,9 @@ ex:ChromaticAberrationCorrector CLOSED {
 <EMDataset> CLOSED {
     (  $<EMDataset_tes> (  ex:Acquisition @ex:Acquisition ;
           ex:Instrument @ex:Instrument ;
-          ex:oscemsample @ex:OSCEMSample
+          ex:sample @ex:Sample ;
+          ex:grants @ex:Grant + ;
+          ex:authors @ex:Author +
        ) ;
        rdf:type [ <EMDataset> ] ?
     )
@@ -159,10 +157,14 @@ ex:EnergyFilter CLOSED {
 }
 
 ex:Grant CLOSED {
-    (  $ex:Grant_tes (  ex:grant_id @linkml:String ;
-          ex:funding_agency @linkml:String
+    (  $ex:Grant_tes (  schema1:name @linkml:String ? ;
+          ex:funder @linkml:String ? ;
+          ex:start_date @linkml:Date ? ;
+          ex:end_date @linkml:Date ? ;
+          ex:budget @ex:QuantityValue ? ;
+          schema1:identifier @linkml:String ?
        ) ;
-       rdf:type [ ex:Grant ] ?
+       rdf:type [ schema1:Grant ] ?
     )
 }
 
@@ -198,6 +200,15 @@ ex:Imagehift CLOSED {
           ex:Y_max @linkml:Float ?
        ) ;
        rdf:type [ ex:Imagehift ] ?
+    )
+}
+
+ex:Institution CLOSED {
+    (  $ex:Institution_tes (  ex:name_org @linkml:String ? ;
+          ex:type_org [ <http://example.org/OrganizationTypeEnum#Academic> <http://example.org/OrganizationTypeEnum#Commercial>
+             <http://example.org/OrganizationTypeEnum#Government> <http://example.org/OrganizationTypeEnum#Other> ]
+       ) ;
+       rdf:type [ ex:Institution ] ?
     )
 }
 
@@ -248,24 +259,6 @@ ex:NominalDefocus CLOSED {
     )
 }
 
-ex:Organization CLOSED {
-    (  $ex:Organization_tes (  ex:name_org @linkml:String ? ;
-          ex:type_org [ <http://example.org/OrganizationTypeEnum#Academic> <http://example.org/OrganizationTypeEnum#Commercial>
-             <http://example.org/OrganizationTypeEnum#Government> <http://example.org/OrganizationTypeEnum#Other> ]
-       ) ;
-       rdf:type [ ex:Organization ] ?
-    )
-}
-
-ex:OSCEMSample CLOSED {
-    (  $ex:OSCEMSample_tes (  ex:grant @ex:Grant + ;
-          ex:author @ex:Author * ;
-          ex:sample @ex:Sample
-       ) ;
-       rdf:type [ ex:OSCEMSample ] ?
-    )
-}
-
 ex:OverallMolecule CLOSED {
     (  $ex:OverallMolecule_tes (  ex:type @linkml:String ;
           ex:name_sample @linkml:String ;
@@ -276,11 +269,32 @@ ex:OverallMolecule CLOSED {
     )
 }
 
+ex:Person  (
+    CLOSED {
+       (  $ex:Person_tes (  schema1:name @linkml:String ? ;
+             ex:first_name @linkml:String ? ;
+             ex:work_status @linkml:Boolean ? ;
+             schema1:email @linkml:String ? ;
+             schema1:telephone @linkml:String ?
+          ) ;
+          rdf:type [ schema1:Person ] ?
+       )
+    } OR @ex:Author
+)
+
 ex:Phaseplate CLOSED {
     (  $ex:Phaseplate_tes (  ex:Used @linkml:Boolean ;
           ex:Type @linkml:String
        ) ;
        rdf:type [ ex:Phaseplate ] ?
+    )
+}
+
+ex:QuantityValue CLOSED {
+    (  $ex:QuantityValue_tes (  qudt:hasQuantityKind @linkml:Double ? ;
+          qudt:hasUnit @linkml:String ?
+       ) ;
+       rdf:type [ qudt:quantityValue ] ?
     )
 }
 

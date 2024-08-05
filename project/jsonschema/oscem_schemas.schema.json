@@ -126,66 +126,58 @@
         },
         "Author": {
             "additionalProperties": false,
-            "description": "A class representing an author",
+            "description": "",
             "properties": {
-                "author_name": {
-                    "$ref": "#/$defs/AuthorName",
-                    "description": "Full name of the author"
-                },
                 "country": {
                     "description": "Country of the author's institution",
                     "type": "string"
                 },
                 "email": {
-                    "description": "Email address of the author",
+                    "description": "email",
+                    "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+                    "type": "string"
+                },
+                "first_name": {
+                    "description": "first name",
+                    "type": "string"
+                },
+                "institution": {
+                    "description": "institution",
+                    "items": {
+                        "$ref": "#/$defs/Institution"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "name",
                     "type": "string"
                 },
                 "orcid": {
                     "description": "ORCID of the author, a type of unique identifier",
                     "type": "string"
                 },
-                "organization": {
-                    "$ref": "#/$defs/Organization",
-                    "description": "The organization the author is affiliated with"
-                },
-                "phone": {
-                    "description": "Phone number of the author",
-                    "type": "string"
-                },
                 "role": {
                     "description": "Role of the author, i.e., principal investigator",
                     "type": "string"
-                }
-            },
-            "required": [
-                "author_name",
-                "email",
-                "phone",
-                "orcid",
-                "organization",
-                "country"
-            ],
-            "title": "Author",
-            "type": "object"
-        },
-        "AuthorName": {
-            "additionalProperties": false,
-            "description": "A class representing the name of an author",
-            "properties": {
-                "first_name": {
-                    "description": "Given name of the author",
+                },
+                "work_phone": {
+                    "description": "work phone",
                     "type": "string"
                 },
-                "last_name": {
-                    "description": "Surname of the author",
-                    "type": "string"
+                "work_status": {
+                    "description": "work status",
+                    "type": "boolean"
                 }
             },
             "required": [
-                "first_name",
-                "last_name"
+                "institution",
+                "orcid",
+                "country",
+                "name",
+                "email",
+                "work_phone"
             ],
-            "title": "AuthorName",
+            "title": "Author",
             "type": "object"
         },
         "Base": {
@@ -285,14 +277,31 @@
                 "Instrument": {
                     "$ref": "#/$defs/Instrument"
                 },
-                "oscemsample": {
-                    "$ref": "#/$defs/OSCEMSample"
+                "authors": {
+                    "description": "List of authors associated with the project",
+                    "items": {
+                        "$ref": "#/$defs/Author"
+                    },
+                    "type": "array"
+                },
+                "grants": {
+                    "description": "List of grants associated with the project",
+                    "items": {
+                        "$ref": "#/$defs/Grant"
+                    },
+                    "type": "array"
+                },
+                "sample": {
+                    "$ref": "#/$defs/Sample",
+                    "description": "Sample information"
                 }
             },
             "required": [
                 "Acquisition",
                 "Instrument",
-                "oscemsample"
+                "sample",
+                "grants",
+                "authors"
             ],
             "title": "EMDataset",
             "type": "object"
@@ -323,21 +332,35 @@
         },
         "Grant": {
             "additionalProperties": false,
-            "description": "A class representing a grant",
+            "description": "Grant",
             "properties": {
-                "funding_agency": {
-                    "description": "The organization responsible for the funding of this research",
+                "budget": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "budget"
+                },
+                "end_date": {
+                    "description": "end date",
+                    "format": "date",
                     "type": "string"
                 },
-                "grant_id": {
-                    "description": "Unique identifier for the grant, often a number and letter code",
+                "funder": {
+                    "description": "funder",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
+                "project_id": {
+                    "description": "project id",
+                    "type": "string"
+                },
+                "start_date": {
+                    "description": "start date",
+                    "format": "date",
                     "type": "string"
                 }
             },
-            "required": [
-                "grant_id",
-                "funding_agency"
-            ],
             "title": "Grant",
             "type": "object"
         },
@@ -427,6 +450,25 @@
                 }
             },
             "title": "Imagehift",
+            "type": "object"
+        },
+        "Institution": {
+            "additionalProperties": false,
+            "description": "A class representing an organization",
+            "properties": {
+                "name_org": {
+                    "description": "Name of the organization",
+                    "type": "string"
+                },
+                "type_org": {
+                    "$ref": "#/$defs/OrganizationTypeEnum",
+                    "description": "Type of organization, academic, commercial, governmental, etc."
+                }
+            },
+            "required": [
+                "type_org"
+            ],
+            "title": "Institution",
             "type": "object"
         },
         "Instrument": {
@@ -577,55 +619,6 @@
             "title": "NominalDefocus",
             "type": "object"
         },
-        "OSCEMSample": {
-            "additionalProperties": false,
-            "description": "Main class for OSCEM sample schema",
-            "properties": {
-                "author": {
-                    "description": "List of authors associated with the project",
-                    "items": {
-                        "$ref": "#/$defs/Author"
-                    },
-                    "type": "array"
-                },
-                "grant": {
-                    "description": "List of grants associated with the project",
-                    "items": {
-                        "$ref": "#/$defs/Grant"
-                    },
-                    "type": "array"
-                },
-                "sample": {
-                    "$ref": "#/$defs/Sample",
-                    "description": "Sample information"
-                }
-            },
-            "required": [
-                "grant",
-                "sample"
-            ],
-            "title": "OSCEMSample",
-            "type": "object"
-        },
-        "Organization": {
-            "additionalProperties": false,
-            "description": "A class representing an organization",
-            "properties": {
-                "name_org": {
-                    "description": "Name of the organization",
-                    "type": "string"
-                },
-                "type_org": {
-                    "$ref": "#/$defs/OrganizationTypeEnum",
-                    "description": "Type of organization, academic, commercial, governmental, etc."
-                }
-            },
-            "required": [
-                "type_org"
-            ],
-            "title": "Organization",
-            "type": "object"
-        },
         "OrganizationTypeEnum": {
             "description": "",
             "enum": [
@@ -666,6 +659,35 @@
             "title": "OverallMolecule",
             "type": "object"
         },
+        "Person": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "email": {
+                    "description": "email",
+                    "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+                    "type": "string"
+                },
+                "first_name": {
+                    "description": "first name",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
+                "work_phone": {
+                    "description": "work phone",
+                    "type": "string"
+                },
+                "work_status": {
+                    "description": "work status",
+                    "type": "boolean"
+                }
+            },
+            "title": "Person",
+            "type": "object"
+        },
         "Phaseplate": {
             "additionalProperties": false,
             "description": "",
@@ -684,6 +706,22 @@
                 "Type"
             ],
             "title": "Phaseplate",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "Value together with unit",
+            "properties": {
+                "has_unit": {
+                    "description": "Unit",
+                    "type": "string"
+                },
+                "has_value": {
+                    "description": "Value",
+                    "type": "number"
+                }
+            },
+            "title": "QuantityValue",
             "type": "object"
         },
         "Sample": {
@@ -881,14 +919,31 @@
         "Instrument": {
             "$ref": "#/$defs/Instrument"
         },
-        "oscemsample": {
-            "$ref": "#/$defs/OSCEMSample"
+        "authors": {
+            "description": "List of authors associated with the project",
+            "items": {
+                "$ref": "#/$defs/Author"
+            },
+            "type": "array"
+        },
+        "grants": {
+            "description": "List of grants associated with the project",
+            "items": {
+                "$ref": "#/$defs/Grant"
+            },
+            "type": "array"
+        },
+        "sample": {
+            "$ref": "#/$defs/Sample",
+            "description": "Sample information"
         }
     },
     "required": [
         "Acquisition",
         "Instrument",
-        "oscemsample"
+        "sample",
+        "grants",
+        "authors"
     ],
     "title": "oscem-schemas",
     "type": "object",

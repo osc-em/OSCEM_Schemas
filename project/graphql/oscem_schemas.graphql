@@ -32,19 +32,15 @@ type Acquisition
 
 type Author
   {
-    authorName: AuthorName!
-    email: String!
-    phone: String!
+    firstName: String
+    workStatus: Boolean
+    institution: [Institution]!
     orcid: String!
-    organization: Organization!
     country: String!
     role: String
-  }
-
-type AuthorName
-  {
-    firstName: String!
-    lastName: String!
+    name: String!
+    email: String!
+    workPhone: String!
   }
 
 type Base
@@ -84,7 +80,9 @@ type EMDataset
   {
     acquisition: Acquisition!
     instrument: Instrument!
-    oscemsample: OSCEMSample!
+    sample: Sample!
+    grants: [Grant]!
+    authors: [Author]!
   }
 
 type EnergyFilter
@@ -96,8 +94,12 @@ type EnergyFilter
 
 type Grant
   {
-    grantId: String!
-    fundingAgency: String!
+    name: String
+    funder: String
+    startDate: Date
+    endDate: Date
+    budget: QuantityValue
+    projectId: String
   }
 
 type Grid
@@ -127,6 +129,12 @@ type Imagehift
     xMax: Float
     yMin: Float
     yMax: Float
+  }
+
+type Institution
+  {
+    nameOrg: String
+    typeOrg: OrganizationTypeEnum!
   }
 
 type Instrument
@@ -166,19 +174,6 @@ type NominalDefocus
     maximal: Float
   }
 
-type Organization
-  {
-    nameOrg: String
-    typeOrg: OrganizationTypeEnum!
-  }
-
-type OSCEMSample
-  {
-    grant: [Grant]!
-    author: [Author]
-    sample: Sample!
-  }
-
 type OverallMolecule
   {
     type: String!
@@ -187,10 +182,25 @@ type OverallMolecule
     molecularWeight: Float
   }
 
+type Person
+  {
+    name: String
+    firstName: String
+    workStatus: Boolean
+    email: String
+    workPhone: String
+  }
+
 type Phaseplate
   {
     used: Boolean!
     type: String!
+  }
+
+type QuantityValue
+  {
+    hasValue: Double
+    hasUnit: String
   }
 
 type Sample

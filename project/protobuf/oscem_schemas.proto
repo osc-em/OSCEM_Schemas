@@ -31,22 +31,17 @@ message Acquisition
   integer beamtiltgroups = 0
   string gainRefFlipRotate = 0
  }
-// A class representing an author
 message Author
  {
-  authorName authorName = 0
-  string email = 0
-  string phone = 0
+  string firstName = 0
+  boolean workStatus = 0
+ repeated  institution institution = 0
   string orcid = 0
-  organization organization = 0
   string country = 0
   string role = 0
- }
-// A class representing the name of an author
-message AuthorName
- {
-  string firstName = 0
-  string lastName = 0
+  string name = 0
+  string email = 0
+  string workPhone = 0
  }
 message Base
  {
@@ -81,7 +76,9 @@ message EMDataset
  {
   acquisition acquisition = 0
   instrument instrument = 0
-  oSCEMSample oscemsample = 0
+  sample sample = 0
+ repeated  grant grants = 0
+ repeated  author authors = 0
  }
 message EnergyFilter
  {
@@ -89,11 +86,15 @@ message EnergyFilter
   string model = 0
   integer width = 0
  }
-// A class representing a grant
+// Grant
 message Grant
  {
-  string grantId = 0
-  string fundingAgency = 0
+  string name = 0
+  string funder = 0
+  date startDate = 0
+  date endDate = 0
+  quantityValue budget = 0
+  string projectId = 0
  }
 // A class representing a grid
 message Grid
@@ -121,6 +122,12 @@ message Imagehift
   float xMax = 0
   float yMin = 0
   float yMax = 0
+ }
+// A class representing an organization
+message Institution
+ {
+  string nameOrg = 0
+  organizationTypeEnum typeOrg = 0
  }
 // Instrument values, mostly constant across a data collection.
 message Instrument
@@ -158,19 +165,6 @@ message NominalDefocus
   float minimal = 0
   float maximal = 0
  }
-// A class representing an organization
-message Organization
- {
-  string nameOrg = 0
-  organizationTypeEnum typeOrg = 0
- }
-// Main class for OSCEM sample schema
-message OSCEMSample
- {
- repeated  grant grant = 0
- repeated  author author = 0
-  sample sample = 0
- }
 // A class representing the overall molecule
 message OverallMolecule
  {
@@ -179,10 +173,24 @@ message OverallMolecule
   string source = 0
   float molecularWeight = 0
  }
+message Person
+ {
+  string name = 0
+  string firstName = 0
+  boolean workStatus = 0
+  string email = 0
+  string workPhone = 0
+ }
 message Phaseplate
  {
   boolean used = 0
   string type = 0
+ }
+// Value together with unit
+message QuantityValue
+ {
+  double hasValue = 0
+  string hasUnit = 0
  }
 // A class representing a sample
 message Sample
