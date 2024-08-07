@@ -28,15 +28,15 @@ classes:
     description: |-
       OSC-EM Metadata for a dataset
     slots:
-      - Acquisition
-      - Instrument
+      - acquisition
+      - instrument
       - sample
       - grants
       - authors
     slot_usage:
-      Acquisition:
+      acquisition:
         required: true
-      Instrument:
+      instrument:
         required: true
       sample:
         required: true
@@ -44,13 +44,17 @@ classes:
         required: true
       authors:
         required: true
-  Acquisition:
-    is_a: acquisition
+  AcquisitionTomo:
+    is_a: Acquisition
     slots:
-      - TiltAxisAngle
-      - Tilt_angle
+      - tilt_axis_angle
+      - tilt_angle
     slot_usage:
-      TiltAxisAngle:
+      tilt_axis_angle:
         required: true
-      Tilt_angle:
+      tilt_angle:
         required: true
+        
+slots:
+  acquisition:
+    range: AcquisitionTomo

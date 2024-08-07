@@ -15,247 +15,247 @@ imports:
   - ./tomography
 
 classes:
-  base:
+  Base:
     slots:
-    - Acquisition
-  acquisition:
+    - acquisition
+  Acquisition:
     slots:
-    - Nominal_defocus
-    - Calibrated_defocus
-    - Nominal_magnification
-    - Calibrated_magnification
-    - Holder
-    - Holder_cryogen
-    - Temperature
-    - Microscope_software
-    - Detector
-    - Detector_mode
-    - Dose_per_movie
-    - Energy_filter
-    - Image_size
-    - Datetime
-    - Exposure_time
-    - Cryogen
-    - Frames_per_movie
-    - Grids_imaged
-    - Images_generated
-    - Binning_camera
-    - Pixel_size
-    - Specialist_Optics
-    - Beamshift
-    - Beamtilt
-    - Imageshift
-    - Beamtiltgroups
-    - GainRef_FlipRotate
+    - nominal_defocus
+    - calibrated_defocus
+    - nominal_magnification
+    - calibrated_magnification
+    - holder
+    - holder_cryogen
+    - temperature
+    - microscope_software
+    - detector
+    - detector_mode
+    - dose_per_movie
+    - energy_filter
+    - image_size
+    - datetime
+    - exposure_time
+    - cryogen
+    - frames_per_movie
+    - grids_imaged
+    - images_generated
+    - binning_camera
+    - pixel_size
+    - specialist_optics
+    - beamshift
+    - beamtilt
+    - imageshift
+    - beamtiltgroups
+    - gainref_flip_rotate
     slot_usage:
-      Detector:
+      detector:
         required: true
-      Dose_per_movie:
+      dose_per_movie:
         required: true
-      Datetime:
+      datetime:
         required: true
-      Binning_camera:
+      binning_camera:
         required: true
-      Pixel_size:
+      pixel_size:
         required: true
 
 
-  nominal_defocus:
+  NominalDefocus:
     slots:
-    - Minimal
-    - Maximal
-  calibrated_defocus:
+    - minimal
+    - maximal
+  CalibratedDefocus:
     slots:
-    - Minimal
-    - Maximal
-  temperature_range:
+    - minimal
+    - maximal
+  TemperatureRange:
     slots:
-    - Minimal
-    - Maximal
-  energy_filter:
+    - minimal
+    - maximal
+  EnergyFilter:
     slots:
-    - Used
-    - Model
-    - Width
+    - used
+    - model
+    - width
     slot_usage:
-      Used:
+      used:
         required: true
-      Width:
+      width:
         required: true
-  image_size:
+  ImageSize:
     slots:
-    - Height
-    - Width
-  specialist_optics:
+    - height
+    - width
+  SpecialistOptics:
     slots:
-    - Phaseplate
-    - Spherical_Aberration_Corrector
-    - Chromatic_Aberration_Corrector
-  phaseplate:
+    - phaseplate
+    - spherical_aberration_corrector
+    - chromatic_aberration_corrector
+  Phaseplate:
     slots:
-    - Used
-    - Type
+    - used
+    - type
     slot_usage:
-      Used:
+      used:
         required: true
-      Type:
+      type:
         required: true
-  spherical_Aberration_Corrector:
+  SphericalAberrationCorrector:
     slots:
-    - Used
-    - Type
+    - used
+    - type
     slot_usage:
-      Used:
+      used:
         required: true
-      Type:
+      type:
         required: true
-  chromatic_Aberration_Corrector:
+  ChromaticAberrationCorrector:
     slots:
-    - Used
-    - Type
+    - used
+    - type
     slot_usage:
-      Used:
+      used:
         required: true
-      Type:
+      type:
         required: true
-  beamshift:
+  Beamshift:
     slots:
-    - X_min
-    - X_max
-    - Y_min
-    - Y_max
-  beamtilt:
+    - x_min
+    - x_max
+    - y_min
+    - y_max
+  Beamtilt:
     slots:
-    - X_min
-    - X_max
-    - Y_min
-    - Y_max
-  imagehift:
+    - x_min
+    - x_max
+    - y_min
+    - y_max
+  Imageshift:
     slots:
-    - X_min
-    - X_max
-    - Y_min
-    - Y_max
+    - x_min
+    - x_max
+    - y_min
+    - y_max
 
 slots:
-  Acquisition:
-    range: acquisition
-  Nominal_defocus:
-    range: nominal_defocus
+  acquisition:
+    range: Acquisition
+  nominal_defocus:
+    range: NominalDefocus
     description: Target defocus set, min and max values in µm.
-  Minimal:
+  minimal:
     description: Minimal value of a given dataset property
     range: float
-  Maximal:
+  maximal:
     description: Maximal value of a given dataset property
     range: float
-  Calibrated_defocus:
-    range: calibrated_defocus
+  calibrated_defocus:
+    range: CalibratedDefocus
     description: Machine estimated defocus, min and max values in µm. Has a tendency to be off.
-  Nominal_magnification:
+  nominal_magnification:
     description: Magnification level as indicated by the instrument, no unit
     range: integer
-  Calibrated_magnification:
+  calibrated_magnification:
     description: Calculated magnification, no unit
     range: integer
-  Holder:
+  holder:
     description: Speciman holder model
     range: string
-  Holder_cryogen:
+  holder_cryogen:
     description: Type of cryogen used in the holder - if the holder is cooled seperately
     range: string
-  Temperature:
-    range: temperature_range
+  temperature:
+    range: TemperatureRange
     description: Temperature during data collection, in K with min and max values.
-  Microscope_software:
+  microscope_software:
     description: Software used for instrument control,
     range: string
-  Detector:
+  detector:
     description: Make and model of the detector used
     range: string
-  Detector_mode:
+  detector_mode:
     description: Operating mode of the detector
     range: string
-  Dose_per_movie:
+  dose_per_movie:
     description: Average dose per image/movie/tilt - given in electrons per square Angstrom
     range: float
-  Energy_filter:
-    range: energy_filter
+  energy_filter:
+    range: EnergyFilter
     description: Wether an energy filter was used and its specifics.
-  Used:
+  used:
     description: whether a specific instrument was used during data acquisition
     range: boolean
-  Model:
+  model:
     description: Make and model of a specilized device
     range: string
-  Width:
+  width:
     description: The width of a given item - unit depends on item
     range: integer
-  Height:
+  height:
     description: The height of a given item - unit depends on item
     range: integer
-  Image_size:
-    range: image_size
+  image_size:
+    range: ImageSize
     description: The size of the image in pixels, height and width given.
-  Datetime:
+  datetime:
     description: Time and date of the data acquisition
     range: datetime
-  Exposure_time:
+  exposure_time:
     description: Time of data acquisition per movie/tilt - in s
     range: float
-  Cryogen:
+  cryogen:
     description: Cryogen used in cooling the instrument and sample, usually nitrogen
     range: string
-  Frames_per_movie:
+  frames_per_movie:
     description: Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
     range: integer
-  Grids_imaged:
+  grids_imaged:
     description: Number of grids imaged for this project - here with qualifier during this data acquisition
     range: integer
-  Images_generated:
+  images_generated:
     description: Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted
     range: integer
-  Binning_camera:
+  binning_camera:
     description: Level of binning on the images applied during data collection
     range: float
-  Pixel_size:
+  pixel_size:
     description: Pixel size, in Angstrom
     range: float
-  Specialist_Optics:
+  specialist_optics:
     description: Any type of special optics, such as a phaseplate
-    range: specialist_optics
-  Phaseplate:
+    range: SpecialistOptics
+  phaseplate:
     description: Phaseplate is a special optics device that can be used to enhance contrast
-    range: phaseplate
-  Type:
+    range: Phaseplate
+  type:
     description: Details of a given specialist instrument
     range: string
-  Spherical_Aberration_Corrector:
-    range: spherical_Aberration_Corrector
+  spherical_aberration_corrector:
+    range: SphericalAberrationCorrector
     description: Specialist device to correct for spherical aberration of the microscope lenses
-  Chromatic_Aberration_Corrector:
-    range: chromatic_Aberration_Corrector
+  chromatic_aberration_corrector:
+    range: ChromaticAberrationCorrector
     description: Specialist device to correct for chromatic aberration of the microscope lenses
-  Beamshift:
-    range: beamshift
+  beamshift:
+    range: Beamshift
     description: Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
-  X_min:
+  x_min:
     range: float
-  X_max:
+  x_max:
     range: float
-  Y_min:
+  y_min:
     range: float
-  Y_max:
+  y_max:
     range: float
-  Beamtilt:
-    range: beamtilt
+  beamtilt:
+    range: Beamtilt
     description: Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
-  Imageshift:
-    range: float
+  imageshift:
+    range: Imageshift
     description: Movement of the Beam below the image in order to shift the image on the detector. Given in µm.
-  Beamtiltgroups:
+  beamtiltgroups:
     range: integer
     description: Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.
-  GainRef_FlipRotate:
+  gainref_flip_rotate:
     range: string
     description: Whether and how you have to flip or rotate the gainref in order to align with your acquired images

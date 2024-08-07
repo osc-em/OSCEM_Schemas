@@ -13,129 +13,138 @@ imports:
   - linkml:types
 
 enums:
-  freezingmethodenum:
+  FreezingMethodEnum:
     permissible_values:
-      Plunge_freezing:
+      plunge_freezing:
         description: Typically used for smaller and thinner samples in both SPA and tomography.
-      High_pressure_freezing:
+      high_pressure_freezing:
         description: Usually used for larger organic complexes, such as organoids or even tissue samples.
 
 classes:
-  sample:
+  Sample:
+    slots:
+    - specimen
+    - freezing
+    - thinning
+    - tomogram_features
+
+  Specimen:
     description: base information on the acquisition and treatment of the sample itself.
     slots:
-    - Organism
-    - Tissue
-    - Source
-    - Location
-    - Collection_date
-    - Handling
+    - organism
+    - tissue
+    - source
+    - location
+    - collection_date
+    - handling
 
-  freezing:
+  Freezing:
     description: how the sample was frozen.
     slots:
-    - Cryogen
-    - Method
-    - Blotting
-    - Humidity
-    - Temperature
-    - Atmosphere
-    - Details
-
-  thinning:
-    description: how the frozen sample was thinned by i.e. FiB-milling
-    slots:
-    - Method_thin
-    - Instrument_thin
-    - Ion_source
-    - Target_thickness
-    - Lift_out
-
-  tomogram_features:
-    description: what was the target of the tomograms, and what area of a cell do they cover.
-    slots:
-    - Cellular_features
-    - Organelles
-    - Main_target
+    - cryogen
+    - method
+    - blotting
+    - humidity
+    - temperature
+    - atmosphere
     - details
 
+  Thinning:
+    description: how the frozen sample was thinned by i.e. FiB-milling
+    slots:
+    - method_thin
+    - instrument_thin
+    - ion_source
+    - target_thickness
+    - lift_out
+
+  TomogramFeatures:
+    description: what was the target of the tomograms, and what area of a cell do they cover.
+    slots:
+    - cellular_features
+    - organelles
+    - main_target
+    - details_tomo
+
 slots:
-  Organism:
+  organism:
     description: the organism(s) present in your sample, if not perfectly defined try to asses as close as possible.
     range: string
     multivalued: true 
-  Tissue:
+  tissue:
     description: if the sample is a tissue sample please indicate what type of tissue.
     range: string
-  Source:
+  source:
     description: where is this sample from? i.e. Hospital
     range: string
-  Location:
+  location:
     description: the geographical location of your source, optimally in a geographic coordinate system.
     range: string
-  Collection_date:
+  collection_date:
     description: When the sample was collected
     range: date
-  Handling:
+  handling:
     description: What was done to the sample, please give an overview of relevant treatments.
     range: string
-  Sample:
-    range: sample
-  Cryogen:
+  sample:
+    range: Sample
+  cryogen:
     description: the cryogen used to freeze the sample, i.e. ethane
     range: string
-  Method:
+  method:
     description: freezing method - such as plunge freezing, high pressure freezing etc.
-    range: freezingmethodenum
-  Blotting:
+    range: FreezingMethodEnum
+  blotting:
     description: whether blotting was performed.
     range: boolean
-  Humidity:
+  humidity:
     description: humidity of the atmosphere right before/ during freezing; in %.
     range: float
-  Temperature: 
+  temperature: 
     description: temperature of the sample right before freezing; in K.
     range: float
-  Atmosphere:
+  atmosphere:
     description: What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc.
     range: string
-  Details:
+  details:
     description: Any further comments on the freezing process go here.
     range: string
-  Freezing:
-    range: freezing
-  Thinning:
-    range: thinning
-  Method_thin:
+  freezing:
+    range: Freezing
+  thinning:
+    range: Thinning
+  method_thin:
     description: The thinning method used, such as FIB milling.
     range: string
-  Instrument_thin:
+  instrument_thin:
     description: Instrument used for thinning the sample
     range: string
-  Ion_source:
+  ion_source:
     description: what ion source was used?
     range: string
-  Target_thickness:
+  target_thickness:
     description: What was the target thickness of the lamella; in nm.
     range: float
-  Lift_out:
+  lift_out:
     description: whether a lift out was performed
     range: boolean
-  Tomogram_features:
-    range: tomogram_features
-  Cellular_features:
+  tomogram_features:
+    range: TomogramFeatures
+  cellular_features:
     description: What type of cellular features are present in your tomograms?
     range: string
-  Organelles:
+  organelles:
     description: What organelles; if any; are present?
     range: string
     multivalued: true 
-  Main_target:
+  main_target:
     description: What was the main biological target of your research for this tomogram?
     range: string
-  details:
+  details_tomo:
     description: If you have any further comments on your tomograms please leave them here
     range: string
+  specimen:
+    range: Specimen
   
 
 

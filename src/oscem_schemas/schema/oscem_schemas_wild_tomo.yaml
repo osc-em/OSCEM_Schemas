@@ -18,7 +18,8 @@ imports:
   - linkml:types
   - ./acquisition
   - ./instrument
-  - ./sample
+  - ./sample_wild
+  - ./tomography
   - ./organizational
 
 classes:
@@ -43,3 +44,17 @@ classes:
         required: true
       authors:
         required: true
+  AcquisitionTomo:
+    is_a: Acquisition
+    slots:
+      - tilt_axis_angle
+      - tilt_angle
+    slot_usage:
+      tilt_axis_angle:
+        required: true
+      tilt_angle:
+        required: true
+        
+slots:
+  acquisition:
+    range: AcquisitionTomo
