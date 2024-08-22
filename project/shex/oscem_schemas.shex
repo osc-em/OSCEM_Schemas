@@ -59,7 +59,7 @@ linkml:Sparqlpath xsd:string
           <https://w3id.org/osc-em/acquisitiondose_per_movie> @linkml:Float ;
           <https://w3id.org/osc-em/acquisitionenergy_filter> @<https://w3id.org/osc-em/acquisitionEnergyFilter> ? ;
           <https://w3id.org/osc-em/acquisitionimage_size> @<https://w3id.org/osc-em/types/ImageSize> ? ;
-          <https://w3id.org/osc-em/acquisitiondatetime> @linkml:Datetime ;
+          <https://w3id.org/osc-em/acquisitiondatetime> @<https://w3id.org/osc-em/types/Any> ;
           <https://w3id.org/osc-em/acquisitionexposure_time> @linkml:Float ? ;
           <https://w3id.org/osc-em/acquisitioncryogen> @linkml:String ? ;
           <https://w3id.org/osc-em/acquisitionframes_per_movie> @linkml:Integer ? ;
@@ -78,10 +78,16 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<https://w3id.org/osc-em/types/Any> CLOSED {
+    (  $<https://w3id.org/osc-em/types/Any_tes> rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
 <https://w3id.org/osc-em/organizational/Author> CLOSED {
     (  $<https://w3id.org/osc-em/organizational/Author_tes> (  &<https://w3id.org/osc-em/organizational/Person_tes> ;
           rdf:type [ schema1:Person ] ? ;
-          schema1:Organization @<https://w3id.org/osc-em/organizational/Institution> + ;
+          schema1:Organization @<https://w3id.org/osc-em/organizational/Institution> ;
           <https://w3id.org/osc-em/organizational/orcid> @linkml:String ;
           <https://w3id.org/osc-em/organizational/country> @linkml:String ;
           <https://w3id.org/osc-em/organizational/role> @linkml:String ? ;
@@ -106,7 +112,7 @@ linkml:Sparqlpath xsd:string
 <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> CLOSED {
     (  $<https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector_tes> (  <https://w3id.org/osc-em/acquisitionused>
           @linkml:Boolean ;
-          <https://w3id.org/osc-em/acquisitiontype> @linkml:String
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
        ) ;
        rdf:type [ <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ] ?
     )
@@ -206,7 +212,7 @@ linkml:Sparqlpath xsd:string
 
 <https://w3id.org/osc-em/sample/Molecule> CLOSED {
     (  $<https://w3id.org/osc-em/sample/Molecule_tes> (  <https://w3id.org/osc-em/sample/name_mol> @linkml:String ;
-          <https://w3id.org/osc-em/sample/type> @linkml:String ;
+          <https://w3id.org/osc-em/sample/molecular_type> @linkml:String ;
           <https://w3id.org/osc-em/sample/molecular_class> [ <https://w3id.org/osc-em/sample/MoleculeClassEnum#Antibiotic>
              <https://w3id.org/osc-em/sample/MoleculeClassEnum#Carbohydrate>
              <https://w3id.org/osc-em/sample/MoleculeClassEnum#Chimera>
@@ -223,7 +229,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://w3id.org/osc-em/sample/OverallMolecule> CLOSED {
-    (  $<https://w3id.org/osc-em/sample/OverallMolecule_tes> (  <https://w3id.org/osc-em/sample/type> @linkml:String ;
+    (  $<https://w3id.org/osc-em/sample/OverallMolecule_tes> (  <https://w3id.org/osc-em/sample/molecular_type> @linkml:String ;
           <https://w3id.org/osc-em/sample/name_sample> @linkml:String ;
           <https://w3id.org/osc-em/sample/source> @linkml:String ;
           <https://w3id.org/osc-em/sample/molecular_weight> @linkml:Float ?
@@ -247,7 +253,7 @@ linkml:Sparqlpath xsd:string
 
 <https://w3id.org/osc-em/acquisitionPhaseplate> CLOSED {
     (  $<https://w3id.org/osc-em/acquisitionPhaseplate_tes> (  <https://w3id.org/osc-em/acquisitionused> @linkml:Boolean ;
-          <https://w3id.org/osc-em/acquisitiontype> @linkml:String
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
        ) ;
        rdf:type [ <https://w3id.org/osc-em/acquisitionPhaseplate> ] ?
     )
@@ -326,7 +332,7 @@ linkml:Sparqlpath xsd:string
 <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> CLOSED {
     (  $<https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector_tes> (  <https://w3id.org/osc-em/acquisitionused>
           @linkml:Boolean ;
-          <https://w3id.org/osc-em/acquisitiontype> @linkml:String
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
        ) ;
        rdf:type [ <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> ] ?
     )

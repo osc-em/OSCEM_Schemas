@@ -63,9 +63,18 @@
                     ]
                 },
                 "datetime": {
-                    "description": "Time and date of the data acquisition",
-                    "format": "date-time",
-                    "type": "string"
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "format": "date",
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Time and date of the data acquisition"
                 },
                 "detector": {
                     "description": "Make and model of the detector used",
@@ -226,6 +235,18 @@
             "title": "Acquisition",
             "type": "object"
         },
+        "Any": {
+            "additionalProperties": true,
+            "description": "Any type, used as the base for type-narrowing.\n\nSee https://linkml.io/linkml/schemas/advanced.html",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
         "Author": {
             "additionalProperties": false,
             "description": "",
@@ -247,11 +268,8 @@
                     ]
                 },
                 "institution": {
-                    "description": "institution",
-                    "items": {
-                        "$ref": "#/$defs/Institution"
-                    },
-                    "type": "array"
+                    "$ref": "#/$defs/Institution",
+                    "description": "author's institution"
                 },
                 "name": {
                     "description": "name",
@@ -331,7 +349,7 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "type": {
+                "instrument_type": {
                     "description": "Details of a given specialist instrument",
                     "type": "string"
                 },
@@ -342,7 +360,7 @@
             },
             "required": [
                 "used",
-                "type"
+                "instrument_type"
             ],
             "title": "ChromaticAberrationCorrector",
             "type": "object"
@@ -695,6 +713,10 @@
                     "$ref": "#/$defs/MoleculeClassEnum",
                     "description": "Class of the molecule"
                 },
+                "molecular_type": {
+                    "description": "Description of the overall supramolecular type, i.e., a complex",
+                    "type": "string"
+                },
                 "name_mol": {
                     "description": "Name of an individual molecule (often protein) in the sample",
                     "type": "string"
@@ -714,15 +736,11 @@
                 "taxonomy_id_source": {
                     "description": "Taxonomy ID of the natural source organism",
                     "type": "string"
-                },
-                "type": {
-                    "description": "Description of the overall supramolecular type, i.e., a complex",
-                    "type": "string"
                 }
             },
             "required": [
                 "name_mol",
-                "type",
+                "molecular_type",
                 "molecular_class",
                 "sequence",
                 "natural_source",
@@ -759,6 +777,10 @@
             "additionalProperties": false,
             "description": "A class representing the overall molecule",
             "properties": {
+                "molecular_type": {
+                    "description": "Description of the overall supramolecular type, i.e., a complex",
+                    "type": "string"
+                },
                 "molecular_weight": {
                     "description": "Molecular weight in Da",
                     "type": [
@@ -773,14 +795,10 @@
                 "source": {
                     "description": "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.",
                     "type": "string"
-                },
-                "type": {
-                    "description": "Description of the overall supramolecular type, i.e., a complex",
-                    "type": "string"
                 }
             },
             "required": [
-                "type",
+                "molecular_type",
                 "name_sample",
                 "source"
             ],
@@ -835,7 +853,7 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "type": {
+                "instrument_type": {
                     "description": "Type of phaseplate",
                     "type": "string"
                 },
@@ -846,7 +864,7 @@
             },
             "required": [
                 "used",
-                "type"
+                "instrument_type"
             ],
             "title": "Phaseplate",
             "type": "object"
@@ -1087,7 +1105,7 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "type": {
+                "instrument_type": {
                     "description": "Details of a given specialist instrument",
                     "type": "string"
                 },
@@ -1098,7 +1116,7 @@
             },
             "required": [
                 "used",
-                "type"
+                "instrument_type"
             ],
             "title": "SphericalAberrationCorrector",
             "type": "object"

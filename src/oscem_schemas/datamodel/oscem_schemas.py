@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-08-22T23:22:34
+# Generation date: 2024-08-23T00:59:03
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -22,8 +22,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Date, Datetime, Double, Float, Integer, String
-from linkml_runtime.utils.metamodelcore import Bool, XSDDate, XSDDateTime
+from linkml_runtime.linkml_model.types import Boolean, Date, Double, Float, Integer, String
+from linkml_runtime.utils.metamodelcore import Bool, XSDDate
 
 metamodel_version = "1.7.0"
 version = None
@@ -105,7 +105,7 @@ class Acquisition(YAMLRoot):
 
     detector: str = None
     dose_per_movie: float = None
-    datetime: Union[str, XSDDateTime] = None
+    datetime: Union[dict, "Any"] = None
     binning_camera: float = None
     pixel_size: float = None
     nominal_defocus: Optional[Union[dict, "Range"]] = None
@@ -141,11 +141,6 @@ class Acquisition(YAMLRoot):
             self.MissingRequiredField("dose_per_movie")
         if not isinstance(self.dose_per_movie, float):
             self.dose_per_movie = float(self.dose_per_movie)
-
-        if self._is_empty(self.datetime):
-            self.MissingRequiredField("datetime")
-        if not isinstance(self.datetime, XSDDateTime):
-            self.datetime = XSDDateTime(self.datetime)
 
         if self._is_empty(self.binning_camera):
             self.MissingRequiredField("binning_camera")
@@ -292,7 +287,7 @@ class Phaseplate(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Phaseplate")
 
     used: Union[bool, Bool] = None
-    type: str = None
+    instrument_type: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.used):
@@ -300,10 +295,10 @@ class Phaseplate(YAMLRoot):
         if not isinstance(self.used, Bool):
             self.used = Bool(self.used)
 
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self._is_empty(self.instrument_type):
+            self.MissingRequiredField("instrument_type")
+        if not isinstance(self.instrument_type, str):
+            self.instrument_type = str(self.instrument_type)
 
         super().__post_init__(**kwargs)
 
@@ -318,7 +313,7 @@ class SphericalAberrationCorrector(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/SphericalAberrationCorrector")
 
     used: Union[bool, Bool] = None
-    type: str = None
+    instrument_type: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.used):
@@ -326,10 +321,10 @@ class SphericalAberrationCorrector(YAMLRoot):
         if not isinstance(self.used, Bool):
             self.used = Bool(self.used)
 
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self._is_empty(self.instrument_type):
+            self.MissingRequiredField("instrument_type")
+        if not isinstance(self.instrument_type, str):
+            self.instrument_type = str(self.instrument_type)
 
         super().__post_init__(**kwargs)
 
@@ -344,7 +339,7 @@ class ChromaticAberrationCorrector(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/ChromaticAberrationCorrector")
 
     used: Union[bool, Bool] = None
-    type: str = None
+    instrument_type: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.used):
@@ -352,10 +347,10 @@ class ChromaticAberrationCorrector(YAMLRoot):
         if not isinstance(self.used, Bool):
             self.used = Bool(self.used)
 
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self._is_empty(self.instrument_type):
+            self.MissingRequiredField("instrument_type")
+        if not isinstance(self.instrument_type, str):
+            self.instrument_type = str(self.instrument_type)
 
         super().__post_init__(**kwargs)
 
@@ -460,7 +455,7 @@ class Author(Person):
     class_name: ClassVar[str] = "Author"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Author")
 
-    institution: Union[Union[dict, "Institution"], List[Union[dict, "Institution"]]] = None
+    institution: Union[dict, "Institution"] = None
     orcid: str = None
     country: str = None
     name: str = None
@@ -471,7 +466,8 @@ class Author(Person):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.institution):
             self.MissingRequiredField("institution")
-        self._normalize_inlined_as_dict(slot_name="institution", slot_type=Institution, key_name="type_org", keyed=False)
+        if not isinstance(self.institution, Institution):
+            self.institution = Institution(**as_dict(self.institution))
 
         if self._is_empty(self.orcid):
             self.MissingRequiredField("orcid")
@@ -609,16 +605,16 @@ class OverallMolecule(YAMLRoot):
     class_name: ClassVar[str] = "OverallMolecule"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/OverallMolecule")
 
-    type: str = None
+    molecular_type: str = None
     name_sample: str = None
     source: str = None
     molecular_weight: Optional[float] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self._is_empty(self.molecular_type):
+            self.MissingRequiredField("molecular_type")
+        if not isinstance(self.molecular_type, str):
+            self.molecular_type = str(self.molecular_type)
 
         if self._is_empty(self.name_sample):
             self.MissingRequiredField("name_sample")
@@ -649,7 +645,7 @@ class Molecule(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Molecule")
 
     name_mol: str = None
-    type: str = None
+    molecular_type: str = None
     molecular_class: Union[str, "MoleculeClassEnum"] = None
     sequence: str = None
     natural_source: str = None
@@ -664,10 +660,10 @@ class Molecule(YAMLRoot):
         if not isinstance(self.name_mol, str):
             self.name_mol = str(self.name_mol)
 
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self._is_empty(self.molecular_type):
+            self.MissingRequiredField("molecular_type")
+        if not isinstance(self.molecular_type, str):
+            self.molecular_type = str(self.molecular_type)
 
         if self._is_empty(self.molecular_class):
             self.MissingRequiredField("molecular_class")
@@ -907,6 +903,8 @@ class Sample(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+Any = Any
+
 @dataclass(repr=False)
 class Range(YAMLRoot):
     """
@@ -1131,7 +1129,7 @@ slots.image_size = Slot(uri=ACQUISITION.image_size, name="image_size", curie=ACQ
                    model_uri=DEFAULT_.image_size, domain=None, range=Optional[Union[dict, ImageSize]])
 
 slots.datetime = Slot(uri=ACQUISITION.datetime, name="datetime", curie=ACQUISITION.curie('datetime'),
-                   model_uri=DEFAULT_.datetime, domain=None, range=Optional[Union[str, XSDDateTime]])
+                   model_uri=DEFAULT_.datetime, domain=None, range=Optional[Union[dict, Any]])
 
 slots.exposure_time = Slot(uri=ACQUISITION.exposure_time, name="exposure_time", curie=ACQUISITION.curie('exposure_time'),
                    model_uri=DEFAULT_.exposure_time, domain=None, range=Optional[float])
@@ -1160,7 +1158,7 @@ slots.specialist_optics = Slot(uri=ACQUISITION.specialist_optics, name="speciali
 slots.phaseplate = Slot(uri=ACQUISITION.phaseplate, name="phaseplate", curie=ACQUISITION.curie('phaseplate'),
                    model_uri=DEFAULT_.phaseplate, domain=None, range=Optional[Union[dict, Phaseplate]])
 
-slots.instrument_type = Slot(uri=ACQUISITION.type, name="instrument_type", curie=ACQUISITION.curie('type'),
+slots.instrument_type = Slot(uri=ACQUISITION.instrument_type, name="instrument_type", curie=ACQUISITION.curie('instrument_type'),
                    model_uri=DEFAULT_.instrument_type, domain=None, range=Optional[str])
 
 slots.spherical_aberration_corrector = Slot(uri=ACQUISITION.spherical_aberration_corrector, name="spherical_aberration_corrector", curie=ACQUISITION.curie('spherical_aberration_corrector'),
@@ -1225,7 +1223,7 @@ slots.name = Slot(uri=SCHEMA.name, name="name", curie=SCHEMA.curie('name'),
                    model_uri=DEFAULT_.name, domain=None, range=Optional[str])
 
 slots.institution = Slot(uri=SCHEMA.Organization, name="institution", curie=SCHEMA.curie('Organization'),
-                   model_uri=DEFAULT_.institution, domain=None, range=Optional[Union[Union[dict, Institution], List[Union[dict, Institution]]]])
+                   model_uri=DEFAULT_.institution, domain=None, range=Optional[Union[dict, Institution]])
 
 slots.name_org = Slot(uri="str(uriorcurie)", name="name_org", curie=None,
                    model_uri=DEFAULT_.name_org, domain=None, range=Optional[str])
@@ -1263,7 +1261,7 @@ slots.has_value = Slot(uri=QUDT.hasQuantityKind, name="has_value", curie=QUDT.cu
 slots.project_id = Slot(uri=SCHEMA.identifier, name="project_id", curie=SCHEMA.curie('identifier'),
                    model_uri=DEFAULT_.project_id, domain=None, range=Optional[str])
 
-slots.molecular_type = Slot(uri=SAMPLE['/type'], name="molecular_type", curie=SAMPLE.curie('/type'),
+slots.molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="molecular_type", curie=SAMPLE.curie('/molecular_type'),
                    model_uri=DEFAULT_.molecular_type, domain=None, range=Optional[str])
 
 slots.name_sample = Slot(uri=SAMPLE['/name_sample'], name="name_sample", curie=SAMPLE.curie('/name_sample'),
@@ -1441,7 +1439,7 @@ slots.Acquisition_dose_per_movie = Slot(uri=ACQUISITION.dose_per_movie, name="Ac
                    model_uri=DEFAULT_.Acquisition_dose_per_movie, domain=Acquisition, range=float)
 
 slots.Acquisition_datetime = Slot(uri=ACQUISITION.datetime, name="Acquisition_datetime", curie=ACQUISITION.curie('datetime'),
-                   model_uri=DEFAULT_.Acquisition_datetime, domain=Acquisition, range=Union[str, XSDDateTime])
+                   model_uri=DEFAULT_.Acquisition_datetime, domain=Acquisition, range=Union[dict, "Any"])
 
 slots.Acquisition_binning_camera = Slot(uri=ACQUISITION.binning_camera, name="Acquisition_binning_camera", curie=ACQUISITION.curie('binning_camera'),
                    model_uri=DEFAULT_.Acquisition_binning_camera, domain=Acquisition, range=float)
@@ -1458,19 +1456,19 @@ slots.EnergyFilter_width = Slot(uri=TYPES['/width'], name="EnergyFilter_width", 
 slots.Phaseplate_used = Slot(uri=ACQUISITION.used, name="Phaseplate_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.Phaseplate_used, domain=Phaseplate, range=Union[bool, Bool])
 
-slots.Phaseplate_instrument_type = Slot(uri=ACQUISITION.type, name="Phaseplate_instrument_type", curie=ACQUISITION.curie('type'),
+slots.Phaseplate_instrument_type = Slot(uri=ACQUISITION.instrument_type, name="Phaseplate_instrument_type", curie=ACQUISITION.curie('instrument_type'),
                    model_uri=DEFAULT_.Phaseplate_instrument_type, domain=Phaseplate, range=str)
 
 slots.SphericalAberrationCorrector_used = Slot(uri=ACQUISITION.used, name="SphericalAberrationCorrector_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.SphericalAberrationCorrector_used, domain=SphericalAberrationCorrector, range=Union[bool, Bool])
 
-slots.SphericalAberrationCorrector_instrument_type = Slot(uri=ACQUISITION.type, name="SphericalAberrationCorrector_instrument_type", curie=ACQUISITION.curie('type'),
+slots.SphericalAberrationCorrector_instrument_type = Slot(uri=ACQUISITION.instrument_type, name="SphericalAberrationCorrector_instrument_type", curie=ACQUISITION.curie('instrument_type'),
                    model_uri=DEFAULT_.SphericalAberrationCorrector_instrument_type, domain=SphericalAberrationCorrector, range=str)
 
 slots.ChromaticAberrationCorrector_used = Slot(uri=ACQUISITION.used, name="ChromaticAberrationCorrector_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.ChromaticAberrationCorrector_used, domain=ChromaticAberrationCorrector, range=Union[bool, Bool])
 
-slots.ChromaticAberrationCorrector_instrument_type = Slot(uri=ACQUISITION.type, name="ChromaticAberrationCorrector_instrument_type", curie=ACQUISITION.curie('type'),
+slots.ChromaticAberrationCorrector_instrument_type = Slot(uri=ACQUISITION.instrument_type, name="ChromaticAberrationCorrector_instrument_type", curie=ACQUISITION.curie('instrument_type'),
                    model_uri=DEFAULT_.ChromaticAberrationCorrector_instrument_type, domain=ChromaticAberrationCorrector, range=str)
 
 slots.Instrument_microscope = Slot(uri="str(uriorcurie)", name="Instrument_microscope", curie=None,
@@ -1505,7 +1503,7 @@ slots.Author_orcid = Slot(uri="str(uriorcurie)", name="Author_orcid", curie=None
                    model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
 
 slots.Author_institution = Slot(uri=SCHEMA.Organization, name="Author_institution", curie=SCHEMA.curie('Organization'),
-                   model_uri=DEFAULT_.Author_institution, domain=Author, range=Union[Union[dict, "Institution"], List[Union[dict, "Institution"]]])
+                   model_uri=DEFAULT_.Author_institution, domain=Author, range=Union[dict, "Institution"])
 
 slots.Author_country = Slot(uri="str(uriorcurie)", name="Author_country", curie=None,
                    model_uri=DEFAULT_.Author_country, domain=Author, range=str)
@@ -1513,7 +1511,7 @@ slots.Author_country = Slot(uri="str(uriorcurie)", name="Author_country", curie=
 slots.Institution_type_org = Slot(uri="str(uriorcurie)", name="Institution_type_org", curie=None,
                    model_uri=DEFAULT_.Institution_type_org, domain=Institution, range=Union[str, "OrganizationTypeEnum"])
 
-slots.OverallMolecule_molecular_type = Slot(uri=SAMPLE['/type'], name="OverallMolecule_molecular_type", curie=SAMPLE.curie('/type'),
+slots.OverallMolecule_molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="OverallMolecule_molecular_type", curie=SAMPLE.curie('/molecular_type'),
                    model_uri=DEFAULT_.OverallMolecule_molecular_type, domain=OverallMolecule, range=str)
 
 slots.OverallMolecule_name_sample = Slot(uri=SAMPLE['/name_sample'], name="OverallMolecule_name_sample", curie=SAMPLE.curie('/name_sample'),
@@ -1528,7 +1526,7 @@ slots.OverallMolecule_molecular_weight = Slot(uri=SAMPLE['/molecular_weight'], n
 slots.Molecule_name_mol = Slot(uri=SAMPLE['/name_mol'], name="Molecule_name_mol", curie=SAMPLE.curie('/name_mol'),
                    model_uri=DEFAULT_.Molecule_name_mol, domain=Molecule, range=str)
 
-slots.Molecule_molecular_type = Slot(uri=SAMPLE['/type'], name="Molecule_molecular_type", curie=SAMPLE.curie('/type'),
+slots.Molecule_molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="Molecule_molecular_type", curie=SAMPLE.curie('/molecular_type'),
                    model_uri=DEFAULT_.Molecule_molecular_type, domain=Molecule, range=str)
 
 slots.Molecule_molecular_class = Slot(uri=SAMPLE['/molecular_class'], name="Molecule_molecular_class", curie=SAMPLE.curie('/molecular_class'),

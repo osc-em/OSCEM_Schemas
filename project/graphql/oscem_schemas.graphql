@@ -14,7 +14,7 @@ type Acquisition
     dosePerMovie: Float!
     energyFilter: EnergyFilter
     imageSize: ImageSize
-    datetime: Datetime!
+    datetime: Any!
     exposureTime: Float
     cryogen: String
     framesPerMovie: Integer
@@ -30,11 +30,15 @@ type Acquisition
     gainrefFlipRotate: String
   }
 
+type Any
+  {
+  }
+
 type Author
   {
     firstName: String
     workStatus: Boolean
-    institution: [Institution]!
+    institution: Institution!
     orcid: String!
     country: String!
     role: String
@@ -54,7 +58,7 @@ type BoundingBox2D
 type ChromaticAberrationCorrector
   {
     used: Boolean!
-    type: String!
+    instrumentType: String!
   }
 
 type EMDataset
@@ -131,7 +135,7 @@ type Ligand
 type Molecule
   {
     nameMol: String!
-    type: String!
+    molecularType: String!
     molecularClass: MoleculeClassEnum!
     sequence: String!
     naturalSource: String!
@@ -143,7 +147,7 @@ type Molecule
 
 type OverallMolecule
   {
-    type: String!
+    molecularType: String!
     nameSample: String!
     source: String!
     molecularWeight: Float
@@ -161,7 +165,7 @@ type Person
 type Phaseplate
   {
     used: Boolean!
-    type: String!
+    instrumentType: String!
   }
 
 type QuantityValue
@@ -216,7 +220,7 @@ type Specimen
 type SphericalAberrationCorrector
   {
     used: Boolean!
-    type: String!
+    instrumentType: String!
   }
 
 type TiltAngle

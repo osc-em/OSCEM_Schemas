@@ -133,7 +133,8 @@ ifneq ($(strip ${GEN_TS_ARGS}),)
 	$(RUN) gen-typescript ${GEN_TS_ARGS} $(SOURCE_SCHEMA_PATH) >${DEST}/typescript/${SCHEMA_NAME}.ts
 endif
 
-test: test-schema test-python test-examples
+test: test-validate test-examples test-python
+.PHONY: test test-validate test-examples test-python
 
 test-schema:
 	$(RUN) gen-project ${CONFIG_YAML} -d tmp $(SOURCE_SCHEMA_PATH)
@@ -150,6 +151,9 @@ ifndef LINKML_SCHEMA_NAME
 else
 	$(info Ok)
 endif
+
+test-validate:
+	$(RUN) linkml-validate -s $(SOURCE_SCHEMA_PATH) src/data/examples/*.yaml
 
 convert-examples-to-%:
 	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell ${SHELL} find src/data/examples -name "*.yaml"))
@@ -169,7 +173,7 @@ examples/output: src/oscem_schemas/schema/oscem_schemas.yaml
 		--output-formats json \
 		--output-formats yaml \
 		--counter-example-input-directory src/data/examples/invalid \
-		--input-directory src/data/examples/valid \
+		--input-directory src/data/examples \
 		--output-directory $@ \
 		--schema $< > $@/README.md
 

@@ -8,6 +8,8 @@
 --     * Slot: increment Description: Increment between elements of a series
 --     * Slot: minimal Description: Minimal value of a given dataset property
 --     * Slot: maximal Description: Maximal value of a given dataset property
+-- # Class: "Any" Description: "Any type, used as the base for type-narrowing.See https://linkml.io/linkml/schemas/advanced.html"
+--     * Slot: id Description: 
 -- # Class: "Range" Description: "A range constructed from min and max"
 --     * Slot: id Description: 
 --     * Slot: minimal Description: Minimal value of a given dataset property
@@ -37,7 +39,6 @@
 --     * Slot: detector Description: Make and model of the detector used
 --     * Slot: detector_mode Description: Operating mode of the detector
 --     * Slot: dose_per_movie Description: Average dose per image/movie/tilt - given in electrons per square Angstrom
---     * Slot: datetime Description: Time and date of the data acquisition
 --     * Slot: exposure_time Description: Time of data acquisition per movie/tilt - in s
 --     * Slot: cryogen Description: Cryogen used in cooling the instrument and sample, usually nitrogen
 --     * Slot: frames_per_movie Description: Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
@@ -52,6 +53,7 @@
 --     * Slot: temperature_id Description: Temperature during data collection, in K with min and max values.
 --     * Slot: energy_filter_id Description: Wether an energy filter was used and its specifics.
 --     * Slot: image_size_id Description: The size of the image in pixels, height and width given.
+--     * Slot: datetime_id Description: Time and date of the data acquisition
 --     * Slot: specialist_optics_id Description: Any type of special optics, such as a phaseplate
 --     * Slot: beamshift_id Description: Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
 --     * Slot: beamtilt_id Description: Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
@@ -69,15 +71,15 @@
 -- # Class: "Phaseplate" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: type Description: Type of phaseplate
+--     * Slot: instrument_type Description: Type of phaseplate
 -- # Class: "SphericalAberrationCorrector" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: type Description: Details of a given specialist instrument
+--     * Slot: instrument_type Description: Details of a given specialist instrument
 -- # Class: "ChromaticAberrationCorrector" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: type Description: Details of a given specialist instrument
+--     * Slot: instrument_type Description: Details of a given specialist instrument
 -- # Class: "Instrument" Description: "Instrument values, mostly constant across a data collection."
 --     * Slot: id Description: 
 --     * Slot: microscope Description: Name/Type of the Microscope
@@ -104,6 +106,7 @@
 --     * Slot: work_status Description: work status
 --     * Slot: email Description: email
 --     * Slot: work_phone Description: work phone
+--     * Slot: institution_id Description: author's institution
 -- # Class: "Institution" Description: "A class representing an organization"
 --     * Slot: id Description: 
 --     * Slot: name_org Description: Name of the organization
@@ -122,14 +125,14 @@
 --     * Slot: has_unit Description: Unit
 -- # Class: "OverallMolecule" Description: "A class representing the overall molecule"
 --     * Slot: id Description: 
---     * Slot: type Description: Description of the overall supramolecular type, i.e., a complex
+--     * Slot: molecular_type Description: Description of the overall supramolecular type, i.e., a complex
 --     * Slot: name_sample Description: Name of the full sample
 --     * Slot: source Description: Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
 --     * Slot: molecular_weight Description: Molecular weight in Da
 -- # Class: "Molecule" Description: "A class representing a molecule"
 --     * Slot: id Description: 
 --     * Slot: name_mol Description: Name of an individual molecule (often protein) in the sample
---     * Slot: type Description: Description of the overall supramolecular type, i.e., a complex
+--     * Slot: molecular_type Description: Description of the overall supramolecular type, i.e., a complex
 --     * Slot: molecular_class Description: Class of the molecule
 --     * Slot: sequence Description: Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here
 --     * Slot: natural_source Description: Scientific name of the natural host organism
@@ -178,9 +181,6 @@
 -- # Class: "EMDataset_authors" Description: ""
 --     * Slot: EMDataset_id Description: Autocreated FK slot
 --     * Slot: authors_id Description: List of authors associated with the project
--- # Class: "Author_institution" Description: ""
---     * Slot: Author_id Description: Autocreated FK slot
---     * Slot: institution_id Description: institution
 -- # Class: "Sample_molecule" Description: ""
 --     * Slot: Sample_id Description: Autocreated FK slot
 --     * Slot: molecule_id Description: List of molecule associated with the sample
@@ -193,6 +193,10 @@ CREATE TABLE "TiltAngle" (
 	increment FLOAT, 
 	minimal FLOAT, 
 	maximal FLOAT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Any" (
+	id INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Range" (
@@ -232,19 +236,19 @@ CREATE TABLE "EnergyFilter" (
 CREATE TABLE "Phaseplate" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
-	type TEXT NOT NULL, 
+	instrument_type TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "SphericalAberrationCorrector" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
-	type TEXT NOT NULL, 
+	instrument_type TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "ChromaticAberrationCorrector" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
-	type TEXT NOT NULL, 
+	instrument_type TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Instrument" (
@@ -267,18 +271,6 @@ CREATE TABLE "Person" (
 	work_phone TEXT, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "Author" (
-	id INTEGER NOT NULL, 
-	orcid TEXT NOT NULL, 
-	country TEXT NOT NULL, 
-	role TEXT, 
-	name TEXT NOT NULL, 
-	first_name TEXT, 
-	work_status BOOLEAN, 
-	email TEXT NOT NULL, 
-	work_phone TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
 CREATE TABLE "Institution" (
 	id INTEGER NOT NULL, 
 	name_org TEXT, 
@@ -293,7 +285,7 @@ CREATE TABLE "QuantityValue" (
 );
 CREATE TABLE "OverallMolecule" (
 	id INTEGER NOT NULL, 
-	type TEXT NOT NULL, 
+	molecular_type TEXT NOT NULL, 
 	name_sample TEXT NOT NULL, 
 	source TEXT NOT NULL, 
 	molecular_weight FLOAT, 
@@ -302,7 +294,7 @@ CREATE TABLE "OverallMolecule" (
 CREATE TABLE "Molecule" (
 	id INTEGER NOT NULL, 
 	name_mol TEXT NOT NULL, 
-	type TEXT NOT NULL, 
+	molecular_type TEXT NOT NULL, 
 	molecular_class VARCHAR(13) NOT NULL, 
 	sequence TEXT NOT NULL, 
 	natural_source TEXT NOT NULL, 
@@ -358,6 +350,20 @@ CREATE TABLE "SpecialistOptics" (
 	FOREIGN KEY(spherical_aberration_corrector_id) REFERENCES "SphericalAberrationCorrector" (id), 
 	FOREIGN KEY(chromatic_aberration_corrector_id) REFERENCES "ChromaticAberrationCorrector" (id)
 );
+CREATE TABLE "Author" (
+	id INTEGER NOT NULL, 
+	orcid TEXT NOT NULL, 
+	country TEXT NOT NULL, 
+	role TEXT, 
+	name TEXT NOT NULL, 
+	first_name TEXT, 
+	work_status BOOLEAN, 
+	email TEXT NOT NULL, 
+	work_phone TEXT NOT NULL, 
+	institution_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(institution_id) REFERENCES "Institution" (id)
+);
 CREATE TABLE "Grant" (
 	id INTEGER NOT NULL, 
 	name TEXT, 
@@ -379,13 +385,6 @@ CREATE TABLE "Sample" (
 	FOREIGN KEY(specimen_id) REFERENCES "Specimen" (id), 
 	FOREIGN KEY(grid_id) REFERENCES "Grid" (id)
 );
-CREATE TABLE "Author_institution" (
-	"Author_id" INTEGER, 
-	institution_id INTEGER NOT NULL, 
-	PRIMARY KEY ("Author_id", institution_id), 
-	FOREIGN KEY("Author_id") REFERENCES "Author" (id), 
-	FOREIGN KEY(institution_id) REFERENCES "Institution" (id)
-);
 CREATE TABLE "Acquisition" (
 	id INTEGER NOT NULL, 
 	nominal_magnification INTEGER, 
@@ -396,7 +395,6 @@ CREATE TABLE "Acquisition" (
 	detector TEXT NOT NULL, 
 	detector_mode TEXT, 
 	dose_per_movie FLOAT NOT NULL, 
-	datetime DATETIME NOT NULL, 
 	exposure_time FLOAT, 
 	cryogen TEXT, 
 	frames_per_movie INTEGER, 
@@ -411,6 +409,7 @@ CREATE TABLE "Acquisition" (
 	temperature_id INTEGER, 
 	energy_filter_id INTEGER, 
 	image_size_id INTEGER, 
+	datetime_id INTEGER NOT NULL, 
 	specialist_optics_id INTEGER, 
 	beamshift_id INTEGER, 
 	beamtilt_id INTEGER, 
@@ -421,6 +420,7 @@ CREATE TABLE "Acquisition" (
 	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
+	FOREIGN KEY(datetime_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 

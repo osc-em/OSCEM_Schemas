@@ -32,10 +32,16 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
 ## Developer Documentation
 
 <details>
-Use the `make` command to generate project artefacts:
+Use the `make` command to generate project artifacts:
 
+* `make setup`: one-time setup
 * `make all`: make everything
 * `make deploy`: deploys site
+* `make lint`: check syntax
+* `make test`: run tests
+* `make serve`: run docs locally on http://127.0.0.1:8000/oscem-schemas/
+* `make clean` : remove generated files
+
 </details>
 
 ## Credits

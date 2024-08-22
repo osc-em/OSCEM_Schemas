@@ -153,7 +153,11 @@ slots:
     description: The size of the image in pixels, height and width given.
   datetime:
     description: Time and date of the data acquisition
-    range: datetime
+    # range is required
+    range: Any
+    any_of:
+      - range: datetime
+      - range: date
   exposure_time:
     description: Time of data acquisition per movie/tilt - in s
     range: float
@@ -182,7 +186,6 @@ slots:
     description: Phaseplate is a special optics device that can be used to enhance contrast
     range: Phaseplate
   instrument_type:
-    alias: type
     description: Details of a given specialist instrument
     range: string
   spherical_aberration_corrector:
