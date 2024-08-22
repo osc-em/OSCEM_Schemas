@@ -142,7 +142,7 @@ test-python:
 	$(RUN) python -m unittest discover
 
 lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH)
+	$(RUN) linkml-lint --validate --all --ignore-warnings $(SOURCE_SCHEMA_DIR)
 
 check-config:
 ifndef LINKML_SCHEMA_NAME
