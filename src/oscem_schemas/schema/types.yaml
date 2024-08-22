@@ -1,0 +1,59 @@
+id: https://w3id.org/osc-em/types
+name: types
+description: Mixins for basic types shared among OSC-EM schemas
+
+imports:
+  - linkml:types
+
+classes:
+  Range:
+    description: A range constructed from min and max
+    slots:
+    - minimal
+    - maximal
+  Series:
+    is_a: Range
+    description: A series of numbers constructed from min, max, and increment
+    slots:
+    - increment
+  ImageSize:
+    description: size of a 2D image (in integer units)
+    slots:
+    - height
+    - width
+  BoundingBox2D:
+    description: an axis-aligned 2D bounding box (float units)
+    slots:
+    - x_min
+    - x_max
+    - y_min
+    - y_max
+
+slots:
+  minimal:
+    description: Minimal value of a given dataset property
+    range: float
+  maximal:
+    description: Maximal value of a given dataset property
+    range: float
+  increment:
+    description: Increment between elements of a series
+    range: float
+  width:
+    description: The width of a given item - unit depends on item
+    range: integer
+  height:
+    description: The height of a given item - unit depends on item
+    range: integer
+  x_min:
+    description: minimum x
+    range: float
+  x_max:
+    description: maximum x
+    range: float
+  y_min:
+    description: minimum y
+    range: float
+  y_max:
+    description: maximum y
+    range: float

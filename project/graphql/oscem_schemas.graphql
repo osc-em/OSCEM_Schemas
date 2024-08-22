@@ -1,13 +1,13 @@
 # metamodel_version: 1.7.0
 type Acquisition
   {
-    nominalDefocus: NominalDefocus
-    calibratedDefocus: CalibratedDefocus
+    nominalDefocus: Range
+    calibratedDefocus: Range
     nominalMagnification: Integer
     calibratedMagnification: Integer
     holder: String
     holderCryogen: String
-    temperature: TemperatureRange
+    temperature: Range
     microscopeSoftware: String
     detector: String!
     detectorMode: String
@@ -23,11 +23,11 @@ type Acquisition
     binningCamera: Float!
     pixelSize: Float!
     specialistOptics: SpecialistOptics
-    beamshift: Beamshift
-    beamtilt: Beamtilt
-    imageshift: Float
+    beamshift: BoundingBox2D
+    beamtilt: BoundingBox2D
+    imageshift: BoundingBox2D
     beamtiltgroups: Integer
-    gainRefFlipRotate: String
+    gainrefFlipRotate: String
   }
 
 type Author
@@ -43,31 +43,12 @@ type Author
     workPhone: String!
   }
 
-type Base
-  {
-    acquisition: Acquisition
-  }
-
-type Beamshift
+type BoundingBox2D
   {
     xMin: Float
     xMax: Float
     yMin: Float
     yMax: Float
-  }
-
-type Beamtilt
-  {
-    xMin: Float
-    xMax: Float
-    yMin: Float
-    yMax: Float
-  }
-
-type CalibratedDefocus
-  {
-    minimal: Float
-    maximal: Float
   }
 
 type ChromaticAberrationCorrector
@@ -123,14 +104,6 @@ type ImageSize
     width: Integer
   }
 
-type Imagehift
-  {
-    xMin: Float
-    xMax: Float
-    yMin: Float
-    yMax: Float
-  }
-
 type Institution
   {
     nameOrg: String
@@ -145,7 +118,7 @@ type Instrument
     electronSource: String!
     accelerationVoltage: Integer!
     c2Aperture: Integer
-    cS: Float!
+    cs: Float!
   }
 
 type Ligand
@@ -166,12 +139,6 @@ type Molecule
     expressionSystem: String!
     taxonomyIdExpression: String!
     geneName: String
-  }
-
-type NominalDefocus
-  {
-    minimal: Float
-    maximal: Float
   }
 
 type OverallMolecule
@@ -203,6 +170,12 @@ type QuantityValue
     hasUnit: String
   }
 
+type Range
+  {
+    minimal: Float
+    maximal: Float
+  }
+
 type Sample
   {
     overallMolecule: OverallMolecule!
@@ -210,6 +183,13 @@ type Sample
     ligands: [Ligand]
     specimen: Specimen!
     grid: Grid
+  }
+
+type Series
+  {
+    minimal: Float
+    maximal: Float
+    increment: Float
   }
 
 type SpecialistOptics
@@ -239,14 +219,10 @@ type SphericalAberrationCorrector
     type: String!
   }
 
-type TemperatureRange
+type TiltAngle
   {
     minimal: Float
     maximal: Float
-  }
-
-type Testschema
-  {
-    instrument: Instrument
+    increment: Float
   }
 

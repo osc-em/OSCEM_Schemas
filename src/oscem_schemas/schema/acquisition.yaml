@@ -4,20 +4,20 @@ name: OSCEMAcquisiton
 description: >
   LinkML schema for electron microscopy sample and author-related metadata,
   broadly following the EMDB standard with some additions.
+
 prefixes:
   linkml: https://w3id.org/linkml/
-  ex: http://example.org/
+  acquisition: https://w3id.org/osc-em/acquisition
+  types: https://w3id.org/osc-em/types
 
-default_prefix: ex
+default_prefix: acquisition
 
 imports:
   - linkml:types
   - ./tomography
+  - ./types
 
 classes:
-  Base:
-    slots:
-    - acquisition
   Acquisition:
     slots:
     - nominal_defocus
@@ -26,7 +26,7 @@ classes:
     - calibrated_magnification
     - holder
     - holder_cryogen
-    - temperature
+    - temperature_range
     - microscope_software
     - detector
     - detector_mode
@@ -59,19 +59,6 @@ classes:
       pixel_size:
         required: true
 
-
-  NominalDefocus:
-    slots:
-    - minimal
-    - maximal
-  CalibratedDefocus:
-    slots:
-    - minimal
-    - maximal
-  TemperatureRange:
-    slots:
-    - minimal
-    - maximal
   EnergyFilter:
     slots:
     - used
@@ -82,10 +69,7 @@ classes:
         required: true
       width:
         required: true
-  ImageSize:
-    slots:
-    - height
-    - width
+
   SpecialistOptics:
     slots:
     - phaseplate
@@ -94,63 +78,38 @@ classes:
   Phaseplate:
     slots:
     - used
-    - type
+    - instrument_type
     slot_usage:
       used:
         required: true
-      type:
+      instrument_type:
+        description: Type of phaseplate
         required: true
   SphericalAberrationCorrector:
     slots:
     - used
-    - type
+    - instrument_type
     slot_usage:
       used:
         required: true
-      type:
+      instrument_type:
         required: true
   ChromaticAberrationCorrector:
     slots:
     - used
-    - type
+    - instrument_type
     slot_usage:
       used:
         required: true
-      type:
+      instrument_type:
         required: true
-  Beamshift:
-    slots:
-    - x_min
-    - x_max
-    - y_min
-    - y_max
-  Beamtilt:
-    slots:
-    - x_min
-    - x_max
-    - y_min
-    - y_max
-  Imageshift:
-    slots:
-    - x_min
-    - x_max
-    - y_min
-    - y_max
 
 slots:
-  acquisition:
-    range: Acquisition
   nominal_defocus:
-    range: NominalDefocus
+    range: Range
     description: Target defocus set, min and max values in µm.
-  minimal:
-    description: Minimal value of a given dataset property
-    range: float
-  maximal:
-    description: Maximal value of a given dataset property
-    range: float
   calibrated_defocus:
-    range: CalibratedDefocus
+    range: Range
     description: Machine estimated defocus, min and max values in µm. Has a tendency to be off.
   nominal_magnification:
     description: Magnification level as indicated by the instrument, no unit
@@ -164,9 +123,10 @@ slots:
   holder_cryogen:
     description: Type of cryogen used in the holder - if the holder is cooled seperately
     range: string
-  temperature:
-    range: TemperatureRange
+  temperature_range:
+    range: Range
     description: Temperature during data collection, in K with min and max values.
+    alias: temperature
   microscope_software:
     description: Software used for instrument control,
     range: string
@@ -188,12 +148,6 @@ slots:
   model:
     description: Make and model of a specilized device
     range: string
-  width:
-    description: The width of a given item - unit depends on item
-    range: integer
-  height:
-    description: The height of a given item - unit depends on item
-    range: integer
   image_size:
     range: ImageSize
     description: The size of the image in pixels, height and width given.
@@ -227,7 +181,8 @@ slots:
   phaseplate:
     description: Phaseplate is a special optics device that can be used to enhance contrast
     range: Phaseplate
-  type:
+  instrument_type:
+    alias: type
     description: Details of a given specialist instrument
     range: string
   spherical_aberration_corrector:
@@ -237,21 +192,13 @@ slots:
     range: ChromaticAberrationCorrector
     description: Specialist device to correct for chromatic aberration of the microscope lenses
   beamshift:
-    range: Beamshift
+    range: BoundingBox2D
     description: Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
-  x_min:
-    range: float
-  x_max:
-    range: float
-  y_min:
-    range: float
-  y_max:
-    range: float
   beamtilt:
-    range: Beamtilt
+    range: BoundingBox2D
     description: Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
   imageshift:
-    range: Imageshift
+    range: BoundingBox2D
     description: Movement of the Beam below the image in order to shift the image on the detector. Given in µm.
   beamtiltgroups:
     range: integer

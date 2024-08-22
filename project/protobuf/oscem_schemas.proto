@@ -3,13 +3,13 @@
 // metamodel_version: 1.7.0
 message Acquisition
  {
-  nominalDefocus nominalDefocus = 0
-  calibratedDefocus calibratedDefocus = 0
+  range nominalDefocus = 0
+  range calibratedDefocus = 0
   integer nominalMagnification = 0
   integer calibratedMagnification = 0
   string holder = 0
   string holderCryogen = 0
-  temperatureRange temperature = 0
+  range temperature = 0
   string microscopeSoftware = 0
   string detector = 0
   string detectorMode = 0
@@ -25,11 +25,11 @@ message Acquisition
   float binningCamera = 0
   float pixelSize = 0
   specialistOptics specialistOptics = 0
-  beamshift beamshift = 0
-  beamtilt beamtilt = 0
-  float imageshift = 0
+  boundingBox2D beamshift = 0
+  boundingBox2D beamtilt = 0
+  boundingBox2D imageshift = 0
   integer beamtiltgroups = 0
-  string gainRefFlipRotate = 0
+  string gainrefFlipRotate = 0
  }
 message Author
  {
@@ -43,28 +43,13 @@ message Author
   string email = 0
   string workPhone = 0
  }
-message Base
- {
-  acquisition acquisition = 0
- }
-message Beamshift
+// an axis-aligned 2D bounding box (float units)
+message BoundingBox2D
  {
   float xMin = 0
   float xMax = 0
   float yMin = 0
   float yMax = 0
- }
-message Beamtilt
- {
-  float xMin = 0
-  float xMax = 0
-  float yMin = 0
-  float yMax = 0
- }
-message CalibratedDefocus
- {
-  float minimal = 0
-  float maximal = 0
  }
 message ChromaticAberrationCorrector
  {
@@ -111,17 +96,11 @@ message Grid
   float pretreatmentPressure = 0
   string pretreatmentAtmosphere = 0
  }
+// size of a 2D image (in integer units)
 message ImageSize
  {
   integer height = 0
   integer width = 0
- }
-message Imagehift
- {
-  float xMin = 0
-  float xMax = 0
-  float yMin = 0
-  float yMax = 0
  }
 // A class representing an organization
 message Institution
@@ -138,7 +117,7 @@ message Instrument
   string electronSource = 0
   integer accelerationVoltage = 0
   integer c2Aperture = 0
-  float cS = 0
+  float cs = 0
  }
 // A class representing a ligand
 message Ligand
@@ -159,11 +138,6 @@ message Molecule
   string expressionSystem = 0
   string taxonomyIdExpression = 0
   string geneName = 0
- }
-message NominalDefocus
- {
-  float minimal = 0
-  float maximal = 0
  }
 // A class representing the overall molecule
 message OverallMolecule
@@ -192,6 +166,12 @@ message QuantityValue
   double hasValue = 0
   string hasUnit = 0
  }
+// A range constructed from min and max
+message Range
+ {
+  float minimal = 0
+  float maximal = 0
+ }
 // A class representing a sample
 message Sample
  {
@@ -200,6 +180,13 @@ message Sample
  repeated  ligand ligands = 0
   specimen specimen = 0
   grid grid = 0
+ }
+// A series of numbers constructed from min, max, and increment
+message Series
+ {
+  float minimal = 0
+  float maximal = 0
+  float increment = 0
  }
 message SpecialistOptics
  {
@@ -226,12 +213,10 @@ message SphericalAberrationCorrector
   boolean used = 0
   string type = 0
  }
-message TemperatureRange
+// The min, max and increment of the tilt angle in a tomography session. Unit is degree.
+message TiltAngle
  {
   float minimal = 0
   float maximal = 0
- }
-message Testschema
- {
-  instrument instrument = 0
+  float increment = 0
  }

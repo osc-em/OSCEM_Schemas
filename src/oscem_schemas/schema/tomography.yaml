@@ -1,16 +1,17 @@
-id: https://w3id.org/osc-em/acquisition
+id: https://w3id.org/osc-em/tomography
 name: TomoAdditionalFields
 description: Mixin for additional fields for tomography datasets
 
-default_prefix: ex
+prefixes:
+  types: https://w3id.org/osc-em/types
+
+imports:
+  - ./types
 
 classes:
   TiltAngle:
     description: The min, max and increment of the tilt angle in a tomography session. Unit is degree.
-    slots:
-    - minimal
-    - maximal
-    - increment
+    is_a: Series
 
 slots:
   tilt_axis_angle:
@@ -19,11 +20,3 @@ slots:
   tilt_angle:
     range: TiltAngle
     description: The min, max and increment of the tilt angle in a tomography session. Unit is degree.
-  minimal:
-    description: Minimal value of a given dataset property
-    range: float
-  maximal:
-    description: Maximal value of a given dataset property
-    range: float
-  increment:
-    range: float

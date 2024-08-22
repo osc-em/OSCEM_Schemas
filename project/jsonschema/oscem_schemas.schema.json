@@ -4,122 +4,224 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "Beamshift": {
-                    "$ref": "#/$defs/Beamshift",
+                "beamshift": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BoundingBox2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
                 },
-                "Beamtilt": {
-                    "$ref": "#/$defs/Beamtilt",
+                "beamtilt": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BoundingBox2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
                 },
-                "Beamtiltgroups": {
+                "beamtiltgroups": {
                     "description": "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "Binning_camera": {
+                "binning_camera": {
                     "description": "Level of binning on the images applied during data collection",
                     "type": "number"
                 },
-                "Calibrated_defocus": {
-                    "$ref": "#/$defs/CalibratedDefocus",
+                "calibrated_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Machine estimated defocus, min and max values in \u00b5m. Has a tendency to be off."
                 },
-                "Calibrated_magnification": {
+                "calibrated_magnification": {
                     "description": "Calculated magnification, no unit",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "Cryogen": {
+                "cryogen": {
                     "description": "Cryogen used in cooling the instrument and sample, usually nitrogen",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "Datetime": {
+                "datetime": {
                     "description": "Time and date of the data acquisition",
                     "format": "date-time",
                     "type": "string"
                 },
-                "Detector": {
+                "detector": {
                     "description": "Make and model of the detector used",
                     "type": "string"
                 },
-                "Detector_mode": {
+                "detector_mode": {
                     "description": "Operating mode of the detector",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "Dose_per_movie": {
+                "dose_per_movie": {
                     "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom",
                     "type": "number"
                 },
-                "Energy_filter": {
-                    "$ref": "#/$defs/EnergyFilter",
+                "energy_filter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EnergyFilter"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Wether an energy filter was used and its specifics."
                 },
-                "Exposure_time": {
+                "exposure_time": {
                     "description": "Time of data acquisition per movie/tilt - in s",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
-                "Frames_per_movie": {
+                "frames_per_movie": {
                     "description": "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "GainRef_FlipRotate": {
+                "gainref_flip_rotate": {
                     "description": "Whether and how you have to flip or rotate the gainref in order to align with your acquired images",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "Grids_imaged": {
+                "grids_imaged": {
                     "description": "Number of grids imaged for this project - here with qualifier during this data acquisition",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "Holder": {
+                "holder": {
                     "description": "Speciman holder model",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "Holder_cryogen": {
+                "holder_cryogen": {
                     "description": "Type of cryogen used in the holder - if the holder is cooled seperately",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "Image_size": {
-                    "$ref": "#/$defs/ImageSize",
+                "image_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ImageSize"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The size of the image in pixels, height and width given."
                 },
-                "Images_generated": {
+                "images_generated": {
                     "description": "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "Imageshift": {
-                    "description": "Movement of the Beam below the image in order to shift the image on the detector. Given in \u00b5m.",
-                    "type": "number"
+                "imageshift": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BoundingBox2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Movement of the Beam below the image in order to shift the image on the detector. Given in \u00b5m."
                 },
-                "Microscope_software": {
+                "microscope_software": {
                     "description": "Software used for instrument control,",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "Nominal_defocus": {
-                    "$ref": "#/$defs/NominalDefocus",
+                "nominal_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Target defocus set, min and max values in \u00b5m."
                 },
-                "Nominal_magnification": {
+                "nominal_magnification": {
                     "description": "Magnification level as indicated by the instrument, no unit",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "Pixel_size": {
+                "pixel_size": {
                     "description": "Pixel size, in Angstrom",
                     "type": "number"
                 },
-                "Specialist_Optics": {
-                    "$ref": "#/$defs/SpecialistOptics",
+                "specialist_optics": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SpecialistOptics"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Any type of special optics, such as a phaseplate"
                 },
-                "Temperature": {
-                    "$ref": "#/$defs/TemperatureRange",
+                "temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Temperature during data collection, in K with min and max values."
                 }
             },
             "required": [
-                "Detector",
-                "Dose_per_movie",
-                "Datetime",
-                "Binning_camera",
-                "Pixel_size"
+                "detector",
+                "dose_per_movie",
+                "datetime",
+                "binning_camera",
+                "pixel_size"
             ],
             "title": "Acquisition",
             "type": "object"
@@ -139,7 +241,10 @@
                 },
                 "first_name": {
                     "description": "first name",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "institution": {
                     "description": "institution",
@@ -158,7 +263,10 @@
                 },
                 "role": {
                     "description": "Role of the author, i.e., principal investigator",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "work_phone": {
                     "description": "work phone",
@@ -166,7 +274,10 @@
                 },
                 "work_status": {
                     "description": "work status",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -180,89 +291,58 @@
             "title": "Author",
             "type": "object"
         },
-        "Base": {
+        "BoundingBox2D": {
             "additionalProperties": false,
-            "description": "",
+            "description": "an axis-aligned 2D bounding box (float units)",
             "properties": {
-                "Acquisition": {
-                    "$ref": "#/$defs/Acquisition"
+                "x_max": {
+                    "description": "maximum x",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "x_min": {
+                    "description": "minimum x",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "y_max": {
+                    "description": "maximum y",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "y_min": {
+                    "description": "minimum y",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 }
             },
-            "title": "Base",
-            "type": "object"
-        },
-        "Beamshift": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "X_max": {
-                    "type": "number"
-                },
-                "X_min": {
-                    "type": "number"
-                },
-                "Y_max": {
-                    "type": "number"
-                },
-                "Y_min": {
-                    "type": "number"
-                }
-            },
-            "title": "Beamshift",
-            "type": "object"
-        },
-        "Beamtilt": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "X_max": {
-                    "type": "number"
-                },
-                "X_min": {
-                    "type": "number"
-                },
-                "Y_max": {
-                    "type": "number"
-                },
-                "Y_min": {
-                    "type": "number"
-                }
-            },
-            "title": "Beamtilt",
-            "type": "object"
-        },
-        "CalibratedDefocus": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "Maximal": {
-                    "description": "Maximal value of a given dataset property",
-                    "type": "number"
-                },
-                "Minimal": {
-                    "description": "Minimal value of a given dataset property",
-                    "type": "number"
-                }
-            },
-            "title": "CalibratedDefocus",
+            "title": "BoundingBox2D",
             "type": "object"
         },
         "ChromaticAberrationCorrector": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "Type": {
+                "type": {
                     "description": "Details of a given specialist instrument",
                     "type": "string"
                 },
-                "Used": {
+                "used": {
                     "description": "whether a specific instrument was used during data acquisition",
                     "type": "boolean"
                 }
             },
             "required": [
-                "Used",
-                "Type"
+                "used",
+                "type"
             ],
             "title": "ChromaticAberrationCorrector",
             "type": "object"
@@ -271,11 +351,9 @@
             "additionalProperties": false,
             "description": "OSC-EM Metadata for a dataset",
             "properties": {
-                "Acquisition": {
-                    "$ref": "#/$defs/Acquisition"
-                },
-                "Instrument": {
-                    "$ref": "#/$defs/Instrument"
+                "acquisition": {
+                    "$ref": "#/$defs/Acquisition",
+                    "description": "Describe the data acquisition parameters"
                 },
                 "authors": {
                     "description": "List of authors associated with the project",
@@ -291,14 +369,18 @@
                     },
                     "type": "array"
                 },
+                "instrument": {
+                    "$ref": "#/$defs/Instrument",
+                    "description": "Describe the instrument used to acquire the data"
+                },
                 "sample": {
                     "$ref": "#/$defs/Sample",
                     "description": "Sample information"
                 }
             },
             "required": [
-                "Acquisition",
-                "Instrument",
+                "acquisition",
+                "instrument",
                 "sample",
                 "grants",
                 "authors"
@@ -310,22 +392,25 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "Model": {
+                "model": {
                     "description": "Make and model of a specilized device",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "Used": {
+                "used": {
                     "description": "whether a specific instrument was used during data acquisition",
                     "type": "boolean"
                 },
-                "Width": {
+                "width": {
                     "description": "The width of a given item - unit depends on item",
                     "type": "integer"
                 }
             },
             "required": [
-                "Used",
-                "Width"
+                "used",
+                "width"
             ],
             "title": "EnergyFilter",
             "type": "object"
@@ -335,30 +420,52 @@
             "description": "Grant",
             "properties": {
                 "budget": {
-                    "$ref": "#/$defs/QuantityValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "budget"
                 },
                 "end_date": {
                     "description": "end date",
                     "format": "date",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "funder": {
                     "description": "funder",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "name": {
                     "description": "name",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "project_id": {
                     "description": "project id",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "start_date": {
                     "description": "start date",
                     "format": "date",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "title": "Grant",
@@ -370,47 +477,80 @@
             "properties": {
                 "film_material": {
                     "description": "Type of material the support film is made of",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "film_support": {
                     "description": "Whether a support film was used",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "film_thickness": {
                     "description": "Thickness of the support film",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "film_topology": {
                     "description": "Topology of the support film",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Grid manufacturer",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "material": {
                     "description": "Material out of which the grid is made",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "mesh": {
                     "description": "Grid mesh in lines per inch",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "pretreatment_atmosphere": {
                     "description": "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "pretreatment_pressure": {
                     "description": "Pressure of the chamber during pretreatment, in Pa",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "pretreatment_time": {
                     "description": "Length of time of the pretreatment in s",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "pretreatment_type": {
                     "description": "Type of pretreatment of the grid, i.e., glow discharge",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "title": "Grid",
@@ -418,38 +558,24 @@
         },
         "ImageSize": {
             "additionalProperties": false,
-            "description": "",
+            "description": "size of a 2D image (in integer units)",
             "properties": {
-                "Height": {
+                "height": {
                     "description": "The height of a given item - unit depends on item",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "Width": {
+                "width": {
                     "description": "The width of a given item - unit depends on item",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 }
             },
             "title": "ImageSize",
-            "type": "object"
-        },
-        "Imagehift": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "X_max": {
-                    "type": "number"
-                },
-                "X_min": {
-                    "type": "number"
-                },
-                "Y_max": {
-                    "type": "number"
-                },
-                "Y_min": {
-                    "type": "number"
-                }
-            },
-            "title": "Imagehift",
             "type": "object"
         },
         "Institution": {
@@ -458,7 +584,10 @@
             "properties": {
                 "name_org": {
                     "description": "Name of the organization",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type_org": {
                     "$ref": "#/$defs/OrganizationTypeEnum",
@@ -475,42 +604,45 @@
             "additionalProperties": false,
             "description": "Instrument values, mostly constant across a data collection.",
             "properties": {
-                "Acceleration_Voltage": {
+                "acceleration_voltage": {
                     "description": "Voltage used for the electron acceleration, in kV",
                     "type": "integer"
                 },
-                "C2_Aperture": {
+                "c2_aperture": {
                     "description": "C2 aperture size used in data acquisition, in \u00b5m",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "CS": {
+                "cs": {
                     "description": "Spherical aberration of the instrument, in mm",
                     "type": "number"
                 },
-                "Electron_source": {
+                "electron_source": {
                     "description": "Type of electron source used in the microscope, such as FEG",
                     "type": "string"
                 },
-                "Illumination": {
+                "illumination": {
                     "description": "Mode of illumination used during data collection",
                     "type": "string"
                 },
-                "Imaging": {
+                "imaging": {
                     "description": "Mode of imaging used during data collection",
                     "type": "string"
                 },
-                "Microscope": {
+                "microscope": {
                     "description": "Name/Type of the Microscope",
                     "type": "string"
                 }
             },
             "required": [
-                "Microscope",
-                "Illumination",
-                "Imaging",
-                "Electron_source",
-                "Acceleration_Voltage",
-                "CS"
+                "microscope",
+                "illumination",
+                "imaging",
+                "electron_source",
+                "acceleration_voltage",
+                "cs"
             ],
             "title": "Instrument",
             "type": "object"
@@ -525,11 +657,17 @@
                 },
                 "reference": {
                     "description": "Link to a reference of your ligand, i.e., CCD, PubChem, etc.",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "smile": {
                     "description": "Provide a valid SMILE string of your ligand",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -548,7 +686,10 @@
                 },
                 "gene_name": {
                     "description": "Name of the gene of interest",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "molecular_class": {
                     "$ref": "#/$defs/MoleculeClassEnum",
@@ -603,22 +744,6 @@
             "title": "MoleculeClassEnum",
             "type": "string"
         },
-        "NominalDefocus": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "Maximal": {
-                    "description": "Maximal value of a given dataset property",
-                    "type": "number"
-                },
-                "Minimal": {
-                    "description": "Minimal value of a given dataset property",
-                    "type": "number"
-                }
-            },
-            "title": "NominalDefocus",
-            "type": "object"
-        },
         "OrganizationTypeEnum": {
             "description": "",
             "enum": [
@@ -636,7 +761,10 @@
             "properties": {
                 "molecular_weight": {
                     "description": "Molecular weight in Da",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "name_sample": {
                     "description": "Name of the full sample",
@@ -666,23 +794,38 @@
                 "email": {
                     "description": "email",
                     "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "first_name": {
                     "description": "first name",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "name": {
                     "description": "name",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "work_phone": {
                     "description": "work phone",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "work_status": {
                     "description": "work status",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 }
             },
             "title": "Person",
@@ -692,18 +835,18 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "Type": {
-                    "description": "Details of a given specialist instrument",
+                "type": {
+                    "description": "Type of phaseplate",
                     "type": "string"
                 },
-                "Used": {
+                "used": {
                     "description": "whether a specific instrument was used during data acquisition",
                     "type": "boolean"
                 }
             },
             "required": [
-                "Used",
-                "Type"
+                "used",
+                "type"
             ],
             "title": "Phaseplate",
             "type": "object"
@@ -714,14 +857,42 @@
             "properties": {
                 "has_unit": {
                     "description": "Unit",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "has_value": {
                     "description": "Value",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 }
             },
             "title": "QuantityValue",
+            "type": "object"
+        },
+        "Range": {
+            "additionalProperties": false,
+            "description": "A range constructed from min and max",
+            "properties": {
+                "maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Range",
             "type": "object"
         },
         "Sample": {
@@ -729,7 +900,14 @@
             "description": "A class representing a sample",
             "properties": {
                 "grid": {
-                    "$ref": "#/$defs/Grid",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Grid"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Description of the grid used"
                 },
                 "ligands": {
@@ -737,7 +915,10 @@
                     "items": {
                         "$ref": "#/$defs/Ligand"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "molecule": {
                     "description": "List of molecule associated with the sample",
@@ -763,20 +944,70 @@
             "title": "Sample",
             "type": "object"
         },
+        "Series": {
+            "additionalProperties": false,
+            "description": "A series of numbers constructed from min, max, and increment",
+            "properties": {
+                "increment": {
+                    "description": "Increment between elements of a series",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "maximal": {
+                    "description": "Maximal value of a given dataset property",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "minimal": {
+                    "description": "Minimal value of a given dataset property",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Series",
+            "type": "object"
+        },
         "SpecialistOptics": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "Chromatic_Aberration_Corrector": {
-                    "$ref": "#/$defs/ChromaticAberrationCorrector",
+                "chromatic_aberration_corrector": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ChromaticAberrationCorrector"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Specialist device to correct for chromatic aberration of the microscope lenses"
                 },
-                "Phaseplate": {
-                    "$ref": "#/$defs/Phaseplate",
+                "phaseplate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Phaseplate"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Phaseplate is a special optics device that can be used to enhance contrast"
                 },
-                "Spherical_Aberration_Corrector": {
-                    "$ref": "#/$defs/SphericalAberrationCorrector",
+                "spherical_aberration_corrector": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SphericalAberrationCorrector"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Specialist device to correct for spherical aberration of the microscope lenses"
                 }
             },
@@ -789,11 +1020,17 @@
             "properties": {
                 "buffer": {
                     "description": "Name/composition of the (chemical) sample buffer during grid preparation",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "concentration": {
                     "description": "Concentration of the (supra)molecule in the sample, in M",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "embedding": {
                     "description": "Whether the sample was embedded",
@@ -801,7 +1038,10 @@
                 },
                 "humidity": {
                     "description": "Environmental humidity just before vitrification, in %",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "ph": {
                     "description": "pH of the sample buffer",
@@ -818,7 +1058,10 @@
                 "temperature": {
                     "description": "Environmental temperature just before vitrification, in K",
                     "minimum": 0.0,
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "vitrification": {
                     "description": "Whether the sample was vitrified",
@@ -844,63 +1087,46 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "Type": {
+                "type": {
                     "description": "Details of a given specialist instrument",
                     "type": "string"
                 },
-                "Used": {
+                "used": {
                     "description": "whether a specific instrument was used during data acquisition",
                     "type": "boolean"
                 }
             },
             "required": [
-                "Used",
-                "Type"
+                "used",
+                "type"
             ],
             "title": "SphericalAberrationCorrector",
-            "type": "object"
-        },
-        "TemperatureRange": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "Maximal": {
-                    "description": "Maximal value of a given dataset property",
-                    "type": "number"
-                },
-                "Minimal": {
-                    "description": "Minimal value of a given dataset property",
-                    "type": "number"
-                }
-            },
-            "title": "TemperatureRange",
-            "type": "object"
-        },
-        "Testschema": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "Instrument": {
-                    "$ref": "#/$defs/Instrument"
-                }
-            },
-            "title": "Testschema",
             "type": "object"
         },
         "TiltAngle": {
             "additionalProperties": false,
             "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree.",
             "properties": {
-                "Increment": {
-                    "type": "number"
+                "increment": {
+                    "description": "Increment between elements of a series",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
-                "Maximal": {
+                "maximal": {
                     "description": "Maximal value of a given dataset property",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
-                "Minimal": {
+                "minimal": {
                     "description": "Minimal value of a given dataset property",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 }
             },
             "title": "TiltAngle",
@@ -913,11 +1139,9 @@
     "description": "OSC-EM Metadata for a dataset",
     "metamodel_version": "1.7.0",
     "properties": {
-        "Acquisition": {
-            "$ref": "#/$defs/Acquisition"
-        },
-        "Instrument": {
-            "$ref": "#/$defs/Instrument"
+        "acquisition": {
+            "$ref": "#/$defs/Acquisition",
+            "description": "Describe the data acquisition parameters"
         },
         "authors": {
             "description": "List of authors associated with the project",
@@ -933,14 +1157,18 @@
             },
             "type": "array"
         },
+        "instrument": {
+            "$ref": "#/$defs/Instrument",
+            "description": "Describe the instrument used to acquire the data"
+        },
         "sample": {
             "$ref": "#/$defs/Sample",
             "description": "Sample information"
         }
     },
     "required": [
-        "Acquisition",
-        "Instrument",
+        "acquisition",
+        "instrument",
         "sample",
         "grants",
         "authors"

@@ -1,13 +1,11 @@
 id: https://w3id.org/osc-em/sample
-name: OSCEMSample
+name: sample
 description: >
   LinkML schema for electron microscopy sample and author-related metadata,
   broadly following the EMDB standard with some additions.
 prefixes:
   linkml: https://w3id.org/linkml/
-  ex: http://example.org/
-
-default_prefix: ex
+  sample: https://w3id.org/osc-em/sample
 
 imports:
   - linkml:types
@@ -30,13 +28,12 @@ classes:
     title: OverallMolecule
     description: A class representing the overall molecule
     slots:
-      - type
+      - molecular_type
       - name_sample
       - source
       - molecular_weight
     slot_usage:
-      type:
-        # alias: Type
+      molecular_type:
         required: true
       name_sample:
         # alias: Name
@@ -52,7 +49,7 @@ classes:
     description: A class representing a molecule
     slots:
       - name_mol
-      - type
+      - molecular_type
       - molecular_class
       - sequence
       - natural_source
@@ -64,8 +61,7 @@ classes:
       name_mol:
         # alias: Name
         required: true
-      type:
-        # alias: Type
+      molecular_type:
         required: true
       molecular_class:
         # alias: Class
@@ -206,7 +202,8 @@ classes:
         # alias: Grid
 
 slots:
-  type:
+  molecular_type:
+    alias: type
     title: Type
     description: Description of the overall supramolecular type, i.e., a complex
     range: string
@@ -378,7 +375,3 @@ slots:
     title: Grid
     description: Description of the grid used
     range: Grid
-  sample:
-    title: Sample
-    description: Sample information
-    range: Sample
