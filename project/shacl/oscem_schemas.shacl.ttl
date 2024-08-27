@@ -16,22 +16,7 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:closed true ;
     sh:description "OSC-EM Metadata for a dataset" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/osc-em/instrument/:Instrument> ;
-            sh:description "Describe the instrument used to acquire the data" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Instrument" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/oscem-schemas/:instrument> ],
-        [ sh:class <http://schema.org/Grant> ;
-            sh:description "List of grants associated with the project" ;
-            sh:minCount 1 ;
-            sh:name "Grants" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/oscem-schemas/:grants> ],
-        [ sh:class <https://w3id.org/osc-em/sample/:Sample> ;
+    sh:property [ sh:class <https://w3id.org/osc-em/sample/:Sample> ;
             sh:description "Sample information" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -39,6 +24,28 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/oscem-schemas/:sample> ],
+        [ sh:class <http://schema.org/Grant> ;
+            sh:description "List of grants associated with the project" ;
+            sh:minCount 1 ;
+            sh:name "Grants" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/oscem-schemas/:grants> ],
+        [ sh:class <https://w3id.org/osc-em/organizational/:Author> ;
+            sh:description "List of authors associated with the project" ;
+            sh:minCount 1 ;
+            sh:name "Authors" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/oscem-schemas/:authors> ],
+        [ sh:class <https://w3id.org/osc-em/instrument/:Instrument> ;
+            sh:description "Describe the instrument used to acquire the data" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Instrument" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/oscem-schemas/:instrument> ],
         [ sh:class <https://w3id.org/osc-em/acquisitionAcquisition> ;
             sh:description "Describe the data acquisition parameters" ;
             sh:maxCount 1 ;
@@ -46,14 +53,7 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:name "Acquisition" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/oscem-schemas/:acquisition> ],
-        [ sh:class <https://w3id.org/osc-em/organizational/:Author> ;
-            sh:description "List of authors associated with the project" ;
-            sh:minCount 1 ;
-            sh:name "Authors" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/oscem-schemas/:authors> ] ;
+            sh:path <https://w3id.org/osc-em/oscem-schemas/:acquisition> ] ;
     sh:targetClass <https://w3id.org/osc-em/oscem-schemas/:EMDataset> .
 
 <https://w3id.org/osc-em/tomography/:TiltAngle> a sh:NodeShape ;
@@ -85,31 +85,25 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:closed true ;
     sh:description "Value together with unit" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <http://qudt.org/schema/qudthasUnit> ],
-        [ sh:datatype xsd:double ;
+    sh:property [ sh:datatype xsd:double ;
             sh:description "Value" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <http://qudt.org/schema/qudthasQuantityKind> ] ;
+            sh:path <http://qudt.org/schema/qudthasQuantityKind> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <http://qudt.org/schema/qudthasUnit> ] ;
     sh:targetClass <http://qudt.org/schema/qudtquantityValue> .
 
 <http://schema.org/Grant> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Grant" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:date ;
-            sh:description "end date" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/organizational/:end_date> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "funder" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -121,53 +115,59 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/organizational/:start_date> ],
+        [ sh:datatype xsd:string ;
+            sh:description "project id" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <http://schema.org/identifier> ],
+        [ sh:datatype xsd:string ;
+            sh:description "name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://schema.org/name> ],
         [ sh:class <http://qudt.org/schema/qudtquantityValue> ;
             sh:description "budget" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://w3id.org/osc-em/organizational/:budget> ],
-        [ sh:datatype xsd:string ;
-            sh:description "name" ;
+        [ sh:datatype xsd:date ;
+            sh:description "end date" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://schema.org/name> ],
-        [ sh:datatype xsd:string ;
-            sh:description "project id" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <http://schema.org/identifier> ] ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/organizational/:end_date> ] ;
     sh:targetClass <http://schema.org/Grant> .
 
 <http://schema.org/Person> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "work phone" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <http://schema.org/telephone> ],
+        [ sh:datatype xsd:string ;
             sh:description "first name" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/osc-em/organizational/:first_name> ],
         [ sh:datatype xsd:string ;
-            sh:description "work phone" ;
+            sh:description "name" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <http://schema.org/telephone> ],
+            sh:order 0 ;
+            sh:path <http://schema.org/name> ],
         [ sh:datatype xsd:boolean ;
             sh:description "work status" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/organizational/:work_status> ],
-        [ sh:datatype xsd:string ;
-            sh:description "name" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://schema.org/name> ],
         [ sh:datatype xsd:string ;
             sh:description "email" ;
             sh:maxCount 1 ;
@@ -180,107 +180,60 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
 <https://w3id.org/osc-em/acquisitionAcquisition> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Time and date of the data acquisition" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:or ( [ sh:datatype xsd:dateTime ;
-                        sh:nodeKind sh:Literal ] [ sh:datatype xsd:date ;
-                        sh:nodeKind sh:Literal ] ) ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/osc-em/acquisitiondate_time> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
-        [ sh:class <https://w3id.org/osc-em/types/:BoundingBox2D> ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+    sh:property [ sh:class <https://w3id.org/osc-em/types/:Range> ;
+            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 23 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbeamtilt> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 25 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
-        [ sh:class <https://w3id.org/osc-em/types/:ImageSize> ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 12 ;
-            sh:path <https://w3id.org/osc-em/acquisitionimage_size> ],
-        [ sh:class <https://w3id.org/osc-em/types/:BoundingBox2D> ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path <https://w3id.org/osc-em/acquisitionimageshift> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
         [ sh:class <https://w3id.org/osc-em/types/:Range> ;
             sh:description "Target defocus set, min and max values in µm." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <https://w3id.org/osc-em/acquisitionnominal_defocus> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
-        [ sh:class <https://w3id.org/osc-em/types/:Range> ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/acquisitiontemperature_range> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Level of binning on the images applied during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbinning_camera> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pixel size, in Angstrom" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path <https://w3id.org/osc-em/acquisitionpixel_size> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Make and model of the detector used" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/osc-em/acquisitiondetector> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Operating mode of the detector" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/osc-em/acquisitiondetector_mode> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 17 ;
             sh:path <https://w3id.org/osc-em/acquisitiongrids_imaged> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Calculated magnification, no unit" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/acquisitioncalibrated_magnification> ],
+            sh:order 26 ;
+            sh:path <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
+        [ sh:class <https://w3id.org/osc-em/types/:ImageSize> ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/osc-em/acquisitionimage_size> ],
         [ sh:datatype xsd:string ;
             sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 15 ;
             sh:path <https://w3id.org/osc-em/acquisitioncryogen> ],
+        [ sh:class <https://w3id.org/osc-em/acquisitionSpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Speciman holder model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/acquisitionholder> ],
         [ sh:datatype xsd:float ;
             sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
             sh:maxCount 1 ;
@@ -288,66 +241,113 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:Literal ;
             sh:order 10 ;
             sh:path <https://w3id.org/osc-em/acquisitiondose_per_movie> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/acquisitionholder> ],
-        [ sh:class <https://w3id.org/osc-em/types/:Range> ;
-            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
-        [ sh:class <https://w3id.org/osc-em/acquisitionSpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
-        [ sh:class <https://w3id.org/osc-em/acquisitionEnergyFilter> ;
-            sh:description "Wether an energy filter was used and its specifics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/osc-em/acquisitionenergy_filter> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 18 ;
             sh:path <https://w3id.org/osc-em/acquisitionimages_generated> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
         [ sh:datatype xsd:float ;
             sh:description "Time of data acquisition per movie/tilt - in s" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 14 ;
             sh:path <https://w3id.org/osc-em/acquisitionexposure_time> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
+        [ sh:class <https://w3id.org/osc-em/types/:BoundingBox2D> ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path <https://w3id.org/osc-em/acquisitionimageshift> ],
         [ sh:class <https://w3id.org/osc-em/types/:BoundingBox2D> ;
             sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 22 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbeamshift> ] ;
+            sh:path <https://w3id.org/osc-em/acquisitionbeamshift> ],
+        [ sh:description "Time and date of the data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:datatype xsd:dateTime ;
+                        sh:nodeKind sh:Literal ] [ sh:datatype xsd:date ;
+                        sh:nodeKind sh:Literal ] ) ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/osc-em/acquisitiondate_time> ],
+        [ sh:class <https://w3id.org/osc-em/types/:BoundingBox2D> ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 23 ;
+            sh:path <https://w3id.org/osc-em/acquisitionbeamtilt> ],
+        [ sh:class <https://w3id.org/osc-em/types/:Range> ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/acquisitiontemperature_range> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Make and model of the detector used" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/osc-em/acquisitiondetector> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Calculated magnification, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/acquisitioncalibrated_magnification> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 25 ;
+            sh:path <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Operating mode of the detector" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/osc-em/acquisitiondetector_mode> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size, in Angstrom" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 20 ;
+            sh:path <https://w3id.org/osc-em/acquisitionpixel_size> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Level of binning on the images applied during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/osc-em/acquisitionbinning_camera> ],
+        [ sh:class <https://w3id.org/osc-em/acquisitionEnergyFilter> ;
+            sh:description "Wether an energy filter was used and its specifics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/osc-em/acquisitionenergy_filter> ] ;
     sh:targetClass <https://w3id.org/osc-em/acquisitionAcquisition> .
 
 <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> a sh:NodeShape ;
@@ -372,14 +372,7 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
 <https://w3id.org/osc-em/acquisitionEnergyFilter> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
-            sh:description "whether a specific instrument was used during data acquisition" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/acquisitionused> ],
-        [ sh:datatype xsd:integer ;
+    sh:property [ sh:datatype xsd:integer ;
             sh:description "The width of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -391,7 +384,14 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/acquisitionmodel> ] ;
+            sh:path <https://w3id.org/osc-em/acquisitionmodel> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "whether a specific instrument was used during data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/acquisitionused> ] ;
     sh:targetClass <https://w3id.org/osc-em/acquisitionEnergyFilter> .
 
 <https://w3id.org/osc-em/acquisitionPhaseplate> a sh:NodeShape ;
@@ -416,13 +416,7 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
 <https://w3id.org/osc-em/acquisitionSpecialistOptics> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/osc-em/acquisitionPhaseplate> ;
-            sh:description "Phaseplate is a special optics device that can be used to enhance contrast" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/acquisitionphaseplate> ],
-        [ sh:class <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ;
+    sh:property [ sh:class <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ;
             sh:description "Specialist device to correct for chromatic aberration of the microscope lenses" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -433,7 +427,13 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ] ;
+            sh:path <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ],
+        [ sh:class <https://w3id.org/osc-em/acquisitionPhaseplate> ;
+            sh:description "Phaseplate is a special optics device that can be used to enhance contrast" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/acquisitionphaseplate> ] ;
     sh:targetClass <https://w3id.org/osc-em/acquisitionSpecialistOptics> .
 
 <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> a sh:NodeShape ;
@@ -459,26 +459,20 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:closed true ;
     sh:description "Instrument values, mostly constant across a data collection." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
-            sh:description "C2 aperture size used in data acquisition, in µm" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/osc-em/instrument/:c2_aperture> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Spherical aberration of the instrument, in mm" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Mode of illumination used during data collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/instrument/:cs> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/instrument/:illumination> ],
         [ sh:datatype xsd:string ;
-            sh:description "Type of electron source used in the microscope, such as FEG" ;
+            sh:description "Name/Type of the Microscope" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/instrument/:electron_source> ],
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/instrument/:microscope> ],
         [ sh:datatype xsd:string ;
             sh:description "Mode of imaging used during data collection" ;
             sh:maxCount 1 ;
@@ -486,13 +480,6 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/instrument/:imaging> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Mode of illumination used during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/instrument/:illumination> ],
         [ sh:datatype xsd:integer ;
             sh:description "Voltage used for the electron acceleration, in kV" ;
             sh:maxCount 1 ;
@@ -500,91 +487,41 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path <https://w3id.org/osc-em/instrument/:acceleration_voltage> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "C2 aperture size used in data acquisition, in µm" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/osc-em/instrument/:c2_aperture> ],
         [ sh:datatype xsd:string ;
-            sh:description "Name/Type of the Microscope" ;
+            sh:description "Type of electron source used in the microscope, such as FEG" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/instrument/:microscope> ] ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/instrument/:electron_source> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Spherical aberration of the instrument, in mm" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/instrument/:cs> ] ;
     sh:targetClass <https://w3id.org/osc-em/instrument/:Instrument> .
 
 <https://w3id.org/osc-em/organizational/:Author> a sh:NodeShape ;
     rdfs:subClassOf <http://schema.org/Person> ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
-            sh:description "work status" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/organizational/:work_status> ],
-        [ sh:class <https://w3id.org/osc-em/organizational/:Institution> ;
-            sh:description "author's institution" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <http://schema.org/Organization> ],
-        [ sh:datatype xsd:string ;
-            sh:description "work phone" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <http://schema.org/telephone> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Role of the author, i.e., principal investigator" ;
-            sh:maxCount 1 ;
-            sh:name "Role" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/organizational/:role> ],
-        [ sh:datatype xsd:string ;
-            sh:description "ORCID of the author, a type of unique identifier" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "ORCID" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/organizational/:orcid> ],
-        [ sh:datatype xsd:string ;
-            sh:description "first name" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/osc-em/organizational/:first_name> ],
-        [ sh:datatype xsd:string ;
-            sh:description "email" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <http://schema.org/email> ;
-            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Country of the author's institution" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:name "Country" ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
+            sh:order 3 ;
             sh:path <https://w3id.org/osc-em/organizational/:country> ],
-        [ sh:datatype xsd:string ;
-            sh:description "name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <http://schema.org/name> ] ;
-    sh:targetClass <https://w3id.org/osc-em/organizational/:Author> .
-
-<https://w3id.org/osc-em/organizational/:Institution> a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A class representing an organization" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:name "Organization" ;
-    sh:property [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
+        [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
             sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -592,13 +529,63 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:order 1 ;
             sh:path <https://w3id.org/osc-em/organizational/:type_org> ],
         [ sh:datatype xsd:string ;
+            sh:description "ORCID of the author, a type of unique identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "ORCID" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/organizational/:orcid> ],
+        [ sh:datatype xsd:string ;
+            sh:description "first name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/organizational/:first_name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Role of the author, i.e., principal investigator" ;
+            sh:maxCount 1 ;
+            sh:name "Role" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/organizational/:role> ],
+        [ sh:datatype xsd:string ;
+            sh:description "email" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <http://schema.org/email> ;
+            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "work status" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/osc-em/organizational/:work_status> ],
+        [ sh:datatype xsd:string ;
+            sh:description "name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <http://schema.org/name> ],
+        [ sh:datatype xsd:string ;
             sh:description "Name of the organization" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:name "Name_org" ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/organizational/:name_org> ] ;
-    sh:targetClass <https://w3id.org/osc-em/organizational/:Institution> .
+            sh:path <https://w3id.org/osc-em/organizational/:name_org> ],
+        [ sh:datatype xsd:string ;
+            sh:description "work phone" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <http://schema.org/telephone> ] ;
+    sh:targetClass <https://w3id.org/osc-em/organizational/:Author> .
 
 <https://w3id.org/osc-em/sample/:Grid> a sh:NodeShape ;
     sh:closed true ;
@@ -606,33 +593,12 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "Grid" ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Material out of which the grid is made" ;
+            sh:description "Type of material the support film is made of" ;
             sh:maxCount 1 ;
-            sh:name "Material" ;
+            sh:name "Film_material" ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/sample/:material> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of pretreatment of the grid, i.e., glow discharge" ;
-            sh:maxCount 1 ;
-            sh:name "Pretreatment_type" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/osc-em/sample/:pretreatment_type> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether a support film was used" ;
-            sh:maxCount 1 ;
-            sh:name "Film_support" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/sample/:film_support> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pressure of the chamber during pretreatment, in Pa" ;
-            sh:maxCount 1 ;
-            sh:name "Pretreatment_pressure" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/osc-em/sample/:pretreatment_pressure> ],
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/sample/:film_material> ],
         [ sh:datatype xsd:string ;
             sh:description "Thickness of the support film" ;
             sh:maxCount 1 ;
@@ -640,34 +606,6 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path <https://w3id.org/osc-em/sample/:film_thickness> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Grid mesh in lines per inch" ;
-            sh:maxCount 1 ;
-            sh:name "Mesh" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/sample/:mesh> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of material the support film is made of" ;
-            sh:maxCount 1 ;
-            sh:name "Film_material" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/sample/:film_material> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Length of time of the pretreatment in s" ;
-            sh:maxCount 1 ;
-            sh:name "Pretreatment_time" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/osc-em/sample/:pretreatment_time> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Topology of the support film" ;
-            sh:maxCount 1 ;
-            sh:name "Film_topology" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/osc-em/sample/:film_topology> ],
         [ sh:datatype xsd:string ;
             sh:description "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc." ;
             sh:maxCount 1 ;
@@ -676,12 +614,61 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:order 10 ;
             sh:path <https://w3id.org/osc-em/sample/:pretreatment_atmosphere> ],
         [ sh:datatype xsd:string ;
+            sh:description "Topology of the support film" ;
+            sh:maxCount 1 ;
+            sh:name "Film_topology" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/osc-em/sample/:film_topology> ],
+        [ sh:datatype xsd:string ;
             sh:description "Grid manufacturer" ;
             sh:maxCount 1 ;
             sh:name "Manufacturer" ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/sample/:manufacturer> ] ;
+            sh:path <https://w3id.org/osc-em/sample/:manufacturer> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pressure of the chamber during pretreatment, in Pa" ;
+            sh:maxCount 1 ;
+            sh:name "Pretreatment_pressure" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/osc-em/sample/:pretreatment_pressure> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of pretreatment of the grid, i.e., glow discharge" ;
+            sh:maxCount 1 ;
+            sh:name "Pretreatment_type" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/osc-em/sample/:pretreatment_type> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Material out of which the grid is made" ;
+            sh:maxCount 1 ;
+            sh:name "Material" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/sample/:material> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Length of time of the pretreatment in s" ;
+            sh:maxCount 1 ;
+            sh:name "Pretreatment_time" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/osc-em/sample/:pretreatment_time> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether a support film was used" ;
+            sh:maxCount 1 ;
+            sh:name "Film_support" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/sample/:film_support> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Grid mesh in lines per inch" ;
+            sh:maxCount 1 ;
+            sh:name "Mesh" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/sample/:mesh> ] ;
     sh:targetClass <https://w3id.org/osc-em/sample/:Grid> .
 
 <https://w3id.org/osc-em/sample/:Ligand> a sh:NodeShape ;
@@ -689,13 +676,14 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:description "A class representing a ligand" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "Ligand" ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Link to a reference of your ligand, i.e., CCD, PubChem, etc." ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:description "Whether the model contains any ligands" ;
             sh:maxCount 1 ;
-            sh:name "Reference" ;
+            sh:minCount 1 ;
+            sh:name "Present" ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/sample/:reference> ],
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/sample/:present> ],
         [ sh:datatype xsd:string ;
             sh:description "Provide a valid SMILE string of your ligand" ;
             sh:maxCount 1 ;
@@ -703,14 +691,13 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/osc-em/sample/:smile> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether the model contains any ligands" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Link to a reference of your ligand, i.e., CCD, PubChem, etc." ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Present" ;
+            sh:name "Reference" ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/sample/:present> ] ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/sample/:reference> ] ;
     sh:targetClass <https://w3id.org/osc-em/sample/:Ligand> .
 
 <https://w3id.org/osc-em/sample/:Molecule> a sh:NodeShape ;
@@ -719,6 +706,30 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "Molecule" ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "Scientific name of the natural host organism" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Natural_source" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/sample/:natural_source> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name of an individual molecule (often protein) in the sample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Name" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/sample/:name_mol> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Taxonomy ID of the natural source organism" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Taxonomy_ID_source" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/osc-em/sample/:taxonomy_id_source> ],
+        [ sh:datatype xsd:string ;
             sh:description "Taxonomy ID of the expression system organism" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -734,29 +745,12 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/sample/:molecular_class> ],
         [ sh:datatype xsd:string ;
-            sh:description "Scientific name of the natural host organism" ;
+            sh:description "Name of the gene of interest" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Natural_source" ;
+            sh:name "Gene_name" ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/sample/:natural_source> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Expression_system" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/sample/:expression_system> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Taxonomy ID of the natural source organism" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Taxonomy_ID_source" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/osc-em/sample/:taxonomy_id_source> ],
+            sh:order 8 ;
+            sh:path <https://w3id.org/osc-em/sample/:gene_name> ],
         [ sh:datatype xsd:string ;
             sh:description "Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here" ;
             sh:maxCount 1 ;
@@ -766,13 +760,13 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:order 3 ;
             sh:path <https://w3id.org/osc-em/sample/:sequence> ],
         [ sh:datatype xsd:string ;
-            sh:description "Name of an individual molecule (often protein) in the sample" ;
+            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:name "Name" ;
+            sh:name "Expression_system" ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/sample/:name_mol> ],
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/sample/:expression_system> ],
         [ sh:datatype xsd:string ;
             sh:description "Description of the overall supramolecular type, i.e., a complex" ;
             sh:maxCount 1 ;
@@ -780,14 +774,7 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:name "Type" ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/sample/:molecular_type> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name of the gene of interest" ;
-            sh:maxCount 1 ;
-            sh:name "Gene_name" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/osc-em/sample/:gene_name> ] ;
+            sh:path <https://w3id.org/osc-em/sample/:molecular_type> ] ;
     sh:targetClass <https://w3id.org/osc-em/sample/:Molecule> .
 
 <https://w3id.org/osc-em/sample/:OverallMolecule> a sh:NodeShape ;
@@ -795,15 +782,7 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:description "A class representing the overall molecule" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "OverallMolecule" ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Name of the full sample" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Name" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/sample/:name_sample> ],
-        [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:float ;
             sh:description "Molecular weight in Da" ;
             sh:maxCount 1 ;
             sh:name "Molecular_weight" ;
@@ -819,6 +798,14 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/sample/:source> ],
         [ sh:datatype xsd:string ;
+            sh:description "Name of the full sample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Name" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/sample/:name_sample> ],
+        [ sh:datatype xsd:string ;
             sh:description "Description of the overall supramolecular type, i.e., a complex" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -833,14 +820,13 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:description "A class representing a sample" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "Sample" ;
-    sh:property [ sh:class <https://w3id.org/osc-em/sample/:OverallMolecule> ;
-            sh:description "Description of the overall molecule" ;
-            sh:maxCount 1 ;
+    sh:property [ sh:class <https://w3id.org/osc-em/sample/:Molecule> ;
+            sh:description "List of molecule associated with the sample" ;
             sh:minCount 1 ;
-            sh:name "Overall_Molecule" ;
+            sh:name "Molecule" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/sample/:overall_molecule> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/sample/:molecule> ],
         [ sh:class <https://w3id.org/osc-em/sample/:Grid> ;
             sh:description "Description of the grid used" ;
             sh:maxCount 1 ;
@@ -848,13 +834,14 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://w3id.org/osc-em/sample/:grid> ],
-        [ sh:class <https://w3id.org/osc-em/sample/:Molecule> ;
-            sh:description "List of molecule associated with the sample" ;
+        [ sh:class <https://w3id.org/osc-em/sample/:OverallMolecule> ;
+            sh:description "Description of the overall molecule" ;
+            sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:name "Molecule" ;
+            sh:name "Overall_Molecule" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/sample/:molecule> ],
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/sample/:overall_molecule> ],
         [ sh:class <https://w3id.org/osc-em/sample/:Specimen> ;
             sh:description "Description of the specimen" ;
             sh:maxCount 1 ;
@@ -883,37 +870,6 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/osc-em/sample/:buffer> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Which cryogen was used for vitrification" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Vitrification_cryogen" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/sample/:vitrification_cryogen> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was vitrified" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "Vitrification" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/sample/:vitrification> ],
-        [ sh:datatype xsd:float ;
-            sh:description "pH of the sample buffer" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "pH" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/sample/:ph> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Environmental humidity just before vitrification, in %" ;
-            sh:maxCount 1 ;
-            sh:name "Humidity" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/osc-em/sample/:humidity> ],
         [ sh:datatype xsd:boolean ;
             sh:description "Whether the sample was shadowed" ;
             sh:maxCount 1 ;
@@ -923,6 +879,14 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:order 9 ;
             sh:path <https://w3id.org/osc-em/sample/:shadowing> ],
         [ sh:datatype xsd:boolean ;
+            sh:description "Whether the sample was vitrified" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "Vitrification" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/sample/:vitrification> ],
+        [ sh:datatype xsd:boolean ;
             sh:description "Whether the sample was embedded" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -930,13 +894,14 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:Literal ;
             sh:order 8 ;
             sh:path <https://w3id.org/osc-em/sample/:embedding> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Concentration of the (supra)molecule in the sample, in M" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Which cryogen was used for vitrification" ;
             sh:maxCount 1 ;
-            sh:name "Concentration" ;
+            sh:minCount 1 ;
+            sh:name "Vitrification_cryogen" ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/sample/:concentration> ],
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/sample/:vitrification_cryogen> ],
         [ sh:datatype xsd:float ;
             sh:description "Environmental temperature just before vitrification, in K" ;
             sh:maxCount 1 ;
@@ -945,6 +910,13 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path <https://w3id.org/osc-em/sample/:temperature> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Environmental humidity just before vitrification, in %" ;
+            sh:maxCount 1 ;
+            sh:name "Humidity" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/osc-em/sample/:humidity> ],
         [ sh:datatype xsd:boolean ;
             sh:description "Whether the sample was stained" ;
             sh:maxCount 1 ;
@@ -952,7 +924,22 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:name "Staining" ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
-            sh:path <https://w3id.org/osc-em/sample/:staining> ] ;
+            sh:path <https://w3id.org/osc-em/sample/:staining> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Concentration of the (supra)molecule in the sample, in M" ;
+            sh:maxCount 1 ;
+            sh:name "Concentration" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/sample/:concentration> ],
+        [ sh:datatype xsd:float ;
+            sh:description "pH of the sample buffer" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "pH" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/sample/:ph> ] ;
     sh:targetClass <https://w3id.org/osc-em/sample/:Specimen> .
 
 <https://w3id.org/osc-em/types/:ImageSize> a sh:NodeShape ;
@@ -960,17 +947,17 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:description "size of a 2D image (in integer units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "The width of a given item - unit depends on item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/types/:width> ],
-        [ sh:datatype xsd:integer ;
             sh:description "The height of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/types/:height> ] ;
+            sh:path <https://w3id.org/osc-em/types/:height> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of a given item - unit depends on item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/types/:width> ] ;
     sh:targetClass <https://w3id.org/osc-em/types/:ImageSize> .
 
 <https://w3id.org/osc-em/types/:Series> a sh:NodeShape ;
@@ -979,17 +966,17 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
     sh:description "A series of numbers constructed from min, max, and increment" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
-            sh:description "Maximal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/types/:maximal> ],
-        [ sh:datatype xsd:float ;
             sh:description "Increment between elements of a series" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/osc-em/types/:increment> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/types/:maximal> ],
         [ sh:datatype xsd:float ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -1009,12 +996,6 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:order 3 ;
             sh:path <https://w3id.org/osc-em/types/:y_max> ],
         [ sh:datatype xsd:float ;
-            sh:description "maximum x" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/types/:x_max> ],
-        [ sh:datatype xsd:float ;
             sh:description "minimum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1025,7 +1006,13 @@ See https://linkml.io/linkml/schemas/advanced.html""" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/types/:y_min> ] ;
+            sh:path <https://w3id.org/osc-em/types/:y_min> ],
+        [ sh:datatype xsd:float ;
+            sh:description "maximum x" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/types/:x_max> ] ;
     sh:targetClass <https://w3id.org/osc-em/types/:BoundingBox2D> .
 
 <https://w3id.org/osc-em/types/:Range> a sh:NodeShape ;

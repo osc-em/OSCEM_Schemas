@@ -98,6 +98,8 @@
 --     * Slot: work_phone Description: work phone
 -- # Class: "Author" Description: ""
 --     * Slot: id Description: 
+--     * Slot: name_org Description: Name of the organization
+--     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
 --     * Slot: orcid Description: ORCID of the author, a type of unique identifier
 --     * Slot: country Description: Country of the author's institution
 --     * Slot: role Description: Role of the author, i.e., principal investigator
@@ -106,11 +108,6 @@
 --     * Slot: work_status Description: work status
 --     * Slot: email Description: email
 --     * Slot: work_phone Description: work phone
---     * Slot: institution_id Description: author's institution
--- # Class: "Institution" Description: "A class representing an organization"
---     * Slot: id Description: 
---     * Slot: name_org Description: Name of the organization
---     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
 -- # Class: "Grant" Description: "Grant"
 --     * Slot: id Description: 
 --     * Slot: name Description: name
@@ -271,10 +268,18 @@ CREATE TABLE "Person" (
 	work_phone TEXT, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "Institution" (
+CREATE TABLE "Author" (
 	id INTEGER NOT NULL, 
-	name_org TEXT, 
+	name_org TEXT NOT NULL, 
 	type_org VARCHAR(10) NOT NULL, 
+	orcid TEXT NOT NULL, 
+	country TEXT NOT NULL, 
+	role TEXT, 
+	name TEXT NOT NULL, 
+	first_name TEXT, 
+	work_status BOOLEAN, 
+	email TEXT NOT NULL, 
+	work_phone TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "QuantityValue" (
@@ -349,20 +354,6 @@ CREATE TABLE "SpecialistOptics" (
 	FOREIGN KEY(phaseplate_id) REFERENCES "Phaseplate" (id), 
 	FOREIGN KEY(spherical_aberration_corrector_id) REFERENCES "SphericalAberrationCorrector" (id), 
 	FOREIGN KEY(chromatic_aberration_corrector_id) REFERENCES "ChromaticAberrationCorrector" (id)
-);
-CREATE TABLE "Author" (
-	id INTEGER NOT NULL, 
-	orcid TEXT NOT NULL, 
-	country TEXT NOT NULL, 
-	role TEXT, 
-	name TEXT NOT NULL, 
-	first_name TEXT, 
-	work_status BOOLEAN, 
-	email TEXT NOT NULL, 
-	work_phone TEXT NOT NULL, 
-	institution_id INTEGER NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(institution_id) REFERENCES "Institution" (id)
 );
 CREATE TABLE "Grant" (
 	id INTEGER NOT NULL, 

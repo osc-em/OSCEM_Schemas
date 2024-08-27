@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-08-27T15:51:32
+# Generation date: 2024-08-27T16:01:33
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -89,7 +89,7 @@ class EMDataset(YAMLRoot):
 
         if self._is_empty(self.authors):
             self.MissingRequiredField("authors")
-        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="institution", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="name_org", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -455,7 +455,8 @@ class Author(Person):
     class_name: ClassVar[str] = "Author"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Author")
 
-    institution: Union[dict, "Institution"] = None
+    name_org: str = None
+    type_org: Union[str, "OrganizationTypeEnum"] = None
     orcid: str = None
     country: str = None
     name: str = None
@@ -464,10 +465,15 @@ class Author(Person):
     role: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.institution):
-            self.MissingRequiredField("institution")
-        if not isinstance(self.institution, Institution):
-            self.institution = Institution(**as_dict(self.institution))
+        if self._is_empty(self.name_org):
+            self.MissingRequiredField("name_org")
+        if not isinstance(self.name_org, str):
+            self.name_org = str(self.name_org)
+
+        if self._is_empty(self.type_org):
+            self.MissingRequiredField("type_org")
+        if not isinstance(self.type_org, OrganizationTypeEnum):
+            self.type_org = OrganizationTypeEnum(self.type_org)
 
         if self._is_empty(self.orcid):
             self.MissingRequiredField("orcid")
@@ -496,33 +502,6 @@ class Author(Person):
 
         if self.role is not None and not isinstance(self.role, str):
             self.role = str(self.role)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class Institution(YAMLRoot):
-    """
-    A class representing an organization
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/organizational/Institution")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "Institution"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Institution")
-
-    type_org: Union[str, "OrganizationTypeEnum"] = None
-    name_org: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.type_org):
-            self.MissingRequiredField("type_org")
-        if not isinstance(self.type_org, OrganizationTypeEnum):
-            self.type_org = OrganizationTypeEnum(self.type_org)
-
-        if self.name_org is not None and not isinstance(self.name_org, str):
-            self.name_org = str(self.name_org)
 
         super().__post_init__(**kwargs)
 
@@ -1222,9 +1201,6 @@ slots.work_phone = Slot(uri=SCHEMA.telephone, name="work_phone", curie=SCHEMA.cu
 slots.name = Slot(uri=SCHEMA.name, name="name", curie=SCHEMA.curie('name'),
                    model_uri=DEFAULT_.name, domain=None, range=Optional[str])
 
-slots.institution = Slot(uri=SCHEMA.Organization, name="institution", curie=SCHEMA.curie('Organization'),
-                   model_uri=DEFAULT_.institution, domain=None, range=Optional[Union[dict, Institution]])
-
 slots.name_org = Slot(uri="str(uriorcurie)", name="name_org", curie=None,
                    model_uri=DEFAULT_.name_org, domain=None, range=Optional[str])
 
@@ -1502,14 +1478,14 @@ slots.Author_work_phone = Slot(uri=SCHEMA.telephone, name="Author_work_phone", c
 slots.Author_orcid = Slot(uri="str(uriorcurie)", name="Author_orcid", curie=None,
                    model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
 
-slots.Author_institution = Slot(uri=SCHEMA.Organization, name="Author_institution", curie=SCHEMA.curie('Organization'),
-                   model_uri=DEFAULT_.Author_institution, domain=Author, range=Union[dict, "Institution"])
+slots.Author_name_org = Slot(uri="str(uriorcurie)", name="Author_name_org", curie=None,
+                   model_uri=DEFAULT_.Author_name_org, domain=Author, range=str)
+
+slots.Author_type_org = Slot(uri="str(uriorcurie)", name="Author_type_org", curie=None,
+                   model_uri=DEFAULT_.Author_type_org, domain=Author, range=Union[str, "OrganizationTypeEnum"])
 
 slots.Author_country = Slot(uri="str(uriorcurie)", name="Author_country", curie=None,
                    model_uri=DEFAULT_.Author_country, domain=Author, range=str)
-
-slots.Institution_type_org = Slot(uri="str(uriorcurie)", name="Institution_type_org", curie=None,
-                   model_uri=DEFAULT_.Institution_type_org, domain=Institution, range=Union[str, "OrganizationTypeEnum"])
 
 slots.OverallMolecule_molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="OverallMolecule_molecular_type", curie=SAMPLE.curie('/molecular_type'),
                    model_uri=DEFAULT_.OverallMolecule_molecular_type, domain=OverallMolecule, range=str)

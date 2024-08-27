@@ -1101,32 +1101,15 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "institution",
-      "definition_uri": "https://w3id.org/osc-em/organizational/institution",
-      "description": "author's institution",
-      "from_schema": "https://w3id.org/osc-em/organizational",
-      "mappings": [
-        "http://schema.org/Organization"
-      ],
-      "slot_uri": "http://schema.org/Organization",
-      "owner": "Author",
-      "domain_of": [
-        "Author"
-      ],
-      "range": "Institution",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "name_org",
       "definition_uri": "https://w3id.org/osc-em/organizational/name_org",
       "description": "Name of the organization",
       "title": "Name_org",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "slot_uri": "https://w3id.org/osc-em/organizational/name_org",
-      "owner": "Institution",
+      "owner": "Author",
       "domain_of": [
-        "Institution"
+        "Author"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -1138,9 +1121,9 @@
       "title": "Type_org",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "slot_uri": "https://w3id.org/osc-em/organizational/type_org",
-      "owner": "Institution",
+      "owner": "Author",
       "domain_of": [
-        "Institution"
+        "Author"
       ],
       "range": "OrganizationTypeEnum",
       "@type": "SlotDefinition"
@@ -2575,26 +2558,43 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Author_institution",
-      "definition_uri": "https://w3id.org/osc-em/organizational/institution",
-      "description": "author's institution",
+      "name": "Author_name_org",
+      "definition_uri": "https://w3id.org/osc-em/organizational/name_org",
+      "description": "Name of the organization",
+      "title": "Name_org",
       "from_schema": "https://w3id.org/osc-em/organizational",
-      "mappings": [
-        "http://schema.org/Organization"
-      ],
-      "is_a": "institution",
+      "is_a": "name_org",
       "domain": "Author",
-      "slot_uri": "http://schema.org/Organization",
-      "alias": "institution",
+      "slot_uri": "https://w3id.org/osc-em/organizational/name_org",
+      "alias": "name_org",
       "owner": "Author",
       "domain_of": [
         "Author"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "institution",
-      "range": "Institution",
+      "usage_slot_name": "name_org",
+      "range": "string",
       "required": true,
-      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_type_org",
+      "definition_uri": "https://w3id.org/osc-em/organizational/type_org",
+      "description": "Type of organization, academic, commercial, governmental, etc.",
+      "title": "Type_org",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "type_org",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/osc-em/organizational/type_org",
+      "alias": "type_org",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type_org",
+      "range": "OrganizationTypeEnum",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2614,26 +2614,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "country",
       "range": "string",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Institution_type_org",
-      "definition_uri": "https://w3id.org/osc-em/organizational/type_org",
-      "description": "Type of organization, academic, commercial, governmental, etc.",
-      "title": "Type_org",
-      "from_schema": "https://w3id.org/osc-em/organizational",
-      "is_a": "type_org",
-      "domain": "Institution",
-      "slot_uri": "https://w3id.org/osc-em/organizational/type_org",
-      "alias": "type_org",
-      "owner": "Institution",
-      "domain_of": [
-        "Institution"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "type_org",
-      "range": "OrganizationTypeEnum",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -3588,7 +3568,8 @@
       "slots": [
         "first_name",
         "work_status",
-        "Author_institution",
+        "Author_name_org",
+        "Author_type_org",
         "Author_orcid",
         "Author_country",
         "role",
@@ -3598,20 +3579,6 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/organizational/Author",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Institution",
-      "definition_uri": "https://w3id.org/osc-em/organizational/Institution",
-      "description": "A class representing an organization",
-      "title": "Organization",
-      "from_schema": "https://w3id.org/osc-em/organizational",
-      "slots": [
-        "name_org",
-        "Institution_type_org"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/osc-em/organizational/Institution",
       "@type": "ClassDefinition"
     },
     {
@@ -3852,7 +3819,7 @@
   "source_file": "oscem_schemas.yaml",
   "source_file_date": "2024-08-27T13:33:36",
   "source_file_size": 1401,
-  "generation_date": "2024-08-27T15:51:31",
+  "generation_date": "2024-08-27T16:01:32",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/oscem_schemas.context.jsonld",

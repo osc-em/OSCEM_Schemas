@@ -267,12 +267,12 @@
                         "null"
                     ]
                 },
-                "institution": {
-                    "$ref": "#/$defs/Institution",
-                    "description": "author's institution"
-                },
                 "name": {
                     "description": "name",
+                    "type": "string"
+                },
+                "name_org": {
+                    "description": "Name of the organization",
                     "type": "string"
                 },
                 "orcid": {
@@ -285,6 +285,10 @@
                         "string",
                         "null"
                     ]
+                },
+                "type_org": {
+                    "$ref": "#/$defs/OrganizationTypeEnum",
+                    "description": "Type of organization, academic, commercial, governmental, etc."
                 },
                 "work_phone": {
                     "description": "work phone",
@@ -299,7 +303,8 @@
                 }
             },
             "required": [
-                "institution",
+                "name_org",
+                "type_org",
                 "orcid",
                 "country",
                 "name",
@@ -594,28 +599,6 @@
                 }
             },
             "title": "ImageSize",
-            "type": "object"
-        },
-        "Institution": {
-            "additionalProperties": false,
-            "description": "A class representing an organization",
-            "properties": {
-                "name_org": {
-                    "description": "Name of the organization",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type_org": {
-                    "$ref": "#/$defs/OrganizationTypeEnum",
-                    "description": "Type of organization, academic, commercial, governmental, etc."
-                }
-            },
-            "required": [
-                "type_org"
-            ],
-            "title": "Institution",
             "type": "object"
         },
         "Instrument": {
