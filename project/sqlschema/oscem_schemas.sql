@@ -61,7 +61,7 @@
 -- # Class: "EnergyFilter" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: model Description: Make and model of a specilized device
+--     * Slot: model Description: Make and model of a specialized device
 --     * Slot: width Description: The width of a given item - unit depends on item
 -- # Class: "SpecialistOptics" Description: ""
 --     * Slot: id Description: 
@@ -71,15 +71,15 @@
 -- # Class: "Phaseplate" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: instrument_type Description: Type of phaseplate
+--     * Slot: model Description: Type of phaseplate
 -- # Class: "SphericalAberrationCorrector" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: instrument_type Description: Details of a given specialist instrument
+--     * Slot: model Description: Make and model of a specialized device
 -- # Class: "ChromaticAberrationCorrector" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: instrument_type Description: Details of a given specialist instrument
+--     * Slot: model Description: Make and model of a specialized device
 -- # Class: "Instrument" Description: "Instrument values, mostly constant across a data collection."
 --     * Slot: id Description: 
 --     * Slot: microscope Description: Name/Type of the Microscope
@@ -233,19 +233,19 @@ CREATE TABLE "EnergyFilter" (
 CREATE TABLE "Phaseplate" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
-	instrument_type TEXT NOT NULL, 
+	model TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "SphericalAberrationCorrector" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
-	instrument_type TEXT NOT NULL, 
+	model TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "ChromaticAberrationCorrector" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
-	instrument_type TEXT NOT NULL, 
+	model TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Instrument" (

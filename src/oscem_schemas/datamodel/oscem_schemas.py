@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-08-27T16:01:33
+# Generation date: 2024-08-27T16:06:51
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -287,7 +287,7 @@ class Phaseplate(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Phaseplate")
 
     used: Union[bool, Bool] = None
-    instrument_type: str = None
+    model: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.used):
@@ -295,10 +295,10 @@ class Phaseplate(YAMLRoot):
         if not isinstance(self.used, Bool):
             self.used = Bool(self.used)
 
-        if self._is_empty(self.instrument_type):
-            self.MissingRequiredField("instrument_type")
-        if not isinstance(self.instrument_type, str):
-            self.instrument_type = str(self.instrument_type)
+        if self._is_empty(self.model):
+            self.MissingRequiredField("model")
+        if not isinstance(self.model, str):
+            self.model = str(self.model)
 
         super().__post_init__(**kwargs)
 
@@ -313,7 +313,7 @@ class SphericalAberrationCorrector(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/SphericalAberrationCorrector")
 
     used: Union[bool, Bool] = None
-    instrument_type: str = None
+    model: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.used):
@@ -321,10 +321,10 @@ class SphericalAberrationCorrector(YAMLRoot):
         if not isinstance(self.used, Bool):
             self.used = Bool(self.used)
 
-        if self._is_empty(self.instrument_type):
-            self.MissingRequiredField("instrument_type")
-        if not isinstance(self.instrument_type, str):
-            self.instrument_type = str(self.instrument_type)
+        if self._is_empty(self.model):
+            self.MissingRequiredField("model")
+        if not isinstance(self.model, str):
+            self.model = str(self.model)
 
         super().__post_init__(**kwargs)
 
@@ -339,7 +339,7 @@ class ChromaticAberrationCorrector(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/ChromaticAberrationCorrector")
 
     used: Union[bool, Bool] = None
-    instrument_type: str = None
+    model: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.used):
@@ -347,10 +347,10 @@ class ChromaticAberrationCorrector(YAMLRoot):
         if not isinstance(self.used, Bool):
             self.used = Bool(self.used)
 
-        if self._is_empty(self.instrument_type):
-            self.MissingRequiredField("instrument_type")
-        if not isinstance(self.instrument_type, str):
-            self.instrument_type = str(self.instrument_type)
+        if self._is_empty(self.model):
+            self.MissingRequiredField("model")
+        if not isinstance(self.model, str):
+            self.model = str(self.model)
 
         super().__post_init__(**kwargs)
 
@@ -1137,9 +1137,6 @@ slots.specialist_optics = Slot(uri=ACQUISITION.specialist_optics, name="speciali
 slots.phaseplate = Slot(uri=ACQUISITION.phaseplate, name="phaseplate", curie=ACQUISITION.curie('phaseplate'),
                    model_uri=DEFAULT_.phaseplate, domain=None, range=Optional[Union[dict, Phaseplate]])
 
-slots.instrument_type = Slot(uri=ACQUISITION.instrument_type, name="instrument_type", curie=ACQUISITION.curie('instrument_type'),
-                   model_uri=DEFAULT_.instrument_type, domain=None, range=Optional[str])
-
 slots.spherical_aberration_corrector = Slot(uri=ACQUISITION.spherical_aberration_corrector, name="spherical_aberration_corrector", curie=ACQUISITION.curie('spherical_aberration_corrector'),
                    model_uri=DEFAULT_.spherical_aberration_corrector, domain=None, range=Optional[Union[dict, SphericalAberrationCorrector]])
 
@@ -1432,20 +1429,20 @@ slots.EnergyFilter_width = Slot(uri=TYPES['/width'], name="EnergyFilter_width", 
 slots.Phaseplate_used = Slot(uri=ACQUISITION.used, name="Phaseplate_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.Phaseplate_used, domain=Phaseplate, range=Union[bool, Bool])
 
-slots.Phaseplate_instrument_type = Slot(uri=ACQUISITION.instrument_type, name="Phaseplate_instrument_type", curie=ACQUISITION.curie('instrument_type'),
-                   model_uri=DEFAULT_.Phaseplate_instrument_type, domain=Phaseplate, range=str)
+slots.Phaseplate_model = Slot(uri=ACQUISITION.model, name="Phaseplate_model", curie=ACQUISITION.curie('model'),
+                   model_uri=DEFAULT_.Phaseplate_model, domain=Phaseplate, range=str)
 
 slots.SphericalAberrationCorrector_used = Slot(uri=ACQUISITION.used, name="SphericalAberrationCorrector_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.SphericalAberrationCorrector_used, domain=SphericalAberrationCorrector, range=Union[bool, Bool])
 
-slots.SphericalAberrationCorrector_instrument_type = Slot(uri=ACQUISITION.instrument_type, name="SphericalAberrationCorrector_instrument_type", curie=ACQUISITION.curie('instrument_type'),
-                   model_uri=DEFAULT_.SphericalAberrationCorrector_instrument_type, domain=SphericalAberrationCorrector, range=str)
+slots.SphericalAberrationCorrector_model = Slot(uri=ACQUISITION.model, name="SphericalAberrationCorrector_model", curie=ACQUISITION.curie('model'),
+                   model_uri=DEFAULT_.SphericalAberrationCorrector_model, domain=SphericalAberrationCorrector, range=str)
 
 slots.ChromaticAberrationCorrector_used = Slot(uri=ACQUISITION.used, name="ChromaticAberrationCorrector_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.ChromaticAberrationCorrector_used, domain=ChromaticAberrationCorrector, range=Union[bool, Bool])
 
-slots.ChromaticAberrationCorrector_instrument_type = Slot(uri=ACQUISITION.instrument_type, name="ChromaticAberrationCorrector_instrument_type", curie=ACQUISITION.curie('instrument_type'),
-                   model_uri=DEFAULT_.ChromaticAberrationCorrector_instrument_type, domain=ChromaticAberrationCorrector, range=str)
+slots.ChromaticAberrationCorrector_model = Slot(uri=ACQUISITION.model, name="ChromaticAberrationCorrector_model", curie=ACQUISITION.curie('model'),
+                   model_uri=DEFAULT_.ChromaticAberrationCorrector_model, domain=ChromaticAberrationCorrector, range=str)
 
 slots.Instrument_microscope = Slot(uri="str(uriorcurie)", name="Instrument_microscope", curie=None,
                    model_uri=DEFAULT_.Instrument_microscope, domain=Instrument, range=str)

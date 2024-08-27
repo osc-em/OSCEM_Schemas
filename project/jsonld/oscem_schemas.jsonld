@@ -642,12 +642,15 @@
     {
       "name": "model",
       "definition_uri": "https://w3id.org/osc-em/acquisitionmodel",
-      "description": "Make and model of a specilized device",
+      "description": "Make and model of a specialized device",
       "from_schema": "https://w3id.org/osc-em/acquisition",
       "slot_uri": "https://w3id.org/osc-em/acquisitionmodel",
-      "owner": "EnergyFilter",
+      "owner": "ChromaticAberrationCorrector",
       "domain_of": [
-        "EnergyFilter"
+        "EnergyFilter",
+        "Phaseplate",
+        "SphericalAberrationCorrector",
+        "ChromaticAberrationCorrector"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -807,21 +810,6 @@
       ],
       "range": "Phaseplate",
       "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "instrument_type",
-      "definition_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
-      "description": "Details of a given specialist instrument",
-      "from_schema": "https://w3id.org/osc-em/acquisition",
-      "slot_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
-      "owner": "ChromaticAberrationCorrector",
-      "domain_of": [
-        "Phaseplate",
-        "SphericalAberrationCorrector",
-        "ChromaticAberrationCorrector"
-      ],
-      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -2262,20 +2250,20 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Phaseplate_instrument_type",
-      "definition_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
+      "name": "Phaseplate_model",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionmodel",
       "description": "Type of phaseplate",
       "from_schema": "https://w3id.org/osc-em/acquisition",
-      "is_a": "instrument_type",
+      "is_a": "model",
       "domain": "Phaseplate",
-      "slot_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
-      "alias": "instrument_type",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionmodel",
+      "alias": "model",
       "owner": "Phaseplate",
       "domain_of": [
         "Phaseplate"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "instrument_type",
+      "usage_slot_name": "model",
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -2300,20 +2288,20 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "SphericalAberrationCorrector_instrument_type",
-      "definition_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
-      "description": "Details of a given specialist instrument",
+      "name": "SphericalAberrationCorrector_model",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionmodel",
+      "description": "Make and model of a specialized device",
       "from_schema": "https://w3id.org/osc-em/acquisition",
-      "is_a": "instrument_type",
+      "is_a": "model",
       "domain": "SphericalAberrationCorrector",
-      "slot_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
-      "alias": "instrument_type",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionmodel",
+      "alias": "model",
       "owner": "SphericalAberrationCorrector",
       "domain_of": [
         "SphericalAberrationCorrector"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "instrument_type",
+      "usage_slot_name": "model",
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -2338,20 +2326,20 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "ChromaticAberrationCorrector_instrument_type",
-      "definition_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
-      "description": "Details of a given specialist instrument",
+      "name": "ChromaticAberrationCorrector_model",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionmodel",
+      "description": "Make and model of a specialized device",
       "from_schema": "https://w3id.org/osc-em/acquisition",
-      "is_a": "instrument_type",
+      "is_a": "model",
       "domain": "ChromaticAberrationCorrector",
-      "slot_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
-      "alias": "instrument_type",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionmodel",
+      "alias": "model",
       "owner": "ChromaticAberrationCorrector",
       "domain_of": [
         "ChromaticAberrationCorrector"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "instrument_type",
+      "usage_slot_name": "model",
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -3494,7 +3482,7 @@
       "from_schema": "https://w3id.org/osc-em/acquisition",
       "slots": [
         "Phaseplate_used",
-        "Phaseplate_instrument_type"
+        "Phaseplate_model"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/acquisitionPhaseplate",
@@ -3506,7 +3494,7 @@
       "from_schema": "https://w3id.org/osc-em/acquisition",
       "slots": [
         "SphericalAberrationCorrector_used",
-        "SphericalAberrationCorrector_instrument_type"
+        "SphericalAberrationCorrector_model"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector",
@@ -3518,7 +3506,7 @@
       "from_schema": "https://w3id.org/osc-em/acquisition",
       "slots": [
         "ChromaticAberrationCorrector_used",
-        "ChromaticAberrationCorrector_instrument_type"
+        "ChromaticAberrationCorrector_model"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector",
@@ -3819,7 +3807,7 @@
   "source_file": "oscem_schemas.yaml",
   "source_file_date": "2024-08-27T13:33:36",
   "source_file_size": 1401,
-  "generation_date": "2024-08-27T16:01:32",
+  "generation_date": "2024-08-27T16:06:49",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/oscem_schemas.context.jsonld",
