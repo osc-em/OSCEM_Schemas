@@ -53,7 +53,7 @@
 --     * Slot: temperature_id Description: Temperature during data collection, in K with min and max values.
 --     * Slot: energy_filter_id Description: Wether an energy filter was used and its specifics.
 --     * Slot: image_size_id Description: The size of the image in pixels, height and width given.
---     * Slot: datetime_id Description: Time and date of the data acquisition
+--     * Slot: date_time_id Description: Time and date of the data acquisition
 --     * Slot: specialist_optics_id Description: Any type of special optics, such as a phaseplate
 --     * Slot: beamshift_id Description: Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
 --     * Slot: beamtilt_id Description: Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
@@ -409,7 +409,7 @@ CREATE TABLE "Acquisition" (
 	temperature_id INTEGER, 
 	energy_filter_id INTEGER, 
 	image_size_id INTEGER, 
-	datetime_id INTEGER NOT NULL, 
+	date_time_id INTEGER NOT NULL, 
 	specialist_optics_id INTEGER, 
 	beamshift_id INTEGER, 
 	beamtilt_id INTEGER, 
@@ -420,7 +420,7 @@ CREATE TABLE "Acquisition" (
 	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(datetime_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(date_time_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 

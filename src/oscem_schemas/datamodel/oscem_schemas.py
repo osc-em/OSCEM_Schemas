@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-08-23T00:59:03
+# Generation date: 2024-08-27T15:22:40
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -105,7 +105,7 @@ class Acquisition(YAMLRoot):
 
     detector: str = None
     dose_per_movie: float = None
-    datetime: Union[dict, "Any"] = None
+    date_time: Union[dict, "Any"] = None
     binning_camera: float = None
     pixel_size: float = None
     nominal_defocus: Optional[Union[dict, "Range"]] = None
@@ -1128,8 +1128,8 @@ slots.model = Slot(uri=ACQUISITION.model, name="model", curie=ACQUISITION.curie(
 slots.image_size = Slot(uri=ACQUISITION.image_size, name="image_size", curie=ACQUISITION.curie('image_size'),
                    model_uri=DEFAULT_.image_size, domain=None, range=Optional[Union[dict, ImageSize]])
 
-slots.datetime = Slot(uri=ACQUISITION.datetime, name="datetime", curie=ACQUISITION.curie('datetime'),
-                   model_uri=DEFAULT_.datetime, domain=None, range=Optional[Union[dict, Any]])
+slots.date_time = Slot(uri=ACQUISITION.date_time, name="date_time", curie=ACQUISITION.curie('date_time'),
+                   model_uri=DEFAULT_.date_time, domain=None, range=Optional[Union[dict, Any]])
 
 slots.exposure_time = Slot(uri=ACQUISITION.exposure_time, name="exposure_time", curie=ACQUISITION.curie('exposure_time'),
                    model_uri=DEFAULT_.exposure_time, domain=None, range=Optional[float])
@@ -1438,8 +1438,8 @@ slots.Acquisition_detector = Slot(uri=ACQUISITION.detector, name="Acquisition_de
 slots.Acquisition_dose_per_movie = Slot(uri=ACQUISITION.dose_per_movie, name="Acquisition_dose_per_movie", curie=ACQUISITION.curie('dose_per_movie'),
                    model_uri=DEFAULT_.Acquisition_dose_per_movie, domain=Acquisition, range=float)
 
-slots.Acquisition_datetime = Slot(uri=ACQUISITION.datetime, name="Acquisition_datetime", curie=ACQUISITION.curie('datetime'),
-                   model_uri=DEFAULT_.Acquisition_datetime, domain=Acquisition, range=Union[dict, "Any"])
+slots.Acquisition_date_time = Slot(uri=ACQUISITION.date_time, name="Acquisition_date_time", curie=ACQUISITION.curie('date_time'),
+                   model_uri=DEFAULT_.Acquisition_date_time, domain=Acquisition, range=Union[dict, "Any"])
 
 slots.Acquisition_binning_camera = Slot(uri=ACQUISITION.binning_camera, name="Acquisition_binning_camera", curie=ACQUISITION.curie('binning_camera'),
                    model_uri=DEFAULT_.Acquisition_binning_camera, domain=Acquisition, range=float)
