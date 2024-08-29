@@ -88,8 +88,8 @@
                     ]
                 },
                 "dose_per_movie": {
-                    "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom",
-                    "type": "number"
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom"
                 },
                 "energy_filter": {
                     "anyOf": [
@@ -103,11 +103,15 @@
                     "description": "Wether an energy filter was used and its specifics."
                 },
                 "exposure_time": {
-                    "description": "Time of data acquisition per movie/tilt - in s",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Time of data acquisition per movie/tilt - in s"
                 },
                 "frames_per_movie": {
                     "description": "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors",
@@ -199,8 +203,8 @@
                     ]
                 },
                 "pixel_size": {
-                    "description": "Pixel size, in Angstrom",
-                    "type": "number"
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Pixel size, in Angstrom"
                 },
                 "specialist_optics": {
                     "anyOf": [
@@ -303,10 +307,10 @@
                 }
             },
             "required": [
-                "name_org",
-                "type_org",
                 "orcid",
                 "country",
+                "name_org",
+                "type_org",
                 "name",
                 "email",
                 "work_phone"
@@ -319,32 +323,48 @@
             "description": "an axis-aligned 2D bounding box (float units)",
             "properties": {
                 "x_max": {
-                    "description": "maximum x",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum x"
                 },
                 "x_min": {
-                    "description": "minimum x",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum x"
                 },
                 "y_max": {
-                    "description": "maximum y",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum y"
                 },
                 "y_min": {
-                    "description": "minimum y",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum y"
                 }
             },
             "title": "BoundingBox2D",
@@ -354,8 +374,8 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "model": {
-                    "description": "Make and model of a specialized device",
+                "instrument_type": {
+                    "description": "Details of a given specialist instrument",
                     "type": "string"
                 },
                 "used": {
@@ -365,7 +385,7 @@
             },
             "required": [
                 "used",
-                "model"
+                "instrument_type"
             ],
             "title": "ChromaticAberrationCorrector",
             "type": "object"
@@ -416,7 +436,7 @@
             "description": "",
             "properties": {
                 "model": {
-                    "description": "Make and model of a specialized device",
+                    "description": "Make and model of a specilized device",
                     "type": [
                         "string",
                         "null"
@@ -555,18 +575,26 @@
                     ]
                 },
                 "pretreatment_pressure": {
-                    "description": "Pressure of the chamber during pretreatment, in Pa",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pressure of the chamber during pretreatment, in Pa"
                 },
                 "pretreatment_time": {
-                    "description": "Length of time of the pretreatment in s",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Length of time of the pretreatment in s"
                 },
                 "pretreatment_type": {
                     "description": "Type of pretreatment of the grid, i.e., glow discharge",
@@ -606,19 +634,23 @@
             "description": "Instrument values, mostly constant across a data collection.",
             "properties": {
                 "acceleration_voltage": {
-                    "description": "Voltage used for the electron acceleration, in kV",
-                    "type": "integer"
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Voltage used for the electron acceleration, in kV"
                 },
                 "c2_aperture": {
-                    "description": "C2 aperture size used in data acquisition, in \u00b5m",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "C2 aperture size used in data acquisition, in \u00b5m"
                 },
                 "cs": {
-                    "description": "Spherical aberration of the instrument, in mm",
-                    "type": "number"
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Spherical aberration of the instrument, in mm"
                 },
                 "electron_source": {
                     "description": "Type of electron source used in the microscope, such as FEG",
@@ -663,8 +695,8 @@
                         "null"
                     ]
                 },
-                "smile": {
-                    "description": "Provide a valid SMILE string of your ligand",
+                "smiles": {
+                    "description": "Provide a valid SMILES string of your ligand",
                     "type": [
                         "string",
                         "null"
@@ -765,11 +797,15 @@
                     "type": "string"
                 },
                 "molecular_weight": {
-                    "description": "Molecular weight in Da",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Molecular weight in Da"
                 },
                 "name_sample": {
                     "description": "Name of the full sample",
@@ -836,7 +872,7 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "model": {
+                "instrument_type": {
                     "description": "Type of phaseplate",
                     "type": "string"
                 },
@@ -847,30 +883,28 @@
             },
             "required": [
                 "used",
-                "model"
+                "instrument_type"
             ],
             "title": "Phaseplate",
             "type": "object"
         },
         "QuantityValue": {
             "additionalProperties": false,
-            "description": "Value together with unit",
+            "description": "if a value has a unit, it should be given as a unit value pair.",
             "properties": {
-                "has_unit": {
-                    "description": "Unit",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
                 },
-                "has_value": {
-                    "description": "Value",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
                 }
             },
+            "required": [
+                "unit",
+                "value"
+            ],
             "title": "QuantityValue",
             "type": "object"
         },
@@ -879,18 +913,26 @@
             "description": "A range constructed from min and max",
             "properties": {
                 "maximal": {
-                    "description": "Maximal value of a given dataset property",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
                 },
                 "minimal": {
-                    "description": "Minimal value of a given dataset property",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
                 }
             },
             "title": "Range",
@@ -950,25 +992,37 @@
             "description": "A series of numbers constructed from min, max, and increment",
             "properties": {
                 "increment": {
-                    "description": "Increment between elements of a series",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Increment between elements of a series"
                 },
                 "maximal": {
-                    "description": "Maximal value of a given dataset property",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
                 },
                 "minimal": {
-                    "description": "Minimal value of a given dataset property",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
                 }
             },
             "title": "Series",
@@ -1027,22 +1081,30 @@
                     ]
                 },
                 "concentration": {
-                    "description": "Concentration of the (supra)molecule in the sample, in M",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Concentration of the (supra)molecule in the sample, in M"
                 },
                 "embedding": {
                     "description": "Whether the sample was embedded",
                     "type": "boolean"
                 },
                 "humidity": {
-                    "description": "Environmental humidity just before vitrification, in %",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Environmental humidity just before vitrification, in %"
                 },
                 "ph": {
                     "description": "pH of the sample buffer",
@@ -1057,12 +1119,16 @@
                     "type": "boolean"
                 },
                 "temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Environmental temperature just before vitrification, in K",
-                    "minimum": 0.0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "minimum": 0.0
                 },
                 "vitrification": {
                     "description": "Whether the sample was vitrified",
@@ -1088,8 +1154,8 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "model": {
-                    "description": "Make and model of a specialized device",
+                "instrument_type": {
+                    "description": "Details of a given specialist instrument",
                     "type": "string"
                 },
                 "used": {
@@ -1099,7 +1165,7 @@
             },
             "required": [
                 "used",
-                "model"
+                "instrument_type"
             ],
             "title": "SphericalAberrationCorrector",
             "type": "object"
@@ -1109,25 +1175,37 @@
             "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree.",
             "properties": {
                 "increment": {
-                    "description": "Increment between elements of a series",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Increment between elements of a series"
                 },
                 "maximal": {
-                    "description": "Maximal value of a given dataset property",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
                 },
                 "minimal": {
-                    "description": "Minimal value of a given dataset property",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
                 }
             },
             "title": "TiltAngle",

@@ -13,17 +13,17 @@ message Acquisition
   string microscopeSoftware = 0
   string detector = 0
   string detectorMode = 0
-  float dosePerMovie = 0
+  quantityValue dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
   any dateTime = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   string cryogen = 0
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
   float binningCamera = 0
-  float pixelSize = 0
+  quantityValue pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
   boundingBox2D beamtilt = 0
@@ -35,11 +35,11 @@ message Author
  {
   string firstName = 0
   boolean workStatus = 0
-  string nameOrg = 0
-  organizationTypeEnum typeOrg = 0
   string orcid = 0
   string country = 0
   string role = 0
+  string nameOrg = 0
+  organizationTypeEnum typeOrg = 0
   string name = 0
   string email = 0
   string workPhone = 0
@@ -47,15 +47,15 @@ message Author
 // an axis-aligned 2D bounding box (float units)
 message BoundingBox2D
  {
-  float xMin = 0
-  float xMax = 0
-  float yMin = 0
-  float yMax = 0
+  quantityValue xMin = 0
+  quantityValue xMax = 0
+  quantityValue yMin = 0
+  quantityValue yMax = 0
  }
 message ChromaticAberrationCorrector
  {
   boolean used = 0
-  string model = 0
+  string instrumentType = 0
  }
 // OSC-EM Metadata for a dataset
 message EMDataset
@@ -93,8 +93,8 @@ message Grid
   string filmTopology = 0
   string filmThickness = 0
   string pretreatmentType = 0
-  float pretreatmentTime = 0
-  float pretreatmentPressure = 0
+  quantityValue pretreatmentTime = 0
+  quantityValue pretreatmentPressure = 0
   string pretreatmentAtmosphere = 0
  }
 // size of a 2D image (in integer units)
@@ -110,15 +110,15 @@ message Instrument
   string illumination = 0
   string imaging = 0
   string electronSource = 0
-  integer accelerationVoltage = 0
-  integer c2Aperture = 0
-  float cs = 0
+  quantityValue accelerationVoltage = 0
+  quantityValue c2Aperture = 0
+  quantityValue cs = 0
  }
 // A class representing a ligand
 message Ligand
  {
   boolean present = 0
-  string smile = 0
+  string smiles = 0
   string reference = 0
  }
 // A class representing a molecule
@@ -140,7 +140,7 @@ message OverallMolecule
   string molecularType = 0
   string nameSample = 0
   string source = 0
-  float molecularWeight = 0
+  quantityValue molecularWeight = 0
  }
 message Person
  {
@@ -153,19 +153,19 @@ message Person
 message Phaseplate
  {
   boolean used = 0
-  string model = 0
+  string instrumentType = 0
  }
-// Value together with unit
+// if a value has a unit, it should be given as a unit value pair.
 message QuantityValue
  {
-  double hasValue = 0
-  string hasUnit = 0
+  string unit = 0
+  float value = 0
  }
 // A range constructed from min and max
 message Range
  {
-  float minimal = 0
-  float maximal = 0
+  quantityValue minimal = 0
+  quantityValue maximal = 0
  }
 // A class representing a sample
 message Sample
@@ -179,9 +179,9 @@ message Sample
 // A series of numbers constructed from min, max, and increment
 message Series
  {
-  float minimal = 0
-  float maximal = 0
-  float increment = 0
+  quantityValue minimal = 0
+  quantityValue maximal = 0
+  quantityValue increment = 0
  }
 message SpecialistOptics
  {
@@ -193,12 +193,12 @@ message SpecialistOptics
 message Specimen
  {
   string buffer = 0
-  float concentration = 0
+  quantityValue concentration = 0
   float ph = 0
   boolean vitrification = 0
   string vitrificationCryogen = 0
-  float humidity = 0
-  float temperature = 0
+  quantityValue humidity = 0
+  quantityValue temperature = 0
   boolean staining = 0
   boolean embedding = 0
   boolean shadowing = 0
@@ -206,12 +206,12 @@ message Specimen
 message SphericalAberrationCorrector
  {
   boolean used = 0
-  string model = 0
+  string instrumentType = 0
  }
 // The min, max and increment of the tilt angle in a tomography session. Unit is degree.
 message TiltAngle
  {
-  float minimal = 0
-  float maximal = 0
-  float increment = 0
+  quantityValue minimal = 0
+  quantityValue maximal = 0
+  quantityValue increment = 0
  }

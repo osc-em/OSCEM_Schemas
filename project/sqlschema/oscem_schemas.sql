@@ -5,30 +5,34 @@
 --     * Slot: sample_id Description: Sample information
 -- # Class: "TiltAngle" Description: "The min, max and increment of the tilt angle in a tomography session. Unit is degree."
 --     * Slot: id Description: 
---     * Slot: increment Description: Increment between elements of a series
---     * Slot: minimal Description: Minimal value of a given dataset property
---     * Slot: maximal Description: Maximal value of a given dataset property
+--     * Slot: increment_id Description: Increment between elements of a series
+--     * Slot: minimal_id Description: Minimal value of a given dataset property
+--     * Slot: maximal_id Description: Maximal value of a given dataset property
 -- # Class: "Any" Description: "Any type, used as the base for type-narrowing.See https://linkml.io/linkml/schemas/advanced.html"
 --     * Slot: id Description: 
 -- # Class: "Range" Description: "A range constructed from min and max"
 --     * Slot: id Description: 
---     * Slot: minimal Description: Minimal value of a given dataset property
---     * Slot: maximal Description: Maximal value of a given dataset property
+--     * Slot: minimal_id Description: Minimal value of a given dataset property
+--     * Slot: maximal_id Description: Maximal value of a given dataset property
 -- # Class: "Series" Description: "A series of numbers constructed from min, max, and increment"
 --     * Slot: id Description: 
---     * Slot: increment Description: Increment between elements of a series
---     * Slot: minimal Description: Minimal value of a given dataset property
---     * Slot: maximal Description: Maximal value of a given dataset property
+--     * Slot: increment_id Description: Increment between elements of a series
+--     * Slot: minimal_id Description: Minimal value of a given dataset property
+--     * Slot: maximal_id Description: Maximal value of a given dataset property
 -- # Class: "ImageSize" Description: "size of a 2D image (in integer units)"
 --     * Slot: id Description: 
 --     * Slot: height Description: The height of a given item - unit depends on item
 --     * Slot: width Description: The width of a given item - unit depends on item
 -- # Class: "BoundingBox2D" Description: "an axis-aligned 2D bounding box (float units)"
 --     * Slot: id Description: 
---     * Slot: x_min Description: minimum x
---     * Slot: x_max Description: maximum x
---     * Slot: y_min Description: minimum y
---     * Slot: y_max Description: maximum y
+--     * Slot: x_min_id Description: minimum x
+--     * Slot: x_max_id Description: maximum x
+--     * Slot: y_min_id Description: minimum y
+--     * Slot: y_max_id Description: maximum y
+-- # Class: "QuantityValue" Description: "if a value has a unit, it should be given as a unit value pair."
+--     * Slot: id Description: 
+--     * Slot: unit Description: the unit of a given value
+--     * Slot: value Description: the value of a field with a unit
 -- # Class: "Acquisition" Description: ""
 --     * Slot: id Description: 
 --     * Slot: nominal_magnification Description: Magnification level as indicated by the instrument, no unit
@@ -38,22 +42,22 @@
 --     * Slot: microscope_software Description: Software used for instrument control,
 --     * Slot: detector Description: Make and model of the detector used
 --     * Slot: detector_mode Description: Operating mode of the detector
---     * Slot: dose_per_movie Description: Average dose per image/movie/tilt - given in electrons per square Angstrom
---     * Slot: exposure_time Description: Time of data acquisition per movie/tilt - in s
 --     * Slot: cryogen Description: Cryogen used in cooling the instrument and sample, usually nitrogen
 --     * Slot: frames_per_movie Description: Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
 --     * Slot: grids_imaged Description: Number of grids imaged for this project - here with qualifier during this data acquisition
 --     * Slot: images_generated Description: Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted
 --     * Slot: binning_camera Description: Level of binning on the images applied during data collection
---     * Slot: pixel_size Description: Pixel size, in Angstrom
 --     * Slot: beamtiltgroups Description: Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.
 --     * Slot: gainref_flip_rotate Description: Whether and how you have to flip or rotate the gainref in order to align with your acquired images
 --     * Slot: nominal_defocus_id Description: Target defocus set, min and max values in µm.
 --     * Slot: calibrated_defocus_id Description: Machine estimated defocus, min and max values in µm. Has a tendency to be off.
 --     * Slot: temperature_id Description: Temperature during data collection, in K with min and max values.
+--     * Slot: dose_per_movie_id Description: Average dose per image/movie/tilt - given in electrons per square Angstrom
 --     * Slot: energy_filter_id Description: Wether an energy filter was used and its specifics.
 --     * Slot: image_size_id Description: The size of the image in pixels, height and width given.
 --     * Slot: date_time_id Description: Time and date of the data acquisition
+--     * Slot: exposure_time_id Description: Time of data acquisition per movie/tilt - in s
+--     * Slot: pixel_size_id Description: Pixel size, in Angstrom
 --     * Slot: specialist_optics_id Description: Any type of special optics, such as a phaseplate
 --     * Slot: beamshift_id Description: Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
 --     * Slot: beamtilt_id Description: Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
@@ -61,7 +65,7 @@
 -- # Class: "EnergyFilter" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: model Description: Make and model of a specialized device
+--     * Slot: model Description: Make and model of a specilized device
 --     * Slot: width Description: The width of a given item - unit depends on item
 -- # Class: "SpecialistOptics" Description: ""
 --     * Slot: id Description: 
@@ -71,24 +75,24 @@
 -- # Class: "Phaseplate" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: model Description: Type of phaseplate
+--     * Slot: instrument_type Description: Type of phaseplate
 -- # Class: "SphericalAberrationCorrector" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: model Description: Make and model of a specialized device
+--     * Slot: instrument_type Description: Details of a given specialist instrument
 -- # Class: "ChromaticAberrationCorrector" Description: ""
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: model Description: Make and model of a specialized device
+--     * Slot: instrument_type Description: Details of a given specialist instrument
 -- # Class: "Instrument" Description: "Instrument values, mostly constant across a data collection."
 --     * Slot: id Description: 
 --     * Slot: microscope Description: Name/Type of the Microscope
 --     * Slot: illumination Description: Mode of illumination used during data collection
 --     * Slot: imaging Description: Mode of imaging used during data collection
 --     * Slot: electron_source Description: Type of electron source used in the microscope, such as FEG
---     * Slot: acceleration_voltage Description: Voltage used for the electron acceleration, in kV
---     * Slot: c2_aperture Description: C2 aperture size used in data acquisition, in µm
---     * Slot: cs Description: Spherical aberration of the instrument, in mm
+--     * Slot: acceleration_voltage_id Description: Voltage used for the electron acceleration, in kV
+--     * Slot: c2_aperture_id Description: C2 aperture size used in data acquisition, in µm
+--     * Slot: cs_id Description: Spherical aberration of the instrument, in mm
 -- # Class: "Person" Description: ""
 --     * Slot: id Description: 
 --     * Slot: name Description: name
@@ -98,11 +102,11 @@
 --     * Slot: work_phone Description: work phone
 -- # Class: "Author" Description: ""
 --     * Slot: id Description: 
---     * Slot: name_org Description: Name of the organization
---     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
 --     * Slot: orcid Description: ORCID of the author, a type of unique identifier
 --     * Slot: country Description: Country of the author's institution
 --     * Slot: role Description: Role of the author, i.e., principal investigator
+--     * Slot: name_org Description: Name of the organization
+--     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
 --     * Slot: name Description: name
 --     * Slot: first_name Description: first name
 --     * Slot: work_status Description: work status
@@ -116,16 +120,12 @@
 --     * Slot: end_date Description: end date
 --     * Slot: project_id Description: project id
 --     * Slot: budget_id Description: budget
--- # Class: "QuantityValue" Description: "Value together with unit"
---     * Slot: id Description: 
---     * Slot: has_value Description: Value
---     * Slot: has_unit Description: Unit
 -- # Class: "OverallMolecule" Description: "A class representing the overall molecule"
 --     * Slot: id Description: 
 --     * Slot: molecular_type Description: Description of the overall supramolecular type, i.e., a complex
 --     * Slot: name_sample Description: Name of the full sample
 --     * Slot: source Description: Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
---     * Slot: molecular_weight Description: Molecular weight in Da
+--     * Slot: molecular_weight_id Description: Molecular weight in Da
 -- # Class: "Molecule" Description: "A class representing a molecule"
 --     * Slot: id Description: 
 --     * Slot: name_mol Description: Name of an individual molecule (often protein) in the sample
@@ -140,20 +140,20 @@
 -- # Class: "Ligand" Description: "A class representing a ligand"
 --     * Slot: id Description: 
 --     * Slot: present Description: Whether the model contains any ligands
---     * Slot: smile Description: Provide a valid SMILE string of your ligand
+--     * Slot: smiles Description: Provide a valid SMILES string of your ligand
 --     * Slot: reference Description: Link to a reference of your ligand, i.e., CCD, PubChem, etc.
 -- # Class: "Specimen" Description: "A class representing a specimen"
 --     * Slot: id Description: 
 --     * Slot: buffer Description: Name/composition of the (chemical) sample buffer during grid preparation
---     * Slot: concentration Description: Concentration of the (supra)molecule in the sample, in M
 --     * Slot: ph Description: pH of the sample buffer
 --     * Slot: vitrification Description: Whether the sample was vitrified
 --     * Slot: vitrification_cryogen Description: Which cryogen was used for vitrification
---     * Slot: humidity Description: Environmental humidity just before vitrification, in %
---     * Slot: temperature Description: Environmental temperature just before vitrification, in K
 --     * Slot: staining Description: Whether the sample was stained
 --     * Slot: embedding Description: Whether the sample was embedded
 --     * Slot: shadowing Description: Whether the sample was shadowed
+--     * Slot: concentration_id Description: Concentration of the (supra)molecule in the sample, in M
+--     * Slot: humidity_id Description: Environmental humidity just before vitrification, in %
+--     * Slot: temperature_id Description: Environmental temperature just before vitrification, in K
 -- # Class: "Grid" Description: "A class representing a grid"
 --     * Slot: id Description: 
 --     * Slot: manufacturer Description: Grid manufacturer
@@ -164,9 +164,9 @@
 --     * Slot: film_topology Description: Topology of the support film
 --     * Slot: film_thickness Description: Thickness of the support film
 --     * Slot: pretreatment_type Description: Type of pretreatment of the grid, i.e., glow discharge
---     * Slot: pretreatment_time Description: Length of time of the pretreatment in s
---     * Slot: pretreatment_pressure Description: Pressure of the chamber during pretreatment, in Pa
 --     * Slot: pretreatment_atmosphere Description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
+--     * Slot: pretreatment_time_id Description: Length of time of the pretreatment in s
+--     * Slot: pretreatment_pressure_id Description: Pressure of the chamber during pretreatment, in Pa
 -- # Class: "Sample" Description: "A class representing a sample"
 --     * Slot: id Description: 
 --     * Slot: overall_molecule_id Description: Description of the overall molecule
@@ -185,28 +185,8 @@
 --     * Slot: Sample_id Description: Autocreated FK slot
 --     * Slot: ligands_id Description: List of ligands associated with the sample
 
-CREATE TABLE "TiltAngle" (
-	id INTEGER NOT NULL, 
-	increment FLOAT, 
-	minimal FLOAT, 
-	maximal FLOAT, 
-	PRIMARY KEY (id)
-);
 CREATE TABLE "Any" (
 	id INTEGER NOT NULL, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "Range" (
-	id INTEGER NOT NULL, 
-	minimal FLOAT, 
-	maximal FLOAT, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "Series" (
-	id INTEGER NOT NULL, 
-	increment FLOAT, 
-	minimal FLOAT, 
-	maximal FLOAT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "ImageSize" (
@@ -215,12 +195,10 @@ CREATE TABLE "ImageSize" (
 	width INTEGER, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "BoundingBox2D" (
+CREATE TABLE "QuantityValue" (
 	id INTEGER NOT NULL, 
-	x_min FLOAT, 
-	x_max FLOAT, 
-	y_min FLOAT, 
-	y_max FLOAT, 
+	unit TEXT NOT NULL, 
+	value FLOAT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "EnergyFilter" (
@@ -233,30 +211,19 @@ CREATE TABLE "EnergyFilter" (
 CREATE TABLE "Phaseplate" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
-	model TEXT NOT NULL, 
+	instrument_type TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "SphericalAberrationCorrector" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
-	model TEXT NOT NULL, 
+	instrument_type TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "ChromaticAberrationCorrector" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
-	model TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "Instrument" (
-	id INTEGER NOT NULL, 
-	microscope TEXT NOT NULL, 
-	illumination TEXT NOT NULL, 
-	imaging TEXT NOT NULL, 
-	electron_source TEXT NOT NULL, 
-	acceleration_voltage INTEGER NOT NULL, 
-	c2_aperture INTEGER, 
-	cs FLOAT NOT NULL, 
+	instrument_type TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Person" (
@@ -270,30 +237,16 @@ CREATE TABLE "Person" (
 );
 CREATE TABLE "Author" (
 	id INTEGER NOT NULL, 
-	name_org TEXT NOT NULL, 
-	type_org VARCHAR(10) NOT NULL, 
 	orcid TEXT NOT NULL, 
 	country TEXT NOT NULL, 
 	role TEXT, 
+	name_org TEXT NOT NULL, 
+	type_org VARCHAR(10) NOT NULL, 
 	name TEXT NOT NULL, 
 	first_name TEXT, 
 	work_status BOOLEAN, 
 	email TEXT NOT NULL, 
 	work_phone TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "QuantityValue" (
-	id INTEGER NOT NULL, 
-	has_value FLOAT, 
-	has_unit TEXT, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "OverallMolecule" (
-	id INTEGER NOT NULL, 
-	molecular_type TEXT NOT NULL, 
-	name_sample TEXT NOT NULL, 
-	source TEXT NOT NULL, 
-	molecular_weight FLOAT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Molecule" (
@@ -312,38 +265,49 @@ CREATE TABLE "Molecule" (
 CREATE TABLE "Ligand" (
 	id INTEGER NOT NULL, 
 	present BOOLEAN NOT NULL, 
-	smile TEXT, 
+	smiles TEXT, 
 	reference TEXT, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "Specimen" (
+CREATE TABLE "TiltAngle" (
 	id INTEGER NOT NULL, 
-	buffer TEXT, 
-	concentration FLOAT, 
-	ph FLOAT NOT NULL, 
-	vitrification BOOLEAN NOT NULL, 
-	vitrification_cryogen TEXT NOT NULL, 
-	humidity FLOAT, 
-	temperature FLOAT, 
-	staining BOOLEAN NOT NULL, 
-	embedding BOOLEAN NOT NULL, 
-	shadowing BOOLEAN NOT NULL, 
-	PRIMARY KEY (id)
+	increment_id INTEGER, 
+	minimal_id INTEGER, 
+	maximal_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(increment_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "QuantityValue" (id)
 );
-CREATE TABLE "Grid" (
+CREATE TABLE "Range" (
 	id INTEGER NOT NULL, 
-	manufacturer TEXT, 
-	material TEXT, 
-	mesh FLOAT, 
-	film_support BOOLEAN, 
-	film_material TEXT, 
-	film_topology TEXT, 
-	film_thickness TEXT, 
-	pretreatment_type TEXT, 
-	pretreatment_time FLOAT, 
-	pretreatment_pressure FLOAT, 
-	pretreatment_atmosphere TEXT, 
-	PRIMARY KEY (id)
+	minimal_id INTEGER, 
+	maximal_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "QuantityValue" (id)
+);
+CREATE TABLE "Series" (
+	id INTEGER NOT NULL, 
+	increment_id INTEGER, 
+	minimal_id INTEGER, 
+	maximal_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(increment_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "QuantityValue" (id)
+);
+CREATE TABLE "BoundingBox2D" (
+	id INTEGER NOT NULL, 
+	x_min_id INTEGER, 
+	x_max_id INTEGER, 
+	y_min_id INTEGER, 
+	y_max_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(x_min_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(x_max_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(y_min_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(y_max_id) REFERENCES "QuantityValue" (id)
 );
 CREATE TABLE "SpecialistOptics" (
 	id INTEGER NOT NULL, 
@@ -354,6 +318,20 @@ CREATE TABLE "SpecialistOptics" (
 	FOREIGN KEY(phaseplate_id) REFERENCES "Phaseplate" (id), 
 	FOREIGN KEY(spherical_aberration_corrector_id) REFERENCES "SphericalAberrationCorrector" (id), 
 	FOREIGN KEY(chromatic_aberration_corrector_id) REFERENCES "ChromaticAberrationCorrector" (id)
+);
+CREATE TABLE "Instrument" (
+	id INTEGER NOT NULL, 
+	microscope TEXT NOT NULL, 
+	illumination TEXT NOT NULL, 
+	imaging TEXT NOT NULL, 
+	electron_source TEXT NOT NULL, 
+	acceleration_voltage_id INTEGER NOT NULL, 
+	c2_aperture_id INTEGER, 
+	cs_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(acceleration_voltage_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(c2_aperture_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(cs_id) REFERENCES "QuantityValue" (id)
 );
 CREATE TABLE "Grant" (
 	id INTEGER NOT NULL, 
@@ -366,15 +344,48 @@ CREATE TABLE "Grant" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(budget_id) REFERENCES "QuantityValue" (id)
 );
-CREATE TABLE "Sample" (
+CREATE TABLE "OverallMolecule" (
 	id INTEGER NOT NULL, 
-	overall_molecule_id INTEGER NOT NULL, 
-	specimen_id INTEGER NOT NULL, 
-	grid_id INTEGER, 
+	molecular_type TEXT NOT NULL, 
+	name_sample TEXT NOT NULL, 
+	source TEXT NOT NULL, 
+	molecular_weight_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(overall_molecule_id) REFERENCES "OverallMolecule" (id), 
-	FOREIGN KEY(specimen_id) REFERENCES "Specimen" (id), 
-	FOREIGN KEY(grid_id) REFERENCES "Grid" (id)
+	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantityValue" (id)
+);
+CREATE TABLE "Specimen" (
+	id INTEGER NOT NULL, 
+	buffer TEXT, 
+	ph FLOAT NOT NULL, 
+	vitrification BOOLEAN NOT NULL, 
+	vitrification_cryogen TEXT NOT NULL, 
+	staining BOOLEAN NOT NULL, 
+	embedding BOOLEAN NOT NULL, 
+	shadowing BOOLEAN NOT NULL, 
+	concentration_id INTEGER, 
+	humidity_id INTEGER, 
+	temperature_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(concentration_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(humidity_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(temperature_id) REFERENCES "QuantityValue" (id)
+);
+CREATE TABLE "Grid" (
+	id INTEGER NOT NULL, 
+	manufacturer TEXT, 
+	material TEXT, 
+	mesh FLOAT, 
+	film_support BOOLEAN, 
+	film_material TEXT, 
+	film_topology TEXT, 
+	film_thickness TEXT, 
+	pretreatment_type TEXT, 
+	pretreatment_atmosphere TEXT, 
+	pretreatment_time_id INTEGER, 
+	pretreatment_pressure_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(pretreatment_time_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "QuantityValue" (id)
 );
 CREATE TABLE "Acquisition" (
 	id INTEGER NOT NULL, 
@@ -385,22 +396,22 @@ CREATE TABLE "Acquisition" (
 	microscope_software TEXT, 
 	detector TEXT NOT NULL, 
 	detector_mode TEXT, 
-	dose_per_movie FLOAT NOT NULL, 
-	exposure_time FLOAT, 
 	cryogen TEXT, 
 	frames_per_movie INTEGER, 
 	grids_imaged INTEGER, 
 	images_generated INTEGER, 
 	binning_camera FLOAT NOT NULL, 
-	pixel_size FLOAT NOT NULL, 
 	beamtiltgroups INTEGER, 
 	gainref_flip_rotate TEXT, 
 	nominal_defocus_id INTEGER, 
 	calibrated_defocus_id INTEGER, 
 	temperature_id INTEGER, 
+	dose_per_movie_id INTEGER NOT NULL, 
 	energy_filter_id INTEGER, 
 	image_size_id INTEGER, 
 	date_time_id INTEGER NOT NULL, 
+	exposure_time_id INTEGER, 
+	pixel_size_id INTEGER NOT NULL, 
 	specialist_optics_id INTEGER, 
 	beamshift_id INTEGER, 
 	beamtilt_id INTEGER, 
@@ -409,13 +420,36 @@ CREATE TABLE "Acquisition" (
 	FOREIGN KEY(nominal_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(calibrated_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
+	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
 	FOREIGN KEY(date_time_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(imageshift_id) REFERENCES "BoundingBox2D" (id)
+);
+CREATE TABLE "Sample" (
+	id INTEGER NOT NULL, 
+	overall_molecule_id INTEGER NOT NULL, 
+	specimen_id INTEGER NOT NULL, 
+	grid_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(overall_molecule_id) REFERENCES "OverallMolecule" (id), 
+	FOREIGN KEY(specimen_id) REFERENCES "Specimen" (id), 
+	FOREIGN KEY(grid_id) REFERENCES "Grid" (id)
+);
+CREATE TABLE "EMDataset" (
+	id INTEGER NOT NULL, 
+	acquisition_id INTEGER NOT NULL, 
+	instrument_id INTEGER NOT NULL, 
+	sample_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(acquisition_id) REFERENCES "Acquisition" (id), 
+	FOREIGN KEY(instrument_id) REFERENCES "Instrument" (id), 
+	FOREIGN KEY(sample_id) REFERENCES "Sample" (id)
 );
 CREATE TABLE "Sample_molecule" (
 	"Sample_id" INTEGER, 
@@ -430,16 +464,6 @@ CREATE TABLE "Sample_ligands" (
 	PRIMARY KEY ("Sample_id", ligands_id), 
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id), 
 	FOREIGN KEY(ligands_id) REFERENCES "Ligand" (id)
-);
-CREATE TABLE "EMDataset" (
-	id INTEGER NOT NULL, 
-	acquisition_id INTEGER NOT NULL, 
-	instrument_id INTEGER NOT NULL, 
-	sample_id INTEGER NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(acquisition_id) REFERENCES "Acquisition" (id), 
-	FOREIGN KEY(instrument_id) REFERENCES "Instrument" (id), 
-	FOREIGN KEY(sample_id) REFERENCES "Sample" (id)
 );
 CREATE TABLE "EMDataset_grants" (
 	"EMDataset_id" INTEGER, 

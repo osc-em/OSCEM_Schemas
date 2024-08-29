@@ -11,17 +11,17 @@ type Acquisition
     microscopeSoftware: String
     detector: String!
     detectorMode: String
-    dosePerMovie: Float!
+    dosePerMovie: QuantityValue!
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Any!
-    exposureTime: Float
+    exposureTime: QuantityValue
     cryogen: String
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
     binningCamera: Float!
-    pixelSize: Float!
+    pixelSize: QuantityValue!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
     beamtilt: BoundingBox2D
@@ -38,11 +38,11 @@ type Author
   {
     firstName: String
     workStatus: Boolean
-    nameOrg: String!
-    typeOrg: OrganizationTypeEnum!
     orcid: String!
     country: String!
     role: String
+    nameOrg: String!
+    typeOrg: OrganizationTypeEnum!
     name: String!
     email: String!
     workPhone: String!
@@ -50,16 +50,16 @@ type Author
 
 type BoundingBox2D
   {
-    xMin: Float
-    xMax: Float
-    yMin: Float
-    yMax: Float
+    xMin: QuantityValue
+    xMax: QuantityValue
+    yMin: QuantityValue
+    yMax: QuantityValue
   }
 
 type ChromaticAberrationCorrector
   {
     used: Boolean!
-    model: String!
+    instrumentType: String!
   }
 
 type EMDataset
@@ -98,8 +98,8 @@ type Grid
     filmTopology: String
     filmThickness: String
     pretreatmentType: String
-    pretreatmentTime: Float
-    pretreatmentPressure: Float
+    pretreatmentTime: QuantityValue
+    pretreatmentPressure: QuantityValue
     pretreatmentAtmosphere: String
   }
 
@@ -115,15 +115,15 @@ type Instrument
     illumination: String!
     imaging: String!
     electronSource: String!
-    accelerationVoltage: Integer!
-    c2Aperture: Integer
-    cs: Float!
+    accelerationVoltage: QuantityValue!
+    c2Aperture: QuantityValue
+    cs: QuantityValue!
   }
 
 type Ligand
   {
     present: Boolean!
-    smile: String
+    smiles: String
     reference: String
   }
 
@@ -145,7 +145,7 @@ type OverallMolecule
     molecularType: String!
     nameSample: String!
     source: String!
-    molecularWeight: Float
+    molecularWeight: QuantityValue
   }
 
 type Person
@@ -160,19 +160,19 @@ type Person
 type Phaseplate
   {
     used: Boolean!
-    model: String!
+    instrumentType: String!
   }
 
 type QuantityValue
   {
-    hasValue: Double
-    hasUnit: String
+    unit: String!
+    value: Float!
   }
 
 type Range
   {
-    minimal: Float
-    maximal: Float
+    minimal: QuantityValue
+    maximal: QuantityValue
   }
 
 type Sample
@@ -186,9 +186,9 @@ type Sample
 
 type Series
   {
-    minimal: Float
-    maximal: Float
-    increment: Float
+    minimal: QuantityValue
+    maximal: QuantityValue
+    increment: QuantityValue
   }
 
 type SpecialistOptics
@@ -201,12 +201,12 @@ type SpecialistOptics
 type Specimen
   {
     buffer: String
-    concentration: Float
+    concentration: QuantityValue
     ph: Float!
     vitrification: Boolean!
     vitrificationCryogen: String!
-    humidity: Float
-    temperature: Float
+    humidity: QuantityValue
+    temperature: QuantityValue
     staining: Boolean!
     embedding: Boolean!
     shadowing: Boolean!
@@ -215,13 +215,13 @@ type Specimen
 type SphericalAberrationCorrector
   {
     used: Boolean!
-    model: String!
+    instrumentType: String!
   }
 
 type TiltAngle
   {
-    minimal: Float
-    maximal: Float
-    increment: Float
+    minimal: QuantityValue
+    maximal: QuantityValue
+    increment: QuantityValue
   }
 

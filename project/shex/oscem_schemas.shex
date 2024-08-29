@@ -56,17 +56,17 @@ linkml:Sparqlpath xsd:string
           <https://w3id.org/osc-em/acquisitionmicroscope_software> @linkml:String ? ;
           <https://w3id.org/osc-em/acquisitiondetector> @linkml:String ;
           <https://w3id.org/osc-em/acquisitiondetector_mode> @linkml:String ? ;
-          <https://w3id.org/osc-em/acquisitiondose_per_movie> @linkml:Float ;
+          <https://w3id.org/osc-em/acquisitiondose_per_movie> @<https://w3id.org/osc-em/types/QuantityValue> ;
           <https://w3id.org/osc-em/acquisitionenergy_filter> @<https://w3id.org/osc-em/acquisitionEnergyFilter> ? ;
           <https://w3id.org/osc-em/acquisitionimage_size> @<https://w3id.org/osc-em/types/ImageSize> ? ;
           <https://w3id.org/osc-em/acquisitiondate_time> @<https://w3id.org/osc-em/types/Any> ;
-          <https://w3id.org/osc-em/acquisitionexposure_time> @linkml:Float ? ;
+          <https://w3id.org/osc-em/acquisitionexposure_time> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
           <https://w3id.org/osc-em/acquisitioncryogen> @linkml:String ? ;
           <https://w3id.org/osc-em/acquisitionframes_per_movie> @linkml:Integer ? ;
           <https://w3id.org/osc-em/acquisitiongrids_imaged> @linkml:Integer ? ;
           <https://w3id.org/osc-em/acquisitionimages_generated> @linkml:Integer ? ;
           <https://w3id.org/osc-em/acquisitionbinning_camera> @linkml:Float ;
-          <https://w3id.org/osc-em/acquisitionpixel_size> @linkml:Float ;
+          <https://w3id.org/osc-em/acquisitionpixel_size> @<https://w3id.org/osc-em/types/QuantityValue> ;
           <https://w3id.org/osc-em/acquisitionspecialist_optics> @<https://w3id.org/osc-em/acquisitionSpecialistOptics> ? ;
           <https://w3id.org/osc-em/acquisitionbeamshift> @<https://w3id.org/osc-em/types/BoundingBox2D> ? ;
           <https://w3id.org/osc-em/acquisitionbeamtilt> @<https://w3id.org/osc-em/types/BoundingBox2D> ? ;
@@ -87,15 +87,15 @@ linkml:Sparqlpath xsd:string
 <https://w3id.org/osc-em/organizational/Author> CLOSED {
     (  $<https://w3id.org/osc-em/organizational/Author_tes> (  &<https://w3id.org/osc-em/organizational/Person_tes> ;
           rdf:type [ schema1:Person ] ? ;
+          <https://w3id.org/osc-em/organizational/orcid> @linkml:String ;
+          <https://w3id.org/osc-em/organizational/country> @linkml:String ;
+          <https://w3id.org/osc-em/organizational/role> @linkml:String ? ;
           <https://w3id.org/osc-em/organizational/name_org> @linkml:String ;
           <https://w3id.org/osc-em/organizational/type_org> [
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Academic>
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Commercial>
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Government>
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Other> ] ;
-          <https://w3id.org/osc-em/organizational/orcid> @linkml:String ;
-          <https://w3id.org/osc-em/organizational/country> @linkml:String ;
-          <https://w3id.org/osc-em/organizational/role> @linkml:String ? ;
           schema1:name @linkml:String ;
           schema1:email @linkml:String ;
           schema1:telephone @linkml:String
@@ -105,10 +105,11 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://w3id.org/osc-em/types/BoundingBox2D> CLOSED {
-    (  $<https://w3id.org/osc-em/types/BoundingBox2D_tes> (  <https://w3id.org/osc-em/types/x_min> @linkml:Float ? ;
-          <https://w3id.org/osc-em/types/x_max> @linkml:Float ? ;
-          <https://w3id.org/osc-em/types/y_min> @linkml:Float ? ;
-          <https://w3id.org/osc-em/types/y_max> @linkml:Float ?
+    (  $<https://w3id.org/osc-em/types/BoundingBox2D_tes> (  <https://w3id.org/osc-em/types/x_min>
+          @<https://w3id.org/osc-em/types/QuantityValue> ? ;
+          <https://w3id.org/osc-em/types/x_max> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
+          <https://w3id.org/osc-em/types/y_min> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
+          <https://w3id.org/osc-em/types/y_max> @<https://w3id.org/osc-em/types/QuantityValue> ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/types/BoundingBox2D> ] ?
     )
@@ -117,7 +118,7 @@ linkml:Sparqlpath xsd:string
 <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> CLOSED {
     (  $<https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector_tes> (  <https://w3id.org/osc-em/acquisitionused>
           @linkml:Boolean ;
-          <https://w3id.org/osc-em/acquisitionmodel> @linkml:String
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
        ) ;
        rdf:type [ <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ] ?
     )
@@ -148,7 +149,7 @@ linkml:Sparqlpath xsd:string
           <https://w3id.org/osc-em/organizational/funder> @linkml:String ? ;
           <https://w3id.org/osc-em/organizational/start_date> @linkml:Date ? ;
           <https://w3id.org/osc-em/organizational/end_date> @linkml:Date ? ;
-          <https://w3id.org/osc-em/organizational/budget> @<https://w3id.org/osc-em/organizational/QuantityValue> ? ;
+          <https://w3id.org/osc-em/organizational/budget> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
           schema1:identifier @linkml:String ?
        ) ;
        rdf:type [ schema1:Grant ] ?
@@ -164,8 +165,8 @@ linkml:Sparqlpath xsd:string
           <https://w3id.org/osc-em/sample/film_topology> @linkml:String ? ;
           <https://w3id.org/osc-em/sample/film_thickness> @linkml:String ? ;
           <https://w3id.org/osc-em/sample/pretreatment_type> @linkml:String ? ;
-          <https://w3id.org/osc-em/sample/pretreatment_time> @linkml:Float ? ;
-          <https://w3id.org/osc-em/sample/pretreatment_pressure> @linkml:Float ? ;
+          <https://w3id.org/osc-em/sample/pretreatment_time> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
+          <https://w3id.org/osc-em/sample/pretreatment_pressure> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
           <https://w3id.org/osc-em/sample/pretreatment_atmosphere> @linkml:String ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sample/Grid> ] ?
@@ -185,9 +186,9 @@ linkml:Sparqlpath xsd:string
           <https://w3id.org/osc-em/instrument/illumination> @linkml:String ;
           <https://w3id.org/osc-em/instrument/imaging> @linkml:String ;
           <https://w3id.org/osc-em/instrument/electron_source> @linkml:String ;
-          <https://w3id.org/osc-em/instrument/acceleration_voltage> @linkml:Integer ;
-          <https://w3id.org/osc-em/instrument/c2_aperture> @linkml:Integer ? ;
-          <https://w3id.org/osc-em/instrument/cs> @linkml:Float
+          <https://w3id.org/osc-em/instrument/acceleration_voltage> @<https://w3id.org/osc-em/types/QuantityValue> ;
+          <https://w3id.org/osc-em/instrument/c2_aperture> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
+          <https://w3id.org/osc-em/instrument/cs> @<https://w3id.org/osc-em/types/QuantityValue>
        ) ;
        rdf:type [ <https://w3id.org/osc-em/instrument/Instrument> ] ?
     )
@@ -195,7 +196,7 @@ linkml:Sparqlpath xsd:string
 
 <https://w3id.org/osc-em/sample/Ligand> CLOSED {
     (  $<https://w3id.org/osc-em/sample/Ligand_tes> (  <https://w3id.org/osc-em/sample/present> @linkml:Boolean ;
-          <https://w3id.org/osc-em/sample/smile> @linkml:String ? ;
+          <https://w3id.org/osc-em/sample/smiles> @linkml:String ? ;
           <https://w3id.org/osc-em/sample/reference> @linkml:String ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sample/Ligand> ] ?
@@ -224,7 +225,7 @@ linkml:Sparqlpath xsd:string
     (  $<https://w3id.org/osc-em/sample/OverallMolecule_tes> (  <https://w3id.org/osc-em/sample/molecular_type> @linkml:String ;
           <https://w3id.org/osc-em/sample/name_sample> @linkml:String ;
           <https://w3id.org/osc-em/sample/source> @linkml:String ;
-          <https://w3id.org/osc-em/sample/molecular_weight> @linkml:Float ?
+          <https://w3id.org/osc-em/sample/molecular_weight> @<https://w3id.org/osc-em/types/QuantityValue> ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sample/OverallMolecule> ] ?
     )
@@ -245,16 +246,15 @@ linkml:Sparqlpath xsd:string
 
 <https://w3id.org/osc-em/acquisitionPhaseplate> CLOSED {
     (  $<https://w3id.org/osc-em/acquisitionPhaseplate_tes> (  <https://w3id.org/osc-em/acquisitionused> @linkml:Boolean ;
-          <https://w3id.org/osc-em/acquisitionmodel> @linkml:String
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
        ) ;
        rdf:type [ <https://w3id.org/osc-em/acquisitionPhaseplate> ] ?
     )
 }
 
-<https://w3id.org/osc-em/organizational/QuantityValue> CLOSED {
-    (  $<https://w3id.org/osc-em/organizational/QuantityValue_tes> (  <http://qudt.org/schema/qudthasQuantityKind> @linkml:Double ?
-          ;
-          <http://qudt.org/schema/qudthasUnit> @linkml:String ?
+<https://w3id.org/osc-em/types/QuantityValue> CLOSED {
+    (  $<https://w3id.org/osc-em/types/QuantityValue_tes> (  <http://qudt.org/schema/qudthasUnit> @linkml:String ;
+          <http://qudt.org/schema/qudthasQuantityKind> @linkml:Float
        ) ;
        rdf:type [ <http://qudt.org/schema/qudtquantityValue> ] ?
     )
@@ -262,8 +262,9 @@ linkml:Sparqlpath xsd:string
 
 <https://w3id.org/osc-em/types/Range>  (
     CLOSED {
-       (  $<https://w3id.org/osc-em/types/Range_tes> (  <https://w3id.org/osc-em/types/minimal> @linkml:Float ? ;
-             <https://w3id.org/osc-em/types/maximal> @linkml:Float ?
+       (  $<https://w3id.org/osc-em/types/Range_tes> (  <https://w3id.org/osc-em/types/minimal>
+             @<https://w3id.org/osc-em/types/QuantityValue> ? ;
+             <https://w3id.org/osc-em/types/maximal> @<https://w3id.org/osc-em/types/QuantityValue> ?
           ) ;
           rdf:type [ <https://w3id.org/osc-em/types/Range> ] ?
        )
@@ -286,7 +287,7 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<https://w3id.org/osc-em/types/Series_tes> (  &<https://w3id.org/osc-em/types/Range_tes> ;
              rdf:type [ <https://w3id.org/osc-em/types/Range> ] ? ;
-             <https://w3id.org/osc-em/types/increment> @linkml:Float ?
+             <https://w3id.org/osc-em/types/increment> @<https://w3id.org/osc-em/types/QuantityValue> ?
           ) ;
           rdf:type [ <https://w3id.org/osc-em/types/Series> ] ?
        )
@@ -307,12 +308,12 @@ linkml:Sparqlpath xsd:string
 
 <https://w3id.org/osc-em/sample/Specimen> CLOSED {
     (  $<https://w3id.org/osc-em/sample/Specimen_tes> (  <https://w3id.org/osc-em/sample/buffer> @linkml:String ? ;
-          <https://w3id.org/osc-em/sample/concentration> @linkml:Float ? ;
+          <https://w3id.org/osc-em/sample/concentration> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
           <https://w3id.org/osc-em/sample/ph> @linkml:Float ;
           <https://w3id.org/osc-em/sample/vitrification> @linkml:Boolean ;
           <https://w3id.org/osc-em/sample/vitrification_cryogen> @linkml:String ;
-          <https://w3id.org/osc-em/sample/humidity> @linkml:Float ? ;
-          <https://w3id.org/osc-em/sample/temperature> @linkml:Float ? ;
+          <https://w3id.org/osc-em/sample/humidity> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
+          <https://w3id.org/osc-em/sample/temperature> @<https://w3id.org/osc-em/types/QuantityValue> ? ;
           <https://w3id.org/osc-em/sample/staining> @linkml:Boolean ;
           <https://w3id.org/osc-em/sample/embedding> @linkml:Boolean ;
           <https://w3id.org/osc-em/sample/shadowing> @linkml:Boolean
@@ -324,7 +325,7 @@ linkml:Sparqlpath xsd:string
 <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> CLOSED {
     (  $<https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector_tes> (  <https://w3id.org/osc-em/acquisitionused>
           @linkml:Boolean ;
-          <https://w3id.org/osc-em/acquisitionmodel> @linkml:String
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
        ) ;
        rdf:type [ <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> ] ?
     )

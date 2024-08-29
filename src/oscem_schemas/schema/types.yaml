@@ -34,17 +34,28 @@ classes:
     - x_max
     - y_min
     - y_max
+  QuantityValue:
+    class_uri: qudt:quantityValue
+    description: if a value has a unit, it should be given as a unit value pair.
+    slots:
+    - unit
+    - value
+    slot_usage:
+      unit:
+        required: true
+      value:
+        required: true
 
 slots:
   minimal:
     description: Minimal value of a given dataset property
-    range: float
+    range: QuantityValue
   maximal:
     description: Maximal value of a given dataset property
-    range: float
+    range: QuantityValue
   increment:
     description: Increment between elements of a series
-    range: float
+    range: QuantityValue
   width:
     description: The width of a given item - unit depends on item
     range: integer
@@ -53,13 +64,22 @@ slots:
     range: integer
   x_min:
     description: minimum x
-    range: float
+    range: QuantityValue
   x_max:
     description: maximum x
-    range: float
+    range: QuantityValue
   y_min:
     description: minimum y
-    range: float
+    range: QuantityValue
   y_max:
     description: maximum y
+    range: QuantityValue
+  unit:
+    description: the unit of a given value
+    range: string
+    slot_uri: qudt:hasUnit
+  value:
+    description: the value of a field with a unit
     range: float
+    slot_uri: qudt:hasQuantityKind
+
