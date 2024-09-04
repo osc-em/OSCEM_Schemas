@@ -7,7 +7,7 @@ Current versions are work in progress, details might change.
 
 ## Website
 
-[https://osc-em.github.io/oscem-schemas](https://osc-em.github.io/oscem-schemas)
+[https://osc-em.github.io/OSCEM-schemas](https://osc-em.github.io/OSCEM-schemas)
 
 ## Repository Structure
 
