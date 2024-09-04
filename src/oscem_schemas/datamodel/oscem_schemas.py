@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-08-29T14:20:32
+# Generation date: 2024-09-04T13:33:12
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -33,10 +33,13 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 ACQUISITION = CurieNamespace('acquisition', 'https://w3id.org/osc-em/acquisition')
+INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/osc-em/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+ORGANIZATION = CurieNamespace('organization', 'https://w3id.org/osc-em/organization')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt')
 SAMPLE = CurieNamespace('sample', 'https://w3id.org/osc-em/sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
+TOMO = CurieNamespace('tomo', 'https://w3id.org/osc-em/tomo')
 TYPES = CurieNamespace('types', 'https://w3id.org/osc-em/types')
 DEFAULT_ = CurieNamespace('', 'https://w3id.org/osc-em/oscem-schemas/')
 
@@ -362,8 +365,8 @@ class Instrument(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/instrument/Instrument")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = INSTRUMENT["Instrument"]
+    class_class_curie: ClassVar[str] = "instrument:Instrument"
     class_name: ClassVar[str] = "Instrument"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Instrument")
 
@@ -450,8 +453,8 @@ class Person(YAMLRoot):
 class Author(Person):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/organizational/Author")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ORGANIZATION["Author"]
+    class_class_curie: ClassVar[str] = "organization:Author"
     class_name: ClassVar[str] = "Author"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Author")
 
@@ -554,8 +557,8 @@ class OverallMolecule(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE["/OverallMolecule"]
-    class_class_curie: ClassVar[str] = "sample:/OverallMolecule"
+    class_class_uri: ClassVar[URIRef] = SAMPLE["OverallMolecule"]
+    class_class_curie: ClassVar[str] = "sample:OverallMolecule"
     class_name: ClassVar[str] = "OverallMolecule"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/OverallMolecule")
 
@@ -593,8 +596,8 @@ class Molecule(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE["/Molecule"]
-    class_class_curie: ClassVar[str] = "sample:/Molecule"
+    class_class_uri: ClassVar[URIRef] = SAMPLE["Molecule"]
+    class_class_curie: ClassVar[str] = "sample:Molecule"
     class_name: ClassVar[str] = "Molecule"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Molecule")
 
@@ -662,8 +665,8 @@ class Ligand(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE["/Ligand"]
-    class_class_curie: ClassVar[str] = "sample:/Ligand"
+    class_class_uri: ClassVar[URIRef] = SAMPLE["Ligand"]
+    class_class_curie: ClassVar[str] = "sample:Ligand"
     class_name: ClassVar[str] = "Ligand"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Ligand")
 
@@ -693,8 +696,8 @@ class Specimen(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE["/Specimen"]
-    class_class_curie: ClassVar[str] = "sample:/Specimen"
+    class_class_uri: ClassVar[URIRef] = SAMPLE["Specimen"]
+    class_class_curie: ClassVar[str] = "sample:Specimen"
     class_name: ClassVar[str] = "Specimen"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Specimen")
 
@@ -762,8 +765,8 @@ class Grid(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE["/Grid"]
-    class_class_curie: ClassVar[str] = "sample:/Grid"
+    class_class_uri: ClassVar[URIRef] = SAMPLE["Grid"]
+    class_class_curie: ClassVar[str] = "sample:Grid"
     class_name: ClassVar[str] = "Grid"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Grid")
 
@@ -823,8 +826,8 @@ class Sample(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE["/Sample"]
-    class_class_curie: ClassVar[str] = "sample:/Sample"
+    class_class_uri: ClassVar[URIRef] = SAMPLE["Sample"]
+    class_class_curie: ClassVar[str] = "sample:Sample"
     class_name: ClassVar[str] = "Sample"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Sample")
 
@@ -866,8 +869,8 @@ class Range(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TYPES["/Range"]
-    class_class_curie: ClassVar[str] = "types:/Range"
+    class_class_uri: ClassVar[URIRef] = TYPES["Range"]
+    class_class_curie: ClassVar[str] = "types:Range"
     class_name: ClassVar[str] = "Range"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Range")
 
@@ -891,8 +894,8 @@ class Series(Range):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TYPES["/Series"]
-    class_class_curie: ClassVar[str] = "types:/Series"
+    class_class_uri: ClassVar[URIRef] = TYPES["Series"]
+    class_class_curie: ClassVar[str] = "types:Series"
     class_name: ClassVar[str] = "Series"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Series")
 
@@ -911,8 +914,8 @@ class TiltAngle(Series):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/tomography/TiltAngle")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = TOMO["TiltAngle"]
+    class_class_curie: ClassVar[str] = "tomo:TiltAngle"
     class_name: ClassVar[str] = "TiltAngle"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/TiltAngle")
 
@@ -924,8 +927,8 @@ class ImageSize(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TYPES["/ImageSize"]
-    class_class_curie: ClassVar[str] = "types:/ImageSize"
+    class_class_uri: ClassVar[URIRef] = TYPES["ImageSize"]
+    class_class_curie: ClassVar[str] = "types:ImageSize"
     class_name: ClassVar[str] = "ImageSize"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/ImageSize")
 
@@ -949,8 +952,8 @@ class BoundingBox2D(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TYPES["/BoundingBox2D"]
-    class_class_curie: ClassVar[str] = "types:/BoundingBox2D"
+    class_class_uri: ClassVar[URIRef] = TYPES["BoundingBox2D"]
+    class_class_curie: ClassVar[str] = "types:BoundingBox2D"
     class_name: ClassVar[str] = "BoundingBox2D"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/BoundingBox2D")
 
@@ -1165,31 +1168,31 @@ slots.beamtiltgroups = Slot(uri=ACQUISITION.beamtiltgroups, name="beamtiltgroups
 slots.gainref_flip_rotate = Slot(uri=ACQUISITION.gainref_flip_rotate, name="gainref_flip_rotate", curie=ACQUISITION.curie('gainref_flip_rotate'),
                    model_uri=DEFAULT_.gainref_flip_rotate, domain=None, range=Optional[str])
 
-slots.microscope = Slot(uri="str(uriorcurie)", name="microscope", curie=None,
+slots.microscope = Slot(uri=INSTRUMENT.microscope, name="microscope", curie=INSTRUMENT.curie('microscope'),
                    model_uri=DEFAULT_.microscope, domain=None, range=Optional[str])
 
-slots.illumination = Slot(uri="str(uriorcurie)", name="illumination", curie=None,
+slots.illumination = Slot(uri=INSTRUMENT.illumination, name="illumination", curie=INSTRUMENT.curie('illumination'),
                    model_uri=DEFAULT_.illumination, domain=None, range=Optional[str])
 
-slots.imaging = Slot(uri="str(uriorcurie)", name="imaging", curie=None,
+slots.imaging = Slot(uri=INSTRUMENT.imaging, name="imaging", curie=INSTRUMENT.curie('imaging'),
                    model_uri=DEFAULT_.imaging, domain=None, range=Optional[str])
 
-slots.electron_source = Slot(uri="str(uriorcurie)", name="electron_source", curie=None,
+slots.electron_source = Slot(uri=INSTRUMENT.electron_source, name="electron_source", curie=INSTRUMENT.curie('electron_source'),
                    model_uri=DEFAULT_.electron_source, domain=None, range=Optional[str])
 
-slots.acceleration_voltage = Slot(uri="str(uriorcurie)", name="acceleration_voltage", curie=None,
+slots.acceleration_voltage = Slot(uri=INSTRUMENT.acceleration_voltage, name="acceleration_voltage", curie=INSTRUMENT.curie('acceleration_voltage'),
                    model_uri=DEFAULT_.acceleration_voltage, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.c2_aperture = Slot(uri="str(uriorcurie)", name="c2_aperture", curie=None,
+slots.c2_aperture = Slot(uri=INSTRUMENT.c2_aperture, name="c2_aperture", curie=INSTRUMENT.curie('c2_aperture'),
                    model_uri=DEFAULT_.c2_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cs = Slot(uri="str(uriorcurie)", name="cs", curie=None,
+slots.cs = Slot(uri=INSTRUMENT.cs, name="cs", curie=INSTRUMENT.curie('cs'),
                    model_uri=DEFAULT_.cs, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.first_name = Slot(uri="str(uriorcurie)", name="first_name", curie=None,
+slots.first_name = Slot(uri=ORGANIZATION.first_name, name="first_name", curie=ORGANIZATION.curie('first_name'),
                    model_uri=DEFAULT_.first_name, domain=None, range=Optional[str])
 
-slots.work_status = Slot(uri="str(uriorcurie)", name="work_status", curie=None,
+slots.work_status = Slot(uri=ORGANIZATION.work_status, name="work_status", curie=ORGANIZATION.curie('work_status'),
                    model_uri=DEFAULT_.work_status, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.person = Slot(uri=SCHEMA.Person, name="person", curie=SCHEMA.curie('Person'),
@@ -1205,190 +1208,190 @@ slots.work_phone = Slot(uri=SCHEMA.telephone, name="work_phone", curie=SCHEMA.cu
 slots.name = Slot(uri=SCHEMA.name, name="name", curie=SCHEMA.curie('name'),
                    model_uri=DEFAULT_.name, domain=None, range=Optional[str])
 
-slots.name_org = Slot(uri="str(uriorcurie)", name="name_org", curie=None,
+slots.name_org = Slot(uri=ORGANIZATION.name_org, name="name_org", curie=ORGANIZATION.curie('name_org'),
                    model_uri=DEFAULT_.name_org, domain=None, range=Optional[str])
 
-slots.type_org = Slot(uri="str(uriorcurie)", name="type_org", curie=None,
+slots.type_org = Slot(uri=ORGANIZATION.type_org, name="type_org", curie=ORGANIZATION.curie('type_org'),
                    model_uri=DEFAULT_.type_org, domain=None, range=Optional[Union[str, "OrganizationTypeEnum"]])
 
-slots.country = Slot(uri="str(uriorcurie)", name="country", curie=None,
+slots.country = Slot(uri=ORGANIZATION.country, name="country", curie=ORGANIZATION.curie('country'),
                    model_uri=DEFAULT_.country, domain=None, range=Optional[str])
 
-slots.role = Slot(uri="str(uriorcurie)", name="role", curie=None,
+slots.role = Slot(uri=ORGANIZATION.role, name="role", curie=ORGANIZATION.curie('role'),
                    model_uri=DEFAULT_.role, domain=None, range=Optional[str])
 
-slots.orcid = Slot(uri="str(uriorcurie)", name="orcid", curie=None,
+slots.orcid = Slot(uri=ORGANIZATION.orcid, name="orcid", curie=ORGANIZATION.curie('orcid'),
                    model_uri=DEFAULT_.orcid, domain=None, range=Optional[str])
 
-slots.funder = Slot(uri="str(uriorcurie)", name="funder", curie=None,
+slots.funder = Slot(uri=ORGANIZATION.funder, name="funder", curie=ORGANIZATION.curie('funder'),
                    model_uri=DEFAULT_.funder, domain=None, range=Optional[str])
 
-slots.start_date = Slot(uri="str(uriorcurie)", name="start_date", curie=None,
+slots.start_date = Slot(uri=ORGANIZATION.start_date, name="start_date", curie=ORGANIZATION.curie('start_date'),
                    model_uri=DEFAULT_.start_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.end_date = Slot(uri="str(uriorcurie)", name="end_date", curie=None,
+slots.end_date = Slot(uri=ORGANIZATION.end_date, name="end_date", curie=ORGANIZATION.curie('end_date'),
                    model_uri=DEFAULT_.end_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.budget = Slot(uri="str(uriorcurie)", name="budget", curie=None,
+slots.budget = Slot(uri=ORGANIZATION.budget, name="budget", curie=ORGANIZATION.curie('budget'),
                    model_uri=DEFAULT_.budget, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.project_id = Slot(uri=SCHEMA.identifier, name="project_id", curie=SCHEMA.curie('identifier'),
                    model_uri=DEFAULT_.project_id, domain=None, range=Optional[str])
 
-slots.molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="molecular_type", curie=SAMPLE.curie('/molecular_type'),
+slots.molecular_type = Slot(uri=SAMPLE.molecular_type, name="molecular_type", curie=SAMPLE.curie('molecular_type'),
                    model_uri=DEFAULT_.molecular_type, domain=None, range=Optional[str])
 
-slots.name_sample = Slot(uri=SAMPLE['/name_sample'], name="name_sample", curie=SAMPLE.curie('/name_sample'),
+slots.name_sample = Slot(uri=SAMPLE.name_sample, name="name_sample", curie=SAMPLE.curie('name_sample'),
                    model_uri=DEFAULT_.name_sample, domain=None, range=Optional[str])
 
-slots.source = Slot(uri=SAMPLE['/source'], name="source", curie=SAMPLE.curie('/source'),
+slots.source = Slot(uri=SAMPLE.source, name="source", curie=SAMPLE.curie('source'),
                    model_uri=DEFAULT_.source, domain=None, range=Optional[str])
 
-slots.molecular_weight = Slot(uri=SAMPLE['/molecular_weight'], name="molecular_weight", curie=SAMPLE.curie('/molecular_weight'),
+slots.molecular_weight = Slot(uri=SAMPLE.molecular_weight, name="molecular_weight", curie=SAMPLE.curie('molecular_weight'),
                    model_uri=DEFAULT_.molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.name_mol = Slot(uri=SAMPLE['/name_mol'], name="name_mol", curie=SAMPLE.curie('/name_mol'),
+slots.name_mol = Slot(uri=SAMPLE.name_mol, name="name_mol", curie=SAMPLE.curie('name_mol'),
                    model_uri=DEFAULT_.name_mol, domain=None, range=Optional[str])
 
-slots.molecular_class = Slot(uri=SAMPLE['/molecular_class'], name="molecular_class", curie=SAMPLE.curie('/molecular_class'),
+slots.molecular_class = Slot(uri=SAMPLE.molecular_class, name="molecular_class", curie=SAMPLE.curie('molecular_class'),
                    model_uri=DEFAULT_.molecular_class, domain=None, range=Optional[Union[str, "MoleculeClassEnum"]])
 
-slots.sequence = Slot(uri=SAMPLE['/sequence'], name="sequence", curie=SAMPLE.curie('/sequence'),
+slots.sequence = Slot(uri=SAMPLE.sequence, name="sequence", curie=SAMPLE.curie('sequence'),
                    model_uri=DEFAULT_.sequence, domain=None, range=Optional[str])
 
-slots.natural_source = Slot(uri=SAMPLE['/natural_source'], name="natural_source", curie=SAMPLE.curie('/natural_source'),
+slots.natural_source = Slot(uri=SAMPLE.natural_source, name="natural_source", curie=SAMPLE.curie('natural_source'),
                    model_uri=DEFAULT_.natural_source, domain=None, range=Optional[str])
 
-slots.taxonomy_id_source = Slot(uri=SAMPLE['/taxonomy_id_source'], name="taxonomy_id_source", curie=SAMPLE.curie('/taxonomy_id_source'),
+slots.taxonomy_id_source = Slot(uri=SAMPLE.taxonomy_id_source, name="taxonomy_id_source", curie=SAMPLE.curie('taxonomy_id_source'),
                    model_uri=DEFAULT_.taxonomy_id_source, domain=None, range=Optional[str])
 
-slots.expression_system = Slot(uri=SAMPLE['/expression_system'], name="expression_system", curie=SAMPLE.curie('/expression_system'),
+slots.expression_system = Slot(uri=SAMPLE.expression_system, name="expression_system", curie=SAMPLE.curie('expression_system'),
                    model_uri=DEFAULT_.expression_system, domain=None, range=Optional[str])
 
-slots.taxonomy_id_expression = Slot(uri=SAMPLE['/taxonomy_id_expression'], name="taxonomy_id_expression", curie=SAMPLE.curie('/taxonomy_id_expression'),
+slots.taxonomy_id_expression = Slot(uri=SAMPLE.taxonomy_id_expression, name="taxonomy_id_expression", curie=SAMPLE.curie('taxonomy_id_expression'),
                    model_uri=DEFAULT_.taxonomy_id_expression, domain=None, range=Optional[str])
 
-slots.gene_name = Slot(uri=SAMPLE['/gene_name'], name="gene_name", curie=SAMPLE.curie('/gene_name'),
+slots.gene_name = Slot(uri=SAMPLE.gene_name, name="gene_name", curie=SAMPLE.curie('gene_name'),
                    model_uri=DEFAULT_.gene_name, domain=None, range=Optional[str])
 
-slots.present = Slot(uri=SAMPLE['/present'], name="present", curie=SAMPLE.curie('/present'),
+slots.present = Slot(uri=SAMPLE.present, name="present", curie=SAMPLE.curie('present'),
                    model_uri=DEFAULT_.present, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.smiles = Slot(uri=SAMPLE['/smiles'], name="smiles", curie=SAMPLE.curie('/smiles'),
+slots.smiles = Slot(uri=SAMPLE.smiles, name="smiles", curie=SAMPLE.curie('smiles'),
                    model_uri=DEFAULT_.smiles, domain=None, range=Optional[str])
 
-slots.reference = Slot(uri=SAMPLE['/reference'], name="reference", curie=SAMPLE.curie('/reference'),
+slots.reference = Slot(uri=SAMPLE.reference, name="reference", curie=SAMPLE.curie('reference'),
                    model_uri=DEFAULT_.reference, domain=None, range=Optional[str])
 
-slots.buffer = Slot(uri=SAMPLE['/buffer'], name="buffer", curie=SAMPLE.curie('/buffer'),
+slots.buffer = Slot(uri=SAMPLE.buffer, name="buffer", curie=SAMPLE.curie('buffer'),
                    model_uri=DEFAULT_.buffer, domain=None, range=Optional[str])
 
-slots.concentration = Slot(uri=SAMPLE['/concentration'], name="concentration", curie=SAMPLE.curie('/concentration'),
+slots.concentration = Slot(uri=SAMPLE.concentration, name="concentration", curie=SAMPLE.curie('concentration'),
                    model_uri=DEFAULT_.concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.ph = Slot(uri=SAMPLE['/ph'], name="ph", curie=SAMPLE.curie('/ph'),
+slots.ph = Slot(uri=SAMPLE.ph, name="ph", curie=SAMPLE.curie('ph'),
                    model_uri=DEFAULT_.ph, domain=None, range=Optional[float])
 
-slots.vitrification = Slot(uri=SAMPLE['/vitrification'], name="vitrification", curie=SAMPLE.curie('/vitrification'),
+slots.vitrification = Slot(uri=SAMPLE.vitrification, name="vitrification", curie=SAMPLE.curie('vitrification'),
                    model_uri=DEFAULT_.vitrification, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.vitrification_cryogen = Slot(uri=SAMPLE['/vitrification_cryogen'], name="vitrification_cryogen", curie=SAMPLE.curie('/vitrification_cryogen'),
+slots.vitrification_cryogen = Slot(uri=SAMPLE.vitrification_cryogen, name="vitrification_cryogen", curie=SAMPLE.curie('vitrification_cryogen'),
                    model_uri=DEFAULT_.vitrification_cryogen, domain=None, range=Optional[str])
 
-slots.humidity = Slot(uri=SAMPLE['/humidity'], name="humidity", curie=SAMPLE.curie('/humidity'),
+slots.humidity = Slot(uri=SAMPLE.humidity, name="humidity", curie=SAMPLE.curie('humidity'),
                    model_uri=DEFAULT_.humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.temperature = Slot(uri=SAMPLE['/temperature'], name="temperature", curie=SAMPLE.curie('/temperature'),
+slots.temperature = Slot(uri=SAMPLE.temperature, name="temperature", curie=SAMPLE.curie('temperature'),
                    model_uri=DEFAULT_.temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.staining = Slot(uri=SAMPLE['/staining'], name="staining", curie=SAMPLE.curie('/staining'),
+slots.staining = Slot(uri=SAMPLE.staining, name="staining", curie=SAMPLE.curie('staining'),
                    model_uri=DEFAULT_.staining, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.embedding = Slot(uri=SAMPLE['/embedding'], name="embedding", curie=SAMPLE.curie('/embedding'),
+slots.embedding = Slot(uri=SAMPLE.embedding, name="embedding", curie=SAMPLE.curie('embedding'),
                    model_uri=DEFAULT_.embedding, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.shadowing = Slot(uri=SAMPLE['/shadowing'], name="shadowing", curie=SAMPLE.curie('/shadowing'),
+slots.shadowing = Slot(uri=SAMPLE.shadowing, name="shadowing", curie=SAMPLE.curie('shadowing'),
                    model_uri=DEFAULT_.shadowing, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.manufacturer = Slot(uri=SAMPLE['/manufacturer'], name="manufacturer", curie=SAMPLE.curie('/manufacturer'),
+slots.manufacturer = Slot(uri=SAMPLE.manufacturer, name="manufacturer", curie=SAMPLE.curie('manufacturer'),
                    model_uri=DEFAULT_.manufacturer, domain=None, range=Optional[str])
 
-slots.material = Slot(uri=SAMPLE['/material'], name="material", curie=SAMPLE.curie('/material'),
+slots.material = Slot(uri=SAMPLE.material, name="material", curie=SAMPLE.curie('material'),
                    model_uri=DEFAULT_.material, domain=None, range=Optional[str])
 
-slots.mesh = Slot(uri=SAMPLE['/mesh'], name="mesh", curie=SAMPLE.curie('/mesh'),
+slots.mesh = Slot(uri=SAMPLE.mesh, name="mesh", curie=SAMPLE.curie('mesh'),
                    model_uri=DEFAULT_.mesh, domain=None, range=Optional[float])
 
-slots.film_support = Slot(uri=SAMPLE['/film_support'], name="film_support", curie=SAMPLE.curie('/film_support'),
+slots.film_support = Slot(uri=SAMPLE.film_support, name="film_support", curie=SAMPLE.curie('film_support'),
                    model_uri=DEFAULT_.film_support, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.film_material = Slot(uri=SAMPLE['/film_material'], name="film_material", curie=SAMPLE.curie('/film_material'),
+slots.film_material = Slot(uri=SAMPLE.film_material, name="film_material", curie=SAMPLE.curie('film_material'),
                    model_uri=DEFAULT_.film_material, domain=None, range=Optional[str])
 
-slots.film_topology = Slot(uri=SAMPLE['/film_topology'], name="film_topology", curie=SAMPLE.curie('/film_topology'),
+slots.film_topology = Slot(uri=SAMPLE.film_topology, name="film_topology", curie=SAMPLE.curie('film_topology'),
                    model_uri=DEFAULT_.film_topology, domain=None, range=Optional[str])
 
-slots.film_thickness = Slot(uri=SAMPLE['/film_thickness'], name="film_thickness", curie=SAMPLE.curie('/film_thickness'),
+slots.film_thickness = Slot(uri=SAMPLE.film_thickness, name="film_thickness", curie=SAMPLE.curie('film_thickness'),
                    model_uri=DEFAULT_.film_thickness, domain=None, range=Optional[str])
 
-slots.pretreatment_type = Slot(uri=SAMPLE['/pretreatment_type'], name="pretreatment_type", curie=SAMPLE.curie('/pretreatment_type'),
+slots.pretreatment_type = Slot(uri=SAMPLE.pretreatment_type, name="pretreatment_type", curie=SAMPLE.curie('pretreatment_type'),
                    model_uri=DEFAULT_.pretreatment_type, domain=None, range=Optional[str])
 
-slots.pretreatment_time = Slot(uri=SAMPLE['/pretreatment_time'], name="pretreatment_time", curie=SAMPLE.curie('/pretreatment_time'),
+slots.pretreatment_time = Slot(uri=SAMPLE.pretreatment_time, name="pretreatment_time", curie=SAMPLE.curie('pretreatment_time'),
                    model_uri=DEFAULT_.pretreatment_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.pretreatment_pressure = Slot(uri=SAMPLE['/pretreatment_pressure'], name="pretreatment_pressure", curie=SAMPLE.curie('/pretreatment_pressure'),
+slots.pretreatment_pressure = Slot(uri=SAMPLE.pretreatment_pressure, name="pretreatment_pressure", curie=SAMPLE.curie('pretreatment_pressure'),
                    model_uri=DEFAULT_.pretreatment_pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.pretreatment_atmosphere = Slot(uri=SAMPLE['/pretreatment_atmosphere'], name="pretreatment_atmosphere", curie=SAMPLE.curie('/pretreatment_atmosphere'),
+slots.pretreatment_atmosphere = Slot(uri=SAMPLE.pretreatment_atmosphere, name="pretreatment_atmosphere", curie=SAMPLE.curie('pretreatment_atmosphere'),
                    model_uri=DEFAULT_.pretreatment_atmosphere, domain=None, range=Optional[str])
 
-slots.overall_molecule = Slot(uri=SAMPLE['/overall_molecule'], name="overall_molecule", curie=SAMPLE.curie('/overall_molecule'),
+slots.overall_molecule = Slot(uri=SAMPLE.overall_molecule, name="overall_molecule", curie=SAMPLE.curie('overall_molecule'),
                    model_uri=DEFAULT_.overall_molecule, domain=None, range=Optional[Union[dict, OverallMolecule]])
 
-slots.molecule = Slot(uri=SAMPLE['/molecule'], name="molecule", curie=SAMPLE.curie('/molecule'),
+slots.molecule = Slot(uri=SAMPLE.molecule, name="molecule", curie=SAMPLE.curie('molecule'),
                    model_uri=DEFAULT_.molecule, domain=None, range=Optional[Union[Union[dict, Molecule], List[Union[dict, Molecule]]]])
 
-slots.ligands = Slot(uri=SAMPLE['/ligands'], name="ligands", curie=SAMPLE.curie('/ligands'),
+slots.ligands = Slot(uri=SAMPLE.ligands, name="ligands", curie=SAMPLE.curie('ligands'),
                    model_uri=DEFAULT_.ligands, domain=None, range=Optional[Union[Union[dict, Ligand], List[Union[dict, Ligand]]]])
 
-slots.specimen = Slot(uri=SAMPLE['/specimen'], name="specimen", curie=SAMPLE.curie('/specimen'),
+slots.specimen = Slot(uri=SAMPLE.specimen, name="specimen", curie=SAMPLE.curie('specimen'),
                    model_uri=DEFAULT_.specimen, domain=None, range=Optional[Union[dict, Specimen]])
 
-slots.grid = Slot(uri=SAMPLE['/grid'], name="grid", curie=SAMPLE.curie('/grid'),
+slots.grid = Slot(uri=SAMPLE.grid, name="grid", curie=SAMPLE.curie('grid'),
                    model_uri=DEFAULT_.grid, domain=None, range=Optional[Union[dict, Grid]])
 
-slots.tilt_axis_angle = Slot(uri="str(uriorcurie)", name="tilt_axis_angle", curie=None,
+slots.tilt_axis_angle = Slot(uri=TOMO.tilt_axis_angle, name="tilt_axis_angle", curie=TOMO.curie('tilt_axis_angle'),
                    model_uri=DEFAULT_.tilt_axis_angle, domain=None, range=Optional[float])
 
-slots.tilt_angle = Slot(uri="str(uriorcurie)", name="tilt_angle", curie=None,
+slots.tilt_angle = Slot(uri=TOMO.tilt_angle, name="tilt_angle", curie=TOMO.curie('tilt_angle'),
                    model_uri=DEFAULT_.tilt_angle, domain=None, range=Optional[Union[dict, TiltAngle]])
 
-slots.minimal = Slot(uri=TYPES['/minimal'], name="minimal", curie=TYPES.curie('/minimal'),
+slots.minimal = Slot(uri=TYPES.minimal, name="minimal", curie=TYPES.curie('minimal'),
                    model_uri=DEFAULT_.minimal, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.maximal = Slot(uri=TYPES['/maximal'], name="maximal", curie=TYPES.curie('/maximal'),
+slots.maximal = Slot(uri=TYPES.maximal, name="maximal", curie=TYPES.curie('maximal'),
                    model_uri=DEFAULT_.maximal, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.increment = Slot(uri=TYPES['/increment'], name="increment", curie=TYPES.curie('/increment'),
+slots.increment = Slot(uri=TYPES.increment, name="increment", curie=TYPES.curie('increment'),
                    model_uri=DEFAULT_.increment, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.width = Slot(uri=TYPES['/width'], name="width", curie=TYPES.curie('/width'),
+slots.width = Slot(uri=TYPES.width, name="width", curie=TYPES.curie('width'),
                    model_uri=DEFAULT_.width, domain=None, range=Optional[int])
 
-slots.height = Slot(uri=TYPES['/height'], name="height", curie=TYPES.curie('/height'),
+slots.height = Slot(uri=TYPES.height, name="height", curie=TYPES.curie('height'),
                    model_uri=DEFAULT_.height, domain=None, range=Optional[int])
 
-slots.x_min = Slot(uri=TYPES['/x_min'], name="x_min", curie=TYPES.curie('/x_min'),
+slots.x_min = Slot(uri=TYPES.x_min, name="x_min", curie=TYPES.curie('x_min'),
                    model_uri=DEFAULT_.x_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.x_max = Slot(uri=TYPES['/x_max'], name="x_max", curie=TYPES.curie('/x_max'),
+slots.x_max = Slot(uri=TYPES.x_max, name="x_max", curie=TYPES.curie('x_max'),
                    model_uri=DEFAULT_.x_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.y_min = Slot(uri=TYPES['/y_min'], name="y_min", curie=TYPES.curie('/y_min'),
+slots.y_min = Slot(uri=TYPES.y_min, name="y_min", curie=TYPES.curie('y_min'),
                    model_uri=DEFAULT_.y_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.y_max = Slot(uri=TYPES['/y_max'], name="y_max", curie=TYPES.curie('/y_max'),
+slots.y_max = Slot(uri=TYPES.y_max, name="y_max", curie=TYPES.curie('y_max'),
                    model_uri=DEFAULT_.y_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.unit = Slot(uri=QUDT.hasUnit, name="unit", curie=QUDT.curie('hasUnit'),
@@ -1430,7 +1433,7 @@ slots.Acquisition_pixel_size = Slot(uri=ACQUISITION.pixel_size, name="Acquisitio
 slots.EnergyFilter_used = Slot(uri=ACQUISITION.used, name="EnergyFilter_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.EnergyFilter_used, domain=EnergyFilter, range=Union[bool, Bool])
 
-slots.EnergyFilter_width = Slot(uri=TYPES['/width'], name="EnergyFilter_width", curie=TYPES.curie('/width'),
+slots.EnergyFilter_width = Slot(uri=TYPES.width, name="EnergyFilter_width", curie=TYPES.curie('width'),
                    model_uri=DEFAULT_.EnergyFilter_width, domain=EnergyFilter, range=int)
 
 slots.Phaseplate_used = Slot(uri=ACQUISITION.used, name="Phaseplate_used", curie=ACQUISITION.curie('used'),
@@ -1451,22 +1454,22 @@ slots.ChromaticAberrationCorrector_used = Slot(uri=ACQUISITION.used, name="Chrom
 slots.ChromaticAberrationCorrector_instrument_type = Slot(uri=ACQUISITION.instrument_type, name="ChromaticAberrationCorrector_instrument_type", curie=ACQUISITION.curie('instrument_type'),
                    model_uri=DEFAULT_.ChromaticAberrationCorrector_instrument_type, domain=ChromaticAberrationCorrector, range=str)
 
-slots.Instrument_microscope = Slot(uri="str(uriorcurie)", name="Instrument_microscope", curie=None,
+slots.Instrument_microscope = Slot(uri=INSTRUMENT.microscope, name="Instrument_microscope", curie=INSTRUMENT.curie('microscope'),
                    model_uri=DEFAULT_.Instrument_microscope, domain=Instrument, range=str)
 
-slots.Instrument_illumination = Slot(uri="str(uriorcurie)", name="Instrument_illumination", curie=None,
+slots.Instrument_illumination = Slot(uri=INSTRUMENT.illumination, name="Instrument_illumination", curie=INSTRUMENT.curie('illumination'),
                    model_uri=DEFAULT_.Instrument_illumination, domain=Instrument, range=str)
 
-slots.Instrument_imaging = Slot(uri="str(uriorcurie)", name="Instrument_imaging", curie=None,
+slots.Instrument_imaging = Slot(uri=INSTRUMENT.imaging, name="Instrument_imaging", curie=INSTRUMENT.curie('imaging'),
                    model_uri=DEFAULT_.Instrument_imaging, domain=Instrument, range=str)
 
-slots.Instrument_electron_source = Slot(uri="str(uriorcurie)", name="Instrument_electron_source", curie=None,
+slots.Instrument_electron_source = Slot(uri=INSTRUMENT.electron_source, name="Instrument_electron_source", curie=INSTRUMENT.curie('electron_source'),
                    model_uri=DEFAULT_.Instrument_electron_source, domain=Instrument, range=str)
 
-slots.Instrument_acceleration_voltage = Slot(uri="str(uriorcurie)", name="Instrument_acceleration_voltage", curie=None,
+slots.Instrument_acceleration_voltage = Slot(uri=INSTRUMENT.acceleration_voltage, name="Instrument_acceleration_voltage", curie=INSTRUMENT.curie('acceleration_voltage'),
                    model_uri=DEFAULT_.Instrument_acceleration_voltage, domain=Instrument, range=Union[dict, "QuantityValue"])
 
-slots.Instrument_cs = Slot(uri="str(uriorcurie)", name="Instrument_cs", curie=None,
+slots.Instrument_cs = Slot(uri=INSTRUMENT.cs, name="Instrument_cs", curie=INSTRUMENT.curie('cs'),
                    model_uri=DEFAULT_.Instrument_cs, domain=Instrument, range=Union[dict, "QuantityValue"])
 
 slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie('name'),
@@ -1479,136 +1482,136 @@ slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.cu
 slots.Author_work_phone = Slot(uri=SCHEMA.telephone, name="Author_work_phone", curie=SCHEMA.curie('telephone'),
                    model_uri=DEFAULT_.Author_work_phone, domain=Author, range=str)
 
-slots.Author_orcid = Slot(uri="str(uriorcurie)", name="Author_orcid", curie=None,
+slots.Author_orcid = Slot(uri=ORGANIZATION.orcid, name="Author_orcid", curie=ORGANIZATION.curie('orcid'),
                    model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
 
-slots.Author_country = Slot(uri="str(uriorcurie)", name="Author_country", curie=None,
+slots.Author_country = Slot(uri=ORGANIZATION.country, name="Author_country", curie=ORGANIZATION.curie('country'),
                    model_uri=DEFAULT_.Author_country, domain=Author, range=str)
 
-slots.Author_type_org = Slot(uri="str(uriorcurie)", name="Author_type_org", curie=None,
+slots.Author_type_org = Slot(uri=ORGANIZATION.type_org, name="Author_type_org", curie=ORGANIZATION.curie('type_org'),
                    model_uri=DEFAULT_.Author_type_org, domain=Author, range=Union[str, "OrganizationTypeEnum"])
 
-slots.Author_name_org = Slot(uri="str(uriorcurie)", name="Author_name_org", curie=None,
+slots.Author_name_org = Slot(uri=ORGANIZATION.name_org, name="Author_name_org", curie=ORGANIZATION.curie('name_org'),
                    model_uri=DEFAULT_.Author_name_org, domain=Author, range=str)
 
-slots.OverallMolecule_molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="OverallMolecule_molecular_type", curie=SAMPLE.curie('/molecular_type'),
+slots.OverallMolecule_molecular_type = Slot(uri=SAMPLE.molecular_type, name="OverallMolecule_molecular_type", curie=SAMPLE.curie('molecular_type'),
                    model_uri=DEFAULT_.OverallMolecule_molecular_type, domain=OverallMolecule, range=str)
 
-slots.OverallMolecule_name_sample = Slot(uri=SAMPLE['/name_sample'], name="OverallMolecule_name_sample", curie=SAMPLE.curie('/name_sample'),
+slots.OverallMolecule_name_sample = Slot(uri=SAMPLE.name_sample, name="OverallMolecule_name_sample", curie=SAMPLE.curie('name_sample'),
                    model_uri=DEFAULT_.OverallMolecule_name_sample, domain=OverallMolecule, range=str)
 
-slots.OverallMolecule_source = Slot(uri=SAMPLE['/source'], name="OverallMolecule_source", curie=SAMPLE.curie('/source'),
+slots.OverallMolecule_source = Slot(uri=SAMPLE.source, name="OverallMolecule_source", curie=SAMPLE.curie('source'),
                    model_uri=DEFAULT_.OverallMolecule_source, domain=OverallMolecule, range=str)
 
-slots.OverallMolecule_molecular_weight = Slot(uri=SAMPLE['/molecular_weight'], name="OverallMolecule_molecular_weight", curie=SAMPLE.curie('/molecular_weight'),
+slots.OverallMolecule_molecular_weight = Slot(uri=SAMPLE.molecular_weight, name="OverallMolecule_molecular_weight", curie=SAMPLE.curie('molecular_weight'),
                    model_uri=DEFAULT_.OverallMolecule_molecular_weight, domain=OverallMolecule, range=Optional[Union[dict, "QuantityValue"]])
 
-slots.Molecule_name_mol = Slot(uri=SAMPLE['/name_mol'], name="Molecule_name_mol", curie=SAMPLE.curie('/name_mol'),
+slots.Molecule_name_mol = Slot(uri=SAMPLE.name_mol, name="Molecule_name_mol", curie=SAMPLE.curie('name_mol'),
                    model_uri=DEFAULT_.Molecule_name_mol, domain=Molecule, range=str)
 
-slots.Molecule_molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="Molecule_molecular_type", curie=SAMPLE.curie('/molecular_type'),
+slots.Molecule_molecular_type = Slot(uri=SAMPLE.molecular_type, name="Molecule_molecular_type", curie=SAMPLE.curie('molecular_type'),
                    model_uri=DEFAULT_.Molecule_molecular_type, domain=Molecule, range=str)
 
-slots.Molecule_molecular_class = Slot(uri=SAMPLE['/molecular_class'], name="Molecule_molecular_class", curie=SAMPLE.curie('/molecular_class'),
+slots.Molecule_molecular_class = Slot(uri=SAMPLE.molecular_class, name="Molecule_molecular_class", curie=SAMPLE.curie('molecular_class'),
                    model_uri=DEFAULT_.Molecule_molecular_class, domain=Molecule, range=Union[str, "MoleculeClassEnum"])
 
-slots.Molecule_sequence = Slot(uri=SAMPLE['/sequence'], name="Molecule_sequence", curie=SAMPLE.curie('/sequence'),
+slots.Molecule_sequence = Slot(uri=SAMPLE.sequence, name="Molecule_sequence", curie=SAMPLE.curie('sequence'),
                    model_uri=DEFAULT_.Molecule_sequence, domain=Molecule, range=str)
 
-slots.Molecule_natural_source = Slot(uri=SAMPLE['/natural_source'], name="Molecule_natural_source", curie=SAMPLE.curie('/natural_source'),
+slots.Molecule_natural_source = Slot(uri=SAMPLE.natural_source, name="Molecule_natural_source", curie=SAMPLE.curie('natural_source'),
                    model_uri=DEFAULT_.Molecule_natural_source, domain=Molecule, range=str)
 
-slots.Molecule_taxonomy_id_source = Slot(uri=SAMPLE['/taxonomy_id_source'], name="Molecule_taxonomy_id_source", curie=SAMPLE.curie('/taxonomy_id_source'),
+slots.Molecule_taxonomy_id_source = Slot(uri=SAMPLE.taxonomy_id_source, name="Molecule_taxonomy_id_source", curie=SAMPLE.curie('taxonomy_id_source'),
                    model_uri=DEFAULT_.Molecule_taxonomy_id_source, domain=Molecule, range=str)
 
-slots.Molecule_expression_system = Slot(uri=SAMPLE['/expression_system'], name="Molecule_expression_system", curie=SAMPLE.curie('/expression_system'),
+slots.Molecule_expression_system = Slot(uri=SAMPLE.expression_system, name="Molecule_expression_system", curie=SAMPLE.curie('expression_system'),
                    model_uri=DEFAULT_.Molecule_expression_system, domain=Molecule, range=str)
 
-slots.Molecule_taxonomy_id_expression = Slot(uri=SAMPLE['/taxonomy_id_expression'], name="Molecule_taxonomy_id_expression", curie=SAMPLE.curie('/taxonomy_id_expression'),
+slots.Molecule_taxonomy_id_expression = Slot(uri=SAMPLE.taxonomy_id_expression, name="Molecule_taxonomy_id_expression", curie=SAMPLE.curie('taxonomy_id_expression'),
                    model_uri=DEFAULT_.Molecule_taxonomy_id_expression, domain=Molecule, range=str)
 
-slots.Molecule_gene_name = Slot(uri=SAMPLE['/gene_name'], name="Molecule_gene_name", curie=SAMPLE.curie('/gene_name'),
+slots.Molecule_gene_name = Slot(uri=SAMPLE.gene_name, name="Molecule_gene_name", curie=SAMPLE.curie('gene_name'),
                    model_uri=DEFAULT_.Molecule_gene_name, domain=Molecule, range=Optional[str])
 
-slots.Ligand_present = Slot(uri=SAMPLE['/present'], name="Ligand_present", curie=SAMPLE.curie('/present'),
+slots.Ligand_present = Slot(uri=SAMPLE.present, name="Ligand_present", curie=SAMPLE.curie('present'),
                    model_uri=DEFAULT_.Ligand_present, domain=Ligand, range=Union[bool, Bool])
 
-slots.Specimen_buffer = Slot(uri=SAMPLE['/buffer'], name="Specimen_buffer", curie=SAMPLE.curie('/buffer'),
+slots.Specimen_buffer = Slot(uri=SAMPLE.buffer, name="Specimen_buffer", curie=SAMPLE.curie('buffer'),
                    model_uri=DEFAULT_.Specimen_buffer, domain=Specimen, range=Optional[str])
 
-slots.Specimen_concentration = Slot(uri=SAMPLE['/concentration'], name="Specimen_concentration", curie=SAMPLE.curie('/concentration'),
+slots.Specimen_concentration = Slot(uri=SAMPLE.concentration, name="Specimen_concentration", curie=SAMPLE.curie('concentration'),
                    model_uri=DEFAULT_.Specimen_concentration, domain=Specimen, range=Optional[Union[dict, "QuantityValue"]])
 
-slots.Specimen_ph = Slot(uri=SAMPLE['/ph'], name="Specimen_ph", curie=SAMPLE.curie('/ph'),
+slots.Specimen_ph = Slot(uri=SAMPLE.ph, name="Specimen_ph", curie=SAMPLE.curie('ph'),
                    model_uri=DEFAULT_.Specimen_ph, domain=Specimen, range=float)
 
-slots.Specimen_vitrification = Slot(uri=SAMPLE['/vitrification'], name="Specimen_vitrification", curie=SAMPLE.curie('/vitrification'),
+slots.Specimen_vitrification = Slot(uri=SAMPLE.vitrification, name="Specimen_vitrification", curie=SAMPLE.curie('vitrification'),
                    model_uri=DEFAULT_.Specimen_vitrification, domain=Specimen, range=Union[bool, Bool])
 
-slots.Specimen_vitrification_cryogen = Slot(uri=SAMPLE['/vitrification_cryogen'], name="Specimen_vitrification_cryogen", curie=SAMPLE.curie('/vitrification_cryogen'),
+slots.Specimen_vitrification_cryogen = Slot(uri=SAMPLE.vitrification_cryogen, name="Specimen_vitrification_cryogen", curie=SAMPLE.curie('vitrification_cryogen'),
                    model_uri=DEFAULT_.Specimen_vitrification_cryogen, domain=Specimen, range=str)
 
-slots.Specimen_humidity = Slot(uri=SAMPLE['/humidity'], name="Specimen_humidity", curie=SAMPLE.curie('/humidity'),
+slots.Specimen_humidity = Slot(uri=SAMPLE.humidity, name="Specimen_humidity", curie=SAMPLE.curie('humidity'),
                    model_uri=DEFAULT_.Specimen_humidity, domain=Specimen, range=Optional[Union[dict, "QuantityValue"]])
 
-slots.Specimen_temperature = Slot(uri=SAMPLE['/temperature'], name="Specimen_temperature", curie=SAMPLE.curie('/temperature'),
+slots.Specimen_temperature = Slot(uri=SAMPLE.temperature, name="Specimen_temperature", curie=SAMPLE.curie('temperature'),
                    model_uri=DEFAULT_.Specimen_temperature, domain=Specimen, range=Optional[Union[dict, "QuantityValue"]])
 
-slots.Specimen_staining = Slot(uri=SAMPLE['/staining'], name="Specimen_staining", curie=SAMPLE.curie('/staining'),
+slots.Specimen_staining = Slot(uri=SAMPLE.staining, name="Specimen_staining", curie=SAMPLE.curie('staining'),
                    model_uri=DEFAULT_.Specimen_staining, domain=Specimen, range=Union[bool, Bool])
 
-slots.Specimen_embedding = Slot(uri=SAMPLE['/embedding'], name="Specimen_embedding", curie=SAMPLE.curie('/embedding'),
+slots.Specimen_embedding = Slot(uri=SAMPLE.embedding, name="Specimen_embedding", curie=SAMPLE.curie('embedding'),
                    model_uri=DEFAULT_.Specimen_embedding, domain=Specimen, range=Union[bool, Bool])
 
-slots.Specimen_shadowing = Slot(uri=SAMPLE['/shadowing'], name="Specimen_shadowing", curie=SAMPLE.curie('/shadowing'),
+slots.Specimen_shadowing = Slot(uri=SAMPLE.shadowing, name="Specimen_shadowing", curie=SAMPLE.curie('shadowing'),
                    model_uri=DEFAULT_.Specimen_shadowing, domain=Specimen, range=Union[bool, Bool])
 
-slots.Grid_manufacturer = Slot(uri=SAMPLE['/manufacturer'], name="Grid_manufacturer", curie=SAMPLE.curie('/manufacturer'),
+slots.Grid_manufacturer = Slot(uri=SAMPLE.manufacturer, name="Grid_manufacturer", curie=SAMPLE.curie('manufacturer'),
                    model_uri=DEFAULT_.Grid_manufacturer, domain=Grid, range=Optional[str])
 
-slots.Grid_material = Slot(uri=SAMPLE['/material'], name="Grid_material", curie=SAMPLE.curie('/material'),
+slots.Grid_material = Slot(uri=SAMPLE.material, name="Grid_material", curie=SAMPLE.curie('material'),
                    model_uri=DEFAULT_.Grid_material, domain=Grid, range=Optional[str])
 
-slots.Grid_mesh = Slot(uri=SAMPLE['/mesh'], name="Grid_mesh", curie=SAMPLE.curie('/mesh'),
+slots.Grid_mesh = Slot(uri=SAMPLE.mesh, name="Grid_mesh", curie=SAMPLE.curie('mesh'),
                    model_uri=DEFAULT_.Grid_mesh, domain=Grid, range=Optional[float])
 
-slots.Grid_film_support = Slot(uri=SAMPLE['/film_support'], name="Grid_film_support", curie=SAMPLE.curie('/film_support'),
+slots.Grid_film_support = Slot(uri=SAMPLE.film_support, name="Grid_film_support", curie=SAMPLE.curie('film_support'),
                    model_uri=DEFAULT_.Grid_film_support, domain=Grid, range=Optional[Union[bool, Bool]])
 
-slots.Grid_film_material = Slot(uri=SAMPLE['/film_material'], name="Grid_film_material", curie=SAMPLE.curie('/film_material'),
+slots.Grid_film_material = Slot(uri=SAMPLE.film_material, name="Grid_film_material", curie=SAMPLE.curie('film_material'),
                    model_uri=DEFAULT_.Grid_film_material, domain=Grid, range=Optional[str])
 
-slots.Grid_film_topology = Slot(uri=SAMPLE['/film_topology'], name="Grid_film_topology", curie=SAMPLE.curie('/film_topology'),
+slots.Grid_film_topology = Slot(uri=SAMPLE.film_topology, name="Grid_film_topology", curie=SAMPLE.curie('film_topology'),
                    model_uri=DEFAULT_.Grid_film_topology, domain=Grid, range=Optional[str])
 
-slots.Grid_film_thickness = Slot(uri=SAMPLE['/film_thickness'], name="Grid_film_thickness", curie=SAMPLE.curie('/film_thickness'),
+slots.Grid_film_thickness = Slot(uri=SAMPLE.film_thickness, name="Grid_film_thickness", curie=SAMPLE.curie('film_thickness'),
                    model_uri=DEFAULT_.Grid_film_thickness, domain=Grid, range=Optional[str])
 
-slots.Grid_pretreatment_type = Slot(uri=SAMPLE['/pretreatment_type'], name="Grid_pretreatment_type", curie=SAMPLE.curie('/pretreatment_type'),
+slots.Grid_pretreatment_type = Slot(uri=SAMPLE.pretreatment_type, name="Grid_pretreatment_type", curie=SAMPLE.curie('pretreatment_type'),
                    model_uri=DEFAULT_.Grid_pretreatment_type, domain=Grid, range=Optional[str])
 
-slots.Grid_pretreatment_time = Slot(uri=SAMPLE['/pretreatment_time'], name="Grid_pretreatment_time", curie=SAMPLE.curie('/pretreatment_time'),
+slots.Grid_pretreatment_time = Slot(uri=SAMPLE.pretreatment_time, name="Grid_pretreatment_time", curie=SAMPLE.curie('pretreatment_time'),
                    model_uri=DEFAULT_.Grid_pretreatment_time, domain=Grid, range=Optional[Union[dict, "QuantityValue"]])
 
-slots.Grid_pretreatment_pressure = Slot(uri=SAMPLE['/pretreatment_pressure'], name="Grid_pretreatment_pressure", curie=SAMPLE.curie('/pretreatment_pressure'),
+slots.Grid_pretreatment_pressure = Slot(uri=SAMPLE.pretreatment_pressure, name="Grid_pretreatment_pressure", curie=SAMPLE.curie('pretreatment_pressure'),
                    model_uri=DEFAULT_.Grid_pretreatment_pressure, domain=Grid, range=Optional[Union[dict, "QuantityValue"]])
 
-slots.Grid_pretreatment_atmosphere = Slot(uri=SAMPLE['/pretreatment_atmosphere'], name="Grid_pretreatment_atmosphere", curie=SAMPLE.curie('/pretreatment_atmosphere'),
+slots.Grid_pretreatment_atmosphere = Slot(uri=SAMPLE.pretreatment_atmosphere, name="Grid_pretreatment_atmosphere", curie=SAMPLE.curie('pretreatment_atmosphere'),
                    model_uri=DEFAULT_.Grid_pretreatment_atmosphere, domain=Grid, range=Optional[str])
 
-slots.Sample_overall_molecule = Slot(uri=SAMPLE['/overall_molecule'], name="Sample_overall_molecule", curie=SAMPLE.curie('/overall_molecule'),
+slots.Sample_overall_molecule = Slot(uri=SAMPLE.overall_molecule, name="Sample_overall_molecule", curie=SAMPLE.curie('overall_molecule'),
                    model_uri=DEFAULT_.Sample_overall_molecule, domain=Sample, range=Union[dict, OverallMolecule])
 
-slots.Sample_molecule = Slot(uri=SAMPLE['/molecule'], name="Sample_molecule", curie=SAMPLE.curie('/molecule'),
+slots.Sample_molecule = Slot(uri=SAMPLE.molecule, name="Sample_molecule", curie=SAMPLE.curie('molecule'),
                    model_uri=DEFAULT_.Sample_molecule, domain=Sample, range=Union[Union[dict, Molecule], List[Union[dict, Molecule]]])
 
-slots.Sample_ligands = Slot(uri=SAMPLE['/ligands'], name="Sample_ligands", curie=SAMPLE.curie('/ligands'),
+slots.Sample_ligands = Slot(uri=SAMPLE.ligands, name="Sample_ligands", curie=SAMPLE.curie('ligands'),
                    model_uri=DEFAULT_.Sample_ligands, domain=Sample, range=Optional[Union[Union[dict, Ligand], List[Union[dict, Ligand]]]])
 
-slots.Sample_specimen = Slot(uri=SAMPLE['/specimen'], name="Sample_specimen", curie=SAMPLE.curie('/specimen'),
+slots.Sample_specimen = Slot(uri=SAMPLE.specimen, name="Sample_specimen", curie=SAMPLE.curie('specimen'),
                    model_uri=DEFAULT_.Sample_specimen, domain=Sample, range=Union[dict, Specimen])
 
-slots.Sample_grid = Slot(uri=SAMPLE['/grid'], name="Sample_grid", curie=SAMPLE.curie('/grid'),
+slots.Sample_grid = Slot(uri=SAMPLE.grid, name="Sample_grid", curie=SAMPLE.curie('grid'),
                    model_uri=DEFAULT_.Sample_grid, domain=Sample, range=Optional[Union[dict, Grid]])
 
 slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", curie=QUDT.curie('hasUnit'),
