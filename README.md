@@ -2,11 +2,14 @@
 # OSCEM_Schemas
 Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
 defining the electron microscopy related fields required by the OSCEM standard.
-Current versions are work in progress, details might change.
+
+Core idea is a modular system that allows for the combination of several sample and method parts to describe a variety of electron microscopy use cases. All original schemas can be found as .yaml under src/oscem_schemas/schema. Files named oscem_* refer to set collection for i.e. single particle analysis whereas schemas with more precise names such as "instrument" refers to a specific subschema detailing in this case instrument variables. Using the linkml generator functions the overall schemas can be exported to a variety of other formats such as json-schema, jsonld, owl and rdfa. We recommend using json-schema versions for validating metadata.
+
+Current versions are a work in progress, details might change.
 
 
 ## Website
-
+Here you can browse all our keywords with descriptions.
 [https://osc-em.github.io/OSCEM_Schemas/](https://osc-em.github.io/OSCEM_Schemas/)
 
 ## Repository Structure
