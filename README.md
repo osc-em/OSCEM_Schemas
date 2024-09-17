@@ -7,7 +7,6 @@ Core idea is a modular system that allows for the combination of several sample 
 
 Current versions are a work in progress, details might change.
 
-
 ## Website
 Here you can browse all our keywords with descriptions.
 [https://osc-em.github.io/OSCEM_Schemas/](https://osc-em.github.io/OSCEM_Schemas/)
