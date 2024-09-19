@@ -7,6 +7,8 @@ prefixes:
   linkml: https://w3id.org/linkml/
   sample: https://w3id.org/osc-em/sample
 
+default_prefix: sample
+
 imports:
   - linkml:types
 
@@ -89,7 +91,7 @@ classes:
     description: A class representing a ligand
     slots:
       - present
-      - smile
+      - smiles
       - reference
     slot_usage:
       present:
@@ -204,7 +206,7 @@ classes:
 slots:
   molecular_type:
     title: Type
-    description: Description of the overall supramolecular type, i.e., a complex
+    description: Description of the overall molecular type, i.e., a complex
     range: string
   name_sample:
     title: Name
@@ -217,7 +219,7 @@ slots:
   molecular_weight:
     title: Molecular_weight
     description: Molecular weight in Da
-    range: float
+    range: QuantityValue
 
   name_mol:
     title: Name
@@ -256,9 +258,9 @@ slots:
     title: Present
     description: Whether the model contains any ligands
     range: boolean
-  smile:
-    title: SMILE
-    description: Provide a valid SMILE string of your ligand
+  smiles:
+    title: SMILES
+    description: Provide a valid SMILES string of your ligand
     range: string
   reference:
     title: Reference
@@ -271,8 +273,8 @@ slots:
     range: string
   concentration:
     title: Concentration
-    description: Concentration of the (supra)molecule in the sample, in M
-    range: float
+    description: Concentration of the (supra)molecule in the sample, in mg/ml
+    range: QuantityValue
   ph:
     title: pH
     description: pH of the sample buffer
@@ -288,11 +290,11 @@ slots:
   humidity:
     title: Humidity
     description: Environmental humidity just before vitrification, in %
-    range: float
+    range: QuantityValue
   temperature:
     title: Temperature
     description: Environmental temperature just before vitrification, in K
-    range: float
+    range: QuantityValue
     minimum_value: 0.0
   staining:
     title: Staining
@@ -342,11 +344,11 @@ slots:
   pretreatment_time:
     title: Pretreatment_time
     description: Length of time of the pretreatment in s
-    range: float
+    range: QuantityValue
   pretreatment_pressure:
     title: Pretreatment_pressure
     description: Pressure of the chamber during pretreatment, in Pa
-    range: float
+    range: QuantityValue
   pretreatment_atmosphere:
     title: Pretreatment_atmosphere
     description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
