@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-09-04T13:33:12
+# Generation date: 2024-09-23T16:30:48
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -527,6 +527,7 @@ class Grant(YAMLRoot):
     end_date: Optional[Union[str, XSDDate]] = None
     budget: Optional[Union[dict, "QuantityValue"]] = None
     project_id: Optional[str] = None
+    country: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.name is not None and not isinstance(self.name, str):
@@ -546,6 +547,9 @@ class Grant(YAMLRoot):
 
         if self.project_id is not None and not isinstance(self.project_id, str):
             self.project_id = str(self.project_id)
+
+        if self.country is not None and not isinstance(self.country, str):
+            self.country = str(self.country)
 
         super().__post_init__(**kwargs)
 

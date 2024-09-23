@@ -103,7 +103,7 @@
 -- # Class: "Author" Description: ""
 --     * Slot: id Description: 
 --     * Slot: orcid Description: ORCID of the author, a type of unique identifier
---     * Slot: country Description: Country of the author's institution
+--     * Slot: country Description: Country of the institution
 --     * Slot: role Description: Role of the author, i.e., principal investigator
 --     * Slot: name_org Description: Name of the organization
 --     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
@@ -119,17 +119,18 @@
 --     * Slot: start_date Description: start date
 --     * Slot: end_date Description: end date
 --     * Slot: project_id Description: project id
+--     * Slot: country Description: Country of the institution
 --     * Slot: budget_id Description: budget
 -- # Class: "OverallMolecule" Description: "A class representing the overall molecule"
 --     * Slot: id Description: 
---     * Slot: molecular_type Description: Description of the overall supramolecular type, i.e., a complex
+--     * Slot: molecular_type Description: Description of the overall molecular type, i.e., a complex
 --     * Slot: name_sample Description: Name of the full sample
 --     * Slot: source Description: Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
 --     * Slot: molecular_weight_id Description: Molecular weight in Da
 -- # Class: "Molecule" Description: "A class representing a molecule"
 --     * Slot: id Description: 
 --     * Slot: name_mol Description: Name of an individual molecule (often protein) in the sample
---     * Slot: molecular_type Description: Description of the overall supramolecular type, i.e., a complex
+--     * Slot: molecular_type Description: Description of the overall molecular type, i.e., a complex
 --     * Slot: molecular_class Description: Class of the molecule
 --     * Slot: sequence Description: Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here
 --     * Slot: natural_source Description: Scientific name of the natural host organism
@@ -151,7 +152,7 @@
 --     * Slot: staining Description: Whether the sample was stained
 --     * Slot: embedding Description: Whether the sample was embedded
 --     * Slot: shadowing Description: Whether the sample was shadowed
---     * Slot: concentration_id Description: Concentration of the (supra)molecule in the sample, in M
+--     * Slot: concentration_id Description: Concentration of the (supra)molecule in the sample, in mg/ml
 --     * Slot: humidity_id Description: Environmental humidity just before vitrification, in %
 --     * Slot: temperature_id Description: Environmental temperature just before vitrification, in K
 -- # Class: "Grid" Description: "A class representing a grid"
@@ -340,6 +341,7 @@ CREATE TABLE "Grant" (
 	start_date DATE, 
 	end_date DATE, 
 	project_id TEXT, 
+	country TEXT, 
 	budget_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(budget_id) REFERENCES "QuantityValue" (id)
