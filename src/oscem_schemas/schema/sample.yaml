@@ -24,6 +24,15 @@ enums:
         description: Chimera
       None of these:
         description: None of these
+  AssemblyEnum:
+    title: AssemblyEnum
+    permissible_values:
+      FILAMENT:
+        description: If your protein (complex) of interest is forming filaments
+      HELICAL ARRAY: 
+        description: If your protein (complex) of interest is forming helical arrays (i.e. tubes)
+      PARTICLE:
+        description: If your protein (complex) of interest forms individual particles on the grid with no orderd interactions
 
 classes:
   OverallMolecule:
@@ -34,6 +43,7 @@ classes:
       - name_sample
       - source
       - molecular_weight
+      - assembly
     slot_usage:
       molecular_type:
         required: true
@@ -45,6 +55,8 @@ classes:
         required: true
       molecular_weight:
         # alias: Molecular_weight
+      assembly:
+        required: true
 
   Molecule:
     title: Molecule
@@ -376,3 +388,6 @@ slots:
     title: Grid
     description: Description of the grid used
     range: Grid
+  assembly:
+    description: What type of higher order structure your sample forms - if any.
+    range: AssemblyEnum
