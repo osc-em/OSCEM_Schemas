@@ -205,6 +205,15 @@
 <div class="mermaid"> classDiagram
     class OverallMolecule
     click OverallMolecule href "../OverallMolecule"
+      OverallMolecule : assembly
+
+
+
+
+    OverallMolecule --&gt; "1" AssemblyEnum : assembly
+    click AssemblyEnum href "../AssemblyEnum"
+
+
       OverallMolecule : molecular_type
 
       OverallMolecule : molecular_weight
@@ -256,6 +265,12 @@
 <td><a href="../molecular_weight/">molecular_weight</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Molecular weight in Da</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../assembly/">assembly</a></td>
+<td>1 <br/> <a href="../AssemblyEnum/">AssemblyEnum</a></td>
+<td>What type of higher order structure your sample forms - if any</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -316,6 +331,7 @@ slots:
 - name_sample
 - source
 - molecular_weight
+- assembly
 slot_usage:
   molecular_type:
     name: molecular_type
@@ -328,6 +344,9 @@ slot_usage:
     required: true
   molecular_weight:
     name: molecular_weight
+  assembly:
+    name: assembly
+    required: true
 
 </code></pre>
 </details>
@@ -349,6 +368,9 @@ slot_usage:
     required: true
   molecular_weight:
     name: molecular_weight
+  assembly:
+    name: assembly
+    required: true
 attributes:
   molecular_type:
     name: molecular_type
@@ -399,6 +421,17 @@ attributes:
     domain_of:
     - OverallMolecule
     range: QuantityValue
+  assembly:
+    name: assembly
+    description: What type of higher order structure your sample forms - if any.
+    from_schema: https://w3id.org/osc-em/oscem-schemas
+    rank: 1000
+    alias: assembly
+    owner: OverallMolecule
+    domain_of:
+    - OverallMolecule
+    range: AssemblyEnum
+    required: true
 
 </code></pre>
 </details>
