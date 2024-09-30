@@ -126,6 +126,7 @@
 --     * Slot: molecular_type Description: Description of the overall molecular type, i.e., a complex
 --     * Slot: name_sample Description: Name of the full sample
 --     * Slot: source Description: Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
+--     * Slot: assembly Description: What type of higher order structure your sample forms - if any.
 --     * Slot: molecular_weight_id Description: Molecular weight in Da
 -- # Class: "Molecule" Description: "A class representing a molecule"
 --     * Slot: id Description: 
@@ -351,6 +352,7 @@ CREATE TABLE "OverallMolecule" (
 	molecular_type TEXT NOT NULL, 
 	name_sample TEXT NOT NULL, 
 	source TEXT NOT NULL, 
+	assembly VARCHAR(13) NOT NULL, 
 	molecular_weight_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantityValue" (id)

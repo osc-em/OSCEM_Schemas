@@ -251,6 +251,16 @@
                 "string"
             ]
         },
+        "AssemblyEnum": {
+            "description": "",
+            "enum": [
+                "FILAMENT",
+                "HELICAL ARRAY",
+                "PARTICLE"
+            ],
+            "title": "AssemblyEnum",
+            "type": "string"
+        },
         "Author": {
             "additionalProperties": false,
             "description": "",
@@ -799,6 +809,10 @@
             "additionalProperties": false,
             "description": "A class representing the overall molecule",
             "properties": {
+                "assembly": {
+                    "$ref": "#/$defs/AssemblyEnum",
+                    "description": "What type of higher order structure your sample forms - if any."
+                },
                 "molecular_type": {
                     "description": "Description of the overall molecular type, i.e., a complex",
                     "type": "string"
@@ -826,7 +840,8 @@
             "required": [
                 "molecular_type",
                 "name_sample",
-                "source"
+                "source",
+                "assembly"
             ],
             "title": "OverallMolecule",
             "type": "object"

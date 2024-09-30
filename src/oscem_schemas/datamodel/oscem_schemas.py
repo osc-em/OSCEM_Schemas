@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-09-23T16:30:48
+# Generation date: 2024-09-30T11:20:23
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -35,8 +35,8 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 ACQUISITION = CurieNamespace('acquisition', 'https://w3id.org/osc-em/acquisition')
 INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/osc-em/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-ORGANIZATION = CurieNamespace('organization', 'https://w3id.org/osc-em/organization')
-QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt')
+ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/osc-em/organizational/')
+QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 SAMPLE = CurieNamespace('sample', 'https://w3id.org/osc-em/sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 TOMO = CurieNamespace('tomo', 'https://w3id.org/osc-em/tomo')
@@ -453,8 +453,8 @@ class Person(YAMLRoot):
 class Author(Person):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ORGANIZATION["Author"]
-    class_class_curie: ClassVar[str] = "organization:Author"
+    class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Author"]
+    class_class_curie: ClassVar[str] = "organizational:Author"
     class_name: ClassVar[str] = "Author"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Author")
 
@@ -569,6 +569,7 @@ class OverallMolecule(YAMLRoot):
     molecular_type: str = None
     name_sample: str = None
     source: str = None
+    assembly: Union[str, "AssemblyEnum"] = None
     molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -586,6 +587,11 @@ class OverallMolecule(YAMLRoot):
             self.MissingRequiredField("source")
         if not isinstance(self.source, str):
             self.source = str(self.source)
+
+        if self._is_empty(self.assembly):
+            self.MissingRequiredField("assembly")
+        if not isinstance(self.assembly, AssemblyEnum):
+            self.assembly = AssemblyEnum(self.assembly)
 
         if self.molecular_weight is not None and not isinstance(self.molecular_weight, QuantityValue):
             self.molecular_weight = QuantityValue(**as_dict(self.molecular_weight))
@@ -1054,6 +1060,26 @@ class MoleculeClassEnum(EnumDefinitionImpl):
                 text="None of these",
                 description="None of these"))
 
+class AssemblyEnum(EnumDefinitionImpl):
+
+    FILAMENT = PermissibleValue(
+        text="FILAMENT",
+        description="If your protein (complex) of interest is forming filaments")
+    PARTICLE = PermissibleValue(
+        text="PARTICLE",
+        description="""If your protein (complex) of interest forms individual particles on the grid with no orderd interactions""")
+
+    _defn = EnumDefinition(
+        name="AssemblyEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "HELICAL ARRAY",
+            PermissibleValue(
+                text="HELICAL ARRAY",
+                description="If your protein (complex) of interest is forming helical arrays (i.e. tubes)"))
+
 # Slots
 class slots:
     pass
@@ -1193,10 +1219,10 @@ slots.c2_aperture = Slot(uri=INSTRUMENT.c2_aperture, name="c2_aperture", curie=I
 slots.cs = Slot(uri=INSTRUMENT.cs, name="cs", curie=INSTRUMENT.curie('cs'),
                    model_uri=DEFAULT_.cs, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.first_name = Slot(uri=ORGANIZATION.first_name, name="first_name", curie=ORGANIZATION.curie('first_name'),
+slots.first_name = Slot(uri=ORGANIZATIONAL.first_name, name="first_name", curie=ORGANIZATIONAL.curie('first_name'),
                    model_uri=DEFAULT_.first_name, domain=None, range=Optional[str])
 
-slots.work_status = Slot(uri=ORGANIZATION.work_status, name="work_status", curie=ORGANIZATION.curie('work_status'),
+slots.work_status = Slot(uri=ORGANIZATIONAL.work_status, name="work_status", curie=ORGANIZATIONAL.curie('work_status'),
                    model_uri=DEFAULT_.work_status, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.person = Slot(uri=SCHEMA.Person, name="person", curie=SCHEMA.curie('Person'),
@@ -1212,31 +1238,31 @@ slots.work_phone = Slot(uri=SCHEMA.telephone, name="work_phone", curie=SCHEMA.cu
 slots.name = Slot(uri=SCHEMA.name, name="name", curie=SCHEMA.curie('name'),
                    model_uri=DEFAULT_.name, domain=None, range=Optional[str])
 
-slots.name_org = Slot(uri=ORGANIZATION.name_org, name="name_org", curie=ORGANIZATION.curie('name_org'),
+slots.name_org = Slot(uri=ORGANIZATIONAL.name_org, name="name_org", curie=ORGANIZATIONAL.curie('name_org'),
                    model_uri=DEFAULT_.name_org, domain=None, range=Optional[str])
 
-slots.type_org = Slot(uri=ORGANIZATION.type_org, name="type_org", curie=ORGANIZATION.curie('type_org'),
+slots.type_org = Slot(uri=ORGANIZATIONAL.type_org, name="type_org", curie=ORGANIZATIONAL.curie('type_org'),
                    model_uri=DEFAULT_.type_org, domain=None, range=Optional[Union[str, "OrganizationTypeEnum"]])
 
-slots.country = Slot(uri=ORGANIZATION.country, name="country", curie=ORGANIZATION.curie('country'),
+slots.country = Slot(uri=ORGANIZATIONAL.country, name="country", curie=ORGANIZATIONAL.curie('country'),
                    model_uri=DEFAULT_.country, domain=None, range=Optional[str])
 
-slots.role = Slot(uri=ORGANIZATION.role, name="role", curie=ORGANIZATION.curie('role'),
+slots.role = Slot(uri=ORGANIZATIONAL.role, name="role", curie=ORGANIZATIONAL.curie('role'),
                    model_uri=DEFAULT_.role, domain=None, range=Optional[str])
 
-slots.orcid = Slot(uri=ORGANIZATION.orcid, name="orcid", curie=ORGANIZATION.curie('orcid'),
+slots.orcid = Slot(uri=ORGANIZATIONAL.orcid, name="orcid", curie=ORGANIZATIONAL.curie('orcid'),
                    model_uri=DEFAULT_.orcid, domain=None, range=Optional[str])
 
-slots.funder = Slot(uri=ORGANIZATION.funder, name="funder", curie=ORGANIZATION.curie('funder'),
+slots.funder = Slot(uri=ORGANIZATIONAL.funder, name="funder", curie=ORGANIZATIONAL.curie('funder'),
                    model_uri=DEFAULT_.funder, domain=None, range=Optional[str])
 
-slots.start_date = Slot(uri=ORGANIZATION.start_date, name="start_date", curie=ORGANIZATION.curie('start_date'),
+slots.start_date = Slot(uri=ORGANIZATIONAL.start_date, name="start_date", curie=ORGANIZATIONAL.curie('start_date'),
                    model_uri=DEFAULT_.start_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.end_date = Slot(uri=ORGANIZATION.end_date, name="end_date", curie=ORGANIZATION.curie('end_date'),
+slots.end_date = Slot(uri=ORGANIZATIONAL.end_date, name="end_date", curie=ORGANIZATIONAL.curie('end_date'),
                    model_uri=DEFAULT_.end_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.budget = Slot(uri=ORGANIZATION.budget, name="budget", curie=ORGANIZATION.curie('budget'),
+slots.budget = Slot(uri=ORGANIZATIONAL.budget, name="budget", curie=ORGANIZATIONAL.curie('budget'),
                    model_uri=DEFAULT_.budget, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.project_id = Slot(uri=SCHEMA.identifier, name="project_id", curie=SCHEMA.curie('identifier'),
@@ -1365,6 +1391,9 @@ slots.specimen = Slot(uri=SAMPLE.specimen, name="specimen", curie=SAMPLE.curie('
 slots.grid = Slot(uri=SAMPLE.grid, name="grid", curie=SAMPLE.curie('grid'),
                    model_uri=DEFAULT_.grid, domain=None, range=Optional[Union[dict, Grid]])
 
+slots.assembly = Slot(uri=SAMPLE.assembly, name="assembly", curie=SAMPLE.curie('assembly'),
+                   model_uri=DEFAULT_.assembly, domain=None, range=Optional[Union[str, "AssemblyEnum"]])
+
 slots.tilt_axis_angle = Slot(uri=TOMO.tilt_axis_angle, name="tilt_axis_angle", curie=TOMO.curie('tilt_axis_angle'),
                    model_uri=DEFAULT_.tilt_axis_angle, domain=None, range=Optional[float])
 
@@ -1486,16 +1515,16 @@ slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.cu
 slots.Author_work_phone = Slot(uri=SCHEMA.telephone, name="Author_work_phone", curie=SCHEMA.curie('telephone'),
                    model_uri=DEFAULT_.Author_work_phone, domain=Author, range=str)
 
-slots.Author_orcid = Slot(uri=ORGANIZATION.orcid, name="Author_orcid", curie=ORGANIZATION.curie('orcid'),
+slots.Author_orcid = Slot(uri=ORGANIZATIONAL.orcid, name="Author_orcid", curie=ORGANIZATIONAL.curie('orcid'),
                    model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
 
-slots.Author_country = Slot(uri=ORGANIZATION.country, name="Author_country", curie=ORGANIZATION.curie('country'),
+slots.Author_country = Slot(uri=ORGANIZATIONAL.country, name="Author_country", curie=ORGANIZATIONAL.curie('country'),
                    model_uri=DEFAULT_.Author_country, domain=Author, range=str)
 
-slots.Author_type_org = Slot(uri=ORGANIZATION.type_org, name="Author_type_org", curie=ORGANIZATION.curie('type_org'),
+slots.Author_type_org = Slot(uri=ORGANIZATIONAL.type_org, name="Author_type_org", curie=ORGANIZATIONAL.curie('type_org'),
                    model_uri=DEFAULT_.Author_type_org, domain=Author, range=Union[str, "OrganizationTypeEnum"])
 
-slots.Author_name_org = Slot(uri=ORGANIZATION.name_org, name="Author_name_org", curie=ORGANIZATION.curie('name_org'),
+slots.Author_name_org = Slot(uri=ORGANIZATIONAL.name_org, name="Author_name_org", curie=ORGANIZATIONAL.curie('name_org'),
                    model_uri=DEFAULT_.Author_name_org, domain=Author, range=str)
 
 slots.OverallMolecule_molecular_type = Slot(uri=SAMPLE.molecular_type, name="OverallMolecule_molecular_type", curie=SAMPLE.curie('molecular_type'),
@@ -1509,6 +1538,9 @@ slots.OverallMolecule_source = Slot(uri=SAMPLE.source, name="OverallMolecule_sou
 
 slots.OverallMolecule_molecular_weight = Slot(uri=SAMPLE.molecular_weight, name="OverallMolecule_molecular_weight", curie=SAMPLE.curie('molecular_weight'),
                    model_uri=DEFAULT_.OverallMolecule_molecular_weight, domain=OverallMolecule, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.OverallMolecule_assembly = Slot(uri=SAMPLE.assembly, name="OverallMolecule_assembly", curie=SAMPLE.curie('assembly'),
+                   model_uri=DEFAULT_.OverallMolecule_assembly, domain=OverallMolecule, range=Union[str, "AssemblyEnum"])
 
 slots.Molecule_name_mol = Slot(uri=SAMPLE.name_mol, name="Molecule_name_mol", curie=SAMPLE.curie('name_mol'),
                    model_uri=DEFAULT_.Molecule_name_mol, domain=Molecule, range=str)

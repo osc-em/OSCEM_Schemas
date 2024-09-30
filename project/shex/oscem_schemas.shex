@@ -4,6 +4,8 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX organizational: <https://w3id.org/osc-em/organizational/>
 
 
 linkml:String xsd:string
@@ -84,22 +86,22 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/osc-em/organizationAuthor> CLOSED {
-    (  $<https://w3id.org/osc-em/organizationAuthor_tes> (  &<https://w3id.org/osc-em/organizationPerson_tes> ;
+organizational:Author CLOSED {
+    (  $organizational:Author_tes (  &organizational:Person_tes ;
           rdf:type [ schema1:Person ] ? ;
-          <https://w3id.org/osc-em/organizationorcid> @linkml:String ;
-          <https://w3id.org/osc-em/organizationcountry> @linkml:String ;
-          <https://w3id.org/osc-em/organizationrole> @linkml:String ? ;
-          <https://w3id.org/osc-em/organizationname_org> @linkml:String ;
-          <https://w3id.org/osc-em/organizationtype_org> [ <https://w3id.org/osc-em/organizationOrganizationTypeEnum#Academic>
-             <https://w3id.org/osc-em/organizationOrganizationTypeEnum#Commercial>
-             <https://w3id.org/osc-em/organizationOrganizationTypeEnum#Government>
-             <https://w3id.org/osc-em/organizationOrganizationTypeEnum#Other> ] ;
+          organizational:orcid @linkml:String ;
+          organizational:country @linkml:String ;
+          organizational:role @linkml:String ? ;
+          organizational:name_org @linkml:String ;
+          organizational:type_org [ <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Academic>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Commercial>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Government>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Other> ] ;
           schema1:name @linkml:String ;
           schema1:email @linkml:String ;
           schema1:telephone @linkml:String
        ) ;
-       rdf:type [ <https://w3id.org/osc-em/organizationAuthor> ] ?
+       rdf:type [ organizational:Author ] ?
     )
 }
 
@@ -127,8 +129,8 @@ linkml:Sparqlpath xsd:string
     (  $<EMDataset_tes> (  <acquisition> @<https://w3id.org/osc-em/acquisitionAcquisition> ;
           <instrument> @<https://w3id.org/osc-em/instrumentInstrument> ;
           <sample> @<https://w3id.org/osc-em/sampleSample> ;
-          <grants> @<https://w3id.org/osc-em/organizationGrant> + ;
-          <authors> @<https://w3id.org/osc-em/organizationAuthor> +
+          <grants> @organizational:Grant + ;
+          <authors> @organizational:Author +
        ) ;
        rdf:type [ <EMDataset> ] ?
     )
@@ -143,14 +145,14 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/osc-em/organizationGrant> CLOSED {
-    (  $<https://w3id.org/osc-em/organizationGrant_tes> (  schema1:name @linkml:String ? ;
-          <https://w3id.org/osc-em/organizationfunder> @linkml:String ? ;
-          <https://w3id.org/osc-em/organizationstart_date> @linkml:Date ? ;
-          <https://w3id.org/osc-em/organizationend_date> @linkml:Date ? ;
-          <https://w3id.org/osc-em/organizationbudget> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+organizational:Grant CLOSED {
+    (  $organizational:Grant_tes (  schema1:name @linkml:String ? ;
+          organizational:funder @linkml:String ? ;
+          organizational:start_date @linkml:Date ? ;
+          organizational:end_date @linkml:Date ? ;
+          organizational:budget @<https://w3id.org/osc-em/typesQuantityValue> ? ;
           schema1:identifier @linkml:String ? ;
-          <https://w3id.org/osc-em/organizationcountry> @linkml:String ?
+          organizational:country @linkml:String ?
        ) ;
        rdf:type [ schema1:Grant ] ?
     )
@@ -225,23 +227,25 @@ linkml:Sparqlpath xsd:string
     (  $<https://w3id.org/osc-em/sampleOverallMolecule_tes> (  <https://w3id.org/osc-em/samplemolecular_type> @linkml:String ;
           <https://w3id.org/osc-em/samplename_sample> @linkml:String ;
           <https://w3id.org/osc-em/samplesource> @linkml:String ;
-          <https://w3id.org/osc-em/samplemolecular_weight> @<https://w3id.org/osc-em/typesQuantityValue> ?
+          <https://w3id.org/osc-em/samplemolecular_weight> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/sampleassembly> [ <https://w3id.org/osc-em/sampleAssemblyEnum#FILAMENT>
+             <https://w3id.org/osc-em/sampleAssemblyEnum#HELICAL%20ARRAY> <https://w3id.org/osc-em/sampleAssemblyEnum#PARTICLE> ]
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sampleOverallMolecule> ] ?
     )
 }
 
-<https://w3id.org/osc-em/organizationPerson>  (
+organizational:Person  (
     CLOSED {
-       (  $<https://w3id.org/osc-em/organizationPerson_tes> (  schema1:name @linkml:String ? ;
-             <https://w3id.org/osc-em/organizationfirst_name> @linkml:String ? ;
-             <https://w3id.org/osc-em/organizationwork_status> @linkml:Boolean ? ;
+       (  $organizational:Person_tes (  schema1:name @linkml:String ? ;
+             organizational:first_name @linkml:String ? ;
+             organizational:work_status @linkml:Boolean ? ;
              schema1:email @linkml:String ? ;
              schema1:telephone @linkml:String ?
           ) ;
           rdf:type [ schema1:Person ] ?
        )
-    } OR @<https://w3id.org/osc-em/organizationAuthor>
+    } OR @organizational:Author
 )
 
 <https://w3id.org/osc-em/acquisitionPhaseplate> CLOSED {
@@ -253,10 +257,10 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://w3id.org/osc-em/typesQuantityValue> CLOSED {
-    (  $<https://w3id.org/osc-em/typesQuantityValue_tes> (  <http://qudt.org/schema/qudthasUnit> @linkml:String ;
-          <http://qudt.org/schema/qudthasQuantityKind> @linkml:Float
+    (  $<https://w3id.org/osc-em/typesQuantityValue_tes> (  qudt:hasUnit @linkml:String ;
+          qudt:hasQuantityKind @linkml:Float
        ) ;
-       rdf:type [ <http://qudt.org/schema/qudtquantityValue> ] ?
+       rdf:type [ qudt:quantityValue ] ?
     )
 }
 

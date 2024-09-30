@@ -7,7 +7,7 @@ acquisition:
   detector: Falcon 4i
   detector_mode: counting
   dose_per_movie:
-    unit: "e/\u212B\xB2"
+    unit: "1/\u212B^2"
     value: 0.5
   holder: testitest
   pixel_size:
@@ -76,6 +76,7 @@ sample:
     taxonomy_id_expression: GCA_003054445.1
     taxonomy_id_source: GCA_003054445.1
   overall_molecule:
+    assembly: PARTICLE
     molecular_type: Complex
     molecular_weight:
       unit: Da
@@ -109,7 +110,7 @@ acquisition:
   detector: Falcon 4i
   detector_mode: counting
   dose_per_movie:
-    unit: "e/\u212B\xB2"
+    unit: "1/\u212B^2"
     value: 0.5
   holder: testitest
   pixel_size:
