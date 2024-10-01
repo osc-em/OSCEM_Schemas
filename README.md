@@ -9,11 +9,11 @@ To increase compatibility with different formats, we utilize LinkML, which allow
 
 ## currently implemented methods
   Life sciences:
-    - cryoEM:
-      - single particle analysis
-      - Tomography:
-        - subtomogram averaging
-        - cellular tomography
+- **cryoEM**:
+  - Single particle analysis
+  - Tomography:
+    - Subtomogram averaging
+    - Cellular tomography
 
 ## Usage
 All schemas are available in YAML format under the directory src/oscem_schemas/schema. Files prefixed with oscem_* refer to collections of subschemas, such as those for single particle analysis. Schemas with more specific names, like "instrument," represent individual subschemas that can be modularly incorporated into oscem_* schemas. By using LinkML generator functions, these schemas can be exported to various formats such as JSON Schema, JSON-LD, OWL, CSV and RDF. For metadata validation, we recommend using the JSON Schema versions.
