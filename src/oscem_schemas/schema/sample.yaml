@@ -14,7 +14,7 @@ imports:
 
 enums:
   MoleculeClassEnum:
-    title: MoleculeClassEnum
+    description: Allowed molecule class values - compatible with the EMDB.
     permissible_values:
       Antibiotic:
         description: Antibiotic
@@ -25,7 +25,7 @@ enums:
       None of these:
         description: None of these
   AssemblyEnum:
-    title: AssemblyEnum
+    description: Allowed molecular assembly values - compatible with the EMDB.
     permissible_values:
       FILAMENT:
         description: If your protein (complex) of interest is forming filaments
@@ -36,8 +36,7 @@ enums:
 
 classes:
   OverallMolecule:
-    title: OverallMolecule
-    description: A class representing the overall molecule
+    description: Description of the overall molecule
     slots:
       - molecular_type
       - name_sample
@@ -59,8 +58,7 @@ classes:
         required: true
 
   Molecule:
-    title: Molecule
-    description: A class representing a molecule
+    description: More detailed information about individual molecules.
     slots:
       - name_mol
       - molecular_type
@@ -99,8 +97,7 @@ classes:
         # alias: Gene_name
 
   Ligand:
-    title: Ligand
-    description: A class representing a ligand
+    description: Information on ligands if present.
     slots:
       - present
       - smiles
@@ -111,8 +108,7 @@ classes:
         required: true
 
   Specimen:
-    title: Specimen
-    description: A class representing a specimen
+    description: Description of specimen handling.
     slots:
       - buffer
       - concentration
@@ -153,8 +149,7 @@ classes:
         required: true
 
   Grid:
-    title: Grid
-    description: A class representing a grid
+    description: Details on the grid used in the experiment.
     slots:
       - manufacturer
       - material
@@ -192,8 +187,7 @@ classes:
         # alias: Pretreatment_atmosphere
 
   Sample:
-    title: Sample
-    description: A class representing a sample
+    description: Unifying class to describe the full sample.
     slots:
       - overall_molecule
       - molecule
@@ -217,175 +211,134 @@ classes:
 
 slots:
   molecular_type:
-    title: Type
     description: Description of the overall molecular type, i.e., a complex
     range: string
   name_sample:
-    title: Name
     description: Name of the full sample
     range: string
   source:
-    title: Source
     description: Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
     range: string
   molecular_weight:
-    title: Molecular_weight
     description: Molecular weight in Da
     range: QuantityValue
 
   name_mol:
-    title: Name
     description: Name of an individual molecule (often protein) in the sample
     range: string
   molecular_class:
-    title: Class
     description: Class of the molecule
     range: MoleculeClassEnum
   sequence:
-    title: Sequence
     description: Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here
     range: string
   natural_source:
-    title: Natural_source
     description: Scientific name of the natural host organism
     range: string
   taxonomy_id_source:
-    title: Taxonomy_ID_source
     description: Taxonomy ID of the natural source organism
     range: string
   expression_system:
-    title: Expression_system
     description: Scientific name of the organism used to produce the molecule of interest
     range: string
   taxonomy_id_expression:
-    title: Taxonomy_ID_expression
     description: Taxonomy ID of the expression system organism
     range: string
   gene_name:
-    title: Gene_name
     description: Name of the gene of interest
     range: string
 
   present:
-    title: Present
     description: Whether the model contains any ligands
     range: boolean
   smiles:
-    title: SMILES
     description: Provide a valid SMILES string of your ligand
     range: string
   reference:
-    title: Reference
     description: Link to a reference of your ligand, i.e., CCD, PubChem, etc.
     range: string
 
   buffer:
-    title: Buffer
     description: Name/composition of the (chemical) sample buffer during grid preparation
     range: string
   concentration:
-    title: Concentration
     description: Concentration of the (supra)molecule in the sample, in mg/ml
     range: QuantityValue
   ph:
-    title: pH
     description: pH of the sample buffer
     range: float
   vitrification:
-    title: Vitrification
     description: Whether the sample was vitrified
     range: boolean
   vitrification_cryogen:
-    title: Vitrification_cryogen
     description: Which cryogen was used for vitrification
     range: string
   humidity:
-    title: Humidity
     description: Environmental humidity just before vitrification, in %
     range: QuantityValue
   temperature:
-    title: Temperature
     description: Environmental temperature just before vitrification, in K
     range: QuantityValue
     minimum_value: 0.0
   staining:
-    title: Staining
     description: Whether the sample was stained
     range: boolean
   embedding:
-    title: Embedding
     description: Whether the sample was embedded
     range: boolean
   shadowing:
-    title: Shadowing
     description: Whether the sample was shadowed
     range: boolean
 
   manufacturer:
-    title: Manufacturer
     description: Grid manufacturer
     range: string
   material:
-    title: Material
     description: Material out of which the grid is made
     range: string
   mesh:
-    title: Mesh
     description: Grid mesh in lines per inch
     range: float
   film_support:
-    title: Film_support
     description: Whether a support film was used
     range: boolean
   film_material:
-    title: Film_material
     description: Type of material the support film is made of
     range: string
   film_topology:
-    title: Film_topology
     description: Topology of the support film
     range: string
   film_thickness:
-    title: Film_thickness
     description: Thickness of the support film
     range: string
   pretreatment_type:
-    title: Pretreatment_type
     description: Type of pretreatment of the grid, i.e., glow discharge
     range: string
   pretreatment_time:
-    title: Pretreatment_time
     description: Length of time of the pretreatment in s
     range: QuantityValue
   pretreatment_pressure:
-    title: Pretreatment_pressure
     description: Pressure of the chamber during pretreatment, in Pa
     range: QuantityValue
   pretreatment_atmosphere:
-    title: Pretreatment_atmosphere
     description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
     range: string
 
   overall_molecule:
-    title: Overall_Molecule
     description: Description of the overall molecule
     range: OverallMolecule
   molecule:
-    title: Molecule
     description: List of molecule associated with the sample
     range: Molecule
     multivalued: true
   ligands:
-    title: Ligands
     description: List of ligands associated with the sample
     range: Ligand
     multivalued: true
   specimen:
-    title: Specimen
     description: Description of the specimen
     range: Specimen
   grid:
-    title: Grid
     description: Description of the grid used
     range: Grid
   assembly:

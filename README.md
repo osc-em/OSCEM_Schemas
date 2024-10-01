@@ -1,14 +1,28 @@
 
-# OSCEM_Schemas
-Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
-defining the electron microscopy related fields required by the OSCEM standard.
+# OSCEM schemas
+Schema for the Open Standards Community for Electron Microscopy (OSC-EM): Defining the electron microscopy-related fields required by the OSCEM standard.
 
-Core idea is a modular system that allows for the combination of several sample and method parts to describe a variety of electron microscopy use cases. All original schemas can be found as .yaml under src/oscem_schemas/schema. Files named oscem_* refer to set collections of subschemas, e.g. single particle analysis. Schemas with more precise names such as "instrument" refer to a specific subschema that can be modularily imported into oscem_* schemas. Using the linkml generator functions the overall schemas can be exported to a variety of other formats such as json-schema, jsonld, OWL and RDF. We recommend using json-schema versions for validating metadata.
+## Overview
+The OSCEM schemas are designed to standardize metadata for electron microscopy, structured modularly to accommodate various methods and use cases. Each module can represent different aspects of an experiment, such as "sample", "instrument", and "author." These modules are combined into a comprehensive schema that defines the required metadata for a specific method. This standard ensures consistency in data collection, facilitates data validation, and enhances comparability between datasets.
 
+To increase compatibility with different formats, we utilize LinkML, which allows us to export the schema to widely used formats.
+
+## currently implemented methods
+  Life sciences:
+    - cryoEM:
+      - single particle analysis
+      - Tomography:
+        - subtomogram averaging
+        - cellular tomography
+
+## Usage
+All schemas are available in YAML format under the directory src/oscem_schemas/schema. Files prefixed with oscem_* refer to collections of subschemas, such as those for single particle analysis. Schemas with more specific names, like "instrument," represent individual subschemas that can be modularly incorporated into oscem_* schemas. By using LinkML generator functions, these schemas can be exported to various formats such as JSON Schema, JSON-LD, OWL, CSV and RDF. For metadata validation, we recommend using the JSON Schema versions.
+
+## Note
 Current versions are a work in progress, details might change.
 
 ## Website
-Here you can browse all our keywords with descriptions.
+Here you can browse all our keywords for single particle analysis with descriptions:
 [https://osc-em.github.io/OSCEM_Schemas/](https://osc-em.github.io/OSCEM_Schemas/)
 
 ## Repository Structure

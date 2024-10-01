@@ -8,7 +8,7 @@
 --     * Slot: increment_id Description: Increment between elements of a series
 --     * Slot: minimal_id Description: Minimal value of a given dataset property
 --     * Slot: maximal_id Description: Maximal value of a given dataset property
--- # Class: "Any" Description: "Any type, used as the base for type-narrowing.See https://linkml.io/linkml/schemas/advanced.html"
+-- # Class: "Any" Description: "Any type, used as the base for type-narrowing."
 --     * Slot: id Description: 
 -- # Class: "Range" Description: "A range constructed from min and max"
 --     * Slot: id Description: 
@@ -33,7 +33,7 @@
 --     * Slot: id Description: 
 --     * Slot: unit Description: the unit of a given value
 --     * Slot: value Description: the value of a field with a unit
--- # Class: "Acquisition" Description: ""
+-- # Class: "Acquisition" Description: "A set of parameteres describing the data acquisition"
 --     * Slot: id Description: 
 --     * Slot: nominal_magnification Description: Magnification level as indicated by the instrument, no unit
 --     * Slot: calibrated_magnification Description: Calculated magnification, no unit
@@ -62,25 +62,25 @@
 --     * Slot: beamshift_id Description: Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
 --     * Slot: beamtilt_id Description: Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
 --     * Slot: imageshift_id Description: Movement of the Beam below the image in order to shift the image on the detector. Given in µm.
--- # Class: "EnergyFilter" Description: ""
+-- # Class: "EnergyFilter" Description: "A device used to filter for electrons with specific energy."
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
 --     * Slot: model Description: Make and model of a specilized device
 --     * Slot: width Description: The width of a given item - unit depends on item
--- # Class: "SpecialistOptics" Description: ""
+-- # Class: "SpecialistOptics" Description: "Optional optics used to correct for instrument limitations."
 --     * Slot: id Description: 
 --     * Slot: phaseplate_id Description: Phaseplate is a special optics device that can be used to enhance contrast
 --     * Slot: spherical_aberration_corrector_id Description: Specialist device to correct for spherical aberration of the microscope lenses
 --     * Slot: chromatic_aberration_corrector_id Description: Specialist device to correct for chromatic aberration of the microscope lenses
--- # Class: "Phaseplate" Description: ""
+-- # Class: "Phaseplate" Description: "Used to modulate the phase of the electron wave."
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
 --     * Slot: instrument_type Description: Type of phaseplate
--- # Class: "SphericalAberrationCorrector" Description: ""
+-- # Class: "SphericalAberrationCorrector" Description: "Special device used to correct instrument inherent spherical aberration."
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
 --     * Slot: instrument_type Description: Details of a given specialist instrument
--- # Class: "ChromaticAberrationCorrector" Description: ""
+-- # Class: "ChromaticAberrationCorrector" Description: "Special device used to correct instrument inherent chromatic aberration."
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
 --     * Slot: instrument_type Description: Details of a given specialist instrument
@@ -93,18 +93,18 @@
 --     * Slot: acceleration_voltage_id Description: Voltage used for the electron acceleration, in kV
 --     * Slot: c2_aperture_id Description: C2 aperture size used in data acquisition, in µm
 --     * Slot: cs_id Description: Spherical aberration of the instrument, in mm
--- # Class: "Person" Description: ""
+-- # Class: "Person" Description: "personal information"
 --     * Slot: id Description: 
 --     * Slot: name Description: name
 --     * Slot: first_name Description: first name
 --     * Slot: work_status Description: work status
 --     * Slot: email Description: email
 --     * Slot: work_phone Description: work phone
--- # Class: "Author" Description: ""
+-- # Class: "Author" Description: "Details on the person performing the experiment."
 --     * Slot: id Description: 
 --     * Slot: orcid Description: ORCID of the author, a type of unique identifier
 --     * Slot: country Description: Country of the institution
---     * Slot: role Description: Role of the author, i.e., principal investigator
+--     * Slot: role Description: Role of the author, for example principal investigator
 --     * Slot: name_org Description: Name of the organization
 --     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
 --     * Slot: name Description: name
@@ -115,20 +115,20 @@
 -- # Class: "Grant" Description: "Grant"
 --     * Slot: id Description: 
 --     * Slot: name Description: name
---     * Slot: funder Description: funder
+--     * Slot: funder Description: funding organization/person.
 --     * Slot: start_date Description: start date
 --     * Slot: end_date Description: end date
 --     * Slot: project_id Description: project id
 --     * Slot: country Description: Country of the institution
 --     * Slot: budget_id Description: budget
--- # Class: "OverallMolecule" Description: "A class representing the overall molecule"
+-- # Class: "OverallMolecule" Description: "Description of the overall molecule"
 --     * Slot: id Description: 
 --     * Slot: molecular_type Description: Description of the overall molecular type, i.e., a complex
 --     * Slot: name_sample Description: Name of the full sample
 --     * Slot: source Description: Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
 --     * Slot: assembly Description: What type of higher order structure your sample forms - if any.
 --     * Slot: molecular_weight_id Description: Molecular weight in Da
--- # Class: "Molecule" Description: "A class representing a molecule"
+-- # Class: "Molecule" Description: "More detailed information about individual molecules."
 --     * Slot: id Description: 
 --     * Slot: name_mol Description: Name of an individual molecule (often protein) in the sample
 --     * Slot: molecular_type Description: Description of the overall molecular type, i.e., a complex
@@ -139,12 +139,12 @@
 --     * Slot: expression_system Description: Scientific name of the organism used to produce the molecule of interest
 --     * Slot: taxonomy_id_expression Description: Taxonomy ID of the expression system organism
 --     * Slot: gene_name Description: Name of the gene of interest
--- # Class: "Ligand" Description: "A class representing a ligand"
+-- # Class: "Ligand" Description: "Information on ligands if present."
 --     * Slot: id Description: 
 --     * Slot: present Description: Whether the model contains any ligands
 --     * Slot: smiles Description: Provide a valid SMILES string of your ligand
 --     * Slot: reference Description: Link to a reference of your ligand, i.e., CCD, PubChem, etc.
--- # Class: "Specimen" Description: "A class representing a specimen"
+-- # Class: "Specimen" Description: "Description of specimen handling."
 --     * Slot: id Description: 
 --     * Slot: buffer Description: Name/composition of the (chemical) sample buffer during grid preparation
 --     * Slot: ph Description: pH of the sample buffer
@@ -156,7 +156,7 @@
 --     * Slot: concentration_id Description: Concentration of the (supra)molecule in the sample, in mg/ml
 --     * Slot: humidity_id Description: Environmental humidity just before vitrification, in %
 --     * Slot: temperature_id Description: Environmental temperature just before vitrification, in K
--- # Class: "Grid" Description: "A class representing a grid"
+-- # Class: "Grid" Description: "Details on the grid used in the experiment."
 --     * Slot: id Description: 
 --     * Slot: manufacturer Description: Grid manufacturer
 --     * Slot: material Description: Material out of which the grid is made
@@ -169,7 +169,7 @@
 --     * Slot: pretreatment_atmosphere Description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
 --     * Slot: pretreatment_time_id Description: Length of time of the pretreatment in s
 --     * Slot: pretreatment_pressure_id Description: Pressure of the chamber during pretreatment, in Pa
--- # Class: "Sample" Description: "A class representing a sample"
+-- # Class: "Sample" Description: "Unifying class to describe the full sample."
 --     * Slot: id Description: 
 --     * Slot: overall_molecule_id Description: Description of the overall molecule
 --     * Slot: specimen_id Description: Description of the specimen

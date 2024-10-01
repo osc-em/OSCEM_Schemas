@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-09-30T11:20:23
+# Generation date: 2024-10-01T15:30:44
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -99,6 +99,9 @@ class EMDataset(YAMLRoot):
 
 @dataclass(repr=False)
 class Acquisition(YAMLRoot):
+    """
+    A set of parameteres describing the data acquisition
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ACQUISITION["Acquisition"]
@@ -226,6 +229,9 @@ class Acquisition(YAMLRoot):
 
 @dataclass(repr=False)
 class EnergyFilter(YAMLRoot):
+    """
+    A device used to filter for electrons with specific energy.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ACQUISITION["EnergyFilter"]
@@ -256,6 +262,9 @@ class EnergyFilter(YAMLRoot):
 
 @dataclass(repr=False)
 class SpecialistOptics(YAMLRoot):
+    """
+    Optional optics used to correct for instrument limitations.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ACQUISITION["SpecialistOptics"]
@@ -282,6 +291,9 @@ class SpecialistOptics(YAMLRoot):
 
 @dataclass(repr=False)
 class Phaseplate(YAMLRoot):
+    """
+    Used to modulate the phase of the electron wave.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ACQUISITION["Phaseplate"]
@@ -308,6 +320,9 @@ class Phaseplate(YAMLRoot):
 
 @dataclass(repr=False)
 class SphericalAberrationCorrector(YAMLRoot):
+    """
+    Special device used to correct instrument inherent spherical aberration.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ACQUISITION["SphericalAberrationCorrector"]
@@ -334,6 +349,9 @@ class SphericalAberrationCorrector(YAMLRoot):
 
 @dataclass(repr=False)
 class ChromaticAberrationCorrector(YAMLRoot):
+    """
+    Special device used to correct instrument inherent chromatic aberration.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ACQUISITION["ChromaticAberrationCorrector"]
@@ -417,6 +435,9 @@ class Instrument(YAMLRoot):
 
 @dataclass(repr=False)
 class Person(YAMLRoot):
+    """
+    personal information
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = SCHEMA["Person"]
@@ -451,6 +472,9 @@ class Person(YAMLRoot):
 
 @dataclass(repr=False)
 class Author(Person):
+    """
+    Details on the person performing the experiment.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Author"]
@@ -557,7 +581,7 @@ class Grant(YAMLRoot):
 @dataclass(repr=False)
 class OverallMolecule(YAMLRoot):
     """
-    A class representing the overall molecule
+    Description of the overall molecule
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -602,7 +626,7 @@ class OverallMolecule(YAMLRoot):
 @dataclass(repr=False)
 class Molecule(YAMLRoot):
     """
-    A class representing a molecule
+    More detailed information about individual molecules.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -671,7 +695,7 @@ class Molecule(YAMLRoot):
 @dataclass(repr=False)
 class Ligand(YAMLRoot):
     """
-    A class representing a ligand
+    Information on ligands if present.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -702,7 +726,7 @@ class Ligand(YAMLRoot):
 @dataclass(repr=False)
 class Specimen(YAMLRoot):
     """
-    A class representing a specimen
+    Description of specimen handling.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -771,7 +795,7 @@ class Specimen(YAMLRoot):
 @dataclass(repr=False)
 class Grid(YAMLRoot):
     """
-    A class representing a grid
+    Details on the grid used in the experiment.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -832,7 +856,7 @@ class Grid(YAMLRoot):
 @dataclass(repr=False)
 class Sample(YAMLRoot):
     """
-    A class representing a sample
+    Unifying class to describe the full sample.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1019,7 +1043,9 @@ class QuantityValue(YAMLRoot):
 
 # Enumerations
 class OrganizationTypeEnum(EnumDefinitionImpl):
-
+    """
+    Allowed values for authors organizations.
+    """
     Academic = PermissibleValue(
         text="Academic",
         description="Academic institution")
@@ -1035,10 +1061,13 @@ class OrganizationTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="OrganizationTypeEnum",
+        description="Allowed values for authors organizations.",
     )
 
 class MoleculeClassEnum(EnumDefinitionImpl):
-
+    """
+    Allowed molecule class values - compatible with the EMDB.
+    """
     Antibiotic = PermissibleValue(
         text="Antibiotic",
         description="Antibiotic")
@@ -1051,6 +1080,7 @@ class MoleculeClassEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="MoleculeClassEnum",
+        description="Allowed molecule class values - compatible with the EMDB.",
     )
 
     @classmethod
@@ -1061,7 +1091,9 @@ class MoleculeClassEnum(EnumDefinitionImpl):
                 description="None of these"))
 
 class AssemblyEnum(EnumDefinitionImpl):
-
+    """
+    Allowed molecular assembly values - compatible with the EMDB.
+    """
     FILAMENT = PermissibleValue(
         text="FILAMENT",
         description="If your protein (complex) of interest is forming filaments")
@@ -1071,6 +1103,7 @@ class AssemblyEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="AssemblyEnum",
+        description="Allowed molecular assembly values - compatible with the EMDB.",
     )
 
     @classmethod

@@ -1,6 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
+// A set of parameteres describing the data acquisition
 message Acquisition
  {
   range nominalDefocus = 0
@@ -31,6 +32,7 @@ message Acquisition
   integer beamtiltgroups = 0
   string gainrefFlipRotate = 0
  }
+// Details on the person performing the experiment.
 message Author
  {
   string firstName = 0
@@ -52,6 +54,7 @@ message BoundingBox2D
   quantityValue yMin = 0
   quantityValue yMax = 0
  }
+// Special device used to correct instrument inherent chromatic aberration.
 message ChromaticAberrationCorrector
  {
   boolean used = 0
@@ -66,6 +69,7 @@ message EMDataset
  repeated  grant grants = 0
  repeated  author authors = 0
  }
+// A device used to filter for electrons with specific energy.
 message EnergyFilter
  {
   boolean used = 0
@@ -83,7 +87,7 @@ message Grant
   string projectId = 0
   string country = 0
  }
-// A class representing a grid
+// Details on the grid used in the experiment.
 message Grid
  {
   string manufacturer = 0
@@ -115,14 +119,14 @@ message Instrument
   quantityValue c2Aperture = 0
   quantityValue cs = 0
  }
-// A class representing a ligand
+// Information on ligands if present.
 message Ligand
  {
   boolean present = 0
   string smiles = 0
   string reference = 0
  }
-// A class representing a molecule
+// More detailed information about individual molecules.
 message Molecule
  {
   string nameMol = 0
@@ -135,7 +139,7 @@ message Molecule
   string taxonomyIdExpression = 0
   string geneName = 0
  }
-// A class representing the overall molecule
+// Description of the overall molecule
 message OverallMolecule
  {
   string molecularType = 0
@@ -144,6 +148,7 @@ message OverallMolecule
   quantityValue molecularWeight = 0
   assemblyEnum assembly = 0
  }
+// personal information
 message Person
  {
   string name = 0
@@ -152,6 +157,7 @@ message Person
   string email = 0
   string workPhone = 0
  }
+// Used to modulate the phase of the electron wave.
 message Phaseplate
  {
   boolean used = 0
@@ -169,7 +175,7 @@ message Range
   quantityValue minimal = 0
   quantityValue maximal = 0
  }
-// A class representing a sample
+// Unifying class to describe the full sample.
 message Sample
  {
   overallMolecule overallMolecule = 0
@@ -185,13 +191,14 @@ message Series
   quantityValue maximal = 0
   quantityValue increment = 0
  }
+// Optional optics used to correct for instrument limitations.
 message SpecialistOptics
  {
   phaseplate phaseplate = 0
   sphericalAberrationCorrector sphericalAberrationCorrector = 0
   chromaticAberrationCorrector chromaticAberrationCorrector = 0
  }
-// A class representing a specimen
+// Description of specimen handling.
 message Specimen
  {
   string buffer = 0
@@ -205,6 +212,7 @@ message Specimen
   boolean embedding = 0
   boolean shadowing = 0
  }
+// Special device used to correct instrument inherent spherical aberration.
 message SphericalAberrationCorrector
  {
   boolean used = 0
