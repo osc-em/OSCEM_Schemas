@@ -7,8 +7,8 @@ The OSCEM schemas are designed to standardize metadata for electron microscopy, 
 
 To increase compatibility with different formats, we utilize LinkML, which allows us to export the schema to widely used formats.
 
-## currently implemented methods
-  Life sciences:
+## Currently implemented methods
+### Life sciences:
 - **cryoEM**:
   - Single particle analysis
   - Tomography:
