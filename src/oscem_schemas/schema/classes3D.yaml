@@ -1,0 +1,79 @@
+id: https://w3id.org/osc-em/classes3D
+name: OSCEMClasses3D
+description: >
+  LinkML schema for electron microscopy 3D classes generated when processing.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  acquisition: https://w3id.org/osc-em/classes3D
+  types: https://w3id.org/osc-em/types
+
+default_prefix: classes3D
+
+classes:
+  classes3D:
+    description:
+    slots:
+      - number_classes_3D:
+          description: Number of 3D classes
+          range: integer
+          required: false
+      - particles_per_class:
+          description: Number of particles per 3D class
+          range: array
+          required: false
+      - images_classes_3D:
+          description: Filename of the image containing 3D class images
+          range: string
+          required: false
+      - orthogonal_slices:
+          description:
+          type: object
+          slots:
+            - Orthogonal_slices_X:
+                description: Filename of orthogonal slices in X direction
+                range: string
+                required: false
+            - Orthogonal_slices_Y:
+                description: Filename of orthogonal slices in Y direction
+                range: string
+                required: false
+            - Orthogonal_slices_Z:
+                description: Filename of orthogonal slices in Z direction
+                range: string
+                required: false
+      - isosurface_images:
+          description:
+          type: object
+          slots:
+            - Orthogonal_slices_X:
+                description: Filename of the front view isosurface image
+                range: string
+                required: false
+            - Orthogonal_slices_Y:
+                description: Filename of the side view isosurface image
+                range: string
+                required: false
+            - Orthogonal_slices_Z:
+                description: Filename of the top view isosurface image
+                range: string
+                required: false
+      - resolution:
+          description: Resolution of volume
+          range: QuantityValue
+          required: false
+      - descriptor:
+          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
+          type: array  # Specify as an array to be able to hold multiple descriptors
+          required: false
+          items:
+            type: object
+            properties:
+              descriptor_name:
+                description: Name defining the descriptor
+                type: string
+                required: true
+              additionalProperties:
+                description: User-defined key-value pairs
+                type: object
+                additionalProperties: true

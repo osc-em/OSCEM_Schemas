@@ -1,0 +1,88 @@
+id: https://w3id.org/osc-em/ctf
+name: OSCEMCTFs
+description: >
+  LinkML schema for electron microscopy CTFs generated when processing.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  acquisition: https://w3id.org/osc-em/ctfs
+  types: https://w3id.org/osc-em/types
+
+default_prefix: CTFs
+
+classes:
+  CTF:
+    description:
+    slots:
+      - amplitude_contrast:
+          description: Amplitude contrast
+          range: integer
+          required: false
+          default: 0.07
+      - defocus:
+          description:
+          type: object
+          slots:
+            - output_min_defocus:
+                description: Minimum defocus
+                range: QuantityValue
+                required: false
+            - output_max_defocus:
+                description: Maximum defocus
+                range: QuantityValue
+                required: false
+            - output_avg_defocus:
+                description: Average value of defocus
+                range: QuantityValue
+                required: false
+            - defocus_histogram:
+                description: Filename of the defocus values histogram
+                range: string
+                required: false
+            - micrograph_examples:
+                description: Filename of micrographs shown as examples in ascending order of defocus value
+                range: string
+                required: false
+      - resolution:
+          description:
+          type: object
+          slots:
+            - output_min_resolution:
+                description: Minimum resolution
+                range: QuantityValue
+                required: false
+            - output_max_resolution:
+                description: Maximum resolution
+                range: QuantityValue
+                required: false
+            - output_avg_resolution:
+                description: Average value of resolution
+                range: QuantityValue
+                required: false
+            - resolution_histogram:
+                description: Filename of the resolution values histogram
+                range: string
+                required: false
+      - astigmatism:
+          description:
+          type: object
+          slots:
+            - astigmatism_histogram:
+                description: Filename of the astigmatism values histogram
+                range: string
+                required: false
+      - descriptor:
+          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
+          type: array  # Specify as an array to be able to hold multiple descriptors
+          required: false
+          items:
+            type: object
+            properties:
+              descriptor_name:
+                description: Name defining the descriptor
+                type: string
+                required: true
+              additionalProperties:
+                description: User-defined key-value pairs (optional)
+                type: object
+                additionalProperties: true

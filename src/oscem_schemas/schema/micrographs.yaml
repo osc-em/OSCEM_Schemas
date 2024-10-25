@@ -1,0 +1,35 @@
+id: https://w3id.org/osc-em/micrographs
+name: OSCEMMicrographs
+description: >
+  LinkML schema for electron microscopy micrographs generated when processing.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  acquisition: https://w3id.org/osc-em/micrographs
+  types: https://w3id.org/osc-em/types
+
+default_prefix: micrographs
+
+classes:
+  micrographs:
+    description:
+    slots:
+      - number_micrographs:
+          description: Number of micrographs
+          range: integer
+          required: true
+      - descriptor:
+          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
+          type: array  # Specify as an array to be able to hold multiple descriptors
+          required: false
+          items:
+            type: object
+            properties:
+              descriptor_name:
+                description: Name defining the descriptor
+                type: string
+                required: true
+              additionalProperties:
+                description: User-defined key-value pairs (optional)
+                type: object
+                additionalProperties: true

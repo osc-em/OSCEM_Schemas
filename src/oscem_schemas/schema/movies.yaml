@@ -1,0 +1,47 @@
+#id: https://w3id.org/osc-em/movies
+#name: OSCEMMovies
+#description: >
+#  LinkML schema for electron microscopy movies generated when processing.
+#
+#prefixes:
+#  linkml: https://w3id.org/linkml/
+#  acquisition: https://w3id.org/osc-em/movies
+#  types: https://w3id.org/osc-em/types
+
+#default_prefix: movies
+
+classes:
+  movies:
+    description: "Schema for movies"
+    slots:
+      - dose_per_image:
+          description: Dose per image
+          range: QuantityValue
+          required: false
+      - initial_dose:
+          description: Initial dose
+          range: QuantityValue
+          required: false
+      - gain_image:
+          description: Gain image filename
+          range: string
+          required: false
+      - dark_image:
+          description: Dark image filename
+          range: string
+          required: false
+      - descriptor:
+          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
+          type: array  # Specify as an array to be able to hold multiple descriptors
+          required: false
+          items:
+            type: object
+            properties:
+              descriptor_name:
+                description: Name defining the descriptor
+                type: string
+                required: true
+              additionalProperties:
+                description: User-defined key-value pairs
+                type: object
+                additionalProperties: true

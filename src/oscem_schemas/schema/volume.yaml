@@ -1,0 +1,75 @@
+id: https://w3id.org/osc-em/volume
+name: OSCEMVolume
+description: >
+  LinkML schema for electron microscopy volume generated when processing.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  acquisition: https://w3id.org/osc-em/volume
+  types: https://w3id.org/osc-em/types
+
+default_prefix: volume
+
+classes:
+  volume:
+    description:
+    slots:
+      - volume_type:
+          description: Indicates the type of volume
+          range: string
+          required: true
+      - number_particles:
+          description: Number of particles associated to volume
+          range: integer
+          required: true
+      - orthogonal_slices:
+          description:
+          type: object
+          slots:
+            - Orthogonal_slices_X:
+                description: Filename of orthogonal slices in X direction
+                range: string
+                required: false
+            - Orthogonal_slices_Y:
+                description: Filename of orthogonal slices in Y direction
+                range: string
+                required: false
+            - Orthogonal_slices_Z:
+                description: Filename of orthogonal slices in Z direction
+                range: string
+                required: false
+      - isosurface_images:
+          description:
+          type: object
+          slots:
+            - Orthogonal_slices_X:
+                description: Filename of the front view isosurface image
+                range: string
+                required: false
+            - Orthogonal_slices_Y:
+                description: Filename of the side view isosurface image
+                range: string
+                required: false
+            - Orthogonal_slices_Z:
+                description: Filename of the top view isosurface image
+                range: string
+                required: false
+      - resolution:
+          description: Resolution of volume
+          range: QuantityValue
+          required: false
+      - descriptor:
+          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
+          type: array  # Specify as an array to be able to hold multiple descriptors
+          required: false
+          items:
+            type: object
+            properties:
+              descriptor_name:
+                description: Name defining the descriptor
+                type: string
+                required: true
+              additionalProperties:
+                description: User-defined key-value pairs
+                type: object
+                additionalProperties: true
