@@ -1,0 +1,345 @@
+# metamodel_version: 1.7.0
+BASE <https://w3id.org/osc-em/oscem-schemas/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX schema1: <http://schema.org/>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX organizational: <https://w3id.org/osc-em/organizational/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<https://w3id.org/osc-em/acquisitionAcquisition> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionAcquisition_tes> (  <https://w3id.org/osc-em/acquisitionnominal_defocus>
+          @<https://w3id.org/osc-em/typesRange> ? ;
+          <https://w3id.org/osc-em/acquisitioncalibrated_defocus> @<https://w3id.org/osc-em/typesRange> ? ;
+          <https://w3id.org/osc-em/acquisitionnominal_magnification> @linkml:Integer ? ;
+          <https://w3id.org/osc-em/acquisitioncalibrated_magnification> @linkml:Integer ? ;
+          <https://w3id.org/osc-em/acquisitionholder> @linkml:String ? ;
+          <https://w3id.org/osc-em/acquisitionholder_cryogen> @linkml:String ? ;
+          <https://w3id.org/osc-em/acquisitiontemperature> @<https://w3id.org/osc-em/typesRange> ? ;
+          <https://w3id.org/osc-em/acquisitionmicroscope_software> @linkml:String ? ;
+          <https://w3id.org/osc-em/acquisitiondetector> @linkml:String ;
+          <https://w3id.org/osc-em/acquisitiondetector_mode> @linkml:String ? ;
+          <https://w3id.org/osc-em/acquisitiondose_per_movie> @<https://w3id.org/osc-em/typesQuantityValue> ;
+          <https://w3id.org/osc-em/acquisitionenergy_filter> @<https://w3id.org/osc-em/acquisitionEnergyFilter> ? ;
+          <https://w3id.org/osc-em/acquisitionimage_size> @<https://w3id.org/osc-em/typesImageSize> ? ;
+          <https://w3id.org/osc-em/acquisitiondate_time> @<https://w3id.org/osc-em/typesAny> ;
+          <https://w3id.org/osc-em/acquisitionexposure_time> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/acquisitioncryogen> @linkml:String ? ;
+          <https://w3id.org/osc-em/acquisitionframes_per_movie> @linkml:Integer ? ;
+          <https://w3id.org/osc-em/acquisitiongrids_imaged> @linkml:Integer ? ;
+          <https://w3id.org/osc-em/acquisitionimages_generated> @linkml:Integer ? ;
+          <https://w3id.org/osc-em/acquisitionbinning_camera> @linkml:Float ;
+          <https://w3id.org/osc-em/acquisitionpixel_size> @<https://w3id.org/osc-em/typesQuantityValue> ;
+          <https://w3id.org/osc-em/acquisitionspecialist_optics> @<https://w3id.org/osc-em/acquisitionSpecialistOptics> ? ;
+          <https://w3id.org/osc-em/acquisitionbeamshift> @<https://w3id.org/osc-em/typesBoundingBox2D> ? ;
+          <https://w3id.org/osc-em/acquisitionbeamtilt> @<https://w3id.org/osc-em/typesBoundingBox2D> ? ;
+          <https://w3id.org/osc-em/acquisitionimageshift> @<https://w3id.org/osc-em/typesBoundingBox2D> ? ;
+          <https://w3id.org/osc-em/acquisitionbeamtiltgroups> @linkml:Integer ? ;
+          <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionAcquisition> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/typesAny> CLOSED {
+    (  $<https://w3id.org/osc-em/typesAny_tes> rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
+organizational:Author CLOSED {
+    (  $organizational:Author_tes (  &organizational:Person_tes ;
+          rdf:type [ schema1:Person ] ? ;
+          organizational:orcid @linkml:String ;
+          organizational:country @linkml:String ;
+          organizational:role @linkml:String ? ;
+          organizational:name_org @linkml:String ;
+          organizational:type_org [ <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Academic>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Commercial>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Government>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Other> ] ;
+          schema1:name @linkml:String ;
+          schema1:email @linkml:String ;
+          schema1:telephone @linkml:String
+       ) ;
+       rdf:type [ organizational:Author ] ?
+    )
+}
+
+<https://w3id.org/osc-em/typesBoundingBox2D> CLOSED {
+    (  $<https://w3id.org/osc-em/typesBoundingBox2D_tes> (  <https://w3id.org/osc-em/typesx_min>
+          @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/typesx_max> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/typesy_min> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/typesy_max> @<https://w3id.org/osc-em/typesQuantityValue> ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/typesBoundingBox2D> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector_tes> (  <https://w3id.org/osc-em/acquisitionused>
+          @linkml:Boolean ;
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ] ?
+    )
+}
+
+<EMDataset> CLOSED {
+    (  $<EMDataset_tes> (  <acquisition> @<https://w3id.org/osc-em/acquisitionAcquisition> ;
+          <instrument> @<https://w3id.org/osc-em/instrumentInstrument> ;
+          <sample> @<https://w3id.org/osc-em/sampleSample> ;
+          <grants> @organizational:Grant + ;
+          <authors> @organizational:Author +
+       ) ;
+       rdf:type [ <EMDataset> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/acquisitionEnergyFilter> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionEnergyFilter_tes> (  <https://w3id.org/osc-em/acquisitionused> @linkml:Boolean ;
+          <https://w3id.org/osc-em/acquisitionmodel> @linkml:String ? ;
+          <https://w3id.org/osc-em/typeswidth> @linkml:Integer
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionEnergyFilter> ] ?
+    )
+}
+
+organizational:Grant CLOSED {
+    (  $organizational:Grant_tes (  schema1:name @linkml:String ? ;
+          organizational:funder @linkml:String ? ;
+          organizational:start_date @linkml:Date ? ;
+          organizational:end_date @linkml:Date ? ;
+          organizational:budget @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          schema1:identifier @linkml:String ? ;
+          organizational:country @linkml:String ?
+       ) ;
+       rdf:type [ schema1:Grant ] ?
+    )
+}
+
+<https://w3id.org/osc-em/sampleGrid> CLOSED {
+    (  $<https://w3id.org/osc-em/sampleGrid_tes> (  <https://w3id.org/osc-em/samplemanufacturer> @linkml:String ? ;
+          <https://w3id.org/osc-em/samplematerial> @linkml:String ? ;
+          <https://w3id.org/osc-em/samplemesh> @linkml:Float ? ;
+          <https://w3id.org/osc-em/samplefilm_support> @linkml:Boolean ? ;
+          <https://w3id.org/osc-em/samplefilm_material> @linkml:String ? ;
+          <https://w3id.org/osc-em/samplefilm_topology> @linkml:String ? ;
+          <https://w3id.org/osc-em/samplefilm_thickness> @linkml:String ? ;
+          <https://w3id.org/osc-em/samplepretreatment_type> @linkml:String ? ;
+          <https://w3id.org/osc-em/samplepretreatment_time> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/samplepretreatment_pressure> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/samplepretreatment_atmosphere> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/sampleGrid> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/typesImageSize> CLOSED {
+    (  $<https://w3id.org/osc-em/typesImageSize_tes> (  <https://w3id.org/osc-em/typesheight> @linkml:Integer ? ;
+          <https://w3id.org/osc-em/typeswidth> @linkml:Integer ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/typesImageSize> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/instrumentInstrument> CLOSED {
+    (  $<https://w3id.org/osc-em/instrumentInstrument_tes> (  <https://w3id.org/osc-em/instrumentmicroscope> @linkml:String ;
+          <https://w3id.org/osc-em/instrumentillumination> @linkml:String ;
+          <https://w3id.org/osc-em/instrumentimaging> @linkml:String ;
+          <https://w3id.org/osc-em/instrumentelectron_source> @linkml:String ;
+          <https://w3id.org/osc-em/instrumentacceleration_voltage> @<https://w3id.org/osc-em/typesQuantityValue> ;
+          <https://w3id.org/osc-em/instrumentc2_aperture> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/instrumentcs> @<https://w3id.org/osc-em/typesQuantityValue>
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/instrumentInstrument> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/sampleLigand> CLOSED {
+    (  $<https://w3id.org/osc-em/sampleLigand_tes> (  <https://w3id.org/osc-em/samplepresent> @linkml:Boolean ;
+          <https://w3id.org/osc-em/samplesmiles> @linkml:String ? ;
+          <https://w3id.org/osc-em/samplereference> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/sampleLigand> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/sampleMolecule> CLOSED {
+    (  $<https://w3id.org/osc-em/sampleMolecule_tes> (  <https://w3id.org/osc-em/samplename_mol> @linkml:String ;
+          <https://w3id.org/osc-em/samplemolecular_type> @linkml:String ;
+          <https://w3id.org/osc-em/samplemolecular_class> [ <https://w3id.org/osc-em/sampleMoleculeClassEnum#Antibiotic>
+             <https://w3id.org/osc-em/sampleMoleculeClassEnum#Carbohydrate>
+             <https://w3id.org/osc-em/sampleMoleculeClassEnum#Chimera>
+             <https://w3id.org/osc-em/sampleMoleculeClassEnum#None%20of%20these> ] ;
+          <https://w3id.org/osc-em/samplesequence> @linkml:String ;
+          <https://w3id.org/osc-em/samplenatural_source> @linkml:String ;
+          <https://w3id.org/osc-em/sampletaxonomy_id_source> @linkml:String ;
+          <https://w3id.org/osc-em/sampleexpression_system> @linkml:String ;
+          <https://w3id.org/osc-em/sampletaxonomy_id_expression> @linkml:String ;
+          <https://w3id.org/osc-em/samplegene_name> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/sampleMolecule> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/sampleOverallMolecule> CLOSED {
+    (  $<https://w3id.org/osc-em/sampleOverallMolecule_tes> (  <https://w3id.org/osc-em/samplemolecular_type> @linkml:String ;
+          <https://w3id.org/osc-em/samplename_sample> @linkml:String ;
+          <https://w3id.org/osc-em/samplesource> @linkml:String ;
+          <https://w3id.org/osc-em/samplemolecular_weight> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/sampleassembly> [ <https://w3id.org/osc-em/sampleAssemblyEnum#FILAMENT>
+             <https://w3id.org/osc-em/sampleAssemblyEnum#HELICAL%20ARRAY> <https://w3id.org/osc-em/sampleAssemblyEnum#PARTICLE> ]
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/sampleOverallMolecule> ] ?
+    )
+}
+
+organizational:Person  (
+    CLOSED {
+       (  $organizational:Person_tes (  schema1:name @linkml:String ? ;
+             organizational:first_name @linkml:String ? ;
+             organizational:work_status @linkml:Boolean ? ;
+             schema1:email @linkml:String ? ;
+             schema1:telephone @linkml:String ?
+          ) ;
+          rdf:type [ schema1:Person ] ?
+       )
+    } OR @organizational:Author
+)
+
+<https://w3id.org/osc-em/acquisitionPhaseplate> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionPhaseplate_tes> (  <https://w3id.org/osc-em/acquisitionused> @linkml:Boolean ;
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionPhaseplate> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/typesQuantityValue> CLOSED {
+    (  $<https://w3id.org/osc-em/typesQuantityValue_tes> (  qudt:hasUnit @linkml:String ;
+          qudt:hasQuantityKind @linkml:Float
+       ) ;
+       rdf:type [ qudt:quantityValue ] ?
+    )
+}
+
+<https://w3id.org/osc-em/typesRange>  (
+    CLOSED {
+       (  $<https://w3id.org/osc-em/typesRange_tes> (  <https://w3id.org/osc-em/typesminimal>
+             @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+             <https://w3id.org/osc-em/typesmaximal> @<https://w3id.org/osc-em/typesQuantityValue> ?
+          ) ;
+          rdf:type [ <https://w3id.org/osc-em/typesRange> ] ?
+       )
+    } OR @<https://w3id.org/osc-em/typesSeries>
+)
+
+<https://w3id.org/osc-em/sampleSample> CLOSED {
+    (  $<https://w3id.org/osc-em/sampleSample_tes> (  <https://w3id.org/osc-em/sampleoverall_molecule>
+          @<https://w3id.org/osc-em/sampleOverallMolecule> ;
+          <https://w3id.org/osc-em/samplemolecule> @<https://w3id.org/osc-em/sampleMolecule> + ;
+          <https://w3id.org/osc-em/sampleligands> @<https://w3id.org/osc-em/sampleLigand> * ;
+          <https://w3id.org/osc-em/samplespecimen> @<https://w3id.org/osc-em/sampleSpecimen> ;
+          <https://w3id.org/osc-em/samplegrid> @<https://w3id.org/osc-em/sampleGrid> ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/sampleSample> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/typesSeries>  (
+    CLOSED {
+       (  $<https://w3id.org/osc-em/typesSeries_tes> (  &<https://w3id.org/osc-em/typesRange_tes> ;
+             rdf:type [ <https://w3id.org/osc-em/typesRange> ] ? ;
+             <https://w3id.org/osc-em/typesincrement> @<https://w3id.org/osc-em/typesQuantityValue> ?
+          ) ;
+          rdf:type [ <https://w3id.org/osc-em/typesSeries> ] ?
+       )
+    } OR @<https://w3id.org/osc-em/tomoTiltAngle>
+)
+
+<https://w3id.org/osc-em/acquisitionSpecialistOptics> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionSpecialistOptics_tes> (  <https://w3id.org/osc-em/acquisitionphaseplate>
+          @<https://w3id.org/osc-em/acquisitionPhaseplate> ? ;
+          <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector>
+          @<https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> ? ;
+          <https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector>
+          @<https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionSpecialistOptics> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/sampleSpecimen> CLOSED {
+    (  $<https://w3id.org/osc-em/sampleSpecimen_tes> (  <https://w3id.org/osc-em/samplebuffer> @linkml:String ? ;
+          <https://w3id.org/osc-em/sampleconcentration> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/sampleph> @linkml:Float ;
+          <https://w3id.org/osc-em/samplevitrification> @linkml:Boolean ;
+          <https://w3id.org/osc-em/samplevitrification_cryogen> @linkml:String ;
+          <https://w3id.org/osc-em/samplehumidity> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/sampletemperature> @<https://w3id.org/osc-em/typesQuantityValue> ? ;
+          <https://w3id.org/osc-em/samplestaining> @linkml:Boolean ;
+          <https://w3id.org/osc-em/sampleembedding> @linkml:Boolean ;
+          <https://w3id.org/osc-em/sampleshadowing> @linkml:Boolean
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/sampleSpecimen> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector_tes> (  <https://w3id.org/osc-em/acquisitionused>
+          @linkml:Boolean ;
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/tomoTiltAngle> CLOSED {
+    (  $<https://w3id.org/osc-em/tomoTiltAngle_tes> (  &<https://w3id.org/osc-em/typesSeries_tes> ;
+          rdf:type [ <https://w3id.org/osc-em/typesSeries> ] ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/tomoTiltAngle> ] ?
+    )
+}
+

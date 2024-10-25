@@ -1,0 +1,346 @@
+id: https://w3id.org/osc-em/sample
+name: sample
+description: >
+  LinkML schema for electron microscopy sample and author-related metadata,
+  broadly following the EMDB standard with some additions.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  sample: https://w3id.org/osc-em/sample
+
+default_prefix: sample
+
+imports:
+  - linkml:types
+
+enums:
+  MoleculeClassEnum:
+    description: Allowed molecule class values - compatible with the EMDB.
+    permissible_values:
+      Antibiotic:
+        description: Antibiotic
+      Carbohydrate:
+        description: Carbohydrate
+      Chimera:
+        description: Chimera
+      None of these:
+        description: None of these
+  AssemblyEnum:
+    description: Allowed molecular assembly values - compatible with the EMDB.
+    permissible_values:
+      FILAMENT:
+        description: If your protein (complex) of interest is forming filaments
+      HELICAL ARRAY: 
+        description: If your protein (complex) of interest is forming helical arrays (i.e. tubes)
+      PARTICLE:
+        description: If your protein (complex) of interest forms individual particles on the grid with no orderd interactions
+
+classes:
+  OverallMolecule:
+    description: Description of the overall molecule
+    slots:
+      - molecular_type
+      - name_sample
+      - source
+      - molecular_weight
+      - assembly
+    slot_usage:
+      molecular_type:
+        required: true
+      name_sample:
+        # alias: Name
+        required: true
+      source:
+        # alias: Source
+        required: true
+      molecular_weight:
+        # alias: Molecular_weight
+      assembly:
+        required: true
+
+  Molecule:
+    description: More detailed information about individual molecules.
+    slots:
+      - name_mol
+      - molecular_type
+      - molecular_class
+      - sequence
+      - natural_source
+      - taxonomy_id_source
+      - expression_system
+      - taxonomy_id_expression
+      - gene_name
+    slot_usage:
+      name_mol:
+        # alias: Name
+        required: true
+      molecular_type:
+        required: true
+      molecular_class:
+        # alias: Class
+        required: true
+      sequence:
+        # alias: Sequence
+        required: true
+      natural_source:
+        # alias: Natural_source
+        required: true
+      taxonomy_id_source:
+        # alias: Taxonomy_ID_source
+        required: true
+      expression_system:
+        # alias: Expression_system
+        required: true
+      taxonomy_id_expression:
+        # alias: Taxonomy_ID_expression
+        required: true
+      gene_name:
+        # alias: Gene_name
+
+  Ligand:
+    description: Information on ligands if present.
+    slots:
+      - present
+      - smiles
+      - reference
+    slot_usage:
+      present:
+        # alias: Present
+        required: true
+
+  Specimen:
+    description: Description of specimen handling.
+    slots:
+      - buffer
+      - concentration
+      - ph
+      - vitrification
+      - vitrification_cryogen
+      - humidity
+      - temperature
+      - staining
+      - embedding
+      - shadowing
+    slot_usage:
+      buffer:
+        # alias: Buffer
+      concentration:
+        # alias: Concentration
+      ph:
+        # alias: pH
+        required: true
+      vitrification:
+        # alias: Vitrification
+        required: true
+      vitrification_cryogen:
+        # alias: Vitrification_cryogen
+        required: true
+      humidity:
+        # alias: Humidity
+      temperature:
+        # alias: Temperature
+      staining:
+        # alias: Staining
+        required: true
+      embedding:
+        # alias: Embedding
+        required: true
+      shadowing:
+        # alias: Shadowing
+        required: true
+
+  Grid:
+    description: Details on the grid used in the experiment.
+    slots:
+      - manufacturer
+      - material
+      - mesh
+      - film_support
+      - film_material
+      - film_topology
+      - film_thickness
+      - pretreatment_type
+      - pretreatment_time
+      - pretreatment_pressure
+      - pretreatment_atmosphere
+    slot_usage:
+      manufacturer:
+        # alias: Manufacturer
+      material:
+        # alias: Material
+      mesh:
+        # alias: Mesh
+      film_support:
+        # alias: Film_support
+      film_material:
+        # alias: Film_material
+      film_topology:
+        # alias: Film_topology
+      film_thickness:
+        # alias: Film_thickness
+      pretreatment_type:
+        # alias: Pretreatment_type
+      pretreatment_time:
+        # alias: Pretreatment_time
+      pretreatment_pressure:
+        # alias: Pretreatment_pressure
+      pretreatment_atmosphere:
+        # alias: Pretreatment_atmosphere
+
+  Sample:
+    description: Unifying class to describe the full sample.
+    slots:
+      - overall_molecule
+      - molecule
+      - ligands
+      - specimen
+      - grid
+    slot_usage:
+      overall_molecule:
+        # alias: Overall_Molecule
+        required: true
+      molecule:
+        # alias: Molecule
+        required: true
+      ligands:
+        # alias: Ligands
+      specimen:
+        # alias: Specimen
+        required: true
+      grid:
+        # alias: Grid
+
+slots:
+  molecular_type:
+    description: Description of the overall molecular type, i.e., a complex
+    range: string
+  name_sample:
+    description: Name of the full sample
+    range: string
+  source:
+    description: Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
+    range: string
+  molecular_weight:
+    description: Molecular weight in Da
+    range: QuantityValue
+
+  name_mol:
+    description: Name of an individual molecule (often protein) in the sample
+    range: string
+  molecular_class:
+    description: Class of the molecule
+    range: MoleculeClassEnum
+  sequence:
+    description: Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here
+    range: string
+  natural_source:
+    description: Scientific name of the natural host organism
+    range: string
+  taxonomy_id_source:
+    description: Taxonomy ID of the natural source organism
+    range: string
+  expression_system:
+    description: Scientific name of the organism used to produce the molecule of interest
+    range: string
+  taxonomy_id_expression:
+    description: Taxonomy ID of the expression system organism
+    range: string
+  gene_name:
+    description: Name of the gene of interest
+    range: string
+
+  present:
+    description: Whether the model contains any ligands
+    range: boolean
+  smiles:
+    description: Provide a valid SMILES string of your ligand
+    range: string
+  reference:
+    description: Link to a reference of your ligand, i.e., CCD, PubChem, etc.
+    range: string
+
+  buffer:
+    description: Name/composition of the (chemical) sample buffer during grid preparation
+    range: string
+  concentration:
+    description: Concentration of the (supra)molecule in the sample, in mg/ml
+    range: QuantityValue
+  ph:
+    description: pH of the sample buffer
+    range: float
+  vitrification:
+    description: Whether the sample was vitrified
+    range: boolean
+  vitrification_cryogen:
+    description: Which cryogen was used for vitrification
+    range: string
+  humidity:
+    description: Environmental humidity just before vitrification, in %
+    range: QuantityValue
+  temperature:
+    description: Environmental temperature just before vitrification, in K
+    range: QuantityValue
+    minimum_value: 0.0
+  staining:
+    description: Whether the sample was stained
+    range: boolean
+  embedding:
+    description: Whether the sample was embedded
+    range: boolean
+  shadowing:
+    description: Whether the sample was shadowed
+    range: boolean
+
+  manufacturer:
+    description: Grid manufacturer
+    range: string
+  material:
+    description: Material out of which the grid is made
+    range: string
+  mesh:
+    description: Grid mesh in lines per inch
+    range: float
+  film_support:
+    description: Whether a support film was used
+    range: boolean
+  film_material:
+    description: Type of material the support film is made of
+    range: string
+  film_topology:
+    description: Topology of the support film
+    range: string
+  film_thickness:
+    description: Thickness of the support film
+    range: string
+  pretreatment_type:
+    description: Type of pretreatment of the grid, i.e., glow discharge
+    range: string
+  pretreatment_time:
+    description: Length of time of the pretreatment in s
+    range: QuantityValue
+  pretreatment_pressure:
+    description: Pressure of the chamber during pretreatment, in Pa
+    range: QuantityValue
+  pretreatment_atmosphere:
+    description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
+    range: string
+
+  overall_molecule:
+    description: Description of the overall molecule
+    range: OverallMolecule
+  molecule:
+    description: List of molecule associated with the sample
+    range: Molecule
+    multivalued: true
+  ligands:
+    description: List of ligands associated with the sample
+    range: Ligand
+    multivalued: true
+  specimen:
+    description: Description of the specimen
+    range: Specimen
+  grid:
+    description: Description of the grid used
+    range: Grid
+  assembly:
+    description: What type of higher order structure your sample forms - if any.
+    range: AssemblyEnum

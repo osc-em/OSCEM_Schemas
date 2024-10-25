@@ -1,0 +1,131 @@
+id: https://w3id.org/osc-em/organizational
+name: OSCEMorg
+description: >
+  LinkML schema for electron microscopy sample and author-related metadata,
+  broadly following the EMDB standard with some additions.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  qudt: http://qudt.org/schema/qudt/
+  organizational: https://w3id.org/osc-em/organizational/
+
+default_prefix: organizational
+
+imports:
+  - linkml:types
+
+enums:
+  OrganizationTypeEnum:
+    description: Allowed values for authors organizations.
+    permissible_values:
+      Academic:
+        description: Academic institution
+      Commercial:
+        description: Commercial entity
+      Government:
+        description: Government organization
+      Other:
+        description: Other types of organizations
+
+classes:
+  Person:
+    description: personal information
+    class_uri: schema:Person
+    slots:
+     - name
+     - first_name
+     - work_status
+     - email
+     - work_phone
+
+  Author:
+    description: Details on the person performing the experiment.
+    is_a: Person
+    slots:
+    - orcid
+    - country
+    - role
+    - name_org
+    - type_org
+    slot_usage:
+      name:
+        required: true
+      email:
+        required: true
+      work_phone:
+        required: true
+      orcid:
+        required: true
+      country:
+        required: true
+      type_org:
+        required: true
+      name_org: 
+        required: true
+
+  Grant:
+    class_uri: schema:Grant
+    description: Grant
+    slots:
+     - name
+     - funder
+     - start_date
+     - end_date
+     - budget
+     - project_id
+     - country
+
+slots:
+  first_name:
+    description: first name
+    range: string
+  work_status:
+    description: work status
+    range: boolean
+  person:
+    range: Person
+    description: person
+    slot_uri: schema:Person
+  email:
+    range: string
+    description: email
+    pattern: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
+    slot_uri: schema:email
+  work_phone:
+    description: work phone
+    range: string
+    slot_uri: schema:telephone
+  name:
+    description: name
+    range: string
+    slot_uri: schema:name
+  name_org:
+    description: Name of the organization
+    range: string
+  type_org:
+    description: Type of organization, academic, commercial, governmental, etc.
+    range: OrganizationTypeEnum
+  country:
+    description: Country of the institution
+    range: string
+  role:
+    description: Role of the author, for example principal investigator
+    range: string
+  orcid:
+    description: ORCID of the author, a type of unique identifier
+    range: string
+  funder:
+    description: funding organization/person.
+    range: string
+  start_date:
+    description: start date
+    range: date
+  end_date:
+    description: end date
+    range: date
+  budget:
+    description: budget
+    range: QuantityValue
+  project_id:
+    description: project id
+    range: string
+    slot_uri: schema:identifier

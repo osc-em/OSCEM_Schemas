@@ -1,0 +1,63 @@
+---
+id: https://w3id.org/osc-em/oscem-schemas
+name: oscem-schemas
+title: oscem-schemas
+description: |-
+  Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
+license: CC-BY
+see_also:
+  - https://osc-em.github.io/oscem-schemas
+
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - linkml:types
+  - ./acquisition
+  - ./instrument
+  - ./organizational
+  - ./sample
+  - ./tomography
+
+classes:
+  EMDataset:
+    tree_root: true
+    description: |-
+      OSC-EM Metadata for a dataset
+    slots:
+      - acquisition
+      - instrument
+      - sample
+      - grants
+      - authors
+    slot_usage:
+      acquisition:
+        required: true
+      instrument:
+        required: true
+      sample:
+        required: true
+      grants:
+        required: true
+      authors:
+        required: true
+
+slots:
+  acquisition:
+    description: Describe the data acquisition parameters
+    range: Acquisition
+  instrument:
+    description: Describe the instrument used to acquire the data
+    range: Instrument
+  sample:
+    description: Sample information
+    range: Sample
+  grants:
+    description: List of grants associated with the project
+    range: Grant
+    multivalued: true
+  authors:
+    description: List of authors associated with the project
+    range: Author
+    multivalued: true
