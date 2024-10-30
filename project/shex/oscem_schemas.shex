@@ -129,8 +129,7 @@ organizational:Author CLOSED {
     (  $<EMDataset_tes> (  <acquisition> @<https://w3id.org/osc-em/acquisitionAcquisition> ;
           <instrument> @<https://w3id.org/osc-em/instrumentInstrument> ;
           <sample> @<https://w3id.org/osc-em/sampleSample> ;
-          <grants> @organizational:Grant + ;
-          <authors> @organizational:Author +
+          <organizational> @organizational:Organizational
        ) ;
        rdf:type [ <EMDataset> ] ?
     )
@@ -145,9 +144,20 @@ organizational:Author CLOSED {
     )
 }
 
+organizational:Funder CLOSED {
+    (  $organizational:Funder_tes (  organizational:funder_name @linkml:String ? ;
+          organizational:type_org [ <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Academic>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Commercial>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Government>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Other> ] ? ;
+          organizational:country @linkml:String ?
+       ) ;
+       rdf:type [ organizational:Funder ] ?
+    )
+}
+
 organizational:Grant CLOSED {
-    (  $organizational:Grant_tes (  schema1:name @linkml:String ? ;
-          organizational:funder @linkml:String ? ;
+    (  $organizational:Grant_tes (  organizational:grant_name @linkml:String ? ;
           organizational:start_date @linkml:Date ? ;
           organizational:end_date @linkml:Date ? ;
           organizational:budget @<https://w3id.org/osc-em/typesQuantityValue> ? ;
@@ -220,6 +230,15 @@ organizational:Grant CLOSED {
           <https://w3id.org/osc-em/samplegene_name> @linkml:String ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sampleMolecule> ] ?
+    )
+}
+
+organizational:Organizational CLOSED {
+    (  $organizational:Organizational_tes (  organizational:grants @organizational:Grant * ;
+          organizational:authors @organizational:Author + ;
+          organizational:funder @organizational:Funder +
+       ) ;
+       rdf:type [ organizational:Organizational ] ?
     )
 }
 

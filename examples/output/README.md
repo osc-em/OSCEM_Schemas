@@ -13,28 +13,6 @@ acquisition:
   pixel_size:
     unit: "\u212B"
     value: 1.2
-authors:
-- country: Switzerland
-  email: john.doe@gmail.com
-  first_name: John
-  name: Doe
-  name_org: University of Blub
-  orcid: ORCID_123124151231
-  type_org: Academic
-  work_phone: '+4132112312'
-- country: Switzerland
-  email: jane.doe@gmail.com
-  first_name: Jane
-  name: Doe
-  name_org: University of Blub
-  orcid: ORCID_123124151221
-  type_org: Academic
-  work_phone: '+4132112312'
-grants:
-- funder: SNF
-  project_id: SNF321
-- funder: SNF
-  project_id: Fundingofsomekind
 instrument:
   acceleration_voltage:
     unit: kV
@@ -49,6 +27,30 @@ instrument:
   illumination: FloodBeam
   imaging: Brightfield
   microscope: Titan
+organizational:
+  authors:
+  - country: Switzerland
+    email: john.doe@gmail.com
+    first_name: John
+    name: Doe
+    name_org: University of Blub
+    orcid: ORCID_123124151231
+    type_org: Academic
+    work_phone: '+4132112312'
+  - country: Switzerland
+    email: jane.doe@gmail.com
+    first_name: Jane
+    name: Doe
+    name_org: University of Blub
+    orcid: ORCID_123124151221
+    type_org: Academic
+    work_phone: '+4132112312'
+  funder:
+  - funder_name: SNF
+  - funder_name: SNF
+  grants:
+  - project_id: SNF321
+  - project_id: Fundingofsomekind
 sample:
   grid:
     film_support: false

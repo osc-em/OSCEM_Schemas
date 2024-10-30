@@ -408,23 +408,13 @@
                     "$ref": "#/$defs/Acquisition",
                     "description": "Describe the data acquisition parameters"
                 },
-                "authors": {
-                    "description": "List of authors associated with the project",
-                    "items": {
-                        "$ref": "#/$defs/Author"
-                    },
-                    "type": "array"
-                },
-                "grants": {
-                    "description": "List of grants associated with the project",
-                    "items": {
-                        "$ref": "#/$defs/Grant"
-                    },
-                    "type": "array"
-                },
                 "instrument": {
                     "$ref": "#/$defs/Instrument",
                     "description": "Describe the instrument used to acquire the data"
+                },
+                "organizational": {
+                    "$ref": "#/$defs/Organizational",
+                    "description": "Information on authors and grants"
                 },
                 "sample": {
                     "$ref": "#/$defs/Sample",
@@ -435,8 +425,7 @@
                 "acquisition",
                 "instrument",
                 "sample",
-                "grants",
-                "authors"
+                "organizational"
             ],
             "title": "EMDataset",
             "type": "object"
@@ -466,6 +455,32 @@
                 "width"
             ],
             "title": "EnergyFilter",
+            "type": "object"
+        },
+        "Funder": {
+            "additionalProperties": false,
+            "description": "Description of the project funding",
+            "properties": {
+                "country": {
+                    "description": "Country of the institution",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "funder_name": {
+                    "description": "funding organization/person.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type_org": {
+                    "$ref": "#/$defs/OrganizationTypeEnum",
+                    "description": "Type of organization, academic, commercial, governmental, etc."
+                }
+            },
+            "title": "Funder",
             "type": "object"
         },
         "Grant": {
@@ -498,15 +513,8 @@
                         "null"
                     ]
                 },
-                "funder": {
-                    "description": "funding organization/person.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "name",
+                "grant_name": {
+                    "description": "name of the grant",
                     "type": [
                         "string",
                         "null"
@@ -804,6 +812,42 @@
             ],
             "title": "OrganizationTypeEnum",
             "type": "string"
+        },
+        "Organizational": {
+            "additionalProperties": false,
+            "description": "Overarching category for authors and grants",
+            "properties": {
+                "authors": {
+                    "description": "List of authors associated with the project",
+                    "items": {
+                        "$ref": "#/$defs/Author"
+                    },
+                    "type": "array"
+                },
+                "funder": {
+                    "description": "funding organization/person.",
+                    "items": {
+                        "$ref": "#/$defs/Funder"
+                    },
+                    "type": "array"
+                },
+                "grants": {
+                    "description": "List of grants associated with the project",
+                    "items": {
+                        "$ref": "#/$defs/Grant"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "authors",
+                "funder"
+            ],
+            "title": "Organizational",
+            "type": "object"
         },
         "OverallMolecule": {
             "additionalProperties": false,
@@ -1203,23 +1247,13 @@
             "$ref": "#/$defs/Acquisition",
             "description": "Describe the data acquisition parameters"
         },
-        "authors": {
-            "description": "List of authors associated with the project",
-            "items": {
-                "$ref": "#/$defs/Author"
-            },
-            "type": "array"
-        },
-        "grants": {
-            "description": "List of grants associated with the project",
-            "items": {
-                "$ref": "#/$defs/Grant"
-            },
-            "type": "array"
-        },
         "instrument": {
             "$ref": "#/$defs/Instrument",
             "description": "Describe the instrument used to acquire the data"
+        },
+        "organizational": {
+            "$ref": "#/$defs/Organizational",
+            "description": "Information on authors and grants"
         },
         "sample": {
             "$ref": "#/$defs/Sample",
@@ -1230,8 +1264,7 @@
         "acquisition",
         "instrument",
         "sample",
-        "grants",
-        "authors"
+        "organizational"
     ],
     "title": "oscem-schemas",
     "type": "object",

@@ -27,6 +27,18 @@ enums:
         description: Other types of organizations
 
 classes:
+  Organizational:
+    description: Overarching category for authors and grants
+    slots:
+    - grants
+    - authors
+    - funder
+    slot_usage:
+      authors:
+        required: true
+      funder:
+        required: true
+
   Person:
     description: personal information
     class_uri: schema:Person
@@ -66,13 +78,19 @@ classes:
     class_uri: schema:Grant
     description: Grant
     slots:
-     - name
-     - funder
+     - grant_name
      - start_date
      - end_date
      - budget
      - project_id
      - country
+
+  Funder:
+    description: Description of the project funding
+    slots:
+      - funder_name
+      - type_org
+      - country
 
 slots:
   first_name:
@@ -113,9 +131,13 @@ slots:
   orcid:
     description: ORCID of the author, a type of unique identifier
     range: string
-  funder:
+  funder_name:
     description: funding organization/person.
     range: string
+  funder:
+    description: funding organization/person.
+    range: Funder
+    multivalued: true
   start_date:
     description: start date
     range: date
@@ -129,3 +151,14 @@ slots:
     description: project id
     range: string
     slot_uri: schema:identifier
+  grants:
+    description: List of grants associated with the project
+    range: Grant
+    multivalued: true
+  authors:
+    description: List of authors associated with the project
+    range: Author
+    multivalued: true
+  grant_name:
+    description: name of the grant
+    range: string

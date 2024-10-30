@@ -67,8 +67,7 @@ type EMDataset
     acquisition: Acquisition!
     instrument: Instrument!
     sample: Sample!
-    grants: [Grant]!
-    authors: [Author]!
+    organizational: Organizational!
   }
 
 type EnergyFilter
@@ -78,10 +77,16 @@ type EnergyFilter
     width: Integer!
   }
 
+type Funder
+  {
+    funderName: String
+    typeOrg: OrganizationTypeEnum
+    country: String
+  }
+
 type Grant
   {
-    name: String
-    funder: String
+    grantName: String
     startDate: Date
     endDate: Date
     budget: QuantityValue
@@ -139,6 +144,13 @@ type Molecule
     expressionSystem: String!
     taxonomyIdExpression: String!
     geneName: String
+  }
+
+type Organizational
+  {
+    grants: [Grant]
+    authors: [Author]!
+    funder: [Funder]!
   }
 
 type OverallMolecule

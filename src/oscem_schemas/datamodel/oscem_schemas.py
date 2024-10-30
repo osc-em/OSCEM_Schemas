@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-10-30T13:48:40
+# Generation date: 2024-10-30T15:46:22
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -64,8 +64,7 @@ class EMDataset(YAMLRoot):
     acquisition: Union[dict, "Acquisition"] = None
     instrument: Union[dict, "Instrument"] = None
     sample: Union[dict, "Sample"] = None
-    grants: Union[Union[dict, "Grant"], List[Union[dict, "Grant"]]] = None
-    authors: Union[Union[dict, "Author"], List[Union[dict, "Author"]]] = None
+    organizational: Union[dict, "Organizational"] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.acquisition):
@@ -83,15 +82,10 @@ class EMDataset(YAMLRoot):
         if not isinstance(self.sample, Sample):
             self.sample = Sample(**as_dict(self.sample))
 
-        if self._is_empty(self.grants):
-            self.MissingRequiredField("grants")
-        if not isinstance(self.grants, list):
-            self.grants = [self.grants] if self.grants is not None else []
-        self.grants = [v if isinstance(v, Grant) else Grant(**as_dict(v)) for v in self.grants]
-
-        if self._is_empty(self.authors):
-            self.MissingRequiredField("authors")
-        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="orcid", keyed=False)
+        if self._is_empty(self.organizational):
+            self.MissingRequiredField("organizational")
+        if not isinstance(self.organizational, Organizational):
+            self.organizational = Organizational(**as_dict(self.organizational))
 
         super().__post_init__(**kwargs)
 
@@ -433,6 +427,40 @@ class Instrument(YAMLRoot):
 
 
 @dataclass(repr=False)
+class Organizational(YAMLRoot):
+    """
+    Overarching category for authors and grants
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Organizational"]
+    class_class_curie: ClassVar[str] = "organizational:Organizational"
+    class_name: ClassVar[str] = "Organizational"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Organizational")
+
+    authors: Union[Union[dict, "Author"], List[Union[dict, "Author"]]] = None
+    funder: Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]] = None
+    grants: Optional[Union[Union[dict, "Grant"], List[Union[dict, "Grant"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.authors):
+            self.MissingRequiredField("authors")
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="orcid", keyed=False)
+
+        if self._is_empty(self.funder):
+            self.MissingRequiredField("funder")
+        if not isinstance(self.funder, list):
+            self.funder = [self.funder] if self.funder is not None else []
+        self.funder = [v if isinstance(v, Funder) else Funder(**as_dict(v)) for v in self.funder]
+
+        if not isinstance(self.grants, list):
+            self.grants = [self.grants] if self.grants is not None else []
+        self.grants = [v if isinstance(v, Grant) else Grant(**as_dict(v)) for v in self.grants]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Person(YAMLRoot):
     """
     personal information
@@ -544,8 +572,7 @@ class Grant(YAMLRoot):
     class_name: ClassVar[str] = "Grant"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Grant")
 
-    name: Optional[str] = None
-    funder: Optional[str] = None
+    grant_name: Optional[str] = None
     start_date: Optional[Union[str, XSDDate]] = None
     end_date: Optional[Union[str, XSDDate]] = None
     budget: Optional[Union[dict, "QuantityValue"]] = None
@@ -553,11 +580,8 @@ class Grant(YAMLRoot):
     country: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.funder is not None and not isinstance(self.funder, str):
-            self.funder = str(self.funder)
+        if self.grant_name is not None and not isinstance(self.grant_name, str):
+            self.grant_name = str(self.grant_name)
 
         if self.start_date is not None and not isinstance(self.start_date, XSDDate):
             self.start_date = XSDDate(self.start_date)
@@ -573,6 +597,76 @@ class Grant(YAMLRoot):
 
         if self.country is not None and not isinstance(self.country, str):
             self.country = str(self.country)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Funder(YAMLRoot):
+    """
+    Description of the project funding
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Funder"]
+    class_class_curie: ClassVar[str] = "organizational:Funder"
+    class_name: ClassVar[str] = "Funder"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Funder")
+
+    funder_name: Optional[str] = None
+    type_org: Optional[Union[str, "OrganizationTypeEnum"]] = None
+    country: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.funder_name is not None and not isinstance(self.funder_name, str):
+            self.funder_name = str(self.funder_name)
+
+        if self.type_org is not None and not isinstance(self.type_org, OrganizationTypeEnum):
+            self.type_org = OrganizationTypeEnum(self.type_org)
+
+        if self.country is not None and not isinstance(self.country, str):
+            self.country = str(self.country)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Sample(YAMLRoot):
+    """
+    Unifying class to describe the full sample.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = SAMPLE["Sample"]
+    class_class_curie: ClassVar[str] = "sample:Sample"
+    class_name: ClassVar[str] = "Sample"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Sample")
+
+    overall_molecule: Union[dict, "OverallMolecule"] = None
+    molecule: Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]] = None
+    specimen: Union[dict, "Specimen"] = None
+    ligands: Optional[Union[Union[dict, "Ligand"], List[Union[dict, "Ligand"]]]] = empty_list()
+    grid: Optional[Union[dict, "Grid"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.overall_molecule):
+            self.MissingRequiredField("overall_molecule")
+        if not isinstance(self.overall_molecule, OverallMolecule):
+            self.overall_molecule = OverallMolecule(**as_dict(self.overall_molecule))
+
+        if self._is_empty(self.molecule):
+            self.MissingRequiredField("molecule")
+        self._normalize_inlined_as_dict(slot_name="molecule", slot_type=Molecule, key_name="name_mol", keyed=False)
+
+        if self._is_empty(self.specimen):
+            self.MissingRequiredField("specimen")
+        if not isinstance(self.specimen, Specimen):
+            self.specimen = Specimen(**as_dict(self.specimen))
+
+        self._normalize_inlined_as_dict(slot_name="ligands", slot_type=Ligand, key_name="present", keyed=False)
+
+        if self.grid is not None and not isinstance(self.grid, Grid):
+            self.grid = Grid(**as_dict(self.grid))
 
         super().__post_init__(**kwargs)
 
@@ -852,47 +946,6 @@ class Grid(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass(repr=False)
-class Sample(YAMLRoot):
-    """
-    Unifying class to describe the full sample.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = SAMPLE["Sample"]
-    class_class_curie: ClassVar[str] = "sample:Sample"
-    class_name: ClassVar[str] = "Sample"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/Sample")
-
-    overall_molecule: Union[dict, OverallMolecule] = None
-    molecule: Union[Union[dict, Molecule], List[Union[dict, Molecule]]] = None
-    specimen: Union[dict, Specimen] = None
-    ligands: Optional[Union[Union[dict, Ligand], List[Union[dict, Ligand]]]] = empty_list()
-    grid: Optional[Union[dict, Grid]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.overall_molecule):
-            self.MissingRequiredField("overall_molecule")
-        if not isinstance(self.overall_molecule, OverallMolecule):
-            self.overall_molecule = OverallMolecule(**as_dict(self.overall_molecule))
-
-        if self._is_empty(self.molecule):
-            self.MissingRequiredField("molecule")
-        self._normalize_inlined_as_dict(slot_name="molecule", slot_type=Molecule, key_name="name_mol", keyed=False)
-
-        if self._is_empty(self.specimen):
-            self.MissingRequiredField("specimen")
-        if not isinstance(self.specimen, Specimen):
-            self.specimen = Specimen(**as_dict(self.specimen))
-
-        self._normalize_inlined_as_dict(slot_name="ligands", slot_type=Ligand, key_name="present", keyed=False)
-
-        if self.grid is not None and not isinstance(self.grid, Grid):
-            self.grid = Grid(**as_dict(self.grid))
-
-        super().__post_init__(**kwargs)
-
-
 Any = Any
 
 @dataclass(repr=False)
@@ -1113,11 +1166,8 @@ slots.instrument = Slot(uri=DEFAULT_.instrument, name="instrument", curie=DEFAUL
 slots.sample = Slot(uri=DEFAULT_.sample, name="sample", curie=DEFAULT_.curie('sample'),
                    model_uri=DEFAULT_.sample, domain=None, range=Optional[Union[dict, Sample]])
 
-slots.grants = Slot(uri=DEFAULT_.grants, name="grants", curie=DEFAULT_.curie('grants'),
-                   model_uri=DEFAULT_.grants, domain=None, range=Optional[Union[Union[dict, Grant], List[Union[dict, Grant]]]])
-
-slots.authors = Slot(uri=DEFAULT_.authors, name="authors", curie=DEFAULT_.curie('authors'),
-                   model_uri=DEFAULT_.authors, domain=None, range=Optional[Union[Union[dict, Author], List[Union[dict, Author]]]])
+slots.organizational = Slot(uri=DEFAULT_.organizational, name="organizational", curie=DEFAULT_.curie('organizational'),
+                   model_uri=DEFAULT_.organizational, domain=None, range=Optional[Union[dict, Organizational]])
 
 slots.nominal_defocus = Slot(uri=ACQUISITION.nominal_defocus, name="nominal_defocus", curie=ACQUISITION.curie('nominal_defocus'),
                    model_uri=DEFAULT_.nominal_defocus, domain=None, range=Optional[Union[dict, Range]])
@@ -1273,8 +1323,11 @@ slots.role = Slot(uri=ORGANIZATIONAL.role, name="role", curie=ORGANIZATIONAL.cur
 slots.orcid = Slot(uri=ORGANIZATIONAL.orcid, name="orcid", curie=ORGANIZATIONAL.curie('orcid'),
                    model_uri=DEFAULT_.orcid, domain=None, range=Optional[str])
 
+slots.funder_name = Slot(uri=ORGANIZATIONAL.funder_name, name="funder_name", curie=ORGANIZATIONAL.curie('funder_name'),
+                   model_uri=DEFAULT_.funder_name, domain=None, range=Optional[str])
+
 slots.funder = Slot(uri=ORGANIZATIONAL.funder, name="funder", curie=ORGANIZATIONAL.curie('funder'),
-                   model_uri=DEFAULT_.funder, domain=None, range=Optional[str])
+                   model_uri=DEFAULT_.funder, domain=None, range=Optional[Union[Union[dict, Funder], List[Union[dict, Funder]]]])
 
 slots.start_date = Slot(uri=ORGANIZATIONAL.start_date, name="start_date", curie=ORGANIZATIONAL.curie('start_date'),
                    model_uri=DEFAULT_.start_date, domain=None, range=Optional[Union[str, XSDDate]])
@@ -1287,6 +1340,15 @@ slots.budget = Slot(uri=ORGANIZATIONAL.budget, name="budget", curie=ORGANIZATION
 
 slots.project_id = Slot(uri=SCHEMA.identifier, name="project_id", curie=SCHEMA.curie('identifier'),
                    model_uri=DEFAULT_.project_id, domain=None, range=Optional[str])
+
+slots.grants = Slot(uri=ORGANIZATIONAL.grants, name="grants", curie=ORGANIZATIONAL.curie('grants'),
+                   model_uri=DEFAULT_.grants, domain=None, range=Optional[Union[Union[dict, Grant], List[Union[dict, Grant]]]])
+
+slots.authors = Slot(uri=ORGANIZATIONAL.authors, name="authors", curie=ORGANIZATIONAL.curie('authors'),
+                   model_uri=DEFAULT_.authors, domain=None, range=Optional[Union[Union[dict, Author], List[Union[dict, Author]]]])
+
+slots.grant_name = Slot(uri=ORGANIZATIONAL.grant_name, name="grant_name", curie=ORGANIZATIONAL.curie('grant_name'),
+                   model_uri=DEFAULT_.grant_name, domain=None, range=Optional[str])
 
 slots.molecular_type = Slot(uri=SAMPLE.molecular_type, name="molecular_type", curie=SAMPLE.curie('molecular_type'),
                    model_uri=DEFAULT_.molecular_type, domain=None, range=Optional[str])
@@ -1456,11 +1518,8 @@ slots.EMDataset_instrument = Slot(uri=DEFAULT_.instrument, name="EMDataset_instr
 slots.EMDataset_sample = Slot(uri=DEFAULT_.sample, name="EMDataset_sample", curie=DEFAULT_.curie('sample'),
                    model_uri=DEFAULT_.EMDataset_sample, domain=EMDataset, range=Union[dict, "Sample"])
 
-slots.EMDataset_grants = Slot(uri=DEFAULT_.grants, name="EMDataset_grants", curie=DEFAULT_.curie('grants'),
-                   model_uri=DEFAULT_.EMDataset_grants, domain=EMDataset, range=Union[Union[dict, "Grant"], List[Union[dict, "Grant"]]])
-
-slots.EMDataset_authors = Slot(uri=DEFAULT_.authors, name="EMDataset_authors", curie=DEFAULT_.curie('authors'),
-                   model_uri=DEFAULT_.EMDataset_authors, domain=EMDataset, range=Union[Union[dict, "Author"], List[Union[dict, "Author"]]])
+slots.EMDataset_organizational = Slot(uri=DEFAULT_.organizational, name="EMDataset_organizational", curie=DEFAULT_.curie('organizational'),
+                   model_uri=DEFAULT_.EMDataset_organizational, domain=EMDataset, range=Union[dict, "Organizational"])
 
 slots.Acquisition_detector = Slot(uri=ACQUISITION.detector, name="Acquisition_detector", curie=ACQUISITION.curie('detector'),
                    model_uri=DEFAULT_.Acquisition_detector, domain=Acquisition, range=str)
@@ -1519,6 +1578,12 @@ slots.Instrument_acceleration_voltage = Slot(uri=INSTRUMENT.acceleration_voltage
 slots.Instrument_cs = Slot(uri=INSTRUMENT.cs, name="Instrument_cs", curie=INSTRUMENT.curie('cs'),
                    model_uri=DEFAULT_.Instrument_cs, domain=Instrument, range=Union[dict, "QuantityValue"])
 
+slots.Organizational_authors = Slot(uri=ORGANIZATIONAL.authors, name="Organizational_authors", curie=ORGANIZATIONAL.curie('authors'),
+                   model_uri=DEFAULT_.Organizational_authors, domain=Organizational, range=Union[Union[dict, "Author"], List[Union[dict, "Author"]]])
+
+slots.Organizational_funder = Slot(uri=ORGANIZATIONAL.funder, name="Organizational_funder", curie=ORGANIZATIONAL.curie('funder'),
+                   model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]])
+
 slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie('name'),
                    model_uri=DEFAULT_.Author_name, domain=Author, range=str)
 
@@ -1540,6 +1605,21 @@ slots.Author_type_org = Slot(uri=ORGANIZATIONAL.type_org, name="Author_type_org"
 
 slots.Author_name_org = Slot(uri=ORGANIZATIONAL.name_org, name="Author_name_org", curie=ORGANIZATIONAL.curie('name_org'),
                    model_uri=DEFAULT_.Author_name_org, domain=Author, range=str)
+
+slots.Sample_overall_molecule = Slot(uri=SAMPLE.overall_molecule, name="Sample_overall_molecule", curie=SAMPLE.curie('overall_molecule'),
+                   model_uri=DEFAULT_.Sample_overall_molecule, domain=Sample, range=Union[dict, "OverallMolecule"])
+
+slots.Sample_molecule = Slot(uri=SAMPLE.molecule, name="Sample_molecule", curie=SAMPLE.curie('molecule'),
+                   model_uri=DEFAULT_.Sample_molecule, domain=Sample, range=Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]])
+
+slots.Sample_ligands = Slot(uri=SAMPLE.ligands, name="Sample_ligands", curie=SAMPLE.curie('ligands'),
+                   model_uri=DEFAULT_.Sample_ligands, domain=Sample, range=Optional[Union[Union[dict, "Ligand"], List[Union[dict, "Ligand"]]]])
+
+slots.Sample_specimen = Slot(uri=SAMPLE.specimen, name="Sample_specimen", curie=SAMPLE.curie('specimen'),
+                   model_uri=DEFAULT_.Sample_specimen, domain=Sample, range=Union[dict, "Specimen"])
+
+slots.Sample_grid = Slot(uri=SAMPLE.grid, name="Sample_grid", curie=SAMPLE.curie('grid'),
+                   model_uri=DEFAULT_.Sample_grid, domain=Sample, range=Optional[Union[dict, "Grid"]])
 
 slots.OverallMolecule_molecular_type = Slot(uri=SAMPLE.molecular_type, name="OverallMolecule_molecular_type", curie=SAMPLE.curie('molecular_type'),
                    model_uri=DEFAULT_.OverallMolecule_molecular_type, domain=OverallMolecule, range=str)
@@ -1648,21 +1728,6 @@ slots.Grid_pretreatment_pressure = Slot(uri=SAMPLE.pretreatment_pressure, name="
 
 slots.Grid_pretreatment_atmosphere = Slot(uri=SAMPLE.pretreatment_atmosphere, name="Grid_pretreatment_atmosphere", curie=SAMPLE.curie('pretreatment_atmosphere'),
                    model_uri=DEFAULT_.Grid_pretreatment_atmosphere, domain=Grid, range=Optional[str])
-
-slots.Sample_overall_molecule = Slot(uri=SAMPLE.overall_molecule, name="Sample_overall_molecule", curie=SAMPLE.curie('overall_molecule'),
-                   model_uri=DEFAULT_.Sample_overall_molecule, domain=Sample, range=Union[dict, OverallMolecule])
-
-slots.Sample_molecule = Slot(uri=SAMPLE.molecule, name="Sample_molecule", curie=SAMPLE.curie('molecule'),
-                   model_uri=DEFAULT_.Sample_molecule, domain=Sample, range=Union[Union[dict, Molecule], List[Union[dict, Molecule]]])
-
-slots.Sample_ligands = Slot(uri=SAMPLE.ligands, name="Sample_ligands", curie=SAMPLE.curie('ligands'),
-                   model_uri=DEFAULT_.Sample_ligands, domain=Sample, range=Optional[Union[Union[dict, Ligand], List[Union[dict, Ligand]]]])
-
-slots.Sample_specimen = Slot(uri=SAMPLE.specimen, name="Sample_specimen", curie=SAMPLE.curie('specimen'),
-                   model_uri=DEFAULT_.Sample_specimen, domain=Sample, range=Union[dict, Specimen])
-
-slots.Sample_grid = Slot(uri=SAMPLE.grid, name="Sample_grid", curie=SAMPLE.curie('grid'),
-                   model_uri=DEFAULT_.Sample_grid, domain=Sample, range=Optional[Union[dict, Grid]])
 
 slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", curie=QUDT.curie('hasUnit'),
                    model_uri=DEFAULT_.QuantityValue_unit, domain=QuantityValue, range=str)

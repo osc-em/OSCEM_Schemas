@@ -3,6 +3,7 @@
 --     * Slot: acquisition_id Description: Describe the data acquisition parameters
 --     * Slot: instrument_id Description: Describe the instrument used to acquire the data
 --     * Slot: sample_id Description: Sample information
+--     * Slot: organizational_id Description: Information on authors and grants
 -- # Class: "Any" Description: "Any type, used as the base for type-narrowing."
 --     * Slot: id Description: 
 -- # Class: "Range" Description: "A range constructed from min and max"
@@ -88,6 +89,8 @@
 --     * Slot: acceleration_voltage_id Description: Voltage used for the electron acceleration, in kV
 --     * Slot: c2_aperture_id Description: C2 aperture size used in data acquisition, in µm
 --     * Slot: cs_id Description: Spherical aberration of the instrument, in mm
+-- # Class: "Organizational" Description: "Overarching category for authors and grants"
+--     * Slot: id Description: 
 -- # Class: "Person" Description: "personal information"
 --     * Slot: id Description: 
 --     * Slot: name Description: name
@@ -109,13 +112,22 @@
 --     * Slot: work_phone Description: work phone
 -- # Class: "Grant" Description: "Grant"
 --     * Slot: id Description: 
---     * Slot: name Description: name
---     * Slot: funder Description: funding organization/person.
+--     * Slot: grant_name Description: name of the grant
 --     * Slot: start_date Description: start date
 --     * Slot: end_date Description: end date
 --     * Slot: project_id Description: project id
 --     * Slot: country Description: Country of the institution
 --     * Slot: budget_id Description: budget
+-- # Class: "Funder" Description: "Description of the project funding"
+--     * Slot: id Description: 
+--     * Slot: funder_name Description: funding organization/person.
+--     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
+--     * Slot: country Description: Country of the institution
+-- # Class: "Sample" Description: "Unifying class to describe the full sample."
+--     * Slot: id Description: 
+--     * Slot: overall_molecule_id Description: Description of the overall molecule
+--     * Slot: specimen_id Description: Description of the specimen
+--     * Slot: grid_id Description: Description of the grid used
 -- # Class: "OverallMolecule" Description: "Description of the overall molecule"
 --     * Slot: id Description: 
 --     * Slot: molecular_type Description: Description of the overall molecular type, i.e., a complex
@@ -164,17 +176,15 @@
 --     * Slot: pretreatment_atmosphere Description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
 --     * Slot: pretreatment_time_id Description: Length of time of the pretreatment in s
 --     * Slot: pretreatment_pressure_id Description: Pressure of the chamber during pretreatment, in Pa
--- # Class: "Sample" Description: "Unifying class to describe the full sample."
---     * Slot: id Description: 
---     * Slot: overall_molecule_id Description: Description of the overall molecule
---     * Slot: specimen_id Description: Description of the specimen
---     * Slot: grid_id Description: Description of the grid used
--- # Class: "EMDataset_grants" Description: ""
---     * Slot: EMDataset_id Description: Autocreated FK slot
+-- # Class: "Organizational_grants" Description: ""
+--     * Slot: Organizational_id Description: Autocreated FK slot
 --     * Slot: grants_id Description: List of grants associated with the project
--- # Class: "EMDataset_authors" Description: ""
---     * Slot: EMDataset_id Description: Autocreated FK slot
+-- # Class: "Organizational_authors" Description: ""
+--     * Slot: Organizational_id Description: Autocreated FK slot
 --     * Slot: authors_id Description: List of authors associated with the project
+-- # Class: "Organizational_funder" Description: ""
+--     * Slot: Organizational_id Description: Autocreated FK slot
+--     * Slot: funder_id Description: funding organization/person.
 -- # Class: "Sample_molecule" Description: ""
 --     * Slot: Sample_id Description: Autocreated FK slot
 --     * Slot: molecule_id Description: List of molecule associated with the sample
@@ -223,6 +233,10 @@ CREATE TABLE "ChromaticAberrationCorrector" (
 	instrument_type TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
+CREATE TABLE "Organizational" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE "Person" (
 	id INTEGER NOT NULL, 
 	name TEXT, 
@@ -244,6 +258,13 @@ CREATE TABLE "Author" (
 	work_status BOOLEAN, 
 	email TEXT NOT NULL, 
 	work_phone TEXT NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Funder" (
+	id INTEGER NOT NULL, 
+	funder_name TEXT, 
+	type_org VARCHAR(10), 
+	country TEXT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Molecule" (
@@ -322,8 +343,7 @@ CREATE TABLE "Instrument" (
 );
 CREATE TABLE "Grant" (
 	id INTEGER NOT NULL, 
-	name TEXT, 
-	funder TEXT, 
+	grant_name TEXT, 
 	start_date DATE, 
 	end_date DATE, 
 	project_id TEXT, 
@@ -375,6 +395,20 @@ CREATE TABLE "Grid" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(pretreatment_time_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "QuantityValue" (id)
+);
+CREATE TABLE "Organizational_authors" (
+	"Organizational_id" INTEGER, 
+	authors_id INTEGER NOT NULL, 
+	PRIMARY KEY ("Organizational_id", authors_id), 
+	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id), 
+	FOREIGN KEY(authors_id) REFERENCES "Author" (id)
+);
+CREATE TABLE "Organizational_funder" (
+	"Organizational_id" INTEGER, 
+	funder_id INTEGER NOT NULL, 
+	PRIMARY KEY ("Organizational_id", funder_id), 
+	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id), 
+	FOREIGN KEY(funder_id) REFERENCES "Funder" (id)
 );
 CREATE TABLE "Acquisition" (
 	id INTEGER NOT NULL, 
@@ -430,15 +464,24 @@ CREATE TABLE "Sample" (
 	FOREIGN KEY(specimen_id) REFERENCES "Specimen" (id), 
 	FOREIGN KEY(grid_id) REFERENCES "Grid" (id)
 );
+CREATE TABLE "Organizational_grants" (
+	"Organizational_id" INTEGER, 
+	grants_id INTEGER, 
+	PRIMARY KEY ("Organizational_id", grants_id), 
+	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id), 
+	FOREIGN KEY(grants_id) REFERENCES "Grant" (id)
+);
 CREATE TABLE "EMDataset" (
 	id INTEGER NOT NULL, 
 	acquisition_id INTEGER NOT NULL, 
 	instrument_id INTEGER NOT NULL, 
 	sample_id INTEGER NOT NULL, 
+	organizational_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(acquisition_id) REFERENCES "Acquisition" (id), 
 	FOREIGN KEY(instrument_id) REFERENCES "Instrument" (id), 
-	FOREIGN KEY(sample_id) REFERENCES "Sample" (id)
+	FOREIGN KEY(sample_id) REFERENCES "Sample" (id), 
+	FOREIGN KEY(organizational_id) REFERENCES "Organizational" (id)
 );
 CREATE TABLE "Sample_molecule" (
 	"Sample_id" INTEGER, 
@@ -453,18 +496,4 @@ CREATE TABLE "Sample_ligands" (
 	PRIMARY KEY ("Sample_id", ligands_id), 
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id), 
 	FOREIGN KEY(ligands_id) REFERENCES "Ligand" (id)
-);
-CREATE TABLE "EMDataset_grants" (
-	"EMDataset_id" INTEGER, 
-	grants_id INTEGER NOT NULL, 
-	PRIMARY KEY ("EMDataset_id", grants_id), 
-	FOREIGN KEY("EMDataset_id") REFERENCES "EMDataset" (id), 
-	FOREIGN KEY(grants_id) REFERENCES "Grant" (id)
-);
-CREATE TABLE "EMDataset_authors" (
-	"EMDataset_id" INTEGER, 
-	authors_id INTEGER NOT NULL, 
-	PRIMARY KEY ("EMDataset_id", authors_id), 
-	FOREIGN KEY("EMDataset_id") REFERENCES "EMDataset" (id), 
-	FOREIGN KEY(authors_id) REFERENCES "Author" (id)
 );

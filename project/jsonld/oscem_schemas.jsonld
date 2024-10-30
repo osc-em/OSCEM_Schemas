@@ -447,32 +447,16 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "grants",
-      "definition_uri": "https://w3id.org/osc-em/oscem-schemas/grants",
-      "description": "List of grants associated with the project",
+      "name": "organizational",
+      "definition_uri": "https://w3id.org/osc-em/oscem-schemas/organizational",
+      "description": "Information on authors and grants",
       "from_schema": "https://w3id.org/osc-em/oscem-schemas",
-      "slot_uri": "https://w3id.org/osc-em/oscem-schemas/grants",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas/organizational",
       "owner": "EMDataset",
       "domain_of": [
         "EMDataset"
       ],
-      "range": "Grant",
-      "multivalued": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "authors",
-      "definition_uri": "https://w3id.org/osc-em/oscem-schemas/authors",
-      "description": "List of authors associated with the project",
-      "from_schema": "https://w3id.org/osc-em/oscem-schemas",
-      "slot_uri": "https://w3id.org/osc-em/oscem-schemas/authors",
-      "owner": "EMDataset",
-      "domain_of": [
-        "EMDataset"
-      ],
-      "range": "Author",
-      "multivalued": true,
+      "range": "Organizational",
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -1112,10 +1096,9 @@
         "http://schema.org/name"
       ],
       "slot_uri": "http://schema.org/name",
-      "owner": "Grant",
+      "owner": "Person",
       "domain_of": [
-        "Person",
-        "Grant"
+        "Person"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -1139,9 +1122,10 @@
       "description": "Type of organization, academic, commercial, governmental, etc.",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "slot_uri": "https://w3id.org/osc-em/organizational/type_org",
-      "owner": "Author",
+      "owner": "Funder",
       "domain_of": [
-        "Author"
+        "Author",
+        "Funder"
       ],
       "range": "OrganizationTypeEnum",
       "@type": "SlotDefinition"
@@ -1152,10 +1136,11 @@
       "description": "Country of the institution",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "slot_uri": "https://w3id.org/osc-em/organizational/country",
-      "owner": "Grant",
+      "owner": "Funder",
       "domain_of": [
         "Author",
-        "Grant"
+        "Grant",
+        "Funder"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -1187,16 +1172,31 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "funder_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/funder_name",
+      "description": "funding organization/person.",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/funder_name",
+      "owner": "Funder",
+      "domain_of": [
+        "Funder"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "funder",
       "definition_uri": "https://w3id.org/osc-em/organizational/funder",
       "description": "funding organization/person.",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "slot_uri": "https://w3id.org/osc-em/organizational/funder",
-      "owner": "Grant",
+      "owner": "Organizational",
       "domain_of": [
-        "Grant"
+        "Organizational"
       ],
-      "range": "string",
+      "range": "Funder",
+      "multivalued": true,
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1248,6 +1248,49 @@
         "http://schema.org/identifier"
       ],
       "slot_uri": "http://schema.org/identifier",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "grants",
+      "definition_uri": "https://w3id.org/osc-em/organizational/grants",
+      "description": "List of grants associated with the project",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/grants",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "range": "Grant",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "authors",
+      "definition_uri": "https://w3id.org/osc-em/organizational/authors",
+      "description": "List of authors associated with the project",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/authors",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "range": "Author",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "grant_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/grant_name",
+      "description": "name of the grant",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/grant_name",
       "owner": "Grant",
       "domain_of": [
         "Grant"
@@ -2034,44 +2077,22 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "EMDataset_grants",
-      "definition_uri": "https://w3id.org/osc-em/oscem-schemas/grants",
-      "description": "List of grants associated with the project",
+      "name": "EMDataset_organizational",
+      "definition_uri": "https://w3id.org/osc-em/oscem-schemas/organizational",
+      "description": "Information on authors and grants",
       "from_schema": "https://w3id.org/osc-em/oscem-schemas",
-      "is_a": "grants",
+      "is_a": "organizational",
       "domain": "EMDataset",
-      "slot_uri": "https://w3id.org/osc-em/oscem-schemas/grants",
-      "alias": "grants",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas/organizational",
+      "alias": "organizational",
       "owner": "EMDataset",
       "domain_of": [
         "EMDataset"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "grants",
-      "range": "Grant",
+      "usage_slot_name": "organizational",
+      "range": "Organizational",
       "required": true,
-      "multivalued": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "EMDataset_authors",
-      "definition_uri": "https://w3id.org/osc-em/oscem-schemas/authors",
-      "description": "List of authors associated with the project",
-      "from_schema": "https://w3id.org/osc-em/oscem-schemas",
-      "is_a": "authors",
-      "domain": "EMDataset",
-      "slot_uri": "https://w3id.org/osc-em/oscem-schemas/authors",
-      "alias": "authors",
-      "owner": "EMDataset",
-      "domain_of": [
-        "EMDataset"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "authors",
-      "range": "Author",
-      "required": true,
-      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2452,6 +2473,48 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "Organizational_authors",
+      "definition_uri": "https://w3id.org/osc-em/organizational/authors",
+      "description": "List of authors associated with the project",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "authors",
+      "domain": "Organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/authors",
+      "alias": "authors",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "authors",
+      "range": "Author",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Organizational_funder",
+      "definition_uri": "https://w3id.org/osc-em/organizational/funder",
+      "description": "funding organization/person.",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "funder",
+      "domain": "Organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/funder",
+      "alias": "funder",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "funder",
+      "range": "Funder",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "Author_name",
       "definition_uri": "https://w3id.org/osc-em/organizational/name",
       "description": "name",
@@ -2592,6 +2655,106 @@
       "usage_slot_name": "name_org",
       "range": "string",
       "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_overall_molecule",
+      "definition_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
+      "description": "Description of the overall molecule",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "overall_molecule",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
+      "alias": "overall_molecule",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "overall_molecule",
+      "range": "OverallMolecule",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_molecule",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecule",
+      "description": "List of molecule associated with the sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "molecule",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecule",
+      "alias": "molecule",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "molecule",
+      "range": "Molecule",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_ligands",
+      "definition_uri": "https://w3id.org/osc-em/sampleligands",
+      "description": "List of ligands associated with the sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "ligands",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleligands",
+      "alias": "ligands",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "ligands",
+      "range": "Ligand",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_specimen",
+      "definition_uri": "https://w3id.org/osc-em/samplespecimen",
+      "description": "Description of the specimen",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "specimen",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/samplespecimen",
+      "alias": "specimen",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "specimen",
+      "range": "Specimen",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_grid",
+      "definition_uri": "https://w3id.org/osc-em/samplegrid",
+      "description": "Description of the grid used",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "grid",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/samplegrid",
+      "alias": "grid",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "grid",
+      "range": "Grid",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3269,106 +3432,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Sample_overall_molecule",
-      "definition_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
-      "description": "Description of the overall molecule",
-      "from_schema": "https://w3id.org/osc-em/sample",
-      "is_a": "overall_molecule",
-      "domain": "Sample",
-      "slot_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
-      "alias": "overall_molecule",
-      "owner": "Sample",
-      "domain_of": [
-        "Sample"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "overall_molecule",
-      "range": "OverallMolecule",
-      "required": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Sample_molecule",
-      "definition_uri": "https://w3id.org/osc-em/samplemolecule",
-      "description": "List of molecule associated with the sample",
-      "from_schema": "https://w3id.org/osc-em/sample",
-      "is_a": "molecule",
-      "domain": "Sample",
-      "slot_uri": "https://w3id.org/osc-em/samplemolecule",
-      "alias": "molecule",
-      "owner": "Sample",
-      "domain_of": [
-        "Sample"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "molecule",
-      "range": "Molecule",
-      "required": true,
-      "multivalued": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Sample_ligands",
-      "definition_uri": "https://w3id.org/osc-em/sampleligands",
-      "description": "List of ligands associated with the sample",
-      "from_schema": "https://w3id.org/osc-em/sample",
-      "is_a": "ligands",
-      "domain": "Sample",
-      "slot_uri": "https://w3id.org/osc-em/sampleligands",
-      "alias": "ligands",
-      "owner": "Sample",
-      "domain_of": [
-        "Sample"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "ligands",
-      "range": "Ligand",
-      "multivalued": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Sample_specimen",
-      "definition_uri": "https://w3id.org/osc-em/samplespecimen",
-      "description": "Description of the specimen",
-      "from_schema": "https://w3id.org/osc-em/sample",
-      "is_a": "specimen",
-      "domain": "Sample",
-      "slot_uri": "https://w3id.org/osc-em/samplespecimen",
-      "alias": "specimen",
-      "owner": "Sample",
-      "domain_of": [
-        "Sample"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "specimen",
-      "range": "Specimen",
-      "required": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Sample_grid",
-      "definition_uri": "https://w3id.org/osc-em/samplegrid",
-      "description": "Description of the grid used",
-      "from_schema": "https://w3id.org/osc-em/sample",
-      "is_a": "grid",
-      "domain": "Sample",
-      "slot_uri": "https://w3id.org/osc-em/samplegrid",
-      "alias": "grid",
-      "owner": "Sample",
-      "domain_of": [
-        "Sample"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "grid",
-      "range": "Grid",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "QuantityValue_unit",
       "definition_uri": "https://w3id.org/osc-em/typesunit",
       "description": "the unit of a given value",
@@ -3423,8 +3486,7 @@
         "EMDataset_acquisition",
         "EMDataset_instrument",
         "EMDataset_sample",
-        "EMDataset_grants",
-        "EMDataset_authors"
+        "EMDataset_organizational"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/oscem-schemas/EMDataset",
@@ -3555,6 +3617,20 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "Organizational",
+      "definition_uri": "https://w3id.org/osc-em/organizational/Organizational",
+      "description": "Overarching category for authors and grants",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slots": [
+        "grants",
+        "Organizational_authors",
+        "Organizational_funder"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/organizational/Organizational",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "Person",
       "definition_uri": "https://w3id.org/osc-em/organizational/Person",
       "description": "personal information",
@@ -3604,8 +3680,7 @@
         "schema:Grant"
       ],
       "slots": [
-        "name",
-        "funder",
+        "grant_name",
         "start_date",
         "end_date",
         "budget",
@@ -3614,6 +3689,36 @@
       ],
       "slot_usage": {},
       "class_uri": "http://schema.org/Grant",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Funder",
+      "definition_uri": "https://w3id.org/osc-em/organizational/Funder",
+      "description": "Description of the project funding",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slots": [
+        "funder_name",
+        "type_org",
+        "country"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/organizational/Funder",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Sample",
+      "definition_uri": "https://w3id.org/osc-em/sampleSample",
+      "description": "Unifying class to describe the full sample.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slots": [
+        "Sample_overall_molecule",
+        "Sample_molecule",
+        "Sample_ligands",
+        "Sample_specimen",
+        "Sample_grid"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/sampleSample",
       "@type": "ClassDefinition"
     },
     {
@@ -3710,22 +3815,6 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "Sample",
-      "definition_uri": "https://w3id.org/osc-em/sampleSample",
-      "description": "Unifying class to describe the full sample.",
-      "from_schema": "https://w3id.org/osc-em/sample",
-      "slots": [
-        "Sample_overall_molecule",
-        "Sample_molecule",
-        "Sample_ligands",
-        "Sample_specimen",
-        "Sample_grid"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/osc-em/sampleSample",
-      "@type": "ClassDefinition"
-    },
-    {
       "name": "Any",
       "definition_uri": "https://w3id.org/osc-em/typesAny",
       "description": "Any type, used as the base for type-narrowing.",
@@ -3812,9 +3901,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "oscem_schemas.yaml",
-  "source_file_date": "2024-10-30T12:01:30",
-  "source_file_size": 1285,
-  "generation_date": "2024-10-30T13:48:38",
+  "source_file_date": "2024-10-30T14:42:24",
+  "source_file_size": 1121,
+  "generation_date": "2024-10-30T15:46:20",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/oscem_schemas.context.jsonld",
