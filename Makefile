@@ -11,7 +11,7 @@ SHELL := bash
 ifdef LINKML_ENVIRONMENT_FILENAME
 include ${LINKML_ENVIRONMENT_FILENAME}
 else
-include .env.public
+include config.public.mk
 endif
 
 RUN = poetry run
@@ -110,7 +110,7 @@ deploy: all mkd-gh-deploy
 
 # In future this will be done by conversion
 gen-examples:
-	cp src/data/examples/* $(EXAMPLEDIR)
+	cp -r src/data/examples/* $(EXAMPLEDIR)
 
 # generates all project files
 
@@ -189,7 +189,7 @@ $(DOCDIR):
 	mkdir -p $@
 
 gendoc: $(DOCDIR)
-	cp -rf $(SRC)/docs/* $(DOCDIR) ; \
+	cp -rf $(SRC)/docs/files/* $(DOCDIR) ; \
 	$(RUN) gen-doc ${GEN_DOC_ARGS} -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
 
 testdoc: gendoc serve

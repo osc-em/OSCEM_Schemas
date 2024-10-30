@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-10-01T15:30:44
+# Generation date: 2024-10-30T13:48:40
 # Schema: oscem-schemas
 #
 # id: https://w3id.org/osc-em/oscem-schemas
@@ -39,7 +39,6 @@ ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/osc-em/organ
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 SAMPLE = CurieNamespace('sample', 'https://w3id.org/osc-em/sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
-TOMO = CurieNamespace('tomo', 'https://w3id.org/osc-em/tomo')
 TYPES = CurieNamespace('types', 'https://w3id.org/osc-em/types')
 DEFAULT_ = CurieNamespace('', 'https://w3id.org/osc-em/oscem-schemas/')
 
@@ -942,18 +941,6 @@ class Series(Range):
         super().__post_init__(**kwargs)
 
 
-class TiltAngle(Series):
-    """
-    The min, max and increment of the tilt angle in a tomography session. Unit is degree.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TOMO["TiltAngle"]
-    class_class_curie: ClassVar[str] = "tomo:TiltAngle"
-    class_name: ClassVar[str] = "TiltAngle"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas/TiltAngle")
-
-
 @dataclass(repr=False)
 class ImageSize(YAMLRoot):
     """
@@ -1426,12 +1413,6 @@ slots.grid = Slot(uri=SAMPLE.grid, name="grid", curie=SAMPLE.curie('grid'),
 
 slots.assembly = Slot(uri=SAMPLE.assembly, name="assembly", curie=SAMPLE.curie('assembly'),
                    model_uri=DEFAULT_.assembly, domain=None, range=Optional[Union[str, "AssemblyEnum"]])
-
-slots.tilt_axis_angle = Slot(uri=TOMO.tilt_axis_angle, name="tilt_axis_angle", curie=TOMO.curie('tilt_axis_angle'),
-                   model_uri=DEFAULT_.tilt_axis_angle, domain=None, range=Optional[float])
-
-slots.tilt_angle = Slot(uri=TOMO.tilt_angle, name="tilt_angle", curie=TOMO.curie('tilt_angle'),
-                   model_uri=DEFAULT_.tilt_angle, domain=None, range=Optional[Union[dict, TiltAngle]])
 
 slots.minimal = Slot(uri=TYPES.minimal, name="minimal", curie=TYPES.curie('minimal'),
                    model_uri=DEFAULT_.minimal, domain=None, range=Optional[Union[dict, QuantityValue]])

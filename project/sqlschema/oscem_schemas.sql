@@ -3,11 +3,6 @@
 --     * Slot: acquisition_id Description: Describe the data acquisition parameters
 --     * Slot: instrument_id Description: Describe the instrument used to acquire the data
 --     * Slot: sample_id Description: Sample information
--- # Class: "TiltAngle" Description: "The min, max and increment of the tilt angle in a tomography session. Unit is degree."
---     * Slot: id Description: 
---     * Slot: increment_id Description: Increment between elements of a series
---     * Slot: minimal_id Description: Minimal value of a given dataset property
---     * Slot: maximal_id Description: Maximal value of a given dataset property
 -- # Class: "Any" Description: "Any type, used as the base for type-narrowing."
 --     * Slot: id Description: 
 -- # Class: "Range" Description: "A range constructed from min and max"
@@ -270,16 +265,6 @@ CREATE TABLE "Ligand" (
 	smiles TEXT, 
 	reference TEXT, 
 	PRIMARY KEY (id)
-);
-CREATE TABLE "TiltAngle" (
-	id INTEGER NOT NULL, 
-	increment_id INTEGER, 
-	minimal_id INTEGER, 
-	maximal_id INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(increment_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(maximal_id) REFERENCES "QuantityValue" (id)
 );
 CREATE TABLE "Range" (
 	id INTEGER NOT NULL, 
