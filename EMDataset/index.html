@@ -209,24 +209,6 @@
     click Acquisition href "../Acquisition"
 
 
-      EMDataset : authors
-
-
-
-
-    EMDataset --&gt; "1..*" Author : authors
-    click Author href "../Author"
-
-
-      EMDataset : grants
-
-
-
-
-    EMDataset --&gt; "1..*" Grant : grants
-    click Grant href "../Grant"
-
-
       EMDataset : instrument
 
 
@@ -234,6 +216,15 @@
 
     EMDataset --&gt; "1" Instrument : instrument
     click Instrument href "../Instrument"
+
+
+      EMDataset : organizational
+
+
+
+
+    EMDataset --&gt; "1" Organizational : organizational
+    click Organizational href "../Organizational"
 
 
       EMDataset : sample
@@ -278,15 +269,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../grants/">grants</a></td>
-<td>1..* <br/> <a href="../Grant/">Grant</a></td>
-<td>List of grants associated with the project</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../authors/">authors</a></td>
-<td>1..* <br/> <a href="../Author/">Author</a></td>
-<td>List of authors associated with the project</td>
+<td><a href="../organizational/">organizational</a></td>
+<td>1 <br/> <a href="../Organizational/">Organizational</a></td>
+<td>Information on authors and grants</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -326,8 +311,7 @@ slots:
 - acquisition
 - instrument
 - sample
-- grants
-- authors
+- organizational
 slot_usage:
   acquisition:
     name: acquisition
@@ -338,11 +322,8 @@ slot_usage:
   sample:
     name: sample
     required: true
-  grants:
-    name: grants
-    required: true
-  authors:
-    name: authors
+  organizational:
+    name: organizational
     required: true
 tree_root: true
 
@@ -363,11 +344,8 @@ slot_usage:
   sample:
     name: sample
     required: true
-  grants:
-    name: grants
-    required: true
-  authors:
-    name: authors
+  organizational:
+    name: organizational
     required: true
 attributes:
   acquisition:
@@ -403,30 +381,17 @@ attributes:
     - EMDataset
     range: Sample
     required: true
-  grants:
-    name: grants
-    description: List of grants associated with the project
+  organizational:
+    name: organizational
+    description: Information on authors and grants
     from_schema: https://w3id.org/osc-em/oscem-schemas
     rank: 1000
-    alias: grants
+    alias: organizational
     owner: EMDataset
     domain_of:
     - EMDataset
-    range: Grant
+    range: Organizational
     required: true
-    multivalued: true
-  authors:
-    name: authors
-    description: List of authors associated with the project
-    from_schema: https://w3id.org/osc-em/oscem-schemas
-    rank: 1000
-    alias: authors
-    owner: EMDataset
-    domain_of:
-    - EMDataset
-    range: Author
-    required: true
-    multivalued: true
 tree_root: true
 
 </code></pre>
