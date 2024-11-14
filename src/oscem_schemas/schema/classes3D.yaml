@@ -15,14 +15,13 @@ imports:
   - ./types
 
 classes:
-  classes3D:
+  Classes3D:
     description: Class representing classes 3D metadata
     slots:
       - number_classes_3D
       - particles_per_class
       - images_classes_3D
-      - orthogonal_slices
-      - isosurface_images
+      - volume
       - resolution
       - descriptor
     slot_usage:
@@ -32,16 +31,26 @@ classes:
         required: false
       images_classes_3D:
         required: false
-      orthogonal_slices:
-        required: false
-      isosurface_images:
+      volume:
         required: false
       resolution:
         required: false
       descriptor:
         required: false
 
-  orthogonal_slices:
+  Volume:
+    description: Class describing volume(s) obtained
+    slots:
+      - orthogonal_slices
+      - isosurface_images
+    slot_usage:
+      orthogonal_slices:
+        required: false
+      isosurface_images:
+        required: false
+
+
+  Orthogonal_slices:
     description: Class for the orthogonal slices
     slots:
       - orthogonal_slices_X
@@ -55,7 +64,7 @@ classes:
       orthogonal_slices_Z:
         required: false
 
-  isosurface_images:
+  Isosurface_images:
     description: Class for the isosurface images
     slots:
       - front_view
@@ -77,12 +86,18 @@ slots:
   front_view:
     description: Filename of the front view isosurface image
     range: string
+  isosurface_images:
+    description: isosurface images of volume
+    range: Isosurface_images
   images_classes_3D:
     description: Filename of the image containing 3D class images
     range: string
   number_classes_3D:
     description: Number of 3D classes
     range: integer
+  orthogonal_slices:
+    description: orthogonal slices of volume
+    range: Orthogonal_slices
   orthogonal_slices_X:
     description: Filename of orthogonal slices in X direction
     range: string
@@ -104,3 +119,7 @@ slots:
   top_view:
     description: Filename of the top view isosurface image
     range: string
+  volume:
+    description: Describes volume(s) obtained
+    range: Volume
+    multivalued: true
