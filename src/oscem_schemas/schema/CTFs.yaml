@@ -10,79 +10,112 @@ prefixes:
 
 default_prefix: CTFs
 
+imports:
+  - linkml:types
+  - ./types
+
 classes:
-  CTF:
-    description:
+  CTFs:
+    description: Class representing Contrast Transfer Function (CTF) metadata
     slots:
-      - amplitude_contrast:
-          description: Amplitude contrast
-          range: integer
-          required: false
-          default: 0.07
-      - defocus:
-          description:
-          type: object
-          slots:
-            - output_min_defocus:
-                description: Minimum defocus
-                range: QuantityValue
-                required: false
-            - output_max_defocus:
-                description: Maximum defocus
-                range: QuantityValue
-                required: false
-            - output_avg_defocus:
-                description: Average value of defocus
-                range: QuantityValue
-                required: false
-            - defocus_histogram:
-                description: Filename of the defocus values histogram
-                range: string
-                required: false
-            - micrograph_examples:
-                description: Filename of micrographs shown as examples in ascending order of defocus value
-                range: string
-                required: false
-      - resolution:
-          description:
-          type: object
-          slots:
-            - output_min_resolution:
-                description: Minimum resolution
-                range: QuantityValue
-                required: false
-            - output_max_resolution:
-                description: Maximum resolution
-                range: QuantityValue
-                required: false
-            - output_avg_resolution:
-                description: Average value of resolution
-                range: QuantityValue
-                required: false
-            - resolution_histogram:
-                description: Filename of the resolution values histogram
-                range: string
-                required: false
-      - astigmatism:
-          description:
-          type: object
-          slots:
-            - astigmatism_histogram:
-                description: Filename of the astigmatism values histogram
-                range: string
-                required: false
-      - descriptor:
-          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
-          type: array  # Specify as an array to be able to hold multiple descriptors
-          required: false
-          items:
-            type: object
-            properties:
-              descriptor_name:
-                description: Name defining the descriptor
-                type: string
-                required: true
-              additionalProperties:
-                description: User-defined key-value pairs (optional)
-                type: object
-                additionalProperties: true
+      - amplitude_contrast
+      - defocus
+      - resolution
+      - astigmatism
+      - descriptor
+    slot_usage:
+      amplitude_contrast:
+        required: false
+        default: 0.07
+      defocus:
+        required: false
+      resolution:
+        required: false
+      astigmatism:
+        required: false
+      descriptor:
+        required: false
+
+  Defocus:
+    description: Defocus-related metadata
+    slots:
+      - output_min_defocus
+      - output_max_defocus
+      - output_avg_defocus
+      - defocus_histogram
+      - micrograph_examples
+    slot_usage:
+      output_min_defocus:
+        required: false
+      output_max_defocus:
+        required: false
+      output_avg_defocus:
+        required: false
+      defocus_histogram:
+        required: false
+      micrograph_examples:
+        required: false
+
+  Resolution:
+    description: Resolution-related metadata
+    slots:
+      - output_min_resolution
+      - output_max_resolution
+      - output_avg_resolution
+      - resolution_histogram
+    slot_usage:
+      output_min_resolution:
+        required: false
+      output_max_resolution:
+        required: false
+      output_avg_resolution:
+        required: false
+      resolution_histogram:
+        required: false
+
+  Astigmatism:
+    description: Astigmatism-related metadata
+    slots:
+      - astigmatism_histogram
+    slot_usage:
+      astigmatism_histogram:
+        required: false
+
+slots:
+  amplitude_contrast:
+    description: Amplitude contrast
+    range: integer
+  astigmatism_histogram:
+    description: Filename of the astigmatism values histogram
+    range: string
+  defocus_histogram:
+    description: Filename of the defocus values histogram
+    range: string
+  descriptor:
+    description: List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
+    range: Descriptor
+  micrograph_examples:
+    description: Filename of micrographs shown as examples in ascending order of defocus value
+    range: string
+  output_avg_defocus:
+    description: Average value of defocus
+    range: QuantityValue
+  output_avg_resolution:
+    description: Average value of resolution
+    range: QuantityValue
+  output_max_defocus:
+    description: Maximum defocus
+    range: QuantityValue
+  output_max_resolution:
+    description: Maximum resolution
+    range: QuantityValue
+  output_min_defocus:
+    description: Minimum defocus
+    range: QuantityValue
+  output_min_resolution:
+    description: Minimum resolution
+    range: QuantityValue
+  resolution_histogram:
+    description: Filename of the resolution values histogram
+    range: string
+

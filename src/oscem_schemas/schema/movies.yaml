@@ -1,47 +1,53 @@
-#id: https://w3id.org/osc-em/movies
-#name: OSCEMMovies
-#description: >
-#  LinkML schema for electron microscopy movies generated when processing.
-#
-#prefixes:
-#  linkml: https://w3id.org/linkml/
-#  acquisition: https://w3id.org/osc-em/movies
-#  types: https://w3id.org/osc-em/types
+id: https://w3id.org/osc-em/movies
+name: OSCEMMovies
+description: >
+  LinkML schema for electron microscopy movies generated when processing.
 
-#default_prefix: movies
+prefixes:
+  linkml: https://w3id.org/linkml/
+  acquisition: https://w3id.org/osc-em/movies
+  types: https://w3id.org/osc-em/types
+
+default_prefix: movies
+
+imports:
+  - linkml:types
+  - ./types
 
 classes:
   movies:
-    description: "Schema for movies"
+    description: Class representing movies metadata
     slots:
-      - dose_per_image:
-          description: Dose per image
-          range: QuantityValue
-          required: false
-      - initial_dose:
-          description: Initial dose
-          range: QuantityValue
-          required: false
-      - gain_image:
-          description: Gain image filename
-          range: string
-          required: false
-      - dark_image:
-          description: Dark image filename
-          range: string
-          required: false
-      - descriptor:
-          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
-          type: array  # Specify as an array to be able to hold multiple descriptors
-          required: false
-          items:
-            type: object
-            properties:
-              descriptor_name:
-                description: Name defining the descriptor
-                type: string
-                required: true
-              additionalProperties:
-                description: User-defined key-value pairs
-                type: object
-                additionalProperties: true
+    - dose_per_image
+    - initial_dose
+    - gain_image
+    - dark_image
+    - descriptor
+    slot_usage:
+      dose_per_image:
+        required: false
+      initial_dose:
+        required: false
+      gain_image:
+        required: false
+      dark_image:
+        required: false
+      descriptor:
+        required: false
+
+slots:
+  dark_image:
+    description: Dark image filename
+    range: string
+  descriptor:
+    description: List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
+    range: Descriptor
+  dose_per_image:
+    description: Dose per image
+    range: QuantityValue
+  gain_image:
+    description: Gain image filename
+    range: string
+  initial_dose:
+    description: Initial dose
+    range: QuantityValue

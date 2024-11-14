@@ -10,42 +10,50 @@ prefixes:
 
 default_prefix: coordinates
 
+imports:
+  - linkml:types
+  - ./types
+
 classes:
   Coordinates:
-    description:
+    description: Class representing coordinates metadata
     slots:
-      - number_particles:
-          description: Total number of particles
-          range: integer
-          required: true
-      - particles_per_micrograph:
-          description: Mean number of particles per micrograph
-          range: integer
-          required: false
-      - number_micrographs:
-          description: Total number of micrographs from which coordinates come from
-          range: integer
-          required: false
-      - particles_histogram:
-          description: Filename of histogram for particle number per micrograph
-          range: string
-          required: false
-      - micrograph_examples:
-          description: Filename of micrographs shown as examples in descending order based on the number of particles
-          range: string
-          required: false
-      - descriptor:
-          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
-          type: array  # Specify as an array to be able to hold multiple descriptors
-          required: false
-          items:
-            type: object
-            properties:
-              descriptor_name:
-                description: Name defining the descriptor
-                type: string
-                required: true
-              additionalProperties:
-                description: User-defined key-value pairs
-                type: object
-                additionalProperties: true
+      - number_particles
+      - particles_per_micrograph
+      - number_micrographs
+      - particles_histogram
+      - micrograph_examples
+      - descriptor
+    slot_usage:
+      number_particles:
+        required: true
+      particles_per_micrograph:
+        required: false
+      number_micrographs:
+        required: false
+      particles_histogram:
+        required: false
+      micrograph_examples:
+        required: false
+      descriptor:
+        required: false
+
+slots:
+  descriptor:
+    description: List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
+    range: Descriptor
+  micrograph_examples:
+    description: Filename of micrographs shown as examples in descending order based on the number of particles
+    range: string
+  number_micrographs:
+    description: Total number of micrographs from which coordinates come from
+    range: integer
+  number_particles:
+    description: Total number of particles
+    range: integer
+  particles_histogram:
+    description: Filename of histogram for particle number per micrograph
+    range: string
+  particles_per_micrograph:
+    description: Mean number of particles per micrograph
+    range: integer

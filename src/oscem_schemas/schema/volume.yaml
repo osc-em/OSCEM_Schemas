@@ -10,66 +10,91 @@ prefixes:
 
 default_prefix: volume
 
+imports:
+  - linkml:types
+  - ./types
+
 classes:
   volume:
-    description:
+    description:  Class representing volume metadata
     slots:
-      - volume_type:
-          description: Indicates the type of volume
-          range: string
-          required: true
-      - number_particles:
-          description: Number of particles associated to volume
-          range: integer
-          required: true
-      - orthogonal_slices:
-          description:
-          type: object
-          slots:
-            - Orthogonal_slices_X:
-                description: Filename of orthogonal slices in X direction
-                range: string
-                required: false
-            - Orthogonal_slices_Y:
-                description: Filename of orthogonal slices in Y direction
-                range: string
-                required: false
-            - Orthogonal_slices_Z:
-                description: Filename of orthogonal slices in Z direction
-                range: string
-                required: false
-      - isosurface_images:
-          description:
-          type: object
-          slots:
-            - Orthogonal_slices_X:
-                description: Filename of the front view isosurface image
-                range: string
-                required: false
-            - Orthogonal_slices_Y:
-                description: Filename of the side view isosurface image
-                range: string
-                required: false
-            - Orthogonal_slices_Z:
-                description: Filename of the top view isosurface image
-                range: string
-                required: false
-      - resolution:
-          description: Resolution of volume
-          range: QuantityValue
-          required: false
-      - descriptor:
-          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
-          type: array  # Specify as an array to be able to hold multiple descriptors
-          required: false
-          items:
-            type: object
-            properties:
-              descriptor_name:
-                description: Name defining the descriptor
-                type: string
-                required: true
-              additionalProperties:
-                description: User-defined key-value pairs
-                type: object
-                additionalProperties: true
+      - volume_type
+      - number_particles
+      - orthogonal_slices
+      - isosurface_images
+      - resolution
+      - descriptor
+    slot_usage:
+      volume_type:
+        required: true
+      number_particles:
+        required: true
+      orthogonal_slices:
+        required: false
+      isosurface_images:
+        required: false
+      resolution:
+        required: false
+      descriptor:
+        required: false
+
+  orthogonal_slices:
+    description: Class for the orthogonal slices
+    slots:
+      - orthogonal_slices_X
+      - orthogonal_slices_Y
+      - orthogonal_slices_Z
+    slot_usage:
+      orthogonal_slices_X:
+        required: false
+      orthogonal_slices_Y:
+        required: false
+      orthogonal_slices_Z:
+        required: false
+
+  isosurface_images:
+    description: Class for the isosurface images
+    slots:
+      - front_view
+      - side_view
+      - top_view
+    slot_usage:
+      front_view:
+        required: false
+      side_view:
+        required: false
+      top_view:
+        required: false
+
+
+slots:
+  descriptor:
+    description: List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
+    range: Descriptor
+  front_view:
+    description: Filename of the front view isosurface image
+    range: string
+  number_particles:
+    description: Number of particles associated to volume
+    range: integer
+  orthogonal_slices_X:
+    description: Filename of orthogonal slices in X direction
+    range: string
+  orthogonal_slices_Y:
+    description: Filename of orthogonal slices in Y direction
+    range: string
+  orthogonal_slices_Z:
+    description: Filename of orthogonal slices in Z direction
+    range: string
+  resolution:
+    description: Resolution of volume
+    range: QuantityValue
+  side_view:
+    description: Filename of the side view isosurface image
+    range: string
+  top_view:
+    description: Filename of the top view isosurface image
+    range: string
+  volume_type:
+    description: Indicates the type of volume
+    range: string

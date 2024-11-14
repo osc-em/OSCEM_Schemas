@@ -10,38 +10,44 @@ prefixes:
 
 default_prefix: classes2D
 
+imports:
+  - linkml:types
+  - ./types
+  -
 classes:
   classes2D:
-    description:
+    description: Class representing classes 2D metadata
     slots:
-      - number_classes_2D:
-          description: Number of 2D classes
-          range: integer
-          required: false
-      - particles_per_class:
-          description: Number of particles per 2D class
-          range: array
-          required: false
-      - images_classes_2D:
-          description: Filename of the image containing 2D class images
-          range: string
-          required: false
-      - resolution:
-          description: Resolution of classes 2D
-          range: QuantityValue
-          required: false
-      - descriptor:
-          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
-          type: array  # Specify as an array to be able to hold multiple descriptors
-          required: false
-          items:
-            type: object
-            properties:
-              descriptor_name:
-                description: Name defining the descriptor
-                type: string
-                required: true
-              additionalProperties:
-                description: User-defined key-value pairs
-                type: object
-                additionalProperties: true
+      - number_classes_2D
+      - particles_per_class
+      - images_classes_2D
+      - resolution
+      - descriptor
+    slot_usage:
+      number_classes_2D:
+        required: false
+      particles_per_class:
+        required: false
+      images_classes_2D:
+        required: false
+      resolution:
+        required: false
+      descriptor:
+        required: false
+
+slots:
+  descriptor:
+    description: List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
+    range: Descriptor
+  images_classes_2D:
+    description: Filename of the image containing 2D class images
+    range: string
+  number_classes_2D:
+    description: Number of 2D classes
+    range: integer
+  particles_per_class:
+    description: Number of particles per 2D class
+    range: array
+  resolution:
+    description: Resolution of classes 2D
+    range: QuantityValue

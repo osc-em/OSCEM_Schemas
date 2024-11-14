@@ -10,26 +10,25 @@ prefixes:
 
 default_prefix: micrographs
 
+imports:
+  - linkml:types
+  - ./types
+
 classes:
   micrographs:
-    description:
+    description: Class representing micrographs metadata
     slots:
-      - number_micrographs:
-          description: Number of micrographs
-          range: integer
-          required: true
-      - descriptor:
-          description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
-          type: array  # Specify as an array to be able to hold multiple descriptors
-          required: false
-          items:
-            type: object
-            properties:
-              descriptor_name:
-                description: Name defining the descriptor
-                type: string
-                required: true
-              additionalProperties:
-                description: User-defined key-value pairs (optional)
-                type: object
-                additionalProperties: true
+      - number_micrographs
+      - descriptor
+    slot_usage:
+      number_micrographs:
+        required: true
+      descriptor:
+        required: false
+slots:
+  descriptor:
+    description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
+    range: Descriptor
+  number_micrographs:
+    description: Number of micrographs
+    range: integer
