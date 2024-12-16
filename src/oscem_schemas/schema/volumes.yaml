@@ -20,6 +20,7 @@ classes:
     slots:
       - volume_type
       - number_particles
+      - size
       - orthogonal_slices
       - isosurface_images
       - resolution
@@ -28,6 +29,8 @@ classes:
       volume_type:
         required: true
       number_particles:
+        required: false
+      size:
         required: false
       orthogonal_slices:
         required: false
@@ -66,13 +69,6 @@ classes:
       top_view:
         required: false
 
-  FinalVolume:
-    description: Class representing final volume metadata (requiring resolution)
-    is_a: Volume
-    slot_usage:
-      resolution:
-        required: true
-
 
 slots:
   descriptor:
@@ -105,6 +101,9 @@ slots:
     range: QuantityValue
   side_view:
     description: Filename of the side view isosurface image
+    range: string
+  size:
+    description: Size of the volume
     range: string
   top_view:
     description: Filename of the top view isosurface image
