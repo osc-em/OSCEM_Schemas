@@ -5,33 +5,21 @@ description: >
   broadly following the EMDB standard with some additions.
 prefixes:
   linkml: https://w3id.org/linkml/
-  cellular_tomo_wild_sample: https://w3id.org/osc-em/cellular_tomo_wild_sample
+  cellular_tomo_: https://w3id.org/osc-em/cellular_tomo_
 
 default_prefix: cellular_tomo_
 
 imports:
   - linkml:types
   - ./sample_environmental
-
-enums:
-  FreezingMethodEnum:
-    description: Allowed freezing options.
-    permissible_values:
-      plunge_freezing:
-        description: Typically used for smaller and thinner samples in both SPA and tomography.
-      high_pressure_freezing:
-        description: Usually used for larger organic complexes, such as organoids or even tissue samples.
+  - ./custom_types
 
 classes:
-  Sample_cellular_lab:
+  SampleCell:
     description: Unifying class to describe the full sample with growth conditions
-    is_a: Sample
+    is_a: SampleEnv
     slots:
-    - specimen
     - growth_condition
-    - freezing
-    - thinning
-    - tomogram_features
 
   GrowthCondition:
     description: how the cells were grown
@@ -40,14 +28,14 @@ classes:
     - growth_location
     - cell_cycle
     - treatment
-    - atmosphere
-    - temperature
+    - atmosphere_growth
+    - temperature_growth
 
 slots:
-  temperature:
+  temperature_growth:
     description: temperature of the sample; in K.
     range: QuantityValue
-  atmosphere:
+  atmosphere_growth:
     description: What was the atmosphere the sample was in, elaborate on any special gases present etc.
     range: string
   media:
@@ -62,5 +50,6 @@ slots:
   treatment:
     description: were there any special treatment conditions; such as addition of certain chemicals etc
     range: string
-  specimen:
-    range: Specimen
+  growth_condition:
+    description: how the specimen was grown
+    range: GrowthCondition

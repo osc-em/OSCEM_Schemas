@@ -1,0 +1,279 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// A set of parameteres describing the data acquisition
+message Acquisition
+ {
+  range nominalDefocus = 0
+  range calibratedDefocus = 0
+  integer nominalMagnification = 0
+  integer calibratedMagnification = 0
+  string holder = 0
+  string holderCryogen = 0
+  range temperature = 0
+  string microscopeSoftware = 0
+  string detector = 0
+  string detectorMode = 0
+  quantityValue dosePerMovie = 0
+  energyFilter energyFilter = 0
+  imageSize imageSize = 0
+  any dateTime = 0
+  quantityValue exposureTime = 0
+  string cryogen = 0
+  integer framesPerMovie = 0
+  integer gridsImaged = 0
+  integer imagesGenerated = 0
+  float binningCamera = 0
+  quantityValue pixelSize = 0
+  specialistOptics specialistOptics = 0
+  boundingBox2D beamshift = 0
+  boundingBox2D beamtilt = 0
+  boundingBox2D imageshift = 0
+  integer beamtiltgroups = 0
+  string gainrefFlipRotate = 0
+ }
+message AcquisitionTomo
+ {
+  range nominalDefocus = 0
+  range calibratedDefocus = 0
+  integer nominalMagnification = 0
+  integer calibratedMagnification = 0
+  string holder = 0
+  string holderCryogen = 0
+  range temperature = 0
+  string microscopeSoftware = 0
+  string detector = 0
+  string detectorMode = 0
+  quantityValue dosePerMovie = 0
+  energyFilter energyFilter = 0
+  imageSize imageSize = 0
+  any dateTime = 0
+  quantityValue exposureTime = 0
+  string cryogen = 0
+  integer framesPerMovie = 0
+  integer gridsImaged = 0
+  integer imagesGenerated = 0
+  float binningCamera = 0
+  quantityValue pixelSize = 0
+  specialistOptics specialistOptics = 0
+  boundingBox2D beamshift = 0
+  boundingBox2D beamtilt = 0
+  boundingBox2D imageshift = 0
+  integer beamtiltgroups = 0
+  string gainrefFlipRotate = 0
+  float tiltAxisAngle = 0
+  tiltAngle tiltAngle = 0
+ }
+// Details on the person performing the experiment.
+message Author
+ {
+  string firstName = 0
+  boolean workStatus = 0
+  string orcid = 0
+  string country = 0
+  string role = 0
+  string nameOrg = 0
+  organizationTypeEnum typeOrg = 0
+  string name = 0
+  string email = 0
+  string workPhone = 0
+ }
+// an axis-aligned 2D bounding box (float units)
+message BoundingBox2D
+ {
+  quantityValue xMin = 0
+  quantityValue xMax = 0
+  quantityValue yMin = 0
+  quantityValue yMax = 0
+ }
+// Special device used to correct instrument inherent chromatic aberration.
+message ChromaticAberrationCorrector
+ {
+  boolean used = 0
+  string instrumentType = 0
+ }
+// OSC-EM Metadata for a dataset
+message EMDatasetBase
+ {
+  any acquisition = 0
+  any instrument = 0
+  any sample = 0
+  any organizational = 0
+ }
+// cryo electron tomography dataset, with focus on a single protein (potentially subtomogram averaging)
+message EMDatasetTomo
+ {
+  acquisitionTomo acquisition = 0
+  instrument instrument = 0
+  sample sample = 0
+  organizational organizational = 0
+ }
+// A device used to filter for electrons with specific energy.
+message EnergyFilter
+ {
+  boolean used = 0
+  string model = 0
+  integer width = 0
+ }
+// Description of the project funding
+message Funder
+ {
+  string funderName = 0
+  organizationTypeEnum typeOrg = 0
+  string country = 0
+ }
+// Grant
+message Grant
+ {
+  string grantName = 0
+  any startDate = 0
+  any endDate = 0
+  quantityValue budget = 0
+  string projectId = 0
+  string country = 0
+ }
+// Details on the grid used in the experiment.
+message Grid
+ {
+  string manufacturer = 0
+  string material = 0
+  float mesh = 0
+  boolean filmSupport = 0
+  string filmMaterial = 0
+  string filmTopology = 0
+  string filmThickness = 0
+  string pretreatmentType = 0
+  quantityValue pretreatmentTime = 0
+  quantityValue pretreatmentPressure = 0
+  string pretreatmentAtmosphere = 0
+ }
+// size of a 2D image (in integer units)
+message ImageSize
+ {
+  integer height = 0
+  integer width = 0
+ }
+// Instrument values, mostly constant across a data collection.
+message Instrument
+ {
+  string microscope = 0
+  string illumination = 0
+  string imaging = 0
+  string electronSource = 0
+  quantityValue accelerationVoltage = 0
+  quantityValue c2Aperture = 0
+  quantityValue cs = 0
+ }
+// Information on ligands if present.
+message Ligand
+ {
+  boolean present = 0
+  string smiles = 0
+  string reference = 0
+ }
+// More detailed information about individual molecules.
+message Molecule
+ {
+  string nameMol = 0
+  string molecularType = 0
+  moleculeClassEnum molecularClass = 0
+  string sequence = 0
+  string naturalSource = 0
+  string taxonomyIdSource = 0
+  string expressionSystem = 0
+  string taxonomyIdExpression = 0
+  string geneName = 0
+ }
+// Overarching category for authors and grants
+message Organizational
+ {
+ repeated  grant grants = 0
+ repeated  author authors = 0
+ repeated  funder funder = 0
+ }
+// Description of the overall molecule
+message OverallMolecule
+ {
+  string molecularType = 0
+  string nameSample = 0
+  string source = 0
+  quantityValue molecularWeight = 0
+  assemblyEnum assembly = 0
+ }
+// personal information
+message Person
+ {
+  string name = 0
+  string firstName = 0
+  boolean workStatus = 0
+  string email = 0
+  string workPhone = 0
+ }
+// Used to modulate the phase of the electron wave.
+message Phaseplate
+ {
+  boolean used = 0
+  string instrumentType = 0
+ }
+// if a value has a unit, it should be given as a unit value pair.
+message QuantityValue
+ {
+  string unit = 0
+  float value = 0
+ }
+// A range constructed from min and max
+message Range
+ {
+  quantityValue minimal = 0
+  quantityValue maximal = 0
+ }
+// Unifying class to describe the full sample.
+message Sample
+ {
+  overallMolecule overallMolecule = 0
+ repeated  molecule molecule = 0
+ repeated  ligand ligands = 0
+  specimen specimen = 0
+  grid grid = 0
+ }
+// A series of numbers constructed from min, max, and increment
+message Series
+ {
+  quantityValue minimal = 0
+  quantityValue maximal = 0
+  quantityValue increment = 0
+ }
+// Optional optics used to correct for instrument limitations.
+message SpecialistOptics
+ {
+  phaseplate phaseplate = 0
+  sphericalAberrationCorrector sphericalAberrationCorrector = 0
+  chromaticAberrationCorrector chromaticAberrationCorrector = 0
+ }
+// Description of specimen handling.
+message Specimen
+ {
+  string buffer = 0
+  quantityValue concentration = 0
+  float ph = 0
+  boolean vitrification = 0
+  string vitrificationCryogen = 0
+  quantityValue humidity = 0
+  quantityValue temperature = 0
+  boolean staining = 0
+  boolean embedding = 0
+  boolean shadowing = 0
+ }
+// Special device used to correct instrument inherent spherical aberration.
+message SphericalAberrationCorrector
+ {
+  boolean used = 0
+  string instrumentType = 0
+ }
+// The min, max and increment of the tilt angle in a tomography session. Unit is degree.
+message TiltAngle
+ {
+  quantityValue minimal = 0
+  quantityValue maximal = 0
+  quantityValue increment = 0
+ }

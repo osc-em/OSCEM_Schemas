@@ -8,10 +8,11 @@ prefixes:
   qudt: http://qudt.org/schema/qudt/
   organizational: https://w3id.org/osc-em/organizational/
 
-default_prefix: organizational
+#default_prefix: organizational
 
 imports:
   - linkml:types
+  - ./custom_types
 
 enums:
   OrganizationTypeEnum:
@@ -102,7 +103,7 @@ slots:
   person:
     range: Person
     description: person
-    slot_uri: schema:Person
+    #slot_uri: schema:Person
   email:
     range: string
     description: email
@@ -140,10 +141,16 @@ slots:
     multivalued: true
   start_date:
     description: start date
-    range: date
+    range: Any
+    any_of:
+      - range: datetime
+      - range: date
   end_date:
     description: end date
-    range: date
+    range: Any
+    any_of:
+      - range: datetime
+      - range: date
   budget:
     description: budget
     range: QuantityValue

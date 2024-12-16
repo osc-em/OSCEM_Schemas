@@ -8,21 +8,22 @@ SHELL := bash
 
 # environment variables
 .EXPORT_ALL_VARIABLES:
-ifdef LINKML_ENVIRONMENT_FILENAME
-include ${LINKML_ENVIRONMENT_FILENAME}
-else
 include config.public.mk
-endif
 
 RUN = poetry run
-SCHEMA_NAME = $(LINKML_SCHEMA_NAME)
-SOURCE_SCHEMA_PATH = $(LINKML_SCHEMA_SOURCE_PATH)
-SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
+
+# List all schema files matching oscem_schemas_*.yaml in the schema directory
+SCHEMA_FILES := $(wildcard src/oscem_schemas/schema/oscem_schemas_*.yaml)
+
+# Extract schema names without the directory and extension
+SCHEMA_NAMES := $(notdir $(basename $(SCHEMA_FILES)))
+SCHEMA_NAMES := $(patsubst oscem_schemas_%,%,$(SCHEMA_NAMES))
+
 SRC = src
 DEST = project
-PYMODEL = $(SRC)/$(SCHEMA_NAME)/datamodel
 DOCDIR = docs
 EXAMPLEDIR = examples
+SITE = site
 
 CONFIG_YAML =
 ifdef LINKML_GENERATORS_CONFIG_YAML
@@ -34,189 +35,140 @@ ifdef LINKML_GENERATORS_DOC_ARGS
 GEN_DOC_ARGS = ${LINKML_GENERATORS_DOC_ARGS}
 endif
 
-GEN_OWL_ARGS =
-ifdef LINKML_GENERATORS_OWL_ARGS
-GEN_OWL_ARGS = ${LINKML_GENERATORS_OWL_ARGS}
-endif
-
-GEN_JAVA_ARGS =
-ifdef LINKML_GENERATORS_JAVA_ARGS
-GEN_JAVA_ARGS = ${LINKML_GENERATORS_JAVA_ARGS}
-endif
-
-GEN_TS_ARGS =
-ifdef LINKML_GENERATORS_TYPESCRIPT_ARGS
-GEN_TS_ARGS = ${LINKML_GENERATORS_TYPESCRIPT_ARGS}
-endif
-
-
-# basename of a YAML file in model/
-.PHONY: all clean setup gen-project gen-examples gendoc git-init-add git-init git-add git-commit git-status
-
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
-help: status
+help:
 	@echo ""
-	@echo "make setup -- initial setup (run this first)"
-	@echo "make site -- makes site locally"
-	@echo "make install -- install dependencies"
-	@echo "make test -- runs tests"
-	@echo "make lint -- perform linting"
-	@echo "make testdoc -- builds docs and runs local test server"
-	@echo "make deploy -- deploys site"
-	@echo "make update -- updates linkml version"
-	@echo "make help -- show this help"
+	@echo "make all -- runs all generation and tests"
+	@echo "make gen-project -- generate code for all schemas"
+	@echo "make gen-examples -- generate examples for all schemas"
+	@echo "make gendoc -- generate documentation for all schemas"
+	@echo "make mkdocs-build -- build documentation sites for all schemas"
+	@echo "make serve-all -- serve documentation websites locally"
+	@echo "make test -- runs tests for all schemas"
+	@echo "make clean -- clean generated files"
 	@echo ""
 
-status: check-config
-	@echo "Project: $(SCHEMA_NAME)"
-	@echo "Source: $(SOURCE_SCHEMA_PATH)"
-
-# generate products and add everything to github
-setup: check-config git-init install gen-project gen-examples gendoc git-add git-commit
-
-# install any dependencies required for building
+# Install dependencies
+.PHONY: install
 install:
 	poetry install
-.PHONY: install
 
-# ---
-# Project Synchronization
-# ---
-#
-# check we are up to date
-check: cruft-check
-cruft-check:
-	cruft check
-cruft-diff:
-	cruft diff
+# Generate code for all schemas
+.PHONY: gen-project
+gen-project: $(SCHEMA_NAMES:%=gen-project-%)
 
-update: update-template update-linkml
-update-template:
-	cruft update
+gen-project-%:
+	@echo "Generating code for schema $*"
+	mkdir -p $(DEST)/$*
+	$(RUN) gen-project $(CONFIG_YAML) -d $(DEST)/$* src/oscem_schemas/schema/oscem_schemas_$*.yaml
 
-# todo: consider pinning to template
-update-linkml:
-	poetry add -D linkml@latest
+# Generate documentation for all schemas
+.PHONY: gendoc
+gendoc: $(SCHEMA_NAMES:%=gendoc-%) 
 
-# EXPERIMENTAL
-create-data-harmonizer:
-	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
-
-all: site
-site: gen-project gendoc
-%.yaml: gen-project
-deploy: all mkd-gh-deploy
-
-# In future this will be done by conversion
-gen-examples:
-	cp -r src/data/examples/* $(EXAMPLEDIR)
-
-# generates all project files
-
-gen-project: $(PYMODEL)
-	$(RUN) gen-project ${CONFIG_YAML} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+gendoc-%:
+	@echo "Generating documentation for schema $*"
+	mkdir -p $(DOCDIR)/$*
+	cp -rf $(SRC)/docs/files/* $(DOCDIR)/$*
+	$(RUN) gen-doc $(GEN_DOC_ARGS) -d $(DOCDIR)/$* src/oscem_schemas/schema/oscem_schemas_$*.yaml
 
 
-# non-empty arg triggers owl (workaround https://github.com/linkml/linkml/issues/1453)
-ifneq ($(strip ${GEN_OWL_ARGS}),)
-	mkdir -p ${DEST}/owl || true
-	$(RUN) gen-owl ${GEN_OWL_ARGS} $(SOURCE_SCHEMA_PATH) >${DEST}/owl/${SCHEMA_NAME}.owl.ttl
-endif
-# non-empty arg triggers java
-ifneq ($(strip ${GEN_JAVA_ARGS}),)
-	$(RUN) gen-java ${GEN_JAVA_ARGS} --output-directory ${DEST}/java/ $(SOURCE_SCHEMA_PATH)
-endif
-# non-empty arg triggers typescript
-ifneq ($(strip ${GEN_TS_ARGS}),)
-	mkdir -p ${DEST}/typescript || true
-	$(RUN) gen-typescript ${GEN_TS_ARGS} $(SOURCE_SCHEMA_PATH) >${DEST}/typescript/${SCHEMA_NAME}.ts
-endif
 
-test: test-validate test-examples test-python
-.PHONY: test test-validate test-examples test-python
+# Generate examples for all schemas
+.PHONY: gen-examples
+gen-examples: $(SCHEMA_NAMES:%=gen-examples-%)
 
-test-schema:
-	$(RUN) gen-project ${CONFIG_YAML} -d tmp $(SOURCE_SCHEMA_PATH)
+gen-examples-%:
+	@echo "Copying examples for schema $*"
+	mkdir -p $(EXAMPLEDIR)
+	cp -r src/data/examples/example_valid_$*.yaml $(EXAMPLEDIR)/example_valid_$*.yaml 2>/dev/null || true
 
-test-python:
-	$(RUN) python -m unittest discover
+# Run tests for all schemas
+test-python: $(SCHEMA_NAMES:%=test-%)
+test-lint: $(SCHEMA_NAMES:%=lint-%)
+test-examples: $(SCHEMA_NAMES:%=examples-%) 
+test: test-lint test-examples
+.PHONY: test test-lint test-examples
 
-lint:
-	$(RUN) linkml-lint --validate --all --ignore-warnings $(SOURCE_SCHEMA_DIR)
+test-%:
+	@echo "Running tests for schema $*"
+	@if [ -f tests/test_$*.py ]; then \
+		$(RUN) pytest tests/test_$*.py; \
+	else \
+		echo "No tests found for schema $*"; \
+	fi
 
-check-config:
-ifndef LINKML_SCHEMA_NAME
-	$(error **Project not configured**:\n\n - See '.env.public'\n\n)
-else
-	$(info Ok)
-endif
+lint-%:
+	@echo "Running lint for schema $*" 
+	$(RUN) linkml-lint --validate --all --ignore-warnings src/oscem_schemas/schema/oscem_schemas_$*.yaml; \
 
-test-validate:
-	$(RUN) linkml-validate -s $(SOURCE_SCHEMA_PATH) src/data/examples/*.yaml
+examples-%:
+	@echo "Validating examples against schema $*"	
+	@if [ -f src/data/examples/example_valid_$*.yaml ]; then \
+		$(RUN) linkml-validate -s src/oscem_schemas/schema/oscem_schemas_$*.yaml src/data/examples/example_valid_$*.yaml ; \
+	else \
+		echo "No example found"; \
+	fi
+	
+##		 $(RUN) python -m unittest discover; \
 
-convert-examples-to-%:
-	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell ${SHELL} find src/data/examples -name "*.yaml"))
+prepare-mkdocs: $(SCHEMA_NAMES:%=prepare-mkdocs-%)
 
-examples/%.yaml: src/data/examples/%.yaml
-	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
-examples/%.json: src/data/examples/%.yaml
-	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
-examples/%.ttl: src/data/examples/%.yaml
-	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
+# two options, see which works better: 1 project/$*/$(DOCDIR) 2 $(DOCDIR)/$*
+prepare-mkdocs-%:
+	@echo "Preparing MkDocs configuration for schema $*"
+	@mkdir -p $(DOCDIR)/$*
+	@echo "site_name: 'OSC-EM_$*_Documentation'" > $(DOCDIR)/$*/mkdocs.yml
+	@echo "theme:" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "  name: material" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "  features:" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "    - content.tabs.link" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "plugins:" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "  - search" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "  - mermaid2" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "  - mermaid2:" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "       version: 10.9.0" >> $(DOCDIR)/$*/mkdocs.yml
 
-test-examples: examples/output
-
-examples/output: src/oscem_schemas/schema/oscem_schemas.yaml
-	mkdir -p $@
-	$(RUN) linkml-run-examples \
-		--output-formats json \
-		--output-formats yaml \
-		--counter-example-input-directory src/data/examples/invalid \
-		--input-directory src/data/examples \
-		--output-directory $@ \
-		--schema $< > $@/README.md
-
-# Test documentation locally
-serve: mkd-serve
-
-# Python datamodel
-$(PYMODEL):
-	mkdir -p $@
+	@echo "docs_dir: '.'" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "site_dir: ../../$(SITE)/$*" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "nav:" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "  - Home: index.md" >> $(DOCDIR)/$*/mkdocs.yml
 
 
-$(DOCDIR):
-	mkdir -p $@
+	@echo "site_url: https://osc-em.github.io/OSCEM-schemas_$*" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "repo_url: https://github.com/osc-em/OSCEM_Schemas" >> $(DOCDIR)/$*/mkdocs.yml
 
-gendoc: $(DOCDIR)
-	cp -rf $(SRC)/docs/files/* $(DOCDIR) ; \
-	$(RUN) gen-doc ${GEN_DOC_ARGS} -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
+# Build Independent MkDocs Sites
+mkdocs-build: prepare-mkdocs $(SCHEMA_NAMES:%=build-%)
 
-testdoc: gendoc serve
+build-%:
+	@echo "Building site for $*"
+	$(RUN) mkdocs build -f $(DOCDIR)/$*/mkdocs.yml
 
-MKDOCS = $(RUN) mkdocs
-mkd-%:
-	$(MKDOCS) $*
+#-d $(SITE)/$*
 
-git-init-add: git-init git-add git-commit git-status
-git-init:
-	git init
-git-add: .cruft.json
-	git add .
-git-commit:
-	git commit -m 'chore: make setup was run' -a
-git-status:
-	git status
+# Serve a Specific Schema Locally
+serve-%:
+	@echo "Serving site for $*"
+	$(RUN) mkdocs serve -f $(DOCDIR)/$*/mkdocs.yml -a 0.0.0.0:8000
 
-# only necessary if setting up via cookiecutter
-.cruft.json:
-	echo "creating a stub for .cruft.json. IMPORTANT: setup via cruft not cookiecutter recommended!" ; \
-	touch $@
+# Serve All Schemas Simultaneously
+serve-all: $(SCHEMA_NAMES:%=serve-%)
 
+
+
+.PHONY: serve prepare-mkdocs mkdocs-build serve-all
+
+
+# Clean generated files
+.PHONY: clean
 clean:
-	rm -rf $(DEST)
-	rm -rf tmp
-	rm -fr docs/*
-	rm -fr $(PYMODEL)/*
+	rm -rf $(DEST)/*
+	rm -rf $(DOCDIR)/* $(SITE)/*
+	rm -rf $(EXAMPLEDIR)/*
+#	rm -f mkdocs.yml
 
-include project.Makefile
+# Default target
+.PHONY: all
+all: gen-project gen-examples gendoc test

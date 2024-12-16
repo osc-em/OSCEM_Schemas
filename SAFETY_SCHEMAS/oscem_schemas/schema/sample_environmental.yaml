@@ -1,0 +1,147 @@
+id: https://w3id.org/osc-em/sample-env
+name: sample-env
+description: >
+  LinkML schema for electron microscopy sample and author-related metadata,
+  broadly following the EMDB standard with some additions.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wild_sample: https://w3id.org/osc-em/environmental_sample
+
+#default_prefix: sample_env
+
+imports:
+  - linkml:types
+
+enums:
+  FreezingMethodEnum:
+    description: Allowed freezing options.
+    permissible_values:
+      plunge_freezing:
+        description: Typically used for smaller and thinner samples in both SPA and tomography.
+      high_pressure_freezing:
+        description: Usually used for larger organic complexes, such as organoids or even tissue samples.
+
+classes:
+  SampleEnv:
+    description: Unifying class to describe the full sample.
+    slots:
+    - specimen_env
+    - freezing
+    - thinning
+    - tomogram_features
+
+  SpecimenEnv:
+    description: base information on the acquisition and treatment of the sample itself.
+    slots:
+    - organism
+    - tissue
+    - source_env
+    - location
+    - collection_date
+    - handling
+
+  Freezing:
+    description: how the sample was frozen.
+    slots:
+    - cryogen_sample_env
+    - method
+    - blotting
+    - humidity_env
+    - temperature_env
+    - atmosphere
+    - details
+
+  Thinning:
+    description: how the frozen sample was thinned by i.e. FiB-milling
+    slots:
+    - method_thin
+    - instrument_thin
+    - ion_source
+    - target_thickness
+    - lift_out
+
+  TomogramFeatures:
+    description: what was the target of the tomograms, and what area of a cell do they cover.
+    slots:
+    - cellular_features
+    - organelles
+    - main_target
+    - details_tomo
+
+slots:
+  organism:
+    description: the organism(s) present in your sample, if not perfectly defined try to asses as close as possible.
+    range: string
+    multivalued: true
+  tissue:
+    description: if the sample is a tissue sample please indicate what type of tissue.
+    range: string
+  source_env:
+    description: where is this sample from? i.e. Hospital
+    range: string
+  location:
+    description: the geographical location of your source, optimally in a geographic coordinate system.
+    range: string
+  collection_date:
+    description: When the sample was collected
+    range: date
+  handling:
+    description: What was done to the sample, please give an overview of relevant treatments.
+    range: string
+  cryogen_sample_env:
+    description: the cryogen used to freeze the sample, i.e. ethane
+    range: string
+  method:
+    description: freezing method - such as plunge freezing, high pressure freezing etc.
+    range: FreezingMethodEnum
+  blotting:
+    description: whether blotting was performed.
+    range: boolean
+  humidity_env:
+    description: humidity of the atmosphere right before/ during freezing; in %.
+    range: QuantityValue
+  temperature_env:
+    description: temperature of the sample right before freezing; in K.
+    range: QuantityValue
+  atmosphere:
+    description: What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc.
+    range: string
+  details:
+    description: Any further comments on the freezing process go here.
+    range: string
+  freezing:
+    range: Freezing
+  thinning:
+    range: Thinning
+  method_thin:
+    description: The thinning method used, such as FIB milling.
+    range: string
+  instrument_thin:
+    description: Instrument used for thinning the sample
+    range: string
+  ion_source:
+    description: what ion source was used?
+    range: string
+  target_thickness:
+    description: What was the target thickness of the lamella; in nm.
+    range: QuantityValue
+  lift_out:
+    description: whether a lift out was performed
+    range: boolean
+  tomogram_features:
+    range: TomogramFeatures
+  cellular_features:
+    description: What type of cellular features are present in your tomograms?
+    range: string
+  organelles:
+    description: What organelles; if any; are present?
+    range: string
+    multivalued: true
+  main_target:
+    description: What was the main biological target of your research for this tomogram?
+    range: string
+  details_tomo:
+    description: If you have any further comments on your tomograms please leave them here
+    range: string
+  specimen_env:
+    range: SpecimenEnv
