@@ -160,6 +160,10 @@ serve-all: $(SCHEMA_NAMES:%=serve-%)
 
 .PHONY: serve prepare-mkdocs mkdocs-build serve-all
 
+MKDOCS = $(RUN) mkdocs
+mkd-%:
+	$(MKDOCS) $*
+mkdocs-deploy: $(MKDOCS) gh-deploy
 
 # Clean generated files
 .PHONY: clean
@@ -172,3 +176,4 @@ clean:
 # Default target
 .PHONY: all
 all: gen-project gen-examples gendoc test
+deploy: all mkdocs-deploy
