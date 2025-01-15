@@ -35,24 +35,54 @@ ifdef LINKML_GENERATORS_DOC_ARGS
 GEN_DOC_ARGS = ${LINKML_GENERATORS_DOC_ARGS}
 endif
 
+# basename of a YAML file in model/
+.PHONY:  setup gen-project git-init-add git-init git-add git-commit git-status
+
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
-help:
+help: status
 	@echo ""
-	@echo "make all -- runs all generation and tests"
-	@echo "make gen-project -- generate code for all schemas"
-	@echo "make gen-examples -- generate examples for all schemas"
-	@echo "make gendoc -- generate documentation for all schemas"
-	@echo "make mkdocs-build -- build documentation sites for all schemas"
-	@echo "make serve-all -- serve documentation websites locally"
-	@echo "make test -- runs tests for all schemas"
-	@echo "make clean -- clean generated files"
+	@echo "make setup -- initial setup (run this first)"
+	@echo "make site -- makes site locally"
+	@echo "make install -- install dependencies"
+	@echo "make test -- runs tests"
+	@echo "make lint -- perform linting"
+	@echo "make testdoc -- builds docs and runs local test server"
+	@echo "make deploy -- deploys site"
+	@echo "make update -- updates linkml version"
+	@echo "make help -- show this help"
 	@echo ""
 
-# Install dependencies
-.PHONY: install
+status: check-config
+	@echo "Project: $(SCHEMA_NAME)"
+	@echo "Source: $(SOURCE_SCHEMA_PATH)"
+
+# generate products and add everything to github
+setup: check-config git-init install gen-project gen-examples gendoc git-add git-commit
+
+# install any dependencies required for building
 install:
 	poetry install
+.PHONY: install
+
+# ---
+# Project Synchronization
+# ---
+#
+# check we are up to date
+check: cruft-check
+cruft-check:
+	cruft check
+cruft-diff:
+	cruft diff
+
+update: update-template update-linkml
+update-template:
+	cruft update
+
+# todo: consider pinning to template
+update-linkml:
+	poetry add -D linkml@latest
 
 # Generate code for all schemas
 .PHONY: gen-project
@@ -164,6 +194,17 @@ MKDOCS = $(RUN) mkdocs
 mkd-%:
 	$(MKDOCS) $*
 mkdocs-deploy: $(MKDOCS) gh-deploy
+
+git-init-add: git-init git-add git-commit git-status
+git-init:
+	git init
+git-add: .cruft.json
+	git add .
+git-commit:
+	git commit -m 'chore: make setup was run' -a
+git-status:
+	git status
+
 
 # Clean generated files
 .PHONY: clean
