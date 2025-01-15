@@ -57,6 +57,13 @@ status: check-config
 	@echo "Project: $(SCHEMA_NAME)"
 	@echo "Source: $(SOURCE_SCHEMA_PATH)"
 
+check-config:
+ifndef LINKML_SCHEMA_NAME
+	$(error **Project not configured**:\n\n - See '.env.public'\n\n)
+else
+	$(info Ok)
+endif
+
 # generate products and add everything to github
 setup: check-config git-init install gen-project gen-examples gendoc git-add git-commit
 
