@@ -38,6 +38,7 @@
 --     * Slot: microscope_software Description: Software used for instrument control,
 --     * Slot: detector Description: Make and model of the detector used
 --     * Slot: detector_mode Description: Operating mode of the detector
+--     * Slot: date_time Description: Time and date of the data acquisition
 --     * Slot: cryogen Description: Cryogen used in cooling the instrument and sample, usually nitrogen
 --     * Slot: frames_per_movie Description: Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
 --     * Slot: grids_imaged Description: Number of grids imaged for this project - here with qualifier during this data acquisition
@@ -51,7 +52,6 @@
 --     * Slot: dose_per_movie_id Description: Average dose per image/movie/tilt - given in electrons per square Angstrom
 --     * Slot: energy_filter_id Description: Wether an energy filter was used and its specifics.
 --     * Slot: image_size_id Description: The size of the image in pixels, height and width given.
---     * Slot: date_time_id Description: Time and date of the data acquisition
 --     * Slot: exposure_time_id Description: Time of data acquisition per movie/tilt - in s
 --     * Slot: pixel_size_id Description: Pixel size, in Angstrom
 --     * Slot: specialist_optics_id Description: Any type of special optics, such as a phaseplate
@@ -62,7 +62,7 @@
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
 --     * Slot: model Description: Make and model of a specilized device
---     * Slot: width Description: The width of a given item - unit depends on item
+--     * Slot: width_energy_filter_id Description: Width of the energy filter used.
 -- # Class: "SpecialistOptics" Description: "Optional optics used to correct for instrument limitations."
 --     * Slot: id Description: 
 --     * Slot: phaseplate_id Description: Phaseplate is a special optics device that can be used to enhance contrast
@@ -138,6 +138,7 @@
 --     * Slot: microscope_software Description: Software used for instrument control,
 --     * Slot: detector Description: Make and model of the detector used
 --     * Slot: detector_mode Description: Operating mode of the detector
+--     * Slot: date_time Description: Time and date of the data acquisition
 --     * Slot: cryogen Description: Cryogen used in cooling the instrument and sample, usually nitrogen
 --     * Slot: frames_per_movie Description: Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
 --     * Slot: grids_imaged Description: Number of grids imaged for this project - here with qualifier during this data acquisition
@@ -152,7 +153,6 @@
 --     * Slot: dose_per_movie_id Description: Average dose per image/movie/tilt - given in electrons per square Angstrom
 --     * Slot: energy_filter_id Description: Wether an energy filter was used and its specifics.
 --     * Slot: image_size_id Description: The size of the image in pixels, height and width given.
---     * Slot: date_time_id Description: Time and date of the data acquisition
 --     * Slot: exposure_time_id Description: Time of data acquisition per movie/tilt - in s
 --     * Slot: pixel_size_id Description: Pixel size, in Angstrom
 --     * Slot: specialist_optics_id Description: Any type of special optics, such as a phaseplate
@@ -229,13 +229,6 @@ CREATE TABLE "QuantityValue" (
 	id INTEGER NOT NULL, 
 	unit TEXT NOT NULL, 
 	value FLOAT NOT NULL, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "EnergyFilter" (
-	id INTEGER NOT NULL, 
-	used BOOLEAN NOT NULL, 
-	model TEXT, 
-	width INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Phaseplate" (
@@ -335,6 +328,14 @@ CREATE TABLE "BoundingBox2D" (
 	FOREIGN KEY(x_max_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(y_min_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(y_max_id) REFERENCES "QuantityValue" (id)
+);
+CREATE TABLE "EnergyFilter" (
+	id INTEGER NOT NULL, 
+	used BOOLEAN NOT NULL, 
+	model TEXT, 
+	width_energy_filter_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(width_energy_filter_id) REFERENCES "QuantityValue" (id)
 );
 CREATE TABLE "SpecialistOptics" (
 	id INTEGER NOT NULL, 
@@ -453,6 +454,7 @@ CREATE TABLE "Acquisition" (
 	microscope_software TEXT, 
 	detector TEXT NOT NULL, 
 	detector_mode TEXT, 
+	date_time DATETIME NOT NULL, 
 	cryogen TEXT, 
 	frames_per_movie INTEGER, 
 	grids_imaged INTEGER, 
@@ -466,7 +468,6 @@ CREATE TABLE "Acquisition" (
 	dose_per_movie_id INTEGER NOT NULL, 
 	energy_filter_id INTEGER, 
 	image_size_id INTEGER, 
-	date_time_id INTEGER NOT NULL, 
 	exposure_time_id INTEGER, 
 	pixel_size_id INTEGER NOT NULL, 
 	specialist_optics_id INTEGER, 
@@ -480,7 +481,6 @@ CREATE TABLE "Acquisition" (
 	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(date_time_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
@@ -510,6 +510,7 @@ CREATE TABLE "AcquisitionTomo" (
 	microscope_software TEXT, 
 	detector TEXT NOT NULL, 
 	detector_mode TEXT, 
+	date_time DATETIME NOT NULL, 
 	cryogen TEXT, 
 	frames_per_movie INTEGER, 
 	grids_imaged INTEGER, 
@@ -524,7 +525,6 @@ CREATE TABLE "AcquisitionTomo" (
 	dose_per_movie_id INTEGER NOT NULL, 
 	energy_filter_id INTEGER, 
 	image_size_id INTEGER, 
-	date_time_id INTEGER NOT NULL, 
 	exposure_time_id INTEGER, 
 	pixel_size_id INTEGER NOT NULL, 
 	specialist_optics_id INTEGER, 
@@ -539,7 +539,6 @@ CREATE TABLE "AcquisitionTomo" (
 	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(date_time_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 

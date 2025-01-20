@@ -15,7 +15,6 @@ None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 
 ## Children
 
- *  [EnergyFilter➞width](EnergyFilter_width.md)
 
 ## Used by
 

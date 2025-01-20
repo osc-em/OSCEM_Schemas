@@ -620,18 +620,7 @@
       "domain_of": [
         "Acquisition"
       ],
-      "range": "Any",
-      "inlined": true,
-      "any_of": [
-        {
-          "range": "datetime",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "date",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
+      "range": "datetime",
       "@type": "SlotDefinition"
     },
     {
@@ -864,6 +853,20 @@
         "Acquisition"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "width_energy_filter",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionwidth_energy_filter",
+      "description": "Width of the energy filter used.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionwidth_energy_filter",
+      "owner": "EnergyFilter",
+      "domain_of": [
+        "EnergyFilter"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1924,7 +1927,6 @@
       "slot_uri": "https://w3id.org/osc-em/custom_typeswidth",
       "owner": "ImageSize",
       "domain_of": [
-        "EnergyFilter",
         "ImageSize"
       ],
       "range": "integer",
@@ -2161,19 +2163,8 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "date_time",
-      "range": "Any",
+      "range": "datetime",
       "required": true,
-      "inlined": true,
-      "any_of": [
-        {
-          "range": "datetime",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "date",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
@@ -2235,22 +2226,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "EnergyFilter_width",
-      "definition_uri": "https://w3id.org/osc-em/custom_typeswidth",
-      "description": "The width of a given item - unit depends on item",
-      "from_schema": "https://w3id.org/osc-em/custom_types",
-      "is_a": "width",
+      "name": "EnergyFilter_width_energy_filter",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionwidth_energy_filter",
+      "description": "Width of the energy filter used.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "width_energy_filter",
       "domain": "EnergyFilter",
-      "slot_uri": "https://w3id.org/osc-em/custom_typeswidth",
-      "alias": "width",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionwidth_energy_filter",
+      "alias": "width_energy_filter",
       "owner": "EnergyFilter",
       "domain_of": [
         "EnergyFilter"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "width",
-      "range": "integer",
+      "usage_slot_name": "width_energy_filter",
+      "range": "QuantityValue",
       "required": true,
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3577,6 +3569,7 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/oscem-schemas-spa/EMDatasetSpa",
+      "tree_root": true,
       "@type": "ClassDefinition"
     },
     {
@@ -3625,7 +3618,7 @@
       "slots": [
         "EnergyFilter_used",
         "model",
-        "EnergyFilter_width"
+        "EnergyFilter_width_energy_filter"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/acquisitionEnergyFilter",
@@ -3905,6 +3898,7 @@
       "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase",
       "description": "OSC-EM Metadata for a dataset",
       "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "abstract": true,
       "slots": [
         "EMDatasetBase_acquisition",
         "EMDatasetBase_instrument",
@@ -3913,7 +3907,6 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase",
-      "tree_root": true,
       "@type": "ClassDefinition"
     },
     {
@@ -4003,9 +3996,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "oscem_schemas_spa.yaml",
-  "source_file_date": "2024-12-04T16:31:30",
-  "source_file_size": 1005,
-  "generation_date": "2025-01-15T11:45:04",
+  "source_file_date": "2025-01-20T10:40:41",
+  "source_file_size": 1025,
+  "generation_date": "2025-01-20T15:30:20",
   "@type": "SchemaDefinition",
   "@context": [
     "project/spa/jsonld/oscem_schemas_spa.context.jsonld",

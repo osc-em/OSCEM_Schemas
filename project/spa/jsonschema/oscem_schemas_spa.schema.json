@@ -63,18 +63,9 @@
                     ]
                 },
                 "date_time": {
-                    "$ref": "#/$defs/Any",
-                    "anyOf": [
-                        {
-                            "format": "date-time",
-                            "type": "string"
-                        },
-                        {
-                            "format": "date",
-                            "type": "string"
-                        }
-                    ],
-                    "description": "Time and date of the data acquisition"
+                    "description": "Time and date of the data acquisition",
+                    "format": "date-time",
+                    "type": "string"
                 },
                 "detector": {
                     "description": "Make and model of the detector used",
@@ -400,32 +391,6 @@
             "title": "ChromaticAberrationCorrector",
             "type": "object"
         },
-        "EMDatasetBase": {
-            "additionalProperties": false,
-            "description": "OSC-EM Metadata for a dataset",
-            "properties": {
-                "acquisition": {
-                    "$ref": "#/$defs/Any"
-                },
-                "instrument": {
-                    "$ref": "#/$defs/Any"
-                },
-                "organizational": {
-                    "$ref": "#/$defs/Any"
-                },
-                "sample": {
-                    "$ref": "#/$defs/Any"
-                }
-            },
-            "required": [
-                "acquisition",
-                "instrument",
-                "sample",
-                "organizational"
-            ],
-            "title": "EMDatasetBase",
-            "type": "object"
-        },
         "EMDatasetSpa": {
             "additionalProperties": false,
             "description": "Single particle cryo electron microscopy dataset",
@@ -471,14 +436,14 @@
                     "description": "whether a specific instrument was used during data acquisition",
                     "type": "boolean"
                 },
-                "width": {
-                    "description": "The width of a given item - unit depends on item",
-                    "type": "integer"
+                "width_energy_filter": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Width of the energy filter used."
                 }
             },
             "required": [
                 "used",
-                "width"
+                "width_energy_filter"
             ],
             "title": "EnergyFilter",
             "type": "object"
@@ -1281,20 +1246,24 @@
     "$id": "https://w3id.org/osc-em/oscem-schemas-spa",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "description": "OSC-EM Metadata for a dataset",
+    "description": "Single particle cryo electron microscopy dataset",
     "metamodel_version": "1.7.0",
     "properties": {
         "acquisition": {
-            "$ref": "#/$defs/Any"
+            "$ref": "#/$defs/Acquisition",
+            "description": "Describe the data acquisition parameters"
         },
         "instrument": {
-            "$ref": "#/$defs/Any"
+            "$ref": "#/$defs/Instrument",
+            "description": "Describe the instrument used to acquire the data"
         },
         "organizational": {
-            "$ref": "#/$defs/Any"
+            "$ref": "#/$defs/Organizational",
+            "description": "Information on authors and grants"
         },
         "sample": {
-            "$ref": "#/$defs/Any"
+            "$ref": "#/$defs/Sample",
+            "description": "Sample information"
         }
     },
     "required": [

@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Acquisition_date_time](https://w
 
 ## Domain and Range
 
-[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
+[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [Datetime](types/Datetime.md)
 
 ## Parents
 

@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_env_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-15T11:44:53
+# Generation date: 2025-01-20T15:29:57
 # Schema: oscem-schemas-env-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-env-tomo
@@ -22,8 +22,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Date, Float, Integer, String
-from linkml_runtime.utils.metamodelcore import Bool, XSDDate
+from linkml_runtime.linkml_model.types import Boolean, Date, Datetime, Float, Integer, String
+from linkml_runtime.utils.metamodelcore import Bool, XSDDate, XSDDateTime
 
 metamodel_version = "1.7.0"
 version = None
@@ -65,7 +65,7 @@ class Acquisition(YAMLRoot):
 
     detector: str = None
     dose_per_movie: Union[dict, "QuantityValue"] = None
-    date_time: Union[dict, "Any"] = None
+    date_time: Union[str, XSDDateTime] = None
     binning_camera: float = None
     pixel_size: Union[dict, "QuantityValue"] = None
     nominal_defocus: Optional[Union[dict, "Range"]] = None
@@ -101,6 +101,11 @@ class Acquisition(YAMLRoot):
             self.MissingRequiredField("dose_per_movie")
         if not isinstance(self.dose_per_movie, QuantityValue):
             self.dose_per_movie = QuantityValue(**as_dict(self.dose_per_movie))
+
+        if self._is_empty(self.date_time):
+            self.MissingRequiredField("date_time")
+        if not isinstance(self.date_time, XSDDateTime):
+            self.date_time = XSDDateTime(self.date_time)
 
         if self._is_empty(self.binning_camera):
             self.MissingRequiredField("binning_camera")
@@ -194,7 +199,7 @@ class EnergyFilter(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-env-tomo/EnergyFilter")
 
     used: Union[bool, Bool] = None
-    width: int = None
+    width_energy_filter: Union[dict, "QuantityValue"] = None
     model: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -203,10 +208,10 @@ class EnergyFilter(YAMLRoot):
         if not isinstance(self.used, Bool):
             self.used = Bool(self.used)
 
-        if self._is_empty(self.width):
-            self.MissingRequiredField("width")
-        if not isinstance(self.width, int):
-            self.width = int(self.width)
+        if self._is_empty(self.width_energy_filter):
+            self.MissingRequiredField("width_energy_filter")
+        if not isinstance(self.width_energy_filter, QuantityValue):
+            self.width_energy_filter = QuantityValue(**as_dict(self.width_energy_filter))
 
         if self.model is not None and not isinstance(self.model, str):
             self.model = str(self.model)
@@ -589,7 +594,7 @@ class AcquisitionTomo(Acquisition):
 
     detector: str = None
     dose_per_movie: Union[dict, "QuantityValue"] = None
-    date_time: Union[dict, "Any"] = None
+    date_time: Union[str, XSDDateTime] = None
     binning_camera: float = None
     pixel_size: Union[dict, "QuantityValue"] = None
     tilt_axis_angle: float = None
@@ -1093,7 +1098,7 @@ slots.image_size = Slot(uri=ACQUISITION.image_size, name="image_size", curie=ACQ
                    model_uri=DEFAULT_.image_size, domain=None, range=Optional[Union[dict, ImageSize]])
 
 slots.date_time = Slot(uri=ACQUISITION.date_time, name="date_time", curie=ACQUISITION.curie('date_time'),
-                   model_uri=DEFAULT_.date_time, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.date_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
 slots.exposure_time = Slot(uri=ACQUISITION.exposure_time, name="exposure_time", curie=ACQUISITION.curie('exposure_time'),
                    model_uri=DEFAULT_.exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -1145,6 +1150,9 @@ slots.beamtiltgroups = Slot(uri=ACQUISITION.beamtiltgroups, name="beamtiltgroups
 
 slots.gainref_flip_rotate = Slot(uri=ACQUISITION.gainref_flip_rotate, name="gainref_flip_rotate", curie=ACQUISITION.curie('gainref_flip_rotate'),
                    model_uri=DEFAULT_.gainref_flip_rotate, domain=None, range=Optional[str])
+
+slots.width_energy_filter = Slot(uri=ACQUISITION.width_energy_filter, name="width_energy_filter", curie=ACQUISITION.curie('width_energy_filter'),
+                   model_uri=DEFAULT_.width_energy_filter, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.microscope = Slot(uri=INSTRUMENT['/microscope'], name="microscope", curie=INSTRUMENT.curie('/microscope'),
                    model_uri=DEFAULT_.microscope, domain=None, range=Optional[str])
@@ -1376,7 +1384,7 @@ slots.Acquisition_dose_per_movie = Slot(uri=ACQUISITION.dose_per_movie, name="Ac
                    model_uri=DEFAULT_.Acquisition_dose_per_movie, domain=Acquisition, range=Union[dict, "QuantityValue"])
 
 slots.Acquisition_date_time = Slot(uri=ACQUISITION.date_time, name="Acquisition_date_time", curie=ACQUISITION.curie('date_time'),
-                   model_uri=DEFAULT_.Acquisition_date_time, domain=Acquisition, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.Acquisition_date_time, domain=Acquisition, range=Union[str, XSDDateTime])
 
 slots.Acquisition_binning_camera = Slot(uri=ACQUISITION.binning_camera, name="Acquisition_binning_camera", curie=ACQUISITION.curie('binning_camera'),
                    model_uri=DEFAULT_.Acquisition_binning_camera, domain=Acquisition, range=float)
@@ -1387,8 +1395,8 @@ slots.Acquisition_pixel_size = Slot(uri=ACQUISITION.pixel_size, name="Acquisitio
 slots.EnergyFilter_used = Slot(uri=ACQUISITION.used, name="EnergyFilter_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.EnergyFilter_used, domain=EnergyFilter, range=Union[bool, Bool])
 
-slots.EnergyFilter_width = Slot(uri=CUSTOM_TYPES.width, name="EnergyFilter_width", curie=CUSTOM_TYPES.curie('width'),
-                   model_uri=DEFAULT_.EnergyFilter_width, domain=EnergyFilter, range=int)
+slots.EnergyFilter_width_energy_filter = Slot(uri=ACQUISITION.width_energy_filter, name="EnergyFilter_width_energy_filter", curie=ACQUISITION.curie('width_energy_filter'),
+                   model_uri=DEFAULT_.EnergyFilter_width_energy_filter, domain=EnergyFilter, range=Union[dict, "QuantityValue"])
 
 slots.Phaseplate_used = Slot(uri=ACQUISITION.used, name="Phaseplate_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.Phaseplate_used, domain=Phaseplate, range=Union[bool, Bool])

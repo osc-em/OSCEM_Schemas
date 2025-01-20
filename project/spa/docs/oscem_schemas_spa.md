@@ -232,7 +232,8 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [vitrification_cryogen](vitrification_cryogen.md) - Which cryogen was used for vitrification
      * [Specimen➞vitrification_cryogen](Specimen_vitrification_cryogen.md)
  * [width](width.md) - The width of a given item - unit depends on item
-     * [EnergyFilter➞width](EnergyFilter_width.md)
+ * [width_energy_filter](width_energy_filter.md) - Width of the energy filter used.
+     * [EnergyFilter➞width_energy_filter](EnergyFilter_width_energy_filter.md)
  * [work_phone](work_phone.md) - work phone
      * [Author➞work_phone](Author_work_phone.md)
  * [work_status](work_status.md) - work status
