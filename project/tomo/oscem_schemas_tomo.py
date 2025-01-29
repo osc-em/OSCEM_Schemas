@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-20T15:30:44
+# Generation date: 2025-01-29T14:03:12
 # Schema: oscem-schemas-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-tomo

@@ -24,6 +24,7 @@ DEST = project
 DOCDIR = docs
 EXAMPLEDIR = examples
 SITE = site
+PERMDOCS = perm_docs
 
 CONFIG_YAML =
 ifdef LINKML_GENERATORS_CONFIG_YAML
@@ -109,6 +110,7 @@ gendoc-%:
 	mkdir -p $(DOCDIR)/$*
 	cp -rf $(SRC)/docs/files/* $(DOCDIR)/$*
 	$(RUN) gen-doc $(GEN_DOC_ARGS) -d $(DOCDIR)/$* src/oscem_schemas/schema/oscem_schemas_$*.yaml
+	cp $(PERMDOCS)/* $(DOCDIR)/
 
 
 
@@ -177,25 +179,31 @@ prepare-mkdocs-%:
 	@echo "repo_url: https://github.com/osc-em/OSCEM_Schemas" >> $(DOCDIR)/$*/mkdocs.yml
 
 # Build Independent MkDocs Sites
-mkdocs-build: prepare-mkdocs $(SCHEMA_NAMES:%=build-%)
+mkdocs-build: 
+	prepare-mkdocs $(SCHEMA_NAMES:%=build-%)
 
-build-%:
+build-test-%:
 	@echo "Building site for $*"
 	$(RUN) mkdocs build -f $(DOCDIR)/$*/mkdocs.yml
-
+# $(DOCDIR)/$*/
 #-d $(SITE)/$*
+build:
+	@echo "Building site for $*"
+	$(RUN) mkdocs build -f mkdocs.yml
 
 # Serve a Specific Schema Locally
-serve-%:
+serve-test-%:
 	@echo "Serving site for $*"
 	$(RUN) mkdocs serve -f $(DOCDIR)/$*/mkdocs.yml -a 0.0.0.0:8000
 
+serve:
+	$(RUN) mkdocs serve -f mkdocs.yml -a 0.0.0.0:8000
 # Serve All Schemas Simultaneously
 serve-all: $(SCHEMA_NAMES:%=serve-%)
 
 
 
-.PHONY: serve prepare-mkdocs mkdocs-build serve-all
+.PHONY: serve prepare-mkdocs mkdocs-build serve-all serve-test build-test
 
 MKDOCS = $(RUN) mkdocs
 mkd-%:
