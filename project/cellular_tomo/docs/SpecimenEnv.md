@@ -6,10 +6,11 @@ base information on the acquisition and treatment of the sample itself.
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SpecimenEnv](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SpecimenEnv)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv]++-%20specimen_env%200..1>[SpecimenEnv&#124;organism:string%20*;tissue:string%20%3F;source_env:string%20%3F;location:string%20%3F;collection_date:date%20%3F;handling:string%20%3F],[SampleEnv])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv]++-%20specimen_env%200..1>[SpecimenEnv&#124;organism:string%20*;tissue:string%20%3F;source_env:string%20%3F;location:string%20%3F;collection_date:date%20%3F;handling:string%20%3F],[SampleEnv])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv]++-%20specimen_env%201..1>[SpecimenEnv&#124;organism:string%20%2B;tissue:string%20%3F;source_env:string%20%3F;location:string%20%3F;collection_date:date%20%3F;handling:string%20%3F],[SampleEnv]++-%20specimen_env(i)%200..1>[SpecimenEnv],[SampleEnv])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv]++-%20specimen_env%201..1>[SpecimenEnv&#124;organism:string%20%2B;tissue:string%20%3F;source_env:string%20%3F;location:string%20%3F;collection_date:date%20%3F;handling:string%20%3F],[SampleEnv]++-%20specimen_env(i)%200..1>[SpecimenEnv],[SampleEnv])
 
 ## Referenced by Class
 
+ *  **[SampleEnv](SampleEnv.md)** *[SampleEnv➞specimen_env](SampleEnv_specimen_env.md)*  <sub>1..1</sub>  **[SpecimenEnv](SpecimenEnv.md)**
  *  **None** *[specimen_env](specimen_env.md)*  <sub>0..1</sub>  **[SpecimenEnv](SpecimenEnv.md)**
 
 ## Attributes
@@ -17,7 +18,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SpecimenEnv](https://w
 
 ### Own
 
- * [organism](organism.md)  <sub>0..\*</sub>
+ * [SpecimenEnv➞organism](SpecimenEnv_organism.md)  <sub>1..\*</sub>
      * Description: the organism(s) present in your sample, if not perfectly defined try to asses as close as possible.
      * Range: [String](types/String.md)
  * [tissue](tissue.md)  <sub>0..1</sub>

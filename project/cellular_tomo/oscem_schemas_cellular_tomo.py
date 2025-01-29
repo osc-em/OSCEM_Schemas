@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-29T14:01:56
+# Generation date: 2025-01-29T15:11:17
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
@@ -554,7 +554,6 @@ class Author(Person):
     type_org: Union[str, "OrganizationTypeEnum"] = None
     name: str = None
     email: str = None
-    work_phone: str = None
     role: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -587,11 +586,6 @@ class Author(Person):
             self.MissingRequiredField("email")
         if not isinstance(self.email, str):
             self.email = str(self.email)
-
-        if self._is_empty(self.work_phone):
-            self.MissingRequiredField("work_phone")
-        if not isinstance(self.work_phone, str):
-            self.work_phone = str(self.work_phone)
 
         if self.role is not None and not isinstance(self.role, str):
             self.role = str(self.role)
@@ -872,13 +866,15 @@ class SampleEnv(YAMLRoot):
     class_name: ClassVar[str] = "SampleEnv"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SampleEnv")
 
-    specimen_env: Optional[Union[dict, "SpecimenEnv"]] = None
+    specimen_env: Union[dict, "SpecimenEnv"] = None
     freezing: Optional[Union[dict, "Freezing"]] = None
     thinning: Optional[Union[dict, "Thinning"]] = None
     tomogram_features: Optional[Union[dict, "TomogramFeatures"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.specimen_env is not None and not isinstance(self.specimen_env, SpecimenEnv):
+        if self._is_empty(self.specimen_env):
+            self.MissingRequiredField("specimen_env")
+        if not isinstance(self.specimen_env, SpecimenEnv):
             self.specimen_env = SpecimenEnv(**as_dict(self.specimen_env))
 
         if self.freezing is not None and not isinstance(self.freezing, Freezing):
@@ -905,6 +901,7 @@ class SampleCell(SampleEnv):
     class_name: ClassVar[str] = "SampleCell"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SampleCell")
 
+    specimen_env: Union[dict, "SpecimenEnv"] = None
     growth_condition: Optional[Union[dict, GrowthCondition]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -926,7 +923,7 @@ class SpecimenEnv(YAMLRoot):
     class_name: ClassVar[str] = "SpecimenEnv"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SpecimenEnv")
 
-    organism: Optional[Union[str, List[str]]] = empty_list()
+    organism: Union[str, List[str]] = None
     tissue: Optional[str] = None
     source_env: Optional[str] = None
     location: Optional[str] = None
@@ -934,6 +931,8 @@ class SpecimenEnv(YAMLRoot):
     handling: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.organism):
+            self.MissingRequiredField("organism")
         if not isinstance(self.organism, list):
             self.organism = [self.organism] if self.organism is not None else []
         self.organism = [v if isinstance(v, str) else str(v) for v in self.organism]
@@ -1537,9 +1536,6 @@ slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.cu
                    model_uri=DEFAULT_.Author_email, domain=Author, range=str,
                    pattern=re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'))
 
-slots.Author_work_phone = Slot(uri=SCHEMA.telephone, name="Author_work_phone", curie=SCHEMA.curie('telephone'),
-                   model_uri=DEFAULT_.Author_work_phone, domain=Author, range=str)
-
 slots.Author_orcid = Slot(uri=ORGANIZATIONAL.orcid, name="Author_orcid", curie=ORGANIZATIONAL.curie('orcid'),
                    model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
 
@@ -1569,3 +1565,9 @@ slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", cur
 
 slots.QuantityValue_value = Slot(uri=QUDT.hasQuantityKind, name="QuantityValue_value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.QuantityValue_value, domain=QuantityValue, range=float)
+
+slots.SampleEnv_specimen_env = Slot(uri=SAMPLE_ENV_.specimen_env, name="SampleEnv_specimen_env", curie=SAMPLE_ENV_.curie('specimen_env'),
+                   model_uri=DEFAULT_.SampleEnv_specimen_env, domain=SampleEnv, range=Union[dict, "SpecimenEnv"])
+
+slots.SpecimenEnv_organism = Slot(uri=SAMPLE_ENV_.organism, name="SpecimenEnv_organism", curie=SAMPLE_ENV_.curie('organism'),
+                   model_uri=DEFAULT_.SpecimenEnv_organism, domain=SpecimenEnv, range=Union[str, List[str]])

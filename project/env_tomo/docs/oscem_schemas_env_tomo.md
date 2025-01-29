@@ -141,6 +141,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Author➞orcid](Author_orcid.md)
  * [organelles](organelles.md) - What organelles; if any; are present?
  * [organism](organism.md) - the organism(s) present in your sample, if not perfectly defined try to asses as close as possible.
+     * [SpecimenEnv➞organism](SpecimenEnv_organism.md)
  * [organizational](organizational.md)
      * [EMDatasetBase➞organizational](EMDatasetBase_organizational.md)
      * [EMDatasetEnv➞organizational](EMDatasetEnv_organizational.md) - Information on authors and grants
@@ -156,6 +157,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [source_env](source_env.md) - where is this sample from? i.e. Hospital
  * [specialist_optics](specialist_optics.md) - Any type of special optics, such as a phaseplate
  * [specimen_env](specimen_env.md)
+     * [SampleEnv➞specimen_env](SampleEnv_specimen_env.md)
  * [spherical_aberration_corrector](spherical_aberration_corrector.md) - Specialist device to correct for spherical aberration of the microscope lenses
  * [start_date](start_date.md) - start date
  * [target_thickness](target_thickness.md) - What was the target thickness of the lamella; in nm.
@@ -183,7 +185,6 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [width_energy_filter](width_energy_filter.md) - Width of the energy filter used.
      * [EnergyFilter➞width_energy_filter](EnergyFilter_width_energy_filter.md)
  * [work_phone](work_phone.md) - work phone
-     * [Author➞work_phone](Author_work_phone.md)
  * [work_status](work_status.md) - work status
  * [x_max](x_max.md) - maximum x
  * [x_min](x_min.md) - minimum x

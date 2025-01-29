@@ -15,7 +15,7 @@ None &#8594;  <sub>0..1</sub> [SpecimenEnv](SpecimenEnv.md)
 
 ## Children
 
+ *  [SampleEnv➞specimen_env](SampleEnv_specimen_env.md)
 
 ## Used by
 
- * [SampleEnv](SampleEnv.md)

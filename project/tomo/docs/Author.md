@@ -6,7 +6,7 @@ Details on the person performing the experiment.
 URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Author](https://w3id.org/osc-em/oscem-schemas-tomo/Author)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string;country:string;role:string%20%3F;name_org:string;type_org:OrganizationTypeEnum;name:string;email:string;work_phone:string;first_name(i):string%20%3F;work_status(i):boolean%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string;country:string;role:string%20%3F;name_org:string;type_org:OrganizationTypeEnum;name:string;email:string;work_phone:string;first_name(i):string%20%3F;work_status(i):boolean%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string;country:string;role:string%20%3F;name_org:string;type_org:OrganizationTypeEnum;name:string;email:string;first_name(i):string%20%3F;work_status(i):boolean%20%3F;work_phone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string;country:string;role:string%20%3F;name_org:string;type_org:OrganizationTypeEnum;name:string;email:string;first_name(i):string%20%3F;work_status(i):boolean%20%3F;work_phone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])
 
 ## Parents
 
@@ -43,9 +43,6 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Author](https://w3id.org/osc-em
  * [Author➞email](Author_email.md)  <sub>1..1</sub>
      * Description: email
      * Range: [String](types/String.md)
- * [Author➞work_phone](Author_work_phone.md)  <sub>1..1</sub>
-     * Description: work phone
-     * Range: [String](types/String.md)
 
 ### Inherited from Person:
 
@@ -55,3 +52,6 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Author](https://w3id.org/osc-em
  * [work_status](work_status.md)  <sub>0..1</sub>
      * Description: work status
      * Range: [Boolean](types/Boolean.md)
+ * [work_phone](work_phone.md)  <sub>0..1</sub>
+     * Description: work phone
+     * Range: [String](types/String.md)

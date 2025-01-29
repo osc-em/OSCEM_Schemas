@@ -289,7 +289,7 @@ CREATE TABLE "Author" (
 	first_name TEXT, 
 	work_status BOOLEAN, 
 	email TEXT NOT NULL, 
-	work_phone TEXT NOT NULL, 
+	work_phone TEXT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Funder" (
@@ -421,7 +421,7 @@ CREATE TABLE "EMDatasetBase" (
 );
 CREATE TABLE "SpecimenEnv_organism" (
 	"SpecimenEnv_id" INTEGER, 
-	organism TEXT, 
+	organism TEXT NOT NULL, 
 	PRIMARY KEY ("SpecimenEnv_id", organism), 
 	FOREIGN KEY("SpecimenEnv_id") REFERENCES "SpecimenEnv" (id)
 );
@@ -490,7 +490,7 @@ CREATE TABLE "Acquisition" (
 );
 CREATE TABLE "SampleEnv" (
 	id INTEGER NOT NULL, 
-	specimen_env_id INTEGER, 
+	specimen_env_id INTEGER NOT NULL, 
 	freezing_id INTEGER, 
 	thinning_id INTEGER, 
 	tomogram_features_id INTEGER, 

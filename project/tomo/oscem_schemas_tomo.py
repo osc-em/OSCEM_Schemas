@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-29T14:03:12
+# Generation date: 2025-01-29T15:12:37
 # Schema: oscem-schemas-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-tomo
@@ -828,7 +828,6 @@ class Author(Person):
     type_org: Union[str, "OrganizationTypeEnum"] = None
     name: str = None
     email: str = None
-    work_phone: str = None
     role: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -861,11 +860,6 @@ class Author(Person):
             self.MissingRequiredField("email")
         if not isinstance(self.email, str):
             self.email = str(self.email)
-
-        if self._is_empty(self.work_phone):
-            self.MissingRequiredField("work_phone")
-        if not isinstance(self.work_phone, str):
-            self.work_phone = str(self.work_phone)
 
         if self.role is not None and not isinstance(self.role, str):
             self.role = str(self.role)
@@ -1781,9 +1775,6 @@ slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie
 slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.curie('email'),
                    model_uri=DEFAULT_.Author_email, domain=Author, range=str,
                    pattern=re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'))
-
-slots.Author_work_phone = Slot(uri=SCHEMA.telephone, name="Author_work_phone", curie=SCHEMA.curie('telephone'),
-                   model_uri=DEFAULT_.Author_work_phone, domain=Author, range=str)
 
 slots.Author_orcid = Slot(uri=ORGANIZATIONAL.orcid, name="Author_orcid", curie=ORGANIZATIONAL.curie('orcid'),
                    model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)

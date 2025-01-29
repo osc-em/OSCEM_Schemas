@@ -527,7 +527,10 @@
                 },
                 "work_phone": {
                     "description": "work phone",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "work_status": {
                     "description": "work status",
@@ -543,8 +546,7 @@
                 "name_org",
                 "type_org",
                 "name",
-                "email",
-                "work_phone"
+                "email"
             ],
             "title": "Author",
             "type": "object"
@@ -1096,14 +1098,7 @@
                     ]
                 },
                 "specimen_env": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/SpecimenEnv"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/SpecimenEnv"
                 },
                 "thinning": {
                     "anyOf": [
@@ -1126,6 +1121,9 @@
                     ]
                 }
             },
+            "required": [
+                "specimen_env"
+            ],
             "title": "SampleEnv",
             "type": "object"
         },
@@ -1242,10 +1240,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "type": "array"
                 },
                 "source_env": {
                     "description": "where is this sample from? i.e. Hospital",
@@ -1262,6 +1257,9 @@
                     ]
                 }
             },
+            "required": [
+                "organism"
+            ],
             "title": "SpecimenEnv",
             "type": "object"
         },

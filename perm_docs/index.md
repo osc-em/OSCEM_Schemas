@@ -12,5 +12,5 @@ URI: https://w3id.org/osc-em/oscem-schemas
 | --- | --- |
 | [spa](spa/index.md) | The single particle analysis focused schema |
 | [tomography](tomo/index.md) | The molecular focused tomography schema, mainly for subtomogram averaging |
-| [environmental tomography](env_tomo/index.md) | A focused schema for environmental samples, more flexible. |
-| [cellular tomography](cellular_tomo/index.md) | Focused schema for cellular or tissue samples, still quite flexible in terms of sample description. |
+| [environmental tomography](env_tomo/index.md) | A schema for environmental samples, more flexible sample descriptions. |
+| [cellular tomography](cellular_tomo/index.md) | Schema for cellular or tissue samples, also with flexible sample descriptions. |

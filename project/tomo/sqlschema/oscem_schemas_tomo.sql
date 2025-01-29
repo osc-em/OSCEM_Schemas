@@ -312,7 +312,7 @@ CREATE TABLE "Author" (
 	first_name TEXT, 
 	work_status BOOLEAN, 
 	email TEXT NOT NULL, 
-	work_phone TEXT NOT NULL, 
+	work_phone TEXT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Funder" (

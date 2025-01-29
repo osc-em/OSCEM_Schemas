@@ -15,7 +15,7 @@ None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 
 ## Children
 
+ *  [SpecimenEnv➞organism](SpecimenEnv_organism.md)
 
 ## Used by
 
- * [SpecimenEnv](SpecimenEnv.md)

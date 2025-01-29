@@ -27,7 +27,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SampleCell](https://w3
 
 ### Inherited from SampleEnv:
 
- * [specimen_env](specimen_env.md)  <sub>0..1</sub>
+ * [SampleEnv➞specimen_env](SampleEnv_specimen_env.md)  <sub>1..1</sub>
      * Range: [SpecimenEnv](SpecimenEnv.md)
  * [freezing](freezing.md)  <sub>0..1</sub>
      * Range: [Freezing](Freezing.md)

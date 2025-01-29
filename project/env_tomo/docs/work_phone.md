@@ -15,10 +15,10 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [Author➞work_phone](Author_work_phone.md)
 
 ## Used by
 
+ * [Author](Author.md)
  * [Person](Person.md)
 
 ## Other properties

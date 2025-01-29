@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_env_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-29T14:02:23
+# Generation date: 2025-01-29T15:11:47
 # Schema: oscem-schemas-env-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-env-tomo
@@ -404,13 +404,15 @@ class SampleEnv(YAMLRoot):
     class_name: ClassVar[str] = "SampleEnv"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-env-tomo/SampleEnv")
 
-    specimen_env: Optional[Union[dict, "SpecimenEnv"]] = None
+    specimen_env: Union[dict, "SpecimenEnv"] = None
     freezing: Optional[Union[dict, "Freezing"]] = None
     thinning: Optional[Union[dict, "Thinning"]] = None
     tomogram_features: Optional[Union[dict, "TomogramFeatures"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.specimen_env is not None and not isinstance(self.specimen_env, SpecimenEnv):
+        if self._is_empty(self.specimen_env):
+            self.MissingRequiredField("specimen_env")
+        if not isinstance(self.specimen_env, SpecimenEnv):
             self.specimen_env = SpecimenEnv(**as_dict(self.specimen_env))
 
         if self.freezing is not None and not isinstance(self.freezing, Freezing):
@@ -437,7 +439,7 @@ class SpecimenEnv(YAMLRoot):
     class_name: ClassVar[str] = "SpecimenEnv"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-env-tomo/SpecimenEnv")
 
-    organism: Optional[Union[str, List[str]]] = empty_list()
+    organism: Union[str, List[str]] = None
     tissue: Optional[str] = None
     source_env: Optional[str] = None
     location: Optional[str] = None
@@ -445,6 +447,8 @@ class SpecimenEnv(YAMLRoot):
     handling: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.organism):
+            self.MissingRequiredField("organism")
         if not isinstance(self.organism, list):
             self.organism = [self.organism] if self.organism is not None else []
         self.organism = [v if isinstance(v, str) else str(v) for v in self.organism]
@@ -703,7 +707,6 @@ class Author(Person):
     type_org: Union[str, "OrganizationTypeEnum"] = None
     name: str = None
     email: str = None
-    work_phone: str = None
     role: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -736,11 +739,6 @@ class Author(Person):
             self.MissingRequiredField("email")
         if not isinstance(self.email, str):
             self.email = str(self.email)
-
-        if self._is_empty(self.work_phone):
-            self.MissingRequiredField("work_phone")
-        if not isinstance(self.work_phone, str):
-            self.work_phone = str(self.work_phone)
 
         if self.role is not None and not isinstance(self.role, str):
             self.role = str(self.role)
@@ -1434,6 +1432,12 @@ slots.Instrument_acceleration_voltage = Slot(uri=INSTRUMENT['/acceleration_volta
 slots.Instrument_cs = Slot(uri=INSTRUMENT['/cs'], name="Instrument_cs", curie=INSTRUMENT.curie('/cs'),
                    model_uri=DEFAULT_.Instrument_cs, domain=Instrument, range=Union[dict, "QuantityValue"])
 
+slots.SampleEnv_specimen_env = Slot(uri=SAMPLE_ENV_.specimen_env, name="SampleEnv_specimen_env", curie=SAMPLE_ENV_.curie('specimen_env'),
+                   model_uri=DEFAULT_.SampleEnv_specimen_env, domain=SampleEnv, range=Union[dict, "SpecimenEnv"])
+
+slots.SpecimenEnv_organism = Slot(uri=SAMPLE_ENV_.organism, name="SpecimenEnv_organism", curie=SAMPLE_ENV_.curie('organism'),
+                   model_uri=DEFAULT_.SpecimenEnv_organism, domain=SpecimenEnv, range=Union[str, List[str]])
+
 slots.AcquisitionTomo_tilt_axis_angle = Slot(uri=TOMO['graphy/tilt_axis_angle'], name="AcquisitionTomo_tilt_axis_angle", curie=TOMO.curie('graphy/tilt_axis_angle'),
                    model_uri=DEFAULT_.AcquisitionTomo_tilt_axis_angle, domain=AcquisitionTomo, range=float)
 
@@ -1452,9 +1456,6 @@ slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie
 slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.curie('email'),
                    model_uri=DEFAULT_.Author_email, domain=Author, range=str,
                    pattern=re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'))
-
-slots.Author_work_phone = Slot(uri=SCHEMA.telephone, name="Author_work_phone", curie=SCHEMA.curie('telephone'),
-                   model_uri=DEFAULT_.Author_work_phone, domain=Author, range=str)
 
 slots.Author_orcid = Slot(uri=ORGANIZATIONAL.orcid, name="Author_orcid", curie=ORGANIZATIONAL.curie('orcid'),
                    model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
