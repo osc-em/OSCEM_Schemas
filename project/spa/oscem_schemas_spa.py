@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_spa.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-29T15:12:13
+# Generation date: 2025-01-30T15:52:56
 # Schema: oscem-schemas-spa
 #
 # id: https://w3id.org/osc-em/oscem-schemas-spa
@@ -1111,15 +1111,21 @@ class MoleculeClassEnum(EnumDefinitionImpl):
     """
     Allowed molecule class values - compatible with the EMDB.
     """
-    Antibiotic = PermissibleValue(
-        text="Antibiotic",
-        description="Antibiotic")
-    Carbohydrate = PermissibleValue(
-        text="Carbohydrate",
-        description="Carbohydrate")
-    Chimera = PermissibleValue(
-        text="Chimera",
-        description="Chimera")
+    CELL = PermissibleValue(
+        text="CELL",
+        description="Cell")
+    COMPLEX = PermissibleValue(
+        text="COMPLEX",
+        description="complex of different parts e.g. protein complex")
+    RIBOSOME = PermissibleValue(
+        text="RIBOSOME",
+        description="A ribosome")
+    TISSUE = PermissibleValue(
+        text="TISSUE",
+        description="Tissue of any type.")
+    VIRUS = PermissibleValue(
+        text="VIRUS",
+        description="A virus particle - or part thereof.")
 
     _defn = EnumDefinition(
         name="MoleculeClassEnum",
@@ -1128,10 +1134,10 @@ class MoleculeClassEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "None of these",
+        setattr(cls, "ORGANELLE OR CELLULAR COMPONENT",
             PermissibleValue(
-                text="None of these",
-                description="None of these"))
+                text="ORGANELLE OR CELLULAR COMPONENT",
+                description="Some form of cellular component"))
 
 class AssemblyEnum(EnumDefinitionImpl):
     """

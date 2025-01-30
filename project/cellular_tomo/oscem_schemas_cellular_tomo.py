@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-29T15:11:17
+# Generation date: 2025-01-30T15:52:06
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo

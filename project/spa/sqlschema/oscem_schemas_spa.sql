@@ -270,7 +270,7 @@ CREATE TABLE "Molecule" (
 	id INTEGER NOT NULL, 
 	name_mol TEXT NOT NULL, 
 	molecular_type TEXT NOT NULL, 
-	molecular_class VARCHAR(13) NOT NULL, 
+	molecular_class VARCHAR(31) NOT NULL, 
 	sequence TEXT NOT NULL, 
 	natural_source TEXT NOT NULL, 
 	taxonomy_id_source TEXT NOT NULL, 

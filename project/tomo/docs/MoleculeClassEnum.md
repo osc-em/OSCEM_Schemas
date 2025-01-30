@@ -10,8 +10,10 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/MoleculeClassEnum](https://w3id
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| Antibiotic | Antibiotic |  |  |
-| Carbohydrate | Carbohydrate |  |  |
-| Chimera | Chimera |  |  |
-| None of these | None of these |  |  |
+| CELL | Cell |  |  |
+| COMPLEX | complex of different parts e.g. protein complex |  |  |
+| ORGANELLE OR CELLULAR COMPONENT | Some form of cellular component |  |  |
+| RIBOSOME | A ribosome |  |  |
+| TISSUE | Tissue of any type. |  |  |
+| VIRUS | A virus particle - or part thereof. |  |  |
 
