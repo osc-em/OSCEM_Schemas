@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-02-05T12:18:10
+# Generation date: 2025-02-05T16:08:09
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
@@ -33,14 +33,14 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 ACQUISITION = CurieNamespace('acquisition', 'https://w3id.org/osc-em/acquisition')
-CELLULAR_TOMO_ = CurieNamespace('cellular_tomo_', 'https://w3id.org/osc-em/cellular_tomo_')
+CELLULAR_TOMO = CurieNamespace('cellular_tomo', 'https://w3id.org/osc-em/cellular_tomo')
 CUSTOM_TYPES = CurieNamespace('custom_types', 'https://w3id.org/osc-em/custom_types')
 INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/osc-em/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/osc-em/organizational/')
 OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/OSCEM_schemas')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
-SAMPLE_ENV_ = CurieNamespace('sample_env_', 'https://w3id.org/osc-em/environmental_sample')
+SAMPLE_ENV = CurieNamespace('sample_env', 'https://w3id.org/osc-em/environmental_sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 TOMO = CurieNamespace('tomo', 'https://w3id.org/osc-em/tomo')
 DEFAULT_ = CurieNamespace('', 'https://w3id.org/osc-em/oscem-schemas-cellular-tomo/')
@@ -400,8 +400,8 @@ class GrowthCondition(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CELLULAR_TOMO_["GrowthCondition"]
-    class_class_curie: ClassVar[str] = "cellular_tomo_:GrowthCondition"
+    class_class_uri: ClassVar[URIRef] = CELLULAR_TOMO["GrowthCondition"]
+    class_class_curie: ClassVar[str] = "cellular_tomo:GrowthCondition"
     class_name: ClassVar[str] = "GrowthCondition"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/GrowthCondition")
 
@@ -869,8 +869,8 @@ class SampleEnv(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV_["SampleEnv"]
-    class_class_curie: ClassVar[str] = "sample_env_:SampleEnv"
+    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["SampleEnv"]
+    class_class_curie: ClassVar[str] = "sample_env:SampleEnv"
     class_name: ClassVar[str] = "SampleEnv"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SampleEnv")
 
@@ -904,8 +904,8 @@ class SampleCell(SampleEnv):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CELLULAR_TOMO_["SampleCell"]
-    class_class_curie: ClassVar[str] = "cellular_tomo_:SampleCell"
+    class_class_uri: ClassVar[URIRef] = CELLULAR_TOMO["SampleCell"]
+    class_class_curie: ClassVar[str] = "cellular_tomo:SampleCell"
     class_name: ClassVar[str] = "SampleCell"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SampleCell")
 
@@ -926,8 +926,8 @@ class SpecimenEnv(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV_["SpecimenEnv"]
-    class_class_curie: ClassVar[str] = "sample_env_:SpecimenEnv"
+    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["SpecimenEnv"]
+    class_class_curie: ClassVar[str] = "sample_env:SpecimenEnv"
     class_name: ClassVar[str] = "SpecimenEnv"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SpecimenEnv")
 
@@ -970,8 +970,8 @@ class Freezing(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV_["Freezing"]
-    class_class_curie: ClassVar[str] = "sample_env_:Freezing"
+    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["Freezing"]
+    class_class_curie: ClassVar[str] = "sample_env:Freezing"
     class_name: ClassVar[str] = "Freezing"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Freezing")
 
@@ -1015,8 +1015,8 @@ class Thinning(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV_["Thinning"]
-    class_class_curie: ClassVar[str] = "sample_env_:Thinning"
+    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["Thinning"]
+    class_class_curie: ClassVar[str] = "sample_env:Thinning"
     class_name: ClassVar[str] = "Thinning"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Thinning")
 
@@ -1052,8 +1052,8 @@ class TomogramFeatures(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV_["TomogramFeatures"]
-    class_class_curie: ClassVar[str] = "sample_env_:TomogramFeatures"
+    class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["TomogramFeatures"]
+    class_class_curie: ClassVar[str] = "sample_env:TomogramFeatures"
     class_name: ClassVar[str] = "TomogramFeatures"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/TomogramFeatures")
 
@@ -1245,25 +1245,25 @@ slots.c2_aperture = Slot(uri=INSTRUMENT['/c2_aperture'], name="c2_aperture", cur
 slots.cs = Slot(uri=INSTRUMENT['/cs'], name="cs", curie=INSTRUMENT.curie('/cs'),
                    model_uri=DEFAULT_.cs, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.temperature_growth = Slot(uri=CELLULAR_TOMO_.temperature_growth, name="temperature_growth", curie=CELLULAR_TOMO_.curie('temperature_growth'),
+slots.temperature_growth = Slot(uri=CELLULAR_TOMO.temperature_growth, name="temperature_growth", curie=CELLULAR_TOMO.curie('temperature_growth'),
                    model_uri=DEFAULT_.temperature_growth, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.atmosphere_growth = Slot(uri=CELLULAR_TOMO_.atmosphere_growth, name="atmosphere_growth", curie=CELLULAR_TOMO_.curie('atmosphere_growth'),
+slots.atmosphere_growth = Slot(uri=CELLULAR_TOMO.atmosphere_growth, name="atmosphere_growth", curie=CELLULAR_TOMO.curie('atmosphere_growth'),
                    model_uri=DEFAULT_.atmosphere_growth, domain=None, range=Optional[str])
 
-slots.media = Slot(uri=CELLULAR_TOMO_.media, name="media", curie=CELLULAR_TOMO_.curie('media'),
+slots.media = Slot(uri=CELLULAR_TOMO.media, name="media", curie=CELLULAR_TOMO.curie('media'),
                    model_uri=DEFAULT_.media, domain=None, range=Optional[str])
 
-slots.growth_location = Slot(uri=CELLULAR_TOMO_.growth_location, name="growth_location", curie=CELLULAR_TOMO_.curie('growth_location'),
+slots.growth_location = Slot(uri=CELLULAR_TOMO.growth_location, name="growth_location", curie=CELLULAR_TOMO.curie('growth_location'),
                    model_uri=DEFAULT_.growth_location, domain=None, range=Optional[str])
 
-slots.cell_cycle = Slot(uri=CELLULAR_TOMO_.cell_cycle, name="cell_cycle", curie=CELLULAR_TOMO_.curie('cell_cycle'),
+slots.cell_cycle = Slot(uri=CELLULAR_TOMO.cell_cycle, name="cell_cycle", curie=CELLULAR_TOMO.curie('cell_cycle'),
                    model_uri=DEFAULT_.cell_cycle, domain=None, range=Optional[str])
 
-slots.treatment = Slot(uri=CELLULAR_TOMO_.treatment, name="treatment", curie=CELLULAR_TOMO_.curie('treatment'),
+slots.treatment = Slot(uri=CELLULAR_TOMO.treatment, name="treatment", curie=CELLULAR_TOMO.curie('treatment'),
                    model_uri=DEFAULT_.treatment, domain=None, range=Optional[str])
 
-slots.growth_condition = Slot(uri=CELLULAR_TOMO_.growth_condition, name="growth_condition", curie=CELLULAR_TOMO_.curie('growth_condition'),
+slots.growth_condition = Slot(uri=CELLULAR_TOMO.growth_condition, name="growth_condition", curie=CELLULAR_TOMO.curie('growth_condition'),
                    model_uri=DEFAULT_.growth_condition, domain=None, range=Optional[Union[dict, GrowthCondition]])
 
 slots.tilt_axis_angle = Slot(uri=TOMO['graphy/tilt_axis_angle'], name="tilt_axis_angle", curie=TOMO.curie('graphy/tilt_axis_angle'),
@@ -1378,82 +1378,82 @@ slots.unit = Slot(uri=QUDT.hasUnit, name="unit", curie=QUDT.curie('hasUnit'),
 slots.value = Slot(uri=QUDT.hasQuantityKind, name="value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.value, domain=None, range=Optional[float])
 
-slots.organism = Slot(uri=SAMPLE_ENV_.organism, name="organism", curie=SAMPLE_ENV_.curie('organism'),
+slots.organism = Slot(uri=SAMPLE_ENV.organism, name="organism", curie=SAMPLE_ENV.curie('organism'),
                    model_uri=DEFAULT_.organism, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.tissue = Slot(uri=SAMPLE_ENV_.tissue, name="tissue", curie=SAMPLE_ENV_.curie('tissue'),
+slots.tissue = Slot(uri=SAMPLE_ENV.tissue, name="tissue", curie=SAMPLE_ENV.curie('tissue'),
                    model_uri=DEFAULT_.tissue, domain=None, range=Optional[str])
 
-slots.source_env = Slot(uri=SAMPLE_ENV_.source_env, name="source_env", curie=SAMPLE_ENV_.curie('source_env'),
+slots.source_env = Slot(uri=SAMPLE_ENV.source_env, name="source_env", curie=SAMPLE_ENV.curie('source_env'),
                    model_uri=DEFAULT_.source_env, domain=None, range=Optional[str])
 
-slots.location = Slot(uri=SAMPLE_ENV_.location, name="location", curie=SAMPLE_ENV_.curie('location'),
+slots.location = Slot(uri=SAMPLE_ENV.location, name="location", curie=SAMPLE_ENV.curie('location'),
                    model_uri=DEFAULT_.location, domain=None, range=Optional[str])
 
-slots.collection_date = Slot(uri=SAMPLE_ENV_.collection_date, name="collection_date", curie=SAMPLE_ENV_.curie('collection_date'),
+slots.collection_date = Slot(uri=SAMPLE_ENV.collection_date, name="collection_date", curie=SAMPLE_ENV.curie('collection_date'),
                    model_uri=DEFAULT_.collection_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.handling = Slot(uri=SAMPLE_ENV_.handling, name="handling", curie=SAMPLE_ENV_.curie('handling'),
+slots.handling = Slot(uri=SAMPLE_ENV.handling, name="handling", curie=SAMPLE_ENV.curie('handling'),
                    model_uri=DEFAULT_.handling, domain=None, range=Optional[str])
 
-slots.cryogen_sample_env = Slot(uri=SAMPLE_ENV_.cryogen_sample_env, name="cryogen_sample_env", curie=SAMPLE_ENV_.curie('cryogen_sample_env'),
+slots.cryogen_sample_env = Slot(uri=SAMPLE_ENV.cryogen_sample_env, name="cryogen_sample_env", curie=SAMPLE_ENV.curie('cryogen_sample_env'),
                    model_uri=DEFAULT_.cryogen_sample_env, domain=None, range=Optional[str])
 
-slots.method = Slot(uri=SAMPLE_ENV_.method, name="method", curie=SAMPLE_ENV_.curie('method'),
+slots.method = Slot(uri=SAMPLE_ENV.method, name="method", curie=SAMPLE_ENV.curie('method'),
                    model_uri=DEFAULT_.method, domain=None, range=Optional[Union[str, "FreezingMethodEnum"]])
 
-slots.blotting = Slot(uri=SAMPLE_ENV_.blotting, name="blotting", curie=SAMPLE_ENV_.curie('blotting'),
+slots.blotting = Slot(uri=SAMPLE_ENV.blotting, name="blotting", curie=SAMPLE_ENV.curie('blotting'),
                    model_uri=DEFAULT_.blotting, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.humidity_env = Slot(uri=SAMPLE_ENV_.humidity_env, name="humidity_env", curie=SAMPLE_ENV_.curie('humidity_env'),
+slots.humidity_env = Slot(uri=SAMPLE_ENV.humidity_env, name="humidity_env", curie=SAMPLE_ENV.curie('humidity_env'),
                    model_uri=DEFAULT_.humidity_env, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.temperature_env = Slot(uri=SAMPLE_ENV_.temperature_env, name="temperature_env", curie=SAMPLE_ENV_.curie('temperature_env'),
+slots.temperature_env = Slot(uri=SAMPLE_ENV.temperature_env, name="temperature_env", curie=SAMPLE_ENV.curie('temperature_env'),
                    model_uri=DEFAULT_.temperature_env, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.atmosphere = Slot(uri=SAMPLE_ENV_.atmosphere, name="atmosphere", curie=SAMPLE_ENV_.curie('atmosphere'),
+slots.atmosphere = Slot(uri=SAMPLE_ENV.atmosphere, name="atmosphere", curie=SAMPLE_ENV.curie('atmosphere'),
                    model_uri=DEFAULT_.atmosphere, domain=None, range=Optional[str])
 
-slots.details = Slot(uri=SAMPLE_ENV_.details, name="details", curie=SAMPLE_ENV_.curie('details'),
+slots.details = Slot(uri=SAMPLE_ENV.details, name="details", curie=SAMPLE_ENV.curie('details'),
                    model_uri=DEFAULT_.details, domain=None, range=Optional[str])
 
-slots.freezing = Slot(uri=SAMPLE_ENV_.freezing, name="freezing", curie=SAMPLE_ENV_.curie('freezing'),
+slots.freezing = Slot(uri=SAMPLE_ENV.freezing, name="freezing", curie=SAMPLE_ENV.curie('freezing'),
                    model_uri=DEFAULT_.freezing, domain=None, range=Optional[Union[dict, Freezing]])
 
-slots.thinning = Slot(uri=SAMPLE_ENV_.thinning, name="thinning", curie=SAMPLE_ENV_.curie('thinning'),
+slots.thinning = Slot(uri=SAMPLE_ENV.thinning, name="thinning", curie=SAMPLE_ENV.curie('thinning'),
                    model_uri=DEFAULT_.thinning, domain=None, range=Optional[Union[dict, Thinning]])
 
-slots.method_thin = Slot(uri=SAMPLE_ENV_.method_thin, name="method_thin", curie=SAMPLE_ENV_.curie('method_thin'),
+slots.method_thin = Slot(uri=SAMPLE_ENV.method_thin, name="method_thin", curie=SAMPLE_ENV.curie('method_thin'),
                    model_uri=DEFAULT_.method_thin, domain=None, range=Optional[str])
 
-slots.instrument_thin = Slot(uri=SAMPLE_ENV_.instrument_thin, name="instrument_thin", curie=SAMPLE_ENV_.curie('instrument_thin'),
+slots.instrument_thin = Slot(uri=SAMPLE_ENV.instrument_thin, name="instrument_thin", curie=SAMPLE_ENV.curie('instrument_thin'),
                    model_uri=DEFAULT_.instrument_thin, domain=None, range=Optional[str])
 
-slots.ion_source = Slot(uri=SAMPLE_ENV_.ion_source, name="ion_source", curie=SAMPLE_ENV_.curie('ion_source'),
+slots.ion_source = Slot(uri=SAMPLE_ENV.ion_source, name="ion_source", curie=SAMPLE_ENV.curie('ion_source'),
                    model_uri=DEFAULT_.ion_source, domain=None, range=Optional[str])
 
-slots.target_thickness = Slot(uri=SAMPLE_ENV_.target_thickness, name="target_thickness", curie=SAMPLE_ENV_.curie('target_thickness'),
+slots.target_thickness = Slot(uri=SAMPLE_ENV.target_thickness, name="target_thickness", curie=SAMPLE_ENV.curie('target_thickness'),
                    model_uri=DEFAULT_.target_thickness, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.lift_out = Slot(uri=SAMPLE_ENV_.lift_out, name="lift_out", curie=SAMPLE_ENV_.curie('lift_out'),
+slots.lift_out = Slot(uri=SAMPLE_ENV.lift_out, name="lift_out", curie=SAMPLE_ENV.curie('lift_out'),
                    model_uri=DEFAULT_.lift_out, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.tomogram_features = Slot(uri=SAMPLE_ENV_.tomogram_features, name="tomogram_features", curie=SAMPLE_ENV_.curie('tomogram_features'),
+slots.tomogram_features = Slot(uri=SAMPLE_ENV.tomogram_features, name="tomogram_features", curie=SAMPLE_ENV.curie('tomogram_features'),
                    model_uri=DEFAULT_.tomogram_features, domain=None, range=Optional[Union[dict, TomogramFeatures]])
 
-slots.cellular_features = Slot(uri=SAMPLE_ENV_.cellular_features, name="cellular_features", curie=SAMPLE_ENV_.curie('cellular_features'),
+slots.cellular_features = Slot(uri=SAMPLE_ENV.cellular_features, name="cellular_features", curie=SAMPLE_ENV.curie('cellular_features'),
                    model_uri=DEFAULT_.cellular_features, domain=None, range=Optional[str])
 
-slots.organelles = Slot(uri=SAMPLE_ENV_.organelles, name="organelles", curie=SAMPLE_ENV_.curie('organelles'),
+slots.organelles = Slot(uri=SAMPLE_ENV.organelles, name="organelles", curie=SAMPLE_ENV.curie('organelles'),
                    model_uri=DEFAULT_.organelles, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.main_target = Slot(uri=SAMPLE_ENV_.main_target, name="main_target", curie=SAMPLE_ENV_.curie('main_target'),
+slots.main_target = Slot(uri=SAMPLE_ENV.main_target, name="main_target", curie=SAMPLE_ENV.curie('main_target'),
                    model_uri=DEFAULT_.main_target, domain=None, range=Optional[str])
 
-slots.details_tomo = Slot(uri=SAMPLE_ENV_.details_tomo, name="details_tomo", curie=SAMPLE_ENV_.curie('details_tomo'),
+slots.details_tomo = Slot(uri=SAMPLE_ENV.details_tomo, name="details_tomo", curie=SAMPLE_ENV.curie('details_tomo'),
                    model_uri=DEFAULT_.details_tomo, domain=None, range=Optional[str])
 
-slots.specimen_env = Slot(uri=SAMPLE_ENV_.specimen_env, name="specimen_env", curie=SAMPLE_ENV_.curie('specimen_env'),
+slots.specimen_env = Slot(uri=SAMPLE_ENV.specimen_env, name="specimen_env", curie=SAMPLE_ENV.curie('specimen_env'),
                    model_uri=DEFAULT_.specimen_env, domain=None, range=Optional[Union[dict, SpecimenEnv]])
 
 slots.EMDatasetCell_acquisition = Slot(uri=OSCEM.acquisition, name="EMDatasetCell_acquisition", curie=OSCEM.curie('acquisition'),
@@ -1574,8 +1574,8 @@ slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", cur
 slots.QuantityValue_value = Slot(uri=QUDT.hasQuantityKind, name="QuantityValue_value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.QuantityValue_value, domain=QuantityValue, range=float)
 
-slots.SampleEnv_specimen_env = Slot(uri=SAMPLE_ENV_.specimen_env, name="SampleEnv_specimen_env", curie=SAMPLE_ENV_.curie('specimen_env'),
+slots.SampleEnv_specimen_env = Slot(uri=SAMPLE_ENV.specimen_env, name="SampleEnv_specimen_env", curie=SAMPLE_ENV.curie('specimen_env'),
                    model_uri=DEFAULT_.SampleEnv_specimen_env, domain=SampleEnv, range=Union[dict, "SpecimenEnv"])
 
-slots.SpecimenEnv_organism = Slot(uri=SAMPLE_ENV_.organism, name="SpecimenEnv_organism", curie=SAMPLE_ENV_.curie('organism'),
+slots.SpecimenEnv_organism = Slot(uri=SAMPLE_ENV.organism, name="SpecimenEnv_organism", curie=SAMPLE_ENV.curie('organism'),
                    model_uri=DEFAULT_.SpecimenEnv_organism, domain=SpecimenEnv, range=Union[str, List[str]])
