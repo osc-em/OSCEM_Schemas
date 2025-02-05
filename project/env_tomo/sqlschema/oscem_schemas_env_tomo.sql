@@ -409,10 +409,10 @@ CREATE TABLE "Grant" (
 );
 CREATE TABLE "EMDatasetBase" (
 	id INTEGER NOT NULL, 
-	acquisition_id INTEGER NOT NULL, 
-	instrument_id INTEGER NOT NULL, 
-	sample_id INTEGER NOT NULL, 
-	organizational_id INTEGER NOT NULL, 
+	acquisition_id INTEGER, 
+	instrument_id INTEGER, 
+	sample_id INTEGER, 
+	organizational_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(acquisition_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(instrument_id) REFERENCES "Any" (id), 

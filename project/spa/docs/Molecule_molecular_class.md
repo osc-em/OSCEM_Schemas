@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Molecule_molecular_class](https:
 
 ## Domain and Range
 
-[Molecule](Molecule.md) &#8594;  <sub>1..1</sub> [MoleculeClassEnum](MoleculeClassEnum.md)
+[Molecule](Molecule.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 

@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/EMDatasetCell_sample](
 
 ## Domain and Range
 
-[EMDatasetCell](EMDatasetCell.md) &#8594;  <sub>0..1</sub> [SampleCell](SampleCell.md)
+[EMDatasetCell](EMDatasetCell.md) &#8594;  <sub>1..1</sub> [SampleCell](SampleCell.md)
 
 ## Parents
 

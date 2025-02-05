@@ -6,11 +6,11 @@ Overarching category for authors and grants
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/Organizational](https://w3id.org/osc-em/oscem-schemas-spa/Organizational)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%201..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetSpa]++-%20organizational%200..1>[Organizational],[Grant],[Funder],[EMDatasetSpa],[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%201..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetSpa]++-%20organizational%200..1>[Organizational],[Grant],[Funder],[EMDatasetSpa],[Author])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%201..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetSpa]++-%20organizational%201..1>[Organizational],[Grant],[Funder],[EMDatasetSpa],[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%201..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetSpa]++-%20organizational%201..1>[Organizational],[Grant],[Funder],[EMDatasetSpa],[Author])
 
 ## Referenced by Class
 
- *  **[EMDatasetSpa](EMDatasetSpa.md)** *[EMDatasetSpa➞organizational](EMDatasetSpa_organizational.md)*  <sub>0..1</sub>  **[Organizational](Organizational.md)**
+ *  **[EMDatasetSpa](EMDatasetSpa.md)** *[EMDatasetSpa➞organizational](EMDatasetSpa_organizational.md)*  <sub>1..1</sub>  **[Organizational](Organizational.md)**
 
 ## Attributes
 

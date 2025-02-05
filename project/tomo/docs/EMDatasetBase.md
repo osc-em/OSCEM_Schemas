@@ -6,7 +6,7 @@ OSC-EM Metadata for a dataset
 URI: [https://w3id.org/osc-em/oscem-schemas-tomo/EMDatasetBase](https://w3id.org/osc-em/oscem-schemas-tomo/EMDatasetBase)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[EMDatasetTomo],[Any]<organizational%201..1-++[EMDatasetBase],[Any]<sample%201..1-++[EMDatasetBase],[Any]<instrument%201..1-++[EMDatasetBase],[Any]<acquisition%201..1-++[EMDatasetBase],[EMDatasetBase]^-[EMDatasetTomo],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[EMDatasetTomo],[Any]<organizational%201..1-++[EMDatasetBase],[Any]<sample%201..1-++[EMDatasetBase],[Any]<instrument%201..1-++[EMDatasetBase],[Any]<acquisition%201..1-++[EMDatasetBase],[EMDatasetBase]^-[EMDatasetTomo],[Any])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[EMDatasetTomo],[Any]<organizational%200..1-++[EMDatasetBase],[Any]<sample%200..1-++[EMDatasetBase],[Any]<instrument%200..1-++[EMDatasetBase],[Any]<acquisition%200..1-++[EMDatasetBase],[EMDatasetBase]^-[EMDatasetTomo],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[EMDatasetTomo],[Any]<organizational%200..1-++[EMDatasetBase],[Any]<sample%200..1-++[EMDatasetBase],[Any]<instrument%200..1-++[EMDatasetBase],[Any]<acquisition%200..1-++[EMDatasetBase],[EMDatasetBase]^-[EMDatasetTomo],[Any])
 
 ## Children
 
@@ -20,11 +20,11 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/EMDatasetBase](https://w3id.org
 
 ### Own
 
- * [EMDatasetBase➞acquisition](EMDatasetBase_acquisition.md)  <sub>1..1</sub>
+ * [EMDatasetBase➞acquisition](EMDatasetBase_acquisition.md)  <sub>0..1</sub>
      * Range: [Any](Any.md)
- * [EMDatasetBase➞instrument](EMDatasetBase_instrument.md)  <sub>1..1</sub>
+ * [EMDatasetBase➞instrument](EMDatasetBase_instrument.md)  <sub>0..1</sub>
      * Range: [Any](Any.md)
- * [EMDatasetBase➞sample](EMDatasetBase_sample.md)  <sub>1..1</sub>
+ * [EMDatasetBase➞sample](EMDatasetBase_sample.md)  <sub>0..1</sub>
      * Range: [Any](Any.md)
- * [EMDatasetBase➞organizational](EMDatasetBase_organizational.md)  <sub>1..1</sub>
+ * [EMDatasetBase➞organizational](EMDatasetBase_organizational.md)  <sub>0..1</sub>
      * Range: [Any](Any.md)

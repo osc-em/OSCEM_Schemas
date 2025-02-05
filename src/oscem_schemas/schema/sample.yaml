@@ -68,13 +68,13 @@ classes:
   OverallMolecule:
     description: Description of the overall molecule
     slots:
-      - molecular_type
+      - molecular_overall_type
       - name_sample
       - source
       - molecular_weight
       - assembly
     slot_usage:
-      molecular_type:
+      molecular_overall_type:
         required: true
       name_sample:
         # alias: Name
@@ -230,13 +230,16 @@ slots:
   molecular_weight:
     description: Molecular weight in Da
     range: QuantityValue
+  molecular_overall_type:
+    description: Description of the overall molecular type, i.e., a complex
+    range: MoleculeClassEnum
 
   name_mol:
     description: Name of an individual molecule (often protein) in the sample
     range: string
   molecular_class:
     description: Class of the molecule
-    range: MoleculeClassEnum
+    range: string
   sequence:
     description: Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here
     range: string

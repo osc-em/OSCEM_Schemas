@@ -6,11 +6,11 @@ Instrument values, mostly constant across a data collection.
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Instrument](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Instrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<cs%201..1-++[Instrument&#124;microscope:string;illumination:string;imaging:string;electron_source:string],[QuantityValue]<c2_aperture%200..1-++[Instrument],[QuantityValue]<acceleration_voltage%201..1-++[Instrument],[EMDatasetCell]++-%20instrument%200..1>[Instrument],[EMDatasetCell])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<cs%201..1-++[Instrument&#124;microscope:string;illumination:string;imaging:string;electron_source:string],[QuantityValue]<c2_aperture%200..1-++[Instrument],[QuantityValue]<acceleration_voltage%201..1-++[Instrument],[EMDatasetCell]++-%20instrument%200..1>[Instrument],[EMDatasetCell])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<cs%201..1-++[Instrument&#124;microscope:string;illumination:string;imaging:string;electron_source:string],[QuantityValue]<c2_aperture%200..1-++[Instrument],[QuantityValue]<acceleration_voltage%201..1-++[Instrument],[EMDatasetCell]++-%20instrument%201..1>[Instrument],[EMDatasetCell])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<cs%201..1-++[Instrument&#124;microscope:string;illumination:string;imaging:string;electron_source:string],[QuantityValue]<c2_aperture%200..1-++[Instrument],[QuantityValue]<acceleration_voltage%201..1-++[Instrument],[EMDatasetCell]++-%20instrument%201..1>[Instrument],[EMDatasetCell])
 
 ## Referenced by Class
 
- *  **[EMDatasetCell](EMDatasetCell.md)** *[EMDatasetCell➞instrument](EMDatasetCell_instrument.md)*  <sub>0..1</sub>  **[Instrument](Instrument.md)**
+ *  **[EMDatasetCell](EMDatasetCell.md)** *[EMDatasetCell➞instrument](EMDatasetCell_instrument.md)*  <sub>1..1</sub>  **[Instrument](Instrument.md)**
 
 ## Attributes
 

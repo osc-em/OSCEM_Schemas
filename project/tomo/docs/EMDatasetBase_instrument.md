@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/EMDatasetBase_instrument](https
 
 ## Domain and Range
 
-[EMDatasetBase](EMDatasetBase.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
+[EMDatasetBase](EMDatasetBase.md) &#8594;  <sub>0..1</sub> [Any](Any.md)
 
 ## Parents
 

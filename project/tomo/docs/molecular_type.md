@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 ## Children
 
  *  [Molecule➞molecular_type](Molecule_molecular_type.md)
- *  [OverallMolecule➞molecular_type](OverallMolecule_molecular_type.md)
 
 ## Used by
 

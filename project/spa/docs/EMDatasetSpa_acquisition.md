@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/EMDatasetSpa_acquisition](https:
 
 ## Domain and Range
 
-[EMDatasetSpa](EMDatasetSpa.md) &#8594;  <sub>0..1</sub> [Acquisition](Acquisition.md)
+[EMDatasetSpa](EMDatasetSpa.md) &#8594;  <sub>1..1</sub> [Acquisition](Acquisition.md)
 
 ## Parents
 

@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_spa.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-30T15:52:56
+# Generation date: 2025-02-05T12:18:59
 # Schema: oscem-schemas-spa
 #
 # id: https://w3id.org/osc-em/oscem-schemas-spa
@@ -636,17 +636,17 @@ class OverallMolecule(YAMLRoot):
     class_name: ClassVar[str] = "OverallMolecule"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/OverallMolecule")
 
-    molecular_type: str = None
+    molecular_overall_type: Union[str, "MoleculeClassEnum"] = None
     name_sample: str = None
     source: str = None
     assembly: Union[str, "AssemblyEnum"] = None
     molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.molecular_type):
-            self.MissingRequiredField("molecular_type")
-        if not isinstance(self.molecular_type, str):
-            self.molecular_type = str(self.molecular_type)
+        if self._is_empty(self.molecular_overall_type):
+            self.MissingRequiredField("molecular_overall_type")
+        if not isinstance(self.molecular_overall_type, MoleculeClassEnum):
+            self.molecular_overall_type = MoleculeClassEnum(self.molecular_overall_type)
 
         if self._is_empty(self.name_sample):
             self.MissingRequiredField("name_sample")
@@ -683,7 +683,7 @@ class Molecule(YAMLRoot):
 
     name_mol: str = None
     molecular_type: str = None
-    molecular_class: Union[str, "MoleculeClassEnum"] = None
+    molecular_class: str = None
     sequence: str = None
     natural_source: str = None
     taxonomy_id_source: str = None
@@ -704,8 +704,8 @@ class Molecule(YAMLRoot):
 
         if self._is_empty(self.molecular_class):
             self.MissingRequiredField("molecular_class")
-        if not isinstance(self.molecular_class, MoleculeClassEnum):
-            self.molecular_class = MoleculeClassEnum(self.molecular_class)
+        if not isinstance(self.molecular_class, str):
+            self.molecular_class = str(self.molecular_class)
 
         if self._is_empty(self.sequence):
             self.MissingRequiredField("sequence")
@@ -911,10 +911,10 @@ class EMDatasetBase(YAMLRoot):
     class_name: ClassVar[str] = "EMDatasetBase"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/EMDatasetBase")
 
-    acquisition: Union[dict, "Any"] = None
-    instrument: Union[dict, "Any"] = None
-    sample: Union[dict, "Any"] = None
-    organizational: Union[dict, "Any"] = None
+    acquisition: Optional[Union[dict, "Any"]] = None
+    instrument: Optional[Union[dict, "Any"]] = None
+    sample: Optional[Union[dict, "Any"]] = None
+    organizational: Optional[Union[dict, "Any"]] = None
 
 @dataclass(repr=False)
 class EMDatasetSpa(EMDatasetBase):
@@ -928,22 +928,30 @@ class EMDatasetSpa(EMDatasetBase):
     class_name: ClassVar[str] = "EMDatasetSpa"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/EMDatasetSpa")
 
-    acquisition: Optional[Union[dict, Acquisition]] = None
-    instrument: Optional[Union[dict, Instrument]] = None
-    sample: Optional[Union[dict, Sample]] = None
-    organizational: Optional[Union[dict, Organizational]] = None
+    acquisition: Union[dict, Acquisition] = None
+    instrument: Union[dict, Instrument] = None
+    sample: Union[dict, Sample] = None
+    organizational: Union[dict, Organizational] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.acquisition is not None and not isinstance(self.acquisition, Acquisition):
+        if self._is_empty(self.acquisition):
+            self.MissingRequiredField("acquisition")
+        if not isinstance(self.acquisition, Acquisition):
             self.acquisition = Acquisition(**as_dict(self.acquisition))
 
-        if self.instrument is not None and not isinstance(self.instrument, Instrument):
+        if self._is_empty(self.instrument):
+            self.MissingRequiredField("instrument")
+        if not isinstance(self.instrument, Instrument):
             self.instrument = Instrument(**as_dict(self.instrument))
 
-        if self.sample is not None and not isinstance(self.sample, Sample):
+        if self._is_empty(self.sample):
+            self.MissingRequiredField("sample")
+        if not isinstance(self.sample, Sample):
             self.sample = Sample(**as_dict(self.sample))
 
-        if self.organizational is not None and not isinstance(self.organizational, Organizational):
+        if self._is_empty(self.organizational):
+            self.MissingRequiredField("organizational")
+        if not isinstance(self.organizational, Organizational):
             self.organizational = Organizational(**as_dict(self.organizational))
 
         super().__post_init__(**kwargs)
@@ -1362,11 +1370,14 @@ slots.source = Slot(uri=SAMPLE['/source'], name="source", curie=SAMPLE.curie('/s
 slots.molecular_weight = Slot(uri=SAMPLE['/molecular_weight'], name="molecular_weight", curie=SAMPLE.curie('/molecular_weight'),
                    model_uri=DEFAULT_.molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.molecular_overall_type = Slot(uri=SAMPLE['/molecular_overall_type'], name="molecular_overall_type", curie=SAMPLE.curie('/molecular_overall_type'),
+                   model_uri=DEFAULT_.molecular_overall_type, domain=None, range=Optional[Union[str, "MoleculeClassEnum"]])
+
 slots.name_mol = Slot(uri=SAMPLE['/name_mol'], name="name_mol", curie=SAMPLE.curie('/name_mol'),
                    model_uri=DEFAULT_.name_mol, domain=None, range=Optional[str])
 
 slots.molecular_class = Slot(uri=SAMPLE['/molecular_class'], name="molecular_class", curie=SAMPLE.curie('/molecular_class'),
-                   model_uri=DEFAULT_.molecular_class, domain=None, range=Optional[Union[str, "MoleculeClassEnum"]])
+                   model_uri=DEFAULT_.molecular_class, domain=None, range=Optional[str])
 
 slots.sequence = Slot(uri=SAMPLE['/sequence'], name="sequence", curie=SAMPLE.curie('/sequence'),
                    model_uri=DEFAULT_.sequence, domain=None, range=Optional[str])
@@ -1522,16 +1533,16 @@ slots.value = Slot(uri=QUDT.hasQuantityKind, name="value", curie=QUDT.curie('has
                    model_uri=DEFAULT_.value, domain=None, range=Optional[float])
 
 slots.EMDatasetSpa_acquisition = Slot(uri=OSCEM.acquisition, name="EMDatasetSpa_acquisition", curie=OSCEM.curie('acquisition'),
-                   model_uri=DEFAULT_.EMDatasetSpa_acquisition, domain=EMDatasetSpa, range=Optional[Union[dict, Acquisition]])
+                   model_uri=DEFAULT_.EMDatasetSpa_acquisition, domain=EMDatasetSpa, range=Union[dict, Acquisition])
 
 slots.EMDatasetSpa_instrument = Slot(uri=OSCEM.instrument, name="EMDatasetSpa_instrument", curie=OSCEM.curie('instrument'),
-                   model_uri=DEFAULT_.EMDatasetSpa_instrument, domain=EMDatasetSpa, range=Optional[Union[dict, Instrument]])
+                   model_uri=DEFAULT_.EMDatasetSpa_instrument, domain=EMDatasetSpa, range=Union[dict, Instrument])
 
 slots.EMDatasetSpa_sample = Slot(uri=OSCEM.sample, name="EMDatasetSpa_sample", curie=OSCEM.curie('sample'),
-                   model_uri=DEFAULT_.EMDatasetSpa_sample, domain=EMDatasetSpa, range=Optional[Union[dict, Sample]])
+                   model_uri=DEFAULT_.EMDatasetSpa_sample, domain=EMDatasetSpa, range=Union[dict, Sample])
 
 slots.EMDatasetSpa_organizational = Slot(uri=OSCEM.organizational, name="EMDatasetSpa_organizational", curie=OSCEM.curie('organizational'),
-                   model_uri=DEFAULT_.EMDatasetSpa_organizational, domain=EMDatasetSpa, range=Optional[Union[dict, Organizational]])
+                   model_uri=DEFAULT_.EMDatasetSpa_organizational, domain=EMDatasetSpa, range=Union[dict, Organizational])
 
 slots.Acquisition_detector = Slot(uri=ACQUISITION.detector, name="Acquisition_detector", curie=ACQUISITION.curie('detector'),
                    model_uri=DEFAULT_.Acquisition_detector, domain=Acquisition, range=str)
@@ -1630,8 +1641,8 @@ slots.Sample_specimen = Slot(uri=SAMPLE['/specimen'], name="Sample_specimen", cu
 slots.Sample_grid = Slot(uri=SAMPLE['/grid'], name="Sample_grid", curie=SAMPLE.curie('/grid'),
                    model_uri=DEFAULT_.Sample_grid, domain=Sample, range=Optional[Union[dict, "Grid"]])
 
-slots.OverallMolecule_molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="OverallMolecule_molecular_type", curie=SAMPLE.curie('/molecular_type'),
-                   model_uri=DEFAULT_.OverallMolecule_molecular_type, domain=OverallMolecule, range=str)
+slots.OverallMolecule_molecular_overall_type = Slot(uri=SAMPLE['/molecular_overall_type'], name="OverallMolecule_molecular_overall_type", curie=SAMPLE.curie('/molecular_overall_type'),
+                   model_uri=DEFAULT_.OverallMolecule_molecular_overall_type, domain=OverallMolecule, range=Union[str, "MoleculeClassEnum"])
 
 slots.OverallMolecule_name_sample = Slot(uri=SAMPLE['/name_sample'], name="OverallMolecule_name_sample", curie=SAMPLE.curie('/name_sample'),
                    model_uri=DEFAULT_.OverallMolecule_name_sample, domain=OverallMolecule, range=str)
@@ -1652,7 +1663,7 @@ slots.Molecule_molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="Molecu
                    model_uri=DEFAULT_.Molecule_molecular_type, domain=Molecule, range=str)
 
 slots.Molecule_molecular_class = Slot(uri=SAMPLE['/molecular_class'], name="Molecule_molecular_class", curie=SAMPLE.curie('/molecular_class'),
-                   model_uri=DEFAULT_.Molecule_molecular_class, domain=Molecule, range=Union[str, "MoleculeClassEnum"])
+                   model_uri=DEFAULT_.Molecule_molecular_class, domain=Molecule, range=str)
 
 slots.Molecule_sequence = Slot(uri=SAMPLE['/sequence'], name="Molecule_sequence", curie=SAMPLE.curie('/sequence'),
                    model_uri=DEFAULT_.Molecule_sequence, domain=Molecule, range=str)
@@ -1739,16 +1750,16 @@ slots.Grid_pretreatment_atmosphere = Slot(uri=SAMPLE['/pretreatment_atmosphere']
                    model_uri=DEFAULT_.Grid_pretreatment_atmosphere, domain=Grid, range=Optional[str])
 
 slots.EMDatasetBase_acquisition = Slot(uri=OSCEM.acquisition, name="EMDatasetBase_acquisition", curie=OSCEM.curie('acquisition'),
-                   model_uri=DEFAULT_.EMDatasetBase_acquisition, domain=EMDatasetBase, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.EMDatasetBase_acquisition, domain=EMDatasetBase, range=Optional[Union[dict, "Any"]])
 
 slots.EMDatasetBase_instrument = Slot(uri=OSCEM.instrument, name="EMDatasetBase_instrument", curie=OSCEM.curie('instrument'),
-                   model_uri=DEFAULT_.EMDatasetBase_instrument, domain=EMDatasetBase, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.EMDatasetBase_instrument, domain=EMDatasetBase, range=Optional[Union[dict, "Any"]])
 
 slots.EMDatasetBase_sample = Slot(uri=OSCEM.sample, name="EMDatasetBase_sample", curie=OSCEM.curie('sample'),
-                   model_uri=DEFAULT_.EMDatasetBase_sample, domain=EMDatasetBase, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.EMDatasetBase_sample, domain=EMDatasetBase, range=Optional[Union[dict, "Any"]])
 
 slots.EMDatasetBase_organizational = Slot(uri=OSCEM.organizational, name="EMDatasetBase_organizational", curie=OSCEM.curie('organizational'),
-                   model_uri=DEFAULT_.EMDatasetBase_organizational, domain=EMDatasetBase, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.EMDatasetBase_organizational, domain=EMDatasetBase, range=Optional[Union[dict, "Any"]])
 
 slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", curie=QUDT.curie('hasUnit'),
                    model_uri=DEFAULT_.QuantityValue_unit, domain=QuantityValue, range=str)

@@ -6,7 +6,7 @@ Description of the overall molecule
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/OverallMolecule](https://w3id.org/osc-em/oscem-schemas-spa/OverallMolecule)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantityValue],[QuantityValue]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_type:string;name_sample:string;source:string;assembly:AssemblyEnum],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantityValue],[QuantityValue]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_type:string;name_sample:string;source:string;assembly:AssemblyEnum],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantityValue],[QuantityValue]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum;name_sample:string;source:string;assembly:AssemblyEnum],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantityValue],[QuantityValue]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum;name_sample:string;source:string;assembly:AssemblyEnum],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])
 
 ## Referenced by Class
 
@@ -18,9 +18,9 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/OverallMolecule](https://w3id.or
 
 ### Own
 
- * [OverallMolecule➞molecular_type](OverallMolecule_molecular_type.md)  <sub>1..1</sub>
+ * [OverallMolecule➞molecular_overall_type](OverallMolecule_molecular_overall_type.md)  <sub>1..1</sub>
      * Description: Description of the overall molecular type, i.e., a complex
-     * Range: [String](types/String.md)
+     * Range: [MoleculeClassEnum](MoleculeClassEnum.md)
  * [OverallMolecule➞name_sample](OverallMolecule_name_sample.md)  <sub>1..1</sub>
      * Description: Name of the full sample
      * Range: [String](types/String.md)

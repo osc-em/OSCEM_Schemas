@@ -6,11 +6,11 @@ Unifying class to describe the full sample.
 URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Sample](https://w3id.org/osc-em/oscem-schemas-tomo/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[Grid]<grid%200..1-++[Sample],[Specimen]<specimen%201..1-++[Sample],[Ligand]<ligands%200..*-++[Sample],[Molecule]<molecule%201..*-++[Sample],[OverallMolecule]<overall_molecule%201..1-++[Sample],[EMDatasetTomo]++-%20sample%200..1>[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[Grid]<grid%200..1-++[Sample],[Specimen]<specimen%201..1-++[Sample],[Ligand]<ligands%200..*-++[Sample],[Molecule]<molecule%201..*-++[Sample],[OverallMolecule]<overall_molecule%201..1-++[Sample],[EMDatasetTomo]++-%20sample%200..1>[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetTomo])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[Grid]<grid%200..1-++[Sample],[Specimen]<specimen%201..1-++[Sample],[Ligand]<ligands%200..*-++[Sample],[Molecule]<molecule%201..*-++[Sample],[OverallMolecule]<overall_molecule%201..1-++[Sample],[EMDatasetTomo]++-%20sample%201..1>[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[Grid]<grid%200..1-++[Sample],[Specimen]<specimen%201..1-++[Sample],[Ligand]<ligands%200..*-++[Sample],[Molecule]<molecule%201..*-++[Sample],[OverallMolecule]<overall_molecule%201..1-++[Sample],[EMDatasetTomo]++-%20sample%201..1>[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetTomo])
 
 ## Referenced by Class
 
- *  **[EMDatasetTomo](EMDatasetTomo.md)** *[EMDatasetTomo➞sample](EMDatasetTomo_sample.md)*  <sub>0..1</sub>  **[Sample](Sample.md)**
+ *  **[EMDatasetTomo](EMDatasetTomo.md)** *[EMDatasetTomo➞sample](EMDatasetTomo_sample.md)*  <sub>1..1</sub>  **[Sample](Sample.md)**
 
 ## Attributes
 

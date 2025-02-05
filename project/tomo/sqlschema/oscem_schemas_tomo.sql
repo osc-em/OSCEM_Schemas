@@ -96,7 +96,7 @@
 --     * Slot: grid_id Description: Description of the grid used
 -- # Class: "OverallMolecule" Description: "Description of the overall molecule"
 --     * Slot: id Description: 
---     * Slot: molecular_type Description: Description of the overall molecular type, i.e., a complex
+--     * Slot: molecular_overall_type Description: Description of the overall molecular type, i.e., a complex
 --     * Slot: name_sample Description: Name of the full sample
 --     * Slot: source Description: Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
 --     * Slot: assembly Description: What type of higher order structure your sample forms - if any.
@@ -272,7 +272,7 @@ CREATE TABLE "Molecule" (
 	id INTEGER NOT NULL, 
 	name_mol TEXT NOT NULL, 
 	molecular_type TEXT NOT NULL, 
-	molecular_class VARCHAR(31) NOT NULL, 
+	molecular_class TEXT NOT NULL, 
 	sequence TEXT NOT NULL, 
 	natural_source TEXT NOT NULL, 
 	taxonomy_id_source TEXT NOT NULL, 
@@ -386,7 +386,7 @@ CREATE TABLE "Instrument" (
 );
 CREATE TABLE "OverallMolecule" (
 	id INTEGER NOT NULL, 
-	molecular_type TEXT NOT NULL, 
+	molecular_overall_type VARCHAR(31) NOT NULL, 
 	name_sample TEXT NOT NULL, 
 	source TEXT NOT NULL, 
 	assembly VARCHAR(13) NOT NULL, 
@@ -453,10 +453,10 @@ CREATE TABLE "Grant" (
 );
 CREATE TABLE "EMDatasetBase" (
 	id INTEGER NOT NULL, 
-	acquisition_id INTEGER NOT NULL, 
-	instrument_id INTEGER NOT NULL, 
-	sample_id INTEGER NOT NULL, 
-	organizational_id INTEGER NOT NULL, 
+	acquisition_id INTEGER, 
+	instrument_id INTEGER, 
+	sample_id INTEGER, 
+	organizational_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(acquisition_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(instrument_id) REFERENCES "Any" (id), 

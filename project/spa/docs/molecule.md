@@ -6,7 +6,7 @@ More detailed information about individual molecules.
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/Molecule](https://w3id.org/osc-em/oscem-schemas-spa/Molecule)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20molecule%201..*>[Molecule&#124;name_mol:string;molecular_type:string;molecular_class:MoleculeClassEnum;sequence:string;natural_source:string;taxonomy_id_source:string;expression_system:string;taxonomy_id_expression:string;gene_name:string%20%3F],[Sample]++-%20molecule(i)%200..*>[Molecule])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20molecule%201..*>[Molecule&#124;name_mol:string;molecular_type:string;molecular_class:MoleculeClassEnum;sequence:string;natural_source:string;taxonomy_id_source:string;expression_system:string;taxonomy_id_expression:string;gene_name:string%20%3F],[Sample]++-%20molecule(i)%200..*>[Molecule])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20molecule%201..*>[Molecule&#124;name_mol:string;molecular_type:string;molecular_class:string;sequence:string;natural_source:string;taxonomy_id_source:string;expression_system:string;taxonomy_id_expression:string;gene_name:string%20%3F],[Sample]++-%20molecule(i)%200..*>[Molecule])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20molecule%201..*>[Molecule&#124;name_mol:string;molecular_type:string;molecular_class:string;sequence:string;natural_source:string;taxonomy_id_source:string;expression_system:string;taxonomy_id_expression:string;gene_name:string%20%3F],[Sample]++-%20molecule(i)%200..*>[Molecule])
 
 ## Referenced by Class
 
@@ -26,7 +26,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Molecule](https://w3id.org/osc-e
      * Range: [String](types/String.md)
  * [Molecule➞molecular_class](Molecule_molecular_class.md)  <sub>1..1</sub>
      * Description: Class of the molecule
-     * Range: [MoleculeClassEnum](MoleculeClassEnum.md)
+     * Range: [String](types/String.md)
  * [Molecule➞sequence](Molecule_sequence.md)  <sub>1..1</sub>
      * Description: Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here
      * Range: [String](types/String.md)

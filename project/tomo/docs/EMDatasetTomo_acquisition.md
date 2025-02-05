@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/EMDatasetTomo_acquisition](http
 
 ## Domain and Range
 
-[EMDatasetTomo](EMDatasetTomo.md) &#8594;  <sub>0..1</sub> [AcquisitionTomo](AcquisitionTomo.md)
+[EMDatasetTomo](EMDatasetTomo.md) &#8594;  <sub>1..1</sub> [AcquisitionTomo](AcquisitionTomo.md)
 
 ## Parents
 

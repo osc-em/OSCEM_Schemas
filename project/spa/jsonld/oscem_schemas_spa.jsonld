@@ -1281,7 +1281,6 @@
       "slot_uri": "https://w3id.org/osc-em/sample/molecular_type",
       "owner": "Molecule",
       "domain_of": [
-        "OverallMolecule",
         "Molecule"
       ],
       "range": "string",
@@ -1328,6 +1327,19 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "molecular_overall_type",
+      "definition_uri": "https://w3id.org/osc-em/sample/molecular_overall_type",
+      "description": "Description of the overall molecular type, i.e., a complex",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sample/molecular_overall_type",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "range": "MoleculeClassEnum",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "name_mol",
       "definition_uri": "https://w3id.org/osc-em/sample/name_mol",
       "description": "Name of an individual molecule (often protein) in the sample",
@@ -1350,7 +1362,7 @@
       "domain_of": [
         "Molecule"
       ],
-      "range": "MoleculeClassEnum",
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -2057,6 +2069,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "acquisition",
       "range": "Acquisition",
+      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2076,6 +2089,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "instrument",
       "range": "Instrument",
+      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2095,6 +2109,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "sample",
       "range": "Sample",
+      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2114,6 +2129,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "organizational",
       "range": "Organizational",
+      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2747,21 +2763,21 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "OverallMolecule_molecular_type",
-      "definition_uri": "https://w3id.org/osc-em/sample/molecular_type",
+      "name": "OverallMolecule_molecular_overall_type",
+      "definition_uri": "https://w3id.org/osc-em/sample/molecular_overall_type",
       "description": "Description of the overall molecular type, i.e., a complex",
       "from_schema": "https://w3id.org/osc-em/sample",
-      "is_a": "molecular_type",
+      "is_a": "molecular_overall_type",
       "domain": "OverallMolecule",
-      "slot_uri": "https://w3id.org/osc-em/sample/molecular_type",
-      "alias": "molecular_type",
+      "slot_uri": "https://w3id.org/osc-em/sample/molecular_overall_type",
+      "alias": "molecular_overall_type",
       "owner": "OverallMolecule",
       "domain_of": [
         "OverallMolecule"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "molecular_type",
-      "range": "string",
+      "usage_slot_name": "molecular_overall_type",
+      "range": "MoleculeClassEnum",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -2894,7 +2910,7 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "molecular_class",
-      "range": "MoleculeClassEnum",
+      "range": "string",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -3434,7 +3450,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "acquisition",
       "range": "Any",
-      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -3453,7 +3468,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "instrument",
       "range": "Any",
-      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -3472,7 +3486,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "sample",
       "range": "Any",
-      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -3491,7 +3504,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "organizational",
       "range": "Any",
-      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -3792,7 +3804,7 @@
       "description": "Description of the overall molecule",
       "from_schema": "https://w3id.org/osc-em/sample",
       "slots": [
-        "OverallMolecule_molecular_type",
+        "OverallMolecule_molecular_overall_type",
         "OverallMolecule_name_sample",
         "OverallMolecule_source",
         "OverallMolecule_molecular_weight",
@@ -3982,9 +3994,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "oscem_schemas_spa.yaml",
-  "source_file_date": "2025-01-20T10:40:41",
-  "source_file_size": 1025,
-  "generation_date": "2025-01-30T15:52:54",
+  "source_file_date": "2025-02-05T12:14:41",
+  "source_file_size": 1117,
+  "generation_date": "2025-02-05T12:18:58",
   "@type": "SchemaDefinition",
   "@context": [
     "project/spa/jsonld/oscem_schemas_spa.context.jsonld",

@@ -147,9 +147,10 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [model](model.md) - Make and model of a specilized device
  * [molecular_class](molecular_class.md) - Class of the molecule
      * [Molecule➞molecular_class](Molecule_molecular_class.md)
+ * [molecular_overall_type](molecular_overall_type.md) - Description of the overall molecular type, i.e., a complex
+     * [OverallMolecule➞molecular_overall_type](OverallMolecule_molecular_overall_type.md)
  * [molecular_type](molecular_type.md) - Description of the overall molecular type, i.e., a complex
      * [Molecule➞molecular_type](Molecule_molecular_type.md)
-     * [OverallMolecule➞molecular_type](OverallMolecule_molecular_type.md)
  * [molecular_weight](molecular_weight.md) - Molecular weight in Da
      * [OverallMolecule➞molecular_weight](OverallMolecule_molecular_weight.md)
  * [molecule](molecule.md) - List of molecule associated with the sample
