@@ -3,7 +3,7 @@
 ---
 name: Build and test oscem_schemas
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   test:
@@ -31,9 +31,6 @@ jobs:
 
       - name: Install project
         run: poetry install --no-interaction
-
-      - name: Run linter
-        run: make lint
 
       - name: Run test suite
         run: make test

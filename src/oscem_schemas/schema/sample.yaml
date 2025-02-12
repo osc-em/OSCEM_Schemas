@@ -7,23 +7,29 @@ prefixes:
   linkml: https://w3id.org/linkml/
   sample: https://w3id.org/osc-em/sample
 
-default_prefix: sample
+#default_prefix: sample
 
 imports:
   - linkml:types
+  - ./custom_types
+
 
 enums:
   MoleculeClassEnum:
     description: Allowed molecule class values - compatible with the EMDB.
     permissible_values:
-      Antibiotic:
-        description: Antibiotic
-      Carbohydrate:
-        description: Carbohydrate
-      Chimera:
-        description: Chimera
-      None of these:
-        description: None of these
+      CELL:
+        description: Cell
+      COMPLEX:
+        description: complex of different parts e.g. protein complex 
+      ORGANELLE OR CELLULAR COMPONENT:
+        description: Some form of cellular component
+      RIBOSOME:
+        description: A ribosome
+      TISSUE:
+        description: Tissue of any type.
+      VIRUS:
+        description: A virus particle - or part thereof.
   AssemblyEnum:
     description: Allowed molecular assembly values - compatible with the EMDB.
     permissible_values:
@@ -62,13 +68,13 @@ classes:
   OverallMolecule:
     description: Description of the overall molecule
     slots:
-      - molecular_type
+      - molecular_overall_type
       - name_sample
       - source
       - molecular_weight
       - assembly
     slot_usage:
-      molecular_type:
+      molecular_overall_type:
         required: true
       name_sample:
         # alias: Name
@@ -224,13 +230,16 @@ slots:
   molecular_weight:
     description: Molecular weight in Da
     range: QuantityValue
+  molecular_overall_type:
+    description: Description of the overall molecular type, i.e., a complex
+    range: MoleculeClassEnum
 
   name_mol:
     description: Name of an individual molecule (often protein) in the sample
     range: string
   molecular_class:
     description: Class of the molecule
-    range: MoleculeClassEnum
+    range: string
   sequence:
     description: Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here
     range: string
@@ -281,7 +290,6 @@ slots:
   temperature:
     description: Environmental temperature just before vitrification, in K
     range: QuantityValue
-    minimum_value: 0.0
   staining:
     description: Whether the sample was stained
     range: boolean

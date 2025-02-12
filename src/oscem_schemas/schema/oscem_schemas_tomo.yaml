@@ -11,9 +11,9 @@ see_also:
 prefixes:
   linkml: https://w3id.org/linkml/
 
-default_prefix: Subtomogram_averaging
+#default_prefix: oscem_tomo
 
-default_range: string
+#default_range: string
 
 imports:
   - linkml:types
@@ -22,47 +22,30 @@ imports:
   - ./sample
   - ./tomography
   - ./organizational
+  - ./emdataset
 
 classes:
-  EMDataset:
+  EMDatasetTomo:
+    is_a: EMDatasetBase
     tree_root: true
-    description: |-
-      OSC-EM Metadata for a dataset
-    slots:
-      - acquisition
-      - instrument
-      - sample
-      - organizational
+    description: cryo electron tomography dataset, with focus on a single protein (potentially subtomogram averaging)
     slot_usage:
       acquisition:
+        range: AcquisitionTomo
+        description: Describe the data acquisition parameters
         required: true
       instrument:
+        description: Describe the instrument used to acquire the data
+        range: Instrument
         required: true
       sample:
+        description: Sample information
+        range: Sample
         required: true
       organizational:
-        required: true
-  AcquisitionTomo:
-    is_a: Acquisition
-    slots:
-      - tilt_axis_angle
-      - tilt_angle
-    slot_usage:
-      tilt_axis_angle:
-        required: true
-      tilt_angle:
+        description: Information on authors and grants
+        range: Organizational
         required: true
 
-slots:
-  acquisition:
-    range: AcquisitionTomo
-    description: Describe the data acquisition parameters
-  instrument:
-    description: Describe the instrument used to acquire the data
-    range: Instrument
-  sample:
-    description: Sample information
-    range: Sample
-  organizational:
-    description: Information on authors and grants
-    range: Organizational
+
+

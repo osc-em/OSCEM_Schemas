@@ -1,4 +1,3 @@
-# Examples of use of oscem_schemas
 
 This folder contains example data conforming to oscem_schemas
 

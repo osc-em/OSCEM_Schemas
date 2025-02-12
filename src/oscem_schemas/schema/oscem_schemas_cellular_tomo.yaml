@@ -11,9 +11,9 @@ see_also:
 prefixes:
   linkml: https://w3id.org/linkml/
 
-default_prefix: Cellular_tomography
+#default_prefix: oscem_cell
 
-default_range: string
+#default_range: string
 
 imports:
   - linkml:types
@@ -22,47 +22,28 @@ imports:
   - ./sample_cellular_tomo_lab
   - ./tomography
   - ./organizational
+  - ./emdataset
 
 classes:
-  EMDataset:
+  EMDatasetCell:
+    is_a: EMDatasetBase
     tree_root: true
-    description: |-
-      OSC-EM Metadata for a dataset
-    slots:
-      - acquisition
-      - instrument
-      - sample
-      - organizational
+    description: cryo electron tomography dataset of a cellular sample, lab grown
     slot_usage:
       acquisition:
+        range: AcquisitionTomo
+        description: Describe the data acquisition parameters
         required: true
       instrument:
+        description: Describe the instrument used to acquire the data
+        range: Instrument
         required: true
       sample:
+        description: Sample information
+        range: SampleCell
         required: true
       organizational:
-        required: true
-  AcquisitionTomo:
-    is_a: Acquisition
-    slots:
-      - tilt_axis_angle
-      - tilt_angle
-    slot_usage:
-      tilt_axis_angle:
-        required: true
-      tilt_angle:
+        description: Information on authors and grants
+        range: Organizational
         required: true
 
-slots:
-  acquisition:
-    range: AcquisitionTomo
-    description: Describe the data acquisition parameters
-  instrument:
-    description: Describe the instrument used to acquire the data
-    range: Instrument
-  sample:
-    description: Sample information
-    range: Sample_cellular_lab
-  organizational:
-    description: Information on authors and grants
-    range: Organizational

@@ -1,16 +1,17 @@
-id: https://w3id.org/osc-em/sample-wild
-name: sample-wild
+id: https://w3id.org/osc-em/sample-env
+name: sample-env
 description: >
   LinkML schema for electron microscopy sample and author-related metadata,
   broadly following the EMDB standard with some additions.
 prefixes:
   linkml: https://w3id.org/linkml/
-  wild_sample: https://w3id.org/osc-em/wild_sample
+  sample_env: https://w3id.org/osc-em/environmental_sample
 
-default_prefix: environmental_sample
+default_prefix: sample_env
 
 imports:
   - linkml:types
+  - ./custom_types
 
 enums:
   FreezingMethodEnum:
@@ -22,32 +23,38 @@ enums:
         description: Usually used for larger organic complexes, such as organoids or even tissue samples.
 
 classes:
-  Sample:
+  SampleEnv:
     description: Unifying class to describe the full sample.
     slots:
-    - specimen
+    - specimen_env
     - freezing
     - thinning
     - tomogram_features
+    slot_usage:
+      specimen_env:
+        required: true
 
-  Specimen:
+  SpecimenEnv:
     description: base information on the acquisition and treatment of the sample itself.
     slots:
     - organism
     - tissue
-    - source
+    - source_env
     - location
     - collection_date
     - handling
+    slot_usage:
+      organism:
+        required: true
 
   Freezing:
     description: how the sample was frozen.
     slots:
-    - cryogen
+    - cryogen_sample_env
     - method
     - blotting
-    - humidity
-    - temperature
+    - humidity_env
+    - temperature_env
     - atmosphere
     - details
 
@@ -76,7 +83,7 @@ slots:
   tissue:
     description: if the sample is a tissue sample please indicate what type of tissue.
     range: string
-  source:
+  source_env:
     description: where is this sample from? i.e. Hospital
     range: string
   location:
@@ -88,9 +95,7 @@ slots:
   handling:
     description: What was done to the sample, please give an overview of relevant treatments.
     range: string
-  sample:
-    range: Sample
-  cryogen:
+  cryogen_sample_env:
     description: the cryogen used to freeze the sample, i.e. ethane
     range: string
   method:
@@ -99,10 +104,10 @@ slots:
   blotting:
     description: whether blotting was performed.
     range: boolean
-  humidity:
+  humidity_env:
     description: humidity of the atmosphere right before/ during freezing; in %.
     range: QuantityValue
-  temperature:
+  temperature_env:
     description: temperature of the sample right before freezing; in K.
     range: QuantityValue
   atmosphere:
@@ -145,5 +150,5 @@ slots:
   details_tomo:
     description: If you have any further comments on your tomograms please leave them here
     range: string
-  specimen:
-    range: Specimen
+  specimen_env:
+    range: SpecimenEnv
