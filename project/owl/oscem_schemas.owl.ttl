@@ -17,26 +17,41 @@
         linkml:ClassDefinition ;
     rdfs:label "EMDataset" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:processing> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/instrumentInstrument> ;
             owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:instrument> ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:authors> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:processing> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/processingProcessing> ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:processing> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:acquisition> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:acquisition> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/acquisitionAcquisition> ;
             owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:acquisition> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/sampleSample> ;
             owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:sample> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:grants> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:sample> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:sample> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/acquisitionAcquisition> ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:acquisition> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:authors> ],
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:instrument> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:instrument> ],
@@ -44,17 +59,11 @@
             owl:allValuesFrom <https://w3id.org/osc-em/organizational/Author> ;
             owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:authors> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:grants> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:sample> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/organizational/Grant> ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:grants> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:instrument> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:acquisition> ] ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:grants> ] ;
     skos:definition "OSC-EM Metadata for a dataset" ;
     skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
 
@@ -79,14 +88,38 @@
     skos:definition "The min, max and increment of the tilt angle in a tomography session. Unit is degree." ;
     skos:inScheme <https://w3id.org/osc-em/tomography> .
 
+<https://w3id.org/osc-em/typesDescriptor> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesAny> ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptor_thing> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptor_name> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptor_thing> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptor_thing> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptor_name> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptor_name> ] ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
+    skos:inScheme <https://w3id.org/osc-em/types> .
+
 <https://w3id.org/osc-em/typesSeries> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Series" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/typesincrement> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typesincrement> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
@@ -99,249 +132,249 @@
         linkml:ClassDefinition ;
     rdfs:label "Acquisition" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_magnification> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionexposure_time> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtilt> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_defocus> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondose_per_movie> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_magnification> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_magnification> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesRange> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiontemperature_range> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionimages_generated> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionexposure_time> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionimage_size> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionholder> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector_mode> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/acquisitionSpecialistOptics> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesImageSize> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionimage_size> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiontemperature_range> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtilt> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionimageshift> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbinning_camera> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionpixel_size> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/typesBoundingBox2D> ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionbeamshift> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionbeamshift> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioncryogen> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionholder> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioncryogen> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesRange> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_defocus> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiontemperature_range> ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondose_per_movie> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector_mode> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_defocus> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector_mode> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionholder> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesBoundingBox2D> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtilt> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiongrids_imaged> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/acquisitionEnergyFilter> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionenergy_filter> ],
+            owl:onProperty <https://w3id.org/osc-em/acquisitionimage_size> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionenergy_filter> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondate_time> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondose_per_movie> ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamshift> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionpixel_size> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesBoundingBox2D> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionimageshift> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiongrids_imaged> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionpixel_size> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionimage_size> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiongrids_imaged> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbinning_camera> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioncryogen> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionimages_generated> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitiondate_time> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionimages_generated> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesRange> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionbinning_camera> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionimageshift> ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:intersectionOf ( [ a rdfs:Datatype ;
                                 owl:unionOf ( linkml:Datetime linkml:Date ) ] <https://w3id.org/osc-em/typesAny> ) ] ;
             owl:onProperty <https://w3id.org/osc-em/acquisitiondate_time> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionholder> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_magnification> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiontemperature_range> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/acquisitionSpecialistOptics> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/acquisitionEnergyFilter> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionenergy_filter> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionenergy_filter> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesImageSize> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionimage_size> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioncryogen> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioncryogen> ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionexposure_time> ] ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiongrids_imaged> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionimages_generated> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbinning_camera> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionimageshift> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondose_per_movie> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionimages_generated> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionpixel_size> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_magnification> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_defocus> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioncryogen> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_magnification> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector_mode> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondose_per_movie> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamshift> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesBoundingBox2D> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionimageshift> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiongrids_imaged> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondose_per_movie> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionholder> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionimageshift> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionpixel_size> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionimage_size> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector_mode> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiontemperature_range> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionexposure_time> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionexposure_time> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesRange> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiontemperature_range> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_defocus> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionexposure_time> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbinning_camera> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbinning_camera> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionpixel_size> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtilt> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesRange> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondate_time> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector_mode> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiongrids_imaged> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesBoundingBox2D> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtilt> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondate_time> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitiondetector> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionbeamtilt> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesRange> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionnominal_defocus> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionholder> ] ;
     skos:definition "A set of parameteres describing the data acquisition" ;
     skos:inScheme <https://w3id.org/osc-em/acquisition> .
 
@@ -349,22 +382,22 @@
         linkml:ClassDefinition ;
     rdfs:label "ChromaticAberrationCorrector" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionused> ] ;
     skos:definition "Special device used to correct instrument inherent chromatic aberration." ;
     skos:inScheme <https://w3id.org/osc-em/acquisition> .
@@ -373,31 +406,31 @@
         linkml:ClassDefinition ;
     rdfs:label "EnergyFilter" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty <https://w3id.org/osc-em/typeswidth> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typeswidth> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/typeswidth> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionmodel> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionmodel> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/typeswidth> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionmodel> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Boolean ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionmodel> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/typeswidth> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionused> ] ;
     skos:definition "A device used to filter for electrons with specific energy." ;
     skos:inScheme <https://w3id.org/osc-em/acquisition> .
@@ -406,20 +439,20 @@
         linkml:ClassDefinition ;
     rdfs:label "Phaseplate" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Boolean ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionused> ] ;
@@ -430,32 +463,32 @@
         linkml:ClassDefinition ;
     rdfs:label "SpecialistOptics" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionphaseplate> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionphaseplate> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector> ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionphaseplate> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector> ],
+            owl:onProperty <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionphaseplate> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/acquisitionPhaseplate> ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionphaseplate> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ] ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector> ] ;
     skos:definition "Optional optics used to correct for instrument limitations." ;
     skos:inScheme <https://w3id.org/osc-em/acquisition> .
 
@@ -463,11 +496,14 @@
         linkml:ClassDefinition ;
     rdfs:label "SphericalAberrationCorrector" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
@@ -476,157 +512,577 @@
             owl:onProperty <https://w3id.org/osc-em/acquisitionused> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/acquisitioninstrument_type> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/acquisitionused> ] ;
     skos:definition "Special device used to correct instrument inherent spherical aberration." ;
     skos:inScheme <https://w3id.org/osc-em/acquisition> .
+
+<https://w3id.org/osc-em/classes2DClasses2D> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Classes2D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dnumber_classes_2D> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dresolution_classes_2D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesDescriptors> ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dnumber_classes_2D> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dnumber_classes_2D> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dimages_classes_2D> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dimages_classes_2D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dimages_classes_2D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dparticles_per_2Dclass> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dparticles_per_2Dclass> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dresolution_classes_2D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/classes2Dresolution_classes_2D> ] ;
+    skos:definition "Class representing classes 2D metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/classes2D> .
+
+<https://w3id.org/osc-em/classes2Dparticles_per_2Dclass> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "particles_per_2Dclass" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of particles per 2D class" ;
+    skos:inScheme <https://w3id.org/osc-em/classes2D> .
+
+<https://w3id.org/osc-em/classes3DClasses3D> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Classes3D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dvolume> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dimages_classes_3D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dnumber_classes_3D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dresolution_classes_3D> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dresolution_classes_3D> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dimages_classes_3D> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dnumber_classes_3D> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dimages_classes_3D> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dnumber_classes_3D> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dresolution_classes_3D> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dparticles_per_3Dclass> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/classes3DVolume> ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dvolume> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesDescriptors> ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dparticles_per_3Dclass> ] ;
+    skos:definition "Class representing classes 3D metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3DVolume> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Volume" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Disosurface_images> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/classes3DOrthogonalSlices> ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Disosurface_images> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/classes3DIsosurfaceImages> ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Disosurface_images> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices> ] ;
+    skos:definition "Class describing volume(s) obtained" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dparticles_per_3Dclass> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "particles_per_3Dclass" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of particles per 3D class" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dvolume> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "volume" ;
+    rdfs:range <https://w3id.org/osc-em/classes3DVolume> ;
+    skos:definition "Describes volume(s) obtained" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/coordinatesCoordinates> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Coordinates" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesparticles_histogram> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesnum_source_micrographs> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesmicrograph_examples> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesnumber_particles> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesnum_source_micrographs> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesparticles_per_micrograph> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesnumber_particles> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesDescriptors> ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesparticles_histogram> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesparticles_per_micrograph> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesnumber_particles> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesmicrograph_examples> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesparticles_histogram> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesmicrograph_examples> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesparticles_per_micrograph> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/coordinatesnum_source_micrographs> ] ;
+    skos:definition "Class representing coordinates metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/coordinates> .
+
+<https://w3id.org/osc-em/ctfsAstigmatism> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Astigmatism" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsastigmatism_histogram> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsastigmatism_histogram> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsastigmatism_histogram> ] ;
+    skos:definition "Astigmatism-related metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsCTFs> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "CTFs" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsdefocus> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/ctfsDefocus> ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsdefocus> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsastigmatism> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsamplitude_contrast> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsdefocus> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsresolution> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsamplitude_contrast> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsastigmatism> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsresolution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/ctfsAstigmatism> ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsastigmatism> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/ctfsResolution> ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsresolution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsamplitude_contrast> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesDescriptors> ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ] ;
+    skos:definition "Class representing Contrast Transfer Function (CTF) metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsDefocus> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Defocus" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_max_defocus> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsdefocus_histogram> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_avg_defocus> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_min_defocus> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsdefocus_histogram> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsdefocus_histogram> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsdefocus_micrograph_examples> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsdefocus_micrograph_examples> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_avg_defocus> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_min_defocus> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_min_defocus> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_max_defocus> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsdefocus_micrograph_examples> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_avg_defocus> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_max_defocus> ] ;
+    skos:definition "Defocus-related metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsResolution> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Resolution" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_avg_resolution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_min_resolution> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_avg_resolution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsresolution_histogram> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_avg_resolution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_max_resolution> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_min_resolution> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsresolution_histogram> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_min_resolution> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_max_resolution> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsoutput_max_resolution> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/ctfsresolution_histogram> ] ;
+    skos:definition "Resolution-related metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
 
 <https://w3id.org/osc-em/instrumentInstrument> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Instrument" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentcs> ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/instrumentc2_aperture> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentacceleration_voltage> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentc2_aperture> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentimaging> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentcs> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentillumination> ],
+            owl:onProperty <https://w3id.org/osc-em/instrumentelectron_source> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentillumination> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentillumination> ],
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentc2_aperture> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/instrumentc2_aperture> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentacceleration_voltage> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/instrumentimaging> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentmicroscope> ],
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentillumination> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentmicroscope> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentacceleration_voltage> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentimaging> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentmicroscope> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/instrumentelectron_source> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentimaging> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentacceleration_voltage> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentcs> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentmicroscope> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentacceleration_voltage> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentmicroscope> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentelectron_source> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentillumination> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentcs> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentillumination> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/instrumentcs> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentelectron_source> ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/instrumentelectron_source> ] ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentmicroscope> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentacceleration_voltage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/instrumentimaging> ] ;
     skos:definition "Instrument values, mostly constant across a data collection." ;
     skos:inScheme <https://w3id.org/osc-em/instrument> .
+
+<https://w3id.org/osc-em/micrographsMicrographs> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Micrographs" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty <https://w3id.org/osc-em/micrographsnumber_micrographs> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/micrographsnumber_micrographs> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/micrographsnumber_micrographs> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesDescriptors> ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ] ;
+    skos:definition "Class representing micrographs metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/micrographs> .
+
+<https://w3id.org/osc-em/moviesMovies> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Movies" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/moviesdark_image> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/moviesdose_per_image> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesDescriptors> ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/moviesdark_image> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/moviesinitial_dose> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/moviesinitial_dose> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/moviesgain_image> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/moviesdose_per_image> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/moviesdark_image> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/moviesgain_image> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/moviesinitial_dose> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/moviesdose_per_image> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/moviesgain_image> ] ;
+    skos:definition "Class representing movies metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/movies> .
 
 <https://w3id.org/osc-em/organizational/Author> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Author" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:name> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/role> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:work_phone> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom owl:Thing ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:name> ],
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:work_phone> ],
         [ a owl:Restriction ;
             owl:allValuesFrom owl:Thing ;
             owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:email> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/oscem-schemas/:OrganizationTypeEnum> ;
             owl:onProperty <https://w3id.org/osc-em/organizational/type_org> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:email> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:work_phone> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:email> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/organizational/orcid> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/name_org> ],
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:work_phone> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/orcid> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/organizational/role> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/orcid> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:name> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/name_org> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/type_org> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:email> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/orcid> ],
+            owl:onProperty <https://w3id.org/osc-em/organizational/name_org> ],
         [ a owl:Restriction ;
             owl:allValuesFrom owl:Thing ;
-            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:work_phone> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:name> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/name_org> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/type_org> ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/role> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/orcid> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/name_org> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/type_org> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/type_org> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:email> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/oscem-schemas/:name> ],
         <https://w3id.org/osc-em/organizational/Person> ;
     skos:definition "Details on the person performing the experiment." ;
     skos:inScheme <https://w3id.org/osc-em/organizational> .
@@ -635,68 +1091,68 @@
         linkml:ClassDefinition ;
     rdfs:label "Grant" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/project_id> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/project_id> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/start_date> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/budget> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/end_date> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/project_id> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/end_date> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/start_date> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/funder> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/funder> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/funder> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/start_date> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/end_date> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
             owl:onProperty <https://w3id.org/osc-em/organizational/budget> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/start_date> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/project_id> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/start_date> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/funder> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/project_id> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/end_date> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/country> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/funder> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/end_date> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/start_date> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/budget> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/project_id> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/end_date> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/budget> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/name> ] ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/funder> ] ;
     skos:definition "Grant" ;
     skos:exactMatch <http://schema.org/Grant> ;
     skos:inScheme <https://w3id.org/osc-em/organizational> .
@@ -705,29 +1161,23 @@
         linkml:ClassDefinition ;
     rdfs:label "Person" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/work_status> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/work_status> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/first_name> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/work_status> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/first_name> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/work_phone> ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/first_name> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/first_name> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/email> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/work_phone> ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -736,21 +1186,27 @@
             owl:onProperty <https://w3id.org/osc-em/organizational/email> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/email> ],
+            owl:onProperty <https://w3id.org/osc-em/organizational/work_status> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/work_status> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/work_phone> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/first_name> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/work_status> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/organizational/name> ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/email> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/organizational/work_phone> ] ;
     skos:definition "personal information" ;
     skos:exactMatch <http://schema.org/Person> ;
@@ -825,66 +1281,115 @@
     skos:definition "List of grants associated with the project" ;
     skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
 
+<https://w3id.org/osc-em/processingProcessing> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Processing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/processingclasses2D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/micrographsMicrographs> ;
+            owl:onProperty <https://w3id.org/osc-em/processingmicrographs> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/classes2DClasses2D> ;
+            owl:onProperty <https://w3id.org/osc-em/processingclasses2D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/moviesMovies> ;
+            owl:onProperty <https://w3id.org/osc-em/processingmovies> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/processingmicrographs> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/processingmovies> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/processingclasses3D> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/processingcoordinates> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/processingmicrographs> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/ctfsCTFs> ;
+            owl:onProperty <https://w3id.org/osc-em/processingctfs> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/classes3DClasses3D> ;
+            owl:onProperty <https://w3id.org/osc-em/processingclasses3D> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/processingctfs> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/processingclasses3D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/coordinatesCoordinates> ;
+            owl:onProperty <https://w3id.org/osc-em/processingcoordinates> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/processingctfs> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/processingvolumes> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/processingclasses2D> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/volumeVolumes> ;
+            owl:onProperty <https://w3id.org/osc-em/processingvolumes> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/processingmovies> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/processingcoordinates> ] ;
+    skos:definition "Set of parameters describing the data processing" ;
+    skos:inScheme <https://w3id.org/osc-em/processing> .
+
+<https://w3id.org/osc-em/processingvolumes> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "volumes" ;
+    rdfs:range <https://w3id.org/osc-em/volumeVolumes> ;
+    skos:definition "Volume metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/processing> .
+
 <https://w3id.org/osc-em/sampleGrid> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Grid" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_time> ],
+            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_pressure> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_time> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplefilm_material> ],
+            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_type> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplefilm_material> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplematerial> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplemanufacturer> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplefilm_thickness> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/samplemesh> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_pressure> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/samplefilm_thickness> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_time> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplepretreatment_atmosphere> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemesh> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemanufacturer> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_type> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_type> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplematerial> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
             owl:onProperty <https://w3id.org/osc-em/samplepretreatment_pressure> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplematerial> ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/samplefilm_topology> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_pressure> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_atmosphere> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplefilm_topology> ],
@@ -892,38 +1397,62 @@
             owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
             owl:onProperty <https://w3id.org/osc-em/samplepretreatment_time> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty <https://w3id.org/osc-em/samplemesh> ],
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_atmosphere> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplefilm_support> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplematerial> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_type> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplefilm_material> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplefilm_support> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplefilm_thickness> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplemanufacturer> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Boolean ;
             owl:onProperty <https://w3id.org/osc-em/samplefilm_support> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty <https://w3id.org/osc-em/samplemesh> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/samplepretreatment_type> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplefilm_thickness> ],
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplematerial> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_pressure> ],
+            owl:onProperty <https://w3id.org/osc-em/samplemesh> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplefilm_support> ],
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplefilm_material> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplemanufacturer> ],
+            owl:onProperty <https://w3id.org/osc-em/samplefilm_material> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplepretreatment_time> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/samplefilm_topology> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplefilm_support> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplemanufacturer> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplefilm_material> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplematerial> ],
+            owl:onProperty <https://w3id.org/osc-em/samplefilm_thickness> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/samplepretreatment_atmosphere> ] ;
@@ -934,18 +1463,21 @@
         linkml:ClassDefinition ;
     rdfs:label "Ligand" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplesmiles> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplesmiles> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplesmiles> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Boolean ;
             owl:onProperty <https://w3id.org/osc-em/samplepresent> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplesmiles> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplepresent> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplesmiles> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplesmiles> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplepresent> ],
         [ a owl:Restriction ;
@@ -954,9 +1486,6 @@
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplereference> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplepresent> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/samplereference> ] ;
@@ -967,83 +1496,83 @@
         linkml:ClassDefinition ;
     rdfs:label "Molecule" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_expression> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplename_mol> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplesequence> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_expression> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecular_class> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_expression> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplesequence> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplegene_name> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_source> ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/sampleexpression_system> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplename_mol> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_source> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/sampleexpression_system> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplegene_name> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_expression> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplesequence> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/sampleexpression_system> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplesequence> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecular_class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/oscem-schemas/:MoleculeClassEnum> ;
             owl:onProperty <https://w3id.org/osc-em/samplemolecular_class> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplegene_name> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecular_class> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplegene_name> ],
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplesequence> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/sampleexpression_system> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_source> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplenatural_source> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplenatural_source> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_source> ],
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplegene_name> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecular_class> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_expression> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampletaxonomy_id_source> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplename_mol> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplenatural_source> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplesequence> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplenatural_source> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplegene_name> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplename_mol> ] ;
@@ -1054,50 +1583,50 @@
         linkml:ClassDefinition ;
     rdfs:label "OverallMolecule" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplemolecular_weight> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/samplesource> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplename_sample> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/samplemolecular_weight> ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplesource> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampleassembly> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecular_weight> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplename_sample> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplesource> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampleassembly> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplename_sample> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/oscem-schemas/:AssemblyEnum> ;
-            owl:onProperty <https://w3id.org/osc-em/sampleassembly> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplesource> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampleassembly> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplename_sample> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampleassembly> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplename_sample> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecular_type> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplename_sample> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplesource> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecular_weight> ] ;
+            owl:onProperty <https://w3id.org/osc-em/sampleassembly> ] ;
     skos:definition "Description of the overall molecule" ;
     skos:inScheme <https://w3id.org/osc-em/sample> .
 
@@ -1105,29 +1634,20 @@
         linkml:ClassDefinition ;
     rdfs:label "Sample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplespecimen> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplegrid> ],
+            owl:allValuesFrom <https://w3id.org/osc-em/sampleLigand> ;
+            owl:onProperty <https://w3id.org/osc-em/sampleligands> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/sampleligands> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom <https://w3id.org/osc-em/sampleOverallMolecule> ;
             owl:onProperty <https://w3id.org/osc-em/sampleoverall_molecule> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/sampleGrid> ;
-            owl:onProperty <https://w3id.org/osc-em/samplegrid> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampleoverall_molecule> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/sampleLigand> ;
-            owl:onProperty <https://w3id.org/osc-em/sampleligands> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecule> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/sampleMolecule> ;
-            owl:onProperty <https://w3id.org/osc-em/samplemolecule> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplespecimen> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/samplegrid> ],
@@ -1135,14 +1655,23 @@
             owl:allValuesFrom <https://w3id.org/osc-em/sampleSpecimen> ;
             owl:onProperty <https://w3id.org/osc-em/samplespecimen> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplespecimen> ],
+            owl:allValuesFrom <https://w3id.org/osc-em/sampleGrid> ;
+            owl:onProperty <https://w3id.org/osc-em/samplegrid> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/sampleOverallMolecule> ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/sampleoverall_molecule> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/sampleMolecule> ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecule> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplemolecule> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampleoverall_molecule> ] ;
+            owl:onProperty <https://w3id.org/osc-em/samplegrid> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplespecimen> ] ;
     skos:definition "Unifying class to describe the full sample." ;
     skos:inScheme <https://w3id.org/osc-em/sample> .
 
@@ -1150,95 +1679,95 @@
         linkml:ClassDefinition ;
     rdfs:label "Specimen" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplevitrification_cryogen> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplestaining> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/sampletemperature> ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/sampleconcentration> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/sampleconcentration> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampleembedding> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampletemperature> ],
+            owl:onProperty <https://w3id.org/osc-em/samplehumidity> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/sampletemperature> ],
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampleph> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampleshadowing> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/osc-em/samplevitrification_cryogen> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampletemperature> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty <https://w3id.org/osc-em/sampleembedding> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty <https://w3id.org/osc-em/sampleshadowing> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/sampleph> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/samplebuffer> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/sampletemperature> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplevitrification> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplehumidity> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/sampleembedding> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty <https://w3id.org/osc-em/samplevitrification> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/samplebuffer> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/sampletemperature> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplevitrification_cryogen> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplevitrification> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplevitrification_cryogen> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/samplebuffer> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty <https://w3id.org/osc-em/sampleph> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampleembedding> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty <https://w3id.org/osc-em/sampleembedding> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/samplehumidity> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/osc-em/samplebuffer> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplevitrification> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplehumidity> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplebuffer> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampleshadowing> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplehumidity> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty <https://w3id.org/osc-em/samplevitrification> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampleembedding> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplestaining> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/samplebuffer> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplevitrification_cryogen> ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/samplestaining> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/sampleconcentration> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/sampleshadowing> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/samplevitrification> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/sampleph> ],
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/sampleconcentration> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty <https://w3id.org/osc-em/sampleshadowing> ] ;
+            owl:onProperty <https://w3id.org/osc-em/samplestaining> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/samplehumidity> ] ;
     skos:definition "Description of specimen handling." ;
     skos:inScheme <https://w3id.org/osc-em/sample> .
 
@@ -1256,13 +1785,6 @@
     skos:definition "List of molecule associated with the sample" ;
     skos:inScheme <https://w3id.org/osc-em/sample> .
 
-<https://w3id.org/osc-em/typesAny> a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Any" ;
-    skos:definition "Any type, used as the base for type-narrowing." ;
-    skos:exactMatch linkml:Any ;
-    skos:inScheme <https://w3id.org/osc-em/types> .
-
 <https://w3id.org/osc-em/typesImageSize> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ImageSize" ;
@@ -1271,21 +1793,87 @@
             owl:onProperty <https://w3id.org/osc-em/typesheight> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/typeswidth> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/typesheight> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
             owl:onProperty <https://w3id.org/osc-em/typesheight> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typeswidth> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty <https://w3id.org/osc-em/typeswidth> ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/typeswidth> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/typesheight> ] ;
+            owl:onProperty <https://w3id.org/osc-em/typeswidth> ] ;
     skos:definition "size of a 2D image (in integer units)" ;
     skos:inScheme <https://w3id.org/osc-em/types> .
+
+<https://w3id.org/osc-em/volumeVolumes> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Volumes" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/classes3DOrthogonalSlices> ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/volumevolume_type> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/volumesize> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesDescriptors> ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/volumesize> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Disosurface_images> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/osc-em/volumevol_number_particles> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/volumesize> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/volumevol_resolution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/volumevol_resolution> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Disosurface_images> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/volumevol_number_particles> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/volumevol_number_particles> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/volumevol_resolution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/classes3DIsosurfaceImages> ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Disosurface_images> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/volumevolume_type> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/volumevolume_type> ] ;
+    skos:definition "Class representing volume metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/volume> .
 
 <https://w3id.org/osc-em/acquisitionbeamshift> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -1506,6 +2094,289 @@
     skos:inScheme <https://w3id.org/osc-em/acquisition> ;
     skos:prefLabel "temperature" .
 
+<https://w3id.org/osc-em/classes2Dimages_classes_2D> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "images_classes_2D" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of the image containing 2D class images" ;
+    skos:inScheme <https://w3id.org/osc-em/classes2D> .
+
+<https://w3id.org/osc-em/classes2Dnumber_classes_2D> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "number_classes_2D" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of 2D classes" ;
+    skos:inScheme <https://w3id.org/osc-em/classes2D> .
+
+<https://w3id.org/osc-em/classes2Dresolution_classes_2D> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "resolution_classes_2D" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Resolution of classes 2D" ;
+    skos:inScheme <https://w3id.org/osc-em/classes2D> .
+
+<https://w3id.org/osc-em/classes3DIsosurfaceImages> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "IsosurfaceImages" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dfront_view> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dside_view> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dside_view> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dside_view> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dtop_view> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dtop_view> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dfront_view> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dtop_view> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dfront_view> ] ;
+    skos:definition "Class for the isosurface images" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3DOrthogonalSlices> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "OrthogonalSlices" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices_Y> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices_Z> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices_X> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices_X> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices_Z> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices_Y> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices_X> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices_Z> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/classes3Dorthogonal_slices_Y> ] ;
+    skos:definition "Class for the orthogonal slices" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dfront_view> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "front_view" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of the front view isosurface image" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dimages_classes_3D> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "images_classes_3D" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of the image containing 3D class images" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dnumber_classes_3D> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "number_classes_3D" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of 3D classes" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dorthogonal_slices_X> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "orthogonal_slices_X" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of orthogonal slices in X direction" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dorthogonal_slices_Y> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "orthogonal_slices_Y" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of orthogonal slices in Y direction" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dorthogonal_slices_Z> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "orthogonal_slices_Z" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of orthogonal slices in Z direction" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dresolution_classes_3D> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "resolution_classes_3D" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Resolution of volume" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dside_view> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "side_view" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of the side view isosurface image" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dtop_view> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "top_view" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of the top view isosurface image" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/coordinatesmicrograph_examples> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "micrograph_examples" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of micrographs shown as examples in descending order based on the number of particles" ;
+    skos:inScheme <https://w3id.org/osc-em/coordinates> .
+
+<https://w3id.org/osc-em/coordinatesnum_source_micrographs> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "num_source_micrographs" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Total number of micrographs from which coordinates come from" ;
+    skos:inScheme <https://w3id.org/osc-em/coordinates> .
+
+<https://w3id.org/osc-em/coordinatesnumber_particles> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "number_particles" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Total number of particles" ;
+    skos:inScheme <https://w3id.org/osc-em/coordinates> .
+
+<https://w3id.org/osc-em/coordinatesparticles_histogram> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "particles_histogram" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of histogram for particle number per micrograph" ;
+    skos:inScheme <https://w3id.org/osc-em/coordinates> .
+
+<https://w3id.org/osc-em/coordinatesparticles_per_micrograph> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "particles_per_micrograph" ;
+    rdfs:range linkml:Float ;
+    skos:definition "Mean number of particles per micrograph" ;
+    skos:inScheme <https://w3id.org/osc-em/coordinates> .
+
+<https://w3id.org/osc-em/ctfsamplitude_contrast> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "amplitude_contrast" ;
+    rdfs:range linkml:Float ;
+    skos:definition "Amplitude contrast" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsastigmatism> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "astigmatism" ;
+    rdfs:range <https://w3id.org/osc-em/ctfsAstigmatism> ;
+    skos:definition "Astigmatism metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsastigmatism_histogram> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "astigmatism_histogram" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of the astigmatism values histogram" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsdefocus> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "defocus" ;
+    rdfs:range <https://w3id.org/osc-em/ctfsDefocus> ;
+    skos:definition "Defocus metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsdefocus_histogram> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "defocus_histogram" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of the defocus values histogram" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsdefocus_micrograph_examples> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "defocus_micrograph_examples" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of micrographs shown as examples in ascending order of defocus value" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsoutput_avg_defocus> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "output_avg_defocus" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Average value of defocus" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsoutput_avg_resolution> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "output_avg_resolution" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Average value of resolution" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsoutput_max_defocus> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "output_max_defocus" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Maximum defocus" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsoutput_max_resolution> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "output_max_resolution" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Maximum resolution" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsoutput_min_defocus> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "output_min_defocus" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Minimum defocus" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsoutput_min_resolution> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "output_min_resolution" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Minimum resolution" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsresolution> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "resolution" ;
+    rdfs:range <https://w3id.org/osc-em/ctfsResolution> ;
+    skos:definition "Resolution metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
+<https://w3id.org/osc-em/ctfsresolution_histogram> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "resolution_histogram" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of the resolution values histogram" ;
+    skos:inScheme <https://w3id.org/osc-em/ctfs> .
+
 <https://w3id.org/osc-em/instrumentacceleration_voltage> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "acceleration_voltage" ;
@@ -1554,6 +2425,41 @@
     rdfs:range linkml:String ;
     skos:definition "Name/Type of the Microscope" ;
     skos:inScheme <https://w3id.org/osc-em/instrument> .
+
+<https://w3id.org/osc-em/micrographsnumber_micrographs> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "number_micrographs" ;
+    rdfs:range linkml:Float ;
+    skos:definition "Number of micrographs" ;
+    skos:inScheme <https://w3id.org/osc-em/micrographs> .
+
+<https://w3id.org/osc-em/moviesdark_image> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dark_image" ;
+    rdfs:range linkml:String ;
+    skos:definition "Dark image filename" ;
+    skos:inScheme <https://w3id.org/osc-em/movies> .
+
+<https://w3id.org/osc-em/moviesdose_per_image> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dose_per_image" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Dose per image" ;
+    skos:inScheme <https://w3id.org/osc-em/movies> .
+
+<https://w3id.org/osc-em/moviesgain_image> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "gain_image" ;
+    rdfs:range linkml:String ;
+    skos:definition "Gain image filename" ;
+    skos:inScheme <https://w3id.org/osc-em/movies> .
+
+<https://w3id.org/osc-em/moviesinitial_dose> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "initial_dose" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Initial dose" ;
+    skos:inScheme <https://w3id.org/osc-em/movies> .
 
 <https://w3id.org/osc-em/organizational/budget> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -1663,12 +2569,61 @@
     skos:definition "Describe the instrument used to acquire the data" ;
     skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
 
+<https://w3id.org/osc-em/oscem-schemas/:processing> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "processing" ;
+    rdfs:range <https://w3id.org/osc-em/processingProcessing> ;
+    skos:definition "Describe the processing done to the data" ;
+    skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
 <https://w3id.org/osc-em/oscem-schemas/:sample> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "sample" ;
     rdfs:range <https://w3id.org/osc-em/sampleSample> ;
     skos:definition "Sample information" ;
     skos:inScheme <https://w3id.org/osc-em/oscem-schemas> .
+
+<https://w3id.org/osc-em/processingclasses2D> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "classes2D" ;
+    rdfs:range <https://w3id.org/osc-em/classes2DClasses2D> ;
+    skos:definition "Classes 2D metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/processing> .
+
+<https://w3id.org/osc-em/processingclasses3D> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "classes3D" ;
+    rdfs:range <https://w3id.org/osc-em/classes3DClasses3D> ;
+    skos:definition "Classes 3D metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/processing> .
+
+<https://w3id.org/osc-em/processingcoordinates> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "coordinates" ;
+    rdfs:range <https://w3id.org/osc-em/coordinatesCoordinates> ;
+    skos:definition "Coordinates metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/processing> .
+
+<https://w3id.org/osc-em/processingctfs> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "ctfs" ;
+    rdfs:range <https://w3id.org/osc-em/ctfsCTFs> ;
+    skos:definition "CTFs metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/processing> .
+
+<https://w3id.org/osc-em/processingmicrographs> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "micrographs" ;
+    rdfs:range <https://w3id.org/osc-em/micrographsMicrographs> ;
+    skos:definition "Micrographs metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/processing> .
+
+<https://w3id.org/osc-em/processingmovies> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "movies" ;
+    rdfs:range <https://w3id.org/osc-em/moviesMovies> ;
+    skos:definition "Movies metadata" ;
+    skos:inScheme <https://w3id.org/osc-em/processing> .
 
 <https://w3id.org/osc-em/sampleassembly> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -1945,6 +2900,20 @@
     skos:definition "Which cryogen was used for vitrification" ;
     skos:inScheme <https://w3id.org/osc-em/sample> .
 
+<https://w3id.org/osc-em/typesdescriptor_name> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_name" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name defining the descriptor" ;
+    skos:inScheme <https://w3id.org/osc-em/types> .
+
+<https://w3id.org/osc-em/typesdescriptor_thing> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_thing" ;
+    rdfs:range <https://w3id.org/osc-em/typesAny> ;
+    skos:definition "Description of the descriptor" ;
+    skos:inScheme <https://w3id.org/osc-em/types> .
+
 <https://w3id.org/osc-em/typesheight> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "height" ;
@@ -2015,6 +2984,55 @@
     skos:definition "minimum y" ;
     skos:inScheme <https://w3id.org/osc-em/types> .
 
+<https://w3id.org/osc-em/volumesize> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "size" ;
+    rdfs:range linkml:String ;
+    skos:definition "Size of the volume" ;
+    skos:inScheme <https://w3id.org/osc-em/volume> .
+
+<https://w3id.org/osc-em/volumevol_number_particles> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "vol_number_particles" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of particles associated to volume" ;
+    skos:inScheme <https://w3id.org/osc-em/volume> .
+
+<https://w3id.org/osc-em/volumevol_resolution> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "vol_resolution" ;
+    rdfs:range <https://w3id.org/osc-em/typesQuantityValue> ;
+    skos:definition "Resolution of volume" ;
+    skos:inScheme <https://w3id.org/osc-em/volume> .
+
+<https://w3id.org/osc-em/volumevolume_type> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "volume_type" ;
+    rdfs:range linkml:String ;
+    skos:definition "Indicates the type of volume" ;
+    skos:inScheme <https://w3id.org/osc-em/volume> .
+
+<https://w3id.org/osc-em/typesAny> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Any" ;
+    skos:definition "Any type, used as the base for type-narrowing." ;
+    skos:exactMatch linkml:Any ;
+    skos:inScheme <https://w3id.org/osc-em/types> .
+
+<https://w3id.org/osc-em/classes3Disosurface_images> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "isosurface_images" ;
+    rdfs:range <https://w3id.org/osc-em/classes3DIsosurfaceImages> ;
+    skos:definition "isosurface images of volume" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
+<https://w3id.org/osc-em/classes3Dorthogonal_slices> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "orthogonal_slices" ;
+    rdfs:range <https://w3id.org/osc-em/classes3DOrthogonalSlices> ;
+    skos:definition "orthogonal slices of volume" ;
+    skos:inScheme <https://w3id.org/osc-em/classes3D> .
+
 <https://w3id.org/osc-em/organizational/country> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "country" ;
@@ -2029,13 +3047,6 @@
     skos:definition "name" ;
     skos:inScheme <https://w3id.org/osc-em/organizational> .
 
-<https://w3id.org/osc-em/oscem-schemas> a owl:Ontology ;
-    rdfs:label "oscem-schemas" ;
-    dcterms:license "CC-BY" ;
-    dcterms:title "oscem-schemas" ;
-    rdfs:seeAlso <https://osc-em.github.io/oscem-schemas> ;
-    skos:definition "Schema for the Open Standards Community for Electron Microscopy (OSC-EM)" .
-
 <https://w3id.org/osc-em/samplemolecular_type> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "molecular_type" ;
@@ -2047,41 +3058,41 @@
         linkml:ClassDefinition ;
     rdfs:label "BoundingBox2D" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesx_min> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/typesy_max> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesy_max> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/typesy_min> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typesx_min> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typesy_max> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/typesy_max> ],
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
+            owl:onProperty <https://w3id.org/osc-em/typesx_max> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
             owl:onProperty <https://w3id.org/osc-em/typesy_min> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/typesx_min> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/typesx_min> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/typesx_max> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/typesx_max> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
             owl:onProperty <https://w3id.org/osc-em/typesy_min> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/typesx_max> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/osc-em/typesy_min> ],
+            owl:onProperty <https://w3id.org/osc-em/typesx_max> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/typesy_max> ] ;
+            owl:onProperty <https://w3id.org/osc-em/typesx_min> ] ;
     skos:definition "an axis-aligned 2D bounding box (float units)" ;
     skos:inScheme <https://w3id.org/osc-em/types> .
 
@@ -2092,27 +3103,34 @@
     skos:definition "The width of a given item - unit depends on item" ;
     skos:inScheme <https://w3id.org/osc-em/types> .
 
+<https://w3id.org/osc-em/oscem-schemas> a owl:Ontology ;
+    rdfs:label "oscem-schemas" ;
+    dcterms:license "CC-BY" ;
+    dcterms:title "oscem-schemas" ;
+    rdfs:seeAlso <https://osc-em.github.io/oscem-schemas> ;
+    skos:definition "Schema for the Open Standards Community for Electron Microscopy (OSC-EM)" .
+
 <https://w3id.org/osc-em/typesRange> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Range" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
-            owl:onProperty <https://w3id.org/osc-em/typesmaximal> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/osc-em/typesmaximal> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typesminimal> ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/osc-em/typesminimal> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
             owl:onProperty <https://w3id.org/osc-em/typesminimal> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom <https://w3id.org/osc-em/typesQuantityValue> ;
             owl:onProperty <https://w3id.org/osc-em/typesmaximal> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/osc-em/typesminimal> ] ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/osc-em/typesmaximal> ] ;
     skos:definition "A range constructed from min and max" ;
     skos:inScheme <https://w3id.org/osc-em/types> .
 
@@ -2122,6 +3140,12 @@
     linkml:permissible_values <https://w3id.org/osc-em/oscem-schemas/:AssemblyEnum#FILAMENT>,
         <https://w3id.org/osc-em/oscem-schemas/:AssemblyEnum#HELICAL+ARRAY>,
         <https://w3id.org/osc-em/oscem-schemas/:AssemblyEnum#PARTICLE> .
+
+<https://w3id.org/osc-em/typesDescriptors> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptors" ;
+    rdfs:subClassOf <https://w3id.org/osc-em/typesDescriptor> ;
+    skos:inScheme <https://w3id.org/osc-em/types> .
 
 <https://w3id.org/osc-em/acquisitioninstrument_type> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -2153,23 +3177,30 @@
     skos:definition "whether a specific instrument was used during data acquisition" ;
     skos:inScheme <https://w3id.org/osc-em/acquisition> .
 
+<https://w3id.org/osc-em/typesdescriptors> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptors" ;
+    rdfs:range <https://w3id.org/osc-em/typesDescriptors> ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+    skos:inScheme <https://w3id.org/osc-em/types> .
+
 <https://w3id.org/osc-em/typesQuantityValue> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "QuantityValue" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typesvalue> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty <https://w3id.org/osc-em/typesvalue> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typesunit> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typesvalue> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/osc-em/typesunit> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;

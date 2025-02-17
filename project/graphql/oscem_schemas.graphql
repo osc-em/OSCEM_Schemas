@@ -34,6 +34,11 @@ type Any
   {
   }
 
+type Astigmatism
+  {
+    astigmatismHistogram: String
+  }
+
 type Author
   {
     firstName: String
@@ -62,6 +67,65 @@ type ChromaticAberrationCorrector
     instrumentType: String!
   }
 
+type Classes2D
+  {
+    numberClasses2D: Integer
+    particlesPer2Dclass: [Integer]
+    imagesClasses2D: String
+    resolutionClasses2D: QuantityValue
+    descriptors: [Descriptors]
+  }
+
+type Classes3D
+  {
+    numberClasses3D: Integer
+    particlesPer3Dclass: [Integer]
+    imagesClasses3D: String
+    volume: [Volume]
+    resolutionClasses3D: QuantityValue
+    descriptors: [Descriptors]
+  }
+
+type Coordinates
+  {
+    numberParticles: Integer!
+    particlesPerMicrograph: Float
+    numSourceMicrographs: Integer
+    particlesHistogram: String
+    micrographExamples: String
+    descriptors: [Descriptors]
+  }
+
+type CTFs
+  {
+    amplitudeContrast: Float
+    defocus: Defocus
+    resolution: Resolution
+    astigmatism: Astigmatism
+    descriptors: [Descriptors]
+  }
+
+type Defocus
+  {
+    outputMinDefocus: QuantityValue
+    outputMaxDefocus: QuantityValue
+    outputAvgDefocus: QuantityValue
+    defocusHistogram: String
+    defocusMicrographExamples: String
+  }
+
+interface Descriptor
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Descriptors
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
 type EMDataset
   {
     acquisition: Acquisition!
@@ -69,6 +133,7 @@ type EMDataset
     sample: Sample!
     grants: [Grant]!
     authors: [Author]!
+    processing: Processing!
   }
 
 type EnergyFilter
@@ -121,11 +186,24 @@ type Instrument
     cs: QuantityValue!
   }
 
+type IsosurfaceImages
+  {
+    frontView: String
+    sideView: String
+    topView: String
+  }
+
 type Ligand
   {
     present: Boolean!
     smiles: String
     reference: String
+  }
+
+type Micrographs
+  {
+    numberMicrographs: Float!
+    descriptors: [Descriptors]
   }
 
 type Molecule
@@ -139,6 +217,22 @@ type Molecule
     expressionSystem: String!
     taxonomyIdExpression: String!
     geneName: String
+  }
+
+type Movies
+  {
+    dosePerImage: QuantityValue
+    initialDose: QuantityValue
+    gainImage: String
+    darkImage: String
+    descriptors: [Descriptors]
+  }
+
+type OrthogonalSlices
+  {
+    orthogonalSlicesX: String
+    orthogonalSlicesY: String
+    orthogonalSlicesZ: String
   }
 
 type OverallMolecule
@@ -165,6 +259,17 @@ type Phaseplate
     instrumentType: String!
   }
 
+type Processing
+  {
+    movies: Movies
+    micrographs: Micrographs
+    ctfs: CTFs
+    coordinates: Coordinates
+    classes2D: Classes2D
+    classes3D: Classes3D
+    volumes: [Volumes]
+  }
+
 type QuantityValue
   {
     unit: String!
@@ -175,6 +280,14 @@ type Range
   {
     minimal: QuantityValue
     maximal: QuantityValue
+  }
+
+type Resolution
+  {
+    outputMinResolution: QuantityValue
+    outputMaxResolution: QuantityValue
+    outputAvgResolution: QuantityValue
+    resolutionHistogram: String
   }
 
 type Sample
@@ -225,5 +338,22 @@ type TiltAngle
     minimal: QuantityValue
     maximal: QuantityValue
     increment: QuantityValue
+  }
+
+type Volume
+  {
+    orthogonalSlices: OrthogonalSlices
+    isosurfaceImages: IsosurfaceImages
+  }
+
+type Volumes
+  {
+    volumeType: String!
+    volNumberParticles: Integer
+    size: String
+    orthogonalSlices: OrthogonalSlices
+    isosurfaceImages: IsosurfaceImages
+    volResolution: QuantityValue
+    descriptors: [Descriptors]
   }
 
