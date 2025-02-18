@@ -3,7 +3,7 @@
 Schema for the Open Standards Community for Electron Microscopy (OSC-EM): Defining the electron microscopy-related fields required by the OSCEM standard.
 
 ## Overview
-The OSCEM schemas are designed to standardize metadata for electron microscopy, structured modularly to accommodate various methods and use cases. Each module can represent different aspects of an experiment, such as "sample", "instrument", and "author." These modules are combined into a comprehensive schema that defines the required metadata for a specific method. This standard ensures consistency in data collection, facilitates data validation, and enhances comparability between datasets.
+The OSCEM schemas are designed to standardize metadata for electron microscopy, structured modularly to accommodate various methods and use cases. Each module can represent different aspects of an experiment, such as "sample", "instrument", "author" and "processing". These modules are combined into a comprehensive schema that defines the required metadata for a specific method. This standard ensures consistency in data collection, facilitates data validation, and enhances comparability between datasets.
 
 To increase compatibility with different formats, we utilize LinkML, which allows us to export the schema to widely used formats.
 
