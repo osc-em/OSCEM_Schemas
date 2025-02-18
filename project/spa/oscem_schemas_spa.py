@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_spa.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-02-10T15:20:17
+# Generation date: 2025-02-18T14:28:51
 # Schema: oscem-schemas-spa
 #
 # id: https://w3id.org/osc-em/oscem-schemas-spa
@@ -404,23 +404,21 @@ class Organizational(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Organizational")
 
     authors: Union[Union[dict, "Author"], List[Union[dict, "Author"]]] = None
-    funder: Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]] = None
     grants: Optional[Union[Union[dict, "Grant"], List[Union[dict, "Grant"]]]] = empty_list()
+    funder: Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.authors):
             self.MissingRequiredField("authors")
-        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="orcid", keyed=False)
-
-        if self._is_empty(self.funder):
-            self.MissingRequiredField("funder")
-        if not isinstance(self.funder, list):
-            self.funder = [self.funder] if self.funder is not None else []
-        self.funder = [v if isinstance(v, Funder) else Funder(**as_dict(v)) for v in self.funder]
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="type_org", keyed=False)
 
         if not isinstance(self.grants, list):
             self.grants = [self.grants] if self.grants is not None else []
         self.grants = [v if isinstance(v, Grant) else Grant(**as_dict(v)) for v in self.grants]
+
+        if not isinstance(self.funder, list):
+            self.funder = [self.funder] if self.funder is not None else []
+        self.funder = [v if isinstance(v, Funder) else Funder(**as_dict(v)) for v in self.funder]
 
         super().__post_init__(**kwargs)
 
@@ -474,30 +472,16 @@ class Author(Person):
     class_name: ClassVar[str] = "Author"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Author")
 
-    orcid: str = None
-    country: str = None
-    name_org: str = None
     type_org: Union[str, "OrganizationTypeEnum"] = None
     name: str = None
+    first_name: str = None
     email: str = None
+    orcid: Optional[str] = None
+    country: Optional[str] = None
     role: Optional[str] = None
+    name_org: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.orcid):
-            self.MissingRequiredField("orcid")
-        if not isinstance(self.orcid, str):
-            self.orcid = str(self.orcid)
-
-        if self._is_empty(self.country):
-            self.MissingRequiredField("country")
-        if not isinstance(self.country, str):
-            self.country = str(self.country)
-
-        if self._is_empty(self.name_org):
-            self.MissingRequiredField("name_org")
-        if not isinstance(self.name_org, str):
-            self.name_org = str(self.name_org)
-
         if self._is_empty(self.type_org):
             self.MissingRequiredField("type_org")
         if not isinstance(self.type_org, OrganizationTypeEnum):
@@ -508,13 +492,27 @@ class Author(Person):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self._is_empty(self.first_name):
+            self.MissingRequiredField("first_name")
+        if not isinstance(self.first_name, str):
+            self.first_name = str(self.first_name)
+
         if self._is_empty(self.email):
             self.MissingRequiredField("email")
         if not isinstance(self.email, str):
             self.email = str(self.email)
 
+        if self.orcid is not None and not isinstance(self.orcid, str):
+            self.orcid = str(self.orcid)
+
+        if self.country is not None and not isinstance(self.country, str):
+            self.country = str(self.country)
+
         if self.role is not None and not isinstance(self.role, str):
             self.role = str(self.role)
+
+        if self.name_org is not None and not isinstance(self.name_org, str):
+            self.name_org = str(self.name_org)
 
         super().__post_init__(**kwargs)
 
@@ -596,9 +594,9 @@ class Sample(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Sample")
 
     overall_molecule: Union[dict, "OverallMolecule"] = None
-    molecule: Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]] = None
-    specimen: Union[dict, "Specimen"] = None
+    molecule: Optional[Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]]] = empty_list()
     ligands: Optional[Union[Union[dict, "Ligand"], List[Union[dict, "Ligand"]]]] = empty_list()
+    specimen: Optional[Union[dict, "Specimen"]] = None
     grid: Optional[Union[dict, "Grid"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -607,16 +605,14 @@ class Sample(YAMLRoot):
         if not isinstance(self.overall_molecule, OverallMolecule):
             self.overall_molecule = OverallMolecule(**as_dict(self.overall_molecule))
 
-        if self._is_empty(self.molecule):
-            self.MissingRequiredField("molecule")
         self._normalize_inlined_as_dict(slot_name="molecule", slot_type=Molecule, key_name="name_mol", keyed=False)
 
-        if self._is_empty(self.specimen):
-            self.MissingRequiredField("specimen")
-        if not isinstance(self.specimen, Specimen):
-            self.specimen = Specimen(**as_dict(self.specimen))
+        if not isinstance(self.ligands, list):
+            self.ligands = [self.ligands] if self.ligands is not None else []
+        self.ligands = [v if isinstance(v, Ligand) else Ligand(**as_dict(v)) for v in self.ligands]
 
-        self._normalize_inlined_as_dict(slot_name="ligands", slot_type=Ligand, key_name="present", keyed=False)
+        if self.specimen is not None and not isinstance(self.specimen, Specimen):
+            self.specimen = Specimen(**as_dict(self.specimen))
 
         if self.grid is not None and not isinstance(self.grid, Grid):
             self.grid = Grid(**as_dict(self.grid))
@@ -636,18 +632,13 @@ class OverallMolecule(YAMLRoot):
     class_name: ClassVar[str] = "OverallMolecule"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/OverallMolecule")
 
-    molecular_overall_type: Union[str, "MoleculeClassEnum"] = None
     name_sample: str = None
     source: str = None
-    assembly: Union[str, "AssemblyEnum"] = None
+    molecular_overall_type: Optional[Union[str, "MoleculeClassEnum"]] = None
     molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
+    assembly: Optional[Union[str, "AssemblyEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.molecular_overall_type):
-            self.MissingRequiredField("molecular_overall_type")
-        if not isinstance(self.molecular_overall_type, MoleculeClassEnum):
-            self.molecular_overall_type = MoleculeClassEnum(self.molecular_overall_type)
-
         if self._is_empty(self.name_sample):
             self.MissingRequiredField("name_sample")
         if not isinstance(self.name_sample, str):
@@ -658,13 +649,14 @@ class OverallMolecule(YAMLRoot):
         if not isinstance(self.source, str):
             self.source = str(self.source)
 
-        if self._is_empty(self.assembly):
-            self.MissingRequiredField("assembly")
-        if not isinstance(self.assembly, AssemblyEnum):
-            self.assembly = AssemblyEnum(self.assembly)
+        if self.molecular_overall_type is not None and not isinstance(self.molecular_overall_type, MoleculeClassEnum):
+            self.molecular_overall_type = MoleculeClassEnum(self.molecular_overall_type)
 
         if self.molecular_weight is not None and not isinstance(self.molecular_weight, QuantityValue):
             self.molecular_weight = QuantityValue(**as_dict(self.molecular_weight))
+
+        if self.assembly is not None and not isinstance(self.assembly, AssemblyEnum):
+            self.assembly = AssemblyEnum(self.assembly)
 
         super().__post_init__(**kwargs)
 
@@ -682,13 +674,13 @@ class Molecule(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Molecule")
 
     name_mol: str = None
-    molecular_type: str = None
-    molecular_class: str = None
     sequence: str = None
     natural_source: str = None
-    taxonomy_id_source: str = None
-    expression_system: str = None
-    taxonomy_id_expression: str = None
+    molecular_type: Optional[str] = None
+    molecular_class: Optional[str] = None
+    taxonomy_id_source: Optional[str] = None
+    expression_system: Optional[str] = None
+    taxonomy_id_expression: Optional[str] = None
     gene_name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -696,16 +688,6 @@ class Molecule(YAMLRoot):
             self.MissingRequiredField("name_mol")
         if not isinstance(self.name_mol, str):
             self.name_mol = str(self.name_mol)
-
-        if self._is_empty(self.molecular_type):
-            self.MissingRequiredField("molecular_type")
-        if not isinstance(self.molecular_type, str):
-            self.molecular_type = str(self.molecular_type)
-
-        if self._is_empty(self.molecular_class):
-            self.MissingRequiredField("molecular_class")
-        if not isinstance(self.molecular_class, str):
-            self.molecular_class = str(self.molecular_class)
 
         if self._is_empty(self.sequence):
             self.MissingRequiredField("sequence")
@@ -717,19 +699,19 @@ class Molecule(YAMLRoot):
         if not isinstance(self.natural_source, str):
             self.natural_source = str(self.natural_source)
 
-        if self._is_empty(self.taxonomy_id_source):
-            self.MissingRequiredField("taxonomy_id_source")
-        if not isinstance(self.taxonomy_id_source, str):
+        if self.molecular_type is not None and not isinstance(self.molecular_type, str):
+            self.molecular_type = str(self.molecular_type)
+
+        if self.molecular_class is not None and not isinstance(self.molecular_class, str):
+            self.molecular_class = str(self.molecular_class)
+
+        if self.taxonomy_id_source is not None and not isinstance(self.taxonomy_id_source, str):
             self.taxonomy_id_source = str(self.taxonomy_id_source)
 
-        if self._is_empty(self.expression_system):
-            self.MissingRequiredField("expression_system")
-        if not isinstance(self.expression_system, str):
+        if self.expression_system is not None and not isinstance(self.expression_system, str):
             self.expression_system = str(self.expression_system)
 
-        if self._is_empty(self.taxonomy_id_expression):
-            self.MissingRequiredField("taxonomy_id_expression")
-        if not isinstance(self.taxonomy_id_expression, str):
+        if self.taxonomy_id_expression is not None and not isinstance(self.taxonomy_id_expression, str):
             self.taxonomy_id_expression = str(self.taxonomy_id_expression)
 
         if self.gene_name is not None and not isinstance(self.gene_name, str):
@@ -750,14 +732,12 @@ class Ligand(YAMLRoot):
     class_name: ClassVar[str] = "Ligand"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Ligand")
 
-    present: Union[bool, Bool] = None
+    present: Optional[Union[bool, Bool]] = None
     smiles: Optional[str] = None
     reference: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.present):
-            self.MissingRequiredField("present")
-        if not isinstance(self.present, Bool):
+        if self.present is not None and not isinstance(self.present, Bool):
             self.present = Bool(self.present)
 
         if self.smiles is not None and not isinstance(self.smiles, str):
@@ -781,59 +761,47 @@ class Specimen(YAMLRoot):
     class_name: ClassVar[str] = "Specimen"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Specimen")
 
-    ph: float = None
-    vitrification: Union[bool, Bool] = None
-    vitrification_cryogen: str = None
-    staining: Union[bool, Bool] = None
-    embedding: Union[bool, Bool] = None
-    shadowing: Union[bool, Bool] = None
     buffer: Optional[str] = None
     concentration: Optional[Union[dict, "QuantityValue"]] = None
+    ph: Optional[float] = None
+    vitrification: Optional[Union[bool, Bool]] = None
+    vitrification_cryogen: Optional[str] = None
     humidity: Optional[Union[dict, "QuantityValue"]] = None
     temperature: Optional[Union[dict, "QuantityValue"]] = None
+    staining: Optional[Union[bool, Bool]] = None
+    embedding: Optional[Union[bool, Bool]] = None
+    shadowing: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.ph):
-            self.MissingRequiredField("ph")
-        if not isinstance(self.ph, float):
-            self.ph = float(self.ph)
-
-        if self._is_empty(self.vitrification):
-            self.MissingRequiredField("vitrification")
-        if not isinstance(self.vitrification, Bool):
-            self.vitrification = Bool(self.vitrification)
-
-        if self._is_empty(self.vitrification_cryogen):
-            self.MissingRequiredField("vitrification_cryogen")
-        if not isinstance(self.vitrification_cryogen, str):
-            self.vitrification_cryogen = str(self.vitrification_cryogen)
-
-        if self._is_empty(self.staining):
-            self.MissingRequiredField("staining")
-        if not isinstance(self.staining, Bool):
-            self.staining = Bool(self.staining)
-
-        if self._is_empty(self.embedding):
-            self.MissingRequiredField("embedding")
-        if not isinstance(self.embedding, Bool):
-            self.embedding = Bool(self.embedding)
-
-        if self._is_empty(self.shadowing):
-            self.MissingRequiredField("shadowing")
-        if not isinstance(self.shadowing, Bool):
-            self.shadowing = Bool(self.shadowing)
-
         if self.buffer is not None and not isinstance(self.buffer, str):
             self.buffer = str(self.buffer)
 
         if self.concentration is not None and not isinstance(self.concentration, QuantityValue):
             self.concentration = QuantityValue(**as_dict(self.concentration))
 
+        if self.ph is not None and not isinstance(self.ph, float):
+            self.ph = float(self.ph)
+
+        if self.vitrification is not None and not isinstance(self.vitrification, Bool):
+            self.vitrification = Bool(self.vitrification)
+
+        if self.vitrification_cryogen is not None and not isinstance(self.vitrification_cryogen, str):
+            self.vitrification_cryogen = str(self.vitrification_cryogen)
+
         if self.humidity is not None and not isinstance(self.humidity, QuantityValue):
             self.humidity = QuantityValue(**as_dict(self.humidity))
 
         if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
             self.temperature = QuantityValue(**as_dict(self.temperature))
+
+        if self.staining is not None and not isinstance(self.staining, Bool):
+            self.staining = Bool(self.staining)
+
+        if self.embedding is not None and not isinstance(self.embedding, Bool):
+            self.embedding = Bool(self.embedding)
+
+        if self.shadowing is not None and not isinstance(self.shadowing, Bool):
+            self.shadowing = Bool(self.shadowing)
 
         super().__post_init__(**kwargs)
 
@@ -1605,44 +1573,47 @@ slots.Organizational_authors = Slot(uri=ORGANIZATIONAL.authors, name="Organizati
                    model_uri=DEFAULT_.Organizational_authors, domain=Organizational, range=Union[Union[dict, "Author"], List[Union[dict, "Author"]]])
 
 slots.Organizational_funder = Slot(uri=ORGANIZATIONAL.funder, name="Organizational_funder", curie=ORGANIZATIONAL.curie('funder'),
-                   model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]])
+                   model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]])
 
 slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie('name'),
                    model_uri=DEFAULT_.Author_name, domain=Author, range=str)
+
+slots.Author_first_name = Slot(uri=ORGANIZATIONAL.first_name, name="Author_first_name", curie=ORGANIZATIONAL.curie('first_name'),
+                   model_uri=DEFAULT_.Author_first_name, domain=Author, range=str)
 
 slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.curie('email'),
                    model_uri=DEFAULT_.Author_email, domain=Author, range=str,
                    pattern=re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'))
 
 slots.Author_orcid = Slot(uri=ORGANIZATIONAL.orcid, name="Author_orcid", curie=ORGANIZATIONAL.curie('orcid'),
-                   model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_orcid, domain=Author, range=Optional[str])
 
 slots.Author_country = Slot(uri=ORGANIZATIONAL.country, name="Author_country", curie=ORGANIZATIONAL.curie('country'),
-                   model_uri=DEFAULT_.Author_country, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_country, domain=Author, range=Optional[str])
 
 slots.Author_type_org = Slot(uri=ORGANIZATIONAL.type_org, name="Author_type_org", curie=ORGANIZATIONAL.curie('type_org'),
                    model_uri=DEFAULT_.Author_type_org, domain=Author, range=Union[str, "OrganizationTypeEnum"])
 
 slots.Author_name_org = Slot(uri=ORGANIZATIONAL.name_org, name="Author_name_org", curie=ORGANIZATIONAL.curie('name_org'),
-                   model_uri=DEFAULT_.Author_name_org, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_name_org, domain=Author, range=Optional[str])
 
 slots.Sample_overall_molecule = Slot(uri=SAMPLE['/overall_molecule'], name="Sample_overall_molecule", curie=SAMPLE.curie('/overall_molecule'),
                    model_uri=DEFAULT_.Sample_overall_molecule, domain=Sample, range=Union[dict, "OverallMolecule"])
 
 slots.Sample_molecule = Slot(uri=SAMPLE['/molecule'], name="Sample_molecule", curie=SAMPLE.curie('/molecule'),
-                   model_uri=DEFAULT_.Sample_molecule, domain=Sample, range=Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]])
+                   model_uri=DEFAULT_.Sample_molecule, domain=Sample, range=Optional[Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]]])
 
 slots.Sample_ligands = Slot(uri=SAMPLE['/ligands'], name="Sample_ligands", curie=SAMPLE.curie('/ligands'),
                    model_uri=DEFAULT_.Sample_ligands, domain=Sample, range=Optional[Union[Union[dict, "Ligand"], List[Union[dict, "Ligand"]]]])
 
 slots.Sample_specimen = Slot(uri=SAMPLE['/specimen'], name="Sample_specimen", curie=SAMPLE.curie('/specimen'),
-                   model_uri=DEFAULT_.Sample_specimen, domain=Sample, range=Union[dict, "Specimen"])
+                   model_uri=DEFAULT_.Sample_specimen, domain=Sample, range=Optional[Union[dict, "Specimen"]])
 
 slots.Sample_grid = Slot(uri=SAMPLE['/grid'], name="Sample_grid", curie=SAMPLE.curie('/grid'),
                    model_uri=DEFAULT_.Sample_grid, domain=Sample, range=Optional[Union[dict, "Grid"]])
 
 slots.OverallMolecule_molecular_overall_type = Slot(uri=SAMPLE['/molecular_overall_type'], name="OverallMolecule_molecular_overall_type", curie=SAMPLE.curie('/molecular_overall_type'),
-                   model_uri=DEFAULT_.OverallMolecule_molecular_overall_type, domain=OverallMolecule, range=Union[str, "MoleculeClassEnum"])
+                   model_uri=DEFAULT_.OverallMolecule_molecular_overall_type, domain=OverallMolecule, range=Optional[Union[str, "MoleculeClassEnum"]])
 
 slots.OverallMolecule_name_sample = Slot(uri=SAMPLE['/name_sample'], name="OverallMolecule_name_sample", curie=SAMPLE.curie('/name_sample'),
                    model_uri=DEFAULT_.OverallMolecule_name_sample, domain=OverallMolecule, range=str)
@@ -1654,16 +1625,16 @@ slots.OverallMolecule_molecular_weight = Slot(uri=SAMPLE['/molecular_weight'], n
                    model_uri=DEFAULT_.OverallMolecule_molecular_weight, domain=OverallMolecule, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.OverallMolecule_assembly = Slot(uri=SAMPLE['/assembly'], name="OverallMolecule_assembly", curie=SAMPLE.curie('/assembly'),
-                   model_uri=DEFAULT_.OverallMolecule_assembly, domain=OverallMolecule, range=Union[str, "AssemblyEnum"])
+                   model_uri=DEFAULT_.OverallMolecule_assembly, domain=OverallMolecule, range=Optional[Union[str, "AssemblyEnum"]])
 
 slots.Molecule_name_mol = Slot(uri=SAMPLE['/name_mol'], name="Molecule_name_mol", curie=SAMPLE.curie('/name_mol'),
                    model_uri=DEFAULT_.Molecule_name_mol, domain=Molecule, range=str)
 
 slots.Molecule_molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="Molecule_molecular_type", curie=SAMPLE.curie('/molecular_type'),
-                   model_uri=DEFAULT_.Molecule_molecular_type, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_molecular_type, domain=Molecule, range=Optional[str])
 
 slots.Molecule_molecular_class = Slot(uri=SAMPLE['/molecular_class'], name="Molecule_molecular_class", curie=SAMPLE.curie('/molecular_class'),
-                   model_uri=DEFAULT_.Molecule_molecular_class, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_molecular_class, domain=Molecule, range=Optional[str])
 
 slots.Molecule_sequence = Slot(uri=SAMPLE['/sequence'], name="Molecule_sequence", curie=SAMPLE.curie('/sequence'),
                    model_uri=DEFAULT_.Molecule_sequence, domain=Molecule, range=str)
@@ -1672,19 +1643,19 @@ slots.Molecule_natural_source = Slot(uri=SAMPLE['/natural_source'], name="Molecu
                    model_uri=DEFAULT_.Molecule_natural_source, domain=Molecule, range=str)
 
 slots.Molecule_taxonomy_id_source = Slot(uri=SAMPLE['/taxonomy_id_source'], name="Molecule_taxonomy_id_source", curie=SAMPLE.curie('/taxonomy_id_source'),
-                   model_uri=DEFAULT_.Molecule_taxonomy_id_source, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_taxonomy_id_source, domain=Molecule, range=Optional[str])
 
 slots.Molecule_expression_system = Slot(uri=SAMPLE['/expression_system'], name="Molecule_expression_system", curie=SAMPLE.curie('/expression_system'),
-                   model_uri=DEFAULT_.Molecule_expression_system, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_expression_system, domain=Molecule, range=Optional[str])
 
 slots.Molecule_taxonomy_id_expression = Slot(uri=SAMPLE['/taxonomy_id_expression'], name="Molecule_taxonomy_id_expression", curie=SAMPLE.curie('/taxonomy_id_expression'),
-                   model_uri=DEFAULT_.Molecule_taxonomy_id_expression, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_taxonomy_id_expression, domain=Molecule, range=Optional[str])
 
 slots.Molecule_gene_name = Slot(uri=SAMPLE['/gene_name'], name="Molecule_gene_name", curie=SAMPLE.curie('/gene_name'),
                    model_uri=DEFAULT_.Molecule_gene_name, domain=Molecule, range=Optional[str])
 
 slots.Ligand_present = Slot(uri=SAMPLE['/present'], name="Ligand_present", curie=SAMPLE.curie('/present'),
-                   model_uri=DEFAULT_.Ligand_present, domain=Ligand, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Ligand_present, domain=Ligand, range=Optional[Union[bool, Bool]])
 
 slots.Specimen_buffer = Slot(uri=SAMPLE['/buffer'], name="Specimen_buffer", curie=SAMPLE.curie('/buffer'),
                    model_uri=DEFAULT_.Specimen_buffer, domain=Specimen, range=Optional[str])
@@ -1693,13 +1664,13 @@ slots.Specimen_concentration = Slot(uri=SAMPLE['/concentration'], name="Specimen
                    model_uri=DEFAULT_.Specimen_concentration, domain=Specimen, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.Specimen_ph = Slot(uri=SAMPLE['/ph'], name="Specimen_ph", curie=SAMPLE.curie('/ph'),
-                   model_uri=DEFAULT_.Specimen_ph, domain=Specimen, range=float)
+                   model_uri=DEFAULT_.Specimen_ph, domain=Specimen, range=Optional[float])
 
 slots.Specimen_vitrification = Slot(uri=SAMPLE['/vitrification'], name="Specimen_vitrification", curie=SAMPLE.curie('/vitrification'),
-                   model_uri=DEFAULT_.Specimen_vitrification, domain=Specimen, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Specimen_vitrification, domain=Specimen, range=Optional[Union[bool, Bool]])
 
 slots.Specimen_vitrification_cryogen = Slot(uri=SAMPLE['/vitrification_cryogen'], name="Specimen_vitrification_cryogen", curie=SAMPLE.curie('/vitrification_cryogen'),
-                   model_uri=DEFAULT_.Specimen_vitrification_cryogen, domain=Specimen, range=str)
+                   model_uri=DEFAULT_.Specimen_vitrification_cryogen, domain=Specimen, range=Optional[str])
 
 slots.Specimen_humidity = Slot(uri=SAMPLE['/humidity'], name="Specimen_humidity", curie=SAMPLE.curie('/humidity'),
                    model_uri=DEFAULT_.Specimen_humidity, domain=Specimen, range=Optional[Union[dict, "QuantityValue"]])
@@ -1708,13 +1679,13 @@ slots.Specimen_temperature = Slot(uri=SAMPLE['/temperature'], name="Specimen_tem
                    model_uri=DEFAULT_.Specimen_temperature, domain=Specimen, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.Specimen_staining = Slot(uri=SAMPLE['/staining'], name="Specimen_staining", curie=SAMPLE.curie('/staining'),
-                   model_uri=DEFAULT_.Specimen_staining, domain=Specimen, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Specimen_staining, domain=Specimen, range=Optional[Union[bool, Bool]])
 
 slots.Specimen_embedding = Slot(uri=SAMPLE['/embedding'], name="Specimen_embedding", curie=SAMPLE.curie('/embedding'),
-                   model_uri=DEFAULT_.Specimen_embedding, domain=Specimen, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Specimen_embedding, domain=Specimen, range=Optional[Union[bool, Bool]])
 
 slots.Specimen_shadowing = Slot(uri=SAMPLE['/shadowing'], name="Specimen_shadowing", curie=SAMPLE.curie('/shadowing'),
-                   model_uri=DEFAULT_.Specimen_shadowing, domain=Specimen, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Specimen_shadowing, domain=Specimen, range=Optional[Union[bool, Bool]])
 
 slots.Grid_manufacturer = Slot(uri=SAMPLE['/manufacturer'], name="Grid_manufacturer", curie=SAMPLE.curie('/manufacturer'),
                    model_uri=DEFAULT_.Grid_manufacturer, domain=Grid, range=Optional[str])

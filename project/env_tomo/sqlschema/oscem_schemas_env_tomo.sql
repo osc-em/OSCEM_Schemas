@@ -280,13 +280,13 @@ CREATE TABLE "Person" (
 );
 CREATE TABLE "Author" (
 	id INTEGER NOT NULL, 
-	orcid TEXT NOT NULL, 
-	country TEXT NOT NULL, 
+	orcid TEXT, 
+	country TEXT, 
 	role TEXT, 
-	name_org TEXT NOT NULL, 
+	name_org TEXT, 
 	type_org VARCHAR(10) NOT NULL, 
 	name TEXT NOT NULL, 
-	first_name TEXT, 
+	first_name TEXT NOT NULL, 
 	work_status BOOLEAN, 
 	email TEXT NOT NULL, 
 	work_phone TEXT, 
@@ -440,7 +440,7 @@ CREATE TABLE "Organizational_authors" (
 );
 CREATE TABLE "Organizational_funder" (
 	"Organizational_id" INTEGER, 
-	funder_id INTEGER NOT NULL, 
+	funder_id INTEGER, 
 	PRIMARY KEY ("Organizational_id", funder_id), 
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id), 
 	FOREIGN KEY(funder_id) REFERENCES "Funder" (id)

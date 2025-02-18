@@ -101,15 +101,16 @@ linkml:Sparqlpath xsd:string
 organizational:Author CLOSED {
     (  $organizational:Author_tes (  &organizational:Person_tes ;
           rdf:type [ schema1:Person ] ? ;
-          organizational:orcid @linkml:String ;
-          organizational:country @linkml:String ;
+          organizational:orcid @linkml:String ? ;
+          organizational:country @linkml:String ? ;
           organizational:role @linkml:String ? ;
-          organizational:name_org @linkml:String ;
+          organizational:name_org @linkml:String ? ;
           organizational:type_org [ <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Academic>
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Commercial>
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Government>
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Other> ] ;
           schema1:name @linkml:String ;
+          organizational:first_name @linkml:String ;
           schema1:email @linkml:String
        ) ;
        rdf:type [ organizational:Author ] ?
@@ -233,7 +234,7 @@ organizational:Grant CLOSED {
 }
 
 <https://w3id.org/osc-em/sample/Ligand> CLOSED {
-    (  $<https://w3id.org/osc-em/sample/Ligand_tes> (  <https://w3id.org/osc-em/sample/present> @linkml:Boolean ;
+    (  $<https://w3id.org/osc-em/sample/Ligand_tes> (  <https://w3id.org/osc-em/sample/present> @linkml:Boolean ? ;
           <https://w3id.org/osc-em/sample/smiles> @linkml:String ? ;
           <https://w3id.org/osc-em/sample/reference> @linkml:String ?
        ) ;
@@ -243,13 +244,13 @@ organizational:Grant CLOSED {
 
 <https://w3id.org/osc-em/sample/Molecule> CLOSED {
     (  $<https://w3id.org/osc-em/sample/Molecule_tes> (  <https://w3id.org/osc-em/sample/name_mol> @linkml:String ;
-          <https://w3id.org/osc-em/sample/molecular_type> @linkml:String ;
-          <https://w3id.org/osc-em/sample/molecular_class> @linkml:String ;
+          <https://w3id.org/osc-em/sample/molecular_type> @linkml:String ? ;
+          <https://w3id.org/osc-em/sample/molecular_class> @linkml:String ? ;
           <https://w3id.org/osc-em/sample/sequence> @linkml:String ;
           <https://w3id.org/osc-em/sample/natural_source> @linkml:String ;
-          <https://w3id.org/osc-em/sample/taxonomy_id_source> @linkml:String ;
-          <https://w3id.org/osc-em/sample/expression_system> @linkml:String ;
-          <https://w3id.org/osc-em/sample/taxonomy_id_expression> @linkml:String ;
+          <https://w3id.org/osc-em/sample/taxonomy_id_source> @linkml:String ? ;
+          <https://w3id.org/osc-em/sample/expression_system> @linkml:String ? ;
+          <https://w3id.org/osc-em/sample/taxonomy_id_expression> @linkml:String ? ;
           <https://w3id.org/osc-em/sample/gene_name> @linkml:String ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sample/Molecule> ] ?
@@ -259,7 +260,7 @@ organizational:Grant CLOSED {
 organizational:Organizational CLOSED {
     (  $organizational:Organizational_tes (  organizational:grants @organizational:Grant * ;
           organizational:authors @organizational:Author + ;
-          organizational:funder @organizational:Funder +
+          organizational:funder @organizational:Funder *
        ) ;
        rdf:type [ organizational:Organizational ] ?
     )
@@ -270,12 +271,13 @@ organizational:Organizational CLOSED {
              <https://w3id.org/osc-em/sample/MoleculeClassEnum#CELL> <https://w3id.org/osc-em/sample/MoleculeClassEnum#COMPLEX>
              <https://w3id.org/osc-em/sample/MoleculeClassEnum#ORGANELLE%20OR%20CELLULAR%20COMPONENT>
              <https://w3id.org/osc-em/sample/MoleculeClassEnum#RIBOSOME> <https://w3id.org/osc-em/sample/MoleculeClassEnum#TISSUE>
-             <https://w3id.org/osc-em/sample/MoleculeClassEnum#VIRUS> ] ;
+             <https://w3id.org/osc-em/sample/MoleculeClassEnum#VIRUS> ] ? ;
           <https://w3id.org/osc-em/sample/name_sample> @linkml:String ;
           <https://w3id.org/osc-em/sample/source> @linkml:String ;
           <https://w3id.org/osc-em/sample/molecular_weight> @<https://w3id.org/osc-em/custom_typesQuantityValue> ? ;
           <https://w3id.org/osc-em/sample/assembly> [ <https://w3id.org/osc-em/sample/AssemblyEnum#FILAMENT>
              <https://w3id.org/osc-em/sample/AssemblyEnum#HELICAL%20ARRAY> <https://w3id.org/osc-em/sample/AssemblyEnum#PARTICLE> ]
+          ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sample/OverallMolecule> ] ?
     )
@@ -324,9 +326,9 @@ organizational:Person  (
 <https://w3id.org/osc-em/sample/Sample> CLOSED {
     (  $<https://w3id.org/osc-em/sample/Sample_tes> (  <https://w3id.org/osc-em/sample/overall_molecule>
           @<https://w3id.org/osc-em/sample/OverallMolecule> ;
-          <https://w3id.org/osc-em/sample/molecule> @<https://w3id.org/osc-em/sample/Molecule> + ;
+          <https://w3id.org/osc-em/sample/molecule> @<https://w3id.org/osc-em/sample/Molecule> * ;
           <https://w3id.org/osc-em/sample/ligands> @<https://w3id.org/osc-em/sample/Ligand> * ;
-          <https://w3id.org/osc-em/sample/specimen> @<https://w3id.org/osc-em/sample/Specimen> ;
+          <https://w3id.org/osc-em/sample/specimen> @<https://w3id.org/osc-em/sample/Specimen> ? ;
           <https://w3id.org/osc-em/sample/grid> @<https://w3id.org/osc-em/sample/Grid> ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sample/Sample> ] ?
@@ -359,14 +361,14 @@ organizational:Person  (
 <https://w3id.org/osc-em/sample/Specimen> CLOSED {
     (  $<https://w3id.org/osc-em/sample/Specimen_tes> (  <https://w3id.org/osc-em/sample/buffer> @linkml:String ? ;
           <https://w3id.org/osc-em/sample/concentration> @<https://w3id.org/osc-em/custom_typesQuantityValue> ? ;
-          <https://w3id.org/osc-em/sample/ph> @linkml:Float ;
-          <https://w3id.org/osc-em/sample/vitrification> @linkml:Boolean ;
-          <https://w3id.org/osc-em/sample/vitrification_cryogen> @linkml:String ;
+          <https://w3id.org/osc-em/sample/ph> @linkml:Float ? ;
+          <https://w3id.org/osc-em/sample/vitrification> @linkml:Boolean ? ;
+          <https://w3id.org/osc-em/sample/vitrification_cryogen> @linkml:String ? ;
           <https://w3id.org/osc-em/sample/humidity> @<https://w3id.org/osc-em/custom_typesQuantityValue> ? ;
           <https://w3id.org/osc-em/sample/temperature> @<https://w3id.org/osc-em/custom_typesQuantityValue> ? ;
-          <https://w3id.org/osc-em/sample/staining> @linkml:Boolean ;
-          <https://w3id.org/osc-em/sample/embedding> @linkml:Boolean ;
-          <https://w3id.org/osc-em/sample/shadowing> @linkml:Boolean
+          <https://w3id.org/osc-em/sample/staining> @linkml:Boolean ? ;
+          <https://w3id.org/osc-em/sample/embedding> @linkml:Boolean ? ;
+          <https://w3id.org/osc-em/sample/shadowing> @linkml:Boolean ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sample/Specimen> ] ?
     )

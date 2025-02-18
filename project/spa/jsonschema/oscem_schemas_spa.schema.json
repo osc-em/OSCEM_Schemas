@@ -258,7 +258,10 @@
             "properties": {
                 "country": {
                     "description": "Country of the institution",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "email": {
                     "description": "email",
@@ -267,10 +270,7 @@
                 },
                 "first_name": {
                     "description": "first name",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "name": {
                     "description": "name",
@@ -278,11 +278,17 @@
                 },
                 "name_org": {
                     "description": "Name of the organization",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "orcid": {
                     "description": "ORCID of the author, a type of unique identifier",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "role": {
                     "description": "Role of the author, for example principal investigator",
@@ -311,11 +317,9 @@
                 }
             },
             "required": [
-                "orcid",
-                "country",
-                "name_org",
                 "type_org",
                 "name",
+                "first_name",
                 "email"
             ],
             "title": "Author",
@@ -720,7 +724,10 @@
             "properties": {
                 "present": {
                     "description": "Whether the model contains any ligands",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "reference": {
                     "description": "Link to a reference of your ligand, i.e., CCD, PubChem, etc.",
@@ -737,9 +744,6 @@
                     ]
                 }
             },
-            "required": [
-                "present"
-            ],
             "title": "Ligand",
             "type": "object"
         },
@@ -749,7 +753,10 @@
             "properties": {
                 "expression_system": {
                     "description": "Scientific name of the organism used to produce the molecule of interest",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "gene_name": {
                     "description": "Name of the gene of interest",
@@ -760,11 +767,17 @@
                 },
                 "molecular_class": {
                     "description": "Class of the molecule",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "molecular_type": {
                     "description": "Description of the overall molecular type, i.e., a complex",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "name_mol": {
                     "description": "Name of an individual molecule (often protein) in the sample",
@@ -780,22 +793,23 @@
                 },
                 "taxonomy_id_expression": {
                     "description": "Taxonomy ID of the expression system organism",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "taxonomy_id_source": {
                     "description": "Taxonomy ID of the natural source organism",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
                 "name_mol",
-                "molecular_type",
-                "molecular_class",
                 "sequence",
-                "natural_source",
-                "taxonomy_id_source",
-                "expression_system",
-                "taxonomy_id_expression"
+                "natural_source"
             ],
             "title": "Molecule",
             "type": "object"
@@ -840,7 +854,10 @@
                     "items": {
                         "$ref": "#/$defs/Funder"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "grants": {
                     "description": "List of grants associated with the project",
@@ -854,8 +871,7 @@
                 }
             },
             "required": [
-                "authors",
-                "funder"
+                "authors"
             ],
             "title": "Organizational",
             "type": "object"
@@ -893,10 +909,8 @@
                 }
             },
             "required": [
-                "molecular_overall_type",
                 "name_sample",
-                "source",
-                "assembly"
+                "source"
             ],
             "title": "OverallMolecule",
             "type": "object"
@@ -1045,21 +1059,29 @@
                     "items": {
                         "$ref": "#/$defs/Molecule"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "overall_molecule": {
                     "$ref": "#/$defs/OverallMolecule",
                     "description": "Description of the overall molecule"
                 },
                 "specimen": {
-                    "$ref": "#/$defs/Specimen",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Specimen"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Description of the specimen"
                 }
             },
             "required": [
-                "overall_molecule",
-                "molecule",
-                "specimen"
+                "overall_molecule"
             ],
             "title": "Sample",
             "type": "object"
@@ -1170,7 +1192,10 @@
                 },
                 "embedding": {
                     "description": "Whether the sample was embedded",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "humidity": {
                     "anyOf": [
@@ -1185,15 +1210,24 @@
                 },
                 "ph": {
                     "description": "pH of the sample buffer",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "shadowing": {
                     "description": "Whether the sample was shadowed",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "staining": {
                     "description": "Whether the sample was stained",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "temperature": {
                     "anyOf": [
@@ -1208,21 +1242,19 @@
                 },
                 "vitrification": {
                     "description": "Whether the sample was vitrified",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "vitrification_cryogen": {
                     "description": "Which cryogen was used for vitrification",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
-            "required": [
-                "ph",
-                "vitrification",
-                "vitrification_cryogen",
-                "staining",
-                "embedding",
-                "shadowing"
-            ],
             "title": "Specimen",
             "type": "object"
         },

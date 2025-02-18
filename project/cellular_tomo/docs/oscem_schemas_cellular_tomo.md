@@ -93,6 +93,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [energy_filter](energy_filter.md) - Wether an energy filter was used and its specifics.
  * [exposure_time](exposure_time.md) - Time of data acquisition per movie/tilt - in s
  * [first_name](first_name.md) - first name
+     * [Author➞first_name](Author_first_name.md)
  * [frames_per_movie](frames_per_movie.md) - Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
  * [freezing](freezing.md)
  * [funder](funder.md) - funding organization/person.

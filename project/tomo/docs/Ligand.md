@@ -6,7 +6,7 @@ Information on ligands if present.
 URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Ligand](https://w3id.org/osc-em/oscem-schemas-tomo/Ligand)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20ligands%200..*>[Ligand&#124;present:boolean;smiles:string%20%3F;reference:string%20%3F],[Sample]++-%20ligands(i)%200..*>[Ligand])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20ligands%200..*>[Ligand&#124;present:boolean;smiles:string%20%3F;reference:string%20%3F],[Sample]++-%20ligands(i)%200..*>[Ligand])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20ligands%200..*>[Ligand&#124;present:boolean%20%3F;smiles:string%20%3F;reference:string%20%3F],[Sample]++-%20ligands(i)%200..*>[Ligand])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20ligands%200..*>[Ligand&#124;present:boolean%20%3F;smiles:string%20%3F;reference:string%20%3F],[Sample]++-%20ligands(i)%200..*>[Ligand])
 
 ## Referenced by Class
 
@@ -18,7 +18,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Ligand](https://w3id.org/osc-em
 
 ### Own
 
- * [Ligand➞present](Ligand_present.md)  <sub>1..1</sub>
+ * [Ligand➞present](Ligand_present.md)  <sub>0..1</sub>
      * Description: Whether the model contains any ligands
      * Range: [Boolean](types/Boolean.md)
  * [smiles](smiles.md)  <sub>0..1</sub>

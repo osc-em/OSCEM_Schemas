@@ -247,13 +247,13 @@ CREATE TABLE "Person" (
 );
 CREATE TABLE "Author" (
 	id INTEGER NOT NULL, 
-	orcid TEXT NOT NULL, 
-	country TEXT NOT NULL, 
+	orcid TEXT, 
+	country TEXT, 
 	role TEXT, 
-	name_org TEXT NOT NULL, 
+	name_org TEXT, 
 	type_org VARCHAR(10) NOT NULL, 
 	name TEXT NOT NULL, 
-	first_name TEXT, 
+	first_name TEXT NOT NULL, 
 	work_status BOOLEAN, 
 	email TEXT NOT NULL, 
 	work_phone TEXT, 
@@ -269,19 +269,19 @@ CREATE TABLE "Funder" (
 CREATE TABLE "Molecule" (
 	id INTEGER NOT NULL, 
 	name_mol TEXT NOT NULL, 
-	molecular_type TEXT NOT NULL, 
-	molecular_class TEXT NOT NULL, 
+	molecular_type TEXT, 
+	molecular_class TEXT, 
 	sequence TEXT NOT NULL, 
 	natural_source TEXT NOT NULL, 
-	taxonomy_id_source TEXT NOT NULL, 
-	expression_system TEXT NOT NULL, 
-	taxonomy_id_expression TEXT NOT NULL, 
+	taxonomy_id_source TEXT, 
+	expression_system TEXT, 
+	taxonomy_id_expression TEXT, 
 	gene_name TEXT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Ligand" (
 	id INTEGER NOT NULL, 
-	present BOOLEAN NOT NULL, 
+	present BOOLEAN, 
 	smiles TEXT, 
 	reference TEXT, 
 	PRIMARY KEY (id)
@@ -363,10 +363,10 @@ CREATE TABLE "Grant" (
 );
 CREATE TABLE "OverallMolecule" (
 	id INTEGER NOT NULL, 
-	molecular_overall_type VARCHAR(31) NOT NULL, 
+	molecular_overall_type VARCHAR(31), 
 	name_sample TEXT NOT NULL, 
 	source TEXT NOT NULL, 
-	assembly VARCHAR(13) NOT NULL, 
+	assembly VARCHAR(13), 
 	molecular_weight_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantityValue" (id)
@@ -374,12 +374,12 @@ CREATE TABLE "OverallMolecule" (
 CREATE TABLE "Specimen" (
 	id INTEGER NOT NULL, 
 	buffer TEXT, 
-	ph FLOAT NOT NULL, 
-	vitrification BOOLEAN NOT NULL, 
-	vitrification_cryogen TEXT NOT NULL, 
-	staining BOOLEAN NOT NULL, 
-	embedding BOOLEAN NOT NULL, 
-	shadowing BOOLEAN NOT NULL, 
+	ph FLOAT, 
+	vitrification BOOLEAN, 
+	vitrification_cryogen TEXT, 
+	staining BOOLEAN, 
+	embedding BOOLEAN, 
+	shadowing BOOLEAN, 
 	concentration_id INTEGER, 
 	humidity_id INTEGER, 
 	temperature_id INTEGER, 
@@ -426,7 +426,7 @@ CREATE TABLE "Organizational_authors" (
 );
 CREATE TABLE "Organizational_funder" (
 	"Organizational_id" INTEGER, 
-	funder_id INTEGER NOT NULL, 
+	funder_id INTEGER, 
 	PRIMARY KEY ("Organizational_id", funder_id), 
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id), 
 	FOREIGN KEY(funder_id) REFERENCES "Funder" (id)
@@ -477,7 +477,7 @@ CREATE TABLE "Acquisition" (
 CREATE TABLE "Sample" (
 	id INTEGER NOT NULL, 
 	overall_molecule_id INTEGER NOT NULL, 
-	specimen_id INTEGER NOT NULL, 
+	specimen_id INTEGER, 
 	grid_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(overall_molecule_id) REFERENCES "OverallMolecule" (id), 
@@ -505,7 +505,7 @@ CREATE TABLE "EMDatasetSpa" (
 );
 CREATE TABLE "Sample_molecule" (
 	"Sample_id" INTEGER, 
-	molecule_id INTEGER NOT NULL, 
+	molecule_id INTEGER, 
 	PRIMARY KEY ("Sample_id", molecule_id), 
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id), 
 	FOREIGN KEY(molecule_id) REFERENCES "Molecule" (id)

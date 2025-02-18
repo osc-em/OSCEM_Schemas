@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-02-10T15:19:26
+# Generation date: 2025-02-18T14:27:53
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
@@ -478,23 +478,21 @@ class Organizational(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Organizational")
 
     authors: Union[Union[dict, "Author"], List[Union[dict, "Author"]]] = None
-    funder: Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]] = None
     grants: Optional[Union[Union[dict, "Grant"], List[Union[dict, "Grant"]]]] = empty_list()
+    funder: Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.authors):
             self.MissingRequiredField("authors")
-        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="orcid", keyed=False)
-
-        if self._is_empty(self.funder):
-            self.MissingRequiredField("funder")
-        if not isinstance(self.funder, list):
-            self.funder = [self.funder] if self.funder is not None else []
-        self.funder = [v if isinstance(v, Funder) else Funder(**as_dict(v)) for v in self.funder]
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="type_org", keyed=False)
 
         if not isinstance(self.grants, list):
             self.grants = [self.grants] if self.grants is not None else []
         self.grants = [v if isinstance(v, Grant) else Grant(**as_dict(v)) for v in self.grants]
+
+        if not isinstance(self.funder, list):
+            self.funder = [self.funder] if self.funder is not None else []
+        self.funder = [v if isinstance(v, Funder) else Funder(**as_dict(v)) for v in self.funder]
 
         super().__post_init__(**kwargs)
 
@@ -548,30 +546,16 @@ class Author(Person):
     class_name: ClassVar[str] = "Author"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Author")
 
-    orcid: str = None
-    country: str = None
-    name_org: str = None
     type_org: Union[str, "OrganizationTypeEnum"] = None
     name: str = None
+    first_name: str = None
     email: str = None
+    orcid: Optional[str] = None
+    country: Optional[str] = None
     role: Optional[str] = None
+    name_org: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.orcid):
-            self.MissingRequiredField("orcid")
-        if not isinstance(self.orcid, str):
-            self.orcid = str(self.orcid)
-
-        if self._is_empty(self.country):
-            self.MissingRequiredField("country")
-        if not isinstance(self.country, str):
-            self.country = str(self.country)
-
-        if self._is_empty(self.name_org):
-            self.MissingRequiredField("name_org")
-        if not isinstance(self.name_org, str):
-            self.name_org = str(self.name_org)
-
         if self._is_empty(self.type_org):
             self.MissingRequiredField("type_org")
         if not isinstance(self.type_org, OrganizationTypeEnum):
@@ -582,13 +566,27 @@ class Author(Person):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self._is_empty(self.first_name):
+            self.MissingRequiredField("first_name")
+        if not isinstance(self.first_name, str):
+            self.first_name = str(self.first_name)
+
         if self._is_empty(self.email):
             self.MissingRequiredField("email")
         if not isinstance(self.email, str):
             self.email = str(self.email)
 
+        if self.orcid is not None and not isinstance(self.orcid, str):
+            self.orcid = str(self.orcid)
+
+        if self.country is not None and not isinstance(self.country, str):
+            self.country = str(self.country)
+
         if self.role is not None and not isinstance(self.role, str):
             self.role = str(self.role)
+
+        if self.name_org is not None and not isinstance(self.name_org, str):
+            self.name_org = str(self.name_org)
 
         super().__post_init__(**kwargs)
 
@@ -1535,26 +1533,29 @@ slots.Organizational_authors = Slot(uri=ORGANIZATIONAL.authors, name="Organizati
                    model_uri=DEFAULT_.Organizational_authors, domain=Organizational, range=Union[Union[dict, "Author"], List[Union[dict, "Author"]]])
 
 slots.Organizational_funder = Slot(uri=ORGANIZATIONAL.funder, name="Organizational_funder", curie=ORGANIZATIONAL.curie('funder'),
-                   model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]])
+                   model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]])
 
 slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie('name'),
                    model_uri=DEFAULT_.Author_name, domain=Author, range=str)
+
+slots.Author_first_name = Slot(uri=ORGANIZATIONAL.first_name, name="Author_first_name", curie=ORGANIZATIONAL.curie('first_name'),
+                   model_uri=DEFAULT_.Author_first_name, domain=Author, range=str)
 
 slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.curie('email'),
                    model_uri=DEFAULT_.Author_email, domain=Author, range=str,
                    pattern=re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'))
 
 slots.Author_orcid = Slot(uri=ORGANIZATIONAL.orcid, name="Author_orcid", curie=ORGANIZATIONAL.curie('orcid'),
-                   model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_orcid, domain=Author, range=Optional[str])
 
 slots.Author_country = Slot(uri=ORGANIZATIONAL.country, name="Author_country", curie=ORGANIZATIONAL.curie('country'),
-                   model_uri=DEFAULT_.Author_country, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_country, domain=Author, range=Optional[str])
 
 slots.Author_type_org = Slot(uri=ORGANIZATIONAL.type_org, name="Author_type_org", curie=ORGANIZATIONAL.curie('type_org'),
                    model_uri=DEFAULT_.Author_type_org, domain=Author, range=Union[str, "OrganizationTypeEnum"])
 
 slots.Author_name_org = Slot(uri=ORGANIZATIONAL.name_org, name="Author_name_org", curie=ORGANIZATIONAL.curie('name_org'),
-                   model_uri=DEFAULT_.Author_name_org, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_name_org, domain=Author, range=Optional[str])
 
 slots.EMDatasetBase_acquisition = Slot(uri=OSCEM.acquisition, name="EMDatasetBase_acquisition", curie=OSCEM.curie('acquisition'),
                    model_uri=DEFAULT_.EMDatasetBase_acquisition, domain=EMDatasetBase, range=Optional[Union[dict, "Any"]])

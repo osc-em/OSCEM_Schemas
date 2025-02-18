@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Specimen_embedding](https://w3i
 
 ## Domain and Range
 
-[Specimen](Specimen.md) &#8594;  <sub>1..1</sub> [Boolean](types/Boolean.md)
+[Specimen](Specimen.md) &#8594;  <sub>0..1</sub> [Boolean](types/Boolean.md)
 
 ## Parents
 

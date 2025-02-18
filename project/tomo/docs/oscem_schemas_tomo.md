@@ -101,6 +101,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [film_topology](film_topology.md) - Topology of the support film
      * [Grid➞film_topology](Grid_film_topology.md)
  * [first_name](first_name.md) - first name
+     * [Author➞first_name](Author_first_name.md)
  * [frames_per_movie](frames_per_movie.md) - Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
  * [funder](funder.md) - funding organization/person.
      * [Organizational➞funder](Organizational_funder.md)

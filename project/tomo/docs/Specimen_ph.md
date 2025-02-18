@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Specimen_ph](https://w3id.org/o
 
 ## Domain and Range
 
-[Specimen](Specimen.md) &#8594;  <sub>1..1</sub> [Float](types/Float.md)
+[Specimen](Specimen.md) &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 
 ## Parents
 

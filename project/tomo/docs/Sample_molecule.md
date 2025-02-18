@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Sample_molecule](https://w3id.o
 
 ## Domain and Range
 
-[Sample](Sample.md) &#8594;  <sub>1..\*</sub> [Molecule](Molecule.md)
+[Sample](Sample.md) &#8594;  <sub>0..\*</sub> [Molecule](Molecule.md)
 
 ## Parents
 

@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Author_country](https://w3id.or
 
 ## Domain and Range
 
-[Author](Author.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[Author](Author.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 

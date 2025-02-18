@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/OverallMolecule_molecular_overa
 
 ## Domain and Range
 
-[OverallMolecule](OverallMolecule.md) &#8594;  <sub>1..1</sub> [MoleculeClassEnum](MoleculeClassEnum.md)
+[OverallMolecule](OverallMolecule.md) &#8594;  <sub>0..1</sub> [MoleculeClassEnum](MoleculeClassEnum.md)
 
 ## Parents
 

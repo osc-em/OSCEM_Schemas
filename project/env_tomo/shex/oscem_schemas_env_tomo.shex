@@ -101,15 +101,16 @@ linkml:Sparqlpath xsd:string
 organizational:Author CLOSED {
     (  $organizational:Author_tes (  &organizational:Person_tes ;
           rdf:type [ schema1:Person ] ? ;
-          organizational:orcid @linkml:String ;
-          organizational:country @linkml:String ;
+          organizational:orcid @linkml:String ? ;
+          organizational:country @linkml:String ? ;
           organizational:role @linkml:String ? ;
-          organizational:name_org @linkml:String ;
+          organizational:name_org @linkml:String ? ;
           organizational:type_org [ <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Academic>
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Commercial>
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Government>
              <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Other> ] ;
           schema1:name @linkml:String ;
+          organizational:first_name @linkml:String ;
           schema1:email @linkml:String
        ) ;
        rdf:type [ organizational:Author ] ?
@@ -234,7 +235,7 @@ organizational:Grant CLOSED {
 organizational:Organizational CLOSED {
     (  $organizational:Organizational_tes (  organizational:grants @organizational:Grant * ;
           organizational:authors @organizational:Author + ;
-          organizational:funder @organizational:Funder +
+          organizational:funder @organizational:Funder *
        ) ;
        rdf:type [ organizational:Organizational ] ?
     )

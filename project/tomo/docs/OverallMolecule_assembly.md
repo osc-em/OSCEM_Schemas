@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/OverallMolecule_assembly](https
 
 ## Domain and Range
 
-[OverallMolecule](OverallMolecule.md) &#8594;  <sub>1..1</sub> [AssemblyEnum](AssemblyEnum.md)
+[OverallMolecule](OverallMolecule.md) &#8594;  <sub>0..1</sub> [AssemblyEnum](AssemblyEnum.md)
 
 ## Parents
 

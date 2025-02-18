@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Specimen_vitrification_cryogen]
 
 ## Domain and Range
 
-[Specimen](Specimen.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[Specimen](Specimen.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 

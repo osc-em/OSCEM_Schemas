@@ -488,7 +488,10 @@
             "properties": {
                 "country": {
                     "description": "Country of the institution",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "email": {
                     "description": "email",
@@ -497,10 +500,7 @@
                 },
                 "first_name": {
                     "description": "first name",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "name": {
                     "description": "name",
@@ -508,11 +508,17 @@
                 },
                 "name_org": {
                     "description": "Name of the organization",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "orcid": {
                     "description": "ORCID of the author, a type of unique identifier",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "role": {
                     "description": "Role of the author, for example principal investigator",
@@ -541,11 +547,9 @@
                 }
             },
             "required": [
-                "orcid",
-                "country",
-                "name_org",
                 "type_org",
                 "name",
+                "first_name",
                 "email"
             ],
             "title": "Author",
@@ -949,7 +953,10 @@
                     "items": {
                         "$ref": "#/$defs/Funder"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "grants": {
                     "description": "List of grants associated with the project",
@@ -963,8 +970,7 @@
                 }
             },
             "required": [
-                "authors",
-                "funder"
+                "authors"
             ],
             "title": "Organizational",
             "type": "object"
