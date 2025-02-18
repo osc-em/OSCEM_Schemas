@@ -17,6 +17,8 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [Any](Any.md) - Any type, used as the base for type-narrowing.
  * [BoundingBox2D](BoundingBox2D.md) - an axis-aligned 2D bounding box (float units)
  * [ChromaticAberrationCorrector](ChromaticAberrationCorrector.md) - Special device used to correct instrument inherent chromatic aberration.
+ * [Descriptor](Descriptor.md) - List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
+     * [Descriptors](Descriptors.md)
  * [EMDatasetBase](EMDatasetBase.md) - OSC-EM Metadata for a dataset
      * [EMDatasetTomo](EMDatasetTomo.md) - cryo electron tomography dataset, with focus on a single protein (potentially subtomogram averaging)
  * [EnergyFilter](EnergyFilter.md) - A device used to filter for electrons with specific energy.
@@ -76,6 +78,11 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Instrument➞cs](Instrument_cs.md)
  * [date_time](date_time.md) - Time and date of the data acquisition
      * [Acquisition➞date_time](Acquisition_date_time.md)
+ * [descriptor_name](descriptor_name.md) - Name defining the descriptor
+     * [Descriptor➞descriptor_name](Descriptor_descriptor_name.md)
+ * [descriptor_thing](descriptor_thing.md) - Description of the descriptor
+     * [Descriptor➞descriptor_thing](Descriptor_descriptor_thing.md)
+ * [descriptors](descriptors.md) - List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
  * [detector](detector.md) - Make and model of the detector used
      * [Acquisition➞detector](Acquisition_detector.md)
  * [detector_mode](detector_mode.md) - Operating mode of the detector

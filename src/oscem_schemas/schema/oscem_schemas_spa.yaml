@@ -23,12 +23,15 @@ imports:
   - ./organizational
   - ./sample
   - ./emdataset
+  - ./processing
 
 classes:
   EMDatasetSpa:
     is_a: EMDatasetBase
     tree_root: true
     description: Single particle cryo electron microscopy dataset
+    slots:
+    - processing
     slot_usage:
       acquisition:
         description: Describe the data acquisition parameters
@@ -46,3 +49,9 @@ classes:
         description: Information on authors and grants
         range: Organizational
         required: true
+
+slots:
+  processing:
+    description: Processing information on the dataset
+    range: Processing
+    required: false

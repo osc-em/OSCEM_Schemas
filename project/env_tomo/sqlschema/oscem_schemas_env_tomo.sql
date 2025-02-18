@@ -29,6 +29,14 @@
 --     * Slot: id Description: 
 --     * Slot: unit Description: the unit of a given value
 --     * Slot: value Description: the value of a field with a unit
+-- # Class: "Descriptor" Description: "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information"
+--     * Slot: id Description: 
+--     * Slot: descriptor_name Description: Name defining the descriptor
+--     * Slot: descriptor_thing_id Description: Description of the descriptor
+-- # Class: "Descriptors" Description: ""
+--     * Slot: id Description: 
+--     * Slot: descriptor_name Description: Name defining the descriptor
+--     * Slot: descriptor_thing_id Description: Description of the descriptor
 -- # Class: "Acquisition" Description: "A set of parameteres describing the data acquisition"
 --     * Slot: id Description: 
 --     * Slot: nominal_magnification Description: Magnification level as indicated by the instrument, no unit
@@ -328,6 +336,20 @@ CREATE TABLE "BoundingBox2D" (
 	FOREIGN KEY(x_max_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(y_min_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(y_max_id) REFERENCES "QuantityValue" (id)
+);
+CREATE TABLE "Descriptor" (
+	id INTEGER NOT NULL, 
+	descriptor_name TEXT NOT NULL, 
+	descriptor_thing_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(descriptor_thing_id) REFERENCES "Any" (id)
+);
+CREATE TABLE "Descriptors" (
+	id INTEGER NOT NULL, 
+	descriptor_name TEXT NOT NULL, 
+	descriptor_thing_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(descriptor_thing_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "EnergyFilter" (
 	id INTEGER NOT NULL, 

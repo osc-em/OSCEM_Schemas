@@ -6,7 +6,7 @@ Single particle cryo electron microscopy dataset
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/EMDatasetSpa](https://w3id.org/osc-em/oscem-schemas-spa/EMDatasetSpa)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Organizational],[Instrument],[Organizational]<organizational%201..1-++[EMDatasetSpa],[Sample]<sample%201..1-++[EMDatasetSpa],[Instrument]<instrument%201..1-++[EMDatasetSpa],[Acquisition]<acquisition%201..1-++[EMDatasetSpa],[EMDatasetBase]^-[EMDatasetSpa],[EMDatasetBase],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Organizational],[Instrument],[Organizational]<organizational%201..1-++[EMDatasetSpa],[Sample]<sample%201..1-++[EMDatasetSpa],[Instrument]<instrument%201..1-++[EMDatasetSpa],[Acquisition]<acquisition%201..1-++[EMDatasetSpa],[EMDatasetBase]^-[EMDatasetSpa],[EMDatasetBase],[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Processing],[Organizational],[Instrument],[Organizational]<organizational%201..1-++[EMDatasetSpa],[Sample]<sample%201..1-++[EMDatasetSpa],[Instrument]<instrument%201..1-++[EMDatasetSpa],[Acquisition]<acquisition%201..1-++[EMDatasetSpa],[Processing]<processing%200..1-++[EMDatasetSpa],[EMDatasetBase]^-[EMDatasetSpa],[EMDatasetBase],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Processing],[Organizational],[Instrument],[Organizational]<organizational%201..1-++[EMDatasetSpa],[Sample]<sample%201..1-++[EMDatasetSpa],[Instrument]<instrument%201..1-++[EMDatasetSpa],[Acquisition]<acquisition%201..1-++[EMDatasetSpa],[Processing]<processing%200..1-++[EMDatasetSpa],[EMDatasetBase]^-[EMDatasetSpa],[EMDatasetBase],[Acquisition])
 
 ## Parents
 
@@ -20,6 +20,9 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/EMDatasetSpa](https://w3id.org/o
 
 ### Own
 
+ * [processing](processing.md)  <sub>0..1</sub>
+     * Description: Processing information on the dataset
+     * Range: [Processing](Processing.md)
  * [EMDatasetSpa➞acquisition](EMDatasetSpa_acquisition.md)  <sub>1..1</sub>
      * Description: Describe the data acquisition parameters
      * Range: [Acquisition](Acquisition.md)

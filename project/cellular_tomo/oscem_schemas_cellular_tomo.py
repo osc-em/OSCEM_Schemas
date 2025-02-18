@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-02-18T14:27:53
+# Generation date: 2025-02-18T14:45:09
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
@@ -861,6 +861,42 @@ class QuantityValue(YAMLRoot):
 
 
 @dataclass(repr=False)
+class Descriptor(YAMLRoot):
+    """
+    List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any
+    related information
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TYPES["Descriptor"]
+    class_class_curie: ClassVar[str] = "types:Descriptor"
+    class_name: ClassVar[str] = "Descriptor"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Descriptor")
+
+    descriptor_name: str = None
+    descriptor_thing: Optional[Union[dict, Any]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.descriptor_name):
+            self.MissingRequiredField("descriptor_name")
+        if not isinstance(self.descriptor_name, str):
+            self.descriptor_name = str(self.descriptor_name)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Descriptors(Descriptor):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TYPES["Descriptors"]
+    class_class_curie: ClassVar[str] = "types:Descriptors"
+    class_name: ClassVar[str] = "Descriptors"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Descriptors")
+
+    descriptor_name: str = None
+
+@dataclass(repr=False)
 class SampleEnv(YAMLRoot):
     """
     Unifying class to describe the full sample.
@@ -1376,6 +1412,15 @@ slots.unit = Slot(uri=QUDT.hasUnit, name="unit", curie=QUDT.curie('hasUnit'),
 slots.value = Slot(uri=QUDT.hasQuantityKind, name="value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.value, domain=None, range=Optional[float])
 
+slots.descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.descriptors, domain=None, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])
+
+slots.descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="descriptor_name", curie=CUSTOM_TYPES.curie('descriptor_name'),
+                   model_uri=DEFAULT_.descriptor_name, domain=None, range=Optional[str])
+
+slots.descriptor_thing = Slot(uri=CUSTOM_TYPES.descriptor_thing, name="descriptor_thing", curie=CUSTOM_TYPES.curie('descriptor_thing'),
+                   model_uri=DEFAULT_.descriptor_thing, domain=None, range=Optional[Union[dict, Any]])
+
 slots.organism = Slot(uri=SAMPLE_ENV.organism, name="organism", curie=SAMPLE_ENV.curie('organism'),
                    model_uri=DEFAULT_.organism, domain=None, range=Optional[Union[str, List[str]]])
 
@@ -1574,6 +1619,12 @@ slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", cur
 
 slots.QuantityValue_value = Slot(uri=QUDT.hasQuantityKind, name="QuantityValue_value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.QuantityValue_value, domain=QuantityValue, range=float)
+
+slots.Descriptor_descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="Descriptor_descriptor_name", curie=CUSTOM_TYPES.curie('descriptor_name'),
+                   model_uri=DEFAULT_.Descriptor_descriptor_name, domain=Descriptor, range=str)
+
+slots.Descriptor_descriptor_thing = Slot(uri=CUSTOM_TYPES.descriptor_thing, name="Descriptor_descriptor_thing", curie=CUSTOM_TYPES.curie('descriptor_thing'),
+                   model_uri=DEFAULT_.Descriptor_descriptor_thing, domain=Descriptor, range=Optional[Union[dict, Any]])
 
 slots.SampleEnv_specimen_env = Slot(uri=SAMPLE_ENV.specimen_env, name="SampleEnv_specimen_env", curie=SAMPLE_ENV.curie('specimen_env'),
                    model_uri=DEFAULT_.SampleEnv_specimen_env, domain=SampleEnv, range=Union[dict, "SpecimenEnv"])

@@ -2083,6 +2083,44 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_thing",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "EMDatasetTomo_acquisition",
       "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasacquisition",
       "description": "Describe the data acquisition parameters",
@@ -3617,6 +3655,44 @@
       "range": "float",
       "required": true,
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptor_name",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "alias": "descriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_thing",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptor_thing",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "alias": "descriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_thing",
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
@@ -4112,13 +4188,40 @@
       "slot_usage": {},
       "class_uri": "http://qudt.org/schema/qudt/quantityValue",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptor",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesDescriptor",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "abstract": true,
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesDescriptor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesDescriptors",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "Descriptor",
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesDescriptors",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "oscem_schemas_tomo.yaml",
   "source_file_date": "2025-02-12T13:01:13",
   "source_file_size": 1198,
-  "generation_date": "2025-02-18T14:29:18",
+  "generation_date": "2025-02-18T14:47:03",
   "@type": "SchemaDefinition",
   "@context": [
     "project/tomo/jsonld/oscem_schemas_tomo.context.jsonld",
