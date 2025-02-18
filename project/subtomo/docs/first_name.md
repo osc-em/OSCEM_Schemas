@@ -3,7 +3,7 @@
 
 first name
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/first_name](https://w3id.org/osc-em/oscem-schemas-tomo/first_name)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/first_name](https://w3id.org/osc-em/oscem-schemas-subtomo/first_name)
 
 
 ## Domain and Range

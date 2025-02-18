@@ -3,7 +3,7 @@
 
 Make and model of a specilized device
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/model](https://w3id.org/osc-em/oscem-schemas-tomo/model)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/model](https://w3id.org/osc-em/oscem-schemas-subtomo/model)
 
 
 ## Domain and Range

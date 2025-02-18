@@ -3,7 +3,7 @@
 
 Cryogen used in cooling the instrument and sample, usually nitrogen
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/cryogen](https://w3id.org/osc-em/oscem-schemas-tomo/cryogen)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/cryogen](https://w3id.org/osc-em/oscem-schemas-subtomo/cryogen)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Make and model of the detector used
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/detector](https://w3id.org/osc-em/oscem-schemas-tomo/detector)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/detector](https://w3id.org/osc-em/oscem-schemas-subtomo/detector)
 
 
 ## Domain and Range

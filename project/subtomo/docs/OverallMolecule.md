@@ -3,7 +3,7 @@
 
 Description of the overall molecule
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/OverallMolecule](https://w3id.org/osc-em/oscem-schemas-tomo/OverallMolecule)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/OverallMolecule](https://w3id.org/osc-em/oscem-schemas-subtomo/OverallMolecule)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantityValue],[QuantityValue]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantityValue],[QuantityValue]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])

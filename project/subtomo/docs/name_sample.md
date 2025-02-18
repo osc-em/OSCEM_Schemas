@@ -3,7 +3,7 @@
 
 Name of the full sample
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/name_sample](https://w3id.org/osc-em/oscem-schemas-tomo/name_sample)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/name_sample](https://w3id.org/osc-em/oscem-schemas-subtomo/name_sample)
 
 
 ## Domain and Range

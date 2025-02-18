@@ -3,7 +3,7 @@
 
 A series of numbers constructed from min, max, and increment
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Series](https://w3id.org/osc-em/oscem-schemas-tomo/Series)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Series](https://w3id.org/osc-em/oscem-schemas-subtomo/Series)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[QuantityValue]<increment%200..1-++[Series],[Series]^-[TiltAngle],[Range]^-[Series],[Range],[QuantityValue])](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[QuantityValue]<increment%200..1-++[Series],[Series]^-[TiltAngle],[Range]^-[Series],[Range],[QuantityValue])

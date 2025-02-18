@@ -3,7 +3,7 @@
 
 the unit of a given value
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/QuantityValue_unit](https://w3id.org/osc-em/oscem-schemas-tomo/QuantityValue_unit)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/QuantityValue_unit](https://w3id.org/osc-em/oscem-schemas-subtomo/QuantityValue_unit)
 
 
 ## Domain and Range

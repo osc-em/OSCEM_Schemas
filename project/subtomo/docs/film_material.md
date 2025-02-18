@@ -3,7 +3,7 @@
 
 Type of material the support film is made of
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/film_material](https://w3id.org/osc-em/oscem-schemas-tomo/film_material)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/film_material](https://w3id.org/osc-em/oscem-schemas-subtomo/film_material)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Grid mesh in lines per inch
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/mesh](https://w3id.org/osc-em/oscem-schemas-tomo/mesh)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/mesh](https://w3id.org/osc-em/oscem-schemas-subtomo/mesh)
 
 
 ## Domain and Range

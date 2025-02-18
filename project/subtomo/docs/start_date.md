@@ -3,7 +3,7 @@
 
 start date
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/start_date](https://w3id.org/osc-em/oscem-schemas-tomo/start_date)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/start_date](https://w3id.org/osc-em/oscem-schemas-subtomo/start_date)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Level of binning on the images applied during data collection
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/binning_camera](https://w3id.org/osc-em/oscem-schemas-tomo/binning_camera)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/binning_camera](https://w3id.org/osc-em/oscem-schemas-subtomo/binning_camera)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Name of the gene of interest
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Molecule_gene_name](https://w3id.org/osc-em/oscem-schemas-tomo/Molecule_gene_name)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Molecule_gene_name](https://w3id.org/osc-em/oscem-schemas-subtomo/Molecule_gene_name)
 
 
 ## Domain and Range

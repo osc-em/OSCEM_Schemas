@@ -52,9 +52,19 @@ Use the `make` command to generate project artifacts:
 
 </details>
 
+Some adaptations were made to the cookiecutter to allow for multiple "main" schemas in the repository:
+
+* instead of targeting a single root schema, the cookiecutter searches for schemas following the oscem_schemas_$.yaml pattern in src/oscem_schemas/schema/ where $ corresponds to the name of your schema.
+* generates an overall documentation webpage, with subpages for each of the individual schemas. If you add a new schema its subpage will be added automatically BUT you need to add a general description and an apropriate link in perm_docs/index.md to make it appear in the overall index page!
+* example data for testing goes into src/data/examples/ and follows the pattern example_valid_$.yaml where $ corresponds to the same schema name as oscem_schemas_$.yaml.
+* All LinkML output files for each of the schemas will still be generated into the projects directory, with a subfolder per schema e.g. projects/spa/
+* The vast majority of changes were made in the Makefile in order to have it work on multiple schemas instead of one, so if there are issues, check there first.
+
+
+
 ## Credits
 
 This project was made with
 [linkml-project-cookiecutter](https://github.com/linkml/linkml-project-cookiecutter).
 
-Some adaptations were made to the cookiecutter to allow for multiple "main" schemas in the repository
+

@@ -3,7 +3,7 @@
 
 Concentration of the (supra)molecule in the sample, in mg/ml
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Specimen_concentration](https://w3id.org/osc-em/oscem-schemas-tomo/Specimen_concentration)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen_concentration](https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen_concentration)
 
 
 ## Domain and Range

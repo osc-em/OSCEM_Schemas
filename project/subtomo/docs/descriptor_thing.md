@@ -3,7 +3,7 @@
 
 Description of the descriptor
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/descriptor_thing](https://w3id.org/osc-em/oscem-schemas-tomo/descriptor_thing)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/descriptor_thing](https://w3id.org/osc-em/oscem-schemas-subtomo/descriptor_thing)
 
 
 ## Domain and Range

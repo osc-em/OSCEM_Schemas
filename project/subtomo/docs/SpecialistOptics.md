@@ -3,7 +3,7 @@
 
 Optional optics used to correct for instrument limitations.
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/SpecialistOptics](https://w3id.org/osc-em/oscem-schemas-tomo/SpecialistOptics)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/SpecialistOptics](https://w3id.org/osc-em/oscem-schemas-subtomo/SpecialistOptics)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SphericalAberrationCorrector],[ChromaticAberrationCorrector]<chromatic_aberration_corrector%200..1-++[SpecialistOptics],[SphericalAberrationCorrector]<spherical_aberration_corrector%200..1-++[SpecialistOptics],[Phaseplate]<phaseplate%200..1-++[SpecialistOptics],[Acquisition]++-%20specialist_optics%200..1>[SpecialistOptics],[Phaseplate],[ChromaticAberrationCorrector],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[SphericalAberrationCorrector],[ChromaticAberrationCorrector]<chromatic_aberration_corrector%200..1-++[SpecialistOptics],[SphericalAberrationCorrector]<spherical_aberration_corrector%200..1-++[SpecialistOptics],[Phaseplate]<phaseplate%200..1-++[SpecialistOptics],[Acquisition]++-%20specialist_optics%200..1>[SpecialistOptics],[Phaseplate],[ChromaticAberrationCorrector],[Acquisition])

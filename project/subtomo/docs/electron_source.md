@@ -3,7 +3,7 @@
 
 Type of electron source used in the microscope, such as FEG
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/electron_source](https://w3id.org/osc-em/oscem-schemas-tomo/electron_source)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/electron_source](https://w3id.org/osc-em/oscem-schemas-subtomo/electron_source)
 
 
 ## Domain and Range

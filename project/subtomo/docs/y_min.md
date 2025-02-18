@@ -3,7 +3,7 @@
 
 minimum y
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/y_min](https://w3id.org/osc-em/oscem-schemas-tomo/y_min)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/y_min](https://w3id.org/osc-em/oscem-schemas-subtomo/y_min)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Type of pretreatment of the grid, i.e., glow discharge
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Grid_pretreatment_type](https://w3id.org/osc-em/oscem-schemas-tomo/Grid_pretreatment_type)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Grid_pretreatment_type](https://w3id.org/osc-em/oscem-schemas-subtomo/Grid_pretreatment_type)
 
 
 ## Domain and Range

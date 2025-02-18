@@ -3,7 +3,7 @@
 
 Whether the sample was vitrified
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Specimen_vitrification](https://w3id.org/osc-em/oscem-schemas-tomo/Specimen_vitrification)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen_vitrification](https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen_vitrification)
 
 
 ## Domain and Range

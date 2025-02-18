@@ -3,7 +3,7 @@
 
 Pressure of the chamber during pretreatment, in Pa
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Grid_pretreatment_pressure](https://w3id.org/osc-em/oscem-schemas-tomo/Grid_pretreatment_pressure)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Grid_pretreatment_pressure](https://w3id.org/osc-em/oscem-schemas-subtomo/Grid_pretreatment_pressure)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Grid manufacturer
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Grid_manufacturer](https://w3id.org/osc-em/oscem-schemas-tomo/Grid_manufacturer)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Grid_manufacturer](https://w3id.org/osc-em/oscem-schemas-subtomo/Grid_manufacturer)
 
 
 ## Domain and Range

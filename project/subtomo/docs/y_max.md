@@ -3,7 +3,7 @@
 
 maximum y
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/y_max](https://w3id.org/osc-em/oscem-schemas-tomo/y_max)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/y_max](https://w3id.org/osc-em/oscem-schemas-subtomo/y_max)
 
 
 ## Domain and Range

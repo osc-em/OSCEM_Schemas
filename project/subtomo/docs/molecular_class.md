@@ -3,7 +3,7 @@
 
 Class of the molecule
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/molecular_class](https://w3id.org/osc-em/oscem-schemas-tomo/molecular_class)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/molecular_class](https://w3id.org/osc-em/oscem-schemas-subtomo/molecular_class)
 
 
 ## Domain and Range

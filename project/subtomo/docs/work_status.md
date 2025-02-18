@@ -3,7 +3,7 @@
 
 work status
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/work_status](https://w3id.org/osc-em/oscem-schemas-tomo/work_status)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/work_status](https://w3id.org/osc-em/oscem-schemas-subtomo/work_status)
 
 
 ## Domain and Range

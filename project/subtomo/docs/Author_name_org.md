@@ -3,7 +3,7 @@
 
 Name of the organization
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Author_name_org](https://w3id.org/osc-em/oscem-schemas-tomo/Author_name_org)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Author_name_org](https://w3id.org/osc-em/oscem-schemas-subtomo/Author_name_org)
 
 
 ## Domain and Range

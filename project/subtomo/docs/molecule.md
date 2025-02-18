@@ -3,7 +3,7 @@
 
 More detailed information about individual molecules.
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Molecule](https://w3id.org/osc-em/oscem-schemas-tomo/Molecule)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Molecule](https://w3id.org/osc-em/oscem-schemas-subtomo/Molecule)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20molecule%200..*>[Molecule&#124;name_mol:string;molecular_type:string%20%3F;molecular_class:string%20%3F;sequence:string;natural_source:string;taxonomy_id_source:string%20%3F;expression_system:string%20%3F;taxonomy_id_expression:string%20%3F;gene_name:string%20%3F],[Sample]++-%20molecule(i)%200..*>[Molecule])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20molecule%200..*>[Molecule&#124;name_mol:string;molecular_type:string%20%3F;molecular_class:string%20%3F;sequence:string;natural_source:string;taxonomy_id_source:string%20%3F;expression_system:string%20%3F;taxonomy_id_expression:string%20%3F;gene_name:string%20%3F],[Sample]++-%20molecule(i)%200..*>[Molecule])

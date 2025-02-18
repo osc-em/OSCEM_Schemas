@@ -3,7 +3,7 @@
 
 Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/images_generated](https://w3id.org/osc-em/oscem-schemas-tomo/images_generated)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/images_generated](https://w3id.org/osc-em/oscem-schemas-subtomo/images_generated)
 
 
 ## Domain and Range

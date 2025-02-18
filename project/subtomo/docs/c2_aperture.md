@@ -3,7 +3,7 @@
 
 C2 aperture size used in data acquisition, in µm
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/c2_aperture](https://w3id.org/osc-em/oscem-schemas-tomo/c2_aperture)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/c2_aperture](https://w3id.org/osc-em/oscem-schemas-subtomo/c2_aperture)
 
 
 ## Domain and Range

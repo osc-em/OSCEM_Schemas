@@ -3,7 +3,7 @@
 
 Thickness of the support film
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/film_thickness](https://w3id.org/osc-em/oscem-schemas-tomo/film_thickness)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/film_thickness](https://w3id.org/osc-em/oscem-schemas-subtomo/film_thickness)
 
 
 ## Domain and Range

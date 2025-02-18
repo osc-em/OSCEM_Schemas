@@ -3,7 +3,7 @@
 
 Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/frames_per_movie](https://w3id.org/osc-em/oscem-schemas-tomo/frames_per_movie)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/frames_per_movie](https://w3id.org/osc-em/oscem-schemas-subtomo/frames_per_movie)
 
 
 ## Domain and Range

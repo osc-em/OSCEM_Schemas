@@ -3,7 +3,7 @@
 
 OSC-EM Metadata for a dataset
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/EMDatasetBase](https://w3id.org/osc-em/oscem-schemas-tomo/EMDatasetBase)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/EMDatasetBase](https://w3id.org/osc-em/oscem-schemas-subtomo/EMDatasetBase)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[EMDatasetTomo],[Any]<organizational%200..1-++[EMDatasetBase],[Any]<sample%200..1-++[EMDatasetBase],[Any]<instrument%200..1-++[EMDatasetBase],[Any]<acquisition%200..1-++[EMDatasetBase],[EMDatasetBase]^-[EMDatasetTomo],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[EMDatasetTomo],[Any]<organizational%200..1-++[EMDatasetBase],[Any]<sample%200..1-++[EMDatasetBase],[Any]<instrument%200..1-++[EMDatasetBase],[Any]<acquisition%200..1-++[EMDatasetBase],[EMDatasetBase]^-[EMDatasetTomo],[Any])

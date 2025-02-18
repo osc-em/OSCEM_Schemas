@@ -3,7 +3,7 @@
 
 Whether and how you have to flip or rotate the gainref in order to align with your acquired images
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/gainref_flip_rotate](https://w3id.org/osc-em/oscem-schemas-tomo/gainref_flip_rotate)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/gainref_flip_rotate](https://w3id.org/osc-em/oscem-schemas-subtomo/gainref_flip_rotate)
 
 
 ## Domain and Range

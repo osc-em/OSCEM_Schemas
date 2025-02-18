@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Descriptors](https://w3id.org/osc-em/oscem-schemas-tomo/Descriptors)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Descriptors](https://w3id.org/osc-em/oscem-schemas-subtomo/Descriptors)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptor]^-[Descriptors&#124;descriptor_name(i):string],[Descriptor],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptor]^-[Descriptors&#124;descriptor_name(i):string],[Descriptor],[Any])

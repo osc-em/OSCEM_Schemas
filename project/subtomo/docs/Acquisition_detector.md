@@ -3,7 +3,7 @@
 
 Make and model of the detector used
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Acquisition_detector](https://w3id.org/osc-em/oscem-schemas-tomo/Acquisition_detector)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Acquisition_detector](https://w3id.org/osc-em/oscem-schemas-subtomo/Acquisition_detector)
 
 
 ## Domain and Range

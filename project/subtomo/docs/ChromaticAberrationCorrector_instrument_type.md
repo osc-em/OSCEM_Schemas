@@ -3,7 +3,7 @@
 
 Details of a given specialist instrument
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/ChromaticAberrationCorrector_instrument_type](https://w3id.org/osc-em/oscem-schemas-tomo/ChromaticAberrationCorrector_instrument_type)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/ChromaticAberrationCorrector_instrument_type](https://w3id.org/osc-em/oscem-schemas-subtomo/ChromaticAberrationCorrector_instrument_type)
 
 
 ## Domain and Range

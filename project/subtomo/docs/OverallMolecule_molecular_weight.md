@@ -3,7 +3,7 @@
 
 Molecular weight in Da
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/OverallMolecule_molecular_weight](https://w3id.org/osc-em/oscem-schemas-tomo/OverallMolecule_molecular_weight)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/OverallMolecule_molecular_weight](https://w3id.org/osc-em/oscem-schemas-subtomo/OverallMolecule_molecular_weight)
 
 
 ## Domain and Range

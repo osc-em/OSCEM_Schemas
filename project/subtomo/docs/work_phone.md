@@ -3,7 +3,7 @@
 
 work phone
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/work_phone](https://w3id.org/osc-em/oscem-schemas-tomo/work_phone)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/work_phone](https://w3id.org/osc-em/oscem-schemas-subtomo/work_phone)
 
 
 ## Domain and Range

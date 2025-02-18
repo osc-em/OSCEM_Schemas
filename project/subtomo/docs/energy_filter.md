@@ -3,7 +3,7 @@
 
 Wether an energy filter was used and its specifics.
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/energy_filter](https://w3id.org/osc-em/oscem-schemas-tomo/energy_filter)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/energy_filter](https://w3id.org/osc-em/oscem-schemas-subtomo/energy_filter)
 
 
 ## Domain and Range

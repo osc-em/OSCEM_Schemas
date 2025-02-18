@@ -3,7 +3,7 @@
 
 Role of the author, for example principal investigator
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/role](https://w3id.org/osc-em/oscem-schemas-tomo/role)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/role](https://w3id.org/osc-em/oscem-schemas-subtomo/role)
 
 
 ## Domain and Range

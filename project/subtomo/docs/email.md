@@ -3,7 +3,7 @@
 
 email
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/email](https://w3id.org/osc-em/oscem-schemas-tomo/email)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/email](https://w3id.org/osc-em/oscem-schemas-subtomo/email)
 
 
 ## Domain and Range

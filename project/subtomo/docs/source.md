@@ -3,7 +3,7 @@
 
 Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/source](https://w3id.org/osc-em/oscem-schemas-tomo/source)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/source](https://w3id.org/osc-em/oscem-schemas-subtomo/source)
 
 
 ## Domain and Range

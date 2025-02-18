@@ -3,7 +3,7 @@
 
 Taxonomy ID of the expression system organism
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/taxonomy_id_expression](https://w3id.org/osc-em/oscem-schemas-tomo/taxonomy_id_expression)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/taxonomy_id_expression](https://w3id.org/osc-em/oscem-schemas-subtomo/taxonomy_id_expression)
 
 
 ## Domain and Range

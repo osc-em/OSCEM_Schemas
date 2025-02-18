@@ -3,7 +3,7 @@
 
 The size of the image in pixels, height and width given.
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/image_size](https://w3id.org/osc-em/oscem-schemas-tomo/image_size)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/image_size](https://w3id.org/osc-em/oscem-schemas-subtomo/image_size)
 
 
 ## Domain and Range

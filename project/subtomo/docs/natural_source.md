@@ -3,7 +3,7 @@
 
 Scientific name of the natural host organism
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/natural_source](https://w3id.org/osc-em/oscem-schemas-tomo/natural_source)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/natural_source](https://w3id.org/osc-em/oscem-schemas-subtomo/natural_source)
 
 
 ## Domain and Range

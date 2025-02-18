@@ -3,7 +3,7 @@
 
 Number of grids imaged for this project - here with qualifier during this data acquisition
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/grids_imaged](https://w3id.org/osc-em/oscem-schemas-tomo/grids_imaged)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/grids_imaged](https://w3id.org/osc-em/oscem-schemas-subtomo/grids_imaged)
 
 
 ## Domain and Range

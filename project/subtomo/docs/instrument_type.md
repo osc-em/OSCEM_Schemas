@@ -3,7 +3,7 @@
 
 Details of a given specialist instrument
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/instrument_type](https://w3id.org/osc-em/oscem-schemas-tomo/instrument_type)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/instrument_type](https://w3id.org/osc-em/oscem-schemas-subtomo/instrument_type)
 
 
 ## Domain and Range

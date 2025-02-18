@@ -3,7 +3,7 @@
 
 name
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Author_name](https://w3id.org/osc-em/oscem-schemas-tomo/Author_name)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Author_name](https://w3id.org/osc-em/oscem-schemas-subtomo/Author_name)
 
 
 ## Domain and Range

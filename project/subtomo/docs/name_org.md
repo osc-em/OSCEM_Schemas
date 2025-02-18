@@ -3,7 +3,7 @@
 
 Name of the organization
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/name_org](https://w3id.org/osc-em/oscem-schemas-tomo/name_org)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/name_org](https://w3id.org/osc-em/oscem-schemas-subtomo/name_org)
 
 
 ## Domain and Range

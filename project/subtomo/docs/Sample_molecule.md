@@ -3,7 +3,7 @@
 
 List of molecule associated with the sample
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/Sample_molecule](https://w3id.org/osc-em/oscem-schemas-tomo/Sample_molecule)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Sample_molecule](https://w3id.org/osc-em/oscem-schemas-subtomo/Sample_molecule)
 
 
 ## Domain and Range

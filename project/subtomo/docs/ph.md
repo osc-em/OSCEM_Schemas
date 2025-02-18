@@ -3,7 +3,7 @@
 
 pH of the sample buffer
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/ph](https://w3id.org/osc-em/oscem-schemas-tomo/ph)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/ph](https://w3id.org/osc-em/oscem-schemas-subtomo/ph)
 
 
 ## Domain and Range

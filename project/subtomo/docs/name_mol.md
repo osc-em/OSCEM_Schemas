@@ -3,7 +3,7 @@
 
 Name of an individual molecule (often protein) in the sample
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/name_mol](https://w3id.org/osc-em/oscem-schemas-tomo/name_mol)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/name_mol](https://w3id.org/osc-em/oscem-schemas-subtomo/name_mol)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Name/Type of the Microscope
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/microscope](https://w3id.org/osc-em/oscem-schemas-tomo/microscope)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/microscope](https://w3id.org/osc-em/oscem-schemas-subtomo/microscope)
 
 
 ## Domain and Range

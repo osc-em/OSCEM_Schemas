@@ -3,7 +3,7 @@
 
 The tilt axis angle of a tomography series
 
-URI: [https://w3id.org/osc-em/oscem-schemas-tomo/tilt_axis_angle](https://w3id.org/osc-em/oscem-schemas-tomo/tilt_axis_angle)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/tilt_axis_angle](https://w3id.org/osc-em/oscem-schemas-subtomo/tilt_axis_angle)
 
 
 ## Domain and Range
