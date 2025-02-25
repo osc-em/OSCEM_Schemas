@@ -119,6 +119,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [imaging](imaging.md) - Mode of imaging used during data collection
      * [Instrument➞imaging](Instrument_imaging.md)
  * [increment](increment.md) - Increment between elements of a series
+     * [TiltAngle➞increment](TiltAngle_increment.md)
  * [instrument](instrument.md)
      * [EMDatasetBase➞instrument](EMDatasetBase_instrument.md)
      * [EMDatasetEnv➞instrument](EMDatasetEnv_instrument.md) - Describe the instrument used to acquire the data
@@ -132,12 +133,14 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [location](location.md) - the geographical location of your source, optimally in a geographic coordinate system.
  * [main_target](main_target.md) - What was the main biological target of your research for this tomogram?
  * [maximal](maximal.md) - Maximal value of a given dataset property
+     * [TiltAngle➞maximal](TiltAngle_maximal.md)
  * [method](method.md) - freezing method - such as plunge freezing, high pressure freezing etc.
  * [method_thin](method_thin.md) - The thinning method used, such as FIB milling.
  * [microscope](microscope.md) - Name/Type of the Microscope
      * [Instrument➞microscope](Instrument_microscope.md)
  * [microscope_software](microscope_software.md) - Software used for instrument control,
  * [minimal](minimal.md) - Minimal value of a given dataset property
+     * [TiltAngle➞minimal](TiltAngle_minimal.md)
  * [model](model.md) - Make and model of a specilized device
  * [name](name.md) - name
      * [Author➞name](Author_name.md)

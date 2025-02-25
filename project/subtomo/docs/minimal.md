@@ -15,9 +15,9 @@ None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Children
 
+ *  [TiltAngle➞minimal](TiltAngle_minimal.md)
 
 ## Used by
 
  * [Range](Range.md)
  * [Series](Series.md)
- * [TiltAngle](TiltAngle.md)

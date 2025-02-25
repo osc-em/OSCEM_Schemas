@@ -15,8 +15,8 @@ None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Children
 
+ *  [TiltAngle➞increment](TiltAngle_increment.md)
 
 ## Used by
 
  * [Series](Series.md)
- * [TiltAngle](TiltAngle.md)

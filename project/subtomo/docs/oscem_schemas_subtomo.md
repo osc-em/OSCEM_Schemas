@@ -134,6 +134,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [imaging](imaging.md) - Mode of imaging used during data collection
      * [Instrument➞imaging](Instrument_imaging.md)
  * [increment](increment.md) - Increment between elements of a series
+     * [TiltAngle➞increment](TiltAngle_increment.md)
  * [instrument](instrument.md)
      * [EMDatasetBase➞instrument](EMDatasetBase_instrument.md)
      * [EMDatasetTomo➞instrument](EMDatasetTomo_instrument.md) - Describe the instrument used to acquire the data
@@ -148,12 +149,14 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [material](material.md) - Material out of which the grid is made
      * [Grid➞material](Grid_material.md)
  * [maximal](maximal.md) - Maximal value of a given dataset property
+     * [TiltAngle➞maximal](TiltAngle_maximal.md)
  * [mesh](mesh.md) - Grid mesh in lines per inch
      * [Grid➞mesh](Grid_mesh.md)
  * [microscope](microscope.md) - Name/Type of the Microscope
      * [Instrument➞microscope](Instrument_microscope.md)
  * [microscope_software](microscope_software.md) - Software used for instrument control,
  * [minimal](minimal.md) - Minimal value of a given dataset property
+     * [TiltAngle➞minimal](TiltAngle_minimal.md)
  * [model](model.md) - Make and model of a specilized device
  * [molecular_class](molecular_class.md) - Class of the molecule
      * [Molecule➞molecular_class](Molecule_molecular_class.md)

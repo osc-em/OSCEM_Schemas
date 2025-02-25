@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-02-18T15:37:59
+# Generation date: 2025-02-25T16:30:19
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
@@ -761,6 +761,7 @@ class Series(Range):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class TiltAngle(Series):
     """
     The min, max and increment of the tilt angle in a tomography session. Unit is degree.
@@ -771,6 +772,28 @@ class TiltAngle(Series):
     class_class_curie: ClassVar[str] = "tomo:graphy/TiltAngle"
     class_name: ClassVar[str] = "TiltAngle"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/TiltAngle")
+
+    minimal: Union[dict, "QuantityValue"] = None
+    maximal: Union[dict, "QuantityValue"] = None
+    increment: Union[dict, "QuantityValue"] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.minimal):
+            self.MissingRequiredField("minimal")
+        if not isinstance(self.minimal, QuantityValue):
+            self.minimal = QuantityValue(**as_dict(self.minimal))
+
+        if self._is_empty(self.maximal):
+            self.MissingRequiredField("maximal")
+        if not isinstance(self.maximal, QuantityValue):
+            self.maximal = QuantityValue(**as_dict(self.maximal))
+
+        if self._is_empty(self.increment):
+            self.MissingRequiredField("increment")
+        if not isinstance(self.increment, QuantityValue):
+            self.increment = QuantityValue(**as_dict(self.increment))
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -1567,6 +1590,15 @@ slots.Instrument_acceleration_voltage = Slot(uri=INSTRUMENT['/acceleration_volta
 
 slots.Instrument_cs = Slot(uri=INSTRUMENT['/cs'], name="Instrument_cs", curie=INSTRUMENT.curie('/cs'),
                    model_uri=DEFAULT_.Instrument_cs, domain=Instrument, range=Union[dict, "QuantityValue"])
+
+slots.TiltAngle_minimal = Slot(uri=CUSTOM_TYPES.minimal, name="TiltAngle_minimal", curie=CUSTOM_TYPES.curie('minimal'),
+                   model_uri=DEFAULT_.TiltAngle_minimal, domain=TiltAngle, range=Union[dict, "QuantityValue"])
+
+slots.TiltAngle_maximal = Slot(uri=CUSTOM_TYPES.maximal, name="TiltAngle_maximal", curie=CUSTOM_TYPES.curie('maximal'),
+                   model_uri=DEFAULT_.TiltAngle_maximal, domain=TiltAngle, range=Union[dict, "QuantityValue"])
+
+slots.TiltAngle_increment = Slot(uri=CUSTOM_TYPES.increment, name="TiltAngle_increment", curie=CUSTOM_TYPES.curie('increment'),
+                   model_uri=DEFAULT_.TiltAngle_increment, domain=TiltAngle, range=Union[dict, "QuantityValue"])
 
 slots.AcquisitionTomo_tilt_axis_angle = Slot(uri=TOMO['graphy/tilt_axis_angle'], name="AcquisitionTomo_tilt_axis_angle", curie=TOMO.curie('graphy/tilt_axis_angle'),
                    model_uri=DEFAULT_.AcquisitionTomo_tilt_axis_angle, domain=AcquisitionTomo, range=float)

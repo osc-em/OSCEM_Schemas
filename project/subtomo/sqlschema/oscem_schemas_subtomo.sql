@@ -452,9 +452,9 @@ CREATE TABLE "Grid" (
 );
 CREATE TABLE "TiltAngle" (
 	id INTEGER NOT NULL, 
-	increment_id INTEGER, 
-	minimal_id INTEGER, 
-	maximal_id INTEGER, 
+	increment_id INTEGER NOT NULL, 
+	minimal_id INTEGER NOT NULL, 
+	maximal_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(increment_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
