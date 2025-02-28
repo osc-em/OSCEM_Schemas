@@ -16,6 +16,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [AcquisitionTomo](AcquisitionTomo.md)
  * [Any](Any.md) - Any type, used as the base for type-narrowing.
  * [BoundingBox2D](BoundingBox2D.md) - an axis-aligned 2D bounding box (float units)
+ * [BoundingBox2DSI](BoundingBox2DSI.md) - an axis-aligned 2D bounding box (float units) with SI unit attached
  * [ChromaticAberrationCorrector](ChromaticAberrationCorrector.md) - Special device used to correct instrument inherent chromatic aberration.
  * [Descriptor](Descriptor.md) - List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
      * [Descriptors](Descriptors.md)
@@ -35,9 +36,11 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Author](Author.md) - Details on the person performing the experiment.
  * [Phaseplate](Phaseplate.md) - Used to modulate the phase of the electron wave.
  * [QuantityValue](QuantityValue.md) - if a value has a unit, it should be given as a unit value pair.
+     * [QuantitySI](QuantitySI.md) - unit value extended to have two additional fields si_value and si_unit
  * [Range](Range.md) - A range constructed from min and max
      * [Series](Series.md) - A series of numbers constructed from min, max, and increment
          * [TiltAngle](TiltAngle.md) - The min, max and increment of the tilt angle in a tomography session. Unit is degree.
+ * [RangeSI](RangeSI.md) - A range constructed from min and max, si units attached
  * [Sample](Sample.md) - Unifying class to describe the full sample.
  * [SpecialistOptics](SpecialistOptics.md) - Optional optics used to correct for instrument limitations.
  * [Specimen](Specimen.md) - Description of specimen handling.
@@ -150,6 +153,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Grid➞material](Grid_material.md)
  * [maximal](maximal.md) - Maximal value of a given dataset property
      * [TiltAngle➞maximal](TiltAngle_maximal.md)
+ * [maximal_si](maximal_si.md) - Maximal value of a given dataset property, with si units
  * [mesh](mesh.md) - Grid mesh in lines per inch
      * [Grid➞mesh](Grid_mesh.md)
  * [microscope](microscope.md) - Name/Type of the Microscope
@@ -157,6 +161,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [microscope_software](microscope_software.md) - Software used for instrument control,
  * [minimal](minimal.md) - Minimal value of a given dataset property
      * [TiltAngle➞minimal](TiltAngle_minimal.md)
+ * [minimal_si](minimal_si.md) - Minimal value of a given dataset property, with si units
  * [model](model.md) - Make and model of a specilized device
  * [molecular_class](molecular_class.md) - Class of the molecule
      * [Molecule➞molecular_class](Molecule_molecular_class.md)
@@ -213,6 +218,10 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Molecule➞sequence](Molecule_sequence.md)
  * [shadowing](shadowing.md) - Whether the sample was shadowed
      * [Specimen➞shadowing](Specimen_shadowing.md)
+ * [si_unit](si_unit.md) - the SI unit attached to a si value
+     * [QuantitySI➞si_unit](QuantitySI_si_unit.md)
+ * [si_value](si_value.md) - value of a given field in respect to its SI unit
+     * [QuantitySI➞si_value](QuantitySI_si_value.md)
  * [smiles](smiles.md) - Provide a valid SMILES string of your ligand
  * [source](source.md) - Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
      * [OverallMolecule➞source](OverallMolecule_source.md)
@@ -255,9 +264,13 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [work_phone](work_phone.md) - work phone
  * [work_status](work_status.md) - work status
  * [x_max](x_max.md) - maximum x
+ * [x_max_si](x_max_si.md) - maximum x, with si units
  * [x_min](x_min.md) - minimum x
+ * [x_min_si](x_min_si.md) - minimum x, with si units
  * [y_max](y_max.md) - maximum y
+ * [y_max_si](y_max_si.md) - maximum y, with si units
  * [y_min](y_min.md) - minimum y
+ * [y_min_si](y_min_si.md) - minimum y, with si units
 
 ### Enums
 

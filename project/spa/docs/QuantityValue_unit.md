@@ -19,6 +19,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/QuantityValue_unit](https://w3id
 
 ## Used by
 
+ * [QuantitySI](QuantitySI.md)
  * [QuantityValue](QuantityValue.md)
 
 ## Other properties

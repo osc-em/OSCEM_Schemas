@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/temperature_range](htt
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Range](Range.md)
+None &#8594;  <sub>0..1</sub> [RangeSI](RangeSI.md)
 
 ## Parents
 

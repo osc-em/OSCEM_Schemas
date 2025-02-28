@@ -6,7 +6,7 @@ how the cells were grown
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/GrowthCondition](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/GrowthCondition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<temperature_growth%200..1-++[GrowthCondition&#124;media:string%20%3F;growth_location:string%20%3F;cell_cycle:string%20%3F;treatment:string%20%3F;atmosphere_growth:string%20%3F],[SampleCell]++-%20growth_condition%200..1>[GrowthCondition],[SampleCell])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<temperature_growth%200..1-++[GrowthCondition&#124;media:string%20%3F;growth_location:string%20%3F;cell_cycle:string%20%3F;treatment:string%20%3F;atmosphere_growth:string%20%3F],[SampleCell]++-%20growth_condition%200..1>[GrowthCondition],[SampleCell])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<temperature_growth%200..1-++[GrowthCondition&#124;media:string%20%3F;growth_location:string%20%3F;cell_cycle:string%20%3F;treatment:string%20%3F;atmosphere_growth:string%20%3F],[SampleCell]++-%20growth_condition%200..1>[GrowthCondition],[SampleCell])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<temperature_growth%200..1-++[GrowthCondition&#124;media:string%20%3F;growth_location:string%20%3F;cell_cycle:string%20%3F;treatment:string%20%3F;atmosphere_growth:string%20%3F],[SampleCell]++-%20growth_condition%200..1>[GrowthCondition],[SampleCell])
 
 ## Referenced by Class
 
@@ -34,4 +34,4 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/GrowthCondition](https
      * Range: [String](types/String.md)
  * [temperature_growth](temperature_growth.md)  <sub>0..1</sub>
      * Description: temperature of the sample; in K.
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [QuantitySI](QuantitySI.md)

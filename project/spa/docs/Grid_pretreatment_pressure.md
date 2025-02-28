@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Grid_pretreatment_pressure](http
 
 ## Domain and Range
 
-[Grid](Grid.md) &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
+[Grid](Grid.md) &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/width_energy_filter](https://w3i
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
+None &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

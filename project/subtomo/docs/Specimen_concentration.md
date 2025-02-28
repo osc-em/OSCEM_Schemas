@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen_concentration](http
 
 ## Domain and Range
 
-[Specimen](Specimen.md) &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
+[Specimen](Specimen.md) &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

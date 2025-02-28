@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/temperature_env](https://w3
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
+None &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

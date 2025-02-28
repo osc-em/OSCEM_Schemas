@@ -15,62 +15,62 @@ enum OrganizationTypeEnum
 
 type Acquisition
   {
-    nominalDefocus: Range
-    calibratedDefocus: Range
+    nominalDefocus: RangeSI
+    calibratedDefocus: RangeSI
     nominalMagnification: Integer
     calibratedMagnification: Integer
     holder: String
     holderCryogen: String
-    temperature: Range
+    temperature: RangeSI
     microscopeSoftware: String
     detector: String!
     detectorMode: String
-    dosePerMovie: QuantityValue!
+    dosePerMovie: QuantitySI!
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
-    exposureTime: QuantityValue
+    exposureTime: QuantitySI
     cryogen: String
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
     binningCamera: Float!
-    pixelSize: QuantityValue!
+    pixelSize: QuantitySI!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
     beamtilt: BoundingBox2D
-    imageshift: BoundingBox2D
+    imageshift: BoundingBox2DSI
     beamtiltgroups: Integer
     gainrefFlipRotate: String
   }
 
 type AcquisitionTomo
   {
-    nominalDefocus: Range
-    calibratedDefocus: Range
+    nominalDefocus: RangeSI
+    calibratedDefocus: RangeSI
     nominalMagnification: Integer
     calibratedMagnification: Integer
     holder: String
     holderCryogen: String
-    temperature: Range
+    temperature: RangeSI
     microscopeSoftware: String
     detector: String!
     detectorMode: String
-    dosePerMovie: QuantityValue!
+    dosePerMovie: QuantitySI!
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
-    exposureTime: QuantityValue
+    exposureTime: QuantitySI
     cryogen: String
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
     binningCamera: Float!
-    pixelSize: QuantityValue!
+    pixelSize: QuantitySI!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
     beamtilt: BoundingBox2D
-    imageshift: BoundingBox2D
+    imageshift: BoundingBox2DSI
     beamtiltgroups: Integer
     gainrefFlipRotate: String
     tiltAxisAngle: Float!
@@ -101,6 +101,14 @@ type BoundingBox2D
     xMax: QuantityValue
     yMin: QuantityValue
     yMax: QuantityValue
+  }
+
+type BoundingBox2DSI
+  {
+    xMinSi: QuantitySI
+    xMaxSi: QuantitySI
+    yMinSi: QuantitySI
+    yMaxSi: QuantitySI
   }
 
 type ChromaticAberrationCorrector
@@ -141,7 +149,7 @@ type EnergyFilter
   {
     used: Boolean!
     model: String
-    widthEnergyFilter: QuantityValue!
+    widthEnergyFilter: QuantitySI!
   }
 
 type Freezing
@@ -150,7 +158,7 @@ type Freezing
     method: FreezingMethodEnum
     blotting: Boolean
     humidityEnv: QuantityValue
-    temperatureEnv: QuantityValue
+    temperatureEnv: QuantitySI
     atmosphere: String
     details: String
   }
@@ -184,9 +192,9 @@ type Instrument
     illumination: String!
     imaging: String!
     electronSource: String!
-    accelerationVoltage: QuantityValue!
-    c2Aperture: QuantityValue
-    cs: QuantityValue!
+    accelerationVoltage: QuantitySI!
+    c2Aperture: QuantitySI
+    cs: QuantitySI!
   }
 
 type Organizational
@@ -211,6 +219,14 @@ type Phaseplate
     instrumentType: String!
   }
 
+type QuantitySI
+  {
+    unit: String!
+    value: Float!
+    siValue: Float!
+    siUnit: String!
+  }
+
 type QuantityValue
   {
     unit: String!
@@ -221,6 +237,12 @@ type Range
   {
     minimal: QuantityValue
     maximal: QuantityValue
+  }
+
+type RangeSI
+  {
+    minimalSi: QuantitySI
+    maximalSi: QuantitySI
   }
 
 type SampleEnv
@@ -266,7 +288,7 @@ type Thinning
     methodThin: String
     instrumentThin: String
     ionSource: String
-    targetThickness: QuantityValue
+    targetThickness: QuantitySI
     liftOut: Boolean
   }
 

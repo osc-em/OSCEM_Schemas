@@ -10,6 +10,10 @@
 --     * Slot: id Description: 
 --     * Slot: minimal_id Description: Minimal value of a given dataset property
 --     * Slot: maximal_id Description: Maximal value of a given dataset property
+-- # Class: "RangeSI" Description: "A range constructed from min and max, si units attached"
+--     * Slot: id Description: 
+--     * Slot: minimal_si_id Description: Minimal value of a given dataset property, with si units
+--     * Slot: maximal_si_id Description: Maximal value of a given dataset property, with si units
 -- # Class: "Series" Description: "A series of numbers constructed from min, max, and increment"
 --     * Slot: id Description: 
 --     * Slot: increment_id Description: Increment between elements of a series
@@ -25,8 +29,20 @@
 --     * Slot: x_max_id Description: maximum x
 --     * Slot: y_min_id Description: minimum y
 --     * Slot: y_max_id Description: maximum y
+-- # Class: "BoundingBox2DSI" Description: "an axis-aligned 2D bounding box (float units) with SI unit attached"
+--     * Slot: id Description: 
+--     * Slot: x_min_si_id Description: minimum x, with si units
+--     * Slot: x_max_si_id Description: maximum x, with si units
+--     * Slot: y_min_si_id Description: minimum y, with si units
+--     * Slot: y_max_si_id Description: maximum y, with si units
 -- # Class: "QuantityValue" Description: "if a value has a unit, it should be given as a unit value pair."
 --     * Slot: id Description: 
+--     * Slot: unit Description: the unit of a given value
+--     * Slot: value Description: the value of a field with a unit
+-- # Class: "QuantitySI" Description: "unit value extended to have two additional fields si_value and si_unit"
+--     * Slot: id Description: 
+--     * Slot: si_value Description: value of a given field in respect to its SI unit
+--     * Slot: si_unit Description: the SI unit attached to a si value
 --     * Slot: unit Description: the unit of a given value
 --     * Slot: value Description: the value of a field with a unit
 -- # Class: "Descriptor" Description: "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information"
@@ -258,6 +274,14 @@ CREATE TABLE "QuantityValue" (
 	value FLOAT NOT NULL, 
 	PRIMARY KEY (id)
 );
+CREATE TABLE "QuantitySI" (
+	id INTEGER NOT NULL, 
+	si_value FLOAT NOT NULL, 
+	si_unit TEXT NOT NULL, 
+	unit TEXT NOT NULL, 
+	value FLOAT NOT NULL, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE "Phaseplate" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
@@ -338,6 +362,14 @@ CREATE TABLE "Range" (
 	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(maximal_id) REFERENCES "QuantityValue" (id)
 );
+CREATE TABLE "RangeSI" (
+	id INTEGER NOT NULL, 
+	minimal_si_id INTEGER, 
+	maximal_si_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(minimal_si_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(maximal_si_id) REFERENCES "QuantitySI" (id)
+);
 CREATE TABLE "Series" (
 	id INTEGER NOT NULL, 
 	increment_id INTEGER, 
@@ -360,6 +392,18 @@ CREATE TABLE "BoundingBox2D" (
 	FOREIGN KEY(y_min_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(y_max_id) REFERENCES "QuantityValue" (id)
 );
+CREATE TABLE "BoundingBox2DSI" (
+	id INTEGER NOT NULL, 
+	x_min_si_id INTEGER, 
+	x_max_si_id INTEGER, 
+	y_min_si_id INTEGER, 
+	y_max_si_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(x_min_si_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(x_max_si_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(y_min_si_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(y_max_si_id) REFERENCES "QuantitySI" (id)
+);
 CREATE TABLE "Descriptor" (
 	id INTEGER NOT NULL, 
 	descriptor_name TEXT NOT NULL, 
@@ -380,7 +424,7 @@ CREATE TABLE "EnergyFilter" (
 	model TEXT, 
 	width_energy_filter_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(width_energy_filter_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(width_energy_filter_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "SpecialistOptics" (
 	id INTEGER NOT NULL, 
@@ -402,9 +446,9 @@ CREATE TABLE "Instrument" (
 	c2_aperture_id INTEGER, 
 	cs_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(acceleration_voltage_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(c2_aperture_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(cs_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(acceleration_voltage_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(c2_aperture_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(cs_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "OverallMolecule" (
 	id INTEGER NOT NULL, 
@@ -414,7 +458,7 @@ CREATE TABLE "OverallMolecule" (
 	assembly VARCHAR(13), 
 	molecular_weight_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Specimen" (
 	id INTEGER NOT NULL, 
@@ -429,9 +473,9 @@ CREATE TABLE "Specimen" (
 	humidity_id INTEGER, 
 	temperature_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(concentration_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(concentration_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(humidity_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(temperature_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(temperature_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Grid" (
 	id INTEGER NOT NULL, 
@@ -447,8 +491,8 @@ CREATE TABLE "Grid" (
 	pretreatment_time_id INTEGER, 
 	pretreatment_pressure_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(pretreatment_time_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(pretreatment_time_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "TiltAngle" (
 	id INTEGER NOT NULL, 
@@ -529,18 +573,18 @@ CREATE TABLE "Acquisition" (
 	beamtilt_id INTEGER, 
 	imageshift_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(nominal_defocus_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(calibrated_defocus_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(nominal_defocus_id) REFERENCES "RangeSI" (id), 
+	FOREIGN KEY(calibrated_defocus_id) REFERENCES "RangeSI" (id), 
+	FOREIGN KEY(temperature_id) REFERENCES "RangeSI" (id), 
+	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 
-	FOREIGN KEY(imageshift_id) REFERENCES "BoundingBox2D" (id)
+	FOREIGN KEY(imageshift_id) REFERENCES "BoundingBox2DSI" (id)
 );
 CREATE TABLE "Sample" (
 	id INTEGER NOT NULL, 
@@ -585,18 +629,18 @@ CREATE TABLE "AcquisitionTomo" (
 	imageshift_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(tilt_angle_id) REFERENCES "TiltAngle" (id), 
-	FOREIGN KEY(nominal_defocus_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(calibrated_defocus_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(nominal_defocus_id) REFERENCES "RangeSI" (id), 
+	FOREIGN KEY(calibrated_defocus_id) REFERENCES "RangeSI" (id), 
+	FOREIGN KEY(temperature_id) REFERENCES "RangeSI" (id), 
+	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 
-	FOREIGN KEY(imageshift_id) REFERENCES "BoundingBox2D" (id)
+	FOREIGN KEY(imageshift_id) REFERENCES "BoundingBox2DSI" (id)
 );
 CREATE TABLE "Organizational_grants" (
 	"Organizational_id" INTEGER, 

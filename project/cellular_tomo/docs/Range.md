@@ -6,7 +6,7 @@ A range constructed from min and max
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Range](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Range)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[QuantityValue]<maximal%200..1-++[Range],[QuantityValue]<minimal%200..1-++[Range],[Acquisition]++-%20calibrated_defocus%200..1>[Range],[Acquisition]++-%20nominal_defocus%200..1>[Range],[Acquisition]++-%20temperature%200..1>[Range],[Range]^-[Series],[QuantityValue],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[QuantityValue]<maximal%200..1-++[Range],[QuantityValue]<minimal%200..1-++[Range],[Acquisition]++-%20calibrated_defocus%200..1>[Range],[Acquisition]++-%20nominal_defocus%200..1>[Range],[Acquisition]++-%20temperature%200..1>[Range],[Range]^-[Series],[QuantityValue],[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[QuantityValue]<maximal%200..1-++[Range],[QuantityValue]<minimal%200..1-++[Range],[Range]^-[Series],[QuantityValue])](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[QuantityValue]<maximal%200..1-++[Range],[QuantityValue]<minimal%200..1-++[Range],[Range]^-[Series],[QuantityValue])
 
 ## Children
 
@@ -14,9 +14,6 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Range](https://w3id.or
 
 ## Referenced by Class
 
- *  **None** *[calibrated_defocus](calibrated_defocus.md)*  <sub>0..1</sub>  **[Range](Range.md)**
- *  **None** *[nominal_defocus](nominal_defocus.md)*  <sub>0..1</sub>  **[Range](Range.md)**
- *  **None** *[➞temperature](temperature_range.md)*  <sub>0..1</sub>  **[Range](Range.md)**
 
 ## Attributes
 

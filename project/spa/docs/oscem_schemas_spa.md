@@ -16,6 +16,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [Any](Any.md) - Any type, used as the base for type-narrowing.
  * [Astigmatism](Astigmatism.md) - Astigmatism-related metadata
  * [BoundingBox2D](BoundingBox2D.md) - an axis-aligned 2D bounding box (float units)
+ * [BoundingBox2DSI](BoundingBox2DSI.md) - an axis-aligned 2D bounding box (float units) with SI unit attached
  * [CTFs](CTFs.md) - Class representing Contrast Transfer Function (CTF) metadata
  * [ChromaticAberrationCorrector](ChromaticAberrationCorrector.md) - Special device used to correct instrument inherent chromatic aberration.
  * [Classes2D](Classes2D.md) - Class representing classes 2D metadata
@@ -45,8 +46,10 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [Phaseplate](Phaseplate.md) - Used to modulate the phase of the electron wave.
  * [Processing](Processing.md) - Set of parameters describing the data processing
  * [QuantityValue](QuantityValue.md) - if a value has a unit, it should be given as a unit value pair.
+     * [QuantitySI](QuantitySI.md) - unit value extended to have two additional fields si_value and si_unit
  * [Range](Range.md) - A range constructed from min and max
      * [Series](Series.md) - A series of numbers constructed from min, max, and increment
+ * [RangeSI](RangeSI.md) - A range constructed from min and max, si units attached
  * [Resolution](Resolution.md) - Resolution-related metadata
  * [Sample](Sample.md) - Unifying class to describe the full sample.
  * [SpecialistOptics](SpecialistOptics.md) - Optional optics used to correct for instrument limitations.
@@ -204,6 +207,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [material](material.md) - Material out of which the grid is made
      * [Grid➞material](Grid_material.md)
  * [maximal](maximal.md) - Maximal value of a given dataset property
+ * [maximal_si](maximal_si.md) - Maximal value of a given dataset property, with si units
  * [mesh](mesh.md) - Grid mesh in lines per inch
      * [Grid➞mesh](Grid_mesh.md)
  * [micrograph_examples](micrograph_examples.md) - Filename of micrographs shown as examples in descending order based on the number of particles
@@ -214,6 +218,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Instrument➞microscope](Instrument_microscope.md)
  * [microscope_software](microscope_software.md) - Software used for instrument control,
  * [minimal](minimal.md) - Minimal value of a given dataset property
+ * [minimal_si](minimal_si.md) - Minimal value of a given dataset property, with si units
  * [model](model.md) - Make and model of a specilized device
  * [molecular_class](molecular_class.md) - Class of the molecule
      * [Molecule➞molecular_class](Molecule_molecular_class.md)
@@ -320,6 +325,10 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Molecule➞sequence](Molecule_sequence.md)
  * [shadowing](shadowing.md) - Whether the sample was shadowed
      * [Specimen➞shadowing](Specimen_shadowing.md)
+ * [si_unit](si_unit.md) - the SI unit attached to a si value
+     * [QuantitySI➞si_unit](QuantitySI_si_unit.md)
+ * [si_value](si_value.md) - value of a given field in respect to its SI unit
+     * [QuantitySI➞si_value](QuantitySI_si_value.md)
  * [side_view](side_view.md) - Filename of the side view isosurface image
      * [IsosurfaceImages➞side_view](IsosurfaceImages_side_view.md)
  * [size](size.md) - Size of the volume
@@ -374,9 +383,13 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [work_phone](work_phone.md) - work phone
  * [work_status](work_status.md) - work status
  * [x_max](x_max.md) - maximum x
+ * [x_max_si](x_max_si.md) - maximum x, with si units
  * [x_min](x_min.md) - minimum x
+ * [x_min_si](x_min_si.md) - minimum x, with si units
  * [y_max](y_max.md) - maximum y
+ * [y_max_si](y_max_si.md) - maximum y, with si units
  * [y_min](y_min.md) - minimum y
+ * [y_min_si](y_min_si.md) - minimum y, with si units
 
 ### Enums
 

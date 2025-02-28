@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/imageshift](https://w3
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [BoundingBox2D](BoundingBox2D.md)
+None &#8594;  <sub>0..1</sub> [BoundingBox2DSI](BoundingBox2DSI.md)
 
 ## Parents
 
