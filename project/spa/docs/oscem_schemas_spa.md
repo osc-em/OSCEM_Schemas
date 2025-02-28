@@ -325,9 +325,9 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Molecule➞sequence](Molecule_sequence.md)
  * [shadowing](shadowing.md) - Whether the sample was shadowed
      * [Specimen➞shadowing](Specimen_shadowing.md)
- * [si_unit](si_unit.md) - the SI unit attached to a si value
+ * [si_unit](si_unit.md)
      * [QuantitySI➞si_unit](QuantitySI_si_unit.md)
- * [si_value](si_value.md) - value of a given field in respect to its SI unit
+ * [si_value](si_value.md)
      * [QuantitySI➞si_value](QuantitySI_si_value.md)
  * [side_view](side_view.md) - Filename of the side view isosurface image
      * [IsosurfaceImages➞side_view](IsosurfaceImages_side_view.md)
@@ -356,6 +356,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Author➞type_org](Author_type_org.md)
  * [unit](unit.md) - the unit of a given value
      * [QuantityValue➞unit](QuantityValue_unit.md)
+ * [unitSI](unitSI.md) - the SI unit attached to a si value
  * [used](used.md) - whether a specific instrument was used during data acquisition
      * [ChromaticAberrationCorrector➞used](ChromaticAberrationCorrector_used.md)
      * [EnergyFilter➞used](EnergyFilter_used.md)
@@ -363,6 +364,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [SphericalAberrationCorrector➞used](SphericalAberrationCorrector_used.md)
  * [value](value.md) - the value of a field with a unit
      * [QuantityValue➞value](QuantityValue_value.md)
+ * [valueSI](valueSI.md) - value of a given field in respect to its SI unit
  * [vitrification](vitrification.md) - Whether the sample was vitrified
      * [Specimen➞vitrification](Specimen_vitrification.md)
  * [vitrification_cryogen](vitrification_cryogen.md) - Which cryogen was used for vitrification

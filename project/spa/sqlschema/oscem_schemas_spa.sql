@@ -42,8 +42,8 @@
 --     * Slot: value Description: the value of a field with a unit
 -- # Class: "QuantitySI" Description: "unit value extended to have two additional fields si_value and si_unit"
 --     * Slot: id Description: 
---     * Slot: si_value Description: value of a given field in respect to its SI unit
---     * Slot: si_unit Description: the SI unit attached to a si value
+--     * Slot: valueSI Description: value of a given field in respect to its SI unit
+--     * Slot: unitSI Description: the SI unit attached to a si value
 --     * Slot: unit Description: the unit of a given value
 --     * Slot: value Description: the value of a field with a unit
 -- # Class: "Descriptor" Description: "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information"
@@ -352,8 +352,8 @@ CREATE TABLE "QuantityValue" (
 );
 CREATE TABLE "QuantitySI" (
 	id INTEGER NOT NULL, 
-	si_value FLOAT NOT NULL, 
-	si_unit TEXT NOT NULL, 
+	"valueSI" FLOAT, 
+	"unitSI" TEXT, 
 	unit TEXT NOT NULL, 
 	value FLOAT NOT NULL, 
 	PRIMARY KEY (id)

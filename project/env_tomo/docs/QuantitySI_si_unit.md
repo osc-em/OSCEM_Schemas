@@ -1,7 +1,7 @@
 
 # Slot: si_unit
 
-the SI unit attached to a si value
+
 
 URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/QuantitySI_si_unit](https://w3id.org/osc-em/oscem-schemas-env-tomo/QuantitySI_si_unit)
 

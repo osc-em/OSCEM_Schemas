@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-02-28T15:09:29
+# Generation date: 2025-02-28T16:20:59
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
@@ -990,19 +990,27 @@ class QuantitySI(QuantityValue):
 
     unit: str = None
     value: float = None
-    si_value: float = None
+    si_value: str = None
     si_unit: str = None
+    valueSI: Optional[float] = None
+    unitSI: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.si_value):
             self.MissingRequiredField("si_value")
-        if not isinstance(self.si_value, float):
-            self.si_value = float(self.si_value)
+        if not isinstance(self.si_value, str):
+            self.si_value = str(self.si_value)
 
         if self._is_empty(self.si_unit):
             self.MissingRequiredField("si_unit")
         if not isinstance(self.si_unit, str):
             self.si_unit = str(self.si_unit)
+
+        if self.valueSI is not None and not isinstance(self.valueSI, float):
+            self.valueSI = float(self.valueSI)
+
+        if self.unitSI is not None and not isinstance(self.unitSI, str):
+            self.unitSI = str(self.unitSI)
 
         super().__post_init__(**kwargs)
 
@@ -1568,11 +1576,11 @@ slots.descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="descriptor_
 slots.descriptor_thing = Slot(uri=CUSTOM_TYPES.descriptor_thing, name="descriptor_thing", curie=CUSTOM_TYPES.curie('descriptor_thing'),
                    model_uri=DEFAULT_.descriptor_thing, domain=None, range=Optional[Union[dict, Any]])
 
-slots.si_value = Slot(uri=CUSTOM_TYPES.si_value, name="si_value", curie=CUSTOM_TYPES.curie('si_value'),
-                   model_uri=DEFAULT_.si_value, domain=None, range=Optional[float])
+slots.valueSI = Slot(uri=CUSTOM_TYPES.valueSI, name="valueSI", curie=CUSTOM_TYPES.curie('valueSI'),
+                   model_uri=DEFAULT_.valueSI, domain=None, range=Optional[float])
 
-slots.si_unit = Slot(uri=CUSTOM_TYPES.si_unit, name="si_unit", curie=CUSTOM_TYPES.curie('si_unit'),
-                   model_uri=DEFAULT_.si_unit, domain=None, range=Optional[str])
+slots.unitSI = Slot(uri=CUSTOM_TYPES.unitSI, name="unitSI", curie=CUSTOM_TYPES.curie('unitSI'),
+                   model_uri=DEFAULT_.unitSI, domain=None, range=Optional[str])
 
 slots.minimal_si = Slot(uri=CUSTOM_TYPES.minimal_si, name="minimal_si", curie=CUSTOM_TYPES.curie('minimal_si'),
                    model_uri=DEFAULT_.minimal_si, domain=None, range=Optional[Union[dict, QuantitySI]])
@@ -1669,6 +1677,12 @@ slots.details_tomo = Slot(uri=SAMPLE_ENV.details_tomo, name="details_tomo", curi
 
 slots.specimen_env = Slot(uri=SAMPLE_ENV.specimen_env, name="specimen_env", curie=SAMPLE_ENV.curie('specimen_env'),
                    model_uri=DEFAULT_.specimen_env, domain=None, range=Optional[Union[dict, SpecimenEnv]])
+
+slots.si_value = Slot(uri=DEFAULT_.si_value, name="si_value", curie=DEFAULT_.curie('si_value'),
+                   model_uri=DEFAULT_.si_value, domain=None, range=str)
+
+slots.si_unit = Slot(uri=DEFAULT_.si_unit, name="si_unit", curie=DEFAULT_.curie('si_unit'),
+                   model_uri=DEFAULT_.si_unit, domain=None, range=str)
 
 slots.EMDatasetCell_acquisition = Slot(uri=OSCEM.acquisition, name="EMDatasetCell_acquisition", curie=OSCEM.curie('acquisition'),
                    model_uri=DEFAULT_.EMDatasetCell_acquisition, domain=EMDatasetCell, range=Union[dict, AcquisitionTomo])
@@ -1800,10 +1814,10 @@ slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", cur
 slots.QuantityValue_value = Slot(uri=QUDT.hasQuantityKind, name="QuantityValue_value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.QuantityValue_value, domain=QuantityValue, range=float)
 
-slots.QuantitySI_si_value = Slot(uri=CUSTOM_TYPES.si_value, name="QuantitySI_si_value", curie=CUSTOM_TYPES.curie('si_value'),
-                   model_uri=DEFAULT_.QuantitySI_si_value, domain=QuantitySI, range=float)
+slots.QuantitySI_si_value = Slot(uri=DEFAULT_.si_value, name="QuantitySI_si_value", curie=DEFAULT_.curie('si_value'),
+                   model_uri=DEFAULT_.QuantitySI_si_value, domain=QuantitySI, range=str)
 
-slots.QuantitySI_si_unit = Slot(uri=CUSTOM_TYPES.si_unit, name="QuantitySI_si_unit", curie=CUSTOM_TYPES.curie('si_unit'),
+slots.QuantitySI_si_unit = Slot(uri=DEFAULT_.si_unit, name="QuantitySI_si_unit", curie=DEFAULT_.curie('si_unit'),
                    model_uri=DEFAULT_.QuantitySI_si_unit, domain=QuantitySI, range=str)
 
 slots.Descriptor_descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="Descriptor_descriptor_name", curie=CUSTOM_TYPES.curie('descriptor_name'),

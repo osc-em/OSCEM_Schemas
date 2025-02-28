@@ -1,14 +1,14 @@
 
 # Slot: si_unit
 
-the SI unit attached to a si value
+
 
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/si_unit](https://w3id.org/osc-em/oscem-schemas-subtomo/si_unit)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 

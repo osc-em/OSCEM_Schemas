@@ -1607,11 +1607,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "si_value",
-      "definition_uri": "https://w3id.org/osc-em/custom_typessi_value",
+      "name": "valueSI",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesvalueSI",
       "description": "value of a given field in respect to its SI unit",
       "from_schema": "https://w3id.org/osc-em/custom_types",
-      "slot_uri": "https://w3id.org/osc-em/custom_typessi_value",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesvalueSI",
       "owner": "QuantitySI",
       "domain_of": [
         "QuantitySI"
@@ -1620,11 +1620,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "si_unit",
-      "definition_uri": "https://w3id.org/osc-em/custom_typessi_unit",
+      "name": "unitSI",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesunitSI",
       "description": "the SI unit attached to a si value",
       "from_schema": "https://w3id.org/osc-em/custom_types",
-      "slot_uri": "https://w3id.org/osc-em/custom_typessi_unit",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesunitSI",
       "owner": "QuantitySI",
       "domain_of": [
         "QuantitySI"
@@ -2057,6 +2057,22 @@
       ],
       "range": "SpecimenEnv",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "si_value",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-cellular-tomo",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-cellular-tomo/si_value",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "si_unit",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-cellular-tomo",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-cellular-tomo/si_unit",
+      "range": "string",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2900,12 +2916,10 @@
     },
     {
       "name": "QuantitySI_si_value",
-      "definition_uri": "https://w3id.org/osc-em/custom_typessi_value",
-      "description": "value of a given field in respect to its SI unit",
-      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-cellular-tomo",
       "is_a": "si_value",
       "domain": "QuantitySI",
-      "slot_uri": "https://w3id.org/osc-em/custom_typessi_value",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-cellular-tomo/si_value",
       "alias": "si_value",
       "owner": "QuantitySI",
       "domain_of": [
@@ -2913,18 +2927,16 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "si_value",
-      "range": "float",
+      "range": "string",
       "required": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "QuantitySI_si_unit",
-      "definition_uri": "https://w3id.org/osc-em/custom_typessi_unit",
-      "description": "the SI unit attached to a si value",
-      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-cellular-tomo",
       "is_a": "si_unit",
       "domain": "QuantitySI",
-      "slot_uri": "https://w3id.org/osc-em/custom_typessi_unit",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-cellular-tomo/si_unit",
       "alias": "si_unit",
       "owner": "QuantitySI",
       "domain_of": [
@@ -3470,6 +3482,8 @@
       "slots": [
         "QuantityValue_unit",
         "QuantityValue_value",
+        "valueSI",
+        "unitSI",
         "QuantitySI_si_value",
         "QuantitySI_si_unit"
       ],
@@ -3590,7 +3604,7 @@
   "source_file": "oscem_schemas_cellular_tomo.yaml",
   "source_file_date": "2025-02-12T13:01:13",
   "source_file_size": 1209,
-  "generation_date": "2025-02-28T15:09:28",
+  "generation_date": "2025-02-28T16:20:57",
   "@type": "SchemaDefinition",
   "@context": [
     "project/cellular_tomo/jsonld/oscem_schemas_cellular_tomo.context.jsonld",

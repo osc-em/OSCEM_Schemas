@@ -1,14 +1,14 @@
 
 # Slot: si_value
 
-value of a given field in respect to its SI unit
+
 
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/si_value](https://w3id.org/osc-em/oscem-schemas-spa/si_value)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
