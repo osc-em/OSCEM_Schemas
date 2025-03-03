@@ -40,7 +40,7 @@
                 "calibrated_defocus": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/RangeSI"
+                            "$ref": "#/$defs/Range"
                         },
                         {
                             "type": "null"
@@ -79,7 +79,15 @@
                     ]
                 },
                 "dose_per_movie": {
-                    "$ref": "#/$defs/QuantitySI",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom"
                 },
                 "energy_filter": {
@@ -95,6 +103,9 @@
                 },
                 "exposure_time": {
                     "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
                         {
                             "$ref": "#/$defs/QuantitySI"
                         },
@@ -160,7 +171,7 @@
                 "imageshift": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/BoundingBox2DSI"
+                            "$ref": "#/$defs/BoundingBox2D"
                         },
                         {
                             "type": "null"
@@ -178,7 +189,7 @@
                 "nominal_defocus": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/RangeSI"
+                            "$ref": "#/$defs/Range"
                         },
                         {
                             "type": "null"
@@ -194,7 +205,15 @@
                     ]
                 },
                 "pixel_size": {
-                    "$ref": "#/$defs/QuantitySI",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Pixel size, in Angstrom"
                 },
                 "specialist_optics": {
@@ -211,7 +230,7 @@
                 "temperature": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/RangeSI"
+                            "$ref": "#/$defs/Range"
                         },
                         {
                             "type": "null"
@@ -270,7 +289,7 @@
                 "calibrated_defocus": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/RangeSI"
+                            "$ref": "#/$defs/Range"
                         },
                         {
                             "type": "null"
@@ -309,7 +328,15 @@
                     ]
                 },
                 "dose_per_movie": {
-                    "$ref": "#/$defs/QuantitySI",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom"
                 },
                 "energy_filter": {
@@ -325,6 +352,9 @@
                 },
                 "exposure_time": {
                     "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
                         {
                             "$ref": "#/$defs/QuantitySI"
                         },
@@ -390,7 +420,7 @@
                 "imageshift": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/BoundingBox2DSI"
+                            "$ref": "#/$defs/BoundingBox2D"
                         },
                         {
                             "type": "null"
@@ -408,7 +438,7 @@
                 "nominal_defocus": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/RangeSI"
+                            "$ref": "#/$defs/Range"
                         },
                         {
                             "type": "null"
@@ -424,7 +454,15 @@
                     ]
                 },
                 "pixel_size": {
-                    "$ref": "#/$defs/QuantitySI",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Pixel size, in Angstrom"
                 },
                 "specialist_optics": {
@@ -441,7 +479,7 @@
                 "temperature": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/RangeSI"
+                            "$ref": "#/$defs/Range"
                         },
                         {
                             "type": "null"
@@ -565,6 +603,9 @@
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
                             "type": "null"
                         }
                     ],
@@ -574,6 +615,9 @@
                     "anyOf": [
                         {
                             "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
                         },
                         {
                             "type": "null"
@@ -587,6 +631,9 @@
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
                             "type": "null"
                         }
                     ],
@@ -598,6 +645,9 @@
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
                             "type": "null"
                         }
                     ],
@@ -605,58 +655,6 @@
                 }
             },
             "title": "BoundingBox2D",
-            "type": "object"
-        },
-        "BoundingBox2DSI": {
-            "additionalProperties": false,
-            "description": "an axis-aligned 2D bounding box (float units) with SI unit attached",
-            "properties": {
-                "x_max_si": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantitySI"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "maximum x, with si units"
-                },
-                "x_min_si": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantitySI"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "minimum x, with si units"
-                },
-                "y_max_si": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantitySI"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "maximum y, with si units"
-                },
-                "y_min_si": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantitySI"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "minimum y, with si units"
-                }
-            },
-            "title": "BoundingBox2DSI",
             "type": "object"
         },
         "ChromaticAberrationCorrector": {
@@ -751,7 +749,15 @@
                     "type": "boolean"
                 },
                 "width_energy_filter": {
-                    "$ref": "#/$defs/QuantitySI",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Width of the energy filter used."
                 }
             },
@@ -800,6 +806,9 @@
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
                             "type": "null"
                         }
                     ],
@@ -811,6 +820,9 @@
                 },
                 "temperature_env": {
                     "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
                         {
                             "$ref": "#/$defs/QuantitySI"
                         },
@@ -958,11 +970,22 @@
             "description": "Instrument values, mostly constant across a data collection.",
             "properties": {
                 "acceleration_voltage": {
-                    "$ref": "#/$defs/QuantitySI",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Voltage used for the electron acceleration, in kV"
                 },
                 "c2_aperture": {
                     "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
                         {
                             "$ref": "#/$defs/QuantitySI"
                         },
@@ -973,7 +996,15 @@
                     "description": "C2 aperture size used in data acquisition, in \u00b5m"
                 },
                 "cs": {
-                    "$ref": "#/$defs/QuantitySI",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Spherical aberration of the instrument, in mm"
                 },
                 "electron_source": {
@@ -1181,6 +1212,9 @@
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
                             "type": "null"
                         }
                     ],
@@ -1192,6 +1226,9 @@
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
                             "type": "null"
                         }
                     ],
@@ -1199,36 +1236,6 @@
                 }
             },
             "title": "Range",
-            "type": "object"
-        },
-        "RangeSI": {
-            "additionalProperties": false,
-            "description": "A range constructed from min and max, si units attached",
-            "properties": {
-                "maximal_si": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantitySI"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Maximal value of a given dataset property, with si units"
-                },
-                "minimal_si": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantitySI"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Minimal value of a given dataset property, with si units"
-                }
-            },
-            "title": "RangeSI",
             "type": "object"
         },
         "SampleEnv": {
@@ -1285,6 +1292,9 @@
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
                             "type": "null"
                         }
                     ],
@@ -1296,6 +1306,9 @@
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
                             "type": "null"
                         }
                     ],
@@ -1305,6 +1318,9 @@
                     "anyOf": [
                         {
                             "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
                         },
                         {
                             "type": "null"
@@ -1466,6 +1482,9 @@
                 "target_thickness": {
                     "anyOf": [
                         {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
                             "$ref": "#/$defs/QuantitySI"
                         },
                         {
@@ -1483,15 +1502,39 @@
             "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree.",
             "properties": {
                 "increment": {
-                    "$ref": "#/$defs/QuantityValue",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Increment between elements of a series"
                 },
                 "maximal": {
-                    "$ref": "#/$defs/QuantityValue",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Maximal value of a given dataset property"
                 },
                 "minimal": {
-                    "$ref": "#/$defs/QuantityValue",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        }
+                    ],
                     "description": "Minimal value of a given dataset property"
                 }
             },

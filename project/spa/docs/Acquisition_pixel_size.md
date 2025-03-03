@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Acquisition_pixel_size](https://
 
 ## Domain and Range
 
-[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [QuantitySI](QuantitySI.md)
+[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
 
 ## Parents
 

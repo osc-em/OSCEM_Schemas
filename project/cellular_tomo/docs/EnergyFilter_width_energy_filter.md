@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/EnergyFilter_width_ene
 
 ## Domain and Range
 
-[EnergyFilter](EnergyFilter.md) &#8594;  <sub>1..1</sub> [QuantitySI](QuantitySI.md)
+[EnergyFilter](EnergyFilter.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
 
 ## Parents
 

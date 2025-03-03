@@ -21,11 +21,11 @@ classes:
     slots:
     - minimal
     - maximal
-  RangeSI:
-    description: A range constructed from min and max, si units attached
-    slots:
-    - minimal_si
-    - maximal_si
+  #RangeSI:
+  #  description: A range constructed from min and max, si units attached
+   # slots:
+  #  - minimal_si
+  #  - maximal_si
   Series:
     is_a: Range
     description: A series of numbers constructed from min, max, and increment
@@ -43,13 +43,13 @@ classes:
     - x_max
     - y_min
     - y_max
-  BoundingBox2DSI:
-    description: an axis-aligned 2D bounding box (float units) with SI unit attached
-    slots:
-    - x_min_si
-    - x_max_si
-    - y_min_si
-    - y_max_si
+  #BoundingBox2DSI:
+   # description: an axis-aligned 2D bounding box (float units) with SI unit attached
+    #slots:
+  #  - x_min_si
+  #  - x_max_si
+  #  - y_min_si
+   # - y_max_si
   QuantityValue:
     class_uri: qudt:quantityValue
     description: if a value has a unit, it should be given as a unit value pair.
@@ -89,13 +89,22 @@ classes:
 slots:
   minimal:
     description: Minimal value of a given dataset property
-    range: QuantityValue
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   maximal:
     description: Maximal value of a given dataset property
-    range: QuantityValue
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   increment:
     description: Increment between elements of a series
-    range: QuantityValue
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   width:
     description: The width of a given item - unit depends on item
     range: integer
@@ -104,16 +113,28 @@ slots:
     range: integer
   x_min:
     description: minimum x
-    range: QuantityValue
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   x_max:
     description: maximum x
-    range: QuantityValue
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   y_min:
     description: minimum y
-    range: QuantityValue
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   y_max:
     description: maximum y
-    range: QuantityValue
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   unit:
     description: the unit of a given value
     range: string
@@ -138,21 +159,21 @@ slots:
   unitSI:
     description: the SI unit attached to a si value
     range: string
-  minimal_si:
-    description: Minimal value of a given dataset property, with si units
-    range: QuantitySI
-  maximal_si:
-    description: Maximal value of a given dataset property, with si units
-    range: QuantitySI
-  x_min_si:
-    description: minimum x, with si units
-    range: QuantitySI
-  x_max_si:
-    description: maximum x, with si units
-    range: QuantitySI
-  y_min_si:
-    description: minimum y, with si units
-    range: QuantitySI
-  y_max_si:
-    description: maximum y, with si units
-    range: QuantitySI
+ # minimal_si:
+  #  description: Minimal value of a given dataset property, with si units
+  #  range: QuantitySI
+  #maximal_si:
+  #  description: Maximal value of a given dataset property, with si units
+  #  range: QuantitySI
+  #x_min_si:
+  #  description: minimum x, with si units
+  #  range: QuantitySI
+  #x_max_si:
+  #  description: maximum x, with si units
+  #  range: QuantitySI
+  #y_min_si:
+  #  description: minimum y, with si units
+  #  range: QuantitySI
+  #y_max_si:
+  #  description: maximum y, with si units
+  #  range: QuantitySI

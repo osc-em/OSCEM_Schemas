@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/imageshift](https://w3id.org/osc
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [BoundingBox2DSI](BoundingBox2DSI.md)
+None &#8594;  <sub>0..1</sub> [BoundingBox2D](BoundingBox2D.md)
 
 ## Parents
 

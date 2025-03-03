@@ -6,7 +6,7 @@ Details on the grid used in the experiment.
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Grid](https://w3id.org/osc-em/oscem-schemas-subtomo/Grid)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantitySI],[QuantitySI]<pretreatment_pressure%200..1-++[Grid&#124;manufacturer:string%20%3F;material:string%20%3F;mesh:float%20%3F;film_support:boolean%20%3F;film_material:string%20%3F;film_topology:string%20%3F;film_thickness:string%20%3F;pretreatment_type:string%20%3F;pretreatment_atmosphere:string%20%3F],[QuantitySI]<pretreatment_time%200..1-++[Grid],[Sample]++-%20grid%200..1>[Grid],[Sample]++-%20grid(i)%200..1>[Grid])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantitySI],[QuantitySI]<pretreatment_pressure%200..1-++[Grid&#124;manufacturer:string%20%3F;material:string%20%3F;mesh:float%20%3F;film_support:boolean%20%3F;film_material:string%20%3F;film_topology:string%20%3F;film_thickness:string%20%3F;pretreatment_type:string%20%3F;pretreatment_atmosphere:string%20%3F],[QuantitySI]<pretreatment_time%200..1-++[Grid],[Sample]++-%20grid%200..1>[Grid],[Sample]++-%20grid(i)%200..1>[Grid])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Any]<pretreatment_pressure%200..1-++[Grid&#124;manufacturer:string%20%3F;material:string%20%3F;mesh:float%20%3F;film_support:boolean%20%3F;film_material:string%20%3F;film_topology:string%20%3F;film_thickness:string%20%3F;pretreatment_type:string%20%3F;pretreatment_atmosphere:string%20%3F],[Any]<pretreatment_time%200..1-++[Grid],[Sample]++-%20grid%200..1>[Grid],[Sample]++-%20grid(i)%200..1>[Grid],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Any]<pretreatment_pressure%200..1-++[Grid&#124;manufacturer:string%20%3F;material:string%20%3F;mesh:float%20%3F;film_support:boolean%20%3F;film_material:string%20%3F;film_topology:string%20%3F;film_thickness:string%20%3F;pretreatment_type:string%20%3F;pretreatment_atmosphere:string%20%3F],[Any]<pretreatment_time%200..1-++[Grid],[Sample]++-%20grid%200..1>[Grid],[Sample]++-%20grid(i)%200..1>[Grid],[Any])
 
 ## Referenced by Class
 
@@ -44,10 +44,10 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Grid](https://w3id.org/osc-e
      * Range: [String](types/String.md)
  * [Grid➞pretreatment_time](Grid_pretreatment_time.md)  <sub>0..1</sub>
      * Description: Length of time of the pretreatment in s
-     * Range: [QuantitySI](QuantitySI.md)
+     * Range: [Any](Any.md)
  * [Grid➞pretreatment_pressure](Grid_pretreatment_pressure.md)  <sub>0..1</sub>
      * Description: Pressure of the chamber during pretreatment, in Pa
-     * Range: [QuantitySI](QuantitySI.md)
+     * Range: [Any](Any.md)
  * [Grid➞pretreatment_atmosphere](Grid_pretreatment_atmosphere.md)  <sub>0..1</sub>
      * Description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
      * Range: [String](types/String.md)

@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/c2_aperture](https://w3id.or
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
+None &#8594;  <sub>0..1</sub> [Any](Any.md)
 
 ## Parents
 

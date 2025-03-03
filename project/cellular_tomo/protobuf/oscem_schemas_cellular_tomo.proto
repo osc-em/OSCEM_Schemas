@@ -4,61 +4,61 @@
 // A set of parameteres describing the data acquisition
 message Acquisition
  {
-  rangeSI nominalDefocus = 0
-  rangeSI calibratedDefocus = 0
+  range nominalDefocus = 0
+  range calibratedDefocus = 0
   integer nominalMagnification = 0
   integer calibratedMagnification = 0
   string holder = 0
   string holderCryogen = 0
-  rangeSI temperature = 0
+  range temperature = 0
   string microscopeSoftware = 0
   string detector = 0
   string detectorMode = 0
-  quantitySI dosePerMovie = 0
+  any dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
   datetime dateTime = 0
-  quantitySI exposureTime = 0
+  any exposureTime = 0
   string cryogen = 0
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
   float binningCamera = 0
-  quantitySI pixelSize = 0
+  any pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
   boundingBox2D beamtilt = 0
-  boundingBox2DSI imageshift = 0
+  boundingBox2D imageshift = 0
   integer beamtiltgroups = 0
   string gainrefFlipRotate = 0
  }
 message AcquisitionTomo
  {
-  rangeSI nominalDefocus = 0
-  rangeSI calibratedDefocus = 0
+  range nominalDefocus = 0
+  range calibratedDefocus = 0
   integer nominalMagnification = 0
   integer calibratedMagnification = 0
   string holder = 0
   string holderCryogen = 0
-  rangeSI temperature = 0
+  range temperature = 0
   string microscopeSoftware = 0
   string detector = 0
   string detectorMode = 0
-  quantitySI dosePerMovie = 0
+  any dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
   datetime dateTime = 0
-  quantitySI exposureTime = 0
+  any exposureTime = 0
   string cryogen = 0
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
   float binningCamera = 0
-  quantitySI pixelSize = 0
+  any pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
   boundingBox2D beamtilt = 0
-  boundingBox2DSI imageshift = 0
+  boundingBox2D imageshift = 0
   integer beamtiltgroups = 0
   string gainrefFlipRotate = 0
   float tiltAxisAngle = 0
@@ -81,18 +81,10 @@ message Author
 // an axis-aligned 2D bounding box (float units)
 message BoundingBox2D
  {
-  quantityValue xMin = 0
-  quantityValue xMax = 0
-  quantityValue yMin = 0
-  quantityValue yMax = 0
- }
-// an axis-aligned 2D bounding box (float units) with SI unit attached
-message BoundingBox2DSI
- {
-  quantitySI xMinSi = 0
-  quantitySI xMaxSi = 0
-  quantitySI yMinSi = 0
-  quantitySI yMaxSi = 0
+  any xMin = 0
+  any xMax = 0
+  any yMin = 0
+  any yMax = 0
  }
 // Special device used to correct instrument inherent chromatic aberration.
 message ChromaticAberrationCorrector
@@ -118,7 +110,7 @@ message EnergyFilter
  {
   boolean used = 0
   string model = 0
-  quantitySI widthEnergyFilter = 0
+  any widthEnergyFilter = 0
  }
 // how the sample was frozen.
 message Freezing
@@ -126,8 +118,8 @@ message Freezing
   string cryogenSampleEnv = 0
   freezingMethodEnum method = 0
   boolean blotting = 0
-  quantityValue humidityEnv = 0
-  quantitySI temperatureEnv = 0
+  any humidityEnv = 0
+  any temperatureEnv = 0
   string atmosphere = 0
   string details = 0
  }
@@ -156,7 +148,7 @@ message GrowthCondition
   string cellCycle = 0
   string treatment = 0
   string atmosphereGrowth = 0
-  quantitySI temperatureGrowth = 0
+  any temperatureGrowth = 0
  }
 // size of a 2D image (in integer units)
 message ImageSize
@@ -171,9 +163,9 @@ message Instrument
   string illumination = 0
   string imaging = 0
   string electronSource = 0
-  quantitySI accelerationVoltage = 0
-  quantitySI c2Aperture = 0
-  quantitySI cs = 0
+  any accelerationVoltage = 0
+  any c2Aperture = 0
+  any cs = 0
  }
 // Overarching category for authors and grants
 message Organizational
@@ -216,14 +208,8 @@ message QuantityValue
 // A range constructed from min and max
 message Range
  {
-  quantityValue minimal = 0
-  quantityValue maximal = 0
- }
-// A range constructed from min and max, si units attached
-message RangeSI
- {
-  quantitySI minimalSi = 0
-  quantitySI maximalSi = 0
+  any minimal = 0
+  any maximal = 0
  }
 // Unifying class to describe the full sample with growth conditions
 message SampleCell
@@ -245,9 +231,9 @@ message SampleEnv
 // A series of numbers constructed from min, max, and increment
 message Series
  {
-  quantityValue minimal = 0
-  quantityValue maximal = 0
-  quantityValue increment = 0
+  any minimal = 0
+  any maximal = 0
+  any increment = 0
  }
 // Optional optics used to correct for instrument limitations.
 message SpecialistOptics
@@ -278,15 +264,15 @@ message Thinning
   string methodThin = 0
   string instrumentThin = 0
   string ionSource = 0
-  quantitySI targetThickness = 0
+  any targetThickness = 0
   boolean liftOut = 0
  }
 // The min, max and increment of the tilt angle in a tomography session. Unit is degree.
 message TiltAngle
  {
-  quantityValue minimal = 0
-  quantityValue maximal = 0
-  quantityValue increment = 0
+  any minimal = 0
+  any maximal = 0
+  any increment = 0
  }
 // what was the target of the tomograms, and what area of a cell do they cover.
 message TomogramFeatures

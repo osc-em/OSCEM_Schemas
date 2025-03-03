@@ -110,10 +110,10 @@ classes:
 
 slots:
   nominal_defocus:
-    range: RangeSI
+    range: Range
     description: Target defocus set, min and max values in µm.
   calibrated_defocus:
-    range: RangeSI
+    range: Range
     description: Machine estimated defocus, min and max values in µm. Has a tendency to be off.
   nominal_magnification:
     description: Magnification level as indicated by the instrument, no unit
@@ -128,7 +128,7 @@ slots:
     description: Type of cryogen used in the holder - if the holder is cooled seperately
     range: string
   temperature_range:
-    range: RangeSI
+    range: Range
     description: Temperature during data collection, in K with min and max values.
     alias: temperature
   microscope_software:
@@ -142,7 +142,10 @@ slots:
     range: string
   dose_per_movie:
     description: Average dose per image/movie/tilt - given in electrons per square Angstrom
-    range: QuantitySI
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   energy_filter:
     range: EnergyFilter
     description: Wether an energy filter was used and its specifics.
@@ -164,7 +167,10 @@ slots:
      #- range: date
   exposure_time:
     description: Time of data acquisition per movie/tilt - in s
-    range: QuantitySI
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   cryogen:
     description: Cryogen used in cooling the instrument and sample, usually nitrogen
     range: string
@@ -182,7 +188,10 @@ slots:
     range: float
   pixel_size:
     description: Pixel size, in Angstrom
-    range: QuantitySI
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   specialist_optics:
     description: Any type of special optics, such as a phaseplate
     range: SpecialistOptics
@@ -205,7 +214,7 @@ slots:
     range: BoundingBox2D
     description: Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
   imageshift:
-    range: BoundingBox2DSI
+    range: BoundingBox2D
     description: Movement of the Beam below the image in order to shift the image on the detector. Given in µm.
   beamtiltgroups:
     range: integer
@@ -214,5 +223,8 @@ slots:
     range: string
     description: Whether and how you have to flip or rotate the gainref in order to align with your acquired images
   width_energy_filter:
-    range: QuantitySI
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
     description: Width of the energy filter used.
