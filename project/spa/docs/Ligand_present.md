@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Ligand_present](https://w3id.org
 
 ## Domain and Range
 
-[Ligand](Ligand.md) &#8594;  <sub>1..1</sub> [Boolean](types/Boolean.md)
+[Ligand](Ligand.md) &#8594;  <sub>0..1</sub> [Boolean](types/Boolean.md)
 
 ## Parents
 

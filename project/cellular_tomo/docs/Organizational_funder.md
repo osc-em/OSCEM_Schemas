@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Organizational_funder]
 
 ## Domain and Range
 
-[Organizational](Organizational.md) &#8594;  <sub>1..\*</sub> [Funder](Funder.md)
+[Organizational](Organizational.md) &#8594;  <sub>0..\*</sub> [Funder](Funder.md)
 
 ## Parents
 

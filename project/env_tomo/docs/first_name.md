@@ -15,8 +15,8 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [Author➞first_name](Author_first_name.md)
 
 ## Used by
 
- * [Author](Author.md)
  * [Person](Person.md)

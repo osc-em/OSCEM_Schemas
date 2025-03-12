@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_spa.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-02-10T15:20:17
+# Generation date: 2025-02-25T16:31:20
 # Schema: oscem-schemas-spa
 #
 # id: https://w3id.org/osc-em/oscem-schemas-spa
@@ -33,14 +33,22 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 ACQUISITION = CurieNamespace('acquisition', 'https://w3id.org/osc-em/acquisition')
+CLASSES2D = CurieNamespace('classes2D', 'https://w3id.org/osc-em/classes2D')
+CLASSES3D = CurieNamespace('classes3D', 'https://w3id.org/osc-em/classes3D')
+COORDINATES = CurieNamespace('coordinates', 'https://w3id.org/osc-em/coordinates')
+CTF = CurieNamespace('ctf', 'https://w3id.org/osc-em/ctfs')
 CUSTOM_TYPES = CurieNamespace('custom_types', 'https://w3id.org/osc-em/custom_types')
 INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/osc-em/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+MICROGRAPHS = CurieNamespace('micrographs', 'https://w3id.org/osc-em/micrographs')
+MOVIES = CurieNamespace('movies', 'https://w3id.org/osc-em/movies')
 ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/osc-em/organizational/')
 OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/OSCEM_schemas')
+PROCESSING = CurieNamespace('processing', 'https://w3id.org/osc-em/processing')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 SAMPLE = CurieNamespace('sample', 'https://w3id.org/osc-em/sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
+VOLUMES = CurieNamespace('volumes', 'https://w3id.org/osc-em/volume')
 DEFAULT_ = CurieNamespace('', 'https://w3id.org/osc-em/oscem-schemas-spa/')
 
 
@@ -404,23 +412,21 @@ class Organizational(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Organizational")
 
     authors: Union[Union[dict, "Author"], List[Union[dict, "Author"]]] = None
-    funder: Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]] = None
     grants: Optional[Union[Union[dict, "Grant"], List[Union[dict, "Grant"]]]] = empty_list()
+    funder: Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.authors):
             self.MissingRequiredField("authors")
-        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="orcid", keyed=False)
-
-        if self._is_empty(self.funder):
-            self.MissingRequiredField("funder")
-        if not isinstance(self.funder, list):
-            self.funder = [self.funder] if self.funder is not None else []
-        self.funder = [v if isinstance(v, Funder) else Funder(**as_dict(v)) for v in self.funder]
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="type_org", keyed=False)
 
         if not isinstance(self.grants, list):
             self.grants = [self.grants] if self.grants is not None else []
         self.grants = [v if isinstance(v, Grant) else Grant(**as_dict(v)) for v in self.grants]
+
+        if not isinstance(self.funder, list):
+            self.funder = [self.funder] if self.funder is not None else []
+        self.funder = [v if isinstance(v, Funder) else Funder(**as_dict(v)) for v in self.funder]
 
         super().__post_init__(**kwargs)
 
@@ -474,30 +480,16 @@ class Author(Person):
     class_name: ClassVar[str] = "Author"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Author")
 
-    orcid: str = None
-    country: str = None
-    name_org: str = None
     type_org: Union[str, "OrganizationTypeEnum"] = None
     name: str = None
+    first_name: str = None
     email: str = None
+    orcid: Optional[str] = None
+    country: Optional[str] = None
     role: Optional[str] = None
+    name_org: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.orcid):
-            self.MissingRequiredField("orcid")
-        if not isinstance(self.orcid, str):
-            self.orcid = str(self.orcid)
-
-        if self._is_empty(self.country):
-            self.MissingRequiredField("country")
-        if not isinstance(self.country, str):
-            self.country = str(self.country)
-
-        if self._is_empty(self.name_org):
-            self.MissingRequiredField("name_org")
-        if not isinstance(self.name_org, str):
-            self.name_org = str(self.name_org)
-
         if self._is_empty(self.type_org):
             self.MissingRequiredField("type_org")
         if not isinstance(self.type_org, OrganizationTypeEnum):
@@ -508,13 +500,27 @@ class Author(Person):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self._is_empty(self.first_name):
+            self.MissingRequiredField("first_name")
+        if not isinstance(self.first_name, str):
+            self.first_name = str(self.first_name)
+
         if self._is_empty(self.email):
             self.MissingRequiredField("email")
         if not isinstance(self.email, str):
             self.email = str(self.email)
 
+        if self.orcid is not None and not isinstance(self.orcid, str):
+            self.orcid = str(self.orcid)
+
+        if self.country is not None and not isinstance(self.country, str):
+            self.country = str(self.country)
+
         if self.role is not None and not isinstance(self.role, str):
             self.role = str(self.role)
+
+        if self.name_org is not None and not isinstance(self.name_org, str):
+            self.name_org = str(self.name_org)
 
         super().__post_init__(**kwargs)
 
@@ -596,9 +602,9 @@ class Sample(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Sample")
 
     overall_molecule: Union[dict, "OverallMolecule"] = None
-    molecule: Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]] = None
-    specimen: Union[dict, "Specimen"] = None
+    molecule: Optional[Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]]] = empty_list()
     ligands: Optional[Union[Union[dict, "Ligand"], List[Union[dict, "Ligand"]]]] = empty_list()
+    specimen: Optional[Union[dict, "Specimen"]] = None
     grid: Optional[Union[dict, "Grid"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -607,16 +613,14 @@ class Sample(YAMLRoot):
         if not isinstance(self.overall_molecule, OverallMolecule):
             self.overall_molecule = OverallMolecule(**as_dict(self.overall_molecule))
 
-        if self._is_empty(self.molecule):
-            self.MissingRequiredField("molecule")
         self._normalize_inlined_as_dict(slot_name="molecule", slot_type=Molecule, key_name="name_mol", keyed=False)
 
-        if self._is_empty(self.specimen):
-            self.MissingRequiredField("specimen")
-        if not isinstance(self.specimen, Specimen):
-            self.specimen = Specimen(**as_dict(self.specimen))
+        if not isinstance(self.ligands, list):
+            self.ligands = [self.ligands] if self.ligands is not None else []
+        self.ligands = [v if isinstance(v, Ligand) else Ligand(**as_dict(v)) for v in self.ligands]
 
-        self._normalize_inlined_as_dict(slot_name="ligands", slot_type=Ligand, key_name="present", keyed=False)
+        if self.specimen is not None and not isinstance(self.specimen, Specimen):
+            self.specimen = Specimen(**as_dict(self.specimen))
 
         if self.grid is not None and not isinstance(self.grid, Grid):
             self.grid = Grid(**as_dict(self.grid))
@@ -636,18 +640,13 @@ class OverallMolecule(YAMLRoot):
     class_name: ClassVar[str] = "OverallMolecule"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/OverallMolecule")
 
-    molecular_overall_type: Union[str, "MoleculeClassEnum"] = None
     name_sample: str = None
     source: str = None
-    assembly: Union[str, "AssemblyEnum"] = None
+    molecular_overall_type: Optional[Union[str, "MoleculeClassEnum"]] = None
     molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
+    assembly: Optional[Union[str, "AssemblyEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.molecular_overall_type):
-            self.MissingRequiredField("molecular_overall_type")
-        if not isinstance(self.molecular_overall_type, MoleculeClassEnum):
-            self.molecular_overall_type = MoleculeClassEnum(self.molecular_overall_type)
-
         if self._is_empty(self.name_sample):
             self.MissingRequiredField("name_sample")
         if not isinstance(self.name_sample, str):
@@ -658,13 +657,14 @@ class OverallMolecule(YAMLRoot):
         if not isinstance(self.source, str):
             self.source = str(self.source)
 
-        if self._is_empty(self.assembly):
-            self.MissingRequiredField("assembly")
-        if not isinstance(self.assembly, AssemblyEnum):
-            self.assembly = AssemblyEnum(self.assembly)
+        if self.molecular_overall_type is not None and not isinstance(self.molecular_overall_type, MoleculeClassEnum):
+            self.molecular_overall_type = MoleculeClassEnum(self.molecular_overall_type)
 
         if self.molecular_weight is not None and not isinstance(self.molecular_weight, QuantityValue):
             self.molecular_weight = QuantityValue(**as_dict(self.molecular_weight))
+
+        if self.assembly is not None and not isinstance(self.assembly, AssemblyEnum):
+            self.assembly = AssemblyEnum(self.assembly)
 
         super().__post_init__(**kwargs)
 
@@ -682,13 +682,13 @@ class Molecule(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Molecule")
 
     name_mol: str = None
-    molecular_type: str = None
-    molecular_class: str = None
     sequence: str = None
     natural_source: str = None
-    taxonomy_id_source: str = None
-    expression_system: str = None
-    taxonomy_id_expression: str = None
+    molecular_type: Optional[str] = None
+    molecular_class: Optional[str] = None
+    taxonomy_id_source: Optional[str] = None
+    expression_system: Optional[str] = None
+    taxonomy_id_expression: Optional[str] = None
     gene_name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -696,16 +696,6 @@ class Molecule(YAMLRoot):
             self.MissingRequiredField("name_mol")
         if not isinstance(self.name_mol, str):
             self.name_mol = str(self.name_mol)
-
-        if self._is_empty(self.molecular_type):
-            self.MissingRequiredField("molecular_type")
-        if not isinstance(self.molecular_type, str):
-            self.molecular_type = str(self.molecular_type)
-
-        if self._is_empty(self.molecular_class):
-            self.MissingRequiredField("molecular_class")
-        if not isinstance(self.molecular_class, str):
-            self.molecular_class = str(self.molecular_class)
 
         if self._is_empty(self.sequence):
             self.MissingRequiredField("sequence")
@@ -717,19 +707,19 @@ class Molecule(YAMLRoot):
         if not isinstance(self.natural_source, str):
             self.natural_source = str(self.natural_source)
 
-        if self._is_empty(self.taxonomy_id_source):
-            self.MissingRequiredField("taxonomy_id_source")
-        if not isinstance(self.taxonomy_id_source, str):
+        if self.molecular_type is not None and not isinstance(self.molecular_type, str):
+            self.molecular_type = str(self.molecular_type)
+
+        if self.molecular_class is not None and not isinstance(self.molecular_class, str):
+            self.molecular_class = str(self.molecular_class)
+
+        if self.taxonomy_id_source is not None and not isinstance(self.taxonomy_id_source, str):
             self.taxonomy_id_source = str(self.taxonomy_id_source)
 
-        if self._is_empty(self.expression_system):
-            self.MissingRequiredField("expression_system")
-        if not isinstance(self.expression_system, str):
+        if self.expression_system is not None and not isinstance(self.expression_system, str):
             self.expression_system = str(self.expression_system)
 
-        if self._is_empty(self.taxonomy_id_expression):
-            self.MissingRequiredField("taxonomy_id_expression")
-        if not isinstance(self.taxonomy_id_expression, str):
+        if self.taxonomy_id_expression is not None and not isinstance(self.taxonomy_id_expression, str):
             self.taxonomy_id_expression = str(self.taxonomy_id_expression)
 
         if self.gene_name is not None and not isinstance(self.gene_name, str):
@@ -750,14 +740,12 @@ class Ligand(YAMLRoot):
     class_name: ClassVar[str] = "Ligand"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Ligand")
 
-    present: Union[bool, Bool] = None
+    present: Optional[Union[bool, Bool]] = None
     smiles: Optional[str] = None
     reference: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.present):
-            self.MissingRequiredField("present")
-        if not isinstance(self.present, Bool):
+        if self.present is not None and not isinstance(self.present, Bool):
             self.present = Bool(self.present)
 
         if self.smiles is not None and not isinstance(self.smiles, str):
@@ -781,59 +769,47 @@ class Specimen(YAMLRoot):
     class_name: ClassVar[str] = "Specimen"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Specimen")
 
-    ph: float = None
-    vitrification: Union[bool, Bool] = None
-    vitrification_cryogen: str = None
-    staining: Union[bool, Bool] = None
-    embedding: Union[bool, Bool] = None
-    shadowing: Union[bool, Bool] = None
     buffer: Optional[str] = None
     concentration: Optional[Union[dict, "QuantityValue"]] = None
+    ph: Optional[float] = None
+    vitrification: Optional[Union[bool, Bool]] = None
+    vitrification_cryogen: Optional[str] = None
     humidity: Optional[Union[dict, "QuantityValue"]] = None
     temperature: Optional[Union[dict, "QuantityValue"]] = None
+    staining: Optional[Union[bool, Bool]] = None
+    embedding: Optional[Union[bool, Bool]] = None
+    shadowing: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.ph):
-            self.MissingRequiredField("ph")
-        if not isinstance(self.ph, float):
-            self.ph = float(self.ph)
-
-        if self._is_empty(self.vitrification):
-            self.MissingRequiredField("vitrification")
-        if not isinstance(self.vitrification, Bool):
-            self.vitrification = Bool(self.vitrification)
-
-        if self._is_empty(self.vitrification_cryogen):
-            self.MissingRequiredField("vitrification_cryogen")
-        if not isinstance(self.vitrification_cryogen, str):
-            self.vitrification_cryogen = str(self.vitrification_cryogen)
-
-        if self._is_empty(self.staining):
-            self.MissingRequiredField("staining")
-        if not isinstance(self.staining, Bool):
-            self.staining = Bool(self.staining)
-
-        if self._is_empty(self.embedding):
-            self.MissingRequiredField("embedding")
-        if not isinstance(self.embedding, Bool):
-            self.embedding = Bool(self.embedding)
-
-        if self._is_empty(self.shadowing):
-            self.MissingRequiredField("shadowing")
-        if not isinstance(self.shadowing, Bool):
-            self.shadowing = Bool(self.shadowing)
-
         if self.buffer is not None and not isinstance(self.buffer, str):
             self.buffer = str(self.buffer)
 
         if self.concentration is not None and not isinstance(self.concentration, QuantityValue):
             self.concentration = QuantityValue(**as_dict(self.concentration))
 
+        if self.ph is not None and not isinstance(self.ph, float):
+            self.ph = float(self.ph)
+
+        if self.vitrification is not None and not isinstance(self.vitrification, Bool):
+            self.vitrification = Bool(self.vitrification)
+
+        if self.vitrification_cryogen is not None and not isinstance(self.vitrification_cryogen, str):
+            self.vitrification_cryogen = str(self.vitrification_cryogen)
+
         if self.humidity is not None and not isinstance(self.humidity, QuantityValue):
             self.humidity = QuantityValue(**as_dict(self.humidity))
 
         if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
             self.temperature = QuantityValue(**as_dict(self.temperature))
+
+        if self.staining is not None and not isinstance(self.staining, Bool):
+            self.staining = Bool(self.staining)
+
+        if self.embedding is not None and not isinstance(self.embedding, Bool):
+            self.embedding = Bool(self.embedding)
+
+        if self.shadowing is not None and not isinstance(self.shadowing, Bool):
+            self.shadowing = Bool(self.shadowing)
 
         super().__post_init__(**kwargs)
 
@@ -932,6 +908,7 @@ class EMDatasetSpa(EMDatasetBase):
     instrument: Union[dict, Instrument] = None
     sample: Union[dict, Sample] = None
     organizational: Union[dict, Organizational] = None
+    processing: Optional[Union[dict, "Processing"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.acquisition):
@@ -953,6 +930,53 @@ class EMDatasetSpa(EMDatasetBase):
             self.MissingRequiredField("organizational")
         if not isinstance(self.organizational, Organizational):
             self.organizational = Organizational(**as_dict(self.organizational))
+
+        if self.processing is not None and not isinstance(self.processing, Processing):
+            self.processing = Processing(**as_dict(self.processing))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Processing(YAMLRoot):
+    """
+    Set of parameters describing the data processing
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROCESSING["Processing"]
+    class_class_curie: ClassVar[str] = "processing:Processing"
+    class_name: ClassVar[str] = "Processing"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Processing")
+
+    movies: Optional[Union[dict, "Movies"]] = None
+    micrographs: Optional[Union[dict, "Micrographs"]] = None
+    ctfs: Optional[Union[dict, "CTFs"]] = None
+    coordinates: Optional[Union[dict, "Coordinates"]] = None
+    classes2D: Optional[Union[dict, "Classes2D"]] = None
+    classes3D: Optional[Union[dict, "Classes3D"]] = None
+    volumes: Optional[Union[Union[dict, "Volumes"], List[Union[dict, "Volumes"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.movies is not None and not isinstance(self.movies, Movies):
+            self.movies = Movies(**as_dict(self.movies))
+
+        if self.micrographs is not None and not isinstance(self.micrographs, Micrographs):
+            self.micrographs = Micrographs(**as_dict(self.micrographs))
+
+        if self.ctfs is not None and not isinstance(self.ctfs, CTFs):
+            self.ctfs = CTFs(**as_dict(self.ctfs))
+
+        if self.coordinates is not None and not isinstance(self.coordinates, Coordinates):
+            self.coordinates = Coordinates(**as_dict(self.coordinates))
+
+        if self.classes2D is not None and not isinstance(self.classes2D, Classes2D):
+            self.classes2D = Classes2D(**as_dict(self.classes2D))
+
+        if self.classes3D is not None and not isinstance(self.classes3D, Classes3D):
+            self.classes3D = Classes3D(**as_dict(self.classes3D))
+
+        self._normalize_inlined_as_dict(slot_name="volumes", slot_type=Volumes, key_name="volume_type", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -1092,6 +1116,481 @@ class QuantityValue(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
+class Descriptor(YAMLRoot):
+    """
+    List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any
+    related information
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TYPES["Descriptor"]
+    class_class_curie: ClassVar[str] = "types:Descriptor"
+    class_name: ClassVar[str] = "Descriptor"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Descriptor")
+
+    descriptor_name: str = None
+    descriptor_thing: Optional[Union[dict, Any]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.descriptor_name):
+            self.MissingRequiredField("descriptor_name")
+        if not isinstance(self.descriptor_name, str):
+            self.descriptor_name = str(self.descriptor_name)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Descriptors(Descriptor):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TYPES["Descriptors"]
+    class_class_curie: ClassVar[str] = "types:Descriptors"
+    class_name: ClassVar[str] = "Descriptors"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Descriptors")
+
+    descriptor_name: str = None
+
+@dataclass(repr=False)
+class Movies(YAMLRoot):
+    """
+    Class representing movies metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MOVIES["Movies"]
+    class_class_curie: ClassVar[str] = "movies:Movies"
+    class_name: ClassVar[str] = "Movies"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Movies")
+
+    dose_per_image: Optional[Union[dict, QuantityValue]] = None
+    initial_dose: Optional[Union[dict, QuantityValue]] = None
+    gain_image: Optional[str] = None
+    dark_image: Optional[str] = None
+    descriptors: Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.dose_per_image is not None and not isinstance(self.dose_per_image, QuantityValue):
+            self.dose_per_image = QuantityValue(**as_dict(self.dose_per_image))
+
+        if self.initial_dose is not None and not isinstance(self.initial_dose, QuantityValue):
+            self.initial_dose = QuantityValue(**as_dict(self.initial_dose))
+
+        if self.gain_image is not None and not isinstance(self.gain_image, str):
+            self.gain_image = str(self.gain_image)
+
+        if self.dark_image is not None and not isinstance(self.dark_image, str):
+            self.dark_image = str(self.dark_image)
+
+        self._normalize_inlined_as_dict(slot_name="descriptors", slot_type=Descriptors, key_name="descriptor_name", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Micrographs(YAMLRoot):
+    """
+    Class representing micrographs metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MICROGRAPHS["Micrographs"]
+    class_class_curie: ClassVar[str] = "micrographs:Micrographs"
+    class_name: ClassVar[str] = "Micrographs"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Micrographs")
+
+    number_micrographs: float = None
+    descriptors: Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.number_micrographs):
+            self.MissingRequiredField("number_micrographs")
+        if not isinstance(self.number_micrographs, float):
+            self.number_micrographs = float(self.number_micrographs)
+
+        self._normalize_inlined_as_dict(slot_name="descriptors", slot_type=Descriptors, key_name="descriptor_name", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CTFs(YAMLRoot):
+    """
+    Class representing Contrast Transfer Function (CTF) metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CTF["CTFs"]
+    class_class_curie: ClassVar[str] = "ctf:CTFs"
+    class_name: ClassVar[str] = "CTFs"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/CTFs")
+
+    amplitude_contrast: Optional[float] = None
+    defocus: Optional[Union[dict, "Defocus"]] = None
+    resolution: Optional[Union[dict, "Resolution"]] = None
+    astigmatism: Optional[Union[dict, "Astigmatism"]] = None
+    descriptors: Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.amplitude_contrast is not None and not isinstance(self.amplitude_contrast, float):
+            self.amplitude_contrast = float(self.amplitude_contrast)
+
+        if self.defocus is not None and not isinstance(self.defocus, Defocus):
+            self.defocus = Defocus(**as_dict(self.defocus))
+
+        if self.resolution is not None and not isinstance(self.resolution, Resolution):
+            self.resolution = Resolution(**as_dict(self.resolution))
+
+        if self.astigmatism is not None and not isinstance(self.astigmatism, Astigmatism):
+            self.astigmatism = Astigmatism(**as_dict(self.astigmatism))
+
+        self._normalize_inlined_as_dict(slot_name="descriptors", slot_type=Descriptors, key_name="descriptor_name", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Defocus(YAMLRoot):
+    """
+    Defocus-related metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CTF["Defocus"]
+    class_class_curie: ClassVar[str] = "ctf:Defocus"
+    class_name: ClassVar[str] = "Defocus"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Defocus")
+
+    output_min_defocus: Optional[Union[dict, QuantityValue]] = None
+    output_max_defocus: Optional[Union[dict, QuantityValue]] = None
+    output_avg_defocus: Optional[Union[dict, QuantityValue]] = None
+    defocus_histogram: Optional[str] = None
+    defocus_micrograph_examples: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.output_min_defocus is not None and not isinstance(self.output_min_defocus, QuantityValue):
+            self.output_min_defocus = QuantityValue(**as_dict(self.output_min_defocus))
+
+        if self.output_max_defocus is not None and not isinstance(self.output_max_defocus, QuantityValue):
+            self.output_max_defocus = QuantityValue(**as_dict(self.output_max_defocus))
+
+        if self.output_avg_defocus is not None and not isinstance(self.output_avg_defocus, QuantityValue):
+            self.output_avg_defocus = QuantityValue(**as_dict(self.output_avg_defocus))
+
+        if self.defocus_histogram is not None and not isinstance(self.defocus_histogram, str):
+            self.defocus_histogram = str(self.defocus_histogram)
+
+        if self.defocus_micrograph_examples is not None and not isinstance(self.defocus_micrograph_examples, str):
+            self.defocus_micrograph_examples = str(self.defocus_micrograph_examples)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Resolution(YAMLRoot):
+    """
+    Resolution-related metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CTF["Resolution"]
+    class_class_curie: ClassVar[str] = "ctf:Resolution"
+    class_name: ClassVar[str] = "Resolution"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Resolution")
+
+    output_min_resolution: Optional[Union[dict, QuantityValue]] = None
+    output_max_resolution: Optional[Union[dict, QuantityValue]] = None
+    output_avg_resolution: Optional[Union[dict, QuantityValue]] = None
+    resolution_histogram: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.output_min_resolution is not None and not isinstance(self.output_min_resolution, QuantityValue):
+            self.output_min_resolution = QuantityValue(**as_dict(self.output_min_resolution))
+
+        if self.output_max_resolution is not None and not isinstance(self.output_max_resolution, QuantityValue):
+            self.output_max_resolution = QuantityValue(**as_dict(self.output_max_resolution))
+
+        if self.output_avg_resolution is not None and not isinstance(self.output_avg_resolution, QuantityValue):
+            self.output_avg_resolution = QuantityValue(**as_dict(self.output_avg_resolution))
+
+        if self.resolution_histogram is not None and not isinstance(self.resolution_histogram, str):
+            self.resolution_histogram = str(self.resolution_histogram)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Astigmatism(YAMLRoot):
+    """
+    Astigmatism-related metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CTF["Astigmatism"]
+    class_class_curie: ClassVar[str] = "ctf:Astigmatism"
+    class_name: ClassVar[str] = "Astigmatism"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Astigmatism")
+
+    astigmatism_histogram: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.astigmatism_histogram is not None and not isinstance(self.astigmatism_histogram, str):
+            self.astigmatism_histogram = str(self.astigmatism_histogram)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Coordinates(YAMLRoot):
+    """
+    Class representing coordinates metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORDINATES["Coordinates"]
+    class_class_curie: ClassVar[str] = "coordinates:Coordinates"
+    class_name: ClassVar[str] = "Coordinates"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Coordinates")
+
+    number_particles: int = None
+    particles_per_micrograph: Optional[float] = None
+    num_source_micrographs: Optional[int] = None
+    particles_histogram: Optional[str] = None
+    micrograph_examples: Optional[str] = None
+    descriptors: Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.number_particles):
+            self.MissingRequiredField("number_particles")
+        if not isinstance(self.number_particles, int):
+            self.number_particles = int(self.number_particles)
+
+        if self.particles_per_micrograph is not None and not isinstance(self.particles_per_micrograph, float):
+            self.particles_per_micrograph = float(self.particles_per_micrograph)
+
+        if self.num_source_micrographs is not None and not isinstance(self.num_source_micrographs, int):
+            self.num_source_micrographs = int(self.num_source_micrographs)
+
+        if self.particles_histogram is not None and not isinstance(self.particles_histogram, str):
+            self.particles_histogram = str(self.particles_histogram)
+
+        if self.micrograph_examples is not None and not isinstance(self.micrograph_examples, str):
+            self.micrograph_examples = str(self.micrograph_examples)
+
+        self._normalize_inlined_as_dict(slot_name="descriptors", slot_type=Descriptors, key_name="descriptor_name", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Classes2D(YAMLRoot):
+    """
+    Class representing classes 2D metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CLASSES2D["Classes2D"]
+    class_class_curie: ClassVar[str] = "classes2D:Classes2D"
+    class_name: ClassVar[str] = "Classes2D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Classes2D")
+
+    number_classes_2D: Optional[int] = None
+    particles_per_2Dclass: Optional[Union[int, List[int]]] = empty_list()
+    images_classes_2D: Optional[str] = None
+    resolution_classes_2D: Optional[Union[dict, QuantityValue]] = None
+    descriptors: Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.number_classes_2D is not None and not isinstance(self.number_classes_2D, int):
+            self.number_classes_2D = int(self.number_classes_2D)
+
+        if not isinstance(self.particles_per_2Dclass, list):
+            self.particles_per_2Dclass = [self.particles_per_2Dclass] if self.particles_per_2Dclass is not None else []
+        self.particles_per_2Dclass = [v if isinstance(v, int) else int(v) for v in self.particles_per_2Dclass]
+
+        if self.images_classes_2D is not None and not isinstance(self.images_classes_2D, str):
+            self.images_classes_2D = str(self.images_classes_2D)
+
+        if self.resolution_classes_2D is not None and not isinstance(self.resolution_classes_2D, QuantityValue):
+            self.resolution_classes_2D = QuantityValue(**as_dict(self.resolution_classes_2D))
+
+        self._normalize_inlined_as_dict(slot_name="descriptors", slot_type=Descriptors, key_name="descriptor_name", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Classes3D(YAMLRoot):
+    """
+    Class representing classes 3D metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CLASSES3D["Classes3D"]
+    class_class_curie: ClassVar[str] = "classes3D:Classes3D"
+    class_name: ClassVar[str] = "Classes3D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Classes3D")
+
+    number_classes_3D: Optional[int] = None
+    particles_per_3Dclass: Optional[Union[int, List[int]]] = empty_list()
+    images_classes_3D: Optional[str] = None
+    volume: Optional[Union[Union[dict, "Volume"], List[Union[dict, "Volume"]]]] = empty_list()
+    resolution_classes_3D: Optional[Union[dict, QuantityValue]] = None
+    descriptors: Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.number_classes_3D is not None and not isinstance(self.number_classes_3D, int):
+            self.number_classes_3D = int(self.number_classes_3D)
+
+        if not isinstance(self.particles_per_3Dclass, list):
+            self.particles_per_3Dclass = [self.particles_per_3Dclass] if self.particles_per_3Dclass is not None else []
+        self.particles_per_3Dclass = [v if isinstance(v, int) else int(v) for v in self.particles_per_3Dclass]
+
+        if self.images_classes_3D is not None and not isinstance(self.images_classes_3D, str):
+            self.images_classes_3D = str(self.images_classes_3D)
+
+        if not isinstance(self.volume, list):
+            self.volume = [self.volume] if self.volume is not None else []
+        self.volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.volume]
+
+        if self.resolution_classes_3D is not None and not isinstance(self.resolution_classes_3D, QuantityValue):
+            self.resolution_classes_3D = QuantityValue(**as_dict(self.resolution_classes_3D))
+
+        self._normalize_inlined_as_dict(slot_name="descriptors", slot_type=Descriptors, key_name="descriptor_name", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Volume(YAMLRoot):
+    """
+    Class describing volume(s) obtained
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CLASSES3D["Volume"]
+    class_class_curie: ClassVar[str] = "classes3D:Volume"
+    class_name: ClassVar[str] = "Volume"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Volume")
+
+    orthogonal_slices: Optional[Union[dict, "OrthogonalSlices"]] = None
+    isosurface_images: Optional[Union[dict, "IsosurfaceImages"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.orthogonal_slices is not None and not isinstance(self.orthogonal_slices, OrthogonalSlices):
+            self.orthogonal_slices = OrthogonalSlices(**as_dict(self.orthogonal_slices))
+
+        if self.isosurface_images is not None and not isinstance(self.isosurface_images, IsosurfaceImages):
+            self.isosurface_images = IsosurfaceImages(**as_dict(self.isosurface_images))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class OrthogonalSlices(YAMLRoot):
+    """
+    Class for the orthogonal slices
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CLASSES3D["OrthogonalSlices"]
+    class_class_curie: ClassVar[str] = "classes3D:OrthogonalSlices"
+    class_name: ClassVar[str] = "OrthogonalSlices"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/OrthogonalSlices")
+
+    orthogonal_slices_X: Optional[str] = None
+    orthogonal_slices_Y: Optional[str] = None
+    orthogonal_slices_Z: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.orthogonal_slices_X is not None and not isinstance(self.orthogonal_slices_X, str):
+            self.orthogonal_slices_X = str(self.orthogonal_slices_X)
+
+        if self.orthogonal_slices_Y is not None and not isinstance(self.orthogonal_slices_Y, str):
+            self.orthogonal_slices_Y = str(self.orthogonal_slices_Y)
+
+        if self.orthogonal_slices_Z is not None and not isinstance(self.orthogonal_slices_Z, str):
+            self.orthogonal_slices_Z = str(self.orthogonal_slices_Z)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IsosurfaceImages(YAMLRoot):
+    """
+    Class for the isosurface images
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CLASSES3D["IsosurfaceImages"]
+    class_class_curie: ClassVar[str] = "classes3D:IsosurfaceImages"
+    class_name: ClassVar[str] = "IsosurfaceImages"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/IsosurfaceImages")
+
+    front_view: Optional[str] = None
+    side_view: Optional[str] = None
+    top_view: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.front_view is not None and not isinstance(self.front_view, str):
+            self.front_view = str(self.front_view)
+
+        if self.side_view is not None and not isinstance(self.side_view, str):
+            self.side_view = str(self.side_view)
+
+        if self.top_view is not None and not isinstance(self.top_view, str):
+            self.top_view = str(self.top_view)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Volumes(YAMLRoot):
+    """
+    Class representing volume metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = VOLUMES["Volumes"]
+    class_class_curie: ClassVar[str] = "volumes:Volumes"
+    class_name: ClassVar[str] = "Volumes"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Volumes")
+
+    volume_type: str = None
+    vol_number_particles: Optional[int] = None
+    size: Optional[str] = None
+    orthogonal_slices: Optional[Union[dict, OrthogonalSlices]] = None
+    isosurface_images: Optional[Union[dict, IsosurfaceImages]] = None
+    vol_resolution: Optional[Union[dict, QuantityValue]] = None
+    descriptors: Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.volume_type):
+            self.MissingRequiredField("volume_type")
+        if not isinstance(self.volume_type, str):
+            self.volume_type = str(self.volume_type)
+
+        if self.vol_number_particles is not None and not isinstance(self.vol_number_particles, int):
+            self.vol_number_particles = int(self.vol_number_particles)
+
+        if self.size is not None and not isinstance(self.size, str):
+            self.size = str(self.size)
+
+        if self.orthogonal_slices is not None and not isinstance(self.orthogonal_slices, OrthogonalSlices):
+            self.orthogonal_slices = OrthogonalSlices(**as_dict(self.orthogonal_slices))
+
+        if self.isosurface_images is not None and not isinstance(self.isosurface_images, IsosurfaceImages):
+            self.isosurface_images = IsosurfaceImages(**as_dict(self.isosurface_images))
+
+        if self.vol_resolution is not None and not isinstance(self.vol_resolution, QuantityValue):
+            self.vol_resolution = QuantityValue(**as_dict(self.vol_resolution))
+
+        self._normalize_inlined_as_dict(slot_name="descriptors", slot_type=Descriptors, key_name="descriptor_name", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 class OrganizationTypeEnum(EnumDefinitionImpl):
     """
@@ -1173,6 +1672,9 @@ class AssemblyEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.processing = Slot(uri=DEFAULT_.processing, name="processing", curie=DEFAULT_.curie('processing'),
+                   model_uri=DEFAULT_.processing, domain=None, range=Optional[Union[dict, Processing]])
 
 slots.nominal_defocus = Slot(uri=ACQUISITION.nominal_defocus, name="nominal_defocus", curie=ACQUISITION.curie('nominal_defocus'),
                    model_uri=DEFAULT_.nominal_defocus, domain=None, range=Optional[Union[dict, Range]])
@@ -1499,6 +2001,27 @@ slots.sample = Slot(uri=OSCEM.sample, name="sample", curie=OSCEM.curie('sample')
 slots.organizational = Slot(uri=OSCEM.organizational, name="organizational", curie=OSCEM.curie('organizational'),
                    model_uri=DEFAULT_.organizational, domain=None, range=Optional[Union[dict, Any]])
 
+slots.movies = Slot(uri=PROCESSING.movies, name="movies", curie=PROCESSING.curie('movies'),
+                   model_uri=DEFAULT_.movies, domain=None, range=Optional[Union[dict, Movies]])
+
+slots.micrographs = Slot(uri=PROCESSING.micrographs, name="micrographs", curie=PROCESSING.curie('micrographs'),
+                   model_uri=DEFAULT_.micrographs, domain=None, range=Optional[Union[dict, Micrographs]])
+
+slots.ctfs = Slot(uri=PROCESSING.ctfs, name="ctfs", curie=PROCESSING.curie('ctfs'),
+                   model_uri=DEFAULT_.ctfs, domain=None, range=Optional[Union[dict, CTFs]])
+
+slots.coordinates = Slot(uri=PROCESSING.coordinates, name="coordinates", curie=PROCESSING.curie('coordinates'),
+                   model_uri=DEFAULT_.coordinates, domain=None, range=Optional[Union[dict, Coordinates]])
+
+slots.classes2D = Slot(uri=PROCESSING.classes2D, name="classes2D", curie=PROCESSING.curie('classes2D'),
+                   model_uri=DEFAULT_.classes2D, domain=None, range=Optional[Union[dict, Classes2D]])
+
+slots.classes3D = Slot(uri=PROCESSING.classes3D, name="classes3D", curie=PROCESSING.curie('classes3D'),
+                   model_uri=DEFAULT_.classes3D, domain=None, range=Optional[Union[dict, Classes3D]])
+
+slots.volumes = Slot(uri=PROCESSING.volumes, name="volumes", curie=PROCESSING.curie('volumes'),
+                   model_uri=DEFAULT_.volumes, domain=None, range=Optional[Union[Union[dict, Volumes], List[Union[dict, Volumes]]]])
+
 slots.minimal = Slot(uri=CUSTOM_TYPES.minimal, name="minimal", curie=CUSTOM_TYPES.curie('minimal'),
                    model_uri=DEFAULT_.minimal, domain=None, range=Optional[Union[dict, QuantityValue]])
 
@@ -1531,6 +2054,150 @@ slots.unit = Slot(uri=QUDT.hasUnit, name="unit", curie=QUDT.curie('hasUnit'),
 
 slots.value = Slot(uri=QUDT.hasQuantityKind, name="value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.value, domain=None, range=Optional[float])
+
+slots.descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.descriptors, domain=None, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])
+
+slots.descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="descriptor_name", curie=CUSTOM_TYPES.curie('descriptor_name'),
+                   model_uri=DEFAULT_.descriptor_name, domain=None, range=Optional[str])
+
+slots.descriptor_thing = Slot(uri=CUSTOM_TYPES.descriptor_thing, name="descriptor_thing", curie=CUSTOM_TYPES.curie('descriptor_thing'),
+                   model_uri=DEFAULT_.descriptor_thing, domain=None, range=Optional[Union[dict, Any]])
+
+slots.dark_image = Slot(uri=MOVIES.dark_image, name="dark_image", curie=MOVIES.curie('dark_image'),
+                   model_uri=DEFAULT_.dark_image, domain=None, range=Optional[str])
+
+slots.dose_per_image = Slot(uri=MOVIES.dose_per_image, name="dose_per_image", curie=MOVIES.curie('dose_per_image'),
+                   model_uri=DEFAULT_.dose_per_image, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.gain_image = Slot(uri=MOVIES.gain_image, name="gain_image", curie=MOVIES.curie('gain_image'),
+                   model_uri=DEFAULT_.gain_image, domain=None, range=Optional[str])
+
+slots.initial_dose = Slot(uri=MOVIES.initial_dose, name="initial_dose", curie=MOVIES.curie('initial_dose'),
+                   model_uri=DEFAULT_.initial_dose, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.number_micrographs = Slot(uri=MICROGRAPHS.number_micrographs, name="number_micrographs", curie=MICROGRAPHS.curie('number_micrographs'),
+                   model_uri=DEFAULT_.number_micrographs, domain=None, range=Optional[float])
+
+slots.astigmatism = Slot(uri=CTF.astigmatism, name="astigmatism", curie=CTF.curie('astigmatism'),
+                   model_uri=DEFAULT_.astigmatism, domain=None, range=Optional[Union[dict, Astigmatism]])
+
+slots.amplitude_contrast = Slot(uri=CTF.amplitude_contrast, name="amplitude_contrast", curie=CTF.curie('amplitude_contrast'),
+                   model_uri=DEFAULT_.amplitude_contrast, domain=None, range=Optional[float])
+
+slots.astigmatism_histogram = Slot(uri=CTF.astigmatism_histogram, name="astigmatism_histogram", curie=CTF.curie('astigmatism_histogram'),
+                   model_uri=DEFAULT_.astigmatism_histogram, domain=None, range=Optional[str])
+
+slots.defocus = Slot(uri=CTF.defocus, name="defocus", curie=CTF.curie('defocus'),
+                   model_uri=DEFAULT_.defocus, domain=None, range=Optional[Union[dict, Defocus]])
+
+slots.defocus_histogram = Slot(uri=CTF.defocus_histogram, name="defocus_histogram", curie=CTF.curie('defocus_histogram'),
+                   model_uri=DEFAULT_.defocus_histogram, domain=None, range=Optional[str])
+
+slots.defocus_micrograph_examples = Slot(uri=CTF.defocus_micrograph_examples, name="defocus_micrograph_examples", curie=CTF.curie('defocus_micrograph_examples'),
+                   model_uri=DEFAULT_.defocus_micrograph_examples, domain=None, range=Optional[str])
+
+slots.output_avg_defocus = Slot(uri=CTF.output_avg_defocus, name="output_avg_defocus", curie=CTF.curie('output_avg_defocus'),
+                   model_uri=DEFAULT_.output_avg_defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.output_avg_resolution = Slot(uri=CTF.output_avg_resolution, name="output_avg_resolution", curie=CTF.curie('output_avg_resolution'),
+                   model_uri=DEFAULT_.output_avg_resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.output_max_defocus = Slot(uri=CTF.output_max_defocus, name="output_max_defocus", curie=CTF.curie('output_max_defocus'),
+                   model_uri=DEFAULT_.output_max_defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.output_max_resolution = Slot(uri=CTF.output_max_resolution, name="output_max_resolution", curie=CTF.curie('output_max_resolution'),
+                   model_uri=DEFAULT_.output_max_resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.output_min_defocus = Slot(uri=CTF.output_min_defocus, name="output_min_defocus", curie=CTF.curie('output_min_defocus'),
+                   model_uri=DEFAULT_.output_min_defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.output_min_resolution = Slot(uri=CTF.output_min_resolution, name="output_min_resolution", curie=CTF.curie('output_min_resolution'),
+                   model_uri=DEFAULT_.output_min_resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolution = Slot(uri=CTF.resolution, name="resolution", curie=CTF.curie('resolution'),
+                   model_uri=DEFAULT_.resolution, domain=None, range=Optional[Union[dict, Resolution]])
+
+slots.resolution_histogram = Slot(uri=CTF.resolution_histogram, name="resolution_histogram", curie=CTF.curie('resolution_histogram'),
+                   model_uri=DEFAULT_.resolution_histogram, domain=None, range=Optional[str])
+
+slots.micrograph_examples = Slot(uri=COORDINATES.micrograph_examples, name="micrograph_examples", curie=COORDINATES.curie('micrograph_examples'),
+                   model_uri=DEFAULT_.micrograph_examples, domain=None, range=Optional[str])
+
+slots.num_source_micrographs = Slot(uri=COORDINATES.num_source_micrographs, name="num_source_micrographs", curie=COORDINATES.curie('num_source_micrographs'),
+                   model_uri=DEFAULT_.num_source_micrographs, domain=None, range=Optional[int])
+
+slots.number_particles = Slot(uri=COORDINATES.number_particles, name="number_particles", curie=COORDINATES.curie('number_particles'),
+                   model_uri=DEFAULT_.number_particles, domain=None, range=Optional[int])
+
+slots.particles_histogram = Slot(uri=COORDINATES.particles_histogram, name="particles_histogram", curie=COORDINATES.curie('particles_histogram'),
+                   model_uri=DEFAULT_.particles_histogram, domain=None, range=Optional[str])
+
+slots.particles_per_micrograph = Slot(uri=COORDINATES.particles_per_micrograph, name="particles_per_micrograph", curie=COORDINATES.curie('particles_per_micrograph'),
+                   model_uri=DEFAULT_.particles_per_micrograph, domain=None, range=Optional[float])
+
+slots.images_classes_2D = Slot(uri=CLASSES2D.images_classes_2D, name="images_classes_2D", curie=CLASSES2D.curie('images_classes_2D'),
+                   model_uri=DEFAULT_.images_classes_2D, domain=None, range=Optional[str])
+
+slots.number_classes_2D = Slot(uri=CLASSES2D.number_classes_2D, name="number_classes_2D", curie=CLASSES2D.curie('number_classes_2D'),
+                   model_uri=DEFAULT_.number_classes_2D, domain=None, range=Optional[int])
+
+slots.particles_per_2Dclass = Slot(uri=CLASSES2D.particles_per_2Dclass, name="particles_per_2Dclass", curie=CLASSES2D.curie('particles_per_2Dclass'),
+                   model_uri=DEFAULT_.particles_per_2Dclass, domain=None, range=Optional[Union[int, List[int]]])
+
+slots.resolution_classes_2D = Slot(uri=CLASSES2D.resolution_classes_2D, name="resolution_classes_2D", curie=CLASSES2D.curie('resolution_classes_2D'),
+                   model_uri=DEFAULT_.resolution_classes_2D, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.front_view = Slot(uri=CLASSES3D.front_view, name="front_view", curie=CLASSES3D.curie('front_view'),
+                   model_uri=DEFAULT_.front_view, domain=None, range=Optional[str])
+
+slots.isosurface_images = Slot(uri=CLASSES3D.isosurface_images, name="isosurface_images", curie=CLASSES3D.curie('isosurface_images'),
+                   model_uri=DEFAULT_.isosurface_images, domain=None, range=Optional[Union[dict, IsosurfaceImages]])
+
+slots.images_classes_3D = Slot(uri=CLASSES3D.images_classes_3D, name="images_classes_3D", curie=CLASSES3D.curie('images_classes_3D'),
+                   model_uri=DEFAULT_.images_classes_3D, domain=None, range=Optional[str])
+
+slots.number_classes_3D = Slot(uri=CLASSES3D.number_classes_3D, name="number_classes_3D", curie=CLASSES3D.curie('number_classes_3D'),
+                   model_uri=DEFAULT_.number_classes_3D, domain=None, range=Optional[int])
+
+slots.orthogonal_slices = Slot(uri=CLASSES3D.orthogonal_slices, name="orthogonal_slices", curie=CLASSES3D.curie('orthogonal_slices'),
+                   model_uri=DEFAULT_.orthogonal_slices, domain=None, range=Optional[Union[dict, OrthogonalSlices]])
+
+slots.orthogonal_slices_X = Slot(uri=CLASSES3D.orthogonal_slices_X, name="orthogonal_slices_X", curie=CLASSES3D.curie('orthogonal_slices_X'),
+                   model_uri=DEFAULT_.orthogonal_slices_X, domain=None, range=Optional[str])
+
+slots.orthogonal_slices_Y = Slot(uri=CLASSES3D.orthogonal_slices_Y, name="orthogonal_slices_Y", curie=CLASSES3D.curie('orthogonal_slices_Y'),
+                   model_uri=DEFAULT_.orthogonal_slices_Y, domain=None, range=Optional[str])
+
+slots.orthogonal_slices_Z = Slot(uri=CLASSES3D.orthogonal_slices_Z, name="orthogonal_slices_Z", curie=CLASSES3D.curie('orthogonal_slices_Z'),
+                   model_uri=DEFAULT_.orthogonal_slices_Z, domain=None, range=Optional[str])
+
+slots.particles_per_3Dclass = Slot(uri=CLASSES3D.particles_per_3Dclass, name="particles_per_3Dclass", curie=CLASSES3D.curie('particles_per_3Dclass'),
+                   model_uri=DEFAULT_.particles_per_3Dclass, domain=None, range=Optional[Union[int, List[int]]])
+
+slots.resolution_classes_3D = Slot(uri=CLASSES3D.resolution_classes_3D, name="resolution_classes_3D", curie=CLASSES3D.curie('resolution_classes_3D'),
+                   model_uri=DEFAULT_.resolution_classes_3D, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.side_view = Slot(uri=CLASSES3D.side_view, name="side_view", curie=CLASSES3D.curie('side_view'),
+                   model_uri=DEFAULT_.side_view, domain=None, range=Optional[str])
+
+slots.top_view = Slot(uri=CLASSES3D.top_view, name="top_view", curie=CLASSES3D.curie('top_view'),
+                   model_uri=DEFAULT_.top_view, domain=None, range=Optional[str])
+
+slots.volume = Slot(uri=CLASSES3D.volume, name="volume", curie=CLASSES3D.curie('volume'),
+                   model_uri=DEFAULT_.volume, domain=None, range=Optional[Union[Union[dict, Volume], List[Union[dict, Volume]]]])
+
+slots.vol_number_particles = Slot(uri=VOLUMES.vol_number_particles, name="vol_number_particles", curie=VOLUMES.curie('vol_number_particles'),
+                   model_uri=DEFAULT_.vol_number_particles, domain=None, range=Optional[int])
+
+slots.vol_resolution = Slot(uri=VOLUMES.vol_resolution, name="vol_resolution", curie=VOLUMES.curie('vol_resolution'),
+                   model_uri=DEFAULT_.vol_resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.size = Slot(uri=VOLUMES.size, name="size", curie=VOLUMES.curie('size'),
+                   model_uri=DEFAULT_.size, domain=None, range=Optional[str])
+
+slots.volume_type = Slot(uri=VOLUMES.volume_type, name="volume_type", curie=VOLUMES.curie('volume_type'),
+                   model_uri=DEFAULT_.volume_type, domain=None, range=Optional[str])
 
 slots.EMDatasetSpa_acquisition = Slot(uri=OSCEM.acquisition, name="EMDatasetSpa_acquisition", curie=OSCEM.curie('acquisition'),
                    model_uri=DEFAULT_.EMDatasetSpa_acquisition, domain=EMDatasetSpa, range=Union[dict, Acquisition])
@@ -1605,44 +2272,47 @@ slots.Organizational_authors = Slot(uri=ORGANIZATIONAL.authors, name="Organizati
                    model_uri=DEFAULT_.Organizational_authors, domain=Organizational, range=Union[Union[dict, "Author"], List[Union[dict, "Author"]]])
 
 slots.Organizational_funder = Slot(uri=ORGANIZATIONAL.funder, name="Organizational_funder", curie=ORGANIZATIONAL.curie('funder'),
-                   model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]])
+                   model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]])
 
 slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie('name'),
                    model_uri=DEFAULT_.Author_name, domain=Author, range=str)
+
+slots.Author_first_name = Slot(uri=ORGANIZATIONAL.first_name, name="Author_first_name", curie=ORGANIZATIONAL.curie('first_name'),
+                   model_uri=DEFAULT_.Author_first_name, domain=Author, range=str)
 
 slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.curie('email'),
                    model_uri=DEFAULT_.Author_email, domain=Author, range=str,
                    pattern=re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'))
 
 slots.Author_orcid = Slot(uri=ORGANIZATIONAL.orcid, name="Author_orcid", curie=ORGANIZATIONAL.curie('orcid'),
-                   model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_orcid, domain=Author, range=Optional[str])
 
 slots.Author_country = Slot(uri=ORGANIZATIONAL.country, name="Author_country", curie=ORGANIZATIONAL.curie('country'),
-                   model_uri=DEFAULT_.Author_country, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_country, domain=Author, range=Optional[str])
 
 slots.Author_type_org = Slot(uri=ORGANIZATIONAL.type_org, name="Author_type_org", curie=ORGANIZATIONAL.curie('type_org'),
                    model_uri=DEFAULT_.Author_type_org, domain=Author, range=Union[str, "OrganizationTypeEnum"])
 
 slots.Author_name_org = Slot(uri=ORGANIZATIONAL.name_org, name="Author_name_org", curie=ORGANIZATIONAL.curie('name_org'),
-                   model_uri=DEFAULT_.Author_name_org, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_name_org, domain=Author, range=Optional[str])
 
 slots.Sample_overall_molecule = Slot(uri=SAMPLE['/overall_molecule'], name="Sample_overall_molecule", curie=SAMPLE.curie('/overall_molecule'),
                    model_uri=DEFAULT_.Sample_overall_molecule, domain=Sample, range=Union[dict, "OverallMolecule"])
 
 slots.Sample_molecule = Slot(uri=SAMPLE['/molecule'], name="Sample_molecule", curie=SAMPLE.curie('/molecule'),
-                   model_uri=DEFAULT_.Sample_molecule, domain=Sample, range=Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]])
+                   model_uri=DEFAULT_.Sample_molecule, domain=Sample, range=Optional[Union[Union[dict, "Molecule"], List[Union[dict, "Molecule"]]]])
 
 slots.Sample_ligands = Slot(uri=SAMPLE['/ligands'], name="Sample_ligands", curie=SAMPLE.curie('/ligands'),
                    model_uri=DEFAULT_.Sample_ligands, domain=Sample, range=Optional[Union[Union[dict, "Ligand"], List[Union[dict, "Ligand"]]]])
 
 slots.Sample_specimen = Slot(uri=SAMPLE['/specimen'], name="Sample_specimen", curie=SAMPLE.curie('/specimen'),
-                   model_uri=DEFAULT_.Sample_specimen, domain=Sample, range=Union[dict, "Specimen"])
+                   model_uri=DEFAULT_.Sample_specimen, domain=Sample, range=Optional[Union[dict, "Specimen"]])
 
 slots.Sample_grid = Slot(uri=SAMPLE['/grid'], name="Sample_grid", curie=SAMPLE.curie('/grid'),
                    model_uri=DEFAULT_.Sample_grid, domain=Sample, range=Optional[Union[dict, "Grid"]])
 
 slots.OverallMolecule_molecular_overall_type = Slot(uri=SAMPLE['/molecular_overall_type'], name="OverallMolecule_molecular_overall_type", curie=SAMPLE.curie('/molecular_overall_type'),
-                   model_uri=DEFAULT_.OverallMolecule_molecular_overall_type, domain=OverallMolecule, range=Union[str, "MoleculeClassEnum"])
+                   model_uri=DEFAULT_.OverallMolecule_molecular_overall_type, domain=OverallMolecule, range=Optional[Union[str, "MoleculeClassEnum"]])
 
 slots.OverallMolecule_name_sample = Slot(uri=SAMPLE['/name_sample'], name="OverallMolecule_name_sample", curie=SAMPLE.curie('/name_sample'),
                    model_uri=DEFAULT_.OverallMolecule_name_sample, domain=OverallMolecule, range=str)
@@ -1654,16 +2324,16 @@ slots.OverallMolecule_molecular_weight = Slot(uri=SAMPLE['/molecular_weight'], n
                    model_uri=DEFAULT_.OverallMolecule_molecular_weight, domain=OverallMolecule, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.OverallMolecule_assembly = Slot(uri=SAMPLE['/assembly'], name="OverallMolecule_assembly", curie=SAMPLE.curie('/assembly'),
-                   model_uri=DEFAULT_.OverallMolecule_assembly, domain=OverallMolecule, range=Union[str, "AssemblyEnum"])
+                   model_uri=DEFAULT_.OverallMolecule_assembly, domain=OverallMolecule, range=Optional[Union[str, "AssemblyEnum"]])
 
 slots.Molecule_name_mol = Slot(uri=SAMPLE['/name_mol'], name="Molecule_name_mol", curie=SAMPLE.curie('/name_mol'),
                    model_uri=DEFAULT_.Molecule_name_mol, domain=Molecule, range=str)
 
 slots.Molecule_molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="Molecule_molecular_type", curie=SAMPLE.curie('/molecular_type'),
-                   model_uri=DEFAULT_.Molecule_molecular_type, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_molecular_type, domain=Molecule, range=Optional[str])
 
 slots.Molecule_molecular_class = Slot(uri=SAMPLE['/molecular_class'], name="Molecule_molecular_class", curie=SAMPLE.curie('/molecular_class'),
-                   model_uri=DEFAULT_.Molecule_molecular_class, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_molecular_class, domain=Molecule, range=Optional[str])
 
 slots.Molecule_sequence = Slot(uri=SAMPLE['/sequence'], name="Molecule_sequence", curie=SAMPLE.curie('/sequence'),
                    model_uri=DEFAULT_.Molecule_sequence, domain=Molecule, range=str)
@@ -1672,19 +2342,19 @@ slots.Molecule_natural_source = Slot(uri=SAMPLE['/natural_source'], name="Molecu
                    model_uri=DEFAULT_.Molecule_natural_source, domain=Molecule, range=str)
 
 slots.Molecule_taxonomy_id_source = Slot(uri=SAMPLE['/taxonomy_id_source'], name="Molecule_taxonomy_id_source", curie=SAMPLE.curie('/taxonomy_id_source'),
-                   model_uri=DEFAULT_.Molecule_taxonomy_id_source, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_taxonomy_id_source, domain=Molecule, range=Optional[str])
 
 slots.Molecule_expression_system = Slot(uri=SAMPLE['/expression_system'], name="Molecule_expression_system", curie=SAMPLE.curie('/expression_system'),
-                   model_uri=DEFAULT_.Molecule_expression_system, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_expression_system, domain=Molecule, range=Optional[str])
 
 slots.Molecule_taxonomy_id_expression = Slot(uri=SAMPLE['/taxonomy_id_expression'], name="Molecule_taxonomy_id_expression", curie=SAMPLE.curie('/taxonomy_id_expression'),
-                   model_uri=DEFAULT_.Molecule_taxonomy_id_expression, domain=Molecule, range=str)
+                   model_uri=DEFAULT_.Molecule_taxonomy_id_expression, domain=Molecule, range=Optional[str])
 
 slots.Molecule_gene_name = Slot(uri=SAMPLE['/gene_name'], name="Molecule_gene_name", curie=SAMPLE.curie('/gene_name'),
                    model_uri=DEFAULT_.Molecule_gene_name, domain=Molecule, range=Optional[str])
 
 slots.Ligand_present = Slot(uri=SAMPLE['/present'], name="Ligand_present", curie=SAMPLE.curie('/present'),
-                   model_uri=DEFAULT_.Ligand_present, domain=Ligand, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Ligand_present, domain=Ligand, range=Optional[Union[bool, Bool]])
 
 slots.Specimen_buffer = Slot(uri=SAMPLE['/buffer'], name="Specimen_buffer", curie=SAMPLE.curie('/buffer'),
                    model_uri=DEFAULT_.Specimen_buffer, domain=Specimen, range=Optional[str])
@@ -1693,13 +2363,13 @@ slots.Specimen_concentration = Slot(uri=SAMPLE['/concentration'], name="Specimen
                    model_uri=DEFAULT_.Specimen_concentration, domain=Specimen, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.Specimen_ph = Slot(uri=SAMPLE['/ph'], name="Specimen_ph", curie=SAMPLE.curie('/ph'),
-                   model_uri=DEFAULT_.Specimen_ph, domain=Specimen, range=float)
+                   model_uri=DEFAULT_.Specimen_ph, domain=Specimen, range=Optional[float])
 
 slots.Specimen_vitrification = Slot(uri=SAMPLE['/vitrification'], name="Specimen_vitrification", curie=SAMPLE.curie('/vitrification'),
-                   model_uri=DEFAULT_.Specimen_vitrification, domain=Specimen, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Specimen_vitrification, domain=Specimen, range=Optional[Union[bool, Bool]])
 
 slots.Specimen_vitrification_cryogen = Slot(uri=SAMPLE['/vitrification_cryogen'], name="Specimen_vitrification_cryogen", curie=SAMPLE.curie('/vitrification_cryogen'),
-                   model_uri=DEFAULT_.Specimen_vitrification_cryogen, domain=Specimen, range=str)
+                   model_uri=DEFAULT_.Specimen_vitrification_cryogen, domain=Specimen, range=Optional[str])
 
 slots.Specimen_humidity = Slot(uri=SAMPLE['/humidity'], name="Specimen_humidity", curie=SAMPLE.curie('/humidity'),
                    model_uri=DEFAULT_.Specimen_humidity, domain=Specimen, range=Optional[Union[dict, "QuantityValue"]])
@@ -1708,13 +2378,13 @@ slots.Specimen_temperature = Slot(uri=SAMPLE['/temperature'], name="Specimen_tem
                    model_uri=DEFAULT_.Specimen_temperature, domain=Specimen, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.Specimen_staining = Slot(uri=SAMPLE['/staining'], name="Specimen_staining", curie=SAMPLE.curie('/staining'),
-                   model_uri=DEFAULT_.Specimen_staining, domain=Specimen, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Specimen_staining, domain=Specimen, range=Optional[Union[bool, Bool]])
 
 slots.Specimen_embedding = Slot(uri=SAMPLE['/embedding'], name="Specimen_embedding", curie=SAMPLE.curie('/embedding'),
-                   model_uri=DEFAULT_.Specimen_embedding, domain=Specimen, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Specimen_embedding, domain=Specimen, range=Optional[Union[bool, Bool]])
 
 slots.Specimen_shadowing = Slot(uri=SAMPLE['/shadowing'], name="Specimen_shadowing", curie=SAMPLE.curie('/shadowing'),
-                   model_uri=DEFAULT_.Specimen_shadowing, domain=Specimen, range=Union[bool, Bool])
+                   model_uri=DEFAULT_.Specimen_shadowing, domain=Specimen, range=Optional[Union[bool, Bool]])
 
 slots.Grid_manufacturer = Slot(uri=SAMPLE['/manufacturer'], name="Grid_manufacturer", curie=SAMPLE.curie('/manufacturer'),
                    model_uri=DEFAULT_.Grid_manufacturer, domain=Grid, range=Optional[str])
@@ -1761,8 +2431,197 @@ slots.EMDatasetBase_sample = Slot(uri=OSCEM.sample, name="EMDatasetBase_sample",
 slots.EMDatasetBase_organizational = Slot(uri=OSCEM.organizational, name="EMDatasetBase_organizational", curie=OSCEM.curie('organizational'),
                    model_uri=DEFAULT_.EMDatasetBase_organizational, domain=EMDatasetBase, range=Optional[Union[dict, "Any"]])
 
+slots.Processing_movies = Slot(uri=PROCESSING.movies, name="Processing_movies", curie=PROCESSING.curie('movies'),
+                   model_uri=DEFAULT_.Processing_movies, domain=Processing, range=Optional[Union[dict, "Movies"]])
+
+slots.Processing_micrographs = Slot(uri=PROCESSING.micrographs, name="Processing_micrographs", curie=PROCESSING.curie('micrographs'),
+                   model_uri=DEFAULT_.Processing_micrographs, domain=Processing, range=Optional[Union[dict, "Micrographs"]])
+
+slots.Processing_ctfs = Slot(uri=PROCESSING.ctfs, name="Processing_ctfs", curie=PROCESSING.curie('ctfs'),
+                   model_uri=DEFAULT_.Processing_ctfs, domain=Processing, range=Optional[Union[dict, "CTFs"]])
+
+slots.Processing_coordinates = Slot(uri=PROCESSING.coordinates, name="Processing_coordinates", curie=PROCESSING.curie('coordinates'),
+                   model_uri=DEFAULT_.Processing_coordinates, domain=Processing, range=Optional[Union[dict, "Coordinates"]])
+
+slots.Processing_classes2D = Slot(uri=PROCESSING.classes2D, name="Processing_classes2D", curie=PROCESSING.curie('classes2D'),
+                   model_uri=DEFAULT_.Processing_classes2D, domain=Processing, range=Optional[Union[dict, "Classes2D"]])
+
+slots.Processing_classes3D = Slot(uri=PROCESSING.classes3D, name="Processing_classes3D", curie=PROCESSING.curie('classes3D'),
+                   model_uri=DEFAULT_.Processing_classes3D, domain=Processing, range=Optional[Union[dict, "Classes3D"]])
+
+slots.Processing_volumes = Slot(uri=PROCESSING.volumes, name="Processing_volumes", curie=PROCESSING.curie('volumes'),
+                   model_uri=DEFAULT_.Processing_volumes, domain=Processing, range=Optional[Union[Union[dict, "Volumes"], List[Union[dict, "Volumes"]]]])
+
 slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", curie=QUDT.curie('hasUnit'),
                    model_uri=DEFAULT_.QuantityValue_unit, domain=QuantityValue, range=str)
 
 slots.QuantityValue_value = Slot(uri=QUDT.hasQuantityKind, name="QuantityValue_value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.QuantityValue_value, domain=QuantityValue, range=float)
+
+slots.Descriptor_descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="Descriptor_descriptor_name", curie=CUSTOM_TYPES.curie('descriptor_name'),
+                   model_uri=DEFAULT_.Descriptor_descriptor_name, domain=Descriptor, range=str)
+
+slots.Descriptor_descriptor_thing = Slot(uri=CUSTOM_TYPES.descriptor_thing, name="Descriptor_descriptor_thing", curie=CUSTOM_TYPES.curie('descriptor_thing'),
+                   model_uri=DEFAULT_.Descriptor_descriptor_thing, domain=Descriptor, range=Optional[Union[dict, Any]])
+
+slots.Movies_dose_per_image = Slot(uri=MOVIES.dose_per_image, name="Movies_dose_per_image", curie=MOVIES.curie('dose_per_image'),
+                   model_uri=DEFAULT_.Movies_dose_per_image, domain=Movies, range=Optional[Union[dict, QuantityValue]])
+
+slots.Movies_initial_dose = Slot(uri=MOVIES.initial_dose, name="Movies_initial_dose", curie=MOVIES.curie('initial_dose'),
+                   model_uri=DEFAULT_.Movies_initial_dose, domain=Movies, range=Optional[Union[dict, QuantityValue]])
+
+slots.Movies_gain_image = Slot(uri=MOVIES.gain_image, name="Movies_gain_image", curie=MOVIES.curie('gain_image'),
+                   model_uri=DEFAULT_.Movies_gain_image, domain=Movies, range=Optional[str])
+
+slots.Movies_dark_image = Slot(uri=MOVIES.dark_image, name="Movies_dark_image", curie=MOVIES.curie('dark_image'),
+                   model_uri=DEFAULT_.Movies_dark_image, domain=Movies, range=Optional[str])
+
+slots.Movies_descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="Movies_descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.Movies_descriptors, domain=Movies, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])
+
+slots.Micrographs_number_micrographs = Slot(uri=MICROGRAPHS.number_micrographs, name="Micrographs_number_micrographs", curie=MICROGRAPHS.curie('number_micrographs'),
+                   model_uri=DEFAULT_.Micrographs_number_micrographs, domain=Micrographs, range=float)
+
+slots.Micrographs_descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="Micrographs_descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.Micrographs_descriptors, domain=Micrographs, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])
+
+slots.CTFs_amplitude_contrast = Slot(uri=CTF.amplitude_contrast, name="CTFs_amplitude_contrast", curie=CTF.curie('amplitude_contrast'),
+                   model_uri=DEFAULT_.CTFs_amplitude_contrast, domain=CTFs, range=Optional[float])
+
+slots.CTFs_defocus = Slot(uri=CTF.defocus, name="CTFs_defocus", curie=CTF.curie('defocus'),
+                   model_uri=DEFAULT_.CTFs_defocus, domain=CTFs, range=Optional[Union[dict, "Defocus"]])
+
+slots.CTFs_resolution = Slot(uri=CTF.resolution, name="CTFs_resolution", curie=CTF.curie('resolution'),
+                   model_uri=DEFAULT_.CTFs_resolution, domain=CTFs, range=Optional[Union[dict, "Resolution"]])
+
+slots.CTFs_astigmatism = Slot(uri=CTF.astigmatism, name="CTFs_astigmatism", curie=CTF.curie('astigmatism'),
+                   model_uri=DEFAULT_.CTFs_astigmatism, domain=CTFs, range=Optional[Union[dict, "Astigmatism"]])
+
+slots.CTFs_descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="CTFs_descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.CTFs_descriptors, domain=CTFs, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])
+
+slots.Defocus_output_min_defocus = Slot(uri=CTF.output_min_defocus, name="Defocus_output_min_defocus", curie=CTF.curie('output_min_defocus'),
+                   model_uri=DEFAULT_.Defocus_output_min_defocus, domain=Defocus, range=Optional[Union[dict, QuantityValue]])
+
+slots.Defocus_output_max_defocus = Slot(uri=CTF.output_max_defocus, name="Defocus_output_max_defocus", curie=CTF.curie('output_max_defocus'),
+                   model_uri=DEFAULT_.Defocus_output_max_defocus, domain=Defocus, range=Optional[Union[dict, QuantityValue]])
+
+slots.Defocus_output_avg_defocus = Slot(uri=CTF.output_avg_defocus, name="Defocus_output_avg_defocus", curie=CTF.curie('output_avg_defocus'),
+                   model_uri=DEFAULT_.Defocus_output_avg_defocus, domain=Defocus, range=Optional[Union[dict, QuantityValue]])
+
+slots.Defocus_defocus_histogram = Slot(uri=CTF.defocus_histogram, name="Defocus_defocus_histogram", curie=CTF.curie('defocus_histogram'),
+                   model_uri=DEFAULT_.Defocus_defocus_histogram, domain=Defocus, range=Optional[str])
+
+slots.Defocus_defocus_micrograph_examples = Slot(uri=CTF.defocus_micrograph_examples, name="Defocus_defocus_micrograph_examples", curie=CTF.curie('defocus_micrograph_examples'),
+                   model_uri=DEFAULT_.Defocus_defocus_micrograph_examples, domain=Defocus, range=Optional[str])
+
+slots.Resolution_output_min_resolution = Slot(uri=CTF.output_min_resolution, name="Resolution_output_min_resolution", curie=CTF.curie('output_min_resolution'),
+                   model_uri=DEFAULT_.Resolution_output_min_resolution, domain=Resolution, range=Optional[Union[dict, QuantityValue]])
+
+slots.Resolution_output_max_resolution = Slot(uri=CTF.output_max_resolution, name="Resolution_output_max_resolution", curie=CTF.curie('output_max_resolution'),
+                   model_uri=DEFAULT_.Resolution_output_max_resolution, domain=Resolution, range=Optional[Union[dict, QuantityValue]])
+
+slots.Resolution_output_avg_resolution = Slot(uri=CTF.output_avg_resolution, name="Resolution_output_avg_resolution", curie=CTF.curie('output_avg_resolution'),
+                   model_uri=DEFAULT_.Resolution_output_avg_resolution, domain=Resolution, range=Optional[Union[dict, QuantityValue]])
+
+slots.Resolution_resolution_histogram = Slot(uri=CTF.resolution_histogram, name="Resolution_resolution_histogram", curie=CTF.curie('resolution_histogram'),
+                   model_uri=DEFAULT_.Resolution_resolution_histogram, domain=Resolution, range=Optional[str])
+
+slots.Astigmatism_astigmatism_histogram = Slot(uri=CTF.astigmatism_histogram, name="Astigmatism_astigmatism_histogram", curie=CTF.curie('astigmatism_histogram'),
+                   model_uri=DEFAULT_.Astigmatism_astigmatism_histogram, domain=Astigmatism, range=Optional[str])
+
+slots.Coordinates_number_particles = Slot(uri=COORDINATES.number_particles, name="Coordinates_number_particles", curie=COORDINATES.curie('number_particles'),
+                   model_uri=DEFAULT_.Coordinates_number_particles, domain=Coordinates, range=int)
+
+slots.Coordinates_particles_per_micrograph = Slot(uri=COORDINATES.particles_per_micrograph, name="Coordinates_particles_per_micrograph", curie=COORDINATES.curie('particles_per_micrograph'),
+                   model_uri=DEFAULT_.Coordinates_particles_per_micrograph, domain=Coordinates, range=Optional[float])
+
+slots.Coordinates_num_source_micrographs = Slot(uri=COORDINATES.num_source_micrographs, name="Coordinates_num_source_micrographs", curie=COORDINATES.curie('num_source_micrographs'),
+                   model_uri=DEFAULT_.Coordinates_num_source_micrographs, domain=Coordinates, range=Optional[int])
+
+slots.Coordinates_particles_histogram = Slot(uri=COORDINATES.particles_histogram, name="Coordinates_particles_histogram", curie=COORDINATES.curie('particles_histogram'),
+                   model_uri=DEFAULT_.Coordinates_particles_histogram, domain=Coordinates, range=Optional[str])
+
+slots.Coordinates_micrograph_examples = Slot(uri=COORDINATES.micrograph_examples, name="Coordinates_micrograph_examples", curie=COORDINATES.curie('micrograph_examples'),
+                   model_uri=DEFAULT_.Coordinates_micrograph_examples, domain=Coordinates, range=Optional[str])
+
+slots.Coordinates_descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="Coordinates_descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.Coordinates_descriptors, domain=Coordinates, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])
+
+slots.Classes2D_number_classes_2D = Slot(uri=CLASSES2D.number_classes_2D, name="Classes2D_number_classes_2D", curie=CLASSES2D.curie('number_classes_2D'),
+                   model_uri=DEFAULT_.Classes2D_number_classes_2D, domain=Classes2D, range=Optional[int])
+
+slots.Classes2D_particles_per_2Dclass = Slot(uri=CLASSES2D.particles_per_2Dclass, name="Classes2D_particles_per_2Dclass", curie=CLASSES2D.curie('particles_per_2Dclass'),
+                   model_uri=DEFAULT_.Classes2D_particles_per_2Dclass, domain=Classes2D, range=Optional[Union[int, List[int]]])
+
+slots.Classes2D_images_classes_2D = Slot(uri=CLASSES2D.images_classes_2D, name="Classes2D_images_classes_2D", curie=CLASSES2D.curie('images_classes_2D'),
+                   model_uri=DEFAULT_.Classes2D_images_classes_2D, domain=Classes2D, range=Optional[str])
+
+slots.Classes2D_resolution_classes_2D = Slot(uri=CLASSES2D.resolution_classes_2D, name="Classes2D_resolution_classes_2D", curie=CLASSES2D.curie('resolution_classes_2D'),
+                   model_uri=DEFAULT_.Classes2D_resolution_classes_2D, domain=Classes2D, range=Optional[Union[dict, QuantityValue]])
+
+slots.Classes2D_descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="Classes2D_descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.Classes2D_descriptors, domain=Classes2D, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])
+
+slots.Classes3D_number_classes_3D = Slot(uri=CLASSES3D.number_classes_3D, name="Classes3D_number_classes_3D", curie=CLASSES3D.curie('number_classes_3D'),
+                   model_uri=DEFAULT_.Classes3D_number_classes_3D, domain=Classes3D, range=Optional[int])
+
+slots.Classes3D_particles_per_3Dclass = Slot(uri=CLASSES3D.particles_per_3Dclass, name="Classes3D_particles_per_3Dclass", curie=CLASSES3D.curie('particles_per_3Dclass'),
+                   model_uri=DEFAULT_.Classes3D_particles_per_3Dclass, domain=Classes3D, range=Optional[Union[int, List[int]]])
+
+slots.Classes3D_images_classes_3D = Slot(uri=CLASSES3D.images_classes_3D, name="Classes3D_images_classes_3D", curie=CLASSES3D.curie('images_classes_3D'),
+                   model_uri=DEFAULT_.Classes3D_images_classes_3D, domain=Classes3D, range=Optional[str])
+
+slots.Classes3D_volume = Slot(uri=CLASSES3D.volume, name="Classes3D_volume", curie=CLASSES3D.curie('volume'),
+                   model_uri=DEFAULT_.Classes3D_volume, domain=Classes3D, range=Optional[Union[Union[dict, "Volume"], List[Union[dict, "Volume"]]]])
+
+slots.Classes3D_resolution_classes_3D = Slot(uri=CLASSES3D.resolution_classes_3D, name="Classes3D_resolution_classes_3D", curie=CLASSES3D.curie('resolution_classes_3D'),
+                   model_uri=DEFAULT_.Classes3D_resolution_classes_3D, domain=Classes3D, range=Optional[Union[dict, QuantityValue]])
+
+slots.Classes3D_descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="Classes3D_descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.Classes3D_descriptors, domain=Classes3D, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])
+
+slots.Volume_orthogonal_slices = Slot(uri=CLASSES3D.orthogonal_slices, name="Volume_orthogonal_slices", curie=CLASSES3D.curie('orthogonal_slices'),
+                   model_uri=DEFAULT_.Volume_orthogonal_slices, domain=Volume, range=Optional[Union[dict, "OrthogonalSlices"]])
+
+slots.Volume_isosurface_images = Slot(uri=CLASSES3D.isosurface_images, name="Volume_isosurface_images", curie=CLASSES3D.curie('isosurface_images'),
+                   model_uri=DEFAULT_.Volume_isosurface_images, domain=Volume, range=Optional[Union[dict, "IsosurfaceImages"]])
+
+slots.OrthogonalSlices_orthogonal_slices_X = Slot(uri=CLASSES3D.orthogonal_slices_X, name="OrthogonalSlices_orthogonal_slices_X", curie=CLASSES3D.curie('orthogonal_slices_X'),
+                   model_uri=DEFAULT_.OrthogonalSlices_orthogonal_slices_X, domain=OrthogonalSlices, range=Optional[str])
+
+slots.OrthogonalSlices_orthogonal_slices_Y = Slot(uri=CLASSES3D.orthogonal_slices_Y, name="OrthogonalSlices_orthogonal_slices_Y", curie=CLASSES3D.curie('orthogonal_slices_Y'),
+                   model_uri=DEFAULT_.OrthogonalSlices_orthogonal_slices_Y, domain=OrthogonalSlices, range=Optional[str])
+
+slots.OrthogonalSlices_orthogonal_slices_Z = Slot(uri=CLASSES3D.orthogonal_slices_Z, name="OrthogonalSlices_orthogonal_slices_Z", curie=CLASSES3D.curie('orthogonal_slices_Z'),
+                   model_uri=DEFAULT_.OrthogonalSlices_orthogonal_slices_Z, domain=OrthogonalSlices, range=Optional[str])
+
+slots.IsosurfaceImages_front_view = Slot(uri=CLASSES3D.front_view, name="IsosurfaceImages_front_view", curie=CLASSES3D.curie('front_view'),
+                   model_uri=DEFAULT_.IsosurfaceImages_front_view, domain=IsosurfaceImages, range=Optional[str])
+
+slots.IsosurfaceImages_side_view = Slot(uri=CLASSES3D.side_view, name="IsosurfaceImages_side_view", curie=CLASSES3D.curie('side_view'),
+                   model_uri=DEFAULT_.IsosurfaceImages_side_view, domain=IsosurfaceImages, range=Optional[str])
+
+slots.IsosurfaceImages_top_view = Slot(uri=CLASSES3D.top_view, name="IsosurfaceImages_top_view", curie=CLASSES3D.curie('top_view'),
+                   model_uri=DEFAULT_.IsosurfaceImages_top_view, domain=IsosurfaceImages, range=Optional[str])
+
+slots.Volumes_volume_type = Slot(uri=VOLUMES.volume_type, name="Volumes_volume_type", curie=VOLUMES.curie('volume_type'),
+                   model_uri=DEFAULT_.Volumes_volume_type, domain=Volumes, range=str)
+
+slots.Volumes_vol_number_particles = Slot(uri=VOLUMES.vol_number_particles, name="Volumes_vol_number_particles", curie=VOLUMES.curie('vol_number_particles'),
+                   model_uri=DEFAULT_.Volumes_vol_number_particles, domain=Volumes, range=Optional[int])
+
+slots.Volumes_size = Slot(uri=VOLUMES.size, name="Volumes_size", curie=VOLUMES.curie('size'),
+                   model_uri=DEFAULT_.Volumes_size, domain=Volumes, range=Optional[str])
+
+slots.Volumes_orthogonal_slices = Slot(uri=CLASSES3D.orthogonal_slices, name="Volumes_orthogonal_slices", curie=CLASSES3D.curie('orthogonal_slices'),
+                   model_uri=DEFAULT_.Volumes_orthogonal_slices, domain=Volumes, range=Optional[Union[dict, OrthogonalSlices]])
+
+slots.Volumes_isosurface_images = Slot(uri=CLASSES3D.isosurface_images, name="Volumes_isosurface_images", curie=CLASSES3D.curie('isosurface_images'),
+                   model_uri=DEFAULT_.Volumes_isosurface_images, domain=Volumes, range=Optional[Union[dict, IsosurfaceImages]])
+
+slots.Volumes_vol_resolution = Slot(uri=VOLUMES.vol_resolution, name="Volumes_vol_resolution", curie=VOLUMES.curie('vol_resolution'),
+                   model_uri=DEFAULT_.Volumes_vol_resolution, domain=Volumes, range=Optional[Union[dict, QuantityValue]])
+
+slots.Volumes_descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="Volumes_descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.Volumes_descriptors, domain=Volumes, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])

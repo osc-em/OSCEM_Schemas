@@ -6,11 +6,11 @@ Description of the project funding
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/Funder](https://w3id.org/osc-em/oscem-schemas-spa/Funder)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Organizational],[Organizational]++-%20funder%201..*>[Funder&#124;funder_name:string%20%3F;type_org:OrganizationTypeEnum%20%3F;country:string%20%3F],[Organizational]++-%20funder(i)%200..*>[Funder])](https://yuml.me/diagram/nofunky;dir:TB/class/[Organizational],[Organizational]++-%20funder%201..*>[Funder&#124;funder_name:string%20%3F;type_org:OrganizationTypeEnum%20%3F;country:string%20%3F],[Organizational]++-%20funder(i)%200..*>[Funder])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Organizational],[Organizational]++-%20funder%200..*>[Funder&#124;funder_name:string%20%3F;type_org:OrganizationTypeEnum%20%3F;country:string%20%3F],[Organizational]++-%20funder(i)%200..*>[Funder])](https://yuml.me/diagram/nofunky;dir:TB/class/[Organizational],[Organizational]++-%20funder%200..*>[Funder&#124;funder_name:string%20%3F;type_org:OrganizationTypeEnum%20%3F;country:string%20%3F],[Organizational]++-%20funder(i)%200..*>[Funder])
 
 ## Referenced by Class
 
- *  **[Organizational](Organizational.md)** *[Organizational➞funder](Organizational_funder.md)*  <sub>1..\*</sub>  **[Funder](Funder.md)**
+ *  **[Organizational](Organizational.md)** *[Organizational➞funder](Organizational_funder.md)*  <sub>0..\*</sub>  **[Funder](Funder.md)**
  *  **None** *[funder](funder.md)*  <sub>0..\*</sub>  **[Funder](Funder.md)**
 
 ## Attributes

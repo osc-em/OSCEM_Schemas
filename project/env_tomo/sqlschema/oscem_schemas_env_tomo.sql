@@ -29,6 +29,14 @@
 --     * Slot: id Description: 
 --     * Slot: unit Description: the unit of a given value
 --     * Slot: value Description: the value of a field with a unit
+-- # Class: "Descriptor" Description: "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information"
+--     * Slot: id Description: 
+--     * Slot: descriptor_name Description: Name defining the descriptor
+--     * Slot: descriptor_thing_id Description: Description of the descriptor
+-- # Class: "Descriptors" Description: ""
+--     * Slot: id Description: 
+--     * Slot: descriptor_name Description: Name defining the descriptor
+--     * Slot: descriptor_thing_id Description: Description of the descriptor
 -- # Class: "Acquisition" Description: "A set of parameteres describing the data acquisition"
 --     * Slot: id Description: 
 --     * Slot: nominal_magnification Description: Magnification level as indicated by the instrument, no unit
@@ -280,13 +288,13 @@ CREATE TABLE "Person" (
 );
 CREATE TABLE "Author" (
 	id INTEGER NOT NULL, 
-	orcid TEXT NOT NULL, 
-	country TEXT NOT NULL, 
+	orcid TEXT, 
+	country TEXT, 
 	role TEXT, 
-	name_org TEXT NOT NULL, 
+	name_org TEXT, 
 	type_org VARCHAR(10) NOT NULL, 
 	name TEXT NOT NULL, 
-	first_name TEXT, 
+	first_name TEXT NOT NULL, 
 	work_status BOOLEAN, 
 	email TEXT NOT NULL, 
 	work_phone TEXT, 
@@ -328,6 +336,20 @@ CREATE TABLE "BoundingBox2D" (
 	FOREIGN KEY(x_max_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(y_min_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(y_max_id) REFERENCES "QuantityValue" (id)
+);
+CREATE TABLE "Descriptor" (
+	id INTEGER NOT NULL, 
+	descriptor_name TEXT NOT NULL, 
+	descriptor_thing_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(descriptor_thing_id) REFERENCES "Any" (id)
+);
+CREATE TABLE "Descriptors" (
+	id INTEGER NOT NULL, 
+	descriptor_name TEXT NOT NULL, 
+	descriptor_thing_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(descriptor_thing_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "EnergyFilter" (
 	id INTEGER NOT NULL, 
@@ -386,9 +408,9 @@ CREATE TABLE "Thinning" (
 );
 CREATE TABLE "TiltAngle" (
 	id INTEGER NOT NULL, 
-	increment_id INTEGER, 
-	minimal_id INTEGER, 
-	maximal_id INTEGER, 
+	increment_id INTEGER NOT NULL, 
+	minimal_id INTEGER NOT NULL, 
+	maximal_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(increment_id) REFERENCES "QuantityValue" (id), 
 	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
@@ -440,7 +462,7 @@ CREATE TABLE "Organizational_authors" (
 );
 CREATE TABLE "Organizational_funder" (
 	"Organizational_id" INTEGER, 
-	funder_id INTEGER NOT NULL, 
+	funder_id INTEGER, 
 	PRIMARY KEY ("Organizational_id", funder_id), 
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id), 
 	FOREIGN KEY(funder_id) REFERENCES "Funder" (id)

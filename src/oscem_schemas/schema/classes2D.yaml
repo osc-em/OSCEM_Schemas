@@ -1,0 +1,45 @@
+id: https://w3id.org/osc-em/classes2D
+name: OSCEMClasses2D
+description: >
+  LinkML schema for electron microscopy 2D classes generated when processing.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  classes2D: https://w3id.org/osc-em/classes2D
+
+default_prefix: classes2D
+
+imports:
+  - linkml:types
+  - ./custom_types
+
+classes:
+  Classes2D:
+    description: Class representing classes 2D metadata
+    slots:
+      - particles_per_2Dclass
+      - images_classes_2D
+      - resolution_classes_2D
+      - descriptors
+    slot_usage:
+      particles_per_2Dclass:
+        required: false
+      images_classes_2D:
+        required: false
+      resolution_classes_2D:
+        required: false
+      descriptors:
+        required: false
+  
+
+slots:
+  images_classes_2D:
+    description: Filename of the image containing 2D class images
+    range: string
+  particles_per_2Dclass:
+    description: Number of particles per 2D class
+    range: integer
+    multivalued: true
+  resolution_classes_2D:
+    description: Resolution of classes 2D
+    range: QuantityValue

@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-02-10T15:19:26
+# Generation date: 2025-02-25T16:30:19
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
@@ -478,23 +478,21 @@ class Organizational(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Organizational")
 
     authors: Union[Union[dict, "Author"], List[Union[dict, "Author"]]] = None
-    funder: Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]] = None
     grants: Optional[Union[Union[dict, "Grant"], List[Union[dict, "Grant"]]]] = empty_list()
+    funder: Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.authors):
             self.MissingRequiredField("authors")
-        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="orcid", keyed=False)
-
-        if self._is_empty(self.funder):
-            self.MissingRequiredField("funder")
-        if not isinstance(self.funder, list):
-            self.funder = [self.funder] if self.funder is not None else []
-        self.funder = [v if isinstance(v, Funder) else Funder(**as_dict(v)) for v in self.funder]
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=Author, key_name="type_org", keyed=False)
 
         if not isinstance(self.grants, list):
             self.grants = [self.grants] if self.grants is not None else []
         self.grants = [v if isinstance(v, Grant) else Grant(**as_dict(v)) for v in self.grants]
+
+        if not isinstance(self.funder, list):
+            self.funder = [self.funder] if self.funder is not None else []
+        self.funder = [v if isinstance(v, Funder) else Funder(**as_dict(v)) for v in self.funder]
 
         super().__post_init__(**kwargs)
 
@@ -548,30 +546,16 @@ class Author(Person):
     class_name: ClassVar[str] = "Author"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Author")
 
-    orcid: str = None
-    country: str = None
-    name_org: str = None
     type_org: Union[str, "OrganizationTypeEnum"] = None
     name: str = None
+    first_name: str = None
     email: str = None
+    orcid: Optional[str] = None
+    country: Optional[str] = None
     role: Optional[str] = None
+    name_org: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.orcid):
-            self.MissingRequiredField("orcid")
-        if not isinstance(self.orcid, str):
-            self.orcid = str(self.orcid)
-
-        if self._is_empty(self.country):
-            self.MissingRequiredField("country")
-        if not isinstance(self.country, str):
-            self.country = str(self.country)
-
-        if self._is_empty(self.name_org):
-            self.MissingRequiredField("name_org")
-        if not isinstance(self.name_org, str):
-            self.name_org = str(self.name_org)
-
         if self._is_empty(self.type_org):
             self.MissingRequiredField("type_org")
         if not isinstance(self.type_org, OrganizationTypeEnum):
@@ -582,13 +566,27 @@ class Author(Person):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self._is_empty(self.first_name):
+            self.MissingRequiredField("first_name")
+        if not isinstance(self.first_name, str):
+            self.first_name = str(self.first_name)
+
         if self._is_empty(self.email):
             self.MissingRequiredField("email")
         if not isinstance(self.email, str):
             self.email = str(self.email)
 
+        if self.orcid is not None and not isinstance(self.orcid, str):
+            self.orcid = str(self.orcid)
+
+        if self.country is not None and not isinstance(self.country, str):
+            self.country = str(self.country)
+
         if self.role is not None and not isinstance(self.role, str):
             self.role = str(self.role)
+
+        if self.name_org is not None and not isinstance(self.name_org, str):
+            self.name_org = str(self.name_org)
 
         super().__post_init__(**kwargs)
 
@@ -763,6 +761,7 @@ class Series(Range):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class TiltAngle(Series):
     """
     The min, max and increment of the tilt angle in a tomography session. Unit is degree.
@@ -773,6 +772,28 @@ class TiltAngle(Series):
     class_class_curie: ClassVar[str] = "tomo:graphy/TiltAngle"
     class_name: ClassVar[str] = "TiltAngle"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/TiltAngle")
+
+    minimal: Union[dict, "QuantityValue"] = None
+    maximal: Union[dict, "QuantityValue"] = None
+    increment: Union[dict, "QuantityValue"] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.minimal):
+            self.MissingRequiredField("minimal")
+        if not isinstance(self.minimal, QuantityValue):
+            self.minimal = QuantityValue(**as_dict(self.minimal))
+
+        if self._is_empty(self.maximal):
+            self.MissingRequiredField("maximal")
+        if not isinstance(self.maximal, QuantityValue):
+            self.maximal = QuantityValue(**as_dict(self.maximal))
+
+        if self._is_empty(self.increment):
+            self.MissingRequiredField("increment")
+        if not isinstance(self.increment, QuantityValue):
+            self.increment = QuantityValue(**as_dict(self.increment))
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -861,6 +882,42 @@ class QuantityValue(YAMLRoot):
 
         super().__post_init__(**kwargs)
 
+
+@dataclass(repr=False)
+class Descriptor(YAMLRoot):
+    """
+    List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any
+    related information
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TYPES["Descriptor"]
+    class_class_curie: ClassVar[str] = "types:Descriptor"
+    class_name: ClassVar[str] = "Descriptor"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Descriptor")
+
+    descriptor_name: str = None
+    descriptor_thing: Optional[Union[dict, Any]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.descriptor_name):
+            self.MissingRequiredField("descriptor_name")
+        if not isinstance(self.descriptor_name, str):
+            self.descriptor_name = str(self.descriptor_name)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Descriptors(Descriptor):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TYPES["Descriptors"]
+    class_class_curie: ClassVar[str] = "types:Descriptors"
+    class_name: ClassVar[str] = "Descriptors"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Descriptors")
+
+    descriptor_name: str = None
 
 @dataclass(repr=False)
 class SampleEnv(YAMLRoot):
@@ -1378,6 +1435,15 @@ slots.unit = Slot(uri=QUDT.hasUnit, name="unit", curie=QUDT.curie('hasUnit'),
 slots.value = Slot(uri=QUDT.hasQuantityKind, name="value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.value, domain=None, range=Optional[float])
 
+slots.descriptors = Slot(uri=CUSTOM_TYPES.descriptors, name="descriptors", curie=CUSTOM_TYPES.curie('descriptors'),
+                   model_uri=DEFAULT_.descriptors, domain=None, range=Optional[Union[Union[dict, Descriptors], List[Union[dict, Descriptors]]]])
+
+slots.descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="descriptor_name", curie=CUSTOM_TYPES.curie('descriptor_name'),
+                   model_uri=DEFAULT_.descriptor_name, domain=None, range=Optional[str])
+
+slots.descriptor_thing = Slot(uri=CUSTOM_TYPES.descriptor_thing, name="descriptor_thing", curie=CUSTOM_TYPES.curie('descriptor_thing'),
+                   model_uri=DEFAULT_.descriptor_thing, domain=None, range=Optional[Union[dict, Any]])
+
 slots.organism = Slot(uri=SAMPLE_ENV.organism, name="organism", curie=SAMPLE_ENV.curie('organism'),
                    model_uri=DEFAULT_.organism, domain=None, range=Optional[Union[str, List[str]]])
 
@@ -1525,6 +1591,15 @@ slots.Instrument_acceleration_voltage = Slot(uri=INSTRUMENT['/acceleration_volta
 slots.Instrument_cs = Slot(uri=INSTRUMENT['/cs'], name="Instrument_cs", curie=INSTRUMENT.curie('/cs'),
                    model_uri=DEFAULT_.Instrument_cs, domain=Instrument, range=Union[dict, "QuantityValue"])
 
+slots.TiltAngle_minimal = Slot(uri=CUSTOM_TYPES.minimal, name="TiltAngle_minimal", curie=CUSTOM_TYPES.curie('minimal'),
+                   model_uri=DEFAULT_.TiltAngle_minimal, domain=TiltAngle, range=Union[dict, "QuantityValue"])
+
+slots.TiltAngle_maximal = Slot(uri=CUSTOM_TYPES.maximal, name="TiltAngle_maximal", curie=CUSTOM_TYPES.curie('maximal'),
+                   model_uri=DEFAULT_.TiltAngle_maximal, domain=TiltAngle, range=Union[dict, "QuantityValue"])
+
+slots.TiltAngle_increment = Slot(uri=CUSTOM_TYPES.increment, name="TiltAngle_increment", curie=CUSTOM_TYPES.curie('increment'),
+                   model_uri=DEFAULT_.TiltAngle_increment, domain=TiltAngle, range=Union[dict, "QuantityValue"])
+
 slots.AcquisitionTomo_tilt_axis_angle = Slot(uri=TOMO['graphy/tilt_axis_angle'], name="AcquisitionTomo_tilt_axis_angle", curie=TOMO.curie('graphy/tilt_axis_angle'),
                    model_uri=DEFAULT_.AcquisitionTomo_tilt_axis_angle, domain=AcquisitionTomo, range=float)
 
@@ -1535,26 +1610,29 @@ slots.Organizational_authors = Slot(uri=ORGANIZATIONAL.authors, name="Organizati
                    model_uri=DEFAULT_.Organizational_authors, domain=Organizational, range=Union[Union[dict, "Author"], List[Union[dict, "Author"]]])
 
 slots.Organizational_funder = Slot(uri=ORGANIZATIONAL.funder, name="Organizational_funder", curie=ORGANIZATIONAL.curie('funder'),
-                   model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]])
+                   model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]])
 
 slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie('name'),
                    model_uri=DEFAULT_.Author_name, domain=Author, range=str)
+
+slots.Author_first_name = Slot(uri=ORGANIZATIONAL.first_name, name="Author_first_name", curie=ORGANIZATIONAL.curie('first_name'),
+                   model_uri=DEFAULT_.Author_first_name, domain=Author, range=str)
 
 slots.Author_email = Slot(uri=SCHEMA.email, name="Author_email", curie=SCHEMA.curie('email'),
                    model_uri=DEFAULT_.Author_email, domain=Author, range=str,
                    pattern=re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'))
 
 slots.Author_orcid = Slot(uri=ORGANIZATIONAL.orcid, name="Author_orcid", curie=ORGANIZATIONAL.curie('orcid'),
-                   model_uri=DEFAULT_.Author_orcid, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_orcid, domain=Author, range=Optional[str])
 
 slots.Author_country = Slot(uri=ORGANIZATIONAL.country, name="Author_country", curie=ORGANIZATIONAL.curie('country'),
-                   model_uri=DEFAULT_.Author_country, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_country, domain=Author, range=Optional[str])
 
 slots.Author_type_org = Slot(uri=ORGANIZATIONAL.type_org, name="Author_type_org", curie=ORGANIZATIONAL.curie('type_org'),
                    model_uri=DEFAULT_.Author_type_org, domain=Author, range=Union[str, "OrganizationTypeEnum"])
 
 slots.Author_name_org = Slot(uri=ORGANIZATIONAL.name_org, name="Author_name_org", curie=ORGANIZATIONAL.curie('name_org'),
-                   model_uri=DEFAULT_.Author_name_org, domain=Author, range=str)
+                   model_uri=DEFAULT_.Author_name_org, domain=Author, range=Optional[str])
 
 slots.EMDatasetBase_acquisition = Slot(uri=OSCEM.acquisition, name="EMDatasetBase_acquisition", curie=OSCEM.curie('acquisition'),
                    model_uri=DEFAULT_.EMDatasetBase_acquisition, domain=EMDatasetBase, range=Optional[Union[dict, "Any"]])
@@ -1573,6 +1651,12 @@ slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", cur
 
 slots.QuantityValue_value = Slot(uri=QUDT.hasQuantityKind, name="QuantityValue_value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.QuantityValue_value, domain=QuantityValue, range=float)
+
+slots.Descriptor_descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="Descriptor_descriptor_name", curie=CUSTOM_TYPES.curie('descriptor_name'),
+                   model_uri=DEFAULT_.Descriptor_descriptor_name, domain=Descriptor, range=str)
+
+slots.Descriptor_descriptor_thing = Slot(uri=CUSTOM_TYPES.descriptor_thing, name="Descriptor_descriptor_thing", curie=CUSTOM_TYPES.curie('descriptor_thing'),
+                   model_uri=DEFAULT_.Descriptor_descriptor_thing, domain=Descriptor, range=Optional[Union[dict, Any]])
 
 slots.SampleEnv_specimen_env = Slot(uri=SAMPLE_ENV.specimen_env, name="SampleEnv_specimen_env", curie=SAMPLE_ENV.curie('specimen_env'),
                    model_uri=DEFAULT_.SampleEnv_specimen_env, domain=SampleEnv, range=Union[dict, "SpecimenEnv"])

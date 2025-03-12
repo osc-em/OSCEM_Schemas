@@ -1,0 +1,59 @@
+id: https://w3id.org/osc-em/volume
+name: OSCEMVolume
+description: >
+  LinkML schema for electron microscopy volume generated when processing.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  volumes: https://w3id.org/osc-em/volume
+
+
+default_prefix: volumes
+
+imports:
+  - linkml:types
+  - ./custom_types
+  - ./classes3D
+
+classes:
+  Volumes:
+    description:  Class representing volume metadata
+    slots:
+      - volume_type
+      - vol_number_particles
+      - size
+      - orthogonal_slices
+      - isosurface_images
+      - vol_resolution
+      - descriptors
+    slot_usage:
+      volume_type:
+        required: true
+      vol_number_particles:
+        required: false
+      size:
+        required: false
+      orthogonal_slices:
+        required: false
+      isosurface_images:
+        required: false
+      vol_resolution:
+        required: false
+      descriptors:
+        required: false
+
+
+slots:
+  vol_number_particles:
+    description: Number of particles associated to volume
+    range: integer
+  vol_resolution:
+    description: Resolution of volume
+    range: QuantityValue
+  size:
+    description: Size of the volume
+    range: integer
+    multivalued: true
+  volume_type:
+    description: Indicates the type of volume
+    range: string

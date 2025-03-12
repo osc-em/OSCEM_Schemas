@@ -1,0 +1,73 @@
+id: https://w3id.org/osc-em/processing
+name: OSCEMProcessing
+description: >
+  LinkML schema for processing electron microscopy metadata,
+  broadly following the EMDB standard with some additions.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  processing: https://w3id.org/osc-em/processing
+
+default_prefix: processing
+
+imports:
+  - linkml:types
+  - ./custom_types
+  - ./movies
+  - ./micrographs
+  - ./CTFs
+  - ./coordinates
+  - ./classes2D
+  - ./classes3D
+  - ./volumes
+
+classes:
+  Processing:
+    description: Set of parameters describing the data processing
+    slots:
+      - movies
+      - micrographs
+      - ctfs
+      - coordinates
+      - classes2D
+      - classes3D
+      - volumes
+    slot_usage:
+      movies:
+        required: false
+      micrographs:
+        required: false
+      ctfs:
+        required: false
+      coordinates:
+        required: false
+      classes2D:
+        required: false
+      classes3D:
+        required: false
+      volumes:
+        required: false
+
+slots:
+  movies:
+    description: Movies metadata
+    range: Movies
+  micrographs:
+    description: Micrographs metadata
+    range: Micrographs
+  ctfs:
+    description: CTFs metadata
+    range: CTFs
+  coordinates:
+    description: Coordinates metadata
+    range: Coordinates
+  classes2D:
+    description: Classes 2D metadata
+    range: Classes2D
+  classes3D:
+    description: Classes 3D metadata
+    range: Classes3D
+  volumes:
+    description: Volume metadata
+    range: Volumes
+    multivalued: true

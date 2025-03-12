@@ -252,13 +252,31 @@
             "title": "AssemblyEnum",
             "type": "string"
         },
+        "Astigmatism": {
+            "additionalProperties": false,
+            "description": "Astigmatism-related metadata",
+            "properties": {
+                "astigmatism_histogram": {
+                    "description": "Filename of the astigmatism values histogram",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Astigmatism",
+            "type": "object"
+        },
         "Author": {
             "additionalProperties": false,
             "description": "Details on the person performing the experiment.",
             "properties": {
                 "country": {
                     "description": "Country of the institution",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "email": {
                     "description": "email",
@@ -267,10 +285,7 @@
                 },
                 "first_name": {
                     "description": "first name",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "name": {
                     "description": "name",
@@ -278,11 +293,17 @@
                 },
                 "name_org": {
                     "description": "Name of the organization",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "orcid": {
                     "description": "ORCID of the author, a type of unique identifier",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "role": {
                     "description": "Role of the author, for example principal investigator",
@@ -311,11 +332,9 @@
                 }
             },
             "required": [
-                "orcid",
-                "country",
-                "name_org",
                 "type_org",
                 "name",
+                "first_name",
                 "email"
             ],
             "title": "Author",
@@ -373,6 +392,64 @@
             "title": "BoundingBox2D",
             "type": "object"
         },
+        "CTFs": {
+            "additionalProperties": false,
+            "description": "Class representing Contrast Transfer Function (CTF) metadata",
+            "properties": {
+                "amplitude_contrast": {
+                    "description": "Amplitude contrast",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "astigmatism": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Astigmatism"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Astigmatism metadata"
+                },
+                "defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Defocus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus metadata"
+                },
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Resolution"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution metadata"
+                }
+            },
+            "title": "CTFs",
+            "type": "object"
+        },
         "ChromaticAberrationCorrector": {
             "additionalProperties": false,
             "description": "Special device used to correct instrument inherent chromatic aberration.",
@@ -393,6 +470,256 @@
             "title": "ChromaticAberrationCorrector",
             "type": "object"
         },
+        "Classes2D": {
+            "additionalProperties": false,
+            "description": "Class representing classes 2D metadata",
+            "properties": {
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "images_classes_2D": {
+                    "description": "Filename of the image containing 2D class images",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "number_classes_2D": {
+                    "description": "Number of 2D classes",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "particles_per_2Dclass": {
+                    "description": "Number of particles per 2D class",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "resolution_classes_2D": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution of classes 2D"
+                }
+            },
+            "title": "Classes2D",
+            "type": "object"
+        },
+        "Classes3D": {
+            "additionalProperties": false,
+            "description": "Class representing classes 3D metadata",
+            "properties": {
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "images_classes_3D": {
+                    "description": "Filename of the image containing 3D class images",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "number_classes_3D": {
+                    "description": "Number of 3D classes",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "particles_per_3Dclass": {
+                    "description": "Number of particles per 3D class",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "resolution_classes_3D": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution of volume"
+                },
+                "volume": {
+                    "description": "Describes volume(s) obtained",
+                    "items": {
+                        "$ref": "#/$defs/Volume"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Classes3D",
+            "type": "object"
+        },
+        "Coordinates": {
+            "additionalProperties": false,
+            "description": "Class representing coordinates metadata",
+            "properties": {
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "micrograph_examples": {
+                    "description": "Filename of micrographs shown as examples in descending order based on the number of particles",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "num_source_micrographs": {
+                    "description": "Total number of micrographs from which coordinates come from",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "number_particles": {
+                    "description": "Total number of particles",
+                    "type": "integer"
+                },
+                "particles_histogram": {
+                    "description": "Filename of histogram for particle number per micrograph",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "particles_per_micrograph": {
+                    "description": "Mean number of particles per micrograph",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "number_particles"
+            ],
+            "title": "Coordinates",
+            "type": "object"
+        },
+        "Defocus": {
+            "additionalProperties": false,
+            "description": "Defocus-related metadata",
+            "properties": {
+                "defocus_histogram": {
+                    "description": "Filename of the defocus values histogram",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "defocus_micrograph_examples": {
+                    "description": "Filename of micrographs shown as examples in ascending order of defocus value",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "output_avg_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average value of defocus"
+                },
+                "output_max_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum defocus"
+                },
+                "output_min_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum defocus"
+                }
+            },
+            "title": "Defocus",
+            "type": "object"
+        },
+        "Descriptors": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "descriptor_name": {
+                    "description": "Name defining the descriptor",
+                    "type": "string"
+                },
+                "descriptor_thing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the descriptor"
+                }
+            },
+            "required": [
+                "descriptor_name"
+            ],
+            "title": "Descriptors",
+            "type": "object"
+        },
         "EMDatasetSpa": {
             "additionalProperties": false,
             "description": "Single particle cryo electron microscopy dataset",
@@ -408,6 +735,17 @@
                 "organizational": {
                     "$ref": "#/$defs/Organizational",
                     "description": "Information on authors and grants"
+                },
+                "processing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Processing"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Processing information on the dataset"
                 },
                 "sample": {
                     "$ref": "#/$defs/Sample",
@@ -714,13 +1052,45 @@
             "title": "Instrument",
             "type": "object"
         },
+        "IsosurfaceImages": {
+            "additionalProperties": false,
+            "description": "Class for the isosurface images",
+            "properties": {
+                "front_view": {
+                    "description": "Filename of the front view isosurface image",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "side_view": {
+                    "description": "Filename of the side view isosurface image",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "top_view": {
+                    "description": "Filename of the top view isosurface image",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "IsosurfaceImages",
+            "type": "object"
+        },
         "Ligand": {
             "additionalProperties": false,
             "description": "Information on ligands if present.",
             "properties": {
                 "present": {
                     "description": "Whether the model contains any ligands",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "reference": {
                     "description": "Link to a reference of your ligand, i.e., CCD, PubChem, etc.",
@@ -737,10 +1107,32 @@
                     ]
                 }
             },
-            "required": [
-                "present"
-            ],
             "title": "Ligand",
+            "type": "object"
+        },
+        "Micrographs": {
+            "additionalProperties": false,
+            "description": "Class representing micrographs metadata",
+            "properties": {
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "number_micrographs": {
+                    "description": "Number of micrographs",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "number_micrographs"
+            ],
+            "title": "Micrographs",
             "type": "object"
         },
         "Molecule": {
@@ -749,7 +1141,10 @@
             "properties": {
                 "expression_system": {
                     "description": "Scientific name of the organism used to produce the molecule of interest",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "gene_name": {
                     "description": "Name of the gene of interest",
@@ -760,11 +1155,17 @@
                 },
                 "molecular_class": {
                     "description": "Class of the molecule",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "molecular_type": {
                     "description": "Description of the overall molecular type, i.e., a complex",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "name_mol": {
                     "description": "Name of an individual molecule (often protein) in the sample",
@@ -780,22 +1181,23 @@
                 },
                 "taxonomy_id_expression": {
                     "description": "Taxonomy ID of the expression system organism",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "taxonomy_id_source": {
                     "description": "Taxonomy ID of the natural source organism",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
                 "name_mol",
-                "molecular_type",
-                "molecular_class",
                 "sequence",
-                "natural_source",
-                "taxonomy_id_source",
-                "expression_system",
-                "taxonomy_id_expression"
+                "natural_source"
             ],
             "title": "Molecule",
             "type": "object"
@@ -812,6 +1214,60 @@
             ],
             "title": "MoleculeClassEnum",
             "type": "string"
+        },
+        "Movies": {
+            "additionalProperties": false,
+            "description": "Class representing movies metadata",
+            "properties": {
+                "dark_image": {
+                    "description": "Dark image filename",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "dose_per_image": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Dose per image"
+                },
+                "gain_image": {
+                    "description": "Gain image filename",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "initial_dose": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Initial dose"
+                }
+            },
+            "title": "Movies",
+            "type": "object"
         },
         "OrganizationTypeEnum": {
             "description": "Allowed values for authors organizations.",
@@ -840,7 +1296,10 @@
                     "items": {
                         "$ref": "#/$defs/Funder"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "grants": {
                     "description": "List of grants associated with the project",
@@ -854,10 +1313,38 @@
                 }
             },
             "required": [
-                "authors",
-                "funder"
+                "authors"
             ],
             "title": "Organizational",
+            "type": "object"
+        },
+        "OrthogonalSlices": {
+            "additionalProperties": false,
+            "description": "Class for the orthogonal slices",
+            "properties": {
+                "orthogonal_slices_X": {
+                    "description": "Filename of orthogonal slices in X direction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "orthogonal_slices_Y": {
+                    "description": "Filename of orthogonal slices in Y direction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "orthogonal_slices_Z": {
+                    "description": "Filename of orthogonal slices in Z direction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "OrthogonalSlices",
             "type": "object"
         },
         "OverallMolecule": {
@@ -893,10 +1380,8 @@
                 }
             },
             "required": [
-                "molecular_overall_type",
                 "name_sample",
-                "source",
-                "assembly"
+                "source"
             ],
             "title": "OverallMolecule",
             "type": "object"
@@ -965,6 +1450,90 @@
             "title": "Phaseplate",
             "type": "object"
         },
+        "Processing": {
+            "additionalProperties": false,
+            "description": "Set of parameters describing the data processing",
+            "properties": {
+                "classes2D": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Classes2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Classes 2D metadata"
+                },
+                "classes3D": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Classes3D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Classes 3D metadata"
+                },
+                "coordinates": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Coordinates"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Coordinates metadata"
+                },
+                "ctfs": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CTFs"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CTFs metadata"
+                },
+                "micrographs": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Micrographs"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Micrographs metadata"
+                },
+                "movies": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Movies"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Movies metadata"
+                },
+                "volumes": {
+                    "description": "Volume metadata",
+                    "items": {
+                        "$ref": "#/$defs/Volumes"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Processing",
+            "type": "object"
+        },
         "QuantityValue": {
             "additionalProperties": false,
             "description": "if a value has a unit, it should be given as a unit value pair.",
@@ -1015,6 +1584,54 @@
             "title": "Range",
             "type": "object"
         },
+        "Resolution": {
+            "additionalProperties": false,
+            "description": "Resolution-related metadata",
+            "properties": {
+                "output_avg_resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average value of resolution"
+                },
+                "output_max_resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum resolution"
+                },
+                "output_min_resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum resolution"
+                },
+                "resolution_histogram": {
+                    "description": "Filename of the resolution values histogram",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Resolution",
+            "type": "object"
+        },
         "Sample": {
             "additionalProperties": false,
             "description": "Unifying class to describe the full sample.",
@@ -1045,21 +1662,29 @@
                     "items": {
                         "$ref": "#/$defs/Molecule"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "overall_molecule": {
                     "$ref": "#/$defs/OverallMolecule",
                     "description": "Description of the overall molecule"
                 },
                 "specimen": {
-                    "$ref": "#/$defs/Specimen",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Specimen"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Description of the specimen"
                 }
             },
             "required": [
-                "overall_molecule",
-                "molecule",
-                "specimen"
+                "overall_molecule"
             ],
             "title": "Sample",
             "type": "object"
@@ -1170,7 +1795,10 @@
                 },
                 "embedding": {
                     "description": "Whether the sample was embedded",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "humidity": {
                     "anyOf": [
@@ -1185,15 +1813,24 @@
                 },
                 "ph": {
                     "description": "pH of the sample buffer",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "shadowing": {
                     "description": "Whether the sample was shadowed",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "staining": {
                     "description": "Whether the sample was stained",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "temperature": {
                     "anyOf": [
@@ -1208,21 +1845,19 @@
                 },
                 "vitrification": {
                     "description": "Whether the sample was vitrified",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "vitrification_cryogen": {
                     "description": "Which cryogen was used for vitrification",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
-            "required": [
-                "ph",
-                "vitrification",
-                "vitrification_cryogen",
-                "staining",
-                "embedding",
-                "shadowing"
-            ],
             "title": "Specimen",
             "type": "object"
         },
@@ -1245,6 +1880,108 @@
             ],
             "title": "SphericalAberrationCorrector",
             "type": "object"
+        },
+        "Volume": {
+            "additionalProperties": false,
+            "description": "Class describing volume(s) obtained",
+            "properties": {
+                "isosurface_images": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/IsosurfaceImages"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "isosurface images of volume"
+                },
+                "orthogonal_slices": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OrthogonalSlices"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "orthogonal slices of volume"
+                }
+            },
+            "title": "Volume",
+            "type": "object"
+        },
+        "Volumes": {
+            "additionalProperties": false,
+            "description": "Class representing volume metadata",
+            "properties": {
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "isosurface_images": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/IsosurfaceImages"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "isosurface images of volume"
+                },
+                "orthogonal_slices": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OrthogonalSlices"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "orthogonal slices of volume"
+                },
+                "size": {
+                    "description": "Size of the volume",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vol_number_particles": {
+                    "description": "Number of particles associated to volume",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "vol_resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution of volume"
+                },
+                "volume_type": {
+                    "description": "Indicates the type of volume",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "volume_type"
+            ],
+            "title": "Volumes",
+            "type": "object"
         }
     },
     "$id": "https://w3id.org/osc-em/oscem-schemas-spa",
@@ -1264,6 +2001,17 @@
         "organizational": {
             "$ref": "#/$defs/Organizational",
             "description": "Information on authors and grants"
+        },
+        "processing": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Processing"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Processing information on the dataset"
         },
         "sample": {
             "$ref": "#/$defs/Sample",

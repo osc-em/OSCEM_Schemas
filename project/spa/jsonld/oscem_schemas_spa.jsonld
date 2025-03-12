@@ -13,7 +13,15 @@
     "./organizational",
     "./sample",
     "./emdataset",
-    "./custom_types"
+    "./processing",
+    "./custom_types",
+    "./movies",
+    "./micrographs",
+    "./CTFs",
+    "./coordinates",
+    "./classes2D",
+    "./classes3D",
+    "./volumes"
   ],
   "license": "CC-BY",
   "prefixes": [
@@ -413,6 +421,20 @@
     }
   ],
   "slots": [
+    {
+      "name": "processing",
+      "definition_uri": "https://w3id.org/osc-em/oscem-schemas-spa/processing",
+      "description": "Processing information on the dataset",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-spa",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-spa/processing",
+      "owner": "EMDatasetSpa",
+      "domain_of": [
+        "EMDatasetSpa"
+      ],
+      "range": "Processing",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
     {
       "name": "nominal_defocus",
       "definition_uri": "https://w3id.org/osc-em/acquisitionnominal_defocus",
@@ -1898,6 +1920,105 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "movies",
+      "definition_uri": "https://w3id.org/osc-em/processingmovies",
+      "description": "Movies metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "slot_uri": "https://w3id.org/osc-em/processingmovies",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "Movies",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrographs",
+      "definition_uri": "https://w3id.org/osc-em/processingmicrographs",
+      "description": "Micrographs metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "slot_uri": "https://w3id.org/osc-em/processingmicrographs",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "Micrographs",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ctfs",
+      "definition_uri": "https://w3id.org/osc-em/processingctfs",
+      "description": "CTFs metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "slot_uri": "https://w3id.org/osc-em/processingctfs",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "CTFs",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coordinates",
+      "definition_uri": "https://w3id.org/osc-em/processingcoordinates",
+      "description": "Coordinates metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "slot_uri": "https://w3id.org/osc-em/processingcoordinates",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "Coordinates",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classes2D",
+      "definition_uri": "https://w3id.org/osc-em/processingclasses2D",
+      "description": "Classes 2D metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "slot_uri": "https://w3id.org/osc-em/processingclasses2D",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "Classes2D",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classes3D",
+      "definition_uri": "https://w3id.org/osc-em/processingclasses3D",
+      "description": "Classes 3D metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "slot_uri": "https://w3id.org/osc-em/processingclasses3D",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "Classes3D",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "volumes",
+      "definition_uri": "https://w3id.org/osc-em/processingvolumes",
+      "description": "Volume metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "slot_uri": "https://w3id.org/osc-em/processingvolumes",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "Volumes",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "minimal",
       "definition_uri": "https://w3id.org/osc-em/custom_typesminimal",
       "description": "Minimal value of a given dataset property",
@@ -2051,6 +2172,661 @@
         "QuantityValue"
       ],
       "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "owner": "Volumes",
+      "domain_of": [
+        "Movies",
+        "Micrographs",
+        "CTFs",
+        "Coordinates",
+        "Classes2D",
+        "Classes3D",
+        "Volumes"
+      ],
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_thing",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dark_image",
+      "definition_uri": "https://w3id.org/osc-em/moviesdark_image",
+      "description": "Dark image filename",
+      "from_schema": "https://w3id.org/osc-em/movies",
+      "slot_uri": "https://w3id.org/osc-em/moviesdark_image",
+      "owner": "Movies",
+      "domain_of": [
+        "Movies"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dose_per_image",
+      "definition_uri": "https://w3id.org/osc-em/moviesdose_per_image",
+      "description": "Dose per image",
+      "from_schema": "https://w3id.org/osc-em/movies",
+      "slot_uri": "https://w3id.org/osc-em/moviesdose_per_image",
+      "owner": "Movies",
+      "domain_of": [
+        "Movies"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "gain_image",
+      "definition_uri": "https://w3id.org/osc-em/moviesgain_image",
+      "description": "Gain image filename",
+      "from_schema": "https://w3id.org/osc-em/movies",
+      "slot_uri": "https://w3id.org/osc-em/moviesgain_image",
+      "owner": "Movies",
+      "domain_of": [
+        "Movies"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "initial_dose",
+      "definition_uri": "https://w3id.org/osc-em/moviesinitial_dose",
+      "description": "Initial dose",
+      "from_schema": "https://w3id.org/osc-em/movies",
+      "slot_uri": "https://w3id.org/osc-em/moviesinitial_dose",
+      "owner": "Movies",
+      "domain_of": [
+        "Movies"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "number_micrographs",
+      "definition_uri": "https://w3id.org/osc-em/micrographsnumber_micrographs",
+      "description": "Number of micrographs",
+      "from_schema": "https://w3id.org/osc-em/micrographs",
+      "slot_uri": "https://w3id.org/osc-em/micrographsnumber_micrographs",
+      "owner": "Micrographs",
+      "domain_of": [
+        "Micrographs"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "astigmatism",
+      "definition_uri": "https://w3id.org/osc-em/ctfsastigmatism",
+      "description": "Astigmatism metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsastigmatism",
+      "owner": "CTFs",
+      "domain_of": [
+        "CTFs"
+      ],
+      "range": "Astigmatism",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "amplitude_contrast",
+      "definition_uri": "https://w3id.org/osc-em/ctfsamplitude_contrast",
+      "description": "Amplitude contrast",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsamplitude_contrast",
+      "owner": "CTFs",
+      "domain_of": [
+        "CTFs"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "astigmatism_histogram",
+      "definition_uri": "https://w3id.org/osc-em/ctfsastigmatism_histogram",
+      "description": "Filename of the astigmatism values histogram",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsastigmatism_histogram",
+      "owner": "Astigmatism",
+      "domain_of": [
+        "Astigmatism"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "defocus",
+      "definition_uri": "https://w3id.org/osc-em/ctfsdefocus",
+      "description": "Defocus metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsdefocus",
+      "owner": "CTFs",
+      "domain_of": [
+        "CTFs"
+      ],
+      "range": "Defocus",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "defocus_histogram",
+      "definition_uri": "https://w3id.org/osc-em/ctfsdefocus_histogram",
+      "description": "Filename of the defocus values histogram",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsdefocus_histogram",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "defocus_micrograph_examples",
+      "definition_uri": "https://w3id.org/osc-em/ctfsdefocus_micrograph_examples",
+      "description": "Filename of micrographs shown as examples in ascending order of defocus value",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsdefocus_micrograph_examples",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "output_avg_defocus",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_avg_defocus",
+      "description": "Average value of defocus",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_avg_defocus",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "output_avg_resolution",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_avg_resolution",
+      "description": "Average value of resolution",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_avg_resolution",
+      "owner": "Resolution",
+      "domain_of": [
+        "Resolution"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "output_max_defocus",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_max_defocus",
+      "description": "Maximum defocus",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_max_defocus",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "output_max_resolution",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_max_resolution",
+      "description": "Maximum resolution",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_max_resolution",
+      "owner": "Resolution",
+      "domain_of": [
+        "Resolution"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "output_min_defocus",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_min_defocus",
+      "description": "Minimum defocus",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_min_defocus",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "output_min_resolution",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_min_resolution",
+      "description": "Minimum resolution",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_min_resolution",
+      "owner": "Resolution",
+      "domain_of": [
+        "Resolution"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolution",
+      "definition_uri": "https://w3id.org/osc-em/ctfsresolution",
+      "description": "Resolution metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsresolution",
+      "owner": "CTFs",
+      "domain_of": [
+        "CTFs"
+      ],
+      "range": "Resolution",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolution_histogram",
+      "definition_uri": "https://w3id.org/osc-em/ctfsresolution_histogram",
+      "description": "Filename of the resolution values histogram",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsresolution_histogram",
+      "owner": "Resolution",
+      "domain_of": [
+        "Resolution"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph_examples",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesmicrograph_examples",
+      "description": "Filename of micrographs shown as examples in descending order based on the number of particles",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesmicrograph_examples",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "num_source_micrographs",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesnum_source_micrographs",
+      "description": "Total number of micrographs from which coordinates come from",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesnum_source_micrographs",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "number_particles",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesnumber_particles",
+      "description": "Total number of particles",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesnumber_particles",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particles_histogram",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesparticles_histogram",
+      "description": "Filename of histogram for particle number per micrograph",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesparticles_histogram",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particles_per_micrograph",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesparticles_per_micrograph",
+      "description": "Mean number of particles per micrograph",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesparticles_per_micrograph",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "images_classes_2D",
+      "definition_uri": "https://w3id.org/osc-em/classes2Dimages_classes_2D",
+      "description": "Filename of the image containing 2D class images",
+      "from_schema": "https://w3id.org/osc-em/classes2D",
+      "slot_uri": "https://w3id.org/osc-em/classes2Dimages_classes_2D",
+      "owner": "Classes2D",
+      "domain_of": [
+        "Classes2D"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "number_classes_2D",
+      "definition_uri": "https://w3id.org/osc-em/classes2Dnumber_classes_2D",
+      "description": "Number of 2D classes",
+      "from_schema": "https://w3id.org/osc-em/classes2D",
+      "slot_uri": "https://w3id.org/osc-em/classes2Dnumber_classes_2D",
+      "owner": "Classes2D",
+      "domain_of": [
+        "Classes2D"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particles_per_2Dclass",
+      "definition_uri": "https://w3id.org/osc-em/classes2Dparticles_per_2Dclass",
+      "description": "Number of particles per 2D class",
+      "from_schema": "https://w3id.org/osc-em/classes2D",
+      "slot_uri": "https://w3id.org/osc-em/classes2Dparticles_per_2Dclass",
+      "owner": "Classes2D",
+      "domain_of": [
+        "Classes2D"
+      ],
+      "range": "integer",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolution_classes_2D",
+      "definition_uri": "https://w3id.org/osc-em/classes2Dresolution_classes_2D",
+      "description": "Resolution of classes 2D",
+      "from_schema": "https://w3id.org/osc-em/classes2D",
+      "slot_uri": "https://w3id.org/osc-em/classes2Dresolution_classes_2D",
+      "owner": "Classes2D",
+      "domain_of": [
+        "Classes2D"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "front_view",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dfront_view",
+      "description": "Filename of the front view isosurface image",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dfront_view",
+      "owner": "IsosurfaceImages",
+      "domain_of": [
+        "IsosurfaceImages"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "isosurface_images",
+      "definition_uri": "https://w3id.org/osc-em/classes3Disosurface_images",
+      "description": "isosurface images of volume",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Disosurface_images",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volume",
+        "Volumes"
+      ],
+      "range": "IsosurfaceImages",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "images_classes_3D",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dimages_classes_3D",
+      "description": "Filename of the image containing 3D class images",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dimages_classes_3D",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "number_classes_3D",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dnumber_classes_3D",
+      "description": "Number of 3D classes",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dnumber_classes_3D",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "orthogonal_slices",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices",
+      "description": "orthogonal slices of volume",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volume",
+        "Volumes"
+      ],
+      "range": "OrthogonalSlices",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "orthogonal_slices_X",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_X",
+      "description": "Filename of orthogonal slices in X direction",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_X",
+      "owner": "OrthogonalSlices",
+      "domain_of": [
+        "OrthogonalSlices"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "orthogonal_slices_Y",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_Y",
+      "description": "Filename of orthogonal slices in Y direction",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_Y",
+      "owner": "OrthogonalSlices",
+      "domain_of": [
+        "OrthogonalSlices"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "orthogonal_slices_Z",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_Z",
+      "description": "Filename of orthogonal slices in Z direction",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_Z",
+      "owner": "OrthogonalSlices",
+      "domain_of": [
+        "OrthogonalSlices"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particles_per_3Dclass",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dparticles_per_3Dclass",
+      "description": "Number of particles per 3D class",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dparticles_per_3Dclass",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "range": "integer",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolution_classes_3D",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dresolution_classes_3D",
+      "description": "Resolution of volume",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dresolution_classes_3D",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "side_view",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dside_view",
+      "description": "Filename of the side view isosurface image",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dside_view",
+      "owner": "IsosurfaceImages",
+      "domain_of": [
+        "IsosurfaceImages"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "top_view",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dtop_view",
+      "description": "Filename of the top view isosurface image",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dtop_view",
+      "owner": "IsosurfaceImages",
+      "domain_of": [
+        "IsosurfaceImages"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "volume",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dvolume",
+      "description": "Describes volume(s) obtained",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dvolume",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "range": "Volume",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "vol_number_particles",
+      "definition_uri": "https://w3id.org/osc-em/volumevol_number_particles",
+      "description": "Number of particles associated to volume",
+      "from_schema": "https://w3id.org/osc-em/volume",
+      "slot_uri": "https://w3id.org/osc-em/volumevol_number_particles",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "vol_resolution",
+      "definition_uri": "https://w3id.org/osc-em/volumevol_resolution",
+      "description": "Resolution of volume",
+      "from_schema": "https://w3id.org/osc-em/volume",
+      "slot_uri": "https://w3id.org/osc-em/volumevol_resolution",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "size",
+      "definition_uri": "https://w3id.org/osc-em/volumesize",
+      "description": "Size of the volume",
+      "from_schema": "https://w3id.org/osc-em/volume",
+      "slot_uri": "https://w3id.org/osc-em/volumesize",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "volume_type",
+      "definition_uri": "https://w3id.org/osc-em/volumevolume_type",
+      "description": "Indicates the type of volume",
+      "from_schema": "https://w3id.org/osc-em/volume",
+      "slot_uri": "https://w3id.org/osc-em/volumevolume_type",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -2536,7 +3312,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "funder",
       "range": "Funder",
-      "required": true,
       "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
@@ -2559,6 +3334,25 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_first_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/first_name",
+      "description": "first name",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "first_name",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/osc-em/organizational/first_name",
+      "alias": "first_name",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "first_name",
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -2602,7 +3396,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "orcid",
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2621,7 +3414,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "country",
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2659,7 +3451,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "name_org",
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2698,7 +3489,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "molecule",
       "range": "Molecule",
-      "required": true,
       "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
@@ -2739,7 +3529,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "specimen",
       "range": "Specimen",
-      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2778,7 +3567,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "molecular_overall_type",
       "range": "MoleculeClassEnum",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2854,7 +3642,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "assembly",
       "range": "AssemblyEnum",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2892,7 +3679,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "molecular_type",
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2911,7 +3697,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "molecular_class",
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2968,7 +3753,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "taxonomy_id_source",
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2987,7 +3771,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "expression_system",
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3006,7 +3789,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "taxonomy_id_expression",
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3043,7 +3825,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "present",
       "range": "boolean",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3099,7 +3880,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "ph",
       "range": "float",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3118,7 +3898,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "vitrification",
       "range": "boolean",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3137,7 +3916,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "vitrification_cryogen",
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3194,7 +3972,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "staining",
       "range": "boolean",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3213,7 +3990,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "embedding",
       "range": "boolean",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3232,7 +4008,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "shadowing",
       "range": "boolean",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3508,6 +4283,140 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "Processing_movies",
+      "definition_uri": "https://w3id.org/osc-em/processingmovies",
+      "description": "Movies metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "is_a": "movies",
+      "domain": "Processing",
+      "slot_uri": "https://w3id.org/osc-em/processingmovies",
+      "alias": "movies",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "movies",
+      "range": "Movies",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Processing_micrographs",
+      "definition_uri": "https://w3id.org/osc-em/processingmicrographs",
+      "description": "Micrographs metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "is_a": "micrographs",
+      "domain": "Processing",
+      "slot_uri": "https://w3id.org/osc-em/processingmicrographs",
+      "alias": "micrographs",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "micrographs",
+      "range": "Micrographs",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Processing_ctfs",
+      "definition_uri": "https://w3id.org/osc-em/processingctfs",
+      "description": "CTFs metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "is_a": "ctfs",
+      "domain": "Processing",
+      "slot_uri": "https://w3id.org/osc-em/processingctfs",
+      "alias": "ctfs",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "ctfs",
+      "range": "CTFs",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Processing_coordinates",
+      "definition_uri": "https://w3id.org/osc-em/processingcoordinates",
+      "description": "Coordinates metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "is_a": "coordinates",
+      "domain": "Processing",
+      "slot_uri": "https://w3id.org/osc-em/processingcoordinates",
+      "alias": "coordinates",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "coordinates",
+      "range": "Coordinates",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Processing_classes2D",
+      "definition_uri": "https://w3id.org/osc-em/processingclasses2D",
+      "description": "Classes 2D metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "is_a": "classes2D",
+      "domain": "Processing",
+      "slot_uri": "https://w3id.org/osc-em/processingclasses2D",
+      "alias": "classes2D",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "classes2D",
+      "range": "Classes2D",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Processing_classes3D",
+      "definition_uri": "https://w3id.org/osc-em/processingclasses3D",
+      "description": "Classes 3D metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "is_a": "classes3D",
+      "domain": "Processing",
+      "slot_uri": "https://w3id.org/osc-em/processingclasses3D",
+      "alias": "classes3D",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "classes3D",
+      "range": "Classes3D",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Processing_volumes",
+      "definition_uri": "https://w3id.org/osc-em/processingvolumes",
+      "description": "Volume metadata",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "is_a": "volumes",
+      "domain": "Processing",
+      "slot_uri": "https://w3id.org/osc-em/processingvolumes",
+      "alias": "volumes",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "volumes",
+      "range": "Volumes",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "QuantityValue_unit",
       "definition_uri": "https://w3id.org/osc-em/custom_typesunit",
       "description": "the unit of a given value",
@@ -3550,6 +4459,1055 @@
       "range": "float",
       "required": true,
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptor_name",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "alias": "descriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_thing",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptor_thing",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "alias": "descriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_thing",
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Movies_dose_per_image",
+      "definition_uri": "https://w3id.org/osc-em/moviesdose_per_image",
+      "description": "Dose per image",
+      "from_schema": "https://w3id.org/osc-em/movies",
+      "is_a": "dose_per_image",
+      "domain": "Movies",
+      "slot_uri": "https://w3id.org/osc-em/moviesdose_per_image",
+      "alias": "dose_per_image",
+      "owner": "Movies",
+      "domain_of": [
+        "Movies"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "dose_per_image",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Movies_initial_dose",
+      "definition_uri": "https://w3id.org/osc-em/moviesinitial_dose",
+      "description": "Initial dose",
+      "from_schema": "https://w3id.org/osc-em/movies",
+      "is_a": "initial_dose",
+      "domain": "Movies",
+      "slot_uri": "https://w3id.org/osc-em/moviesinitial_dose",
+      "alias": "initial_dose",
+      "owner": "Movies",
+      "domain_of": [
+        "Movies"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "initial_dose",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Movies_gain_image",
+      "definition_uri": "https://w3id.org/osc-em/moviesgain_image",
+      "description": "Gain image filename",
+      "from_schema": "https://w3id.org/osc-em/movies",
+      "is_a": "gain_image",
+      "domain": "Movies",
+      "slot_uri": "https://w3id.org/osc-em/moviesgain_image",
+      "alias": "gain_image",
+      "owner": "Movies",
+      "domain_of": [
+        "Movies"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "gain_image",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Movies_dark_image",
+      "definition_uri": "https://w3id.org/osc-em/moviesdark_image",
+      "description": "Dark image filename",
+      "from_schema": "https://w3id.org/osc-em/movies",
+      "is_a": "dark_image",
+      "domain": "Movies",
+      "slot_uri": "https://w3id.org/osc-em/moviesdark_image",
+      "alias": "dark_image",
+      "owner": "Movies",
+      "domain_of": [
+        "Movies"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "dark_image",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Movies_descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptors",
+      "domain": "Movies",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "alias": "descriptors",
+      "owner": "Movies",
+      "domain_of": [
+        "Movies"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Micrographs_number_micrographs",
+      "definition_uri": "https://w3id.org/osc-em/micrographsnumber_micrographs",
+      "description": "Number of micrographs",
+      "from_schema": "https://w3id.org/osc-em/micrographs",
+      "is_a": "number_micrographs",
+      "domain": "Micrographs",
+      "slot_uri": "https://w3id.org/osc-em/micrographsnumber_micrographs",
+      "alias": "number_micrographs",
+      "owner": "Micrographs",
+      "domain_of": [
+        "Micrographs"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "number_micrographs",
+      "range": "float",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Micrographs_descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptors",
+      "domain": "Micrographs",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "alias": "descriptors",
+      "owner": "Micrographs",
+      "domain_of": [
+        "Micrographs"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "CTFs_amplitude_contrast",
+      "definition_uri": "https://w3id.org/osc-em/ctfsamplitude_contrast",
+      "description": "Amplitude contrast",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "amplitude_contrast",
+      "domain": "CTFs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsamplitude_contrast",
+      "alias": "amplitude_contrast",
+      "owner": "CTFs",
+      "domain_of": [
+        "CTFs"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "amplitude_contrast",
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "CTFs_defocus",
+      "definition_uri": "https://w3id.org/osc-em/ctfsdefocus",
+      "description": "Defocus metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "defocus",
+      "domain": "CTFs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsdefocus",
+      "alias": "defocus",
+      "owner": "CTFs",
+      "domain_of": [
+        "CTFs"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "defocus",
+      "range": "Defocus",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "CTFs_resolution",
+      "definition_uri": "https://w3id.org/osc-em/ctfsresolution",
+      "description": "Resolution metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "resolution",
+      "domain": "CTFs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsresolution",
+      "alias": "resolution",
+      "owner": "CTFs",
+      "domain_of": [
+        "CTFs"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "resolution",
+      "range": "Resolution",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "CTFs_astigmatism",
+      "definition_uri": "https://w3id.org/osc-em/ctfsastigmatism",
+      "description": "Astigmatism metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "astigmatism",
+      "domain": "CTFs",
+      "slot_uri": "https://w3id.org/osc-em/ctfsastigmatism",
+      "alias": "astigmatism",
+      "owner": "CTFs",
+      "domain_of": [
+        "CTFs"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "astigmatism",
+      "range": "Astigmatism",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "CTFs_descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptors",
+      "domain": "CTFs",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "alias": "descriptors",
+      "owner": "CTFs",
+      "domain_of": [
+        "CTFs"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Defocus_output_min_defocus",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_min_defocus",
+      "description": "Minimum defocus",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "output_min_defocus",
+      "domain": "Defocus",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_min_defocus",
+      "alias": "output_min_defocus",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "output_min_defocus",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Defocus_output_max_defocus",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_max_defocus",
+      "description": "Maximum defocus",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "output_max_defocus",
+      "domain": "Defocus",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_max_defocus",
+      "alias": "output_max_defocus",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "output_max_defocus",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Defocus_output_avg_defocus",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_avg_defocus",
+      "description": "Average value of defocus",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "output_avg_defocus",
+      "domain": "Defocus",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_avg_defocus",
+      "alias": "output_avg_defocus",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "output_avg_defocus",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Defocus_defocus_histogram",
+      "definition_uri": "https://w3id.org/osc-em/ctfsdefocus_histogram",
+      "description": "Filename of the defocus values histogram",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "defocus_histogram",
+      "domain": "Defocus",
+      "slot_uri": "https://w3id.org/osc-em/ctfsdefocus_histogram",
+      "alias": "defocus_histogram",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "defocus_histogram",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Defocus_defocus_micrograph_examples",
+      "definition_uri": "https://w3id.org/osc-em/ctfsdefocus_micrograph_examples",
+      "description": "Filename of micrographs shown as examples in ascending order of defocus value",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "defocus_micrograph_examples",
+      "domain": "Defocus",
+      "slot_uri": "https://w3id.org/osc-em/ctfsdefocus_micrograph_examples",
+      "alias": "defocus_micrograph_examples",
+      "owner": "Defocus",
+      "domain_of": [
+        "Defocus"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "defocus_micrograph_examples",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Resolution_output_min_resolution",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_min_resolution",
+      "description": "Minimum resolution",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "output_min_resolution",
+      "domain": "Resolution",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_min_resolution",
+      "alias": "output_min_resolution",
+      "owner": "Resolution",
+      "domain_of": [
+        "Resolution"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "output_min_resolution",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Resolution_output_max_resolution",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_max_resolution",
+      "description": "Maximum resolution",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "output_max_resolution",
+      "domain": "Resolution",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_max_resolution",
+      "alias": "output_max_resolution",
+      "owner": "Resolution",
+      "domain_of": [
+        "Resolution"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "output_max_resolution",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Resolution_output_avg_resolution",
+      "definition_uri": "https://w3id.org/osc-em/ctfsoutput_avg_resolution",
+      "description": "Average value of resolution",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "output_avg_resolution",
+      "domain": "Resolution",
+      "slot_uri": "https://w3id.org/osc-em/ctfsoutput_avg_resolution",
+      "alias": "output_avg_resolution",
+      "owner": "Resolution",
+      "domain_of": [
+        "Resolution"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "output_avg_resolution",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Resolution_resolution_histogram",
+      "definition_uri": "https://w3id.org/osc-em/ctfsresolution_histogram",
+      "description": "Filename of the resolution values histogram",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "resolution_histogram",
+      "domain": "Resolution",
+      "slot_uri": "https://w3id.org/osc-em/ctfsresolution_histogram",
+      "alias": "resolution_histogram",
+      "owner": "Resolution",
+      "domain_of": [
+        "Resolution"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "resolution_histogram",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Astigmatism_astigmatism_histogram",
+      "definition_uri": "https://w3id.org/osc-em/ctfsastigmatism_histogram",
+      "description": "Filename of the astigmatism values histogram",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "is_a": "astigmatism_histogram",
+      "domain": "Astigmatism",
+      "slot_uri": "https://w3id.org/osc-em/ctfsastigmatism_histogram",
+      "alias": "astigmatism_histogram",
+      "owner": "Astigmatism",
+      "domain_of": [
+        "Astigmatism"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "astigmatism_histogram",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Coordinates_number_particles",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesnumber_particles",
+      "description": "Total number of particles",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "is_a": "number_particles",
+      "domain": "Coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesnumber_particles",
+      "alias": "number_particles",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "number_particles",
+      "range": "integer",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Coordinates_particles_per_micrograph",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesparticles_per_micrograph",
+      "description": "Mean number of particles per micrograph",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "is_a": "particles_per_micrograph",
+      "domain": "Coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesparticles_per_micrograph",
+      "alias": "particles_per_micrograph",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "particles_per_micrograph",
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Coordinates_num_source_micrographs",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesnum_source_micrographs",
+      "description": "Total number of micrographs from which coordinates come from",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "is_a": "num_source_micrographs",
+      "domain": "Coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesnum_source_micrographs",
+      "alias": "num_source_micrographs",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "num_source_micrographs",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Coordinates_particles_histogram",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesparticles_histogram",
+      "description": "Filename of histogram for particle number per micrograph",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "is_a": "particles_histogram",
+      "domain": "Coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesparticles_histogram",
+      "alias": "particles_histogram",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "particles_histogram",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Coordinates_micrograph_examples",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesmicrograph_examples",
+      "description": "Filename of micrographs shown as examples in descending order based on the number of particles",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "is_a": "micrograph_examples",
+      "domain": "Coordinates",
+      "slot_uri": "https://w3id.org/osc-em/coordinatesmicrograph_examples",
+      "alias": "micrograph_examples",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "micrograph_examples",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Coordinates_descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptors",
+      "domain": "Coordinates",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "alias": "descriptors",
+      "owner": "Coordinates",
+      "domain_of": [
+        "Coordinates"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes2D_number_classes_2D",
+      "definition_uri": "https://w3id.org/osc-em/classes2Dnumber_classes_2D",
+      "description": "Number of 2D classes",
+      "from_schema": "https://w3id.org/osc-em/classes2D",
+      "is_a": "number_classes_2D",
+      "domain": "Classes2D",
+      "slot_uri": "https://w3id.org/osc-em/classes2Dnumber_classes_2D",
+      "alias": "number_classes_2D",
+      "owner": "Classes2D",
+      "domain_of": [
+        "Classes2D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "number_classes_2D",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes2D_particles_per_2Dclass",
+      "definition_uri": "https://w3id.org/osc-em/classes2Dparticles_per_2Dclass",
+      "description": "Number of particles per 2D class",
+      "from_schema": "https://w3id.org/osc-em/classes2D",
+      "is_a": "particles_per_2Dclass",
+      "domain": "Classes2D",
+      "slot_uri": "https://w3id.org/osc-em/classes2Dparticles_per_2Dclass",
+      "alias": "particles_per_2Dclass",
+      "owner": "Classes2D",
+      "domain_of": [
+        "Classes2D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "particles_per_2Dclass",
+      "range": "integer",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes2D_images_classes_2D",
+      "definition_uri": "https://w3id.org/osc-em/classes2Dimages_classes_2D",
+      "description": "Filename of the image containing 2D class images",
+      "from_schema": "https://w3id.org/osc-em/classes2D",
+      "is_a": "images_classes_2D",
+      "domain": "Classes2D",
+      "slot_uri": "https://w3id.org/osc-em/classes2Dimages_classes_2D",
+      "alias": "images_classes_2D",
+      "owner": "Classes2D",
+      "domain_of": [
+        "Classes2D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "images_classes_2D",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes2D_resolution_classes_2D",
+      "definition_uri": "https://w3id.org/osc-em/classes2Dresolution_classes_2D",
+      "description": "Resolution of classes 2D",
+      "from_schema": "https://w3id.org/osc-em/classes2D",
+      "is_a": "resolution_classes_2D",
+      "domain": "Classes2D",
+      "slot_uri": "https://w3id.org/osc-em/classes2Dresolution_classes_2D",
+      "alias": "resolution_classes_2D",
+      "owner": "Classes2D",
+      "domain_of": [
+        "Classes2D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "resolution_classes_2D",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes2D_descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptors",
+      "domain": "Classes2D",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "alias": "descriptors",
+      "owner": "Classes2D",
+      "domain_of": [
+        "Classes2D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes3D_number_classes_3D",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dnumber_classes_3D",
+      "description": "Number of 3D classes",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "number_classes_3D",
+      "domain": "Classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dnumber_classes_3D",
+      "alias": "number_classes_3D",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "number_classes_3D",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes3D_particles_per_3Dclass",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dparticles_per_3Dclass",
+      "description": "Number of particles per 3D class",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "particles_per_3Dclass",
+      "domain": "Classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dparticles_per_3Dclass",
+      "alias": "particles_per_3Dclass",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "particles_per_3Dclass",
+      "range": "integer",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes3D_images_classes_3D",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dimages_classes_3D",
+      "description": "Filename of the image containing 3D class images",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "images_classes_3D",
+      "domain": "Classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dimages_classes_3D",
+      "alias": "images_classes_3D",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "images_classes_3D",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes3D_volume",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dvolume",
+      "description": "Describes volume(s) obtained",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "volume",
+      "domain": "Classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dvolume",
+      "alias": "volume",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "volume",
+      "range": "Volume",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes3D_resolution_classes_3D",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dresolution_classes_3D",
+      "description": "Resolution of volume",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "resolution_classes_3D",
+      "domain": "Classes3D",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dresolution_classes_3D",
+      "alias": "resolution_classes_3D",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "resolution_classes_3D",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Classes3D_descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptors",
+      "domain": "Classes3D",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "alias": "descriptors",
+      "owner": "Classes3D",
+      "domain_of": [
+        "Classes3D"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Volume_orthogonal_slices",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices",
+      "description": "orthogonal slices of volume",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "orthogonal_slices",
+      "domain": "Volume",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices",
+      "alias": "orthogonal_slices",
+      "owner": "Volume",
+      "domain_of": [
+        "Volume"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "orthogonal_slices",
+      "range": "OrthogonalSlices",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Volume_isosurface_images",
+      "definition_uri": "https://w3id.org/osc-em/classes3Disosurface_images",
+      "description": "isosurface images of volume",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "isosurface_images",
+      "domain": "Volume",
+      "slot_uri": "https://w3id.org/osc-em/classes3Disosurface_images",
+      "alias": "isosurface_images",
+      "owner": "Volume",
+      "domain_of": [
+        "Volume"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "isosurface_images",
+      "range": "IsosurfaceImages",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OrthogonalSlices_orthogonal_slices_X",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_X",
+      "description": "Filename of orthogonal slices in X direction",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "orthogonal_slices_X",
+      "domain": "OrthogonalSlices",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_X",
+      "alias": "orthogonal_slices_X",
+      "owner": "OrthogonalSlices",
+      "domain_of": [
+        "OrthogonalSlices"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "orthogonal_slices_X",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OrthogonalSlices_orthogonal_slices_Y",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_Y",
+      "description": "Filename of orthogonal slices in Y direction",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "orthogonal_slices_Y",
+      "domain": "OrthogonalSlices",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_Y",
+      "alias": "orthogonal_slices_Y",
+      "owner": "OrthogonalSlices",
+      "domain_of": [
+        "OrthogonalSlices"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "orthogonal_slices_Y",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OrthogonalSlices_orthogonal_slices_Z",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_Z",
+      "description": "Filename of orthogonal slices in Z direction",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "orthogonal_slices_Z",
+      "domain": "OrthogonalSlices",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices_Z",
+      "alias": "orthogonal_slices_Z",
+      "owner": "OrthogonalSlices",
+      "domain_of": [
+        "OrthogonalSlices"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "orthogonal_slices_Z",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "IsosurfaceImages_front_view",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dfront_view",
+      "description": "Filename of the front view isosurface image",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "front_view",
+      "domain": "IsosurfaceImages",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dfront_view",
+      "alias": "front_view",
+      "owner": "IsosurfaceImages",
+      "domain_of": [
+        "IsosurfaceImages"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "front_view",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "IsosurfaceImages_side_view",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dside_view",
+      "description": "Filename of the side view isosurface image",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "side_view",
+      "domain": "IsosurfaceImages",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dside_view",
+      "alias": "side_view",
+      "owner": "IsosurfaceImages",
+      "domain_of": [
+        "IsosurfaceImages"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "side_view",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "IsosurfaceImages_top_view",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dtop_view",
+      "description": "Filename of the top view isosurface image",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "top_view",
+      "domain": "IsosurfaceImages",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dtop_view",
+      "alias": "top_view",
+      "owner": "IsosurfaceImages",
+      "domain_of": [
+        "IsosurfaceImages"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "top_view",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Volumes_volume_type",
+      "definition_uri": "https://w3id.org/osc-em/volumevolume_type",
+      "description": "Indicates the type of volume",
+      "from_schema": "https://w3id.org/osc-em/volume",
+      "is_a": "volume_type",
+      "domain": "Volumes",
+      "slot_uri": "https://w3id.org/osc-em/volumevolume_type",
+      "alias": "volume_type",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "volume_type",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Volumes_vol_number_particles",
+      "definition_uri": "https://w3id.org/osc-em/volumevol_number_particles",
+      "description": "Number of particles associated to volume",
+      "from_schema": "https://w3id.org/osc-em/volume",
+      "is_a": "vol_number_particles",
+      "domain": "Volumes",
+      "slot_uri": "https://w3id.org/osc-em/volumevol_number_particles",
+      "alias": "vol_number_particles",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "vol_number_particles",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Volumes_size",
+      "definition_uri": "https://w3id.org/osc-em/volumesize",
+      "description": "Size of the volume",
+      "from_schema": "https://w3id.org/osc-em/volume",
+      "is_a": "size",
+      "domain": "Volumes",
+      "slot_uri": "https://w3id.org/osc-em/volumesize",
+      "alias": "size",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "size",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Volumes_orthogonal_slices",
+      "definition_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices",
+      "description": "orthogonal slices of volume",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "orthogonal_slices",
+      "domain": "Volumes",
+      "slot_uri": "https://w3id.org/osc-em/classes3Dorthogonal_slices",
+      "alias": "orthogonal_slices",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "orthogonal_slices",
+      "range": "OrthogonalSlices",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Volumes_isosurface_images",
+      "definition_uri": "https://w3id.org/osc-em/classes3Disosurface_images",
+      "description": "isosurface images of volume",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "is_a": "isosurface_images",
+      "domain": "Volumes",
+      "slot_uri": "https://w3id.org/osc-em/classes3Disosurface_images",
+      "alias": "isosurface_images",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "isosurface_images",
+      "range": "IsosurfaceImages",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Volumes_vol_resolution",
+      "definition_uri": "https://w3id.org/osc-em/volumevol_resolution",
+      "description": "Resolution of volume",
+      "from_schema": "https://w3id.org/osc-em/volume",
+      "is_a": "vol_resolution",
+      "domain": "Volumes",
+      "slot_uri": "https://w3id.org/osc-em/volumevol_resolution",
+      "alias": "vol_resolution",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "vol_resolution",
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Volumes_descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptors",
+      "domain": "Volumes",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "alias": "descriptors",
+      "owner": "Volumes",
+      "domain_of": [
+        "Volumes"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
@@ -3560,6 +5518,7 @@
       "from_schema": "https://w3id.org/osc-em/oscem-schemas-spa",
       "is_a": "EMDatasetBase",
       "slots": [
+        "processing",
         "EMDatasetSpa_acquisition",
         "EMDatasetSpa_instrument",
         "EMDatasetSpa_sample",
@@ -3733,7 +5692,6 @@
       "from_schema": "https://w3id.org/osc-em/organizational",
       "is_a": "Person",
       "slots": [
-        "first_name",
         "work_status",
         "work_phone",
         "Author_orcid",
@@ -3742,6 +5700,7 @@
         "Author_name_org",
         "Author_type_org",
         "Author_name",
+        "Author_first_name",
         "Author_email"
       ],
       "slot_usage": {},
@@ -3908,6 +5867,24 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "Processing",
+      "definition_uri": "https://w3id.org/osc-em/processingProcessing",
+      "description": "Set of parameters describing the data processing",
+      "from_schema": "https://w3id.org/osc-em/processing",
+      "slots": [
+        "Processing_movies",
+        "Processing_micrographs",
+        "Processing_ctfs",
+        "Processing_coordinates",
+        "Processing_classes2D",
+        "Processing_classes3D",
+        "Processing_volumes"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/processingProcessing",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "Any",
       "definition_uri": "https://w3id.org/osc-em/custom_typesAny",
       "description": "Any type, used as the base for type-narrowing.",
@@ -3990,13 +5967,237 @@
       "slot_usage": {},
       "class_uri": "http://qudt.org/schema/qudt/quantityValue",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptor",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesDescriptor",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "abstract": true,
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesDescriptor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesDescriptors",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "Descriptor",
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesDescriptors",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Movies",
+      "definition_uri": "https://w3id.org/osc-em/moviesMovies",
+      "description": "Class representing movies metadata",
+      "from_schema": "https://w3id.org/osc-em/movies",
+      "slots": [
+        "Movies_dose_per_image",
+        "Movies_initial_dose",
+        "Movies_gain_image",
+        "Movies_dark_image",
+        "Movies_descriptors"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/moviesMovies",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Micrographs",
+      "definition_uri": "https://w3id.org/osc-em/micrographsMicrographs",
+      "description": "Class representing micrographs metadata",
+      "from_schema": "https://w3id.org/osc-em/micrographs",
+      "slots": [
+        "Micrographs_number_micrographs",
+        "Micrographs_descriptors"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/micrographsMicrographs",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CTFs",
+      "definition_uri": "https://w3id.org/osc-em/ctfsCTFs",
+      "description": "Class representing Contrast Transfer Function (CTF) metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slots": [
+        "CTFs_amplitude_contrast",
+        "CTFs_defocus",
+        "CTFs_resolution",
+        "CTFs_astigmatism",
+        "CTFs_descriptors"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/ctfsCTFs",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Defocus",
+      "definition_uri": "https://w3id.org/osc-em/ctfsDefocus",
+      "description": "Defocus-related metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slots": [
+        "Defocus_output_min_defocus",
+        "Defocus_output_max_defocus",
+        "Defocus_output_avg_defocus",
+        "Defocus_defocus_histogram",
+        "Defocus_defocus_micrograph_examples"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/ctfsDefocus",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Resolution",
+      "definition_uri": "https://w3id.org/osc-em/ctfsResolution",
+      "description": "Resolution-related metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slots": [
+        "Resolution_output_min_resolution",
+        "Resolution_output_max_resolution",
+        "Resolution_output_avg_resolution",
+        "Resolution_resolution_histogram"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/ctfsResolution",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Astigmatism",
+      "definition_uri": "https://w3id.org/osc-em/ctfsAstigmatism",
+      "description": "Astigmatism-related metadata",
+      "from_schema": "https://w3id.org/osc-em/ctfs",
+      "slots": [
+        "Astigmatism_astigmatism_histogram"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/ctfsAstigmatism",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Coordinates",
+      "definition_uri": "https://w3id.org/osc-em/coordinatesCoordinates",
+      "description": "Class representing coordinates metadata",
+      "from_schema": "https://w3id.org/osc-em/coordinates",
+      "slots": [
+        "Coordinates_number_particles",
+        "Coordinates_particles_per_micrograph",
+        "Coordinates_num_source_micrographs",
+        "Coordinates_particles_histogram",
+        "Coordinates_micrograph_examples",
+        "Coordinates_descriptors"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/coordinatesCoordinates",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Classes2D",
+      "definition_uri": "https://w3id.org/osc-em/classes2DClasses2D",
+      "description": "Class representing classes 2D metadata",
+      "from_schema": "https://w3id.org/osc-em/classes2D",
+      "slots": [
+        "Classes2D_number_classes_2D",
+        "Classes2D_particles_per_2Dclass",
+        "Classes2D_images_classes_2D",
+        "Classes2D_resolution_classes_2D",
+        "Classes2D_descriptors"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/classes2DClasses2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Classes3D",
+      "definition_uri": "https://w3id.org/osc-em/classes3DClasses3D",
+      "description": "Class representing classes 3D metadata",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slots": [
+        "Classes3D_number_classes_3D",
+        "Classes3D_particles_per_3Dclass",
+        "Classes3D_images_classes_3D",
+        "Classes3D_volume",
+        "Classes3D_resolution_classes_3D",
+        "Classes3D_descriptors"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/classes3DClasses3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Volume",
+      "definition_uri": "https://w3id.org/osc-em/classes3DVolume",
+      "description": "Class describing volume(s) obtained",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slots": [
+        "Volume_orthogonal_slices",
+        "Volume_isosurface_images"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/classes3DVolume",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OrthogonalSlices",
+      "definition_uri": "https://w3id.org/osc-em/classes3DOrthogonalSlices",
+      "description": "Class for the orthogonal slices",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slots": [
+        "OrthogonalSlices_orthogonal_slices_X",
+        "OrthogonalSlices_orthogonal_slices_Y",
+        "OrthogonalSlices_orthogonal_slices_Z"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/classes3DOrthogonalSlices",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "IsosurfaceImages",
+      "definition_uri": "https://w3id.org/osc-em/classes3DIsosurfaceImages",
+      "description": "Class for the isosurface images",
+      "from_schema": "https://w3id.org/osc-em/classes3D",
+      "slots": [
+        "IsosurfaceImages_front_view",
+        "IsosurfaceImages_side_view",
+        "IsosurfaceImages_top_view"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/classes3DIsosurfaceImages",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Volumes",
+      "definition_uri": "https://w3id.org/osc-em/volumeVolumes",
+      "description": "Class representing volume metadata",
+      "from_schema": "https://w3id.org/osc-em/volume",
+      "slots": [
+        "Volumes_volume_type",
+        "Volumes_vol_number_particles",
+        "Volumes_size",
+        "Volumes_orthogonal_slices",
+        "Volumes_isosurface_images",
+        "Volumes_vol_resolution",
+        "Volumes_descriptors"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/volumeVolumes",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "oscem_schemas_spa.yaml",
-  "source_file_date": "2025-02-05T12:14:41",
-  "source_file_size": 1117,
-  "generation_date": "2025-02-10T15:20:15",
+  "source_file_date": "2025-02-18T14:41:14",
+  "source_file_size": 1281,
+  "generation_date": "2025-02-25T16:31:18",
   "@type": "SchemaDefinition",
   "@context": [
     "project/spa/jsonld/oscem_schemas_spa.context.jsonld",
@@ -4006,7 +6207,15 @@
     "./organizational.context.jsonld",
     "./sample.context.jsonld",
     "./emdataset.context.jsonld",
+    "./processing.context.jsonld",
     "./custom_types.context.jsonld",
+    "./movies.context.jsonld",
+    "./micrographs.context.jsonld",
+    "./CTFs.context.jsonld",
+    "./coordinates.context.jsonld",
+    "./classes2D.context.jsonld",
+    "./classes3D.context.jsonld",
+    "./volumes.context.jsonld",
     {
       "@base": "https://w3id.org/osc-em/oscem-schemas-spa/"
     }

@@ -49,6 +49,19 @@ classes:
         required: true
       value:
         required: true
+  Descriptor:
+    description: List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
+    abstract: true
+    slots:
+    - descriptor_name
+    - descriptor_thing
+    slot_usage:
+      descriptor_name:
+        required: true
+      descriptor_thing:
+        required: false
+  Descriptors:
+    is_a: Descriptor
 
 slots:
   minimal:
@@ -86,4 +99,13 @@ slots:
     description: the value of a field with a unit
     range: float
     slot_uri: qudt:hasQuantityKind
-
+  descriptors:
+    description: List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
+    range: Descriptors
+    multivalued: true
+  descriptor_name:
+    description: Name defining the descriptor
+    range: string
+  descriptor_thing:
+    description: Description of the descriptor
+    range: Any

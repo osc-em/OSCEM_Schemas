@@ -488,7 +488,10 @@
             "properties": {
                 "country": {
                     "description": "Country of the institution",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "email": {
                     "description": "email",
@@ -497,10 +500,7 @@
                 },
                 "first_name": {
                     "description": "first name",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "name": {
                     "description": "name",
@@ -508,11 +508,17 @@
                 },
                 "name_org": {
                     "description": "Name of the organization",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "orcid": {
                     "description": "ORCID of the author, a type of unique identifier",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "role": {
                     "description": "Role of the author, for example principal investigator",
@@ -541,11 +547,9 @@
                 }
             },
             "required": [
-                "orcid",
-                "country",
-                "name_org",
                 "type_org",
                 "name",
+                "first_name",
                 "email"
             ],
             "title": "Author",
@@ -621,6 +625,32 @@
                 "instrument_type"
             ],
             "title": "ChromaticAberrationCorrector",
+            "type": "object"
+        },
+        "Descriptors": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "descriptor_name": {
+                    "description": "Name defining the descriptor",
+                    "type": "string"
+                },
+                "descriptor_thing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the descriptor"
+                }
+            },
+            "required": [
+                "descriptor_name"
+            ],
+            "title": "Descriptors",
             "type": "object"
         },
         "EMDatasetEnv": {
@@ -949,7 +979,10 @@
                     "items": {
                         "$ref": "#/$defs/Funder"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "grants": {
                     "description": "List of grants associated with the project",
@@ -963,8 +996,7 @@
                 }
             },
             "required": [
-                "authors",
-                "funder"
+                "authors"
             ],
             "title": "Organizational",
             "type": "object"
@@ -1335,39 +1367,23 @@
             "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree.",
             "properties": {
                 "increment": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantityValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/QuantityValue",
                     "description": "Increment between elements of a series"
                 },
                 "maximal": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantityValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/QuantityValue",
                     "description": "Maximal value of a given dataset property"
                 },
                 "minimal": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantityValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/QuantityValue",
                     "description": "Minimal value of a given dataset property"
                 }
             },
+            "required": [
+                "increment",
+                "minimal",
+                "maximal"
+            ],
             "title": "TiltAngle",
             "type": "object"
         },

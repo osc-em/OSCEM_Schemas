@@ -1,0 +1,115 @@
+id: https://w3id.org/osc-em/classes3D
+name: OSCEMClasses3D
+description: >
+  LinkML schema for electron microscopy 3D classes generated when processing.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  classes3D: https://w3id.org/osc-em/classes3D
+
+default_prefix: classes3D
+
+imports:
+  - linkml:types
+  - ./custom_types
+
+classes:
+  Classes3D:
+    description: Class representing classes 3D metadata
+    slots:
+      - particles_per_3Dclass
+      - images_classes_3D
+      - volume
+      - resolution_classes_3D
+      - descriptors
+    slot_usage:
+      particles_per_3Dclass:
+        required: false
+      images_classes_3D:
+        required: false
+      volume:
+        required: false
+      resolution_classes_3D:
+        required: false
+      descriptors:
+        required: false
+
+  Volume:
+    description: Class describing volume(s) obtained
+    slots:
+      - orthogonal_slices
+      - isosurface_images
+    slot_usage:
+      orthogonal_slices:
+        required: false
+      isosurface_images:
+        required: false
+
+
+  OrthogonalSlices:
+    description: Class for the orthogonal slices
+    slots:
+      - orthogonal_slices_X
+      - orthogonal_slices_Y
+      - orthogonal_slices_Z
+    slot_usage:
+      orthogonal_slices_X:
+        required: false
+      orthogonal_slices_Y:
+        required: false
+      orthogonal_slices_Z:
+        required: false
+
+  IsosurfaceImages:
+    description: Class for the isosurface images
+    slots:
+      - front_view
+      - side_view
+      - top_view
+    slot_usage:
+      front_view:
+        required: false
+      side_view:
+        required: false
+      top_view:
+        required: false
+
+slots:
+  front_view:
+    description: Filename of the front view isosurface image
+    range: string
+  isosurface_images:
+    description: isosurface images of volume
+    range: IsosurfaceImages
+  images_classes_3D:
+    description: Filename of the image containing 3D class images
+    range: string
+  orthogonal_slices:
+    description: orthogonal slices of volume
+    range: OrthogonalSlices
+  orthogonal_slices_X:
+    description: Filename of orthogonal slices in X direction
+    range: string
+  orthogonal_slices_Y:
+    description: Filename of orthogonal slices in Y direction
+    range: string
+  orthogonal_slices_Z:
+    description: Filename of orthogonal slices in Z direction
+    range: string
+  particles_per_3Dclass:
+    description: Number of particles per 3D class
+    range: integer
+    multivalued: true
+  resolution_classes_3D:
+    description: Resolution of volume
+    range: QuantityValue
+  side_view:
+    description: Filename of the side view isosurface image
+    range: string
+  top_view:
+    description: Filename of the top view isosurface image
+    range: string
+  volume:
+    description: Describes volume(s) obtained
+    range: Volume
+    multivalued: true

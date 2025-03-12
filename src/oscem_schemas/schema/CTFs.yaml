@@ -1,0 +1,126 @@
+id: https://w3id.org/osc-em/ctfs
+name: OSCEMCTFs
+description: >
+  LinkML schema for electron microscopy CTFs generated when processing.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ctf: https://w3id.org/osc-em/ctfs
+
+default_prefix: ctf
+
+imports:
+  - linkml:types
+  - ./custom_types
+
+classes:
+  CTFs:
+    description: Class representing Contrast Transfer Function (CTF) metadata
+    slots:
+      - amplitude_contrast
+      - defocus
+      - resolution
+      - astigmatism
+      - descriptors
+    slot_usage:
+      amplitude_contrast:
+        required: false
+      defocus:
+        required: false
+      resolution:
+        required: false
+      astigmatism:
+        required: false
+      descriptors:
+        required: false
+
+  Defocus:
+    description: Defocus-related metadata
+    slots:
+      - output_min_defocus
+      - output_max_defocus
+      - output_avg_defocus
+      - defocus_histogram
+      - defocus_micrograph_examples
+    slot_usage:
+      output_min_defocus:
+        required: false
+      output_max_defocus:
+        required: false
+      output_avg_defocus:
+        required: false
+      defocus_histogram:
+        required: false
+      defocus_micrograph_examples:
+        required: false
+
+  Resolution:
+    description: Resolution-related metadata
+    slots:
+      - output_min_resolution
+      - output_max_resolution
+      - output_avg_resolution
+      - resolution_histogram
+    slot_usage:
+      output_min_resolution:
+        required: false
+      output_max_resolution:
+        required: false
+      output_avg_resolution:
+        required: false
+      resolution_histogram:
+        required: false
+
+  Astigmatism:
+    description: Astigmatism-related metadata
+    slots:
+      - astigmatism_histogram
+    slot_usage:
+      astigmatism_histogram:
+        required: false
+
+slots:
+  astigmatism:
+    description: Astigmatism metadata
+    range: Astigmatism
+  amplitude_contrast:
+    description: Amplitude contrast
+    range: float
+   # default: 0.07
+  astigmatism_histogram:
+    description: Filename of the astigmatism values histogram
+    range: string
+  defocus:
+    description: Defocus metadata
+    range: Defocus
+  defocus_histogram:
+    description: Filename of the defocus values histogram
+    range: string
+  defocus_micrograph_examples:
+    description: Filename of micrographs shown as examples in ascending order of defocus value
+    range: string
+  output_avg_defocus:
+    description: Average value of defocus
+    range: QuantityValue
+  output_avg_resolution:
+    description: Average value of resolution
+    range: QuantityValue
+  output_max_defocus:
+    description: Maximum defocus
+    range: QuantityValue
+  output_max_resolution:
+    description: Maximum resolution
+    range: QuantityValue
+  output_min_defocus:
+    description: Minimum defocus
+    range: QuantityValue
+  output_min_resolution:
+    description: Minimum resolution
+    range: QuantityValue
+  resolution:
+    description: Resolution metadata
+    range: Resolution
+  resolution_histogram:
+    description: Filename of the resolution values histogram
+    range: string
+

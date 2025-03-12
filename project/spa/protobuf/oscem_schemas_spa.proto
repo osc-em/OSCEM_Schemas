@@ -32,10 +32,14 @@ message Acquisition
   integer beamtiltgroups = 0
   string gainrefFlipRotate = 0
  }
+// Astigmatism-related metadata
+message Astigmatism
+ {
+  string astigmatismHistogram = 0
+ }
 // Details on the person performing the experiment.
 message Author
  {
-  string firstName = 0
   boolean workStatus = 0
   string workPhone = 0
   string orcid = 0
@@ -44,6 +48,7 @@ message Author
   string nameOrg = 0
   organizationTypeEnum typeOrg = 0
   string name = 0
+  string firstName = 0
   string email = 0
  }
 // an axis-aligned 2D bounding box (float units)
@@ -60,9 +65,62 @@ message ChromaticAberrationCorrector
   boolean used = 0
   string instrumentType = 0
  }
+// Class representing classes 2D metadata
+message Classes2D
+ {
+  integer numberClasses2D = 0
+ repeated  integer particlesPer2Dclass = 0
+  string imagesClasses2D = 0
+  quantityValue resolutionClasses2D = 0
+ repeated  descriptors descriptors = 0
+ }
+// Class representing classes 3D metadata
+message Classes3D
+ {
+  integer numberClasses3D = 0
+ repeated  integer particlesPer3Dclass = 0
+  string imagesClasses3D = 0
+ repeated  volume volume = 0
+  quantityValue resolutionClasses3D = 0
+ repeated  descriptors descriptors = 0
+ }
+// Class representing coordinates metadata
+message Coordinates
+ {
+  integer numberParticles = 0
+  float particlesPerMicrograph = 0
+  integer numSourceMicrographs = 0
+  string particlesHistogram = 0
+  string micrographExamples = 0
+ repeated  descriptors descriptors = 0
+ }
+// Class representing Contrast Transfer Function (CTF) metadata
+message CTFs
+ {
+  float amplitudeContrast = 0
+  defocus defocus = 0
+  resolution resolution = 0
+  astigmatism astigmatism = 0
+ repeated  descriptors descriptors = 0
+ }
+// Defocus-related metadata
+message Defocus
+ {
+  quantityValue outputMinDefocus = 0
+  quantityValue outputMaxDefocus = 0
+  quantityValue outputAvgDefocus = 0
+  string defocusHistogram = 0
+  string defocusMicrographExamples = 0
+ }
+message Descriptors
+ {
+  string descriptorName = 0
+  any descriptorThing = 0
+ }
 // Single particle cryo electron microscopy dataset
 message EMDatasetSpa
  {
+  processing processing = 0
   acquisition acquisition = 0
   instrument instrument = 0
   sample sample = 0
@@ -124,12 +182,25 @@ message Instrument
   quantityValue c2Aperture = 0
   quantityValue cs = 0
  }
+// Class for the isosurface images
+message IsosurfaceImages
+ {
+  string frontView = 0
+  string sideView = 0
+  string topView = 0
+ }
 // Information on ligands if present.
 message Ligand
  {
   boolean present = 0
   string smiles = 0
   string reference = 0
+ }
+// Class representing micrographs metadata
+message Micrographs
+ {
+  float numberMicrographs = 0
+ repeated  descriptors descriptors = 0
  }
 // More detailed information about individual molecules.
 message Molecule
@@ -144,12 +215,28 @@ message Molecule
   string taxonomyIdExpression = 0
   string geneName = 0
  }
+// Class representing movies metadata
+message Movies
+ {
+  quantityValue dosePerImage = 0
+  quantityValue initialDose = 0
+  string gainImage = 0
+  string darkImage = 0
+ repeated  descriptors descriptors = 0
+ }
 // Overarching category for authors and grants
 message Organizational
  {
  repeated  grant grants = 0
  repeated  author authors = 0
  repeated  funder funder = 0
+ }
+// Class for the orthogonal slices
+message OrthogonalSlices
+ {
+  string orthogonalSlicesX = 0
+  string orthogonalSlicesY = 0
+  string orthogonalSlicesZ = 0
  }
 // Description of the overall molecule
 message OverallMolecule
@@ -175,6 +262,17 @@ message Phaseplate
   boolean used = 0
   string instrumentType = 0
  }
+// Set of parameters describing the data processing
+message Processing
+ {
+  movies movies = 0
+  micrographs micrographs = 0
+  cTFs ctfs = 0
+  coordinates coordinates = 0
+  classes2D classes2D = 0
+  classes3D classes3D = 0
+ repeated  volumes volumes = 0
+ }
 // if a value has a unit, it should be given as a unit value pair.
 message QuantityValue
  {
@@ -186,6 +284,14 @@ message Range
  {
   quantityValue minimal = 0
   quantityValue maximal = 0
+ }
+// Resolution-related metadata
+message Resolution
+ {
+  quantityValue outputMinResolution = 0
+  quantityValue outputMaxResolution = 0
+  quantityValue outputAvgResolution = 0
+  string resolutionHistogram = 0
  }
 // Unifying class to describe the full sample.
 message Sample
@@ -229,4 +335,21 @@ message SphericalAberrationCorrector
  {
   boolean used = 0
   string instrumentType = 0
+ }
+// Class describing volume(s) obtained
+message Volume
+ {
+  orthogonalSlices orthogonalSlices = 0
+  isosurfaceImages isosurfaceImages = 0
+ }
+// Class representing volume metadata
+message Volumes
+ {
+  string volumeType = 0
+  integer volNumberParticles = 0
+  string size = 0
+  orthogonalSlices orthogonalSlices = 0
+  isosurfaceImages isosurfaceImages = 0
+  quantityValue volResolution = 0
+ repeated  descriptors descriptors = 0
  }

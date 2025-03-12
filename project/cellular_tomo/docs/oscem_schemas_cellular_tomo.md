@@ -17,6 +17,8 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [Any](Any.md) - Any type, used as the base for type-narrowing.
  * [BoundingBox2D](BoundingBox2D.md) - an axis-aligned 2D bounding box (float units)
  * [ChromaticAberrationCorrector](ChromaticAberrationCorrector.md) - Special device used to correct instrument inherent chromatic aberration.
+ * [Descriptor](Descriptor.md) - List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
+     * [Descriptors](Descriptors.md)
  * [EMDatasetBase](EMDatasetBase.md) - OSC-EM Metadata for a dataset
      * [EMDatasetCell](EMDatasetCell.md) - cryo electron tomography dataset of a cellular sample, lab grown
  * [EnergyFilter](EnergyFilter.md) - A device used to filter for electrons with specific energy.
@@ -78,6 +80,11 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Instrument➞cs](Instrument_cs.md)
  * [date_time](date_time.md) - Time and date of the data acquisition
      * [Acquisition➞date_time](Acquisition_date_time.md)
+ * [descriptor_name](descriptor_name.md) - Name defining the descriptor
+     * [Descriptor➞descriptor_name](Descriptor_descriptor_name.md)
+ * [descriptor_thing](descriptor_thing.md) - Description of the descriptor
+     * [Descriptor➞descriptor_thing](Descriptor_descriptor_thing.md)
+ * [descriptors](descriptors.md) - List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
  * [details](details.md) - Any further comments on the freezing process go here.
  * [details_tomo](details_tomo.md) - If you have any further comments on your tomograms please leave them here
  * [detector](detector.md) - Make and model of the detector used
@@ -93,6 +100,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [energy_filter](energy_filter.md) - Wether an energy filter was used and its specifics.
  * [exposure_time](exposure_time.md) - Time of data acquisition per movie/tilt - in s
  * [first_name](first_name.md) - first name
+     * [Author➞first_name](Author_first_name.md)
  * [frames_per_movie](frames_per_movie.md) - Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
  * [freezing](freezing.md)
  * [funder](funder.md) - funding organization/person.
@@ -117,6 +125,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [imaging](imaging.md) - Mode of imaging used during data collection
      * [Instrument➞imaging](Instrument_imaging.md)
  * [increment](increment.md) - Increment between elements of a series
+     * [TiltAngle➞increment](TiltAngle_increment.md)
  * [instrument](instrument.md)
      * [EMDatasetBase➞instrument](EMDatasetBase_instrument.md)
      * [EMDatasetCell➞instrument](EMDatasetCell_instrument.md) - Describe the instrument used to acquire the data
@@ -130,6 +139,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [location](location.md) - the geographical location of your source, optimally in a geographic coordinate system.
  * [main_target](main_target.md) - What was the main biological target of your research for this tomogram?
  * [maximal](maximal.md) - Maximal value of a given dataset property
+     * [TiltAngle➞maximal](TiltAngle_maximal.md)
  * [media](media.md) - What growth media was used
  * [method](method.md) - freezing method - such as plunge freezing, high pressure freezing etc.
  * [method_thin](method_thin.md) - The thinning method used, such as FIB milling.
@@ -137,6 +147,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Instrument➞microscope](Instrument_microscope.md)
  * [microscope_software](microscope_software.md) - Software used for instrument control,
  * [minimal](minimal.md) - Minimal value of a given dataset property
+     * [TiltAngle➞minimal](TiltAngle_minimal.md)
  * [model](model.md) - Make and model of a specilized device
  * [name](name.md) - name
      * [Author➞name](Author_name.md)

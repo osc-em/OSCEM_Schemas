@@ -1,0 +1,51 @@
+id: https://w3id.org/osc-em/movies
+name: OSCEMMovies
+description: >
+  LinkML schema for electron microscopy movies generated when processing.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  movies: https://w3id.org/osc-em/movies
+
+
+default_prefix: movies
+
+imports:
+  - linkml:types
+  - ./custom_types
+
+classes:
+  Movies:
+    description: Class representing movies metadata
+    slots:
+    - dose_per_image
+    - initial_dose
+    - gain_image
+    - dark_image
+    - descriptors
+    slot_usage:
+      dose_per_image:
+        required: false
+      initial_dose:
+        required: false
+      gain_image:
+        required: false
+      dark_image:
+        required: false
+      descriptors:
+        required: false
+  
+
+slots:
+  dark_image:
+    description: Dark image filename
+    range: string
+  dose_per_image:
+    description: Dose per image
+    range: QuantityValue
+  gain_image:
+    description: Gain image filename
+    range: string
+  initial_dose:
+    description: Initial dose
+    range: QuantityValue

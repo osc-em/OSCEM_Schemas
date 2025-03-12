@@ -34,17 +34,22 @@ type Any
   {
   }
 
+type Astigmatism
+  {
+    astigmatismHistogram: String
+  }
+
 type Author
   {
-    firstName: String
     workStatus: Boolean
     workPhone: String
-    orcid: String!
-    country: String!
+    orcid: String
+    country: String
     role: String
-    nameOrg: String!
+    nameOrg: String
     typeOrg: OrganizationTypeEnum!
     name: String!
+    firstName: String!
     email: String!
   }
 
@@ -62,6 +67,65 @@ type ChromaticAberrationCorrector
     instrumentType: String!
   }
 
+type Classes2D
+  {
+    numberClasses2D: Integer
+    particlesPer2Dclass: [Integer]
+    imagesClasses2D: String
+    resolutionClasses2D: QuantityValue
+    descriptors: [Descriptors]
+  }
+
+type Classes3D
+  {
+    numberClasses3D: Integer
+    particlesPer3Dclass: [Integer]
+    imagesClasses3D: String
+    volume: [Volume]
+    resolutionClasses3D: QuantityValue
+    descriptors: [Descriptors]
+  }
+
+type Coordinates
+  {
+    numberParticles: Integer!
+    particlesPerMicrograph: Float
+    numSourceMicrographs: Integer
+    particlesHistogram: String
+    micrographExamples: String
+    descriptors: [Descriptors]
+  }
+
+type CTFs
+  {
+    amplitudeContrast: Float
+    defocus: Defocus
+    resolution: Resolution
+    astigmatism: Astigmatism
+    descriptors: [Descriptors]
+  }
+
+type Defocus
+  {
+    outputMinDefocus: QuantityValue
+    outputMaxDefocus: QuantityValue
+    outputAvgDefocus: QuantityValue
+    defocusHistogram: String
+    defocusMicrographExamples: String
+  }
+
+interface Descriptor
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Descriptors
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
 interface EMDatasetBase
   {
     acquisition: Any
@@ -72,6 +136,7 @@ interface EMDatasetBase
 
 type EMDatasetSpa
   {
+    processing: Processing
     acquisition: Acquisition!
     instrument: Instrument!
     sample: Sample!
@@ -134,40 +199,69 @@ type Instrument
     cs: QuantityValue!
   }
 
+type IsosurfaceImages
+  {
+    frontView: String
+    sideView: String
+    topView: String
+  }
+
 type Ligand
   {
-    present: Boolean!
+    present: Boolean
     smiles: String
     reference: String
+  }
+
+type Micrographs
+  {
+    numberMicrographs: Float!
+    descriptors: [Descriptors]
   }
 
 type Molecule
   {
     nameMol: String!
-    molecularType: String!
-    molecularClass: String!
+    molecularType: String
+    molecularClass: String
     sequence: String!
     naturalSource: String!
-    taxonomyIdSource: String!
-    expressionSystem: String!
-    taxonomyIdExpression: String!
+    taxonomyIdSource: String
+    expressionSystem: String
+    taxonomyIdExpression: String
     geneName: String
+  }
+
+type Movies
+  {
+    dosePerImage: QuantityValue
+    initialDose: QuantityValue
+    gainImage: String
+    darkImage: String
+    descriptors: [Descriptors]
   }
 
 type Organizational
   {
     grants: [Grant]
     authors: [Author]!
-    funder: [Funder]!
+    funder: [Funder]
+  }
+
+type OrthogonalSlices
+  {
+    orthogonalSlicesX: String
+    orthogonalSlicesY: String
+    orthogonalSlicesZ: String
   }
 
 type OverallMolecule
   {
-    molecularOverallType: MoleculeClassEnum!
+    molecularOverallType: MoleculeClassEnum
     nameSample: String!
     source: String!
     molecularWeight: QuantityValue
-    assembly: AssemblyEnum!
+    assembly: AssemblyEnum
   }
 
 type Person
@@ -185,6 +279,17 @@ type Phaseplate
     instrumentType: String!
   }
 
+type Processing
+  {
+    movies: Movies
+    micrographs: Micrographs
+    ctfs: CTFs
+    coordinates: Coordinates
+    classes2D: Classes2D
+    classes3D: Classes3D
+    volumes: [Volumes]
+  }
+
 type QuantityValue
   {
     unit: String!
@@ -197,12 +302,20 @@ type Range
     maximal: QuantityValue
   }
 
+type Resolution
+  {
+    outputMinResolution: QuantityValue
+    outputMaxResolution: QuantityValue
+    outputAvgResolution: QuantityValue
+    resolutionHistogram: String
+  }
+
 type Sample
   {
     overallMolecule: OverallMolecule!
-    molecule: [Molecule]!
+    molecule: [Molecule]
     ligands: [Ligand]
-    specimen: Specimen!
+    specimen: Specimen
     grid: Grid
   }
 
@@ -224,19 +337,36 @@ type Specimen
   {
     buffer: String
     concentration: QuantityValue
-    ph: Float!
-    vitrification: Boolean!
-    vitrificationCryogen: String!
+    ph: Float
+    vitrification: Boolean
+    vitrificationCryogen: String
     humidity: QuantityValue
     temperature: QuantityValue
-    staining: Boolean!
-    embedding: Boolean!
-    shadowing: Boolean!
+    staining: Boolean
+    embedding: Boolean
+    shadowing: Boolean
   }
 
 type SphericalAberrationCorrector
   {
     used: Boolean!
     instrumentType: String!
+  }
+
+type Volume
+  {
+    orthogonalSlices: OrthogonalSlices
+    isosurfaceImages: IsosurfaceImages
+  }
+
+type Volumes
+  {
+    volumeType: String!
+    volNumberParticles: Integer
+    size: String
+    orthogonalSlices: OrthogonalSlices
+    isosurfaceImages: IsosurfaceImages
+    volResolution: QuantityValue
+    descriptors: [Descriptors]
   }
 

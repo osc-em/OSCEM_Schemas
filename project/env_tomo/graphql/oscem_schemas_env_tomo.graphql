@@ -69,15 +69,15 @@ type Any
 
 type Author
   {
-    firstName: String
     workStatus: Boolean
     workPhone: String
-    orcid: String!
-    country: String!
+    orcid: String
+    country: String
     role: String
-    nameOrg: String!
+    nameOrg: String
     typeOrg: OrganizationTypeEnum!
     name: String!
+    firstName: String!
     email: String!
   }
 
@@ -93,6 +93,18 @@ type ChromaticAberrationCorrector
   {
     used: Boolean!
     instrumentType: String!
+  }
+
+interface Descriptor
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Descriptors
+  {
+    descriptorName: String!
+    descriptorThing: Any
   }
 
 interface EMDatasetBase
@@ -167,7 +179,7 @@ type Organizational
   {
     grants: [Grant]
     authors: [Author]!
-    funder: [Funder]!
+    funder: [Funder]
   }
 
 type Person
@@ -246,9 +258,9 @@ type Thinning
 
 type TiltAngle
   {
-    minimal: QuantityValue
-    maximal: QuantityValue
-    increment: QuantityValue
+    minimal: QuantityValue!
+    maximal: QuantityValue!
+    increment: QuantityValue!
   }
 
 type TomogramFeatures
