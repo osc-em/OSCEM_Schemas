@@ -19,6 +19,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/QuantityValue_value](https:
 
 ## Used by
 
+ * [QuantitySI](QuantitySI.md)
  * [QuantityValue](QuantityValue.md)
 
 ## Other properties

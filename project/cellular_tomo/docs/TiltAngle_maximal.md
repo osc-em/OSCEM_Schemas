@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/TiltAngle_maximal](htt
 
 ## Domain and Range
 
-[TiltAngle](TiltAngle.md) &#8594;  <sub>1..1</sub> [QuantityValue](QuantityValue.md)
+[TiltAngle](TiltAngle.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
 
 ## Parents
 

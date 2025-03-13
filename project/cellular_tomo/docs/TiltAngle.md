@@ -6,7 +6,7 @@ The min, max and increment of the tilt angle in a tomography session. Unit is de
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/TiltAngle](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/TiltAngle)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<increment%201..1-++[TiltAngle],[QuantityValue]<maximal%201..1-++[TiltAngle],[QuantityValue]<minimal%201..1-++[TiltAngle],[AcquisitionTomo]++-%20tilt_angle%201..1>[TiltAngle],[AcquisitionTomo]++-%20tilt_angle(i)%200..1>[TiltAngle],[Series]^-[TiltAngle],[Series],[QuantityValue],[AcquisitionTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<increment%201..1-++[TiltAngle],[QuantityValue]<maximal%201..1-++[TiltAngle],[QuantityValue]<minimal%201..1-++[TiltAngle],[AcquisitionTomo]++-%20tilt_angle%201..1>[TiltAngle],[AcquisitionTomo]++-%20tilt_angle(i)%200..1>[TiltAngle],[Series]^-[TiltAngle],[Series],[QuantityValue],[AcquisitionTomo])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<increment%201..1-++[TiltAngle],[Any]<maximal%201..1-++[TiltAngle],[Any]<minimal%201..1-++[TiltAngle],[AcquisitionTomo]++-%20tilt_angle%201..1>[TiltAngle],[AcquisitionTomo]++-%20tilt_angle(i)%200..1>[TiltAngle],[Series]^-[TiltAngle],[Series],[Any],[AcquisitionTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<increment%201..1-++[TiltAngle],[Any]<maximal%201..1-++[TiltAngle],[Any]<minimal%201..1-++[TiltAngle],[AcquisitionTomo]++-%20tilt_angle%201..1>[TiltAngle],[AcquisitionTomo]++-%20tilt_angle(i)%200..1>[TiltAngle],[Series]^-[TiltAngle],[Series],[Any],[AcquisitionTomo])
 
 ## Parents
 
@@ -24,10 +24,10 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/TiltAngle](https://w3i
 
  * [TiltAngle➞minimal](TiltAngle_minimal.md)  <sub>1..1</sub>
      * Description: Minimal value of a given dataset property
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [TiltAngle➞maximal](TiltAngle_maximal.md)  <sub>1..1</sub>
      * Description: Maximal value of a given dataset property
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [TiltAngle➞increment](TiltAngle_increment.md)  <sub>1..1</sub>
      * Description: Increment between elements of a series
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)

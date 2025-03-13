@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/pixel_size](https://w3id.org
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
+None &#8594;  <sub>0..1</sub> [Any](Any.md)
 
 ## Parents
 

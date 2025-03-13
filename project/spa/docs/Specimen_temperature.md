@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Specimen_temperature](https://w3
 
 ## Domain and Range
 
-[Specimen](Specimen.md) &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
+[Specimen](Specimen.md) &#8594;  <sub>0..1</sub> [Any](Any.md)
 
 ## Parents
 

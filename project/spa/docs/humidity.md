@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/humidity](https://w3id.org/osc-e
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
+None &#8594;  <sub>0..1</sub> [Any](Any.md)
 
 ## Parents
 

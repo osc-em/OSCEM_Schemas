@@ -6,7 +6,7 @@ Description of the overall molecule
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/OverallMolecule](https://w3id.org/osc-em/oscem-schemas-subtomo/OverallMolecule)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantityValue],[QuantityValue]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[QuantityValue],[QuantityValue]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Any]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Any]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule],[Any])
 
 ## Referenced by Class
 
@@ -29,7 +29,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/OverallMolecule](https://w3i
      * Range: [String](types/String.md)
  * [OverallMolecule➞molecular_weight](OverallMolecule_molecular_weight.md)  <sub>0..1</sub>
      * Description: Molecular weight in Da
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [OverallMolecule➞assembly](OverallMolecule_assembly.md)  <sub>0..1</sub>
      * Description: What type of higher order structure your sample forms - if any.
      * Range: [AssemblyEnum](AssemblyEnum.md)

@@ -14,17 +14,17 @@ message Acquisition
   string microscopeSoftware = 0
   string detector = 0
   string detectorMode = 0
-  quantityValue dosePerMovie = 0
+  any dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
   datetime dateTime = 0
-  quantityValue exposureTime = 0
+  any exposureTime = 0
   string cryogen = 0
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
   float binningCamera = 0
-  quantityValue pixelSize = 0
+  any pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
   boundingBox2D beamtilt = 0
@@ -44,17 +44,17 @@ message AcquisitionTomo
   string microscopeSoftware = 0
   string detector = 0
   string detectorMode = 0
-  quantityValue dosePerMovie = 0
+  any dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
   datetime dateTime = 0
-  quantityValue exposureTime = 0
+  any exposureTime = 0
   string cryogen = 0
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
   float binningCamera = 0
-  quantityValue pixelSize = 0
+  any pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
   boundingBox2D beamtilt = 0
@@ -81,10 +81,10 @@ message Author
 // an axis-aligned 2D bounding box (float units)
 message BoundingBox2D
  {
-  quantityValue xMin = 0
-  quantityValue xMax = 0
-  quantityValue yMin = 0
-  quantityValue yMax = 0
+  any xMin = 0
+  any xMax = 0
+  any yMin = 0
+  any yMax = 0
  }
 // Special device used to correct instrument inherent chromatic aberration.
 message ChromaticAberrationCorrector
@@ -110,7 +110,7 @@ message EnergyFilter
  {
   boolean used = 0
   string model = 0
-  quantityValue widthEnergyFilter = 0
+  any widthEnergyFilter = 0
  }
 // Description of the project funding
 message Funder
@@ -140,8 +140,8 @@ message Grid
   string filmTopology = 0
   string filmThickness = 0
   string pretreatmentType = 0
-  quantityValue pretreatmentTime = 0
-  quantityValue pretreatmentPressure = 0
+  any pretreatmentTime = 0
+  any pretreatmentPressure = 0
   string pretreatmentAtmosphere = 0
  }
 // size of a 2D image (in integer units)
@@ -157,9 +157,9 @@ message Instrument
   string illumination = 0
   string imaging = 0
   string electronSource = 0
-  quantityValue accelerationVoltage = 0
-  quantityValue c2Aperture = 0
-  quantityValue cs = 0
+  any accelerationVoltage = 0
+  any c2Aperture = 0
+  any cs = 0
  }
 // Information on ligands if present.
 message Ligand
@@ -194,7 +194,7 @@ message OverallMolecule
   moleculeClassEnum molecularOverallType = 0
   string nameSample = 0
   string source = 0
-  quantityValue molecularWeight = 0
+  any molecularWeight = 0
   assemblyEnum assembly = 0
  }
 // personal information
@@ -212,6 +212,16 @@ message Phaseplate
   boolean used = 0
   string instrumentType = 0
  }
+// unit value extended to have two additional fields si_value and si_unit
+message QuantitySI
+ {
+  string unit = 0
+  float value = 0
+  float valueSI = 0
+  string unitSI = 0
+  string siValue = 0
+  string siUnit = 0
+ }
 // if a value has a unit, it should be given as a unit value pair.
 message QuantityValue
  {
@@ -221,8 +231,8 @@ message QuantityValue
 // A range constructed from min and max
 message Range
  {
-  quantityValue minimal = 0
-  quantityValue maximal = 0
+  any minimal = 0
+  any maximal = 0
  }
 // Unifying class to describe the full sample.
 message Sample
@@ -236,9 +246,9 @@ message Sample
 // A series of numbers constructed from min, max, and increment
 message Series
  {
-  quantityValue minimal = 0
-  quantityValue maximal = 0
-  quantityValue increment = 0
+  any minimal = 0
+  any maximal = 0
+  any increment = 0
  }
 // Optional optics used to correct for instrument limitations.
 message SpecialistOptics
@@ -251,12 +261,12 @@ message SpecialistOptics
 message Specimen
  {
   string buffer = 0
-  quantityValue concentration = 0
+  any concentration = 0
   float ph = 0
   boolean vitrification = 0
   string vitrificationCryogen = 0
-  quantityValue humidity = 0
-  quantityValue temperature = 0
+  any humidity = 0
+  any temperature = 0
   boolean staining = 0
   boolean embedding = 0
   boolean shadowing = 0
@@ -270,7 +280,7 @@ message SphericalAberrationCorrector
 // The min, max and increment of the tilt angle in a tomography session. Unit is degree.
 message TiltAngle
  {
-  quantityValue minimal = 0
-  quantityValue maximal = 0
-  quantityValue increment = 0
+  any minimal = 0
+  any maximal = 0
+  any increment = 0
  }

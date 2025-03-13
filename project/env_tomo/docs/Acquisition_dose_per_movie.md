@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/Acquisition_dose_per_movie]
 
 ## Domain and Range
 
-[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [QuantityValue](QuantityValue.md)
+[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
 
 ## Parents
 

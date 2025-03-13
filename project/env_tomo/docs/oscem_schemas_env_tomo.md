@@ -32,6 +32,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Author](Author.md) - Details on the person performing the experiment.
  * [Phaseplate](Phaseplate.md) - Used to modulate the phase of the electron wave.
  * [QuantityValue](QuantityValue.md) - if a value has a unit, it should be given as a unit value pair.
+     * [QuantitySI](QuantitySI.md) - unit value extended to have two additional fields si_value and si_unit
  * [Range](Range.md) - A range constructed from min and max
      * [Series](Series.md) - A series of numbers constructed from min, max, and increment
          * [TiltAngle](TiltAngle.md) - The min, max and increment of the tilt angle in a tomography session. Unit is degree.
@@ -165,6 +166,10 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [sample](sample.md)
      * [EMDatasetBase➞sample](EMDatasetBase_sample.md)
      * [EMDatasetEnv➞sample](EMDatasetEnv_sample.md) - Sample information
+ * [si_unit](si_unit.md)
+     * [QuantitySI➞si_unit](QuantitySI_si_unit.md)
+ * [si_value](si_value.md)
+     * [QuantitySI➞si_value](QuantitySI_si_value.md)
  * [source_env](source_env.md) - where is this sample from? i.e. Hospital
  * [specialist_optics](specialist_optics.md) - Any type of special optics, such as a phaseplate
  * [specimen_env](specimen_env.md)
@@ -185,6 +190,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Author➞type_org](Author_type_org.md)
  * [unit](unit.md) - the unit of a given value
      * [QuantityValue➞unit](QuantityValue_unit.md)
+ * [unitSI](unitSI.md) - the SI unit attached to a si value
  * [used](used.md) - whether a specific instrument was used during data acquisition
      * [ChromaticAberrationCorrector➞used](ChromaticAberrationCorrector_used.md)
      * [EnergyFilter➞used](EnergyFilter_used.md)
@@ -192,6 +198,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [SphericalAberrationCorrector➞used](SphericalAberrationCorrector_used.md)
  * [value](value.md) - the value of a field with a unit
      * [QuantityValue➞value](QuantityValue_value.md)
+ * [valueSI](valueSI.md) - value of a given field in respect to its SI unit
  * [width](width.md) - The width of a given item - unit depends on item
  * [width_energy_filter](width_energy_filter.md) - Width of the energy filter used.
      * [EnergyFilter➞width_energy_filter](EnergyFilter_width_energy_filter.md)
