@@ -35,6 +35,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Author](Author.md) - Details on the person performing the experiment.
  * [Phaseplate](Phaseplate.md) - Used to modulate the phase of the electron wave.
  * [QuantityValue](QuantityValue.md) - if a value has a unit, it should be given as a unit value pair.
+     * [QuantitySI](QuantitySI.md) - unit value extended to have two additional fields si_value and si_unit
  * [Range](Range.md) - A range constructed from min and max
      * [Series](Series.md) - A series of numbers constructed from min, max, and increment
          * [TiltAngle](TiltAngle.md) - The min, max and increment of the tilt angle in a tomography session. Unit is degree.
@@ -213,6 +214,10 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Molecule➞sequence](Molecule_sequence.md)
  * [shadowing](shadowing.md) - Whether the sample was shadowed
      * [Specimen➞shadowing](Specimen_shadowing.md)
+ * [si_unit](si_unit.md)
+     * [QuantitySI➞si_unit](QuantitySI_si_unit.md)
+ * [si_value](si_value.md)
+     * [QuantitySI➞si_value](QuantitySI_si_value.md)
  * [smiles](smiles.md) - Provide a valid SMILES string of your ligand
  * [source](source.md) - Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
      * [OverallMolecule➞source](OverallMolecule_source.md)
@@ -238,6 +243,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Author➞type_org](Author_type_org.md)
  * [unit](unit.md) - the unit of a given value
      * [QuantityValue➞unit](QuantityValue_unit.md)
+ * [unitSI](unitSI.md) - the SI unit attached to a si value
  * [used](used.md) - whether a specific instrument was used during data acquisition
      * [ChromaticAberrationCorrector➞used](ChromaticAberrationCorrector_used.md)
      * [EnergyFilter➞used](EnergyFilter_used.md)
@@ -245,6 +251,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [SphericalAberrationCorrector➞used](SphericalAberrationCorrector_used.md)
  * [value](value.md) - the value of a field with a unit
      * [QuantityValue➞value](QuantityValue_value.md)
+ * [valueSI](valueSI.md) - value of a given field in respect to its SI unit
  * [vitrification](vitrification.md) - Whether the sample was vitrified
      * [Specimen➞vitrification](Specimen_vitrification.md)
  * [vitrification_cryogen](vitrification_cryogen.md) - Which cryogen was used for vitrification

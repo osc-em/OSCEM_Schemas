@@ -29,6 +29,12 @@
 --     * Slot: id Description: 
 --     * Slot: unit Description: the unit of a given value
 --     * Slot: value Description: the value of a field with a unit
+-- # Class: "QuantitySI" Description: "unit value extended to have two additional fields si_value and si_unit"
+--     * Slot: id Description: 
+--     * Slot: valueSI Description: value of a given field in respect to its SI unit
+--     * Slot: unitSI Description: the SI unit attached to a si value
+--     * Slot: unit Description: the unit of a given value
+--     * Slot: value Description: the value of a field with a unit
 -- # Class: "Descriptor" Description: "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information"
 --     * Slot: id Description: 
 --     * Slot: descriptor_name Description: Name defining the descriptor
@@ -258,6 +264,14 @@ CREATE TABLE "QuantityValue" (
 	value FLOAT NOT NULL, 
 	PRIMARY KEY (id)
 );
+CREATE TABLE "QuantitySI" (
+	id INTEGER NOT NULL, 
+	"valueSI" FLOAT, 
+	"unitSI" TEXT, 
+	unit TEXT NOT NULL, 
+	value FLOAT NOT NULL, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE "Phaseplate" (
 	id INTEGER NOT NULL, 
 	used BOOLEAN NOT NULL, 
@@ -335,8 +349,8 @@ CREATE TABLE "Range" (
 	minimal_id INTEGER, 
 	maximal_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(maximal_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(minimal_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "Series" (
 	id INTEGER NOT NULL, 
@@ -344,9 +358,9 @@ CREATE TABLE "Series" (
 	minimal_id INTEGER, 
 	maximal_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(increment_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(maximal_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(increment_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(minimal_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "BoundingBox2D" (
 	id INTEGER NOT NULL, 
@@ -355,10 +369,10 @@ CREATE TABLE "BoundingBox2D" (
 	y_min_id INTEGER, 
 	y_max_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(x_min_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(x_max_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(y_min_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(y_max_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(x_min_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(x_max_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(y_min_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(y_max_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "Descriptor" (
 	id INTEGER NOT NULL, 
@@ -380,7 +394,7 @@ CREATE TABLE "EnergyFilter" (
 	model TEXT, 
 	width_energy_filter_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(width_energy_filter_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(width_energy_filter_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "SpecialistOptics" (
 	id INTEGER NOT NULL, 
@@ -402,9 +416,9 @@ CREATE TABLE "Instrument" (
 	c2_aperture_id INTEGER, 
 	cs_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(acceleration_voltage_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(c2_aperture_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(cs_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(acceleration_voltage_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(c2_aperture_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(cs_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "OverallMolecule" (
 	id INTEGER NOT NULL, 
@@ -414,7 +428,7 @@ CREATE TABLE "OverallMolecule" (
 	assembly VARCHAR(13), 
 	molecular_weight_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(molecular_weight_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "Specimen" (
 	id INTEGER NOT NULL, 
@@ -429,9 +443,9 @@ CREATE TABLE "Specimen" (
 	humidity_id INTEGER, 
 	temperature_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(concentration_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(humidity_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(temperature_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(concentration_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(humidity_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(temperature_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "Grid" (
 	id INTEGER NOT NULL, 
@@ -447,8 +461,8 @@ CREATE TABLE "Grid" (
 	pretreatment_time_id INTEGER, 
 	pretreatment_pressure_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(pretreatment_time_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(pretreatment_time_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "TiltAngle" (
 	id INTEGER NOT NULL, 
@@ -456,9 +470,9 @@ CREATE TABLE "TiltAngle" (
 	minimal_id INTEGER NOT NULL, 
 	maximal_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(increment_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(minimal_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(maximal_id) REFERENCES "QuantityValue" (id)
+	FOREIGN KEY(increment_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(minimal_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "Any" (id)
 );
 CREATE TABLE "Grant" (
 	id INTEGER NOT NULL, 
@@ -532,11 +546,11 @@ CREATE TABLE "Acquisition" (
 	FOREIGN KEY(nominal_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(calibrated_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(dose_per_movie_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(exposure_time_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(pixel_size_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 
@@ -588,11 +602,11 @@ CREATE TABLE "AcquisitionTomo" (
 	FOREIGN KEY(nominal_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(calibrated_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(dose_per_movie_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id), 
-	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id), 
+	FOREIGN KEY(exposure_time_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(pixel_size_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 

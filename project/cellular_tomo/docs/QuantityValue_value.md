@@ -19,6 +19,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/QuantityValue_value](h
 
 ## Used by
 
+ * [QuantitySI](QuantitySI.md)
  * [QuantityValue](QuantityValue.md)
 
 ## Other properties

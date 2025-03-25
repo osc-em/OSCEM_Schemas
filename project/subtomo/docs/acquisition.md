@@ -6,7 +6,7 @@ A set of parameteres describing the data acquisition
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Acquisition](https://w3id.org/osc-em/oscem-schemas-subtomo/Acquisition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics],[Range],[QuantityValue],[ImageSize],[EnergyFilter],[BoundingBox2D],[AcquisitionTomo],[BoundingBox2D]<imageshift%200..1-++[Acquisition&#124;nominal_magnification:integer%20%3F;calibrated_magnification:integer%20%3F;holder:string%20%3F;holder_cryogen:string%20%3F;microscope_software:string%20%3F;detector:string;detector_mode:string%20%3F;date_time:datetime;cryogen:string%20%3F;frames_per_movie:integer%20%3F;grids_imaged:integer%20%3F;images_generated:integer%20%3F;binning_camera:float;beamtiltgroups:integer%20%3F;gainref_flip_rotate:string%20%3F],[BoundingBox2D]<beamtilt%200..1-++[Acquisition],[BoundingBox2D]<beamshift%200..1-++[Acquisition],[SpecialistOptics]<specialist_optics%200..1-++[Acquisition],[QuantityValue]<pixel_size%201..1-++[Acquisition],[QuantityValue]<exposure_time%200..1-++[Acquisition],[ImageSize]<image_size%200..1-++[Acquisition],[EnergyFilter]<energy_filter%200..1-++[Acquisition],[QuantityValue]<dose_per_movie%201..1-++[Acquisition],[Range]<temperature%200..1-++[Acquisition],[Range]<calibrated_defocus%200..1-++[Acquisition],[Range]<nominal_defocus%200..1-++[Acquisition],[Acquisition]^-[AcquisitionTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics],[Range],[QuantityValue],[ImageSize],[EnergyFilter],[BoundingBox2D],[AcquisitionTomo],[BoundingBox2D]<imageshift%200..1-++[Acquisition&#124;nominal_magnification:integer%20%3F;calibrated_magnification:integer%20%3F;holder:string%20%3F;holder_cryogen:string%20%3F;microscope_software:string%20%3F;detector:string;detector_mode:string%20%3F;date_time:datetime;cryogen:string%20%3F;frames_per_movie:integer%20%3F;grids_imaged:integer%20%3F;images_generated:integer%20%3F;binning_camera:float;beamtiltgroups:integer%20%3F;gainref_flip_rotate:string%20%3F],[BoundingBox2D]<beamtilt%200..1-++[Acquisition],[BoundingBox2D]<beamshift%200..1-++[Acquisition],[SpecialistOptics]<specialist_optics%200..1-++[Acquisition],[QuantityValue]<pixel_size%201..1-++[Acquisition],[QuantityValue]<exposure_time%200..1-++[Acquisition],[ImageSize]<image_size%200..1-++[Acquisition],[EnergyFilter]<energy_filter%200..1-++[Acquisition],[QuantityValue]<dose_per_movie%201..1-++[Acquisition],[Range]<temperature%200..1-++[Acquisition],[Range]<calibrated_defocus%200..1-++[Acquisition],[Range]<nominal_defocus%200..1-++[Acquisition],[Acquisition]^-[AcquisitionTomo])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics],[Range],[ImageSize],[EnergyFilter],[BoundingBox2D],[Any],[AcquisitionTomo],[BoundingBox2D]<imageshift%200..1-++[Acquisition&#124;nominal_magnification:integer%20%3F;calibrated_magnification:integer%20%3F;holder:string%20%3F;holder_cryogen:string%20%3F;microscope_software:string%20%3F;detector:string;detector_mode:string%20%3F;date_time:datetime;cryogen:string%20%3F;frames_per_movie:integer%20%3F;grids_imaged:integer%20%3F;images_generated:integer%20%3F;binning_camera:float;beamtiltgroups:integer%20%3F;gainref_flip_rotate:string%20%3F],[BoundingBox2D]<beamtilt%200..1-++[Acquisition],[BoundingBox2D]<beamshift%200..1-++[Acquisition],[SpecialistOptics]<specialist_optics%200..1-++[Acquisition],[Any]<pixel_size%201..1-++[Acquisition],[Any]<exposure_time%200..1-++[Acquisition],[ImageSize]<image_size%200..1-++[Acquisition],[EnergyFilter]<energy_filter%200..1-++[Acquisition],[Any]<dose_per_movie%201..1-++[Acquisition],[Range]<temperature%200..1-++[Acquisition],[Range]<calibrated_defocus%200..1-++[Acquisition],[Range]<nominal_defocus%200..1-++[Acquisition],[Acquisition]^-[AcquisitionTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics],[Range],[ImageSize],[EnergyFilter],[BoundingBox2D],[Any],[AcquisitionTomo],[BoundingBox2D]<imageshift%200..1-++[Acquisition&#124;nominal_magnification:integer%20%3F;calibrated_magnification:integer%20%3F;holder:string%20%3F;holder_cryogen:string%20%3F;microscope_software:string%20%3F;detector:string;detector_mode:string%20%3F;date_time:datetime;cryogen:string%20%3F;frames_per_movie:integer%20%3F;grids_imaged:integer%20%3F;images_generated:integer%20%3F;binning_camera:float;beamtiltgroups:integer%20%3F;gainref_flip_rotate:string%20%3F],[BoundingBox2D]<beamtilt%200..1-++[Acquisition],[BoundingBox2D]<beamshift%200..1-++[Acquisition],[SpecialistOptics]<specialist_optics%200..1-++[Acquisition],[Any]<pixel_size%201..1-++[Acquisition],[Any]<exposure_time%200..1-++[Acquisition],[ImageSize]<image_size%200..1-++[Acquisition],[EnergyFilter]<energy_filter%200..1-++[Acquisition],[Any]<dose_per_movie%201..1-++[Acquisition],[Range]<temperature%200..1-++[Acquisition],[Range]<calibrated_defocus%200..1-++[Acquisition],[Range]<nominal_defocus%200..1-++[Acquisition],[Acquisition]^-[AcquisitionTomo])
 
 ## Children
 
@@ -52,7 +52,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Acquisition](https://w3id.or
      * Range: [String](types/String.md)
  * [Acquisition➞dose_per_movie](Acquisition_dose_per_movie.md)  <sub>1..1</sub>
      * Description: Average dose per image/movie/tilt - given in electrons per square Angstrom
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [energy_filter](energy_filter.md)  <sub>0..1</sub>
      * Description: Wether an energy filter was used and its specifics.
      * Range: [EnergyFilter](EnergyFilter.md)
@@ -64,7 +64,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Acquisition](https://w3id.or
      * Range: [Datetime](types/Datetime.md)
  * [exposure_time](exposure_time.md)  <sub>0..1</sub>
      * Description: Time of data acquisition per movie/tilt - in s
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [cryogen](cryogen.md)  <sub>0..1</sub>
      * Description: Cryogen used in cooling the instrument and sample, usually nitrogen
      * Range: [String](types/String.md)
@@ -82,7 +82,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Acquisition](https://w3id.or
      * Range: [Float](types/Float.md)
  * [Acquisition➞pixel_size](Acquisition_pixel_size.md)  <sub>1..1</sub>
      * Description: Pixel size, in Angstrom
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [specialist_optics](specialist_optics.md)  <sub>0..1</sub>
      * Description: Any type of special optics, such as a phaseplate
      * Range: [SpecialistOptics](SpecialistOptics.md)

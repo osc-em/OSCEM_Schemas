@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Instrument_acceleration_volt
 
 ## Domain and Range
 
-[Instrument](Instrument.md) &#8594;  <sub>1..1</sub> [QuantityValue](QuantityValue.md)
+[Instrument](Instrument.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
 
 ## Parents
 

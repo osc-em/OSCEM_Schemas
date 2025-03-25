@@ -6,7 +6,7 @@ Description of specimen handling.
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen](https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<temperature%200..1-++[Specimen&#124;buffer:string%20%3F;ph:float%20%3F;vitrification:boolean%20%3F;vitrification_cryogen:string%20%3F;staining:boolean%20%3F;embedding:boolean%20%3F;shadowing:boolean%20%3F],[QuantityValue]<humidity%200..1-++[Specimen],[QuantityValue]<concentration%200..1-++[Specimen],[Sample]++-%20specimen%200..1>[Specimen],[Sample]++-%20specimen(i)%200..1>[Specimen],[Sample],[QuantityValue])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<temperature%200..1-++[Specimen&#124;buffer:string%20%3F;ph:float%20%3F;vitrification:boolean%20%3F;vitrification_cryogen:string%20%3F;staining:boolean%20%3F;embedding:boolean%20%3F;shadowing:boolean%20%3F],[QuantityValue]<humidity%200..1-++[Specimen],[QuantityValue]<concentration%200..1-++[Specimen],[Sample]++-%20specimen%200..1>[Specimen],[Sample]++-%20specimen(i)%200..1>[Specimen],[Sample],[QuantityValue])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<temperature%200..1-++[Specimen&#124;buffer:string%20%3F;ph:float%20%3F;vitrification:boolean%20%3F;vitrification_cryogen:string%20%3F;staining:boolean%20%3F;embedding:boolean%20%3F;shadowing:boolean%20%3F],[Any]<humidity%200..1-++[Specimen],[Any]<concentration%200..1-++[Specimen],[Sample]++-%20specimen%200..1>[Specimen],[Sample]++-%20specimen(i)%200..1>[Specimen],[Sample],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<temperature%200..1-++[Specimen&#124;buffer:string%20%3F;ph:float%20%3F;vitrification:boolean%20%3F;vitrification_cryogen:string%20%3F;staining:boolean%20%3F;embedding:boolean%20%3F;shadowing:boolean%20%3F],[Any]<humidity%200..1-++[Specimen],[Any]<concentration%200..1-++[Specimen],[Sample]++-%20specimen%200..1>[Specimen],[Sample]++-%20specimen(i)%200..1>[Specimen],[Sample],[Any])
 
 ## Referenced by Class
 
@@ -23,7 +23,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen](https://w3id.org/o
      * Range: [String](types/String.md)
  * [Specimen➞concentration](Specimen_concentration.md)  <sub>0..1</sub>
      * Description: Concentration of the (supra)molecule in the sample, in mg/ml
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [Specimen➞ph](Specimen_ph.md)  <sub>0..1</sub>
      * Description: pH of the sample buffer
      * Range: [Float](types/Float.md)
@@ -35,10 +35,10 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen](https://w3id.org/o
      * Range: [String](types/String.md)
  * [Specimen➞humidity](Specimen_humidity.md)  <sub>0..1</sub>
      * Description: Environmental humidity just before vitrification, in %
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [Specimen➞temperature](Specimen_temperature.md)  <sub>0..1</sub>
      * Description: Environmental temperature just before vitrification, in K
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [Specimen➞staining](Specimen_staining.md)  <sub>0..1</sub>
      * Description: Whether the sample was stained
      * Range: [Boolean](types/Boolean.md)

@@ -6,7 +6,7 @@ how the frozen sample was thinned by i.e. FiB-milling
 URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/Thinning](https://w3id.org/osc-em/oscem-schemas-env-tomo/Thinning)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<target_thickness%200..1-++[Thinning&#124;method_thin:string%20%3F;instrument_thin:string%20%3F;ion_source:string%20%3F;lift_out:boolean%20%3F],[SampleEnv]++-%20thinning%200..1>[Thinning],[SampleEnv],[QuantityValue])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<target_thickness%200..1-++[Thinning&#124;method_thin:string%20%3F;instrument_thin:string%20%3F;ion_source:string%20%3F;lift_out:boolean%20%3F],[SampleEnv]++-%20thinning%200..1>[Thinning],[SampleEnv],[QuantityValue])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<target_thickness%200..1-++[Thinning&#124;method_thin:string%20%3F;instrument_thin:string%20%3F;ion_source:string%20%3F;lift_out:boolean%20%3F],[SampleEnv]++-%20thinning%200..1>[Thinning],[SampleEnv],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<target_thickness%200..1-++[Thinning&#124;method_thin:string%20%3F;instrument_thin:string%20%3F;ion_source:string%20%3F;lift_out:boolean%20%3F],[SampleEnv]++-%20thinning%200..1>[Thinning],[SampleEnv],[Any])
 
 ## Referenced by Class
 
@@ -28,7 +28,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/Thinning](https://w3id.org/
      * Range: [String](types/String.md)
  * [target_thickness](target_thickness.md)  <sub>0..1</sub>
      * Description: What was the target thickness of the lamella; in nm.
-     * Range: [QuantityValue](QuantityValue.md)
+     * Range: [Any](Any.md)
  * [lift_out](lift_out.md)  <sub>0..1</sub>
      * Description: whether a lift out was performed
      * Range: [Boolean](types/Boolean.md)

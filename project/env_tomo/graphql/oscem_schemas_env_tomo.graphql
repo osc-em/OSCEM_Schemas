@@ -1,4 +1,18 @@
 # metamodel_version: 1.7.0
+enum FreezingMethodEnum
+  {
+    plunge_freezing
+    high_pressure_freezing
+  }
+
+enum OrganizationTypeEnum
+  {
+    Academic
+    Commercial
+    Government
+    Other
+  }
+
 type Acquisition
   {
     nominalDefocus: Range
@@ -11,17 +25,17 @@ type Acquisition
     microscopeSoftware: String
     detector: String!
     detectorMode: String
-    dosePerMovie: QuantityValue!
+    dosePerMovie: Any!
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
-    exposureTime: QuantityValue
+    exposureTime: Any
     cryogen: String
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
     binningCamera: Float!
-    pixelSize: QuantityValue!
+    pixelSize: Any!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
     beamtilt: BoundingBox2D
@@ -42,17 +56,17 @@ type AcquisitionTomo
     microscopeSoftware: String
     detector: String!
     detectorMode: String
-    dosePerMovie: QuantityValue!
+    dosePerMovie: Any!
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
-    exposureTime: QuantityValue
+    exposureTime: Any
     cryogen: String
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
     binningCamera: Float!
-    pixelSize: QuantityValue!
+    pixelSize: Any!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
     beamtilt: BoundingBox2D
@@ -83,10 +97,10 @@ type Author
 
 type BoundingBox2D
   {
-    xMin: QuantityValue
-    xMax: QuantityValue
-    yMin: QuantityValue
-    yMax: QuantityValue
+    xMin: Any
+    xMax: Any
+    yMin: Any
+    yMax: Any
   }
 
 type ChromaticAberrationCorrector
@@ -127,7 +141,7 @@ type EnergyFilter
   {
     used: Boolean!
     model: String
-    widthEnergyFilter: QuantityValue!
+    widthEnergyFilter: Any!
   }
 
 type Freezing
@@ -135,8 +149,8 @@ type Freezing
     cryogenSampleEnv: String
     method: FreezingMethodEnum
     blotting: Boolean
-    humidityEnv: QuantityValue
-    temperatureEnv: QuantityValue
+    humidityEnv: Any
+    temperatureEnv: Any
     atmosphere: String
     details: String
   }
@@ -170,9 +184,9 @@ type Instrument
     illumination: String!
     imaging: String!
     electronSource: String!
-    accelerationVoltage: QuantityValue!
-    c2Aperture: QuantityValue
-    cs: QuantityValue!
+    accelerationVoltage: Any!
+    c2Aperture: Any
+    cs: Any!
   }
 
 type Organizational
@@ -197,6 +211,16 @@ type Phaseplate
     instrumentType: String!
   }
 
+type QuantitySI
+  {
+    unit: String!
+    value: Float!
+    valueSI: Float
+    unitSI: String
+    siValue: String!
+    siUnit: String!
+  }
+
 type QuantityValue
   {
     unit: String!
@@ -205,8 +229,8 @@ type QuantityValue
 
 type Range
   {
-    minimal: QuantityValue
-    maximal: QuantityValue
+    minimal: Any
+    maximal: Any
   }
 
 type SampleEnv
@@ -219,9 +243,9 @@ type SampleEnv
 
 type Series
   {
-    minimal: QuantityValue
-    maximal: QuantityValue
-    increment: QuantityValue
+    minimal: Any
+    maximal: Any
+    increment: Any
   }
 
 type SpecialistOptics
@@ -252,15 +276,15 @@ type Thinning
     methodThin: String
     instrumentThin: String
     ionSource: String
-    targetThickness: QuantityValue
+    targetThickness: Any
     liftOut: Boolean
   }
 
 type TiltAngle
   {
-    minimal: QuantityValue!
-    maximal: QuantityValue!
-    increment: QuantityValue!
+    minimal: Any!
+    maximal: Any!
+    increment: Any!
   }
 
 type TomogramFeatures
