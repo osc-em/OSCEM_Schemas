@@ -321,8 +321,8 @@
 
 
 
-    Grid --&gt; "0..1" QuantityValue : pretreatment_pressure
-    click QuantityValue href "../QuantityValue"
+    Grid --&gt; "0..1" Any : pretreatment_pressure
+    click Any href "../Any"
 
 
       Grid : pretreatment_time
@@ -330,8 +330,8 @@
 
 
 
-    Grid --&gt; "0..1" QuantityValue : pretreatment_time
-    click QuantityValue href "../QuantityValue"
+    Grid --&gt; "0..1" Any : pretreatment_time
+    click Any href "../Any"
 
 
       Grid : pretreatment_type
@@ -400,13 +400,13 @@
 </tr>
 <tr>
 <td><a href="../pretreatment_time/">pretreatment_time</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Length of time of the pretreatment in s</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../pretreatment_pressure/">pretreatment_pressure</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Pressure of the chamber during pretreatment, in Pa</td>
 <td>direct</td>
 </tr>
@@ -624,7 +624,10 @@ attributes:
     owner: Grid
     domain_of:
     - Grid
-    range: QuantityValue
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   pretreatment_pressure:
     name: pretreatment_pressure
     description: Pressure of the chamber during pretreatment, in Pa
@@ -634,7 +637,10 @@ attributes:
     owner: Grid
     domain_of:
     - Grid
-    range: QuantityValue
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   pretreatment_atmosphere:
     name: pretreatment_atmosphere
     description: Atmospheric conditions in the chamber during pretreatment, i.e.,

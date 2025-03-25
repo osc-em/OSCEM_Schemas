@@ -313,8 +313,8 @@
 
 
 
-    Thinning --&gt; "0..1" QuantityValue : target_thickness
-    click QuantityValue href "../QuantityValue"
+    Thinning --&gt; "0..1" Any : target_thickness
+    click Any href "../Any"
 
 
 
@@ -351,7 +351,7 @@
 </tr>
 <tr>
 <td><a href="../target_thickness/">target_thickness</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>What was the target thickness of the lamella; in nm</td>
 <td>direct</td>
 </tr>
@@ -467,7 +467,10 @@ attributes:
     owner: Thinning
     domain_of:
     - Thinning
-    range: QuantityValue
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   lift_out:
     name: lift_out
     description: whether a lift out was performed

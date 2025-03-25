@@ -346,8 +346,8 @@
 
 
 
-    Acquisition --&gt; "1" QuantityValue : dose_per_movie
-    click QuantityValue href "../QuantityValue"
+    Acquisition --&gt; "1" Any : dose_per_movie
+    click Any href "../Any"
 
 
       Acquisition : energy_filter
@@ -364,8 +364,8 @@
 
 
 
-    Acquisition --&gt; "0..1" QuantityValue : exposure_time
-    click QuantityValue href "../QuantityValue"
+    Acquisition --&gt; "0..1" Any : exposure_time
+    click Any href "../Any"
 
 
       Acquisition : frames_per_movie
@@ -416,8 +416,8 @@
 
 
 
-    Acquisition --&gt; "1" QuantityValue : pixel_size
-    click QuantityValue href "../QuantityValue"
+    Acquisition --&gt; "1" Any : pixel_size
+    click Any href "../Any"
 
 
       Acquisition : specialist_optics
@@ -514,7 +514,7 @@
 </tr>
 <tr>
 <td><a href="../dose_per_movie/">dose_per_movie</a></td>
-<td>1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Average dose per image/movie/tilt - given in electrons per square Angstrom</td>
 <td>direct</td>
 </tr>
@@ -538,7 +538,7 @@
 </tr>
 <tr>
 <td><a href="../exposure_time/">exposure_time</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Time of data acquisition per movie/tilt - in s</td>
 <td>direct</td>
 </tr>
@@ -574,7 +574,7 @@
 </tr>
 <tr>
 <td><a href="../pixel_size/">pixel_size</a></td>
-<td>1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Pixel size, in Angstrom</td>
 <td>direct</td>
 </tr>
@@ -847,8 +847,11 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: QuantityValue
+    range: Any
     required: true
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   energy_filter:
     name: energy_filter
     description: Wether an energy filter was used and its specifics.
@@ -889,7 +892,10 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: QuantityValue
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   cryogen:
     name: cryogen
     description: Cryogen used in cooling the instrument and sample, usually nitrogen
@@ -954,8 +960,11 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: QuantityValue
+    range: Any
     required: true
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   specialist_optics:
     name: specialist_optics
     description: Any type of special optics, such as a phaseplate

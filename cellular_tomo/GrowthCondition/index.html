@@ -313,8 +313,8 @@
 
 
 
-    GrowthCondition --&gt; "0..1" QuantityValue : temperature_growth
-    click QuantityValue href "../QuantityValue"
+    GrowthCondition --&gt; "0..1" Any : temperature_growth
+    click Any href "../Any"
 
 
       GrowthCondition : treatment
@@ -365,7 +365,7 @@
 </tr>
 <tr>
 <td><a href="../temperature_growth/">temperature_growth</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>temperature of the sample; in K</td>
 <td>direct</td>
 </tr>
@@ -499,7 +499,10 @@ attributes:
     owner: GrowthCondition
     domain_of:
     - GrowthCondition
-    range: QuantityValue
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
 
 </code></pre>
 </details>

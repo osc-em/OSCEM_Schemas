@@ -323,8 +323,8 @@
 
 
 
-    OverallMolecule --&gt; "0..1" QuantityValue : molecular_weight
-    click QuantityValue href "../QuantityValue"
+    OverallMolecule --&gt; "0..1" Any : molecular_weight
+    click Any href "../Any"
 
 
       OverallMolecule : name_sample
@@ -365,7 +365,7 @@
 </tr>
 <tr>
 <td><a href="../molecular_weight/">molecular_weight</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Molecular weight in Da</td>
 <td>direct</td>
 </tr>
@@ -515,7 +515,10 @@ attributes:
     owner: OverallMolecule
     domain_of:
     - OverallMolecule
-    range: QuantityValue
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   assembly:
     name: assembly
     description: What type of higher order structure your sample forms - if any.
