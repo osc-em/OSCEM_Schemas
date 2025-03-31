@@ -6,7 +6,7 @@ size of a 2D image (in integer units)
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/ImageSize](https://w3id.org/osc-em/oscem-schemas-spa/ImageSize)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Acquisition]++-%20image_size%200..1>[ImageSize&#124;height:integer%20%3F;width:integer%20%3F],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Acquisition]++-%20image_size%200..1>[ImageSize&#124;height:integer%20%3F;width:integer%20%3F],[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Acquisition]++-%20image_size%200..1>[ImageSize&#124;height_im:integer%20%3F;width_im:integer%20%3F],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Acquisition]++-%20image_size%200..1>[ImageSize&#124;height_im:integer%20%3F;width_im:integer%20%3F],[Acquisition])
 
 ## Referenced by Class
 
@@ -17,9 +17,9 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/ImageSize](https://w3id.org/osc-
 
 ### Own
 
- * [height](height.md)  <sub>0..1</sub>
+ * [height_im](height_im.md)  <sub>0..1</sub>
      * Description: The height of a given item - unit depends on item
      * Range: [Integer](types/Integer.md)
- * [width](width.md)  <sub>0..1</sub>
+ * [width_im](width_im.md)  <sub>0..1</sub>
      * Description: The width of a given item - unit depends on item
      * Range: [Integer](types/Integer.md)

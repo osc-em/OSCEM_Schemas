@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_spa.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-03-03T13:34:10
+# Generation date: 2025-03-31T15:14:17
 # Schema: oscem-schemas-spa
 #
 # id: https://w3id.org/osc-em/oscem-schemas-spa
@@ -447,15 +447,15 @@ class Person(YAMLRoot):
     class_name: ClassVar[str] = "Person"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Person")
 
-    name: Optional[str] = None
+    last_name: Optional[str] = None
     first_name: Optional[str] = None
     work_status: Optional[Union[bool, Bool]] = None
     email: Optional[str] = None
     work_phone: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.last_name is not None and not isinstance(self.last_name, str):
+            self.last_name = str(self.last_name)
 
         if self.first_name is not None and not isinstance(self.first_name, str):
             self.first_name = str(self.first_name)
@@ -485,7 +485,7 @@ class Author(Person):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/Author")
 
     type_org: Union[str, "OrganizationTypeEnum"] = None
-    name: str = None
+    last_name: str = None
     first_name: str = None
     email: str = None
     orcid: Optional[str] = None
@@ -499,10 +499,10 @@ class Author(Person):
         if not isinstance(self.type_org, OrganizationTypeEnum):
             self.type_org = OrganizationTypeEnum(self.type_org)
 
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self._is_empty(self.last_name):
+            self.MissingRequiredField("last_name")
+        if not isinstance(self.last_name, str):
+            self.last_name = str(self.last_name)
 
         if self._is_empty(self.first_name):
             self.MissingRequiredField("first_name")
@@ -1010,15 +1010,15 @@ class ImageSize(YAMLRoot):
     class_name: ClassVar[str] = "ImageSize"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/ImageSize")
 
-    height: Optional[int] = None
-    width: Optional[int] = None
+    height_im: Optional[int] = None
+    width_im: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.height is not None and not isinstance(self.height, int):
-            self.height = int(self.height)
+        if self.height_im is not None and not isinstance(self.height_im, int):
+            self.height_im = int(self.height_im)
 
-        if self.width is not None and not isinstance(self.width, int):
-            self.width = int(self.width)
+        if self.width_im is not None and not isinstance(self.width_im, int):
+            self.width_im = int(self.width_im)
 
         super().__post_init__(**kwargs)
 
@@ -1659,7 +1659,7 @@ class AssemblyEnum(EnumDefinitionImpl):
         setattr(cls, "HELICAL ARRAY",
             PermissibleValue(
                 text="HELICAL ARRAY",
-                description="If your protein (complex) of interest is forming helical arrays (i.e. tubes)"))
+                description="If your protein (complex) of interest is forming helical arrays (e.g. tubes)"))
 
 # Slots
 class slots:
@@ -1807,8 +1807,8 @@ slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
 slots.work_phone = Slot(uri=SCHEMA.telephone, name="work_phone", curie=SCHEMA.curie('telephone'),
                    model_uri=DEFAULT_.work_phone, domain=None, range=Optional[str])
 
-slots.name = Slot(uri=SCHEMA.name, name="name", curie=SCHEMA.curie('name'),
-                   model_uri=DEFAULT_.name, domain=None, range=Optional[str])
+slots.last_name = Slot(uri=SCHEMA.name, name="last_name", curie=SCHEMA.curie('name'),
+                   model_uri=DEFAULT_.last_name, domain=None, range=Optional[str])
 
 slots.name_org = Slot(uri=ORGANIZATIONAL.name_org, name="name_org", curie=ORGANIZATIONAL.curie('name_org'),
                    model_uri=DEFAULT_.name_org, domain=None, range=Optional[str])
@@ -2023,11 +2023,11 @@ slots.maximal = Slot(uri=CUSTOM_TYPES.maximal, name="maximal", curie=CUSTOM_TYPE
 slots.increment = Slot(uri=CUSTOM_TYPES.increment, name="increment", curie=CUSTOM_TYPES.curie('increment'),
                    model_uri=DEFAULT_.increment, domain=None, range=Optional[Union[dict, Any]])
 
-slots.width = Slot(uri=CUSTOM_TYPES.width, name="width", curie=CUSTOM_TYPES.curie('width'),
-                   model_uri=DEFAULT_.width, domain=None, range=Optional[int])
+slots.width_im = Slot(uri=CUSTOM_TYPES.width_im, name="width_im", curie=CUSTOM_TYPES.curie('width_im'),
+                   model_uri=DEFAULT_.width_im, domain=None, range=Optional[int])
 
-slots.height = Slot(uri=CUSTOM_TYPES.height, name="height", curie=CUSTOM_TYPES.curie('height'),
-                   model_uri=DEFAULT_.height, domain=None, range=Optional[int])
+slots.height_im = Slot(uri=CUSTOM_TYPES.height_im, name="height_im", curie=CUSTOM_TYPES.curie('height_im'),
+                   model_uri=DEFAULT_.height_im, domain=None, range=Optional[int])
 
 slots.x_min = Slot(uri=CUSTOM_TYPES.x_min, name="x_min", curie=CUSTOM_TYPES.curie('x_min'),
                    model_uri=DEFAULT_.x_min, domain=None, range=Optional[Union[dict, Any]])
@@ -2278,8 +2278,8 @@ slots.Organizational_authors = Slot(uri=ORGANIZATIONAL.authors, name="Organizati
 slots.Organizational_funder = Slot(uri=ORGANIZATIONAL.funder, name="Organizational_funder", curie=ORGANIZATIONAL.curie('funder'),
                    model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]])
 
-slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie('name'),
-                   model_uri=DEFAULT_.Author_name, domain=Author, range=str)
+slots.Author_last_name = Slot(uri=SCHEMA.name, name="Author_last_name", curie=SCHEMA.curie('name'),
+                   model_uri=DEFAULT_.Author_last_name, domain=Author, range=str)
 
 slots.Author_first_name = Slot(uri=ORGANIZATIONAL.first_name, name="Author_first_name", curie=ORGANIZATIONAL.curie('first_name'),
                    model_uri=DEFAULT_.Author_first_name, domain=Author, range=str)

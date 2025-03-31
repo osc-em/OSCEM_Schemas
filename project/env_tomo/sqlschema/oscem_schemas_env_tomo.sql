@@ -17,8 +17,8 @@
 --     * Slot: maximal_id Description: Maximal value of a given dataset property
 -- # Class: "ImageSize" Description: "size of a 2D image (in integer units)"
 --     * Slot: id Description: 
---     * Slot: height Description: The height of a given item - unit depends on item
---     * Slot: width Description: The width of a given item - unit depends on item
+--     * Slot: height_im Description: The height of a given item - unit depends on item
+--     * Slot: width_im Description: The width of a given item - unit depends on item
 -- # Class: "BoundingBox2D" Description: "an axis-aligned 2D bounding box (float units)"
 --     * Slot: id Description: 
 --     * Slot: x_min_id Description: minimum x
@@ -177,7 +177,7 @@
 --     * Slot: id Description: 
 -- # Class: "Person" Description: "personal information"
 --     * Slot: id Description: 
---     * Slot: name Description: name
+--     * Slot: last_name Description: author_name
 --     * Slot: first_name Description: first name
 --     * Slot: work_status Description: work status
 --     * Slot: email Description: email
@@ -189,7 +189,7 @@
 --     * Slot: role Description: Role of the author, for example principal investigator
 --     * Slot: name_org Description: Name of the organization
 --     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
---     * Slot: name Description: name
+--     * Slot: last_name Description: author_name
 --     * Slot: first_name Description: first name
 --     * Slot: work_status Description: work status
 --     * Slot: email Description: email
@@ -235,8 +235,8 @@ CREATE TABLE "Any" (
 );
 CREATE TABLE "ImageSize" (
 	id INTEGER NOT NULL, 
-	height INTEGER, 
-	width INTEGER, 
+	height_im INTEGER, 
+	width_im INTEGER, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "QuantityValue" (
@@ -293,7 +293,7 @@ CREATE TABLE "Organizational" (
 );
 CREATE TABLE "Person" (
 	id INTEGER NOT NULL, 
-	name TEXT, 
+	last_name TEXT, 
 	first_name TEXT, 
 	work_status BOOLEAN, 
 	email TEXT, 
@@ -307,7 +307,7 @@ CREATE TABLE "Author" (
 	role TEXT, 
 	name_org TEXT, 
 	type_org VARCHAR(10) NOT NULL, 
-	name TEXT NOT NULL, 
+	last_name TEXT NOT NULL, 
 	first_name TEXT NOT NULL, 
 	work_status BOOLEAN, 
 	email TEXT NOT NULL, 

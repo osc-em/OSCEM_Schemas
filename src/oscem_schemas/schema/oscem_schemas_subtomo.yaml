@@ -10,8 +10,11 @@ see_also:
 
 prefixes:
   linkml: https://w3id.org/linkml/
+#  cryoet: https://github.com/cryo-et-standards/cryoet-geometry/tree/main/schema/linkml/
+#  cryoet_raw: https://raw.githubusercontent.com/osc-em/cryoet-geometry/refs/heads/main/merged.yaml
+  cryoet: https://raw.githubusercontent.com/osc-em/cryoet-geometry/refs/heads/main/schema/linkml/
 
-#default_prefix: oscem_tomo
+#default_prefix: cryoet
 
 #default_range: string
 
@@ -23,12 +26,22 @@ imports:
   - ./tomography
   - ./organizational
   - ./emdataset
+  - ./entities
+  # - cryoet:entities
+  # - cryoet:alignment
+  # - https://raw.githubusercontent.com/osc-em/cryoet-geometry/refs/heads/main/schema/linkml/coordinate_systems
+#  - https://raw.githubusercontent.com/osc-em/cryoet-geometry/refs/heads/main/schema/linkml/entities
+#  - https://raw.githubusercontent.com/osc-em/cryoet-geometry/refs/heads/main/entities_merge
+#  - https://raw.githubusercontent.com/cryo-et-standards/cryoet-geometry/refs/heads/main/schema/linkml/entities
+#  - ./cryoet/entities_merge
 
 classes:
   EMDatasetTomo:
     is_a: EMDatasetBase
     tree_root: true
     description: cryo electron tomography dataset, with a focus on a single protein (complex) & subtomogram averaging
+    slots:
+    - processing
     slot_usage:
       acquisition:
         range: AcquisitionTomo
@@ -46,6 +59,26 @@ classes:
         description: Information on authors and grants
         range: Organizational
         required: true
+  Processing:
+    description: Information on the processing of tomography datasets, using the cryoET metadata standard
+    attributes:
+      region:
+        description: Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen.
+        range: Region
+      average:
+        description: A particle averaging experiment.
+        range: Average
+      movie_stack_collection:
+        description: A collection of movie stacks using the same gain and defect files.
+        range: MovieStackCollection
+      dataset:
+        description: A dataset
+        range: Dataset
 
+
+slots:
+  processing:
+    description: Processing information on a given dataset
+    range: Processing
 
 

@@ -6,7 +6,7 @@ Details on the person performing the experiment.
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Author](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Author)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;name:string;first_name:string;email:string;work_status(i):boolean%20%3F;work_phone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;name:string;first_name:string;email:string;work_status(i):boolean%20%3F;work_phone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;last_name:string;first_name:string;email:string;work_status(i):boolean%20%3F;work_phone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;last_name:string;first_name:string;email:string;work_status(i):boolean%20%3F;work_phone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])
 
 ## Parents
 
@@ -37,8 +37,8 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Author](https://w3id.o
  * [Author➞type_org](Author_type_org.md)  <sub>1..1</sub>
      * Description: Type of organization, academic, commercial, governmental, etc.
      * Range: [OrganizationTypeEnum](OrganizationTypeEnum.md)
- * [Author➞name](Author_name.md)  <sub>1..1</sub>
-     * Description: name
+ * [Author➞last_name](Author_last_name.md)  <sub>1..1</sub>
+     * Description: author_name
      * Range: [String](types/String.md)
  * [Author➞first_name](Author_first_name.md)  <sub>1..1</sub>
      * Description: first name

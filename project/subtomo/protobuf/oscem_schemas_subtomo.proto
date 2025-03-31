@@ -32,6 +32,13 @@ message Acquisition
   integer beamtiltgroups = 0
   string gainrefFlipRotate = 0
  }
+// Metadata concerning the acquisition process.
+message AcquisitionMetadataMixin
+ {
+  float nominalTiltAngle = 0
+  float accumulatedDose = 0
+  cTFMetadata ctfMetadata = 0
+ }
 message AcquisitionTomo
  {
   range nominalDefocus = 0
@@ -64,6 +71,25 @@ message AcquisitionTomo
   float tiltAxisAngle = 0
   tiltAngle tiltAngle = 0
  }
+// An affine transformation
+message Affine
+ {
+  string name = 0
+  string input = 0
+  string output = 0
+  transformationType transformationType = 0
+  integer affine = 0
+ }
+// The tomographic alignment for a tilt series.
+message Alignment
+ {
+ repeated  projectionAlignment projectionAlignments = 0
+ }
+// A primitive annotation.
+message Annotation
+ {
+  string path = 0
+ }
 // Details on the person performing the experiment.
 message Author
  {
@@ -74,9 +100,29 @@ message Author
   string role = 0
   string nameOrg = 0
   organizationTypeEnum typeOrg = 0
-  string name = 0
+  string lastName = 0
   string firstName = 0
   string email = 0
+ }
+// A particle averaging experiment.
+message Average
+ {
+  string name = 0
+ repeated  annotation annotations = 0
+ repeated  particleMap particleMaps = 0
+ }
+// An axis in a coordinate system
+message Axis
+ {
+  string axisName = 0
+  string axisUnit = 0
+  axisType axisType = 0
+ }
+// Axis name to Axis name mapping
+message AxisNameMapping
+ {
+  string axis1Name = 0
+  string axis2Name = 0
  }
 // an axis-aligned 2D bounding box (float units)
 message BoundingBox2D
@@ -92,6 +138,49 @@ message ChromaticAberrationCorrector
   boolean used = 0
   string instrumentType = 0
  }
+// A coordinate system
+message CoordinateSystem
+ {
+  string name = 0
+ repeated  axis axes = 0
+ }
+// A coordinate transformation
+message CoordinateTransformation
+ {
+  transformationType transformationType = 0
+  string name = 0
+  string input = 0
+  string output = 0
+ }
+// Coordinate system mixins for annotations.
+message CoordMetaMixin
+ {
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// A set of CTF patameters for an image.
+message CTFMetadata
+ {
+  float defocusU = 0
+  float defocusV = 0
+  float defocusAngle = 0
+ }
+// A dataset
+message Dataset
+ {
+  string name = 0
+ repeated  region regions = 0
+ repeated  average averages = 0
+ }
+// A detector defect file.
+message DefectFile
+ {
+  integer width = 0
+  integer height = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+  string path = 0
+ }
 message Descriptors
  {
   string descriptorName = 0
@@ -100,6 +189,7 @@ message Descriptors
 // cryo electron tomography dataset, with a focus on a single protein (complex) & subtomogram averaging
 message EMDatasetTomo
  {
+  processing processing = 0
   acquisitionTomo acquisition = 0
   instrument instrument = 0
   sample sample = 0
@@ -118,6 +208,15 @@ message Funder
   string funderName = 0
   organizationTypeEnum typeOrg = 0
   string country = 0
+ }
+// A gain reference file.
+message GainFile
+ {
+  integer width = 0
+  integer height = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+  string path = 0
  }
 // Grant
 message Grant
@@ -144,11 +243,46 @@ message Grid
   any pretreatmentPressure = 0
   string pretreatmentAtmosphere = 0
  }
+// The identity transformation
+message Identity
+ {
+  string name = 0
+  string input = 0
+  string output = 0
+  transformationType transformationType = 0
+ }
+// A 2D image.
+message Image2D
+ {
+  integer width = 0
+  integer height = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// A 3D image.
+message Image3D
+ {
+  integer width = 0
+  integer height = 0
+  integer depth = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
 // size of a 2D image (in integer units)
 message ImageSize
  {
-  integer height = 0
-  integer width = 0
+  integer heightIm = 0
+  integer widthIm = 0
+ }
+// A stack of 2D images.
+message ImageStack2D
+ {
+ repeated  image2D images2D = 0
+ }
+// A stack of 3D images.
+message ImageStack3D
+ {
+ repeated  image3D images3D = 0
  }
 // Instrument values, mostly constant across a data collection.
 message Instrument
@@ -168,6 +302,15 @@ message Ligand
   string smiles = 0
   string reference = 0
  }
+// Axis permutation transformation
+message MapAxis
+ {
+  string name = 0
+  string input = 0
+  string output = 0
+  transformationType transformationType = 0
+ repeated  axisNameMapping mapAxis = 0
+ }
 // More detailed information about individual molecules.
 message Molecule
  {
@@ -180,6 +323,37 @@ message Molecule
   string expressionSystem = 0
   string taxonomyIdExpression = 0
   string geneName = 0
+ }
+// An individual movie frame
+message MovieFrame
+ {
+  integer width = 0
+  integer height = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+  string path = 0
+  integer section = 0
+  float nominalTiltAngle = 0
+  float accumulatedDose = 0
+  cTFMetadata ctfMetadata = 0
+ }
+// A stack of movie frames.
+message MovieStack
+ {
+  string path = 0
+ repeated  movieFrame imagesMovie = 0
+ }
+// A collection of movie stacks using the same gain and defect files.
+message MovieStackCollection
+ {
+ repeated  movieStackSeries movieStacks = 0
+  gainFile gainFile = 0
+  defectFile defectFile = 0
+ }
+// A group of movie stacks that belong to a single tilt series.
+message MovieStackSeries
+ {
+ repeated  movieStack stacks = 0
  }
 // Overarching category for authors and grants
 message Organizational
@@ -197,10 +371,20 @@ message OverallMolecule
   any molecularWeight = 0
   assemblyEnum assembly = 0
  }
+// A 3D particle density map.
+message ParticleMap
+ {
+  integer width = 0
+  integer height = 0
+  integer depth = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+  string path = 0
+ }
 // personal information
 message Person
  {
-  string name = 0
+  string lastName = 0
   string firstName = 0
   boolean workStatus = 0
   string email = 0
@@ -211,6 +395,107 @@ message Phaseplate
  {
   boolean used = 0
   string instrumentType = 0
+ }
+// A set of 2D points with an associated rotation matrix.
+message PointMatrixSet2D
+ {
+  string path = 0
+  float origin2D = 0
+  float matrix2D = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// A set of 3D points with an associated rotation matrix.
+message PointMatrixSet3D
+ {
+  string path = 0
+  float origin3D = 0
+  float matrix3D = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// A set of 2D point annotations.
+message PointSet2D
+ {
+  string path = 0
+  float origin2D = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// A set of 3D point annotations.
+message PointSet3D
+ {
+  string path = 0
+  float origin3D = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// A set of 2D points with an associated direction vector.
+message PointVectorSet2D
+ {
+  string path = 0
+  float origin2D = 0
+  float vector2D = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// A set of 3D points with an associated direction vector.
+message PointVectorSet3D
+ {
+  string path = 0
+  float origin3D = 0
+  float vector3D = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// An annotation image with real-valued labels.
+message ProbabilityMap2D
+ {
+  string path = 0
+  integer width = 0
+  integer height = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// An annotation volume with real-valued labels.
+message ProbabilityMap3D
+ {
+  string path = 0
+  integer width = 0
+  integer height = 0
+  integer depth = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// Information on the processing of tomography datasets, using the cryoET metadata standard
+message Processing
+ {
+  region region = 0
+  average average = 0
+  movieStackCollection movieStackCollection = 0
+  dataset dataset = 0
+ }
+// The tomographic alignment for a single projection.
+message ProjectionAlignment
+ {
+  string name = 0
+  transformationType transformationType = 0
+  string input = 0
+  string output = 0
+ repeated  coordinateTransformation sequence = 0
+ }
+// A projection image.
+message ProjectionImage
+ {
+  integer width = 0
+  integer height = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+  string path = 0
+  integer section = 0
+  float nominalTiltAngle = 0
+  float accumulatedDose = 0
+  cTFMetadata ctfMetadata = 0
  }
 // unit value extended to have two additional fields si_value and si_unit
 message QuantitySI
@@ -234,6 +519,15 @@ message Range
   any minimal = 0
   any maximal = 0
  }
+// Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen.
+message Region
+ {
+ repeated  annotation annotations = 0
+ repeated  movieStackCollection movieStackCollections = 0
+ repeated  tiltSeries tiltSeries = 0
+ repeated  alignment alignments = 0
+ repeated  tomogram tomograms = 0
+ }
 // Unifying class to describe the full sample.
 message Sample
  {
@@ -242,6 +536,43 @@ message Sample
  repeated  ligand ligands = 0
   specimen specimen = 0
   grid grid = 0
+ }
+// A scaling transformation
+message Scale
+ {
+  string name = 0
+  string input = 0
+  string output = 0
+  transformationType transformationType = 0
+ repeated  float scale = 0
+ }
+// An annotation image with categorical labels.
+message SegmentationMask2D
+ {
+  string path = 0
+  integer width = 0
+  integer height = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// An annotation volume with categorical labels.
+message SegmentationMask3D
+ {
+  string path = 0
+  integer width = 0
+  integer height = 0
+  integer depth = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+ }
+// A sequence of transformations
+message Sequence
+ {
+  string name = 0
+  string input = 0
+  string output = 0
+  transformationType transformationType = 0
+ repeated  coordinateTransformation sequence = 0
  }
 // A series of numbers constructed from min, max, and increment
 message Series
@@ -277,10 +608,56 @@ message SphericalAberrationCorrector
   boolean used = 0
   string instrumentType = 0
  }
+// A croppecd projection image.
+message SubProjectionImage
+ {
+  integer width = 0
+  integer height = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+  string path = 0
+  integer section = 0
+  float nominalTiltAngle = 0
+  float accumulatedDose = 0
+  cTFMetadata ctfMetadata = 0
+  integer particleIndex = 0
+ }
 // The min, max and increment of the tilt angle in a tomography session. Unit is degree.
 message TiltAngle
  {
   any minimal = 0
   any maximal = 0
   any increment = 0
+ }
+// A stack of projection images.
+message TiltSeries
+ {
+ repeated  projectionImage imagesTilt = 0
+  string path = 0
+ }
+// A 3D tomogram.
+message Tomogram
+ {
+  integer width = 0
+  integer height = 0
+  integer depth = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
+  string path = 0
+ }
+// A translation transformation
+message Translation
+ {
+  string name = 0
+  string input = 0
+  string output = 0
+  transformationType transformationType = 0
+ repeated  float translation = 0
+ }
+// A mesh annotation.
+message TriMesh
+ {
+  string path = 0
+ repeated  coordinateSystem coordinateSystems = 0
+ repeated  coordinateTransformation coordinateTransformations = 0
  }

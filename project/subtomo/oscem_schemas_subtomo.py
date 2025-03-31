@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_subtomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-03-03T13:35:01
+# Generation date: 2025-03-31T15:15:05
 # Schema: oscem-schemas-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-subtomo
@@ -68,7 +68,14 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 ACQUISITION = CurieNamespace('acquisition', 'https://w3id.org/osc-em/acquisition')
+ALIGNMENT = CurieNamespace('alignment', 'https://w3id.org/cetmd/alignment/')
+ANNOTATION = CurieNamespace('annotation', 'https://w3id.org/cetmd/annotation/')
+COORD_TRANSFORMS = CurieNamespace('coord_transforms', 'https://w3id.org/cetmd/coord_transforms/')
+COORDINATE_SYSTEMS = CurieNamespace('coordinate_systems', 'https://w3id.org/cetmd/coordinate_systems/')
+CRYOET = CurieNamespace('cryoet', 'https://raw.githubusercontent.com/osc-em/cryoet-geometry/refs/heads/main/schema/linkml/')
 CUSTOM_TYPES = CurieNamespace('custom_types', 'https://w3id.org/osc-em/custom_types')
+IMAGE = CurieNamespace('image', 'https://w3id.org/cetmd/image/')
+IMAGE_ENTITIES = CurieNamespace('image_entities', 'https://w3id.org/cetmd/image_entities/')
 INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/osc-em/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/osc-em/organizational/')
@@ -84,6 +91,39 @@ DEFAULT_ = CurieNamespace('', 'https://w3id.org/osc-em/oscem-schemas-subtomo/')
 
 # Class references
 
+
+
+@dataclass(repr=False)
+class Processing(YAMLRoot):
+    """
+    Information on the processing of tomography datasets, using the cryoET metadata standard
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Processing")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Processing"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Processing")
+
+    region: Optional[Union[dict, "Region"]] = None
+    average: Optional[Union[dict, "Average"]] = None
+    movie_stack_collection: Optional[Union[dict, "MovieStackCollection"]] = None
+    dataset: Optional[Union[dict, "Dataset"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.region is not None and not isinstance(self.region, Region):
+            self.region = Region(**as_dict(self.region))
+
+        if self.average is not None and not isinstance(self.average, Average):
+            self.average = Average(**as_dict(self.average))
+
+        if self.movie_stack_collection is not None and not isinstance(self.movie_stack_collection, MovieStackCollection):
+            self.movie_stack_collection = MovieStackCollection(**as_dict(self.movie_stack_collection))
+
+        if self.dataset is not None and not isinstance(self.dataset, Dataset):
+            self.dataset = Dataset(**as_dict(self.dataset))
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -739,15 +779,15 @@ class Person(YAMLRoot):
     class_name: ClassVar[str] = "Person"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Person")
 
-    name: Optional[str] = None
+    last_name: Optional[str] = None
     first_name: Optional[str] = None
     work_status: Optional[Union[bool, Bool]] = None
     email: Optional[str] = None
     work_phone: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.last_name is not None and not isinstance(self.last_name, str):
+            self.last_name = str(self.last_name)
 
         if self.first_name is not None and not isinstance(self.first_name, str):
             self.first_name = str(self.first_name)
@@ -777,7 +817,7 @@ class Author(Person):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Author")
 
     type_org: Union[str, "OrganizationTypeEnum"] = None
-    name: str = None
+    last_name: str = None
     first_name: str = None
     email: str = None
     orcid: Optional[str] = None
@@ -791,10 +831,10 @@ class Author(Person):
         if not isinstance(self.type_org, OrganizationTypeEnum):
             self.type_org = OrganizationTypeEnum(self.type_org)
 
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self._is_empty(self.last_name):
+            self.MissingRequiredField("last_name")
+        if not isinstance(self.last_name, str):
+            self.last_name = str(self.last_name)
 
         if self._is_empty(self.first_name):
             self.MissingRequiredField("first_name")
@@ -918,6 +958,7 @@ class EMDatasetTomo(EMDatasetBase):
     instrument: Union[dict, Instrument] = None
     sample: Union[dict, Sample] = None
     organizational: Union[dict, Organizational] = None
+    processing: Optional[Union[dict, Processing]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.acquisition):
@@ -939,6 +980,143 @@ class EMDatasetTomo(EMDatasetBase):
             self.MissingRequiredField("organizational")
         if not isinstance(self.organizational, Organizational):
             self.organizational = Organizational(**as_dict(self.organizational))
+
+        if self.processing is not None and not isinstance(self.processing, Processing):
+            self.processing = Processing(**as_dict(self.processing))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Region(YAMLRoot):
+    """
+    Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/cetmd/entities/Region")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Region"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Region")
+
+    annotations: Optional[Union[Union[dict, "Annotation"], List[Union[dict, "Annotation"]]]] = empty_list()
+    movie_stack_collections: Optional[Union[Union[dict, "MovieStackCollection"], List[Union[dict, "MovieStackCollection"]]]] = empty_list()
+    tilt_series: Optional[Union[Union[dict, "TiltSeries"], List[Union[dict, "TiltSeries"]]]] = empty_list()
+    alignments: Optional[Union[Union[dict, "Alignment"], List[Union[dict, "Alignment"]]]] = empty_list()
+    tomograms: Optional[Union[Union[dict, "Tomogram"], List[Union[dict, "Tomogram"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.annotations, list):
+            self.annotations = [self.annotations] if self.annotations is not None else []
+        self.annotations = [v if isinstance(v, Annotation) else Annotation(**as_dict(v)) for v in self.annotations]
+
+        if not isinstance(self.movie_stack_collections, list):
+            self.movie_stack_collections = [self.movie_stack_collections] if self.movie_stack_collections is not None else []
+        self.movie_stack_collections = [v if isinstance(v, MovieStackCollection) else MovieStackCollection(**as_dict(v)) for v in self.movie_stack_collections]
+
+        if not isinstance(self.tilt_series, list):
+            self.tilt_series = [self.tilt_series] if self.tilt_series is not None else []
+        self.tilt_series = [v if isinstance(v, TiltSeries) else TiltSeries(**as_dict(v)) for v in self.tilt_series]
+
+        if not isinstance(self.alignments, list):
+            self.alignments = [self.alignments] if self.alignments is not None else []
+        self.alignments = [v if isinstance(v, Alignment) else Alignment(**as_dict(v)) for v in self.alignments]
+
+        if not isinstance(self.tomograms, list):
+            self.tomograms = [self.tomograms] if self.tomograms is not None else []
+        self.tomograms = [v if isinstance(v, Tomogram) else Tomogram(**as_dict(v)) for v in self.tomograms]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Average(YAMLRoot):
+    """
+    A particle averaging experiment.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/cetmd/entities/Average")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Average"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Average")
+
+    name: Optional[str] = None
+    annotations: Optional[Union[Union[dict, "Annotation"], List[Union[dict, "Annotation"]]]] = empty_list()
+    particle_maps: Optional[Union[Union[dict, "ParticleMap"], List[Union[dict, "ParticleMap"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if not isinstance(self.annotations, list):
+            self.annotations = [self.annotations] if self.annotations is not None else []
+        self.annotations = [v if isinstance(v, Annotation) else Annotation(**as_dict(v)) for v in self.annotations]
+
+        if not isinstance(self.particle_maps, list):
+            self.particle_maps = [self.particle_maps] if self.particle_maps is not None else []
+        self.particle_maps = [v if isinstance(v, ParticleMap) else ParticleMap(**as_dict(v)) for v in self.particle_maps]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MovieStackCollection(YAMLRoot):
+    """
+    A collection of movie stacks using the same gain and defect files.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/cetmd/entities/MovieStackCollection")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "MovieStackCollection"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/MovieStackCollection")
+
+    movie_stacks: Optional[Union[Union[dict, "MovieStackSeries"], List[Union[dict, "MovieStackSeries"]]]] = empty_list()
+    gain_file: Optional[Union[dict, "GainFile"]] = None
+    defect_file: Optional[Union[dict, "DefectFile"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.movie_stacks, list):
+            self.movie_stacks = [self.movie_stacks] if self.movie_stacks is not None else []
+        self.movie_stacks = [v if isinstance(v, MovieStackSeries) else MovieStackSeries(**as_dict(v)) for v in self.movie_stacks]
+
+        if self.gain_file is not None and not isinstance(self.gain_file, GainFile):
+            self.gain_file = GainFile(**as_dict(self.gain_file))
+
+        if self.defect_file is not None and not isinstance(self.defect_file, DefectFile):
+            self.defect_file = DefectFile(**as_dict(self.defect_file))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Dataset(YAMLRoot):
+    """
+    A dataset
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/cetmd/entities/Dataset")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Dataset"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Dataset")
+
+    name: Optional[str] = None
+    regions: Optional[Union[Union[dict, Region], List[Union[dict, Region]]]] = empty_list()
+    averages: Optional[Union[Union[dict, Average], List[Union[dict, Average]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if not isinstance(self.regions, list):
+            self.regions = [self.regions] if self.regions is not None else []
+        self.regions = [v if isinstance(v, Region) else Region(**as_dict(v)) for v in self.regions]
+
+        if not isinstance(self.averages, list):
+            self.averages = [self.averages] if self.averages is not None else []
+        self.averages = [v if isinstance(v, Average) else Average(**as_dict(v)) for v in self.averages]
 
         super().__post_init__(**kwargs)
 
@@ -1002,15 +1180,15 @@ class ImageSize(YAMLRoot):
     class_name: ClassVar[str] = "ImageSize"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/ImageSize")
 
-    height: Optional[int] = None
-    width: Optional[int] = None
+    height_im: Optional[int] = None
+    width_im: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.height is not None and not isinstance(self.height, int):
-            self.height = int(self.height)
+        if self.height_im is not None and not isinstance(self.height_im, int):
+            self.height_im = int(self.height_im)
 
-        if self.width is not None and not isinstance(self.width, int):
-            self.width = int(self.width)
+        if self.width_im is not None and not isinstance(self.width_im, int):
+            self.width_im = int(self.width_im)
 
         super().__post_init__(**kwargs)
 
@@ -1136,6 +1314,1151 @@ class Descriptors(Descriptor):
 
     descriptor_name: str = None
 
+@dataclass(repr=False)
+class CTFMetadata(YAMLRoot):
+    """
+    A set of CTF patameters for an image.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["CTFMetadata"]
+    class_class_curie: ClassVar[str] = "image_entities:CTFMetadata"
+    class_name: ClassVar[str] = "CTFMetadata"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/CTFMetadata")
+
+    defocus_u: Optional[float] = None
+    defocus_v: Optional[float] = None
+    defocus_angle: Optional[float] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.defocus_u is not None and not isinstance(self.defocus_u, float):
+            self.defocus_u = float(self.defocus_u)
+
+        if self.defocus_v is not None and not isinstance(self.defocus_v, float):
+            self.defocus_v = float(self.defocus_v)
+
+        if self.defocus_angle is not None and not isinstance(self.defocus_angle, float):
+            self.defocus_angle = float(self.defocus_angle)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AcquisitionMetadataMixin(YAMLRoot):
+    """
+    Metadata concerning the acquisition process.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["AcquisitionMetadataMixin"]
+    class_class_curie: ClassVar[str] = "image_entities:AcquisitionMetadataMixin"
+    class_name: ClassVar[str] = "AcquisitionMetadataMixin"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/AcquisitionMetadataMixin")
+
+    nominal_tilt_angle: Optional[float] = None
+    accumulated_dose: Optional[float] = None
+    ctf_metadata: Optional[Union[dict, CTFMetadata]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.nominal_tilt_angle is not None and not isinstance(self.nominal_tilt_angle, float):
+            self.nominal_tilt_angle = float(self.nominal_tilt_angle)
+
+        if self.accumulated_dose is not None and not isinstance(self.accumulated_dose, float):
+            self.accumulated_dose = float(self.accumulated_dose)
+
+        if self.ctf_metadata is not None and not isinstance(self.ctf_metadata, CTFMetadata):
+            self.ctf_metadata = CTFMetadata(**as_dict(self.ctf_metadata))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MovieStack(YAMLRoot):
+    """
+    A stack of movie frames.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["MovieStack"]
+    class_class_curie: ClassVar[str] = "image_entities:MovieStack"
+    class_name: ClassVar[str] = "MovieStack"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/MovieStack")
+
+    path: Optional[str] = None
+    images_movie: Optional[Union[Union[dict, "MovieFrame"], List[Union[dict, "MovieFrame"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.path is not None and not isinstance(self.path, str):
+            self.path = str(self.path)
+
+        if not isinstance(self.images_movie, list):
+            self.images_movie = [self.images_movie] if self.images_movie is not None else []
+        self.images_movie = [v if isinstance(v, MovieFrame) else MovieFrame(**as_dict(v)) for v in self.images_movie]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MovieStackSeries(YAMLRoot):
+    """
+    A group of movie stacks that belong to a single tilt series.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["MovieStackSeries"]
+    class_class_curie: ClassVar[str] = "image_entities:MovieStackSeries"
+    class_name: ClassVar[str] = "MovieStackSeries"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/MovieStackSeries")
+
+    stacks: Optional[Union[Union[dict, MovieStack], List[Union[dict, MovieStack]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.stacks, list):
+            self.stacks = [self.stacks] if self.stacks is not None else []
+        self.stacks = [v if isinstance(v, MovieStack) else MovieStack(**as_dict(v)) for v in self.stacks]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TiltSeries(YAMLRoot):
+    """
+    A stack of projection images.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["TiltSeries"]
+    class_class_curie: ClassVar[str] = "image_entities:TiltSeries"
+    class_name: ClassVar[str] = "TiltSeries"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/TiltSeries")
+
+    images_tilt: Optional[Union[Union[dict, "ProjectionImage"], List[Union[dict, "ProjectionImage"]]]] = empty_list()
+    path: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.images_tilt, list):
+            self.images_tilt = [self.images_tilt] if self.images_tilt is not None else []
+        self.images_tilt = [v if isinstance(v, ProjectionImage) else ProjectionImage(**as_dict(v)) for v in self.images_tilt]
+
+        if self.path is not None and not isinstance(self.path, str):
+            self.path = str(self.path)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CoordMetaMixin(YAMLRoot):
+    """
+    Coordinate system mixins for annotations.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["CoordMetaMixin"]
+    class_class_curie: ClassVar[str] = "annotation:CoordMetaMixin"
+    class_name: ClassVar[str] = "CoordMetaMixin"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/CoordMetaMixin")
+
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Annotation(YAMLRoot):
+    """
+    A primitive annotation.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["Annotation"]
+    class_class_curie: ClassVar[str] = "annotation:Annotation"
+    class_name: ClassVar[str] = "Annotation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Annotation")
+
+    path: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.path is not None and not isinstance(self.path, str):
+            self.path = str(self.path)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SegmentationMask2D(Annotation):
+    """
+    An annotation image with categorical labels.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["SegmentationMask2D"]
+    class_class_curie: ClassVar[str] = "annotation:SegmentationMask2D"
+    class_name: ClassVar[str] = "SegmentationMask2D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/SegmentationMask2D")
+
+    width: Optional[int] = None
+    height: Optional[int] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.width is not None and not isinstance(self.width, int):
+            self.width = int(self.width)
+
+        if self.height is not None and not isinstance(self.height, int):
+            self.height = int(self.height)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SegmentationMask3D(Annotation):
+    """
+    An annotation volume with categorical labels.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["SegmentationMask3D"]
+    class_class_curie: ClassVar[str] = "annotation:SegmentationMask3D"
+    class_name: ClassVar[str] = "SegmentationMask3D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/SegmentationMask3D")
+
+    width: Optional[int] = None
+    height: Optional[int] = None
+    depth: Optional[int] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.width is not None and not isinstance(self.width, int):
+            self.width = int(self.width)
+
+        if self.height is not None and not isinstance(self.height, int):
+            self.height = int(self.height)
+
+        if self.depth is not None and not isinstance(self.depth, int):
+            self.depth = int(self.depth)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProbabilityMap2D(Annotation):
+    """
+    An annotation image with real-valued labels.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["ProbabilityMap2D"]
+    class_class_curie: ClassVar[str] = "annotation:ProbabilityMap2D"
+    class_name: ClassVar[str] = "ProbabilityMap2D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/ProbabilityMap2D")
+
+    width: Optional[int] = None
+    height: Optional[int] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.width is not None and not isinstance(self.width, int):
+            self.width = int(self.width)
+
+        if self.height is not None and not isinstance(self.height, int):
+            self.height = int(self.height)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProbabilityMap3D(Annotation):
+    """
+    An annotation volume with real-valued labels.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["ProbabilityMap3D"]
+    class_class_curie: ClassVar[str] = "annotation:ProbabilityMap3D"
+    class_name: ClassVar[str] = "ProbabilityMap3D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/ProbabilityMap3D")
+
+    width: Optional[int] = None
+    height: Optional[int] = None
+    depth: Optional[int] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.width is not None and not isinstance(self.width, int):
+            self.width = int(self.width)
+
+        if self.height is not None and not isinstance(self.height, int):
+            self.height = int(self.height)
+
+        if self.depth is not None and not isinstance(self.depth, int):
+            self.depth = int(self.depth)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PointSet2D(Annotation):
+    """
+    A set of 2D point annotations.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["PointSet2D"]
+    class_class_curie: ClassVar[str] = "annotation:PointSet2D"
+    class_name: ClassVar[str] = "PointSet2D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/PointSet2D")
+
+    origin2D: Optional[float] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.origin2D is not None and not isinstance(self.origin2D, float):
+            self.origin2D = float(self.origin2D)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PointSet3D(Annotation):
+    """
+    A set of 3D point annotations.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["PointSet3D"]
+    class_class_curie: ClassVar[str] = "annotation:PointSet3D"
+    class_name: ClassVar[str] = "PointSet3D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/PointSet3D")
+
+    origin3D: Optional[float] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.origin3D is not None and not isinstance(self.origin3D, float):
+            self.origin3D = float(self.origin3D)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PointVectorSet2D(Annotation):
+    """
+    A set of 2D points with an associated direction vector.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["PointVectorSet2D"]
+    class_class_curie: ClassVar[str] = "annotation:PointVectorSet2D"
+    class_name: ClassVar[str] = "PointVectorSet2D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/PointVectorSet2D")
+
+    origin2D: Optional[float] = None
+    vector2D: Optional[float] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.origin2D is not None and not isinstance(self.origin2D, float):
+            self.origin2D = float(self.origin2D)
+
+        if self.vector2D is not None and not isinstance(self.vector2D, float):
+            self.vector2D = float(self.vector2D)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PointVectorSet3D(Annotation):
+    """
+    A set of 3D points with an associated direction vector.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["PointVectorSet3D"]
+    class_class_curie: ClassVar[str] = "annotation:PointVectorSet3D"
+    class_name: ClassVar[str] = "PointVectorSet3D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/PointVectorSet3D")
+
+    origin3D: Optional[float] = None
+    vector3D: Optional[float] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.origin3D is not None and not isinstance(self.origin3D, float):
+            self.origin3D = float(self.origin3D)
+
+        if self.vector3D is not None and not isinstance(self.vector3D, float):
+            self.vector3D = float(self.vector3D)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PointMatrixSet2D(Annotation):
+    """
+    A set of 2D points with an associated rotation matrix.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["PointMatrixSet2D"]
+    class_class_curie: ClassVar[str] = "annotation:PointMatrixSet2D"
+    class_name: ClassVar[str] = "PointMatrixSet2D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/PointMatrixSet2D")
+
+    origin2D: Optional[float] = None
+    matrix2D: Optional[float] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.origin2D is not None and not isinstance(self.origin2D, float):
+            self.origin2D = float(self.origin2D)
+
+        if self.matrix2D is not None and not isinstance(self.matrix2D, float):
+            self.matrix2D = float(self.matrix2D)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PointMatrixSet3D(Annotation):
+    """
+    A set of 3D points with an associated rotation matrix.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["PointMatrixSet3D"]
+    class_class_curie: ClassVar[str] = "annotation:PointMatrixSet3D"
+    class_name: ClassVar[str] = "PointMatrixSet3D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/PointMatrixSet3D")
+
+    origin3D: Optional[float] = None
+    matrix3D: Optional[float] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.origin3D is not None and not isinstance(self.origin3D, float):
+            self.origin3D = float(self.origin3D)
+
+        if self.matrix3D is not None and not isinstance(self.matrix3D, float):
+            self.matrix3D = float(self.matrix3D)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TriMesh(Annotation):
+    """
+    A mesh annotation.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ANNOTATION["TriMesh"]
+    class_class_curie: ClassVar[str] = "annotation:TriMesh"
+    class_name: ClassVar[str] = "TriMesh"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/TriMesh")
+
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Alignment(YAMLRoot):
+    """
+    The tomographic alignment for a tilt series.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALIGNMENT["Alignment"]
+    class_class_curie: ClassVar[str] = "alignment:Alignment"
+    class_name: ClassVar[str] = "Alignment"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Alignment")
+
+    projection_alignments: Optional[Union[Union[dict, "ProjectionAlignment"], List[Union[dict, "ProjectionAlignment"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.projection_alignments, list):
+            self.projection_alignments = [self.projection_alignments] if self.projection_alignments is not None else []
+        self.projection_alignments = [v if isinstance(v, ProjectionAlignment) else ProjectionAlignment(**as_dict(v)) for v in self.projection_alignments]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Image2D(YAMLRoot):
+    """
+    A 2D image.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE["Image2D"]
+    class_class_curie: ClassVar[str] = "image:Image2D"
+    class_name: ClassVar[str] = "Image2D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Image2D")
+
+    width: Optional[int] = None
+    height: Optional[int] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.width is not None and not isinstance(self.width, int):
+            self.width = int(self.width)
+
+        if self.height is not None and not isinstance(self.height, int):
+            self.height = int(self.height)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class GainFile(Image2D):
+    """
+    A gain reference file.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["GainFile"]
+    class_class_curie: ClassVar[str] = "image_entities:GainFile"
+    class_name: ClassVar[str] = "GainFile"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/GainFile")
+
+    path: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.path is not None and not isinstance(self.path, str):
+            self.path = str(self.path)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DefectFile(Image2D):
+    """
+    A detector defect file.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["DefectFile"]
+    class_class_curie: ClassVar[str] = "image_entities:DefectFile"
+    class_name: ClassVar[str] = "DefectFile"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/DefectFile")
+
+    path: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.path is not None and not isinstance(self.path, str):
+            self.path = str(self.path)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MovieFrame(Image2D):
+    """
+    An individual movie frame
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["MovieFrame"]
+    class_class_curie: ClassVar[str] = "image_entities:MovieFrame"
+    class_name: ClassVar[str] = "MovieFrame"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/MovieFrame")
+
+    path: Optional[str] = None
+    section: Optional[int] = None
+    nominal_tilt_angle: Optional[float] = None
+    accumulated_dose: Optional[float] = None
+    ctf_metadata: Optional[Union[dict, CTFMetadata]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.path is not None and not isinstance(self.path, str):
+            self.path = str(self.path)
+
+        if self.section is not None and not isinstance(self.section, int):
+            self.section = int(self.section)
+
+        if self.nominal_tilt_angle is not None and not isinstance(self.nominal_tilt_angle, float):
+            self.nominal_tilt_angle = float(self.nominal_tilt_angle)
+
+        if self.accumulated_dose is not None and not isinstance(self.accumulated_dose, float):
+            self.accumulated_dose = float(self.accumulated_dose)
+
+        if self.ctf_metadata is not None and not isinstance(self.ctf_metadata, CTFMetadata):
+            self.ctf_metadata = CTFMetadata(**as_dict(self.ctf_metadata))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProjectionImage(Image2D):
+    """
+    A projection image.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["ProjectionImage"]
+    class_class_curie: ClassVar[str] = "image_entities:ProjectionImage"
+    class_name: ClassVar[str] = "ProjectionImage"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/ProjectionImage")
+
+    path: Optional[str] = None
+    section: Optional[int] = None
+    nominal_tilt_angle: Optional[float] = None
+    accumulated_dose: Optional[float] = None
+    ctf_metadata: Optional[Union[dict, CTFMetadata]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.path is not None and not isinstance(self.path, str):
+            self.path = str(self.path)
+
+        if self.section is not None and not isinstance(self.section, int):
+            self.section = int(self.section)
+
+        if self.nominal_tilt_angle is not None and not isinstance(self.nominal_tilt_angle, float):
+            self.nominal_tilt_angle = float(self.nominal_tilt_angle)
+
+        if self.accumulated_dose is not None and not isinstance(self.accumulated_dose, float):
+            self.accumulated_dose = float(self.accumulated_dose)
+
+        if self.ctf_metadata is not None and not isinstance(self.ctf_metadata, CTFMetadata):
+            self.ctf_metadata = CTFMetadata(**as_dict(self.ctf_metadata))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SubProjectionImage(ProjectionImage):
+    """
+    A croppecd projection image.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["SubProjectionImage"]
+    class_class_curie: ClassVar[str] = "image_entities:SubProjectionImage"
+    class_name: ClassVar[str] = "SubProjectionImage"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/SubProjectionImage")
+
+    particle_index: Optional[int] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.particle_index is not None and not isinstance(self.particle_index, int):
+            self.particle_index = int(self.particle_index)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Image3D(YAMLRoot):
+    """
+    A 3D image.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE["Image3D"]
+    class_class_curie: ClassVar[str] = "image:Image3D"
+    class_name: ClassVar[str] = "Image3D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Image3D")
+
+    width: Optional[int] = None
+    height: Optional[int] = None
+    depth: Optional[int] = None
+    coordinate_systems: Optional[Union[Union[dict, "CoordinateSystem"], List[Union[dict, "CoordinateSystem"]]]] = empty_list()
+    coordinate_transformations: Optional[Union[Union[dict, "CoordinateTransformation"], List[Union[dict, "CoordinateTransformation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.width is not None and not isinstance(self.width, int):
+            self.width = int(self.width)
+
+        if self.height is not None and not isinstance(self.height, int):
+            self.height = int(self.height)
+
+        if self.depth is not None and not isinstance(self.depth, int):
+            self.depth = int(self.depth)
+
+        self._normalize_inlined_as_dict(slot_name="coordinate_systems", slot_type=CoordinateSystem, key_name="name", keyed=False)
+
+        if not isinstance(self.coordinate_transformations, list):
+            self.coordinate_transformations = [self.coordinate_transformations] if self.coordinate_transformations is not None else []
+        self.coordinate_transformations = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.coordinate_transformations]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Tomogram(Image3D):
+    """
+    A 3D tomogram.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["Tomogram"]
+    class_class_curie: ClassVar[str] = "image_entities:Tomogram"
+    class_name: ClassVar[str] = "Tomogram"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Tomogram")
+
+    path: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.path is not None and not isinstance(self.path, str):
+            self.path = str(self.path)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ParticleMap(Image3D):
+    """
+    A 3D particle density map.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE_ENTITIES["ParticleMap"]
+    class_class_curie: ClassVar[str] = "image_entities:ParticleMap"
+    class_name: ClassVar[str] = "ParticleMap"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/ParticleMap")
+
+    path: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.path is not None and not isinstance(self.path, str):
+            self.path = str(self.path)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ImageStack2D(YAMLRoot):
+    """
+    A stack of 2D images.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE["ImageStack2D"]
+    class_class_curie: ClassVar[str] = "image:ImageStack2D"
+    class_name: ClassVar[str] = "ImageStack2D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/ImageStack2D")
+
+    images2D: Optional[Union[Union[dict, Image2D], List[Union[dict, Image2D]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.images2D, list):
+            self.images2D = [self.images2D] if self.images2D is not None else []
+        self.images2D = [v if isinstance(v, Image2D) else Image2D(**as_dict(v)) for v in self.images2D]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ImageStack3D(YAMLRoot):
+    """
+    A stack of 3D images.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = IMAGE["ImageStack3D"]
+    class_class_curie: ClassVar[str] = "image:ImageStack3D"
+    class_name: ClassVar[str] = "ImageStack3D"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/ImageStack3D")
+
+    images3D: Optional[Union[Union[dict, Image3D], List[Union[dict, Image3D]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.images3D, list):
+            self.images3D = [self.images3D] if self.images3D is not None else []
+        self.images3D = [v if isinstance(v, Image3D) else Image3D(**as_dict(v)) for v in self.images3D]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Axis(YAMLRoot):
+    """
+    An axis in a coordinate system
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORDINATE_SYSTEMS["Axis"]
+    class_class_curie: ClassVar[str] = "coordinate_systems:Axis"
+    class_name: ClassVar[str] = "Axis"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Axis")
+
+    axis_name: str = None
+    axis_unit: Optional[str] = "angstrom"
+    axis_type: Optional[Union[str, "AxisType"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.axis_name):
+            self.MissingRequiredField("axis_name")
+        if not isinstance(self.axis_name, str):
+            self.axis_name = str(self.axis_name)
+
+        if self.axis_unit is not None and not isinstance(self.axis_unit, str):
+            self.axis_unit = str(self.axis_unit)
+
+        if self.axis_type is not None and not isinstance(self.axis_type, AxisType):
+            self.axis_type = AxisType(self.axis_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CoordinateSystem(YAMLRoot):
+    """
+    A coordinate system
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORDINATE_SYSTEMS["CoordinateSystem"]
+    class_class_curie: ClassVar[str] = "coordinate_systems:CoordinateSystem"
+    class_name: ClassVar[str] = "CoordinateSystem"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/CoordinateSystem")
+
+    name: str = None
+    axes: Union[Union[dict, Axis], List[Union[dict, Axis]]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.axes):
+            self.MissingRequiredField("axes")
+        self._normalize_inlined_as_dict(slot_name="axes", slot_type=Axis, key_name="axis_name", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CoordinateTransformation(YAMLRoot):
+    """
+    A coordinate transformation
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORD_TRANSFORMS["CoordinateTransformation"]
+    class_class_curie: ClassVar[str] = "coord_transforms:CoordinateTransformation"
+    class_name: ClassVar[str] = "CoordinateTransformation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/CoordinateTransformation")
+
+    transformation_type: Optional[Union[str, "TransformationType"]] = None
+    name: Optional[str] = None
+    input: Optional[str] = None
+    output: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.transformation_type is not None and not isinstance(self.transformation_type, TransformationType):
+            self.transformation_type = TransformationType(self.transformation_type)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.input is not None and not isinstance(self.input, str):
+            self.input = str(self.input)
+
+        if self.output is not None and not isinstance(self.output, str):
+            self.output = str(self.output)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Identity(CoordinateTransformation):
+    """
+    The identity transformation
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORD_TRANSFORMS["Identity"]
+    class_class_curie: ClassVar[str] = "coord_transforms:Identity"
+    class_name: ClassVar[str] = "Identity"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Identity")
+
+    transformation_type: Optional[Union[str, "TransformationType"]] = 'identity'
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.transformation_type is not None and not isinstance(self.transformation_type, TransformationType):
+            self.transformation_type = getattr(TransformationType, self.transformation_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AxisNameMapping(YAMLRoot):
+    """
+    Axis name to Axis name mapping
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORD_TRANSFORMS["AxisNameMapping"]
+    class_class_curie: ClassVar[str] = "coord_transforms:AxisNameMapping"
+    class_name: ClassVar[str] = "AxisNameMapping"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/AxisNameMapping")
+
+    axis1_name: Optional[str] = None
+    axis2_name: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.axis1_name is not None and not isinstance(self.axis1_name, str):
+            self.axis1_name = str(self.axis1_name)
+
+        if self.axis2_name is not None and not isinstance(self.axis2_name, str):
+            self.axis2_name = str(self.axis2_name)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MapAxis(CoordinateTransformation):
+    """
+    Axis permutation transformation
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORD_TRANSFORMS["MapAxis"]
+    class_class_curie: ClassVar[str] = "coord_transforms:MapAxis"
+    class_name: ClassVar[str] = "MapAxis"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/MapAxis")
+
+    transformation_type: Optional[Union[str, "TransformationType"]] = 'map_axis'
+    map_axis: Optional[Union[Union[dict, AxisNameMapping], List[Union[dict, AxisNameMapping]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.transformation_type is not None and not isinstance(self.transformation_type, TransformationType):
+            self.transformation_type = getattr(TransformationType, self.transformation_type)
+
+        if not isinstance(self.map_axis, list):
+            self.map_axis = [self.map_axis] if self.map_axis is not None else []
+        self.map_axis = [v if isinstance(v, AxisNameMapping) else AxisNameMapping(**as_dict(v)) for v in self.map_axis]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Translation(CoordinateTransformation):
+    """
+    A translation transformation
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORD_TRANSFORMS["Translation"]
+    class_class_curie: ClassVar[str] = "coord_transforms:Translation"
+    class_name: ClassVar[str] = "Translation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Translation")
+
+    transformation_type: Optional[Union[str, "TransformationType"]] = 'translation'
+    translation: Optional[Union[float, List[float]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.transformation_type is not None and not isinstance(self.transformation_type, TransformationType):
+            self.transformation_type = getattr(TransformationType, self.transformation_type)
+
+        if not isinstance(self.translation, list):
+            self.translation = [self.translation] if self.translation is not None else []
+        self.translation = [v if isinstance(v, float) else float(v) for v in self.translation]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Scale(CoordinateTransformation):
+    """
+    A scaling transformation
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORD_TRANSFORMS["Scale"]
+    class_class_curie: ClassVar[str] = "coord_transforms:Scale"
+    class_name: ClassVar[str] = "Scale"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Scale")
+
+    transformation_type: Optional[Union[str, "TransformationType"]] = 'scale'
+    scale: Optional[Union[float, List[float]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.transformation_type is not None and not isinstance(self.transformation_type, TransformationType):
+            self.transformation_type = getattr(TransformationType, self.transformation_type)
+
+        if not isinstance(self.scale, list):
+            self.scale = [self.scale] if self.scale is not None else []
+        self.scale = [v if isinstance(v, float) else float(v) for v in self.scale]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Affine(CoordinateTransformation):
+    """
+    An affine transformation
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORD_TRANSFORMS["Affine"]
+    class_class_curie: ClassVar[str] = "coord_transforms:Affine"
+    class_name: ClassVar[str] = "Affine"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Affine")
+
+    transformation_type: Optional[Union[str, "TransformationType"]] = 'affine'
+    affine: Optional[int] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.transformation_type is not None and not isinstance(self.transformation_type, TransformationType):
+            self.transformation_type = getattr(TransformationType, self.transformation_type)
+
+        if self.affine is not None and not isinstance(self.affine, int):
+            self.affine = int(self.affine)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Sequence(CoordinateTransformation):
+    """
+    A sequence of transformations
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = COORD_TRANSFORMS["Sequence"]
+    class_class_curie: ClassVar[str] = "coord_transforms:Sequence"
+    class_name: ClassVar[str] = "Sequence"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Sequence")
+
+    transformation_type: Optional[Union[str, "TransformationType"]] = 'sequence'
+    sequence: Optional[Union[Union[dict, CoordinateTransformation], List[Union[dict, CoordinateTransformation]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.transformation_type is not None and not isinstance(self.transformation_type, TransformationType):
+            self.transformation_type = getattr(TransformationType, self.transformation_type)
+
+        if not isinstance(self.sequence, list):
+            self.sequence = [self.sequence] if self.sequence is not None else []
+        self.sequence = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.sequence]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProjectionAlignment(Sequence):
+    """
+    The tomographic alignment for a single projection.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALIGNMENT["ProjectionAlignment"]
+    class_class_curie: ClassVar[str] = "alignment:ProjectionAlignment"
+    class_name: ClassVar[str] = "ProjectionAlignment"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/ProjectionAlignment")
+
+    input: Optional[str] = None
+    output: Optional[str] = None
+    sequence: Optional[Union[Union[dict, CoordinateTransformation], List[Union[dict, CoordinateTransformation]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.input is not None and not isinstance(self.input, str):
+            self.input = str(self.input)
+
+        if self.output is not None and not isinstance(self.output, str):
+            self.output = str(self.output)
+
+        if not isinstance(self.sequence, list):
+            self.sequence = [self.sequence] if self.sequence is not None else []
+        self.sequence = [v if isinstance(v, CoordinateTransformation) else CoordinateTransformation(**as_dict(v)) for v in self.sequence]
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 class MoleculeClassEnum(EnumDefinitionImpl):
     """
@@ -1190,7 +2513,7 @@ class AssemblyEnum(EnumDefinitionImpl):
         setattr(cls, "HELICAL ARRAY",
             PermissibleValue(
                 text="HELICAL ARRAY",
-                description="If your protein (complex) of interest is forming helical arrays (i.e. tubes)"))
+                description="If your protein (complex) of interest is forming helical arrays (e.g. tubes)"))
 
 class OrganizationTypeEnum(EnumDefinitionImpl):
     """
@@ -1214,9 +2537,53 @@ class OrganizationTypeEnum(EnumDefinitionImpl):
         description="Allowed values for authors organizations.",
     )
 
+class AxisType(EnumDefinitionImpl):
+    """
+    The type of axis
+    """
+    space = PermissibleValue(
+        text="space",
+        description="A spatial axis")
+    array = PermissibleValue(
+        text="array",
+        description="An array axis")
+
+    _defn = EnumDefinition(
+        name="AxisType",
+        description="The type of axis",
+    )
+
+class TransformationType(EnumDefinitionImpl):
+
+    identity = PermissibleValue(
+        text="identity",
+        description="The identity transformation.")
+    map_axis = PermissibleValue(
+        text="map_axis",
+        description="Axis permutation transformation")
+    translation = PermissibleValue(
+        text="translation",
+        description="A translation transformation.")
+    scale = PermissibleValue(
+        text="scale",
+        description="A scaling transformation.")
+    affine = PermissibleValue(
+        text="affine",
+        description="An affine transformation")
+    sequence = PermissibleValue(
+        text="sequence",
+        description="A sequence of transformations")
+
+    _defn = EnumDefinition(
+        name="TransformationType",
+    )
+
 # Slots
 class slots:
     pass
+
+slots.processing = Slot(uri=DEFAULT_.processing, name="processing", curie=DEFAULT_.curie('processing'),
+                   model_uri=DEFAULT_.processing, domain=None, range=Optional[Union[dict, Processing]])
 
 slots.nominal_defocus = Slot(uri=ACQUISITION.nominal_defocus, name="nominal_defocus", curie=ACQUISITION.curie('nominal_defocus'),
                    model_uri=DEFAULT_.nominal_defocus, domain=None, range=Optional[Union[dict, Range]])
@@ -1492,8 +2859,8 @@ slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
 slots.work_phone = Slot(uri=SCHEMA.telephone, name="work_phone", curie=SCHEMA.curie('telephone'),
                    model_uri=DEFAULT_.work_phone, domain=None, range=Optional[str])
 
-slots.name = Slot(uri=SCHEMA.name, name="name", curie=SCHEMA.curie('name'),
-                   model_uri=DEFAULT_.name, domain=None, range=Optional[str])
+slots.last_name = Slot(uri=SCHEMA.name, name="last_name", curie=SCHEMA.curie('name'),
+                   model_uri=DEFAULT_.last_name, domain=None, range=Optional[str])
 
 slots.name_org = Slot(uri=ORGANIZATIONAL.name_org, name="name_org", curie=ORGANIZATIONAL.curie('name_org'),
                    model_uri=DEFAULT_.name_org, domain=None, range=Optional[str])
@@ -1549,6 +2916,12 @@ slots.sample = Slot(uri=OSCEM.sample, name="sample", curie=OSCEM.curie('sample')
 slots.organizational = Slot(uri=OSCEM.organizational, name="organizational", curie=OSCEM.curie('organizational'),
                    model_uri=DEFAULT_.organizational, domain=None, range=Optional[Union[dict, Any]])
 
+slots.name = Slot(uri="str(uriorcurie)", name="name", curie=None,
+                   model_uri=DEFAULT_.name, domain=None, range=Optional[str])
+
+slots.annotations = Slot(uri="str(uriorcurie)", name="annotations", curie=None,
+                   model_uri=DEFAULT_.annotations, domain=None, range=Optional[Union[Union[dict, Annotation], List[Union[dict, Annotation]]]])
+
 slots.minimal = Slot(uri=CUSTOM_TYPES.minimal, name="minimal", curie=CUSTOM_TYPES.curie('minimal'),
                    model_uri=DEFAULT_.minimal, domain=None, range=Optional[Union[dict, Any]])
 
@@ -1558,11 +2931,11 @@ slots.maximal = Slot(uri=CUSTOM_TYPES.maximal, name="maximal", curie=CUSTOM_TYPE
 slots.increment = Slot(uri=CUSTOM_TYPES.increment, name="increment", curie=CUSTOM_TYPES.curie('increment'),
                    model_uri=DEFAULT_.increment, domain=None, range=Optional[Union[dict, Any]])
 
-slots.width = Slot(uri=CUSTOM_TYPES.width, name="width", curie=CUSTOM_TYPES.curie('width'),
-                   model_uri=DEFAULT_.width, domain=None, range=Optional[int])
+slots.width_im = Slot(uri=CUSTOM_TYPES.width_im, name="width_im", curie=CUSTOM_TYPES.curie('width_im'),
+                   model_uri=DEFAULT_.width_im, domain=None, range=Optional[int])
 
-slots.height = Slot(uri=CUSTOM_TYPES.height, name="height", curie=CUSTOM_TYPES.curie('height'),
-                   model_uri=DEFAULT_.height, domain=None, range=Optional[int])
+slots.height_im = Slot(uri=CUSTOM_TYPES.height_im, name="height_im", curie=CUSTOM_TYPES.curie('height_im'),
+                   model_uri=DEFAULT_.height_im, domain=None, range=Optional[int])
 
 slots.x_min = Slot(uri=CUSTOM_TYPES.x_min, name="x_min", curie=CUSTOM_TYPES.curie('x_min'),
                    model_uri=DEFAULT_.x_min, domain=None, range=Optional[Union[dict, Any]])
@@ -1596,6 +2969,189 @@ slots.valueSI = Slot(uri=CUSTOM_TYPES.valueSI, name="valueSI", curie=CUSTOM_TYPE
 
 slots.unitSI = Slot(uri=CUSTOM_TYPES.unitSI, name="unitSI", curie=CUSTOM_TYPES.curie('unitSI'),
                    model_uri=DEFAULT_.unitSI, domain=None, range=Optional[str])
+
+slots.path = Slot(uri=IMAGE_ENTITIES.path, name="path", curie=IMAGE_ENTITIES.curie('path'),
+                   model_uri=DEFAULT_.path, domain=None, range=Optional[str])
+
+slots.section = Slot(uri=IMAGE_ENTITIES.section, name="section", curie=IMAGE_ENTITIES.curie('section'),
+                   model_uri=DEFAULT_.section, domain=None, range=Optional[int])
+
+slots.nominal_tilt_angle = Slot(uri=IMAGE_ENTITIES.nominal_tilt_angle, name="nominal_tilt_angle", curie=IMAGE_ENTITIES.curie('nominal_tilt_angle'),
+                   model_uri=DEFAULT_.nominal_tilt_angle, domain=None, range=Optional[float])
+
+slots.accumulated_dose = Slot(uri=IMAGE_ENTITIES.accumulated_dose, name="accumulated_dose", curie=IMAGE_ENTITIES.curie('accumulated_dose'),
+                   model_uri=DEFAULT_.accumulated_dose, domain=None, range=Optional[float])
+
+slots.defocus_u = Slot(uri=IMAGE_ENTITIES.defocus_u, name="defocus_u", curie=IMAGE_ENTITIES.curie('defocus_u'),
+                   model_uri=DEFAULT_.defocus_u, domain=None, range=Optional[float])
+
+slots.defocus_v = Slot(uri=IMAGE_ENTITIES.defocus_v, name="defocus_v", curie=IMAGE_ENTITIES.curie('defocus_v'),
+                   model_uri=DEFAULT_.defocus_v, domain=None, range=Optional[float])
+
+slots.defocus_angle = Slot(uri=IMAGE_ENTITIES.defocus_angle, name="defocus_angle", curie=IMAGE_ENTITIES.curie('defocus_angle'),
+                   model_uri=DEFAULT_.defocus_angle, domain=None, range=Optional[float])
+
+slots.particle_index = Slot(uri=IMAGE_ENTITIES.particle_index, name="particle_index", curie=IMAGE_ENTITIES.curie('particle_index'),
+                   model_uri=DEFAULT_.particle_index, domain=None, range=Optional[int])
+
+slots.ctf_metadata = Slot(uri=IMAGE_ENTITIES.ctf_metadata, name="ctf_metadata", curie=IMAGE_ENTITIES.curie('ctf_metadata'),
+                   model_uri=DEFAULT_.ctf_metadata, domain=None, range=Optional[Union[dict, CTFMetadata]])
+
+slots.images_movie = Slot(uri=IMAGE_ENTITIES.images_movie, name="images_movie", curie=IMAGE_ENTITIES.curie('images_movie'),
+                   model_uri=DEFAULT_.images_movie, domain=None, range=Optional[Union[Union[dict, MovieFrame], List[Union[dict, MovieFrame]]]])
+
+slots.images_tilt = Slot(uri=IMAGE_ENTITIES.images_tilt, name="images_tilt", curie=IMAGE_ENTITIES.curie('images_tilt'),
+                   model_uri=DEFAULT_.images_tilt, domain=None, range=Optional[Union[Union[dict, ProjectionImage], List[Union[dict, ProjectionImage]]]])
+
+slots.origin2D = Slot(uri=ANNOTATION.origin2D, name="origin2D", curie=ANNOTATION.curie('origin2D'),
+                   model_uri=DEFAULT_.origin2D, domain=None, range=Optional[float])
+
+slots.translation2D = Slot(uri=ANNOTATION.translation2D, name="translation2D", curie=ANNOTATION.curie('translation2D'),
+                   model_uri=DEFAULT_.translation2D, domain=None, range=Optional[float])
+
+slots.vector2D = Slot(uri=ANNOTATION.vector2D, name="vector2D", curie=ANNOTATION.curie('vector2D'),
+                   model_uri=DEFAULT_.vector2D, domain=None, range=Optional[float])
+
+slots.matrix2D = Slot(uri=ANNOTATION.matrix2D, name="matrix2D", curie=ANNOTATION.curie('matrix2D'),
+                   model_uri=DEFAULT_.matrix2D, domain=None, range=Optional[float])
+
+slots.origin3D = Slot(uri=ANNOTATION.origin3D, name="origin3D", curie=ANNOTATION.curie('origin3D'),
+                   model_uri=DEFAULT_.origin3D, domain=None, range=Optional[float])
+
+slots.translation3D = Slot(uri=ANNOTATION.translation3D, name="translation3D", curie=ANNOTATION.curie('translation3D'),
+                   model_uri=DEFAULT_.translation3D, domain=None, range=Optional[float])
+
+slots.vector3D = Slot(uri=ANNOTATION.vector3D, name="vector3D", curie=ANNOTATION.curie('vector3D'),
+                   model_uri=DEFAULT_.vector3D, domain=None, range=Optional[float])
+
+slots.matrix3D = Slot(uri=ANNOTATION.matrix3D, name="matrix3D", curie=ANNOTATION.curie('matrix3D'),
+                   model_uri=DEFAULT_.matrix3D, domain=None, range=Optional[float])
+
+slots.width = Slot(uri=IMAGE.width, name="width", curie=IMAGE.curie('width'),
+                   model_uri=DEFAULT_.width, domain=None, range=Optional[int])
+
+slots.height = Slot(uri=IMAGE.height, name="height", curie=IMAGE.curie('height'),
+                   model_uri=DEFAULT_.height, domain=None, range=Optional[int])
+
+slots.depth = Slot(uri=IMAGE.depth, name="depth", curie=IMAGE.curie('depth'),
+                   model_uri=DEFAULT_.depth, domain=None, range=Optional[int])
+
+slots.coordinate_systems = Slot(uri=IMAGE.coordinate_systems, name="coordinate_systems", curie=IMAGE.curie('coordinate_systems'),
+                   model_uri=DEFAULT_.coordinate_systems, domain=None, range=Optional[Union[Union[dict, CoordinateSystem], List[Union[dict, CoordinateSystem]]]])
+
+slots.coordinate_transformations = Slot(uri=IMAGE.coordinate_transformations, name="coordinate_transformations", curie=IMAGE.curie('coordinate_transformations'),
+                   model_uri=DEFAULT_.coordinate_transformations, domain=None, range=Optional[Union[Union[dict, CoordinateTransformation], List[Union[dict, CoordinateTransformation]]]])
+
+slots.images2D = Slot(uri=IMAGE.images2D, name="images2D", curie=IMAGE.curie('images2D'),
+                   model_uri=DEFAULT_.images2D, domain=None, range=Optional[Union[Union[dict, Image2D], List[Union[dict, Image2D]]]])
+
+slots.images3D = Slot(uri=IMAGE.images3D, name="images3D", curie=IMAGE.curie('images3D'),
+                   model_uri=DEFAULT_.images3D, domain=None, range=Optional[Union[Union[dict, Image3D], List[Union[dict, Image3D]]]])
+
+slots.axis_name = Slot(uri=COORDINATE_SYSTEMS.axis_name, name="axis_name", curie=COORDINATE_SYSTEMS.curie('axis_name'),
+                   model_uri=DEFAULT_.axis_name, domain=None, range=Optional[str])
+
+slots.axis_unit = Slot(uri=COORDINATE_SYSTEMS.axis_unit, name="axis_unit", curie=COORDINATE_SYSTEMS.curie('axis_unit'),
+                   model_uri=DEFAULT_.axis_unit, domain=None, range=Optional[str])
+
+slots.axis_type = Slot(uri=COORDINATE_SYSTEMS.axis_type, name="axis_type", curie=COORDINATE_SYSTEMS.curie('axis_type'),
+                   model_uri=DEFAULT_.axis_type, domain=None, range=Optional[Union[str, "AxisType"]])
+
+slots.transformation_type = Slot(uri=COORD_TRANSFORMS.transformation_type, name="transformation_type", curie=COORD_TRANSFORMS.curie('transformation_type'),
+                   model_uri=DEFAULT_.transformation_type, domain=None, range=Optional[Union[str, "TransformationType"]])
+
+slots.processing__region = Slot(uri=DEFAULT_.region, name="processing__region", curie=DEFAULT_.curie('region'),
+                   model_uri=DEFAULT_.processing__region, domain=None, range=Optional[Union[dict, Region]])
+
+slots.processing__average = Slot(uri=DEFAULT_.average, name="processing__average", curie=DEFAULT_.curie('average'),
+                   model_uri=DEFAULT_.processing__average, domain=None, range=Optional[Union[dict, Average]])
+
+slots.processing__movie_stack_collection = Slot(uri=DEFAULT_.movie_stack_collection, name="processing__movie_stack_collection", curie=DEFAULT_.curie('movie_stack_collection'),
+                   model_uri=DEFAULT_.processing__movie_stack_collection, domain=None, range=Optional[Union[dict, MovieStackCollection]])
+
+slots.processing__dataset = Slot(uri=DEFAULT_.dataset, name="processing__dataset", curie=DEFAULT_.curie('dataset'),
+                   model_uri=DEFAULT_.processing__dataset, domain=None, range=Optional[Union[dict, Dataset]])
+
+slots.region__movie_stack_collections = Slot(uri="str(uriorcurie)", name="region__movie_stack_collections", curie=None,
+                   model_uri=DEFAULT_.region__movie_stack_collections, domain=None, range=Optional[Union[Union[dict, MovieStackCollection], List[Union[dict, MovieStackCollection]]]])
+
+slots.region__tilt_series = Slot(uri="str(uriorcurie)", name="region__tilt_series", curie=None,
+                   model_uri=DEFAULT_.region__tilt_series, domain=None, range=Optional[Union[Union[dict, TiltSeries], List[Union[dict, TiltSeries]]]])
+
+slots.region__alignments = Slot(uri="str(uriorcurie)", name="region__alignments", curie=None,
+                   model_uri=DEFAULT_.region__alignments, domain=None, range=Optional[Union[Union[dict, Alignment], List[Union[dict, Alignment]]]])
+
+slots.region__tomograms = Slot(uri="str(uriorcurie)", name="region__tomograms", curie=None,
+                   model_uri=DEFAULT_.region__tomograms, domain=None, range=Optional[Union[Union[dict, Tomogram], List[Union[dict, Tomogram]]]])
+
+slots.average__particle_maps = Slot(uri="str(uriorcurie)", name="average__particle_maps", curie=None,
+                   model_uri=DEFAULT_.average__particle_maps, domain=None, range=Optional[Union[Union[dict, ParticleMap], List[Union[dict, ParticleMap]]]])
+
+slots.movieStackCollection__movie_stacks = Slot(uri="str(uriorcurie)", name="movieStackCollection__movie_stacks", curie=None,
+                   model_uri=DEFAULT_.movieStackCollection__movie_stacks, domain=None, range=Optional[Union[Union[dict, MovieStackSeries], List[Union[dict, MovieStackSeries]]]])
+
+slots.movieStackCollection__gain_file = Slot(uri="str(uriorcurie)", name="movieStackCollection__gain_file", curie=None,
+                   model_uri=DEFAULT_.movieStackCollection__gain_file, domain=None, range=Optional[Union[dict, GainFile]])
+
+slots.movieStackCollection__defect_file = Slot(uri="str(uriorcurie)", name="movieStackCollection__defect_file", curie=None,
+                   model_uri=DEFAULT_.movieStackCollection__defect_file, domain=None, range=Optional[Union[dict, DefectFile]])
+
+slots.dataset__regions = Slot(uri="str(uriorcurie)", name="dataset__regions", curie=None,
+                   model_uri=DEFAULT_.dataset__regions, domain=None, range=Optional[Union[Union[dict, Region], List[Union[dict, Region]]]])
+
+slots.dataset__averages = Slot(uri="str(uriorcurie)", name="dataset__averages", curie=None,
+                   model_uri=DEFAULT_.dataset__averages, domain=None, range=Optional[Union[Union[dict, Average], List[Union[dict, Average]]]])
+
+slots.movieStackSeries__stacks = Slot(uri=IMAGE_ENTITIES.stacks, name="movieStackSeries__stacks", curie=IMAGE_ENTITIES.curie('stacks'),
+                   model_uri=DEFAULT_.movieStackSeries__stacks, domain=None, range=Optional[Union[Union[dict, MovieStack], List[Union[dict, MovieStack]]]])
+
+slots.projectionAlignment__input = Slot(uri=ALIGNMENT.input, name="projectionAlignment__input", curie=ALIGNMENT.curie('input'),
+                   model_uri=DEFAULT_.projectionAlignment__input, domain=None, range=Optional[str])
+
+slots.projectionAlignment__output = Slot(uri=ALIGNMENT.output, name="projectionAlignment__output", curie=ALIGNMENT.curie('output'),
+                   model_uri=DEFAULT_.projectionAlignment__output, domain=None, range=Optional[str])
+
+slots.projectionAlignment__sequence = Slot(uri=ALIGNMENT.sequence, name="projectionAlignment__sequence", curie=ALIGNMENT.curie('sequence'),
+                   model_uri=DEFAULT_.projectionAlignment__sequence, domain=None, range=Optional[Union[Union[dict, CoordinateTransformation], List[Union[dict, CoordinateTransformation]]]])
+
+slots.alignment__projection_alignments = Slot(uri=ALIGNMENT.projection_alignments, name="alignment__projection_alignments", curie=ALIGNMENT.curie('projection_alignments'),
+                   model_uri=DEFAULT_.alignment__projection_alignments, domain=None, range=Optional[Union[Union[dict, ProjectionAlignment], List[Union[dict, ProjectionAlignment]]]])
+
+slots.coordinateSystem__name = Slot(uri=COORDINATE_SYSTEMS.name, name="coordinateSystem__name", curie=COORDINATE_SYSTEMS.curie('name'),
+                   model_uri=DEFAULT_.coordinateSystem__name, domain=None, range=str)
+
+slots.coordinateSystem__axes = Slot(uri=COORDINATE_SYSTEMS.axes, name="coordinateSystem__axes", curie=COORDINATE_SYSTEMS.curie('axes'),
+                   model_uri=DEFAULT_.coordinateSystem__axes, domain=None, range=Union[Union[dict, Axis], List[Union[dict, Axis]]])
+
+slots.coordinateTransformation__name = Slot(uri=COORD_TRANSFORMS.name, name="coordinateTransformation__name", curie=COORD_TRANSFORMS.curie('name'),
+                   model_uri=DEFAULT_.coordinateTransformation__name, domain=None, range=Optional[str])
+
+slots.coordinateTransformation__input = Slot(uri=COORD_TRANSFORMS.input, name="coordinateTransformation__input", curie=COORD_TRANSFORMS.curie('input'),
+                   model_uri=DEFAULT_.coordinateTransformation__input, domain=None, range=Optional[str])
+
+slots.coordinateTransformation__output = Slot(uri=COORD_TRANSFORMS.output, name="coordinateTransformation__output", curie=COORD_TRANSFORMS.curie('output'),
+                   model_uri=DEFAULT_.coordinateTransformation__output, domain=None, range=Optional[str])
+
+slots.axisNameMapping__axis1_name = Slot(uri=COORD_TRANSFORMS.axis1_name, name="axisNameMapping__axis1_name", curie=COORD_TRANSFORMS.curie('axis1_name'),
+                   model_uri=DEFAULT_.axisNameMapping__axis1_name, domain=None, range=Optional[str])
+
+slots.axisNameMapping__axis2_name = Slot(uri=COORD_TRANSFORMS.axis2_name, name="axisNameMapping__axis2_name", curie=COORD_TRANSFORMS.curie('axis2_name'),
+                   model_uri=DEFAULT_.axisNameMapping__axis2_name, domain=None, range=Optional[str])
+
+slots.mapAxis__map_axis = Slot(uri=COORD_TRANSFORMS.map_axis, name="mapAxis__map_axis", curie=COORD_TRANSFORMS.curie('map_axis'),
+                   model_uri=DEFAULT_.mapAxis__map_axis, domain=None, range=Optional[Union[Union[dict, AxisNameMapping], List[Union[dict, AxisNameMapping]]]])
+
+slots.translation__translation = Slot(uri=COORD_TRANSFORMS.translation, name="translation__translation", curie=COORD_TRANSFORMS.curie('translation'),
+                   model_uri=DEFAULT_.translation__translation, domain=None, range=Optional[Union[float, List[float]]])
+
+slots.scale__scale = Slot(uri=COORD_TRANSFORMS.scale, name="scale__scale", curie=COORD_TRANSFORMS.curie('scale'),
+                   model_uri=DEFAULT_.scale__scale, domain=None, range=Optional[Union[float, List[float]]])
+
+slots.affine__affine = Slot(uri=COORD_TRANSFORMS.affine, name="affine__affine", curie=COORD_TRANSFORMS.curie('affine'),
+                   model_uri=DEFAULT_.affine__affine, domain=None, range=Optional[int])
+
+slots.sequence__sequence = Slot(uri=COORD_TRANSFORMS.sequence, name="sequence__sequence", curie=COORD_TRANSFORMS.curie('sequence'),
+                   model_uri=DEFAULT_.sequence__sequence, domain=None, range=Optional[Union[Union[dict, CoordinateTransformation], List[Union[dict, CoordinateTransformation]]]])
 
 slots.si_value = Slot(uri=DEFAULT_.si_value, name="si_value", curie=DEFAULT_.curie('si_value'),
                    model_uri=DEFAULT_.si_value, domain=None, range=str)
@@ -1816,8 +3372,8 @@ slots.Organizational_authors = Slot(uri=ORGANIZATIONAL.authors, name="Organizati
 slots.Organizational_funder = Slot(uri=ORGANIZATIONAL.funder, name="Organizational_funder", curie=ORGANIZATIONAL.curie('funder'),
                    model_uri=DEFAULT_.Organizational_funder, domain=Organizational, range=Optional[Union[Union[dict, "Funder"], List[Union[dict, "Funder"]]]])
 
-slots.Author_name = Slot(uri=SCHEMA.name, name="Author_name", curie=SCHEMA.curie('name'),
-                   model_uri=DEFAULT_.Author_name, domain=Author, range=str)
+slots.Author_last_name = Slot(uri=SCHEMA.name, name="Author_last_name", curie=SCHEMA.curie('name'),
+                   model_uri=DEFAULT_.Author_last_name, domain=Author, range=str)
 
 slots.Author_first_name = Slot(uri=ORGANIZATIONAL.first_name, name="Author_first_name", curie=ORGANIZATIONAL.curie('first_name'),
                    model_uri=DEFAULT_.Author_first_name, domain=Author, range=str)
@@ -1867,3 +3423,24 @@ slots.Descriptor_descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="
 
 slots.Descriptor_descriptor_thing = Slot(uri=CUSTOM_TYPES.descriptor_thing, name="Descriptor_descriptor_thing", curie=CUSTOM_TYPES.curie('descriptor_thing'),
                    model_uri=DEFAULT_.Descriptor_descriptor_thing, domain=Descriptor, range=Optional[Union[dict, Any]])
+
+slots.Axis_axis_name = Slot(uri=COORDINATE_SYSTEMS.axis_name, name="Axis_axis_name", curie=COORDINATE_SYSTEMS.curie('axis_name'),
+                   model_uri=DEFAULT_.Axis_axis_name, domain=Axis, range=str)
+
+slots.Identity_transformation_type = Slot(uri=COORD_TRANSFORMS.transformation_type, name="Identity_transformation_type", curie=COORD_TRANSFORMS.curie('transformation_type'),
+                   model_uri=DEFAULT_.Identity_transformation_type, domain=Identity, range=Optional[Union[str, "TransformationType"]])
+
+slots.MapAxis_transformation_type = Slot(uri=COORD_TRANSFORMS.transformation_type, name="MapAxis_transformation_type", curie=COORD_TRANSFORMS.curie('transformation_type'),
+                   model_uri=DEFAULT_.MapAxis_transformation_type, domain=MapAxis, range=Optional[Union[str, "TransformationType"]])
+
+slots.Translation_transformation_type = Slot(uri=COORD_TRANSFORMS.transformation_type, name="Translation_transformation_type", curie=COORD_TRANSFORMS.curie('transformation_type'),
+                   model_uri=DEFAULT_.Translation_transformation_type, domain=Translation, range=Optional[Union[str, "TransformationType"]])
+
+slots.Scale_transformation_type = Slot(uri=COORD_TRANSFORMS.transformation_type, name="Scale_transformation_type", curie=COORD_TRANSFORMS.curie('transformation_type'),
+                   model_uri=DEFAULT_.Scale_transformation_type, domain=Scale, range=Optional[Union[str, "TransformationType"]])
+
+slots.Affine_transformation_type = Slot(uri=COORD_TRANSFORMS.transformation_type, name="Affine_transformation_type", curie=COORD_TRANSFORMS.curie('transformation_type'),
+                   model_uri=DEFAULT_.Affine_transformation_type, domain=Affine, range=Optional[Union[str, "TransformationType"]])
+
+slots.Sequence_transformation_type = Slot(uri=COORD_TRANSFORMS.transformation_type, name="Sequence_transformation_type", curie=COORD_TRANSFORMS.curie('transformation_type'),
+                   model_uri=DEFAULT_.Sequence_transformation_type, domain=Sequence, range=Optional[Union[str, "TransformationType"]])

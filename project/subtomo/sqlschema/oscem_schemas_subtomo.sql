@@ -1,9 +1,16 @@
 -- # Class: "EMDatasetTomo" Description: "cryo electron tomography dataset, with a focus on a single protein (complex) & subtomogram averaging"
 --     * Slot: id Description: 
+--     * Slot: processing_id Description: Processing information on a given dataset
 --     * Slot: acquisition_id Description: Describe the data acquisition parameters
 --     * Slot: instrument_id Description: Describe the instrument used to acquire the data
 --     * Slot: sample_id Description: Sample information
 --     * Slot: organizational_id Description: Information on authors and grants
+-- # Class: "Processing" Description: "Information on the processing of tomography datasets, using the cryoET metadata standard"
+--     * Slot: id Description: 
+--     * Slot: region_id Description: Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen.
+--     * Slot: average_id Description: A particle averaging experiment.
+--     * Slot: movie_stack_collection_id Description: A collection of movie stacks using the same gain and defect files.
+--     * Slot: dataset_id Description: A dataset
 -- # Class: "Any" Description: "Any type, used as the base for type-narrowing."
 --     * Slot: id Description: 
 -- # Class: "Range" Description: "A range constructed from min and max"
@@ -17,8 +24,8 @@
 --     * Slot: maximal_id Description: Maximal value of a given dataset property
 -- # Class: "ImageSize" Description: "size of a 2D image (in integer units)"
 --     * Slot: id Description: 
---     * Slot: height Description: The height of a given item - unit depends on item
---     * Slot: width Description: The width of a given item - unit depends on item
+--     * Slot: height_im Description: The height of a given item - unit depends on item
+--     * Slot: width_im Description: The width of a given item - unit depends on item
 -- # Class: "BoundingBox2D" Description: "an axis-aligned 2D bounding box (float units)"
 --     * Slot: id Description: 
 --     * Slot: x_min_id Description: minimum x
@@ -196,7 +203,7 @@
 --     * Slot: id Description: 
 -- # Class: "Person" Description: "personal information"
 --     * Slot: id Description: 
---     * Slot: name Description: name
+--     * Slot: last_name Description: author_name
 --     * Slot: first_name Description: first name
 --     * Slot: work_status Description: work status
 --     * Slot: email Description: email
@@ -208,7 +215,7 @@
 --     * Slot: role Description: Role of the author, for example principal investigator
 --     * Slot: name_org Description: Name of the organization
 --     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
---     * Slot: name Description: name
+--     * Slot: last_name Description: author_name
 --     * Slot: first_name Description: first name
 --     * Slot: work_status Description: work status
 --     * Slot: email Description: email
@@ -232,6 +239,221 @@
 --     * Slot: instrument_id Description: 
 --     * Slot: sample_id Description: 
 --     * Slot: organizational_id Description: 
+-- # Class: "Image2D" Description: "A 2D image."
+--     * Slot: id Description: 
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+-- # Class: "Image3D" Description: "A 3D image."
+--     * Slot: id Description: 
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: depth Description: The depth of the image (z-axis) in pixels
+-- # Class: "ImageStack2D" Description: "A stack of 2D images."
+--     * Slot: id Description: 
+-- # Class: "ImageStack3D" Description: "A stack of 3D images."
+--     * Slot: id Description: 
+-- # Class: "Axis" Description: "An axis in a coordinate system"
+--     * Slot: id Description: 
+--     * Slot: axis_name Description: The name of the axis
+--     * Slot: axis_unit Description: The unit of the axis
+--     * Slot: axis_type Description: The type of axis
+-- # Class: "CoordinateSystem" Description: "A coordinate system"
+--     * Slot: id Description: 
+--     * Slot: name Description: The name of the coordinate system
+-- # Class: "CoordinateTransformation" Description: "A coordinate transformation"
+--     * Slot: id Description: 
+--     * Slot: transformation_type Description: The type of transformation
+--     * Slot: name Description: The name of the coordinate transformation
+--     * Slot: input Description: The source coordinate system name
+--     * Slot: output Description: The target coordinate system name
+-- # Class: "Identity" Description: "The identity transformation"
+--     * Slot: id Description: 
+--     * Slot: transformation_type Description: The type of transformation
+--     * Slot: name Description: The name of the coordinate transformation
+--     * Slot: input Description: The source coordinate system name
+--     * Slot: output Description: The target coordinate system name
+-- # Class: "AxisNameMapping" Description: "Axis name to Axis name mapping"
+--     * Slot: id Description: 
+--     * Slot: axis1_name Description: The type of transformation
+--     * Slot: axis2_name Description: The mapping of the axis names
+--     * Slot: MapAxis_id Description: Autocreated FK slot
+-- # Class: "MapAxis" Description: "Axis permutation transformation"
+--     * Slot: id Description: 
+--     * Slot: transformation_type Description: The type of transformation
+--     * Slot: name Description: The name of the coordinate transformation
+--     * Slot: input Description: The source coordinate system name
+--     * Slot: output Description: The target coordinate system name
+-- # Class: "Translation" Description: "A translation transformation"
+--     * Slot: id Description: 
+--     * Slot: transformation_type Description: The type of transformation
+--     * Slot: name Description: The name of the coordinate transformation
+--     * Slot: input Description: The source coordinate system name
+--     * Slot: output Description: The target coordinate system name
+-- # Class: "Scale" Description: "A scaling transformation"
+--     * Slot: id Description: 
+--     * Slot: transformation_type Description: The type of transformation
+--     * Slot: name Description: The name of the coordinate transformation
+--     * Slot: input Description: The source coordinate system name
+--     * Slot: output Description: The target coordinate system name
+-- # Class: "Affine" Description: "An affine transformation"
+--     * Slot: id Description: 
+--     * Slot: transformation_type Description: The type of transformation
+--     * Slot: affine Description: The affine matrix
+--     * Slot: name Description: The name of the coordinate transformation
+--     * Slot: input Description: The source coordinate system name
+--     * Slot: output Description: The target coordinate system name
+-- # Class: "Sequence" Description: "A sequence of transformations"
+--     * Slot: id Description: 
+--     * Slot: transformation_type Description: The type of transformation
+--     * Slot: name Description: The name of the coordinate transformation
+--     * Slot: input Description: The source coordinate system name
+--     * Slot: output Description: The target coordinate system name
+-- # Class: "CTFMetadata" Description: "A set of CTF patameters for an image."
+--     * Slot: id Description: 
+--     * Slot: defocus_u Description: Estimated defocus U for this image in Angstrom, underfocus positive.
+--     * Slot: defocus_v Description: Estimated defocus V for this image in Angstrom, underfocus positive.
+--     * Slot: defocus_angle Description: Estimated angle of astigmatism.
+-- # Class: "AcquisitionMetadataMixin" Description: "Metadata concerning the acquisition process."
+--     * Slot: id Description: 
+--     * Slot: nominal_tilt_angle Description: The tilt angle reported by the microscope
+--     * Slot: accumulated_dose Description: The pre-exposure up to this image in e-/A^2
+--     * Slot: ctf_metadata_id Description: A set of CTF patameters for an image.
+-- # Class: "GainFile" Description: "A gain reference file."
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+-- # Class: "DefectFile" Description: "A detector defect file."
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+-- # Class: "MovieFrame" Description: "An individual movie frame"
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+--     * Slot: section Description: 0-based section index to the entity inside a stack.
+--     * Slot: nominal_tilt_angle Description: The tilt angle reported by the microscope
+--     * Slot: accumulated_dose Description: The pre-exposure up to this image in e-/A^2
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: ctf_metadata_id Description: A set of CTF patameters for an image.
+-- # Class: "MovieStack" Description: "A stack of movie frames."
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+-- # Class: "ProjectionImage" Description: "A projection image."
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+--     * Slot: section Description: 0-based section index to the entity inside a stack.
+--     * Slot: nominal_tilt_angle Description: The tilt angle reported by the microscope
+--     * Slot: accumulated_dose Description: The pre-exposure up to this image in e-/A^2
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: ctf_metadata_id Description: A set of CTF patameters for an image.
+-- # Class: "MovieStackSeries" Description: "A group of movie stacks that belong to a single tilt series."
+--     * Slot: id Description: 
+-- # Class: "TiltSeries" Description: "A stack of projection images."
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+-- # Class: "SubProjectionImage" Description: "A croppecd projection image."
+--     * Slot: id Description: 
+--     * Slot: particle_index Description: Index of a particle inside a tomogram.
+--     * Slot: path Description: Path to a file.
+--     * Slot: section Description: 0-based section index to the entity inside a stack.
+--     * Slot: nominal_tilt_angle Description: The tilt angle reported by the microscope
+--     * Slot: accumulated_dose Description: The pre-exposure up to this image in e-/A^2
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: ctf_metadata_id Description: A set of CTF patameters for an image.
+-- # Class: "Tomogram" Description: "A 3D tomogram."
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: depth Description: The depth of the image (z-axis) in pixels
+-- # Class: "ParticleMap" Description: "A 3D particle density map."
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: depth Description: The depth of the image (z-axis) in pixels
+-- # Class: "CoordMetaMixin" Description: "Coordinate system mixins for annotations."
+--     * Slot: id Description: 
+-- # Class: "Annotation" Description: "A primitive annotation."
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+-- # Class: "SegmentationMask2D" Description: "An annotation image with categorical labels."
+--     * Slot: id Description: 
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: path Description: Path to a file.
+-- # Class: "SegmentationMask3D" Description: "An annotation volume with categorical labels."
+--     * Slot: id Description: 
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: depth Description: The depth of the image (z-axis) in pixels
+--     * Slot: path Description: Path to a file.
+-- # Class: "ProbabilityMap2D" Description: "An annotation image with real-valued labels."
+--     * Slot: id Description: 
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: path Description: Path to a file.
+-- # Class: "ProbabilityMap3D" Description: "An annotation volume with real-valued labels."
+--     * Slot: id Description: 
+--     * Slot: width Description: The width of the image (x-axis) in pixels
+--     * Slot: height Description: The height of the image (y-axis) in pixels
+--     * Slot: depth Description: The depth of the image (z-axis) in pixels
+--     * Slot: path Description: Path to a file.
+-- # Class: "PointSet2D" Description: "A set of 2D point annotations."
+--     * Slot: id Description: 
+--     * Slot: origin2D Description: Location on a 2D image (Nx2).
+--     * Slot: path Description: Path to a file.
+-- # Class: "PointSet3D" Description: "A set of 3D point annotations."
+--     * Slot: id Description: 
+--     * Slot: origin3D Description: Location on a 3D image (Nx3).
+--     * Slot: path Description: Path to a file.
+-- # Class: "PointVectorSet2D" Description: "A set of 2D points with an associated direction vector."
+--     * Slot: id Description: 
+--     * Slot: origin2D Description: Location on a 2D image (Nx2).
+--     * Slot: vector2D Description: Orientation vector associated with a point on a 2D image (Nx2).
+--     * Slot: path Description: Path to a file.
+-- # Class: "PointVectorSet3D" Description: "A set of 3D points with an associated direction vector."
+--     * Slot: id Description: 
+--     * Slot: origin3D Description: Location on a 3D image (Nx3).
+--     * Slot: vector3D Description: Orientation vector associated with a point on a 3D image (Nx3).
+--     * Slot: path Description: Path to a file.
+-- # Class: "PointMatrixSet2D" Description: "A set of 2D points with an associated rotation matrix."
+--     * Slot: id Description: 
+--     * Slot: origin2D Description: Location on a 2D image (Nx2).
+--     * Slot: matrix2D Description: Rotation matrix associated with a point on a 2D image (Nx2x2).
+--     * Slot: path Description: Path to a file.
+-- # Class: "PointMatrixSet3D" Description: "A set of 3D points with an associated rotation matrix."
+--     * Slot: id Description: 
+--     * Slot: origin3D Description: Location on a 3D image (Nx3).
+--     * Slot: matrix3D Description: Rotation matrix associated with a point on a 3D image (Nx3x3).
+--     * Slot: path Description: Path to a file.
+-- # Class: "TriMesh" Description: "A mesh annotation."
+--     * Slot: id Description: 
+--     * Slot: path Description: Path to a file.
+-- # Class: "ProjectionAlignment" Description: "The tomographic alignment for a single projection."
+--     * Slot: id Description: 
+--     * Slot: input Description: The source coordinate system name
+--     * Slot: output Description: The target coordinate system name
+--     * Slot: transformation_type Description: The type of transformation
+--     * Slot: name Description: The name of the coordinate transformation
+-- # Class: "Alignment" Description: "The tomographic alignment for a tilt series."
+--     * Slot: id Description: 
+-- # Class: "Region" Description: "Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen."
+--     * Slot: id Description: 
+-- # Class: "Average" Description: "A particle averaging experiment."
+--     * Slot: id Description: 
+--     * Slot: name Description: The name of a given entry
+-- # Class: "MovieStackCollection" Description: "A collection of movie stacks using the same gain and defect files."
+--     * Slot: id Description: 
+--     * Slot: gain_file_id Description: The gain file for the movie stacks
+--     * Slot: defect_file_id Description: The defect file for the movie stacks
+-- # Class: "Dataset" Description: "A dataset"
+--     * Slot: id Description: 
+--     * Slot: name Description: The name of a given entry
 -- # Class: "Sample_molecule" Description: ""
 --     * Slot: Sample_id Description: Autocreated FK slot
 --     * Slot: molecule_id Description: List of molecule associated with the sample
@@ -247,6 +469,195 @@
 -- # Class: "Organizational_funder" Description: ""
 --     * Slot: Organizational_id Description: Autocreated FK slot
 --     * Slot: funder_id Description: funding organization/person.
+-- # Class: "Image2D_coordinate_systems" Description: ""
+--     * Slot: Image2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "Image2D_coordinate_transformations" Description: ""
+--     * Slot: Image2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "Image3D_coordinate_systems" Description: ""
+--     * Slot: Image3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "Image3D_coordinate_transformations" Description: ""
+--     * Slot: Image3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "ImageStack2D_images2D" Description: ""
+--     * Slot: ImageStack2D_id Description: Autocreated FK slot
+--     * Slot: images2D_id Description: The images in the stack
+-- # Class: "ImageStack3D_images3D" Description: ""
+--     * Slot: ImageStack3D_id Description: Autocreated FK slot
+--     * Slot: images3D_id Description: The images in the stack
+-- # Class: "CoordinateSystem_axes" Description: ""
+--     * Slot: CoordinateSystem_id Description: Autocreated FK slot
+--     * Slot: axes_id Description: The axes of the coordinate system
+-- # Class: "Translation_translation" Description: ""
+--     * Slot: Translation_id Description: Autocreated FK slot
+--     * Slot: translation Description: The translation vector
+-- # Class: "Scale_scale" Description: ""
+--     * Slot: Scale_id Description: Autocreated FK slot
+--     * Slot: scale Description: The scaling vector
+-- # Class: "Sequence_sequence" Description: ""
+--     * Slot: Sequence_id Description: Autocreated FK slot
+--     * Slot: sequence_id Description: The sequence of transformations
+-- # Class: "GainFile_coordinate_systems" Description: ""
+--     * Slot: GainFile_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "GainFile_coordinate_transformations" Description: ""
+--     * Slot: GainFile_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "DefectFile_coordinate_systems" Description: ""
+--     * Slot: DefectFile_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "DefectFile_coordinate_transformations" Description: ""
+--     * Slot: DefectFile_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "MovieFrame_coordinate_systems" Description: ""
+--     * Slot: MovieFrame_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "MovieFrame_coordinate_transformations" Description: ""
+--     * Slot: MovieFrame_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "MovieStack_images_movie" Description: ""
+--     * Slot: MovieStack_id Description: Autocreated FK slot
+--     * Slot: images_movie_id Description: The movie frames in the stack
+-- # Class: "ProjectionImage_coordinate_systems" Description: ""
+--     * Slot: ProjectionImage_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "ProjectionImage_coordinate_transformations" Description: ""
+--     * Slot: ProjectionImage_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "MovieStackSeries_stacks" Description: ""
+--     * Slot: MovieStackSeries_id Description: Autocreated FK slot
+--     * Slot: stacks_id Description: The movie stacks.
+-- # Class: "TiltSeries_images_tilt" Description: ""
+--     * Slot: TiltSeries_id Description: Autocreated FK slot
+--     * Slot: images_tilt_id Description: The projections in the stack
+-- # Class: "SubProjectionImage_coordinate_systems" Description: ""
+--     * Slot: SubProjectionImage_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "SubProjectionImage_coordinate_transformations" Description: ""
+--     * Slot: SubProjectionImage_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "Tomogram_coordinate_systems" Description: ""
+--     * Slot: Tomogram_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "Tomogram_coordinate_transformations" Description: ""
+--     * Slot: Tomogram_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "ParticleMap_coordinate_systems" Description: ""
+--     * Slot: ParticleMap_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "ParticleMap_coordinate_transformations" Description: ""
+--     * Slot: ParticleMap_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "CoordMetaMixin_coordinate_systems" Description: ""
+--     * Slot: CoordMetaMixin_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "CoordMetaMixin_coordinate_transformations" Description: ""
+--     * Slot: CoordMetaMixin_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "SegmentationMask2D_coordinate_systems" Description: ""
+--     * Slot: SegmentationMask2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "SegmentationMask2D_coordinate_transformations" Description: ""
+--     * Slot: SegmentationMask2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "SegmentationMask3D_coordinate_systems" Description: ""
+--     * Slot: SegmentationMask3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "SegmentationMask3D_coordinate_transformations" Description: ""
+--     * Slot: SegmentationMask3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "ProbabilityMap2D_coordinate_systems" Description: ""
+--     * Slot: ProbabilityMap2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "ProbabilityMap2D_coordinate_transformations" Description: ""
+--     * Slot: ProbabilityMap2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "ProbabilityMap3D_coordinate_systems" Description: ""
+--     * Slot: ProbabilityMap3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "ProbabilityMap3D_coordinate_transformations" Description: ""
+--     * Slot: ProbabilityMap3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "PointSet2D_coordinate_systems" Description: ""
+--     * Slot: PointSet2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "PointSet2D_coordinate_transformations" Description: ""
+--     * Slot: PointSet2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "PointSet3D_coordinate_systems" Description: ""
+--     * Slot: PointSet3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "PointSet3D_coordinate_transformations" Description: ""
+--     * Slot: PointSet3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "PointVectorSet2D_coordinate_systems" Description: ""
+--     * Slot: PointVectorSet2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "PointVectorSet2D_coordinate_transformations" Description: ""
+--     * Slot: PointVectorSet2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "PointVectorSet3D_coordinate_systems" Description: ""
+--     * Slot: PointVectorSet3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "PointVectorSet3D_coordinate_transformations" Description: ""
+--     * Slot: PointVectorSet3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "PointMatrixSet2D_coordinate_systems" Description: ""
+--     * Slot: PointMatrixSet2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "PointMatrixSet2D_coordinate_transformations" Description: ""
+--     * Slot: PointMatrixSet2D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "PointMatrixSet3D_coordinate_systems" Description: ""
+--     * Slot: PointMatrixSet3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "PointMatrixSet3D_coordinate_transformations" Description: ""
+--     * Slot: PointMatrixSet3D_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "TriMesh_coordinate_systems" Description: ""
+--     * Slot: TriMesh_id Description: Autocreated FK slot
+--     * Slot: coordinate_systems_id Description: Named coordinate systems for this entity
+-- # Class: "TriMesh_coordinate_transformations" Description: ""
+--     * Slot: TriMesh_id Description: Autocreated FK slot
+--     * Slot: coordinate_transformations_id Description: Named coordinate systems for this entity
+-- # Class: "ProjectionAlignment_sequence" Description: ""
+--     * Slot: ProjectionAlignment_id Description: Autocreated FK slot
+--     * Slot: sequence_id Description: The sequence of transformations
+-- # Class: "Alignment_projection_alignments" Description: ""
+--     * Slot: Alignment_id Description: Autocreated FK slot
+--     * Slot: projection_alignments_id Description: alignment for a specific projection
+-- # Class: "Region_annotations" Description: ""
+--     * Slot: Region_id Description: Autocreated FK slot
+--     * Slot: annotations_id Description: The annotations
+-- # Class: "Region_movie_stack_collections" Description: ""
+--     * Slot: Region_id Description: Autocreated FK slot
+--     * Slot: movie_stack_collections_id Description: The movie stack
+-- # Class: "Region_tilt_series" Description: ""
+--     * Slot: Region_id Description: Autocreated FK slot
+--     * Slot: tilt_series_id Description: The tilt series
+-- # Class: "Region_alignments" Description: ""
+--     * Slot: Region_id Description: Autocreated FK slot
+--     * Slot: alignments_id Description: The alignments
+-- # Class: "Region_tomograms" Description: ""
+--     * Slot: Region_id Description: Autocreated FK slot
+--     * Slot: tomograms_id Description: The tomograms
+-- # Class: "Average_annotations" Description: ""
+--     * Slot: Average_id Description: Autocreated FK slot
+--     * Slot: annotations_id Description: The annotations
+-- # Class: "Average_particle_maps" Description: ""
+--     * Slot: Average_id Description: Autocreated FK slot
+--     * Slot: particle_maps_id Description: The particle maps
+-- # Class: "MovieStackCollection_movie_stacks" Description: ""
+--     * Slot: MovieStackCollection_id Description: Autocreated FK slot
+--     * Slot: movie_stacks_id Description: The movie stacks in the collection
+-- # Class: "Dataset_regions" Description: ""
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: regions_id Description: The regions in the dataset
+-- # Class: "Dataset_averages" Description: ""
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: averages_id Description: The averages in the dataset
 
 CREATE TABLE "Any" (
 	id INTEGER NOT NULL, 
@@ -254,8 +665,8 @@ CREATE TABLE "Any" (
 );
 CREATE TABLE "ImageSize" (
 	id INTEGER NOT NULL, 
-	height INTEGER, 
-	width INTEGER, 
+	height_im INTEGER, 
+	width_im INTEGER, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "QuantityValue" (
@@ -316,7 +727,7 @@ CREATE TABLE "Organizational" (
 );
 CREATE TABLE "Person" (
 	id INTEGER NOT NULL, 
-	name TEXT, 
+	last_name TEXT, 
 	first_name TEXT, 
 	work_status BOOLEAN, 
 	email TEXT, 
@@ -330,7 +741,7 @@ CREATE TABLE "Author" (
 	role TEXT, 
 	name_org TEXT, 
 	type_org VARCHAR(10) NOT NULL, 
-	name TEXT NOT NULL, 
+	last_name TEXT NOT NULL, 
 	first_name TEXT NOT NULL, 
 	work_status BOOLEAN, 
 	email TEXT NOT NULL, 
@@ -342,6 +753,257 @@ CREATE TABLE "Funder" (
 	funder_name TEXT, 
 	type_org VARCHAR(10), 
 	country TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Image2D" (
+	id INTEGER NOT NULL, 
+	width INTEGER, 
+	height INTEGER, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Image3D" (
+	id INTEGER NOT NULL, 
+	width INTEGER, 
+	height INTEGER, 
+	depth INTEGER, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "ImageStack2D" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "ImageStack3D" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Axis" (
+	id INTEGER NOT NULL, 
+	axis_name TEXT NOT NULL, 
+	axis_unit TEXT, 
+	axis_type VARCHAR(5), 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "CoordinateSystem" (
+	id INTEGER NOT NULL, 
+	name TEXT NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "CoordinateTransformation" (
+	id INTEGER NOT NULL, 
+	transformation_type VARCHAR(11), 
+	name TEXT, 
+	input TEXT, 
+	output TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Identity" (
+	id INTEGER NOT NULL, 
+	transformation_type VARCHAR(11), 
+	name TEXT, 
+	input TEXT, 
+	output TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "MapAxis" (
+	id INTEGER NOT NULL, 
+	transformation_type VARCHAR(11), 
+	name TEXT, 
+	input TEXT, 
+	output TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Translation" (
+	id INTEGER NOT NULL, 
+	transformation_type VARCHAR(11), 
+	name TEXT, 
+	input TEXT, 
+	output TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Scale" (
+	id INTEGER NOT NULL, 
+	transformation_type VARCHAR(11), 
+	name TEXT, 
+	input TEXT, 
+	output TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Affine" (
+	id INTEGER NOT NULL, 
+	transformation_type VARCHAR(11), 
+	affine INTEGER, 
+	name TEXT, 
+	input TEXT, 
+	output TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Sequence" (
+	id INTEGER NOT NULL, 
+	transformation_type VARCHAR(11), 
+	name TEXT, 
+	input TEXT, 
+	output TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "CTFMetadata" (
+	id INTEGER NOT NULL, 
+	defocus_u FLOAT, 
+	defocus_v FLOAT, 
+	defocus_angle FLOAT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "GainFile" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	width INTEGER, 
+	height INTEGER, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "DefectFile" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	width INTEGER, 
+	height INTEGER, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "MovieStack" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "MovieStackSeries" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "TiltSeries" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Tomogram" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	width INTEGER, 
+	height INTEGER, 
+	depth INTEGER, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "ParticleMap" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	width INTEGER, 
+	height INTEGER, 
+	depth INTEGER, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "CoordMetaMixin" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Annotation" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "SegmentationMask2D" (
+	id INTEGER NOT NULL, 
+	width INTEGER, 
+	height INTEGER, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "SegmentationMask3D" (
+	id INTEGER NOT NULL, 
+	width INTEGER, 
+	height INTEGER, 
+	depth INTEGER, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "ProbabilityMap2D" (
+	id INTEGER NOT NULL, 
+	width INTEGER, 
+	height INTEGER, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "ProbabilityMap3D" (
+	id INTEGER NOT NULL, 
+	width INTEGER, 
+	height INTEGER, 
+	depth INTEGER, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "PointSet2D" (
+	id INTEGER NOT NULL, 
+	"origin2D" FLOAT, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "PointSet3D" (
+	id INTEGER NOT NULL, 
+	"origin3D" FLOAT, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "PointVectorSet2D" (
+	id INTEGER NOT NULL, 
+	"origin2D" FLOAT, 
+	"vector2D" FLOAT, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "PointVectorSet3D" (
+	id INTEGER NOT NULL, 
+	"origin3D" FLOAT, 
+	"vector3D" FLOAT, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "PointMatrixSet2D" (
+	id INTEGER NOT NULL, 
+	"origin2D" FLOAT, 
+	"matrix2D" FLOAT, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "PointMatrixSet3D" (
+	id INTEGER NOT NULL, 
+	"origin3D" FLOAT, 
+	"matrix3D" FLOAT, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "TriMesh" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "ProjectionAlignment" (
+	id INTEGER NOT NULL, 
+	input TEXT, 
+	output TEXT, 
+	transformation_type VARCHAR(11), 
+	name TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Alignment" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Region" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Average" (
+	id INTEGER NOT NULL, 
+	name TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Dataset" (
+	id INTEGER NOT NULL, 
+	name TEXT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Range" (
@@ -499,6 +1161,67 @@ CREATE TABLE "EMDatasetBase" (
 	FOREIGN KEY(sample_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(organizational_id) REFERENCES "Any" (id)
 );
+CREATE TABLE "AxisNameMapping" (
+	id INTEGER NOT NULL, 
+	axis1_name TEXT, 
+	axis2_name TEXT, 
+	"MapAxis_id" INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("MapAxis_id") REFERENCES "MapAxis" (id)
+);
+CREATE TABLE "AcquisitionMetadataMixin" (
+	id INTEGER NOT NULL, 
+	nominal_tilt_angle FLOAT, 
+	accumulated_dose FLOAT, 
+	ctf_metadata_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(ctf_metadata_id) REFERENCES "CTFMetadata" (id)
+);
+CREATE TABLE "MovieFrame" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	section INTEGER, 
+	nominal_tilt_angle FLOAT, 
+	accumulated_dose FLOAT, 
+	width INTEGER, 
+	height INTEGER, 
+	ctf_metadata_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(ctf_metadata_id) REFERENCES "CTFMetadata" (id)
+);
+CREATE TABLE "ProjectionImage" (
+	id INTEGER NOT NULL, 
+	path TEXT, 
+	section INTEGER, 
+	nominal_tilt_angle FLOAT, 
+	accumulated_dose FLOAT, 
+	width INTEGER, 
+	height INTEGER, 
+	ctf_metadata_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(ctf_metadata_id) REFERENCES "CTFMetadata" (id)
+);
+CREATE TABLE "SubProjectionImage" (
+	id INTEGER NOT NULL, 
+	particle_index INTEGER, 
+	path TEXT, 
+	section INTEGER, 
+	nominal_tilt_angle FLOAT, 
+	accumulated_dose FLOAT, 
+	width INTEGER, 
+	height INTEGER, 
+	ctf_metadata_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(ctf_metadata_id) REFERENCES "CTFMetadata" (id)
+);
+CREATE TABLE "MovieStackCollection" (
+	id INTEGER NOT NULL, 
+	gain_file_id INTEGER, 
+	defect_file_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(gain_file_id) REFERENCES "GainFile" (id), 
+	FOREIGN KEY(defect_file_id) REFERENCES "DefectFile" (id)
+);
 CREATE TABLE "Organizational_authors" (
 	"Organizational_id" INTEGER, 
 	authors_id INTEGER NOT NULL, 
@@ -512,6 +1235,387 @@ CREATE TABLE "Organizational_funder" (
 	PRIMARY KEY ("Organizational_id", funder_id), 
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id), 
 	FOREIGN KEY(funder_id) REFERENCES "Funder" (id)
+);
+CREATE TABLE "Image2D_coordinate_systems" (
+	"Image2D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("Image2D_id", coordinate_systems_id), 
+	FOREIGN KEY("Image2D_id") REFERENCES "Image2D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "Image2D_coordinate_transformations" (
+	"Image2D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("Image2D_id", coordinate_transformations_id), 
+	FOREIGN KEY("Image2D_id") REFERENCES "Image2D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "Image3D_coordinate_systems" (
+	"Image3D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("Image3D_id", coordinate_systems_id), 
+	FOREIGN KEY("Image3D_id") REFERENCES "Image3D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "Image3D_coordinate_transformations" (
+	"Image3D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("Image3D_id", coordinate_transformations_id), 
+	FOREIGN KEY("Image3D_id") REFERENCES "Image3D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "ImageStack2D_images2D" (
+	"ImageStack2D_id" INTEGER, 
+	"images2D_id" INTEGER, 
+	PRIMARY KEY ("ImageStack2D_id", "images2D_id"), 
+	FOREIGN KEY("ImageStack2D_id") REFERENCES "ImageStack2D" (id), 
+	FOREIGN KEY("images2D_id") REFERENCES "Image2D" (id)
+);
+CREATE TABLE "ImageStack3D_images3D" (
+	"ImageStack3D_id" INTEGER, 
+	"images3D_id" INTEGER, 
+	PRIMARY KEY ("ImageStack3D_id", "images3D_id"), 
+	FOREIGN KEY("ImageStack3D_id") REFERENCES "ImageStack3D" (id), 
+	FOREIGN KEY("images3D_id") REFERENCES "Image3D" (id)
+);
+CREATE TABLE "CoordinateSystem_axes" (
+	"CoordinateSystem_id" INTEGER, 
+	axes_id INTEGER NOT NULL, 
+	PRIMARY KEY ("CoordinateSystem_id", axes_id), 
+	FOREIGN KEY("CoordinateSystem_id") REFERENCES "CoordinateSystem" (id), 
+	FOREIGN KEY(axes_id) REFERENCES "Axis" (id)
+);
+CREATE TABLE "Translation_translation" (
+	"Translation_id" INTEGER, 
+	translation FLOAT, 
+	PRIMARY KEY ("Translation_id", translation), 
+	FOREIGN KEY("Translation_id") REFERENCES "Translation" (id)
+);
+CREATE TABLE "Scale_scale" (
+	"Scale_id" INTEGER, 
+	scale FLOAT, 
+	PRIMARY KEY ("Scale_id", scale), 
+	FOREIGN KEY("Scale_id") REFERENCES "Scale" (id)
+);
+CREATE TABLE "Sequence_sequence" (
+	"Sequence_id" INTEGER, 
+	sequence_id INTEGER, 
+	PRIMARY KEY ("Sequence_id", sequence_id), 
+	FOREIGN KEY("Sequence_id") REFERENCES "Sequence" (id), 
+	FOREIGN KEY(sequence_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "GainFile_coordinate_systems" (
+	"GainFile_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("GainFile_id", coordinate_systems_id), 
+	FOREIGN KEY("GainFile_id") REFERENCES "GainFile" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "GainFile_coordinate_transformations" (
+	"GainFile_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("GainFile_id", coordinate_transformations_id), 
+	FOREIGN KEY("GainFile_id") REFERENCES "GainFile" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "DefectFile_coordinate_systems" (
+	"DefectFile_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("DefectFile_id", coordinate_systems_id), 
+	FOREIGN KEY("DefectFile_id") REFERENCES "DefectFile" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "DefectFile_coordinate_transformations" (
+	"DefectFile_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("DefectFile_id", coordinate_transformations_id), 
+	FOREIGN KEY("DefectFile_id") REFERENCES "DefectFile" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "MovieStackSeries_stacks" (
+	"MovieStackSeries_id" INTEGER, 
+	stacks_id INTEGER, 
+	PRIMARY KEY ("MovieStackSeries_id", stacks_id), 
+	FOREIGN KEY("MovieStackSeries_id") REFERENCES "MovieStackSeries" (id), 
+	FOREIGN KEY(stacks_id) REFERENCES "MovieStack" (id)
+);
+CREATE TABLE "Tomogram_coordinate_systems" (
+	"Tomogram_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("Tomogram_id", coordinate_systems_id), 
+	FOREIGN KEY("Tomogram_id") REFERENCES "Tomogram" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "Tomogram_coordinate_transformations" (
+	"Tomogram_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("Tomogram_id", coordinate_transformations_id), 
+	FOREIGN KEY("Tomogram_id") REFERENCES "Tomogram" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "ParticleMap_coordinate_systems" (
+	"ParticleMap_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("ParticleMap_id", coordinate_systems_id), 
+	FOREIGN KEY("ParticleMap_id") REFERENCES "ParticleMap" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "ParticleMap_coordinate_transformations" (
+	"ParticleMap_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("ParticleMap_id", coordinate_transformations_id), 
+	FOREIGN KEY("ParticleMap_id") REFERENCES "ParticleMap" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "CoordMetaMixin_coordinate_systems" (
+	"CoordMetaMixin_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("CoordMetaMixin_id", coordinate_systems_id), 
+	FOREIGN KEY("CoordMetaMixin_id") REFERENCES "CoordMetaMixin" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "CoordMetaMixin_coordinate_transformations" (
+	"CoordMetaMixin_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("CoordMetaMixin_id", coordinate_transformations_id), 
+	FOREIGN KEY("CoordMetaMixin_id") REFERENCES "CoordMetaMixin" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "SegmentationMask2D_coordinate_systems" (
+	"SegmentationMask2D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("SegmentationMask2D_id", coordinate_systems_id), 
+	FOREIGN KEY("SegmentationMask2D_id") REFERENCES "SegmentationMask2D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "SegmentationMask2D_coordinate_transformations" (
+	"SegmentationMask2D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("SegmentationMask2D_id", coordinate_transformations_id), 
+	FOREIGN KEY("SegmentationMask2D_id") REFERENCES "SegmentationMask2D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "SegmentationMask3D_coordinate_systems" (
+	"SegmentationMask3D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("SegmentationMask3D_id", coordinate_systems_id), 
+	FOREIGN KEY("SegmentationMask3D_id") REFERENCES "SegmentationMask3D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "SegmentationMask3D_coordinate_transformations" (
+	"SegmentationMask3D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("SegmentationMask3D_id", coordinate_transformations_id), 
+	FOREIGN KEY("SegmentationMask3D_id") REFERENCES "SegmentationMask3D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "ProbabilityMap2D_coordinate_systems" (
+	"ProbabilityMap2D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("ProbabilityMap2D_id", coordinate_systems_id), 
+	FOREIGN KEY("ProbabilityMap2D_id") REFERENCES "ProbabilityMap2D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "ProbabilityMap2D_coordinate_transformations" (
+	"ProbabilityMap2D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("ProbabilityMap2D_id", coordinate_transformations_id), 
+	FOREIGN KEY("ProbabilityMap2D_id") REFERENCES "ProbabilityMap2D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "ProbabilityMap3D_coordinate_systems" (
+	"ProbabilityMap3D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("ProbabilityMap3D_id", coordinate_systems_id), 
+	FOREIGN KEY("ProbabilityMap3D_id") REFERENCES "ProbabilityMap3D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "ProbabilityMap3D_coordinate_transformations" (
+	"ProbabilityMap3D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("ProbabilityMap3D_id", coordinate_transformations_id), 
+	FOREIGN KEY("ProbabilityMap3D_id") REFERENCES "ProbabilityMap3D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "PointSet2D_coordinate_systems" (
+	"PointSet2D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("PointSet2D_id", coordinate_systems_id), 
+	FOREIGN KEY("PointSet2D_id") REFERENCES "PointSet2D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "PointSet2D_coordinate_transformations" (
+	"PointSet2D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("PointSet2D_id", coordinate_transformations_id), 
+	FOREIGN KEY("PointSet2D_id") REFERENCES "PointSet2D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "PointSet3D_coordinate_systems" (
+	"PointSet3D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("PointSet3D_id", coordinate_systems_id), 
+	FOREIGN KEY("PointSet3D_id") REFERENCES "PointSet3D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "PointSet3D_coordinate_transformations" (
+	"PointSet3D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("PointSet3D_id", coordinate_transformations_id), 
+	FOREIGN KEY("PointSet3D_id") REFERENCES "PointSet3D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "PointVectorSet2D_coordinate_systems" (
+	"PointVectorSet2D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("PointVectorSet2D_id", coordinate_systems_id), 
+	FOREIGN KEY("PointVectorSet2D_id") REFERENCES "PointVectorSet2D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "PointVectorSet2D_coordinate_transformations" (
+	"PointVectorSet2D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("PointVectorSet2D_id", coordinate_transformations_id), 
+	FOREIGN KEY("PointVectorSet2D_id") REFERENCES "PointVectorSet2D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "PointVectorSet3D_coordinate_systems" (
+	"PointVectorSet3D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("PointVectorSet3D_id", coordinate_systems_id), 
+	FOREIGN KEY("PointVectorSet3D_id") REFERENCES "PointVectorSet3D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "PointVectorSet3D_coordinate_transformations" (
+	"PointVectorSet3D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("PointVectorSet3D_id", coordinate_transformations_id), 
+	FOREIGN KEY("PointVectorSet3D_id") REFERENCES "PointVectorSet3D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "PointMatrixSet2D_coordinate_systems" (
+	"PointMatrixSet2D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("PointMatrixSet2D_id", coordinate_systems_id), 
+	FOREIGN KEY("PointMatrixSet2D_id") REFERENCES "PointMatrixSet2D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "PointMatrixSet2D_coordinate_transformations" (
+	"PointMatrixSet2D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("PointMatrixSet2D_id", coordinate_transformations_id), 
+	FOREIGN KEY("PointMatrixSet2D_id") REFERENCES "PointMatrixSet2D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "PointMatrixSet3D_coordinate_systems" (
+	"PointMatrixSet3D_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("PointMatrixSet3D_id", coordinate_systems_id), 
+	FOREIGN KEY("PointMatrixSet3D_id") REFERENCES "PointMatrixSet3D" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "PointMatrixSet3D_coordinate_transformations" (
+	"PointMatrixSet3D_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("PointMatrixSet3D_id", coordinate_transformations_id), 
+	FOREIGN KEY("PointMatrixSet3D_id") REFERENCES "PointMatrixSet3D" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "TriMesh_coordinate_systems" (
+	"TriMesh_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("TriMesh_id", coordinate_systems_id), 
+	FOREIGN KEY("TriMesh_id") REFERENCES "TriMesh" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "TriMesh_coordinate_transformations" (
+	"TriMesh_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("TriMesh_id", coordinate_transformations_id), 
+	FOREIGN KEY("TriMesh_id") REFERENCES "TriMesh" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "ProjectionAlignment_sequence" (
+	"ProjectionAlignment_id" INTEGER, 
+	sequence_id INTEGER, 
+	PRIMARY KEY ("ProjectionAlignment_id", sequence_id), 
+	FOREIGN KEY("ProjectionAlignment_id") REFERENCES "ProjectionAlignment" (id), 
+	FOREIGN KEY(sequence_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "Alignment_projection_alignments" (
+	"Alignment_id" INTEGER, 
+	projection_alignments_id INTEGER, 
+	PRIMARY KEY ("Alignment_id", projection_alignments_id), 
+	FOREIGN KEY("Alignment_id") REFERENCES "Alignment" (id), 
+	FOREIGN KEY(projection_alignments_id) REFERENCES "ProjectionAlignment" (id)
+);
+CREATE TABLE "Region_annotations" (
+	"Region_id" INTEGER, 
+	annotations_id INTEGER, 
+	PRIMARY KEY ("Region_id", annotations_id), 
+	FOREIGN KEY("Region_id") REFERENCES "Region" (id), 
+	FOREIGN KEY(annotations_id) REFERENCES "Annotation" (id)
+);
+CREATE TABLE "Region_tilt_series" (
+	"Region_id" INTEGER, 
+	tilt_series_id INTEGER, 
+	PRIMARY KEY ("Region_id", tilt_series_id), 
+	FOREIGN KEY("Region_id") REFERENCES "Region" (id), 
+	FOREIGN KEY(tilt_series_id) REFERENCES "TiltSeries" (id)
+);
+CREATE TABLE "Region_alignments" (
+	"Region_id" INTEGER, 
+	alignments_id INTEGER, 
+	PRIMARY KEY ("Region_id", alignments_id), 
+	FOREIGN KEY("Region_id") REFERENCES "Region" (id), 
+	FOREIGN KEY(alignments_id) REFERENCES "Alignment" (id)
+);
+CREATE TABLE "Region_tomograms" (
+	"Region_id" INTEGER, 
+	tomograms_id INTEGER, 
+	PRIMARY KEY ("Region_id", tomograms_id), 
+	FOREIGN KEY("Region_id") REFERENCES "Region" (id), 
+	FOREIGN KEY(tomograms_id) REFERENCES "Tomogram" (id)
+);
+CREATE TABLE "Average_annotations" (
+	"Average_id" INTEGER, 
+	annotations_id INTEGER, 
+	PRIMARY KEY ("Average_id", annotations_id), 
+	FOREIGN KEY("Average_id") REFERENCES "Average" (id), 
+	FOREIGN KEY(annotations_id) REFERENCES "Annotation" (id)
+);
+CREATE TABLE "Average_particle_maps" (
+	"Average_id" INTEGER, 
+	particle_maps_id INTEGER, 
+	PRIMARY KEY ("Average_id", particle_maps_id), 
+	FOREIGN KEY("Average_id") REFERENCES "Average" (id), 
+	FOREIGN KEY(particle_maps_id) REFERENCES "ParticleMap" (id)
+);
+CREATE TABLE "Dataset_regions" (
+	"Dataset_id" INTEGER, 
+	regions_id INTEGER, 
+	PRIMARY KEY ("Dataset_id", regions_id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
+	FOREIGN KEY(regions_id) REFERENCES "Region" (id)
+);
+CREATE TABLE "Dataset_averages" (
+	"Dataset_id" INTEGER, 
+	averages_id INTEGER, 
+	PRIMARY KEY ("Dataset_id", averages_id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
+	FOREIGN KEY(averages_id) REFERENCES "Average" (id)
+);
+CREATE TABLE "Processing" (
+	id INTEGER NOT NULL, 
+	region_id INTEGER, 
+	average_id INTEGER, 
+	movie_stack_collection_id INTEGER, 
+	dataset_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(region_id) REFERENCES "Region" (id), 
+	FOREIGN KEY(average_id) REFERENCES "Average" (id), 
+	FOREIGN KEY(movie_stack_collection_id) REFERENCES "MovieStackCollection" (id), 
+	FOREIGN KEY(dataset_id) REFERENCES "Dataset" (id)
 );
 CREATE TABLE "Acquisition" (
 	id INTEGER NOT NULL, 
@@ -619,13 +1723,85 @@ CREATE TABLE "Organizational_grants" (
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id), 
 	FOREIGN KEY(grants_id) REFERENCES "Grant" (id)
 );
+CREATE TABLE "MovieFrame_coordinate_systems" (
+	"MovieFrame_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("MovieFrame_id", coordinate_systems_id), 
+	FOREIGN KEY("MovieFrame_id") REFERENCES "MovieFrame" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "MovieFrame_coordinate_transformations" (
+	"MovieFrame_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("MovieFrame_id", coordinate_transformations_id), 
+	FOREIGN KEY("MovieFrame_id") REFERENCES "MovieFrame" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "MovieStack_images_movie" (
+	"MovieStack_id" INTEGER, 
+	images_movie_id INTEGER, 
+	PRIMARY KEY ("MovieStack_id", images_movie_id), 
+	FOREIGN KEY("MovieStack_id") REFERENCES "MovieStack" (id), 
+	FOREIGN KEY(images_movie_id) REFERENCES "MovieFrame" (id)
+);
+CREATE TABLE "ProjectionImage_coordinate_systems" (
+	"ProjectionImage_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("ProjectionImage_id", coordinate_systems_id), 
+	FOREIGN KEY("ProjectionImage_id") REFERENCES "ProjectionImage" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "ProjectionImage_coordinate_transformations" (
+	"ProjectionImage_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("ProjectionImage_id", coordinate_transformations_id), 
+	FOREIGN KEY("ProjectionImage_id") REFERENCES "ProjectionImage" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "TiltSeries_images_tilt" (
+	"TiltSeries_id" INTEGER, 
+	images_tilt_id INTEGER, 
+	PRIMARY KEY ("TiltSeries_id", images_tilt_id), 
+	FOREIGN KEY("TiltSeries_id") REFERENCES "TiltSeries" (id), 
+	FOREIGN KEY(images_tilt_id) REFERENCES "ProjectionImage" (id)
+);
+CREATE TABLE "SubProjectionImage_coordinate_systems" (
+	"SubProjectionImage_id" INTEGER, 
+	coordinate_systems_id INTEGER, 
+	PRIMARY KEY ("SubProjectionImage_id", coordinate_systems_id), 
+	FOREIGN KEY("SubProjectionImage_id") REFERENCES "SubProjectionImage" (id), 
+	FOREIGN KEY(coordinate_systems_id) REFERENCES "CoordinateSystem" (id)
+);
+CREATE TABLE "SubProjectionImage_coordinate_transformations" (
+	"SubProjectionImage_id" INTEGER, 
+	coordinate_transformations_id INTEGER, 
+	PRIMARY KEY ("SubProjectionImage_id", coordinate_transformations_id), 
+	FOREIGN KEY("SubProjectionImage_id") REFERENCES "SubProjectionImage" (id), 
+	FOREIGN KEY(coordinate_transformations_id) REFERENCES "CoordinateTransformation" (id)
+);
+CREATE TABLE "Region_movie_stack_collections" (
+	"Region_id" INTEGER, 
+	movie_stack_collections_id INTEGER, 
+	PRIMARY KEY ("Region_id", movie_stack_collections_id), 
+	FOREIGN KEY("Region_id") REFERENCES "Region" (id), 
+	FOREIGN KEY(movie_stack_collections_id) REFERENCES "MovieStackCollection" (id)
+);
+CREATE TABLE "MovieStackCollection_movie_stacks" (
+	"MovieStackCollection_id" INTEGER, 
+	movie_stacks_id INTEGER, 
+	PRIMARY KEY ("MovieStackCollection_id", movie_stacks_id), 
+	FOREIGN KEY("MovieStackCollection_id") REFERENCES "MovieStackCollection" (id), 
+	FOREIGN KEY(movie_stacks_id) REFERENCES "MovieStackSeries" (id)
+);
 CREATE TABLE "EMDatasetTomo" (
 	id INTEGER NOT NULL, 
+	processing_id INTEGER, 
 	acquisition_id INTEGER NOT NULL, 
 	instrument_id INTEGER NOT NULL, 
 	sample_id INTEGER NOT NULL, 
 	organizational_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(processing_id) REFERENCES "Processing" (id), 
 	FOREIGN KEY(acquisition_id) REFERENCES "AcquisitionTomo" (id), 
 	FOREIGN KEY(instrument_id) REFERENCES "Instrument" (id), 
 	FOREIGN KEY(sample_id) REFERENCES "Sample" (id), 

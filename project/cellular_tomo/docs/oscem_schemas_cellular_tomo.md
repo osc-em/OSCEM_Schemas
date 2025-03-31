@@ -114,7 +114,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [growth_condition](growth_condition.md) - how the specimen was grown
  * [growth_location](growth_location.md) - In/on what kind of surface/container the cells were grown; i.e. directly on a grid
  * [handling](handling.md) - What was done to the sample, please give an overview of relevant treatments.
- * [height](height.md) - The height of a given item - unit depends on item
+ * [height_im](height_im.md) - The height of a given item - unit depends on item
  * [holder](holder.md) - Speciman holder model
  * [holder_cryogen](holder_cryogen.md) - Type of cryogen used in the holder - if the holder is cooled seperately
  * [humidity_env](humidity_env.md) - humidity of the atmosphere right before/ during freezing; in %.
@@ -136,6 +136,8 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Phaseplate➞instrument_type](Phaseplate_instrument_type.md) - Type of phaseplate
      * [SphericalAberrationCorrector➞instrument_type](SphericalAberrationCorrector_instrument_type.md)
  * [ion_source](ion_source.md) - what ion source was used?
+ * [last_name](last_name.md) - author_name
+     * [Author➞last_name](Author_last_name.md)
  * [lift_out](lift_out.md) - whether a lift out was performed
  * [location](location.md) - the geographical location of your source, optimally in a geographic coordinate system.
  * [main_target](main_target.md) - What was the main biological target of your research for this tomogram?
@@ -150,8 +152,6 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [minimal](minimal.md) - Minimal value of a given dataset property
      * [TiltAngle➞minimal](TiltAngle_minimal.md)
  * [model](model.md) - Make and model of a specilized device
- * [name](name.md) - name
-     * [Author➞name](Author_name.md)
  * [name_org](name_org.md) - Name of the organization
      * [Author➞name_org](Author_name_org.md)
  * [nominal_defocus](nominal_defocus.md) - Target defocus set, min and max values in µm.
@@ -208,9 +208,9 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [value](value.md) - the value of a field with a unit
      * [QuantityValue➞value](QuantityValue_value.md)
  * [valueSI](valueSI.md) - value of a given field in respect to its SI unit
- * [width](width.md) - The width of a given item - unit depends on item
  * [width_energy_filter](width_energy_filter.md) - Width of the energy filter used.
      * [EnergyFilter➞width_energy_filter](EnergyFilter_width_energy_filter.md)
+ * [width_im](width_im.md) - The width of a given item - unit depends on item
  * [work_phone](work_phone.md) - work phone
  * [work_status](work_status.md) - work status
  * [x_max](x_max.md) - maximum x

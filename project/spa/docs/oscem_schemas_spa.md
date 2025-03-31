@@ -169,7 +169,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [grid](grid.md) - Description of the grid used
      * [Sample➞grid](Sample_grid.md)
  * [grids_imaged](grids_imaged.md) - Number of grids imaged for this project - here with qualifier during this data acquisition
- * [height](height.md) - The height of a given item - unit depends on item
+ * [height_im](height_im.md) - The height of a given item - unit depends on item
  * [holder](holder.md) - Speciman holder model
  * [holder_cryogen](holder_cryogen.md) - Type of cryogen used in the holder - if the holder is cooled seperately
  * [humidity](humidity.md) - Environmental humidity just before vitrification, in %
@@ -198,6 +198,8 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [isosurface_images](isosurface_images.md) - isosurface images of volume
      * [Volume➞isosurface_images](Volume_isosurface_images.md)
      * [Volumes➞isosurface_images](Volumes_isosurface_images.md)
+ * [last_name](last_name.md) - author_name
+     * [Author➞last_name](Author_last_name.md)
  * [ligands](ligands.md) - List of ligands associated with the sample
      * [Sample➞ligands](Sample_ligands.md)
  * [manufacturer](manufacturer.md) - Grid manufacturer
@@ -228,8 +230,6 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Sample➞molecule](Sample_molecule.md)
  * [movies](movies.md) - Movies metadata
      * [Processing➞movies](Processing_movies.md)
- * [name](name.md) - name
-     * [Author➞name](Author_name.md)
  * [name_mol](name_mol.md) - Name of an individual molecule (often protein) in the sample
      * [Molecule➞name_mol](Molecule_name_mol.md)
  * [name_org](name_org.md) - Name of the organization
@@ -375,9 +375,9 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Volumes➞volume_type](Volumes_volume_type.md)
  * [volumes](volumes.md) - Volume metadata
      * [Processing➞volumes](Processing_volumes.md)
- * [width](width.md) - The width of a given item - unit depends on item
  * [width_energy_filter](width_energy_filter.md) - Width of the energy filter used.
      * [EnergyFilter➞width_energy_filter](EnergyFilter_width_energy_filter.md)
+ * [width_im](width_im.md) - The width of a given item - unit depends on item
  * [work_phone](work_phone.md) - work phone
  * [work_status](work_status.md) - work status
  * [x_max](x_max.md) - maximum x

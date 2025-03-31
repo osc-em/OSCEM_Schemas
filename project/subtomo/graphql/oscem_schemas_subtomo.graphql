@@ -6,6 +6,12 @@ enum AssemblyEnum
     PARTICLE
   }
 
+enum AxisType
+  {
+    space
+    array
+  }
+
 enum MoleculeClassEnum
   {
     CELL
@@ -22,6 +28,16 @@ enum OrganizationTypeEnum
     Commercial
     Government
     Other
+  }
+
+enum TransformationType
+  {
+    identity
+    map_axis
+    translation
+    scale
+    affine
+    sequence
   }
 
 type Acquisition
@@ -53,6 +69,13 @@ type Acquisition
     imageshift: BoundingBox2D
     beamtiltgroups: Integer
     gainrefFlipRotate: String
+  }
+
+type AcquisitionMetadataMixin
+  {
+    nominalTiltAngle: Float
+    accumulatedDose: Float
+    ctfMetadata: CTFMetadata
   }
 
 type AcquisitionTomo
@@ -88,6 +111,25 @@ type AcquisitionTomo
     tiltAngle: TiltAngle!
   }
 
+type Affine
+  {
+    name: String
+    input: String
+    output: String
+    transformationType: TransformationType
+    affine: Integer
+  }
+
+type Alignment
+  {
+    projectionAlignments: [ProjectionAlignment]
+  }
+
+type Annotation
+  {
+    path: String
+  }
+
 type Any
   {
   }
@@ -101,9 +143,29 @@ type Author
     role: String
     nameOrg: String
     typeOrg: OrganizationTypeEnum!
-    name: String!
+    lastName: String!
     firstName: String!
     email: String!
+  }
+
+type Average
+  {
+    name: String
+    annotations: [Annotation]
+    particleMaps: [ParticleMap]
+  }
+
+type Axis
+  {
+    axisName: String!
+    axisUnit: String
+    axisType: AxisType
+  }
+
+type AxisNameMapping
+  {
+    axis1Name: String
+    axis2Name: String
   }
 
 type BoundingBox2D
@@ -118,6 +180,49 @@ type ChromaticAberrationCorrector
   {
     used: Boolean!
     instrumentType: String!
+  }
+
+type CoordinateSystem
+  {
+    name: String!
+    axes: [Axis]!
+  }
+
+type CoordinateTransformation
+  {
+    transformationType: TransformationType
+    name: String
+    input: String
+    output: String
+  }
+
+type CoordMetaMixin
+  {
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type CTFMetadata
+  {
+    defocusU: Float
+    defocusV: Float
+    defocusAngle: Float
+  }
+
+type Dataset
+  {
+    name: String
+    regions: [Region]
+    averages: [Average]
+  }
+
+type DefectFile
+  {
+    width: Integer
+    height: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+    path: String
   }
 
 interface Descriptor
@@ -142,6 +247,7 @@ interface EMDatasetBase
 
 type EMDatasetTomo
   {
+    processing: Processing
     acquisition: AcquisitionTomo!
     instrument: Instrument!
     sample: Sample!
@@ -160,6 +266,15 @@ type Funder
     funderName: String
     typeOrg: OrganizationTypeEnum
     country: String
+  }
+
+type GainFile
+  {
+    width: Integer
+    height: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+    path: String
   }
 
 type Grant
@@ -187,10 +302,45 @@ type Grid
     pretreatmentAtmosphere: String
   }
 
+type Identity
+  {
+    name: String
+    input: String
+    output: String
+    transformationType: TransformationType
+  }
+
+type Image2D
+  {
+    width: Integer
+    height: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type Image3D
+  {
+    width: Integer
+    height: Integer
+    depth: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
 type ImageSize
   {
-    height: Integer
-    width: Integer
+    heightIm: Integer
+    widthIm: Integer
+  }
+
+type ImageStack2D
+  {
+    images2D: [Image2D]
+  }
+
+type ImageStack3D
+  {
+    images3D: [Image3D]
   }
 
 type Instrument
@@ -211,6 +361,15 @@ type Ligand
     reference: String
   }
 
+type MapAxis
+  {
+    name: String
+    input: String
+    output: String
+    transformationType: TransformationType
+    mapAxis: [AxisNameMapping]
+  }
+
 type Molecule
   {
     nameMol: String!
@@ -222,6 +381,37 @@ type Molecule
     expressionSystem: String
     taxonomyIdExpression: String
     geneName: String
+  }
+
+type MovieFrame implements AcquisitionMetadataMixin
+  {
+    width: Integer
+    height: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+    path: String
+    section: Integer
+    nominalTiltAngle: Float
+    accumulatedDose: Float
+    ctfMetadata: CTFMetadata
+  }
+
+type MovieStack
+  {
+    path: String
+    imagesMovie: [MovieFrame]
+  }
+
+type MovieStackCollection
+  {
+    movieStacks: [MovieStackSeries]
+    gainFile: GainFile
+    defectFile: DefectFile
+  }
+
+type MovieStackSeries
+  {
+    stacks: [MovieStack]
   }
 
 type Organizational
@@ -240,9 +430,19 @@ type OverallMolecule
     assembly: AssemblyEnum
   }
 
+type ParticleMap
+  {
+    width: Integer
+    height: Integer
+    depth: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+    path: String
+  }
+
 type Person
   {
-    name: String
+    lastName: String
     firstName: String
     workStatus: Boolean
     email: String
@@ -253,6 +453,107 @@ type Phaseplate
   {
     used: Boolean!
     instrumentType: String!
+  }
+
+type PointMatrixSet2D implements CoordMetaMixin
+  {
+    path: String
+    origin2D: Float
+    matrix2D: Float
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type PointMatrixSet3D implements CoordMetaMixin
+  {
+    path: String
+    origin3D: Float
+    matrix3D: Float
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type PointSet2D implements CoordMetaMixin
+  {
+    path: String
+    origin2D: Float
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type PointSet3D implements CoordMetaMixin
+  {
+    path: String
+    origin3D: Float
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type PointVectorSet2D implements CoordMetaMixin
+  {
+    path: String
+    origin2D: Float
+    vector2D: Float
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type PointVectorSet3D implements CoordMetaMixin
+  {
+    path: String
+    origin3D: Float
+    vector3D: Float
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type ProbabilityMap2D implements Image2D
+  {
+    path: String
+    width: Integer
+    height: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type ProbabilityMap3D implements Image3D
+  {
+    path: String
+    width: Integer
+    height: Integer
+    depth: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type Processing
+  {
+    region: Region
+    average: Average
+    movieStackCollection: MovieStackCollection
+    dataset: Dataset
+  }
+
+type ProjectionAlignment
+  {
+    name: String
+    transformationType: TransformationType
+    input: String
+    output: String
+    sequence: [CoordinateTransformation]
+  }
+
+type ProjectionImage implements AcquisitionMetadataMixin
+  {
+    width: Integer
+    height: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+    path: String
+    section: Integer
+    nominalTiltAngle: Float
+    accumulatedDose: Float
+    ctfMetadata: CTFMetadata
   }
 
 type QuantitySI
@@ -277,6 +578,15 @@ type Range
     maximal: Any
   }
 
+type Region
+  {
+    annotations: [Annotation]
+    movieStackCollections: [MovieStackCollection]
+    tiltSeries: [TiltSeries]
+    alignments: [Alignment]
+    tomograms: [Tomogram]
+  }
+
 type Sample
   {
     overallMolecule: OverallMolecule!
@@ -284,6 +594,43 @@ type Sample
     ligands: [Ligand]
     specimen: Specimen
     grid: Grid
+  }
+
+type Scale
+  {
+    name: String
+    input: String
+    output: String
+    transformationType: TransformationType
+    scale: [Float]
+  }
+
+type SegmentationMask2D implements Image2D
+  {
+    path: String
+    width: Integer
+    height: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type SegmentationMask3D implements Image3D
+  {
+    path: String
+    width: Integer
+    height: Integer
+    depth: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+  }
+
+type Sequence
+  {
+    name: String
+    input: String
+    output: String
+    transformationType: TransformationType
+    sequence: [CoordinateTransformation]
   }
 
 type Series
@@ -320,10 +667,56 @@ type SphericalAberrationCorrector
     instrumentType: String!
   }
 
+type SubProjectionImage
+  {
+    width: Integer
+    height: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+    path: String
+    section: Integer
+    nominalTiltAngle: Float
+    accumulatedDose: Float
+    ctfMetadata: CTFMetadata
+    particleIndex: Integer
+  }
+
 type TiltAngle
   {
     minimal: Any!
     maximal: Any!
     increment: Any!
+  }
+
+type TiltSeries
+  {
+    imagesTilt: [ProjectionImage]
+    path: String
+  }
+
+type Tomogram
+  {
+    width: Integer
+    height: Integer
+    depth: Integer
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
+    path: String
+  }
+
+type Translation
+  {
+    name: String
+    input: String
+    output: String
+    transformationType: TransformationType
+    translation: [Float]
+  }
+
+type TriMesh implements CoordMetaMixin
+  {
+    path: String
+    coordinateSystems: [CoordinateSystem]
+    coordinateTransformations: [CoordinateTransformation]
   }
 

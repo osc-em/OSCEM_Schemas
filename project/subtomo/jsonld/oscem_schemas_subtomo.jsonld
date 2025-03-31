@@ -14,14 +14,25 @@
     "./tomography",
     "./organizational",
     "./emdataset",
+    "./entities",
     "./custom_types",
-    "acquisition"
+    "acquisition",
+    "./image_entities",
+    "./annotation",
+    "./alignment",
+    "./image",
+    "./coordinate_systems",
+    "./coordinate_transforms"
   ],
   "license": "CC-BY",
   "prefixes": [
     {
       "prefix_prefix": "linkml",
       "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "cryoet",
+      "prefix_reference": "https://raw.githubusercontent.com/osc-em/cryoet-geometry/refs/heads/main/schema/linkml/"
     }
   ],
   "default_prefix": "https://w3id.org/osc-em/oscem-schemas-subtomo/",
@@ -381,7 +392,7 @@
         },
         {
           "text": "HELICAL ARRAY",
-          "description": "If your protein (complex) of interest is forming helical arrays (i.e. tubes)"
+          "description": "If your protein (complex) of interest is forming helical arrays (e.g. tubes)"
         },
         {
           "text": "PARTICLE",
@@ -412,9 +423,70 @@
           "description": "Other types of organizations"
         }
       ]
+    },
+    {
+      "name": "AxisType",
+      "definition_uri": "https://w3id.org/cetmd/coordinate_systems/AxisType",
+      "description": "The type of axis",
+      "from_schema": "https://w3id.org/cetmd/coordinate_systems",
+      "permissible_values": [
+        {
+          "text": "space",
+          "description": "A spatial axis"
+        },
+        {
+          "text": "array",
+          "description": "An array axis"
+        }
+      ]
+    },
+    {
+      "name": "TransformationType",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/TransformationType",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "permissible_values": [
+        {
+          "text": "identity",
+          "description": "The identity transformation."
+        },
+        {
+          "text": "map_axis",
+          "description": "Axis permutation transformation"
+        },
+        {
+          "text": "translation",
+          "description": "A translation transformation."
+        },
+        {
+          "text": "scale",
+          "description": "A scaling transformation."
+        },
+        {
+          "text": "affine",
+          "description": "An affine transformation"
+        },
+        {
+          "text": "sequence",
+          "description": "A sequence of transformations"
+        }
+      ]
     }
   ],
   "slots": [
+    {
+      "name": "processing",
+      "definition_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/processing",
+      "description": "Processing information on a given dataset",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-subtomo",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/processing",
+      "owner": "EMDatasetTomo",
+      "domain_of": [
+        "EMDatasetTomo"
+      ],
+      "range": "Processing",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
     {
       "name": "nominal_defocus",
       "definition_uri": "https://w3id.org/osc-em/acquisitionnominal_defocus",
@@ -1772,9 +1844,9 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "name",
-      "definition_uri": "https://w3id.org/osc-em/organizational/name",
-      "description": "name",
+      "name": "last_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/last_name",
+      "description": "author_name",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "mappings": [
         "http://schema.org/name"
@@ -2057,6 +2129,36 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "name",
+      "definition_uri": "https://w3id.org/cetmd/entities/name",
+      "description": "The name of a given entry",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/name",
+      "owner": "Dataset",
+      "domain_of": [
+        "Average",
+        "Dataset"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "annotations",
+      "definition_uri": "https://w3id.org/cetmd/entities/annotations",
+      "description": "The annotations",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/annotations",
+      "owner": "Average",
+      "domain_of": [
+        "Region",
+        "Average"
+      ],
+      "range": "Annotation",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "minimal",
       "definition_uri": "https://w3id.org/osc-em/custom_typesminimal",
       "description": "Minimal value of a given dataset property",
@@ -2129,11 +2231,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "width",
-      "definition_uri": "https://w3id.org/osc-em/custom_typeswidth",
+      "name": "width_im",
+      "definition_uri": "https://w3id.org/osc-em/custom_typeswidth_im",
       "description": "The width of a given item - unit depends on item",
       "from_schema": "https://w3id.org/osc-em/custom_types",
-      "slot_uri": "https://w3id.org/osc-em/custom_typeswidth",
+      "slot_uri": "https://w3id.org/osc-em/custom_typeswidth_im",
       "owner": "ImageSize",
       "domain_of": [
         "ImageSize"
@@ -2142,11 +2244,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "height",
-      "definition_uri": "https://w3id.org/osc-em/custom_typesheight",
+      "name": "height_im",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesheight_im",
       "description": "The height of a given item - unit depends on item",
       "from_schema": "https://w3id.org/osc-em/custom_types",
-      "slot_uri": "https://w3id.org/osc-em/custom_typesheight",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesheight_im",
       "owner": "ImageSize",
       "domain_of": [
         "ImageSize"
@@ -2344,6 +2446,1033 @@
         "QuantitySI"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "path",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/path",
+      "description": "Path to a file.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/path",
+      "owner": "Annotation",
+      "domain_of": [
+        "GainFile",
+        "DefectFile",
+        "MovieFrame",
+        "MovieStack",
+        "ProjectionImage",
+        "TiltSeries",
+        "Tomogram",
+        "ParticleMap",
+        "Annotation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "section",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/section",
+      "description": "0-based section index to the entity inside a stack.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/section",
+      "owner": "ProjectionImage",
+      "domain_of": [
+        "MovieFrame",
+        "ProjectionImage"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nominal_tilt_angle",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/nominal_tilt_angle",
+      "description": "The tilt angle reported by the microscope",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/nominal_tilt_angle",
+      "owner": "AcquisitionMetadataMixin",
+      "domain_of": [
+        "AcquisitionMetadataMixin"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "accumulated_dose",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/accumulated_dose",
+      "description": "The pre-exposure up to this image in e-/A^2",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/accumulated_dose",
+      "owner": "AcquisitionMetadataMixin",
+      "domain_of": [
+        "AcquisitionMetadataMixin"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "defocus_u",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/defocus_u",
+      "description": "Estimated defocus U for this image in Angstrom, underfocus positive.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/defocus_u",
+      "owner": "CTFMetadata",
+      "domain_of": [
+        "CTFMetadata"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "defocus_v",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/defocus_v",
+      "description": "Estimated defocus V for this image in Angstrom, underfocus positive.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/defocus_v",
+      "owner": "CTFMetadata",
+      "domain_of": [
+        "CTFMetadata"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "defocus_angle",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/defocus_angle",
+      "description": "Estimated angle of astigmatism.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/defocus_angle",
+      "owner": "CTFMetadata",
+      "domain_of": [
+        "CTFMetadata"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particle_index",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/particle_index",
+      "description": "Index of a particle inside a tomogram.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/particle_index",
+      "owner": "SubProjectionImage",
+      "domain_of": [
+        "SubProjectionImage"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ctf_metadata",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/ctf_metadata",
+      "description": "A set of CTF patameters for an image.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/ctf_metadata",
+      "owner": "AcquisitionMetadataMixin",
+      "domain_of": [
+        "AcquisitionMetadataMixin"
+      ],
+      "range": "CTFMetadata",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "images_movie",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/images_movie",
+      "description": "The movie frames in the stack",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/images_movie",
+      "owner": "MovieStack",
+      "domain_of": [
+        "MovieStack"
+      ],
+      "range": "MovieFrame",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "images_tilt",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/images_tilt",
+      "description": "The projections in the stack",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/images_tilt",
+      "owner": "TiltSeries",
+      "domain_of": [
+        "TiltSeries"
+      ],
+      "range": "ProjectionImage",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "origin2D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/origin2D",
+      "description": "Location on a 2D image (Nx2).",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slot_uri": "https://w3id.org/cetmd/annotation/origin2D",
+      "array": {
+        "exact_number_dimensions": 2,
+        "dimensions": [
+          {
+            "alias": "N",
+            "minimum_cardinality": 1,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xy",
+            "exact_cardinality": 2,
+            "@type": "DimensionExpression"
+          }
+        ],
+        "@type": "ArrayExpression"
+      },
+      "owner": "PointMatrixSet2D",
+      "domain_of": [
+        "PointSet2D",
+        "PointVectorSet2D",
+        "PointMatrixSet2D"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "translation2D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/translation2D",
+      "description": "Offset from the origin of a point on a 2D image (Nx2).",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slot_uri": "https://w3id.org/cetmd/annotation/translation2D",
+      "array": {
+        "exact_number_dimensions": 2,
+        "dimensions": [
+          {
+            "alias": "N",
+            "minimum_cardinality": 1,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xy",
+            "exact_cardinality": 2,
+            "@type": "DimensionExpression"
+          }
+        ],
+        "@type": "ArrayExpression"
+      },
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "vector2D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/vector2D",
+      "description": "Orientation vector associated with a point on a 2D image (Nx2).",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slot_uri": "https://w3id.org/cetmd/annotation/vector2D",
+      "array": {
+        "exact_number_dimensions": 2,
+        "dimensions": [
+          {
+            "alias": "N",
+            "minimum_cardinality": 1,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xy",
+            "exact_cardinality": 2,
+            "@type": "DimensionExpression"
+          }
+        ],
+        "@type": "ArrayExpression"
+      },
+      "owner": "PointVectorSet2D",
+      "domain_of": [
+        "PointVectorSet2D"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "matrix2D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/matrix2D",
+      "description": "Rotation matrix associated with a point on a 2D image (Nx2x2).",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slot_uri": "https://w3id.org/cetmd/annotation/matrix2D",
+      "array": {
+        "exact_number_dimensions": 3,
+        "dimensions": [
+          {
+            "alias": "N",
+            "minimum_cardinality": 1,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xy",
+            "exact_cardinality": 2,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xy",
+            "exact_cardinality": 2,
+            "@type": "DimensionExpression"
+          }
+        ],
+        "@type": "ArrayExpression"
+      },
+      "owner": "PointMatrixSet2D",
+      "domain_of": [
+        "PointMatrixSet2D"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "origin3D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/origin3D",
+      "description": "Location on a 3D image (Nx3).",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slot_uri": "https://w3id.org/cetmd/annotation/origin3D",
+      "array": {
+        "exact_number_dimensions": 2,
+        "dimensions": [
+          {
+            "alias": "N",
+            "minimum_cardinality": 1,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xyz",
+            "exact_cardinality": 3,
+            "@type": "DimensionExpression"
+          }
+        ],
+        "@type": "ArrayExpression"
+      },
+      "owner": "PointMatrixSet3D",
+      "domain_of": [
+        "PointSet3D",
+        "PointVectorSet3D",
+        "PointMatrixSet3D"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "translation3D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/translation3D",
+      "description": "Offset from the origin of a point on a 3D image (Nx3).",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slot_uri": "https://w3id.org/cetmd/annotation/translation3D",
+      "array": {
+        "exact_number_dimensions": 2,
+        "dimensions": [
+          {
+            "alias": "N",
+            "minimum_cardinality": 1,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xyz",
+            "exact_cardinality": 3,
+            "@type": "DimensionExpression"
+          }
+        ],
+        "@type": "ArrayExpression"
+      },
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "vector3D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/vector3D",
+      "description": "Orientation vector associated with a point on a 3D image (Nx3).",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slot_uri": "https://w3id.org/cetmd/annotation/vector3D",
+      "array": {
+        "exact_number_dimensions": 2,
+        "dimensions": [
+          {
+            "alias": "N",
+            "minimum_cardinality": 1,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xyz",
+            "exact_cardinality": 3,
+            "@type": "DimensionExpression"
+          }
+        ],
+        "@type": "ArrayExpression"
+      },
+      "owner": "PointVectorSet3D",
+      "domain_of": [
+        "PointVectorSet3D"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "matrix3D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/matrix3D",
+      "description": "Rotation matrix associated with a point on a 3D image (Nx3x3).",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slot_uri": "https://w3id.org/cetmd/annotation/matrix3D",
+      "array": {
+        "exact_number_dimensions": 3,
+        "dimensions": [
+          {
+            "alias": "N",
+            "minimum_cardinality": 1,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xyz",
+            "exact_cardinality": 3,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "xyz",
+            "exact_cardinality": 3,
+            "@type": "DimensionExpression"
+          }
+        ],
+        "@type": "ArrayExpression"
+      },
+      "owner": "PointMatrixSet3D",
+      "domain_of": [
+        "PointMatrixSet3D"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "width",
+      "definition_uri": "https://w3id.org/cetmd/image//width",
+      "description": "The width of the image (x-axis) in pixels",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slot_uri": "https://w3id.org/cetmd/image/width",
+      "owner": "Image3D",
+      "domain_of": [
+        "Image2D",
+        "Image3D"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "height",
+      "definition_uri": "https://w3id.org/cetmd/image//height",
+      "description": "The height of the image (y-axis) in pixels",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slot_uri": "https://w3id.org/cetmd/image/height",
+      "owner": "Image3D",
+      "domain_of": [
+        "Image2D",
+        "Image3D"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "depth",
+      "definition_uri": "https://w3id.org/cetmd/image//depth",
+      "description": "The depth of the image (z-axis) in pixels",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slot_uri": "https://w3id.org/cetmd/image/depth",
+      "owner": "Image3D",
+      "domain_of": [
+        "Image3D"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coordinate_systems",
+      "definition_uri": "https://w3id.org/cetmd/image//coordinate_systems",
+      "description": "Named coordinate systems for this entity",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slot_uri": "https://w3id.org/cetmd/image/coordinate_systems",
+      "owner": "Image3D",
+      "domain_of": [
+        "CoordMetaMixin",
+        "Image2D",
+        "Image3D"
+      ],
+      "range": "CoordinateSystem",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coordinate_transformations",
+      "definition_uri": "https://w3id.org/cetmd/image//coordinate_transformations",
+      "description": "Named coordinate systems for this entity",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slot_uri": "https://w3id.org/cetmd/image/coordinate_transformations",
+      "owner": "Image3D",
+      "domain_of": [
+        "CoordMetaMixin",
+        "Image2D",
+        "Image3D"
+      ],
+      "range": "CoordinateTransformation",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "images2D",
+      "definition_uri": "https://w3id.org/cetmd/image//images2D",
+      "description": "The images in the stack",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slot_uri": "https://w3id.org/cetmd/image/images2D",
+      "owner": "ImageStack2D",
+      "domain_of": [
+        "ImageStack2D"
+      ],
+      "range": "Image2D",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "images3D",
+      "definition_uri": "https://w3id.org/cetmd/image//images3D",
+      "description": "The images in the stack",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slot_uri": "https://w3id.org/cetmd/image/images3D",
+      "owner": "ImageStack3D",
+      "domain_of": [
+        "ImageStack3D"
+      ],
+      "range": "Image3D",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "axis_name",
+      "definition_uri": "https://w3id.org/cetmd/coordinate_systems/axis_name",
+      "description": "The name of the axis",
+      "from_schema": "https://w3id.org/cetmd/coordinate_systems",
+      "slot_uri": "https://w3id.org/cetmd/coordinate_systems/axis_name",
+      "owner": "Axis",
+      "domain_of": [
+        "Axis"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "axis_unit",
+      "definition_uri": "https://w3id.org/cetmd/coordinate_systems/axis_unit",
+      "description": "The unit of the axis",
+      "from_schema": "https://w3id.org/cetmd/coordinate_systems",
+      "slot_uri": "https://w3id.org/cetmd/coordinate_systems/axis_unit",
+      "ifabsent": "angstrom",
+      "owner": "Axis",
+      "domain_of": [
+        "Axis"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "axis_type",
+      "definition_uri": "https://w3id.org/cetmd/coordinate_systems/axis_type",
+      "description": "The type of axis",
+      "from_schema": "https://w3id.org/cetmd/coordinate_systems",
+      "slot_uri": "https://w3id.org/cetmd/coordinate_systems/axis_type",
+      "owner": "Axis",
+      "domain_of": [
+        "Axis"
+      ],
+      "range": "AxisType",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "transformation_type",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "description": "The type of transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "owner": "Sequence",
+      "domain_of": [
+        "CoordinateTransformation",
+        "Identity",
+        "MapAxis",
+        "Translation",
+        "Scale",
+        "Affine",
+        "Sequence"
+      ],
+      "range": "TransformationType",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "processing__region",
+      "description": "Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen.",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-subtomo",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/region",
+      "alias": "region",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "Region",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "processing__average",
+      "description": "A particle averaging experiment.",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-subtomo",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/average",
+      "alias": "average",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "Average",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "processing__movie_stack_collection",
+      "description": "A collection of movie stacks using the same gain and defect files.",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-subtomo",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/movie_stack_collection",
+      "alias": "movie_stack_collection",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "MovieStackCollection",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "processing__dataset",
+      "description": "A dataset",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-subtomo",
+      "slot_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/dataset",
+      "alias": "dataset",
+      "owner": "Processing",
+      "domain_of": [
+        "Processing"
+      ],
+      "range": "Dataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "region__movie_stack_collections",
+      "description": "The movie stack",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/movie_stack_collections",
+      "alias": "movie_stack_collections",
+      "owner": "Region",
+      "domain_of": [
+        "Region"
+      ],
+      "range": "MovieStackCollection",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "region__tilt_series",
+      "description": "The tilt series",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/tilt_series",
+      "alias": "tilt_series",
+      "owner": "Region",
+      "domain_of": [
+        "Region"
+      ],
+      "range": "TiltSeries",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "region__alignments",
+      "description": "The alignments",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/alignments",
+      "alias": "alignments",
+      "owner": "Region",
+      "domain_of": [
+        "Region"
+      ],
+      "range": "Alignment",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "region__tomograms",
+      "description": "The tomograms",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/tomograms",
+      "alias": "tomograms",
+      "owner": "Region",
+      "domain_of": [
+        "Region"
+      ],
+      "range": "Tomogram",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "average__particle_maps",
+      "description": "The particle maps",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/particle_maps",
+      "alias": "particle_maps",
+      "owner": "Average",
+      "domain_of": [
+        "Average"
+      ],
+      "range": "ParticleMap",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movieStackCollection__movie_stacks",
+      "description": "The movie stacks in the collection",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/movie_stacks",
+      "alias": "movie_stacks",
+      "owner": "MovieStackCollection",
+      "domain_of": [
+        "MovieStackCollection"
+      ],
+      "range": "MovieStackSeries",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movieStackCollection__gain_file",
+      "description": "The gain file for the movie stacks",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/gain_file",
+      "alias": "gain_file",
+      "owner": "MovieStackCollection",
+      "domain_of": [
+        "MovieStackCollection"
+      ],
+      "range": "GainFile",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movieStackCollection__defect_file",
+      "description": "The defect file for the movie stacks",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/defect_file",
+      "alias": "defect_file",
+      "owner": "MovieStackCollection",
+      "domain_of": [
+        "MovieStackCollection"
+      ],
+      "range": "DefectFile",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__regions",
+      "description": "The regions in the dataset",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/regions",
+      "alias": "regions",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "Region",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__averages",
+      "description": "The averages in the dataset",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slot_uri": "https://w3id.org/cetmd/entities/averages",
+      "alias": "averages",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "Average",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movieStackSeries__stacks",
+      "description": "The movie stacks.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slot_uri": "https://w3id.org/cetmd/image_entities/stacks",
+      "alias": "stacks",
+      "owner": "MovieStackSeries",
+      "domain_of": [
+        "MovieStackSeries"
+      ],
+      "range": "MovieStack",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "projectionAlignment__input",
+      "description": "The source coordinate system name",
+      "from_schema": "https://w3id.org/cetmd/alignment/",
+      "slot_uri": "https://w3id.org/cetmd/alignment/input",
+      "alias": "input",
+      "owner": "ProjectionAlignment",
+      "domain_of": [
+        "ProjectionAlignment"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "projectionAlignment__output",
+      "description": "The target coordinate system name",
+      "from_schema": "https://w3id.org/cetmd/alignment/",
+      "slot_uri": "https://w3id.org/cetmd/alignment/output",
+      "alias": "output",
+      "owner": "ProjectionAlignment",
+      "domain_of": [
+        "ProjectionAlignment"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "projectionAlignment__sequence",
+      "description": "The sequence of transformations",
+      "from_schema": "https://w3id.org/cetmd/alignment/",
+      "slot_uri": "https://w3id.org/cetmd/alignment/sequence",
+      "alias": "sequence",
+      "owner": "ProjectionAlignment",
+      "domain_of": [
+        "ProjectionAlignment"
+      ],
+      "range": "CoordinateTransformation",
+      "multivalued": true,
+      "inlined": true,
+      "maximum_cardinality": 2,
+      "any_of": [
+        {
+          "range": "Affine",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "Translation",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "alignment__projection_alignments",
+      "description": "alignment for a specific projection",
+      "from_schema": "https://w3id.org/cetmd/alignment/",
+      "slot_uri": "https://w3id.org/cetmd/alignment/projection_alignments",
+      "alias": "projection_alignments",
+      "owner": "Alignment",
+      "domain_of": [
+        "Alignment"
+      ],
+      "range": "ProjectionAlignment",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coordinateSystem__name",
+      "description": "The name of the coordinate system",
+      "from_schema": "https://w3id.org/cetmd/coordinate_systems",
+      "slot_uri": "https://w3id.org/cetmd/coordinate_systems/name",
+      "alias": "name",
+      "owner": "CoordinateSystem",
+      "domain_of": [
+        "CoordinateSystem"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coordinateSystem__axes",
+      "description": "The axes of the coordinate system",
+      "from_schema": "https://w3id.org/cetmd/coordinate_systems",
+      "slot_uri": "https://w3id.org/cetmd/coordinate_systems/axes",
+      "alias": "axes",
+      "owner": "CoordinateSystem",
+      "domain_of": [
+        "CoordinateSystem"
+      ],
+      "range": "Axis",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coordinateTransformation__name",
+      "description": "The name of the coordinate transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/name",
+      "alias": "name",
+      "owner": "CoordinateTransformation",
+      "domain_of": [
+        "CoordinateTransformation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coordinateTransformation__input",
+      "description": "The source coordinate system name",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/input",
+      "alias": "input",
+      "owner": "CoordinateTransformation",
+      "domain_of": [
+        "CoordinateTransformation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coordinateTransformation__output",
+      "description": "The target coordinate system name",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/output",
+      "alias": "output",
+      "owner": "CoordinateTransformation",
+      "domain_of": [
+        "CoordinateTransformation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "axisNameMapping__axis1_name",
+      "description": "The type of transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/axis1_name",
+      "alias": "axis1_name",
+      "owner": "AxisNameMapping",
+      "domain_of": [
+        "AxisNameMapping"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "axisNameMapping__axis2_name",
+      "description": "The mapping of the axis names",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/axis2_name",
+      "alias": "axis2_name",
+      "owner": "AxisNameMapping",
+      "domain_of": [
+        "AxisNameMapping"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mapAxis__map_axis",
+      "description": "The permutation of the axes",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/map_axis",
+      "alias": "map_axis",
+      "owner": "MapAxis",
+      "domain_of": [
+        "MapAxis"
+      ],
+      "range": "AxisNameMapping",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "translation__translation",
+      "description": "The translation vector",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/translation",
+      "alias": "translation",
+      "owner": "Translation",
+      "domain_of": [
+        "Translation"
+      ],
+      "range": "float",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "scale__scale",
+      "description": "The scaling vector",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/scale",
+      "alias": "scale",
+      "owner": "Scale",
+      "domain_of": [
+        "Scale"
+      ],
+      "range": "float",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "affine__affine",
+      "description": "The affine matrix",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/affine",
+      "array": {
+        "exact_number_dimensions": 2,
+        "dimensions": [
+          {
+            "alias": "exact_card",
+            "exact_cardinality": 3,
+            "@type": "DimensionExpression"
+          },
+          {
+            "alias": "exact_card",
+            "exact_cardinality": 3,
+            "@type": "DimensionExpression"
+          }
+        ],
+        "@type": "ArrayExpression"
+      },
+      "alias": "affine",
+      "owner": "Affine",
+      "domain_of": [
+        "Affine"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sequence__sequence",
+      "description": "The sequence of transformations",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/sequence",
+      "alias": "sequence",
+      "owner": "Sequence",
+      "domain_of": [
+        "Sequence"
+      ],
+      "range": "CoordinateTransformation",
+      "multivalued": true,
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3846,23 +4975,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Author_name",
-      "definition_uri": "https://w3id.org/osc-em/organizational/name",
-      "description": "name",
+      "name": "Author_last_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/last_name",
+      "description": "author_name",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "mappings": [
         "http://schema.org/name"
       ],
-      "is_a": "name",
+      "is_a": "last_name",
       "domain": "Author",
       "slot_uri": "http://schema.org/name",
-      "alias": "name",
+      "alias": "last_name",
       "owner": "Author",
       "domain_of": [
         "Author"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "name",
+      "usage_slot_name": "last_name",
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -4169,6 +5298,139 @@
       "range": "Any",
       "inlined": true,
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "Axis_axis_name",
+      "definition_uri": "https://w3id.org/cetmd/coordinate_systems/axis_name",
+      "description": "The name of the axis",
+      "from_schema": "https://w3id.org/cetmd/coordinate_systems",
+      "is_a": "axis_name",
+      "domain": "Axis",
+      "slot_uri": "https://w3id.org/cetmd/coordinate_systems/axis_name",
+      "alias": "axis_name",
+      "owner": "Axis",
+      "domain_of": [
+        "Axis"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "axis_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Identity_transformation_type",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "description": "The type of transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "transformation_type",
+      "domain": "Identity",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "ifabsent": "identity",
+      "alias": "transformation_type",
+      "owner": "Identity",
+      "domain_of": [
+        "Identity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "transformation_type",
+      "range": "TransformationType",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "MapAxis_transformation_type",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "description": "The type of transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "transformation_type",
+      "domain": "MapAxis",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "ifabsent": "map_axis",
+      "alias": "transformation_type",
+      "owner": "MapAxis",
+      "domain_of": [
+        "MapAxis"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "transformation_type",
+      "range": "TransformationType",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Translation_transformation_type",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "description": "The type of transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "transformation_type",
+      "domain": "Translation",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "ifabsent": "translation",
+      "alias": "transformation_type",
+      "owner": "Translation",
+      "domain_of": [
+        "Translation"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "transformation_type",
+      "range": "TransformationType",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Scale_transformation_type",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "description": "The type of transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "transformation_type",
+      "domain": "Scale",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "ifabsent": "scale",
+      "alias": "transformation_type",
+      "owner": "Scale",
+      "domain_of": [
+        "Scale"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "transformation_type",
+      "range": "TransformationType",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Affine_transformation_type",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "description": "The type of transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "transformation_type",
+      "domain": "Affine",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "ifabsent": "affine",
+      "alias": "transformation_type",
+      "owner": "Affine",
+      "domain_of": [
+        "Affine"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "transformation_type",
+      "range": "TransformationType",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sequence_transformation_type",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "description": "The type of transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "transformation_type",
+      "domain": "Sequence",
+      "slot_uri": "https://w3id.org/cetmd/coord_transforms/transformation_type",
+      "ifabsent": "sequence",
+      "alias": "transformation_type",
+      "owner": "Sequence",
+      "domain_of": [
+        "Sequence"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "transformation_type",
+      "range": "TransformationType",
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
@@ -4179,6 +5441,7 @@
       "from_schema": "https://w3id.org/osc-em/oscem-schemas-subtomo",
       "is_a": "EMDatasetBase",
       "slots": [
+        "processing",
         "EMDatasetTomo_acquisition",
         "EMDatasetTomo_instrument",
         "EMDatasetTomo_sample",
@@ -4187,6 +5450,47 @@
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/EMDatasetTomo",
       "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Processing",
+      "definition_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/Processing",
+      "description": "Information on the processing of tomography datasets, using the cryoET metadata standard",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-subtomo",
+      "slots": [
+        "processing__region",
+        "processing__average",
+        "processing__movie_stack_collection",
+        "processing__dataset"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "region",
+          "description": "Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen.",
+          "range": "Region",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "average",
+          "description": "A particle averaging experiment.",
+          "range": "Average",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "movie_stack_collection",
+          "description": "A collection of movie stacks using the same gain and defect files.",
+          "range": "MovieStackCollection",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dataset",
+          "description": "A dataset",
+          "range": "Dataset",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/Processing",
       "@type": "ClassDefinition"
     },
     {
@@ -4499,7 +5803,7 @@
         "schema:Person"
       ],
       "slots": [
-        "name",
+        "last_name",
         "first_name",
         "work_status",
         "email",
@@ -4523,7 +5827,7 @@
         "role",
         "Author_name_org",
         "Author_type_org",
-        "Author_name",
+        "Author_last_name",
         "Author_first_name",
         "Author_email"
       ],
@@ -4582,6 +5886,140 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "Region",
+      "definition_uri": "https://w3id.org/cetmd/entities/Region",
+      "description": "Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen.",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slots": [
+        "annotations",
+        "region__movie_stack_collections",
+        "region__tilt_series",
+        "region__alignments",
+        "region__tomograms"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "movie_stack_collections",
+          "description": "The movie stack",
+          "range": "MovieStackCollection",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tilt_series",
+          "description": "The tilt series",
+          "range": "TiltSeries",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "alignments",
+          "description": "The alignments",
+          "range": "Alignment",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tomograms",
+          "description": "The tomograms",
+          "range": "Tomogram",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/entities/Region",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Average",
+      "definition_uri": "https://w3id.org/cetmd/entities/Average",
+      "description": "A particle averaging experiment.",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slots": [
+        "name",
+        "annotations",
+        "average__particle_maps"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "particle_maps",
+          "description": "The particle maps",
+          "range": "ParticleMap",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/entities/Average",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MovieStackCollection",
+      "definition_uri": "https://w3id.org/cetmd/entities/MovieStackCollection",
+      "description": "A collection of movie stacks using the same gain and defect files.",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slots": [
+        "movieStackCollection__movie_stacks",
+        "movieStackCollection__gain_file",
+        "movieStackCollection__defect_file"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "movie_stacks",
+          "description": "The movie stacks in the collection",
+          "range": "MovieStackSeries",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "gain_file",
+          "description": "The gain file for the movie stacks",
+          "range": "GainFile",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defect_file",
+          "description": "The defect file for the movie stacks",
+          "range": "DefectFile",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/entities/MovieStackCollection",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Dataset",
+      "definition_uri": "https://w3id.org/cetmd/entities/Dataset",
+      "description": "A dataset",
+      "from_schema": "https://w3id.org/cetmd/entities",
+      "slots": [
+        "name",
+        "dataset__regions",
+        "dataset__averages"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "regions",
+          "description": "The regions in the dataset",
+          "range": "Region",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "averages",
+          "description": "The averages in the dataset",
+          "range": "Average",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/entities/Dataset",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "Any",
       "definition_uri": "https://w3id.org/osc-em/custom_typesAny",
       "description": "Any type, used as the base for type-narrowing.",
@@ -4627,8 +6065,8 @@
       "description": "size of a 2D image (in integer units)",
       "from_schema": "https://w3id.org/osc-em/custom_types",
       "slots": [
-        "height",
-        "width"
+        "height_im",
+        "width_im"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/custom_typesImageSize",
@@ -4709,13 +6147,864 @@
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/custom_typesDescriptors",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "CTFMetadata",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/CTFMetadata",
+      "description": "A set of CTF patameters for an image.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slots": [
+        "defocus_u",
+        "defocus_v",
+        "defocus_angle"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/CTFMetadata",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionMetadataMixin",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/AcquisitionMetadataMixin",
+      "description": "Metadata concerning the acquisition process.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slots": [
+        "nominal_tilt_angle",
+        "accumulated_dose",
+        "ctf_metadata"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/AcquisitionMetadataMixin",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "GainFile",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/GainFile",
+      "description": "A gain reference file.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "is_a": "Image2D",
+      "slots": [
+        "width",
+        "height",
+        "coordinate_systems",
+        "coordinate_transformations",
+        "path"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/GainFile",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DefectFile",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/DefectFile",
+      "description": "A detector defect file.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "is_a": "Image2D",
+      "slots": [
+        "width",
+        "height",
+        "coordinate_systems",
+        "coordinate_transformations",
+        "path"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/DefectFile",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MovieFrame",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/MovieFrame",
+      "description": "An individual movie frame",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "is_a": "Image2D",
+      "mixins": [
+        "AcquisitionMetadataMixin"
+      ],
+      "slots": [
+        "width",
+        "height",
+        "coordinate_systems",
+        "coordinate_transformations",
+        "path",
+        "section",
+        "nominal_tilt_angle",
+        "accumulated_dose",
+        "ctf_metadata"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/MovieFrame",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MovieStack",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/MovieStack",
+      "description": "A stack of movie frames.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slots": [
+        "path",
+        "images_movie"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/MovieStack",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProjectionImage",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/ProjectionImage",
+      "description": "A projection image.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "is_a": "Image2D",
+      "mixins": [
+        "AcquisitionMetadataMixin"
+      ],
+      "slots": [
+        "width",
+        "height",
+        "coordinate_systems",
+        "coordinate_transformations",
+        "path",
+        "section",
+        "nominal_tilt_angle",
+        "accumulated_dose",
+        "ctf_metadata"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/ProjectionImage",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MovieStackSeries",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/MovieStackSeries",
+      "description": "A group of movie stacks that belong to a single tilt series.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slots": [
+        "movieStackSeries__stacks"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "stacks",
+          "description": "The movie stacks.",
+          "range": "MovieStack",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/image_entities/MovieStackSeries",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TiltSeries",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/TiltSeries",
+      "description": "A stack of projection images.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "slots": [
+        "images_tilt",
+        "path"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/TiltSeries",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SubProjectionImage",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/SubProjectionImage",
+      "description": "A croppecd projection image.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "is_a": "ProjectionImage",
+      "slots": [
+        "width",
+        "height",
+        "coordinate_systems",
+        "coordinate_transformations",
+        "path",
+        "section",
+        "nominal_tilt_angle",
+        "accumulated_dose",
+        "ctf_metadata",
+        "particle_index"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/SubProjectionImage",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Tomogram",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/Tomogram",
+      "description": "A 3D tomogram.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "is_a": "Image3D",
+      "slots": [
+        "width",
+        "height",
+        "depth",
+        "coordinate_systems",
+        "coordinate_transformations",
+        "path"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/Tomogram",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ParticleMap",
+      "definition_uri": "https://w3id.org/cetmd/image_entities/ParticleMap",
+      "description": "A 3D particle density map.",
+      "from_schema": "https://w3id.org/cetmd/image_entities",
+      "is_a": "Image3D",
+      "slots": [
+        "width",
+        "height",
+        "depth",
+        "coordinate_systems",
+        "coordinate_transformations",
+        "path"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image_entities/ParticleMap",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CoordMetaMixin",
+      "definition_uri": "https://w3id.org/cetmd/annotation/CoordMetaMixin",
+      "description": "Coordinate system mixins for annotations.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slots": [
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/CoordMetaMixin",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Annotation",
+      "definition_uri": "https://w3id.org/cetmd/annotation/Annotation",
+      "description": "A primitive annotation.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "slots": [
+        "path"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/Annotation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SegmentationMask2D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/SegmentationMask2D",
+      "description": "An annotation image with categorical labels.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "Image2D"
+      ],
+      "slots": [
+        "path",
+        "width",
+        "height",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/SegmentationMask2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SegmentationMask3D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/SegmentationMask3D",
+      "description": "An annotation volume with categorical labels.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "Image3D"
+      ],
+      "slots": [
+        "path",
+        "width",
+        "height",
+        "depth",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/SegmentationMask3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProbabilityMap2D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/ProbabilityMap2D",
+      "description": "An annotation image with real-valued labels.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "Image2D"
+      ],
+      "slots": [
+        "path",
+        "width",
+        "height",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/ProbabilityMap2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProbabilityMap3D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/ProbabilityMap3D",
+      "description": "An annotation volume with real-valued labels.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "Image3D"
+      ],
+      "slots": [
+        "path",
+        "width",
+        "height",
+        "depth",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/ProbabilityMap3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PointSet2D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/PointSet2D",
+      "description": "A set of 2D point annotations.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "CoordMetaMixin"
+      ],
+      "slots": [
+        "path",
+        "origin2D",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/PointSet2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PointSet3D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/PointSet3D",
+      "description": "A set of 3D point annotations.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "CoordMetaMixin"
+      ],
+      "slots": [
+        "path",
+        "origin3D",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/PointSet3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PointVectorSet2D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/PointVectorSet2D",
+      "description": "A set of 2D points with an associated direction vector.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "CoordMetaMixin"
+      ],
+      "slots": [
+        "path",
+        "origin2D",
+        "vector2D",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/PointVectorSet2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PointVectorSet3D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/PointVectorSet3D",
+      "description": "A set of 3D points with an associated direction vector.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "CoordMetaMixin"
+      ],
+      "slots": [
+        "path",
+        "origin3D",
+        "vector3D",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/PointVectorSet3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PointMatrixSet2D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/PointMatrixSet2D",
+      "description": "A set of 2D points with an associated rotation matrix.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "CoordMetaMixin"
+      ],
+      "slots": [
+        "path",
+        "origin2D",
+        "matrix2D",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/PointMatrixSet2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PointMatrixSet3D",
+      "definition_uri": "https://w3id.org/cetmd/annotation/PointMatrixSet3D",
+      "description": "A set of 3D points with an associated rotation matrix.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "CoordMetaMixin"
+      ],
+      "slots": [
+        "path",
+        "origin3D",
+        "matrix3D",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/PointMatrixSet3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TriMesh",
+      "definition_uri": "https://w3id.org/cetmd/annotation/TriMesh",
+      "description": "A mesh annotation.",
+      "from_schema": "https://w3id.org/cetmd/annotation",
+      "is_a": "Annotation",
+      "mixins": [
+        "CoordMetaMixin"
+      ],
+      "slots": [
+        "path",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/annotation/TriMesh",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProjectionAlignment",
+      "definition_uri": "https://w3id.org/cetmd/alignment/ProjectionAlignment",
+      "description": "The tomographic alignment for a single projection.",
+      "from_schema": "https://w3id.org/cetmd/alignment/",
+      "is_a": "Sequence",
+      "slots": [
+        "coordinateTransformation__name",
+        "Sequence_transformation_type",
+        "projectionAlignment__input",
+        "projectionAlignment__output",
+        "projectionAlignment__sequence"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "input",
+          "description": "The source coordinate system name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "output",
+          "description": "The target coordinate system name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sequence",
+          "description": "The sequence of transformations",
+          "range": "CoordinateTransformation",
+          "multivalued": true,
+          "maximum_cardinality": 2,
+          "any_of": [
+            {
+              "range": "Affine",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "Translation",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/alignment/ProjectionAlignment",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Alignment",
+      "definition_uri": "https://w3id.org/cetmd/alignment/Alignment",
+      "description": "The tomographic alignment for a tilt series.",
+      "from_schema": "https://w3id.org/cetmd/alignment/",
+      "slots": [
+        "alignment__projection_alignments"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "projection_alignments",
+          "description": "alignment for a specific projection",
+          "range": "ProjectionAlignment",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/alignment/Alignment",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Image2D",
+      "definition_uri": "https://w3id.org/cetmd/image//Image2D",
+      "description": "A 2D image.",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slots": [
+        "width",
+        "height",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image/Image2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Image3D",
+      "definition_uri": "https://w3id.org/cetmd/image//Image3D",
+      "description": "A 3D image.",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slots": [
+        "width",
+        "height",
+        "depth",
+        "coordinate_systems",
+        "coordinate_transformations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image/Image3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ImageStack2D",
+      "definition_uri": "https://w3id.org/cetmd/image//ImageStack2D",
+      "description": "A stack of 2D images.",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slots": [
+        "images2D"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image/ImageStack2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ImageStack3D",
+      "definition_uri": "https://w3id.org/cetmd/image//ImageStack3D",
+      "description": "A stack of 3D images.",
+      "from_schema": "https://w3id.org/cetmd/image/",
+      "slots": [
+        "images3D"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/image/ImageStack3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Axis",
+      "definition_uri": "https://w3id.org/cetmd/coordinate_systems/Axis",
+      "description": "An axis in a coordinate system",
+      "from_schema": "https://w3id.org/cetmd/coordinate_systems",
+      "slots": [
+        "Axis_axis_name",
+        "axis_unit",
+        "axis_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/coordinate_systems/Axis",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CoordinateSystem",
+      "definition_uri": "https://w3id.org/cetmd/coordinate_systems/CoordinateSystem",
+      "description": "A coordinate system",
+      "from_schema": "https://w3id.org/cetmd/coordinate_systems",
+      "slots": [
+        "coordinateSystem__name",
+        "coordinateSystem__axes"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "name",
+          "description": "The name of the coordinate system",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "axes",
+          "description": "The axes of the coordinate system",
+          "range": "Axis",
+          "required": true,
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/coordinate_systems/CoordinateSystem",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CoordinateTransformation",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/CoordinateTransformation",
+      "description": "A coordinate transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slots": [
+        "transformation_type",
+        "coordinateTransformation__name",
+        "coordinateTransformation__input",
+        "coordinateTransformation__output"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "name",
+          "description": "The name of the coordinate transformation",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "input",
+          "description": "The source coordinate system name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "output",
+          "description": "The target coordinate system name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/coord_transforms/CoordinateTransformation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Identity",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/Identity",
+      "description": "The identity transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "CoordinateTransformation",
+      "slots": [
+        "coordinateTransformation__name",
+        "coordinateTransformation__input",
+        "coordinateTransformation__output",
+        "Identity_transformation_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/cetmd/coord_transforms/Identity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AxisNameMapping",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/AxisNameMapping",
+      "description": "Axis name to Axis name mapping",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "slots": [
+        "axisNameMapping__axis1_name",
+        "axisNameMapping__axis2_name"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "axis1_name",
+          "description": "The type of transformation",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "axis2_name",
+          "description": "The mapping of the axis names",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/coord_transforms/AxisNameMapping",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MapAxis",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/MapAxis",
+      "description": "Axis permutation transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "CoordinateTransformation",
+      "slots": [
+        "coordinateTransformation__name",
+        "coordinateTransformation__input",
+        "coordinateTransformation__output",
+        "MapAxis_transformation_type",
+        "mapAxis__map_axis"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "map_axis",
+          "description": "The permutation of the axes",
+          "range": "AxisNameMapping",
+          "multivalued": true,
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/coord_transforms/MapAxis",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Translation",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/Translation",
+      "description": "A translation transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "CoordinateTransformation",
+      "slots": [
+        "coordinateTransformation__name",
+        "coordinateTransformation__input",
+        "coordinateTransformation__output",
+        "Translation_transformation_type",
+        "translation__translation"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "translation",
+          "description": "The translation vector",
+          "range": "float",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/coord_transforms/Translation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Scale",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/Scale",
+      "description": "A scaling transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "CoordinateTransformation",
+      "slots": [
+        "coordinateTransformation__name",
+        "coordinateTransformation__input",
+        "coordinateTransformation__output",
+        "Scale_transformation_type",
+        "scale__scale"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "scale",
+          "description": "The scaling vector",
+          "range": "float",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/coord_transforms/Scale",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Affine",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/Affine",
+      "description": "An affine transformation",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "CoordinateTransformation",
+      "slots": [
+        "coordinateTransformation__name",
+        "coordinateTransformation__input",
+        "coordinateTransformation__output",
+        "Affine_transformation_type",
+        "affine__affine"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "affine",
+          "description": "The affine matrix",
+          "array": {
+            "exact_number_dimensions": 2,
+            "dimensions": [
+              {
+                "alias": "exact_card",
+                "exact_cardinality": 3,
+                "@type": "DimensionExpression"
+              },
+              {
+                "alias": "exact_card",
+                "exact_cardinality": 3,
+                "@type": "DimensionExpression"
+              }
+            ],
+            "@type": "ArrayExpression"
+          },
+          "range": "integer",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/coord_transforms/Affine",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Sequence",
+      "definition_uri": "https://w3id.org/cetmd/coord_transforms/Sequence",
+      "description": "A sequence of transformations",
+      "from_schema": "https://w3id.org/cetmd/coord_transforms",
+      "is_a": "CoordinateTransformation",
+      "slots": [
+        "coordinateTransformation__name",
+        "coordinateTransformation__input",
+        "coordinateTransformation__output",
+        "Sequence_transformation_type",
+        "sequence__sequence"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "sequence",
+          "description": "The sequence of transformations",
+          "range": "CoordinateTransformation",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/cetmd/coord_transforms/Sequence",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "oscem_schemas_subtomo.yaml",
-  "source_file_date": "2025-02-18T15:19:28",
-  "source_file_size": 1201,
-  "generation_date": "2025-03-03T13:35:00",
+  "source_file_date": "2025-03-31T15:09:56",
+  "source_file_size": 2745,
+  "generation_date": "2025-03-31T15:15:03",
   "@type": "SchemaDefinition",
   "@context": [
     "project/subtomo/jsonld/oscem_schemas_subtomo.context.jsonld",
@@ -4726,7 +7015,14 @@
     "./tomography.context.jsonld",
     "./organizational.context.jsonld",
     "./emdataset.context.jsonld",
+    "./entities.context.jsonld",
     "./custom_types.context.jsonld",
+    "./image_entities.context.jsonld",
+    "./annotation.context.jsonld",
+    "./alignment.context.jsonld",
+    "./image.context.jsonld",
+    "./coordinate_systems.context.jsonld",
+    "./coordinate_transforms.context.jsonld",
     {
       "@base": "https://w3id.org/osc-em/oscem-schemas-subtomo/"
     }

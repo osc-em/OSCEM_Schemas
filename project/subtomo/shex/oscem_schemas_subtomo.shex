@@ -6,6 +6,12 @@ PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX organizational: <https://w3id.org/osc-em/organizational/>
+PREFIX image_entities: <https://w3id.org/cetmd/image_entities/>
+PREFIX image: <https://w3id.org/cetmd/image/>
+PREFIX annotation: <https://w3id.org/cetmd/annotation/>
+PREFIX alignment: <https://w3id.org/cetmd/alignment/>
+PREFIX coord_transforms: <https://w3id.org/cetmd/coord_transforms/>
+PREFIX coordinate_systems: <https://w3id.org/cetmd/coordinate_systems/>
 
 
 linkml:String xsd:string
@@ -82,6 +88,15 @@ linkml:Sparqlpath xsd:string
     } OR @<https://w3id.org/osc-em/tomography/AcquisitionTomo>
 )
 
+image_entities:AcquisitionMetadataMixin CLOSED {
+    (  $image_entities:AcquisitionMetadataMixin_tes (  image_entities:nominal_tilt_angle @linkml:Float ? ;
+          image_entities:accumulated_dose @linkml:Float ? ;
+          image_entities:ctf_metadata @image_entities:CTFMetadata ?
+       ) ;
+       rdf:type [ image_entities:AcquisitionMetadataMixin ] ?
+    )
+}
+
 <https://w3id.org/osc-em/tomography/AcquisitionTomo> CLOSED {
     (  $<https://w3id.org/osc-em/tomography/AcquisitionTomo_tes> (  &<https://w3id.org/osc-em/acquisitionAcquisition_tes> ;
           rdf:type [ <https://w3id.org/osc-em/acquisitionAcquisition> ] ? ;
@@ -91,6 +106,37 @@ linkml:Sparqlpath xsd:string
        rdf:type [ <https://w3id.org/osc-em/tomography/AcquisitionTomo> ] ?
     )
 }
+
+coord_transforms:Affine CLOSED {
+    (  $coord_transforms:Affine_tes (  &coord_transforms:CoordinateTransformation_tes ;
+          rdf:type [ coord_transforms:CoordinateTransformation ] ? ;
+          coord_transforms:transformation_type [ <https://w3id.org/cetmd/coord_transforms/TransformationType#identity>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#map_axis>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#translation>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#scale>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#affine>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#sequence> ] ? ;
+          coord_transforms:affine @linkml:Integer ?
+       ) ;
+       rdf:type [ coord_transforms:Affine ] ?
+    )
+}
+
+alignment:Alignment CLOSED {
+    (  $alignment:Alignment_tes alignment:projection_alignments @alignment:ProjectionAlignment * ;
+       rdf:type [ alignment:Alignment ] ?
+    )
+}
+
+annotation:Annotation  (
+    CLOSED {
+       (  $annotation:Annotation_tes image_entities:path @linkml:String ? ;
+          rdf:type [ annotation:Annotation ] ?
+       )
+    } OR @annotation:PointMatrixSet2D OR @annotation:PointMatrixSet3D OR @annotation:PointSet2D OR @annotation:PointSet3D OR
+    @annotation:PointVectorSet2D OR @annotation:PointVectorSet3D OR @annotation:ProbabilityMap2D OR @annotation:ProbabilityMap3D OR
+    @annotation:SegmentationMask2D OR @annotation:SegmentationMask3D OR @annotation:TriMesh
+)
 
 <https://w3id.org/osc-em/custom_typesAny> CLOSED {
     (  $<https://w3id.org/osc-em/custom_typesAny_tes> rdf:type . * ;
@@ -117,6 +163,33 @@ organizational:Author CLOSED {
     )
 }
 
+<https://w3id.org/cetmd/entities/Average> CLOSED {
+    (  $<https://w3id.org/cetmd/entities/Average_tes> (  <https://w3id.org/cetmd/entities/name> @linkml:String ? ;
+          <https://w3id.org/cetmd/entities/annotations> @annotation:Annotation * ;
+          <https://w3id.org/cetmd/entities/particle_maps> @image_entities:ParticleMap *
+       ) ;
+       rdf:type [ <https://w3id.org/cetmd/entities/Average> ] ?
+    )
+}
+
+coordinate_systems:Axis CLOSED {
+    (  $coordinate_systems:Axis_tes (  coordinate_systems:axis_name @linkml:String ;
+          coordinate_systems:axis_unit @linkml:String ? ;
+          coordinate_systems:axis_type [ <https://w3id.org/cetmd/coordinate_systems/AxisType#space>
+             <https://w3id.org/cetmd/coordinate_systems/AxisType#array> ] ?
+       ) ;
+       rdf:type [ coordinate_systems:Axis ] ?
+    )
+}
+
+coord_transforms:AxisNameMapping CLOSED {
+    (  $coord_transforms:AxisNameMapping_tes (  coord_transforms:axis1_name @linkml:String ? ;
+          coord_transforms:axis2_name @linkml:String ?
+       ) ;
+       rdf:type [ coord_transforms:AxisNameMapping ] ?
+    )
+}
+
 <https://w3id.org/osc-em/custom_typesBoundingBox2D> CLOSED {
     (  $<https://w3id.org/osc-em/custom_typesBoundingBox2D_tes> (  <https://w3id.org/osc-em/custom_typesx_min>
           @<https://w3id.org/osc-em/custom_typesAny> ? ;
@@ -134,6 +207,68 @@ organizational:Author CLOSED {
           <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
        ) ;
        rdf:type [ <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ] ?
+    )
+}
+
+coordinate_systems:CoordinateSystem CLOSED {
+    (  $coordinate_systems:CoordinateSystem_tes (  coordinate_systems:name @linkml:String ;
+          coordinate_systems:axes @coordinate_systems:Axis +
+       ) ;
+       rdf:type [ coordinate_systems:CoordinateSystem ] ?
+    )
+}
+
+coord_transforms:CoordinateTransformation  (
+    CLOSED {
+       (  $coord_transforms:CoordinateTransformation_tes (  coord_transforms:transformation_type [
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#identity>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#map_axis>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#translation>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#scale>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#affine>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#sequence> ] ? ;
+             coord_transforms:name @linkml:String ? ;
+             coord_transforms:input @linkml:String ? ;
+             coord_transforms:output @linkml:String ?
+          ) ;
+          rdf:type [ coord_transforms:CoordinateTransformation ] ?
+       )
+    } OR @coord_transforms:Affine OR @coord_transforms:Identity OR @coord_transforms:MapAxis OR @coord_transforms:Scale OR
+    @coord_transforms:Sequence OR @coord_transforms:Translation
+)
+
+annotation:CoordMetaMixin CLOSED {
+    (  $annotation:CoordMetaMixin_tes (  image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:CoordMetaMixin ] ?
+    )
+}
+
+image_entities:CTFMetadata CLOSED {
+    (  $image_entities:CTFMetadata_tes (  image_entities:defocus_u @linkml:Float ? ;
+          image_entities:defocus_v @linkml:Float ? ;
+          image_entities:defocus_angle @linkml:Float ?
+       ) ;
+       rdf:type [ image_entities:CTFMetadata ] ?
+    )
+}
+
+<https://w3id.org/cetmd/entities/Dataset> CLOSED {
+    (  $<https://w3id.org/cetmd/entities/Dataset_tes> (  <https://w3id.org/cetmd/entities/name> @linkml:String ? ;
+          <https://w3id.org/cetmd/entities/regions> @<https://w3id.org/cetmd/entities/Region> * ;
+          <https://w3id.org/cetmd/entities/averages> @<https://w3id.org/cetmd/entities/Average> *
+       ) ;
+       rdf:type [ <https://w3id.org/cetmd/entities/Dataset> ] ?
+    )
+}
+
+image_entities:DefectFile CLOSED {
+    (  $image_entities:DefectFile_tes (  &image:Image2D_tes ;
+          rdf:type [ image:Image2D ] ? ;
+          image_entities:path @linkml:String ?
+       ) ;
+       rdf:type [ image_entities:DefectFile ] ?
     )
 }
 
@@ -172,6 +307,7 @@ organizational:Author CLOSED {
 <EMDatasetTomo> CLOSED {
     (  $<EMDatasetTomo_tes> (  &<https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase_tes> ;
           rdf:type [ <https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase> ] ? ;
+          <processing> @<Processing> ? ;
           <https://w3id.org/osc-em/OSCEM_schemasacquisition> @<https://w3id.org/osc-em/tomography/AcquisitionTomo> ;
           <https://w3id.org/osc-em/OSCEM_schemasinstrument> @<https://w3id.org/osc-em/instrument/Instrument> ;
           <https://w3id.org/osc-em/OSCEM_schemassample> @<https://w3id.org/osc-em/sample/Sample> ;
@@ -199,6 +335,15 @@ organizational:Funder CLOSED {
           organizational:country @linkml:String ?
        ) ;
        rdf:type [ organizational:Funder ] ?
+    )
+}
+
+image_entities:GainFile CLOSED {
+    (  $image_entities:GainFile_tes (  &image:Image2D_tes ;
+          rdf:type [ image:Image2D ] ? ;
+          image_entities:path @linkml:String ?
+       ) ;
+       rdf:type [ image_entities:GainFile ] ?
     )
 }
 
@@ -231,11 +376,62 @@ organizational:Grant CLOSED {
     )
 }
 
+coord_transforms:Identity CLOSED {
+    (  $coord_transforms:Identity_tes (  &coord_transforms:CoordinateTransformation_tes ;
+          rdf:type [ coord_transforms:CoordinateTransformation ] ? ;
+          coord_transforms:transformation_type [ <https://w3id.org/cetmd/coord_transforms/TransformationType#identity>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#map_axis>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#translation>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#scale>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#affine>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#sequence> ] ?
+       ) ;
+       rdf:type [ coord_transforms:Identity ] ?
+    )
+}
+
+image:Image2D  (
+    CLOSED {
+       (  $image:Image2D_tes (  image:width @linkml:Integer ? ;
+             image:height @linkml:Integer ? ;
+             image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+             image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+          ) ;
+          rdf:type [ image:Image2D ] ?
+       )
+    } OR @image_entities:DefectFile OR @image_entities:GainFile OR @image_entities:MovieFrame OR @image_entities:ProjectionImage
+)
+
+image:Image3D  (
+    CLOSED {
+       (  $image:Image3D_tes (  image:width @linkml:Integer ? ;
+             image:height @linkml:Integer ? ;
+             image:depth @linkml:Integer ? ;
+             image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+             image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+          ) ;
+          rdf:type [ image:Image3D ] ?
+       )
+    } OR @image_entities:ParticleMap OR @image_entities:Tomogram
+)
+
 <https://w3id.org/osc-em/custom_typesImageSize> CLOSED {
-    (  $<https://w3id.org/osc-em/custom_typesImageSize_tes> (  <https://w3id.org/osc-em/custom_typesheight> @linkml:Integer ? ;
-          <https://w3id.org/osc-em/custom_typeswidth> @linkml:Integer ?
+    (  $<https://w3id.org/osc-em/custom_typesImageSize_tes> (  <https://w3id.org/osc-em/custom_typesheight_im> @linkml:Integer ? ;
+          <https://w3id.org/osc-em/custom_typeswidth_im> @linkml:Integer ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/custom_typesImageSize> ] ?
+    )
+}
+
+image:ImageStack2D CLOSED {
+    (  $image:ImageStack2D_tes image:images2D @image:Image2D * ;
+       rdf:type [ image:ImageStack2D ] ?
+    )
+}
+
+image:ImageStack3D CLOSED {
+    (  $image:ImageStack3D_tes image:images3D @image:Image3D * ;
+       rdf:type [ image:ImageStack3D ] ?
     )
 }
 
@@ -261,6 +457,21 @@ organizational:Grant CLOSED {
     )
 }
 
+coord_transforms:MapAxis CLOSED {
+    (  $coord_transforms:MapAxis_tes (  &coord_transforms:CoordinateTransformation_tes ;
+          rdf:type [ coord_transforms:CoordinateTransformation ] ? ;
+          coord_transforms:transformation_type [ <https://w3id.org/cetmd/coord_transforms/TransformationType#identity>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#map_axis>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#translation>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#scale>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#affine>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#sequence> ] ? ;
+          coord_transforms:map_axis @coord_transforms:AxisNameMapping *
+       ) ;
+       rdf:type [ coord_transforms:MapAxis ] ?
+    )
+}
+
 <https://w3id.org/osc-em/sample/Molecule> CLOSED {
     (  $<https://w3id.org/osc-em/sample/Molecule_tes> (  <https://w3id.org/osc-em/sample/name_mol> @linkml:String ;
           <https://w3id.org/osc-em/sample/molecular_type> @linkml:String ? ;
@@ -273,6 +484,45 @@ organizational:Grant CLOSED {
           <https://w3id.org/osc-em/sample/gene_name> @linkml:String ?
        ) ;
        rdf:type [ <https://w3id.org/osc-em/sample/Molecule> ] ?
+    )
+}
+
+image_entities:MovieFrame CLOSED {
+    (  $image_entities:MovieFrame_tes (  &image:Image2D_tes ;
+          rdf:type [ image:Image2D ] ? ;
+          &image_entities:AcquisitionMetadataMixin_tes ;
+          rdf:type [ image_entities:AcquisitionMetadataMixin ] ? ;
+          image_entities:path @linkml:String ? ;
+          image_entities:section @linkml:Integer ? ;
+          image_entities:nominal_tilt_angle @linkml:Float ? ;
+          image_entities:accumulated_dose @linkml:Float ? ;
+          image_entities:ctf_metadata @image_entities:CTFMetadata ?
+       ) ;
+       rdf:type [ image_entities:MovieFrame ] ?
+    )
+}
+
+image_entities:MovieStack CLOSED {
+    (  $image_entities:MovieStack_tes (  image_entities:path @linkml:String ? ;
+          image_entities:images_movie @image_entities:MovieFrame *
+       ) ;
+       rdf:type [ image_entities:MovieStack ] ?
+    )
+}
+
+<https://w3id.org/cetmd/entities/MovieStackCollection> CLOSED {
+    (  $<https://w3id.org/cetmd/entities/MovieStackCollection_tes> (  <https://w3id.org/cetmd/entities/movie_stacks>
+          @image_entities:MovieStackSeries * ;
+          <https://w3id.org/cetmd/entities/gain_file> @image_entities:GainFile ? ;
+          <https://w3id.org/cetmd/entities/defect_file> @image_entities:DefectFile ?
+       ) ;
+       rdf:type [ <https://w3id.org/cetmd/entities/MovieStackCollection> ] ?
+    )
+}
+
+image_entities:MovieStackSeries CLOSED {
+    (  $image_entities:MovieStackSeries_tes image_entities:stacks @image_entities:MovieStack * ;
+       rdf:type [ image_entities:MovieStackSeries ] ?
     )
 }
 
@@ -302,6 +552,15 @@ organizational:Organizational CLOSED {
     )
 }
 
+image_entities:ParticleMap CLOSED {
+    (  $image_entities:ParticleMap_tes (  &image:Image3D_tes ;
+          rdf:type [ image:Image3D ] ? ;
+          image_entities:path @linkml:String ?
+       ) ;
+       rdf:type [ image_entities:ParticleMap ] ?
+    )
+}
+
 organizational:Person  (
     CLOSED {
        (  $organizational:Person_tes (  schema1:name @linkml:String ? ;
@@ -322,6 +581,155 @@ organizational:Person  (
        rdf:type [ <https://w3id.org/osc-em/acquisitionPhaseplate> ] ?
     )
 }
+
+annotation:PointMatrixSet2D CLOSED {
+    (  $annotation:PointMatrixSet2D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &annotation:CoordMetaMixin_tes ;
+          rdf:type [ annotation:CoordMetaMixin ] ? ;
+          annotation:origin2D @linkml:Float ? ;
+          annotation:matrix2D @linkml:Float ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:PointMatrixSet2D ] ?
+    )
+}
+
+annotation:PointMatrixSet3D CLOSED {
+    (  $annotation:PointMatrixSet3D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &annotation:CoordMetaMixin_tes ;
+          rdf:type [ annotation:CoordMetaMixin ] ? ;
+          annotation:origin3D @linkml:Float ? ;
+          annotation:matrix3D @linkml:Float ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:PointMatrixSet3D ] ?
+    )
+}
+
+annotation:PointSet2D CLOSED {
+    (  $annotation:PointSet2D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &annotation:CoordMetaMixin_tes ;
+          rdf:type [ annotation:CoordMetaMixin ] ? ;
+          annotation:origin2D @linkml:Float ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:PointSet2D ] ?
+    )
+}
+
+annotation:PointSet3D CLOSED {
+    (  $annotation:PointSet3D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &annotation:CoordMetaMixin_tes ;
+          rdf:type [ annotation:CoordMetaMixin ] ? ;
+          annotation:origin3D @linkml:Float ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:PointSet3D ] ?
+    )
+}
+
+annotation:PointVectorSet2D CLOSED {
+    (  $annotation:PointVectorSet2D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &annotation:CoordMetaMixin_tes ;
+          rdf:type [ annotation:CoordMetaMixin ] ? ;
+          annotation:origin2D @linkml:Float ? ;
+          annotation:vector2D @linkml:Float ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:PointVectorSet2D ] ?
+    )
+}
+
+annotation:PointVectorSet3D CLOSED {
+    (  $annotation:PointVectorSet3D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &annotation:CoordMetaMixin_tes ;
+          rdf:type [ annotation:CoordMetaMixin ] ? ;
+          annotation:origin3D @linkml:Float ? ;
+          annotation:vector3D @linkml:Float ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:PointVectorSet3D ] ?
+    )
+}
+
+annotation:ProbabilityMap2D CLOSED {
+    (  $annotation:ProbabilityMap2D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &image:Image2D_tes ;
+          rdf:type [ image:Image2D ] ? ;
+          image:width @linkml:Integer ? ;
+          image:height @linkml:Integer ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:ProbabilityMap2D ] ?
+    )
+}
+
+annotation:ProbabilityMap3D CLOSED {
+    (  $annotation:ProbabilityMap3D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &image:Image3D_tes ;
+          rdf:type [ image:Image3D ] ? ;
+          image:width @linkml:Integer ? ;
+          image:height @linkml:Integer ? ;
+          image:depth @linkml:Integer ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:ProbabilityMap3D ] ?
+    )
+}
+
+<Processing> CLOSED {
+    (  $<Processing_tes> (  <region> @<https://w3id.org/cetmd/entities/Region> ? ;
+          <average> @<https://w3id.org/cetmd/entities/Average> ? ;
+          <movie_stack_collection> @<https://w3id.org/cetmd/entities/MovieStackCollection> ? ;
+          <dataset> @<https://w3id.org/cetmd/entities/Dataset> ?
+       ) ;
+       rdf:type [ <Processing> ] ?
+    )
+}
+
+alignment:ProjectionAlignment CLOSED {
+    (  $alignment:ProjectionAlignment_tes (  &coord_transforms:Sequence_tes ;
+          rdf:type [ coord_transforms:Sequence ] ? ;
+          alignment:input @linkml:String ? ;
+          alignment:output @linkml:String ? ;
+          alignment:sequence @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ alignment:ProjectionAlignment ] ?
+    )
+}
+
+image_entities:ProjectionImage  (
+    CLOSED {
+       (  $image_entities:ProjectionImage_tes (  &image:Image2D_tes ;
+             rdf:type [ image:Image2D ] ? ;
+             &image_entities:AcquisitionMetadataMixin_tes ;
+             rdf:type [ image_entities:AcquisitionMetadataMixin ] ? ;
+             image_entities:path @linkml:String ? ;
+             image_entities:section @linkml:Integer ? ;
+             image_entities:nominal_tilt_angle @linkml:Float ? ;
+             image_entities:accumulated_dose @linkml:Float ? ;
+             image_entities:ctf_metadata @image_entities:CTFMetadata ?
+          ) ;
+          rdf:type [ image_entities:ProjectionImage ] ?
+       )
+    } OR @image_entities:SubProjectionImage
+)
 
 <https://w3id.org/osc-em/custom_typesQuantitySI> CLOSED {
     (  $<https://w3id.org/osc-em/custom_typesQuantitySI_tes> (  &<https://w3id.org/osc-em/custom_typesQuantityValue_tes> ;
@@ -356,6 +764,17 @@ organizational:Person  (
     } OR @<https://w3id.org/osc-em/custom_typesSeries>
 )
 
+<https://w3id.org/cetmd/entities/Region> CLOSED {
+    (  $<https://w3id.org/cetmd/entities/Region_tes> (  <https://w3id.org/cetmd/entities/annotations> @annotation:Annotation * ;
+          <https://w3id.org/cetmd/entities/movie_stack_collections> @<https://w3id.org/cetmd/entities/MovieStackCollection> * ;
+          <https://w3id.org/cetmd/entities/tilt_series> @image_entities:TiltSeries * ;
+          <https://w3id.org/cetmd/entities/alignments> @alignment:Alignment * ;
+          <https://w3id.org/cetmd/entities/tomograms> @image_entities:Tomogram *
+       ) ;
+       rdf:type [ <https://w3id.org/cetmd/entities/Region> ] ?
+    )
+}
+
 <https://w3id.org/osc-em/sample/Sample> CLOSED {
     (  $<https://w3id.org/osc-em/sample/Sample_tes> (  <https://w3id.org/osc-em/sample/overall_molecule>
           @<https://w3id.org/osc-em/sample/OverallMolecule> ;
@@ -367,6 +786,67 @@ organizational:Person  (
        rdf:type [ <https://w3id.org/osc-em/sample/Sample> ] ?
     )
 }
+
+coord_transforms:Scale CLOSED {
+    (  $coord_transforms:Scale_tes (  &coord_transforms:CoordinateTransformation_tes ;
+          rdf:type [ coord_transforms:CoordinateTransformation ] ? ;
+          coord_transforms:transformation_type [ <https://w3id.org/cetmd/coord_transforms/TransformationType#identity>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#map_axis>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#translation>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#scale>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#affine>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#sequence> ] ? ;
+          coord_transforms:scale @linkml:Float *
+       ) ;
+       rdf:type [ coord_transforms:Scale ] ?
+    )
+}
+
+annotation:SegmentationMask2D CLOSED {
+    (  $annotation:SegmentationMask2D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &image:Image2D_tes ;
+          rdf:type [ image:Image2D ] ? ;
+          image:width @linkml:Integer ? ;
+          image:height @linkml:Integer ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:SegmentationMask2D ] ?
+    )
+}
+
+annotation:SegmentationMask3D CLOSED {
+    (  $annotation:SegmentationMask3D_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &image:Image3D_tes ;
+          rdf:type [ image:Image3D ] ? ;
+          image:width @linkml:Integer ? ;
+          image:height @linkml:Integer ? ;
+          image:depth @linkml:Integer ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:SegmentationMask3D ] ?
+    )
+}
+
+coord_transforms:Sequence  (
+    CLOSED {
+       (  $coord_transforms:Sequence_tes (  &coord_transforms:CoordinateTransformation_tes ;
+             rdf:type [ coord_transforms:CoordinateTransformation ] ? ;
+             coord_transforms:transformation_type [ <https://w3id.org/cetmd/coord_transforms/TransformationType#identity>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#map_axis>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#translation>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#scale>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#affine>
+                <https://w3id.org/cetmd/coord_transforms/TransformationType#sequence> ] ? ;
+             coord_transforms:sequence @coord_transforms:CoordinateTransformation *
+          ) ;
+          rdf:type [ coord_transforms:Sequence ] ?
+       )
+    } OR @alignment:ProjectionAlignment
+)
 
 <https://w3id.org/osc-em/custom_typesSeries>  (
     CLOSED {
@@ -416,6 +896,15 @@ organizational:Person  (
     )
 }
 
+image_entities:SubProjectionImage CLOSED {
+    (  $image_entities:SubProjectionImage_tes (  &image_entities:ProjectionImage_tes ;
+          rdf:type [ image_entities:ProjectionImage ] ? ;
+          image_entities:particle_index @linkml:Integer ?
+       ) ;
+       rdf:type [ image_entities:SubProjectionImage ] ?
+    )
+}
+
 <https://w3id.org/osc-em/tomography/TiltAngle> CLOSED {
     (  $<https://w3id.org/osc-em/tomography/TiltAngle_tes> (  &<https://w3id.org/osc-em/custom_typesSeries_tes> ;
           rdf:type [ <https://w3id.org/osc-em/custom_typesSeries> ] ? ;
@@ -424,6 +913,50 @@ organizational:Person  (
           <https://w3id.org/osc-em/custom_typesincrement> @<https://w3id.org/osc-em/custom_typesAny>
        ) ;
        rdf:type [ <https://w3id.org/osc-em/tomography/TiltAngle> ] ?
+    )
+}
+
+image_entities:TiltSeries CLOSED {
+    (  $image_entities:TiltSeries_tes (  image_entities:images_tilt @image_entities:ProjectionImage * ;
+          image_entities:path @linkml:String ?
+       ) ;
+       rdf:type [ image_entities:TiltSeries ] ?
+    )
+}
+
+image_entities:Tomogram CLOSED {
+    (  $image_entities:Tomogram_tes (  &image:Image3D_tes ;
+          rdf:type [ image:Image3D ] ? ;
+          image_entities:path @linkml:String ?
+       ) ;
+       rdf:type [ image_entities:Tomogram ] ?
+    )
+}
+
+coord_transforms:Translation CLOSED {
+    (  $coord_transforms:Translation_tes (  &coord_transforms:CoordinateTransformation_tes ;
+          rdf:type [ coord_transforms:CoordinateTransformation ] ? ;
+          coord_transforms:transformation_type [ <https://w3id.org/cetmd/coord_transforms/TransformationType#identity>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#map_axis>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#translation>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#scale>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#affine>
+             <https://w3id.org/cetmd/coord_transforms/TransformationType#sequence> ] ? ;
+          coord_transforms:translation @linkml:Float *
+       ) ;
+       rdf:type [ coord_transforms:Translation ] ?
+    )
+}
+
+annotation:TriMesh CLOSED {
+    (  $annotation:TriMesh_tes (  &annotation:Annotation_tes ;
+          rdf:type [ annotation:Annotation ] ? ;
+          &annotation:CoordMetaMixin_tes ;
+          rdf:type [ annotation:CoordMetaMixin ] ? ;
+          image:coordinate_systems @coordinate_systems:CoordinateSystem * ;
+          image:coordinate_transformations @coord_transforms:CoordinateTransformation *
+       ) ;
+       rdf:type [ annotation:TriMesh ] ?
     )
 }
 

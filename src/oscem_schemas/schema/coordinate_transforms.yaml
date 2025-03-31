@@ -1,0 +1,151 @@
+name: coordinate_transforms
+id: https://w3id.org/cetmd/coord_transforms
+version: 0.0.1
+description: Schema for cryoET alignments
+prefixes:
+  linkml: https://w3id.org/linkml/
+  coord_transforms: https://w3id.org/cetmd/coord_transforms/
+
+default_prefix: coord_transforms
+
+imports:
+- linkml:types
+- ./coordinate_systems
+
+classes:
+  CoordinateTransformation:
+    description: A coordinate transformation
+    slots:
+    - transformation_type
+    attributes:
+      name:
+        description: The name of the coordinate transformation
+        range: string
+      input:
+        description: The source coordinate system name
+        range: string
+      output:
+        description: The target coordinate system name
+        range: string
+
+
+  Identity:
+    description: The identity transformation
+    is_a: CoordinateTransformation
+    slots:
+    - transformation_type
+    slot_usage:
+      transformation_type:
+        ifabsent: identity
+
+
+
+  AxisNameMapping:
+    description: Axis name to Axis name mapping
+    attributes:
+      axis1_name:
+        description: The type of transformation
+        range: string
+      axis2_name:
+        description: The mapping of the axis names
+        range: string
+
+
+  MapAxis:
+    description: Axis permutation transformation
+    is_a: CoordinateTransformation
+    slots:
+    - transformation_type
+    slot_usage:
+      transformation_type:
+        ifabsent: map_axis
+    attributes:
+      map_axis:
+        description: The permutation of the axes
+        range: AxisNameMapping
+        inlined: true
+        multivalued: true
+
+
+  Translation:
+    description: A translation transformation
+    is_a: CoordinateTransformation
+    slots:
+    - transformation_type
+    slot_usage:
+      transformation_type:
+        ifabsent: translation
+    attributes:
+      translation:
+        description: The translation vector
+        range: float
+        multivalued: true
+
+  Scale:
+    description: A scaling transformation
+    is_a: CoordinateTransformation
+    slots:
+    - transformation_type
+    slot_usage:
+      transformation_type:
+        ifabsent: scale
+    attributes:
+      scale:
+        description: The scaling vector
+        range: float
+        multivalued: true
+
+  Affine:
+    description: An affine transformation
+    is_a: CoordinateTransformation
+    slots:
+    - transformation_type
+    slot_usage:
+      transformation_type:
+        ifabsent: affine
+    attributes:
+      affine:
+        description: The affine matrix
+        range: integer
+        array:
+          exact_number_dimensions: 2
+          dimensions:
+            - alias: exact_card
+              exact_cardinality: 3
+            - alias: exact_card
+              exact_cardinality: 3
+
+  Sequence:
+    description: A sequence of transformations
+    is_a: CoordinateTransformation
+    slots:
+    - transformation_type
+    slot_usage:
+      transformation_type:
+        ifabsent: sequence
+    attributes:
+      sequence:
+        description: The sequence of transformations
+        range: CoordinateTransformation
+        multivalued: true
+
+enums:
+  TransformationType:
+    permissible_values:
+      identity:
+        description: The identity transformation.
+      map_axis:
+        description: Axis permutation transformation
+      translation:
+        description: A translation transformation.
+      scale:
+        description: A scaling transformation.
+      affine:
+        description: An affine transformation
+      sequence:
+        description: A sequence of transformations
+
+slots:
+  transformation_type:
+    description: The type of transformation
+    range: TransformationType

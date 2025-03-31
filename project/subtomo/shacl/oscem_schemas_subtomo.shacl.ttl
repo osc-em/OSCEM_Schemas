@@ -6,7 +6,7 @@
 <http://schema.org/Person> a sh:NodeShape ;
     sh:closed true ;
     sh:description "personal information" ;
-    sh:ignoredProperties ( <https://w3id.org/osc-em/organizational/:type_org> <https://w3id.org/osc-em/organizational/:name_org> <https://w3id.org/osc-em/organizational/:orcid> <https://w3id.org/osc-em/organizational/:role> rdf:type <https://w3id.org/osc-em/organizational/:country> ) ;
+    sh:ignoredProperties ( <https://w3id.org/osc-em/organizational/:role> <https://w3id.org/osc-em/organizational/:type_org> rdf:type <https://w3id.org/osc-em/organizational/:orcid> <https://w3id.org/osc-em/organizational/:name_org> <https://w3id.org/osc-em/organizational/:country> ) ;
     sh:property [ sh:datatype xsd:boolean ;
             sh:description "work status" ;
             sh:maxCount 1 ;
@@ -20,12 +20,6 @@
             sh:order 1 ;
             sh:path <https://w3id.org/osc-em/organizational/:first_name> ],
         [ sh:datatype xsd:string ;
-            sh:description "name" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://schema.org/name> ],
-        [ sh:datatype xsd:string ;
             sh:description "work phone" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -37,24 +31,643 @@
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <http://schema.org/email> ;
-            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ] ;
+            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "author_name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://schema.org/name> ] ;
     sh:targetClass <http://schema.org/Person> .
+
+<https://w3id.org/cetmd/annotation/CoordMetaMixin> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Coordinate system mixins for annotations." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/CoordMetaMixin> .
+
+<https://w3id.org/cetmd/annotation/PointMatrixSet2D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of 2D points with an associated rotation matrix." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Rotation matrix associated with a point on a 2D image (Nx2x2)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/annotation/matrix2D> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Location on a 2D image (Nx2)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/annotation/origin2D> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/PointMatrixSet2D> .
+
+<https://w3id.org/cetmd/annotation/PointMatrixSet3D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of 3D points with an associated rotation matrix." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Rotation matrix associated with a point on a 3D image (Nx3x3)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/annotation/matrix3D> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Location on a 3D image (Nx3)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/annotation/origin3D> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/PointMatrixSet3D> .
+
+<https://w3id.org/cetmd/annotation/PointSet2D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of 2D point annotations." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Location on a 2D image (Nx2)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/annotation/origin2D> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/PointSet2D> .
+
+<https://w3id.org/cetmd/annotation/PointSet3D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of 3D point annotations." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Location on a 3D image (Nx3)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/annotation/origin3D> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/PointSet3D> .
+
+<https://w3id.org/cetmd/annotation/PointVectorSet2D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of 2D points with an associated direction vector." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Orientation vector associated with a point on a 2D image (Nx2)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/annotation/vector2D> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Location on a 2D image (Nx2)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/annotation/origin2D> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/PointVectorSet2D> .
+
+<https://w3id.org/cetmd/annotation/PointVectorSet3D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of 3D points with an associated direction vector." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Orientation vector associated with a point on a 3D image (Nx3)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/annotation/vector3D> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Location on a 3D image (Nx3)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/annotation/origin3D> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/PointVectorSet3D> .
+
+<https://w3id.org/cetmd/annotation/ProbabilityMap2D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An annotation image with real-valued labels." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/ProbabilityMap2D> .
+
+<https://w3id.org/cetmd/annotation/ProbabilityMap3D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An annotation volume with real-valued labels." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The depth of the image (z-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:depth> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/ProbabilityMap3D> .
+
+<https://w3id.org/cetmd/annotation/SegmentationMask2D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An annotation image with categorical labels." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/SegmentationMask2D> .
+
+<https://w3id.org/cetmd/annotation/SegmentationMask3D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An annotation volume with categorical labels." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The depth of the image (z-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:depth> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/SegmentationMask3D> .
+
+<https://w3id.org/cetmd/annotation/TriMesh> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A mesh annotation." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/TriMesh> .
+
+<https://w3id.org/cetmd/coord_transforms/Identity> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "The identity transformation" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The target coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/output> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The source coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/input> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the coordinate transformation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/name> ],
+        [ sh:defaultValue "identity" ;
+            sh:description "The type of transformation" ;
+            sh:in ( "identity" "map_axis" "translation" "scale" "affine" "sequence" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/transformation_type> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coord_transforms/Identity> .
+
+<https://w3id.org/cetmd/coord_transforms/MapAxis> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Axis permutation transformation" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The name of the coordinate transformation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/name> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/AxisNameMapping> ;
+            sh:description "The permutation of the axes" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/map_axis> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The target coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/output> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The source coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/input> ],
+        [ sh:defaultValue "map_axis" ;
+            sh:description "The type of transformation" ;
+            sh:in ( "identity" "map_axis" "translation" "scale" "affine" "sequence" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/transformation_type> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coord_transforms/MapAxis> .
+
+<https://w3id.org/cetmd/coord_transforms/Scale> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A scaling transformation" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:defaultValue "scale" ;
+            sh:description "The type of transformation" ;
+            sh:in ( "identity" "map_axis" "translation" "scale" "affine" "sequence" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/transformation_type> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the coordinate transformation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The target coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/output> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The source coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/input> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The scaling vector" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/scale> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coord_transforms/Scale> .
+
+<https://w3id.org/cetmd/coord_transforms/Sequence> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A sequence of transformations" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:defaultValue "sequence" ;
+            sh:description "The type of transformation" ;
+            sh:in ( "identity" "map_axis" "translation" "scale" "affine" "sequence" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/transformation_type> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The target coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/output> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "The sequence of transformations" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/sequence> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The source coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/input> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the coordinate transformation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/name> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coord_transforms/Sequence> .
+
+<https://w3id.org/cetmd/image/:ImageStack2D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A stack of 2D images." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/image/:Image2D> ;
+            sh:description "The images in the stack" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:images2D> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image/:ImageStack2D> .
+
+<https://w3id.org/cetmd/image/:ImageStack3D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A stack of 3D images." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/image/:Image3D> ;
+            sh:description "The images in the stack" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:images3D> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image/:ImageStack3D> .
+
+<https://w3id.org/cetmd/image_entities/AcquisitionMetadataMixin> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Metadata concerning the acquisition process." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "The pre-exposure up to this image in e-/A^2" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image_entities/accumulated_dose> ],
+        [ sh:class <https://w3id.org/cetmd/image_entities/CTFMetadata> ;
+            sh:description "A set of CTF patameters for an image." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image_entities/ctf_metadata> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The tilt angle reported by the microscope" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/nominal_tilt_angle> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/AcquisitionMetadataMixin> .
+
+<https://w3id.org/cetmd/image_entities/SubProjectionImage> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A croppecd projection image." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:class <https://w3id.org/cetmd/image_entities/CTFMetadata> ;
+            sh:description "A set of CTF patameters for an image." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/cetmd/image_entities/ctf_metadata> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Index of a particle inside a tomogram." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/particle_index> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The tilt angle reported by the microscope" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image_entities/nominal_tilt_angle> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The pre-exposure up to this image in e-/A^2" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image_entities/accumulated_dose> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "0-based section index to the entity inside a stack." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image_entities/section> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/SubProjectionImage> .
 
 <https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase> a sh:NodeShape ;
     sh:closed false ;
     sh:description "OSC-EM Metadata for a dataset" ;
-    sh:ignoredProperties ( rdf:type ) ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/osc-em/oscem-schemas-subtomo/:processing> ) ;
     sh:property [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/OSCEM_schemassample> ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/OSCEM_schemasorganizational> ],
-        [ sh:class linkml:Any ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
@@ -63,49 +676,35 @@
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/OSCEM_schemasinstrument> ] ;
+            sh:path <https://w3id.org/osc-em/OSCEM_schemasinstrument> ],
+        [ sh:class linkml:Any ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/OSCEM_schemassample> ],
+        [ sh:class linkml:Any ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/OSCEM_schemasorganizational> ] ;
     sh:targetClass <https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase> .
 
 <https://w3id.org/osc-em/acquisitionAcquisition> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A set of parameteres describing the data acquisition" ;
-    sh:ignoredProperties ( rdf:type <https://w3id.org/osc-em/tomography/:tilt_angle> <https://w3id.org/osc-em/tomography/:tilt_axis_angle> ) ;
-    sh:property [ sh:class <https://w3id.org/osc-em/custom_typesBoundingBox2D> ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+    sh:ignoredProperties ( <https://w3id.org/osc-em/tomography/:tilt_axis_angle> rdf:type <https://w3id.org/osc-em/tomography/:tilt_angle> ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Operating mode of the detector" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path <https://w3id.org/osc-em/acquisitionimageshift> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Level of binning on the images applied during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbinning_camera> ],
+            sh:order 9 ;
+            sh:path <https://w3id.org/osc-em/acquisitiondetector_mode> ],
         [ sh:class <https://w3id.org/osc-em/custom_typesRange> ;
             sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
-        [ sh:description "Time of data acquisition per movie/tilt - in s" ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 14 ;
-            sh:path <https://w3id.org/osc-em/acquisitionexposure_time> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
             sh:maxCount 1 ;
@@ -113,35 +712,24 @@
             sh:order 17 ;
             sh:path <https://w3id.org/osc-em/acquisitiongrids_imaged> ],
         [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 25 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
-        [ sh:class <https://w3id.org/osc-em/custom_typesBoundingBox2D> ;
-            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbeamshift> ],
+            sh:order 16 ;
+            sh:path <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
         [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/acquisitionholder> ],
-        [ sh:class <https://w3id.org/osc-em/acquisitionEnergyFilter> ;
-            sh:description "Wether an energy filter was used and its specifics." ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/osc-em/acquisitioncryogen> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Make and model of the detector used" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/osc-em/acquisitionenergy_filter> ],
-        [ sh:class <https://w3id.org/osc-em/custom_typesRange> ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/acquisitiontemperature_range> ],
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/osc-em/acquisitiondetector> ],
         [ sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -155,17 +743,23 @@
             sh:order 20 ;
             sh:path <https://w3id.org/osc-em/acquisitionpixel_size> ],
         [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
+            sh:order 25 ;
+            sh:path <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
         [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
+            sh:description "Speciman holder model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/acquisitionholder> ],
+        [ sh:class <https://w3id.org/osc-em/custom_typesBoundingBox2D> ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path <https://w3id.org/osc-em/acquisitionimageshift> ],
         [ sh:datatype xsd:integer ;
             sh:description "Calculated magnification, no unit" ;
             sh:maxCount 1 ;
@@ -179,30 +773,35 @@
             sh:order 0 ;
             sh:path <https://w3id.org/osc-em/acquisitionnominal_defocus> ],
         [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path <https://w3id.org/osc-em/acquisitioncryogen> ],
+            sh:order 5 ;
+            sh:path <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
+        [ sh:class <https://w3id.org/osc-em/acquisitionEnergyFilter> ;
+            sh:description "Wether an energy filter was used and its specifics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/osc-em/acquisitionenergy_filter> ],
         [ sh:class <https://w3id.org/osc-em/custom_typesImageSize> ;
             sh:description "The size of the image in pixels, height and width given." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 12 ;
             sh:path <https://w3id.org/osc-em/acquisitionimage_size> ],
-        [ sh:class <https://w3id.org/osc-em/acquisitionSpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
+        [ sh:class <https://w3id.org/osc-em/custom_typesRange> ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Make and model of the detector used" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/osc-em/acquisitiondetector> ],
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/acquisitiontemperature_range> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
             sh:maxCount 1 ;
@@ -217,6 +816,18 @@
             sh:order 13 ;
             sh:path <https://w3id.org/osc-em/acquisitiondate_time> ],
         [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
+        [ sh:class <https://w3id.org/osc-em/acquisitionSpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
+        [ sh:datatype xsd:string ;
             sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -228,61 +839,68 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 23 ;
             sh:path <https://w3id.org/osc-em/acquisitionbeamtilt> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Operating mode of the detector" ;
+        [ sh:class <https://w3id.org/osc-em/custom_typesBoundingBox2D> ;
+            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
             sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/osc-em/acquisitionbeamshift> ],
+        [ sh:description "Time of data acquisition per movie/tilt - in s" ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 14 ;
+            sh:path <https://w3id.org/osc-em/acquisitionexposure_time> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Level of binning on the images applied during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/osc-em/acquisitiondetector_mode> ] ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/osc-em/acquisitionbinning_camera> ] ;
     sh:targetClass <https://w3id.org/osc-em/acquisitionAcquisition> .
 
 <https://w3id.org/osc-em/custom_typesDescriptor> a sh:NodeShape ;
     sh:closed false ;
     sh:description "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/custom_typesdescriptor_thing> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/custom_typesdescriptor_name> ] ;
+            sh:path <https://w3id.org/osc-em/custom_typesdescriptor_name> ],
+        [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/custom_typesdescriptor_thing> ] ;
     sh:targetClass <https://w3id.org/osc-em/custom_typesDescriptor> .
 
 <https://w3id.org/osc-em/custom_typesDescriptors> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/custom_typesdescriptor_thing> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/custom_typesdescriptor_name> ] ;
+            sh:path <https://w3id.org/osc-em/custom_typesdescriptor_name> ],
+        [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/custom_typesdescriptor_thing> ] ;
     sh:targetClass <https://w3id.org/osc-em/custom_typesDescriptors> .
 
 <https://w3id.org/osc-em/custom_typesSeries> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A series of numbers constructed from min, max, and increment" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Minimal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/custom_typesminimal> ],
-        [ sh:description "Maximal value of a given dataset property" ;
+    sh:property [ sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
             sh:order 2 ;
@@ -291,7 +909,12 @@
             sh:maxCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/custom_typesincrement> ] ;
+            sh:path <https://w3id.org/osc-em/custom_typesincrement> ],
+        [ sh:description "Minimal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/custom_typesminimal> ] ;
     sh:targetClass <https://w3id.org/osc-em/custom_typesSeries> .
 
 <https://w3id.org/osc-em/oscem-schemas-subtomo/:EMDatasetTomo> a sh:NodeShape ;
@@ -303,28 +926,34 @@
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
+            sh:order 3 ;
             sh:path <https://w3id.org/osc-em/OSCEM_schemassample> ],
-        [ sh:class <https://w3id.org/osc-em/tomography/:AcquisitionTomo> ;
-            sh:description "Describe the data acquisition parameters" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/OSCEM_schemasacquisition> ],
         [ sh:class <https://w3id.org/osc-em/instrument/:Instrument> ;
             sh:description "Describe the instrument used to acquire the data" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
+            sh:order 2 ;
             sh:path <https://w3id.org/osc-em/OSCEM_schemasinstrument> ],
+        [ sh:class <https://w3id.org/osc-em/tomography/:AcquisitionTomo> ;
+            sh:description "Describe the data acquisition parameters" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/OSCEM_schemasacquisition> ],
+        [ sh:class <https://w3id.org/osc-em/oscem-schemas-subtomo/:Processing> ;
+            sh:description "Processing information on a given dataset" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/oscem-schemas-subtomo/:processing> ],
         [ sh:class <https://w3id.org/osc-em/organizational/:Organizational> ;
             sh:description "Information on authors and grants" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
+            sh:order 4 ;
             sh:path <https://w3id.org/osc-em/OSCEM_schemasorganizational> ] ;
     sh:targetClass <https://w3id.org/osc-em/oscem-schemas-subtomo/:EMDatasetTomo> .
 
@@ -332,7 +961,14 @@
     sh:closed true ;
     sh:description "Grant" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:description "start date" ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:datatype xsd:dateTime ;
+                        sh:nodeKind sh:Literal ] [ sh:datatype xsd:date ;
+                        sh:nodeKind sh:Literal ] ) ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/organizational/:start_date> ],
+        [ sh:datatype xsd:string ;
             sh:description "Country of the institution" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -345,117 +981,648 @@
                         sh:nodeKind sh:Literal ] ) ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/organizational/:end_date> ],
-        [ sh:description "start date" ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:datatype xsd:dateTime ;
-                        sh:nodeKind sh:Literal ] [ sh:datatype xsd:date ;
-                        sh:nodeKind sh:Literal ] ) ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/organizational/:start_date> ],
         [ sh:datatype xsd:string ;
             sh:description "project id" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path <http://schema.org/identifier> ],
-        [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
-            sh:description "budget" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/organizational/:budget> ],
         [ sh:datatype xsd:string ;
             sh:description "name of the grant" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/organizational/:grant_name> ] ;
+            sh:path <https://w3id.org/osc-em/organizational/:grant_name> ],
+        [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
+            sh:description "budget" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/organizational/:budget> ] ;
     sh:targetClass <http://schema.org/Grant> .
+
+<https://w3id.org/cetmd/alignment/Alignment> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "The tomographic alignment for a tilt series." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/alignment/ProjectionAlignment> ;
+            sh:description "alignment for a specific projection" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/alignment/projection_alignments> ] ;
+    sh:targetClass <https://w3id.org/cetmd/alignment/Alignment> .
+
+<https://w3id.org/cetmd/alignment/ProjectionAlignment> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "The tomographic alignment for a single projection." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The sequence of transformations" ;
+            sh:maxCount 2 ;
+            sh:or ( [ sh:class <https://w3id.org/cetmd/coord_transforms/Affine> ] [ sh:class <https://w3id.org/cetmd/coord_transforms/Translation> ] ) ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/alignment/sequence> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The target coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/alignment/output> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the coordinate transformation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The source coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/alignment/input> ],
+        [ sh:defaultValue "sequence" ;
+            sh:description "The type of transformation" ;
+            sh:in ( "identity" "map_axis" "translation" "scale" "affine" "sequence" ) ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/transformation_type> ] ;
+    sh:targetClass <https://w3id.org/cetmd/alignment/ProjectionAlignment> .
+
+<https://w3id.org/cetmd/coord_transforms/Affine> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An affine transformation" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The source coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/input> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the coordinate transformation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/name> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The affine matrix" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/affine> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The target coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/output> ],
+        [ sh:defaultValue "affine" ;
+            sh:description "The type of transformation" ;
+            sh:in ( "identity" "map_axis" "translation" "scale" "affine" "sequence" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/transformation_type> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coord_transforms/Affine> .
+
+<https://w3id.org/cetmd/coord_transforms/AxisNameMapping> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Axis name to Axis name mapping" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The mapping of the axis names" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/axis2_name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The type of transformation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/axis1_name> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coord_transforms/AxisNameMapping> .
+
+<https://w3id.org/cetmd/coord_transforms/Translation> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A translation transformation" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The target coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/output> ],
+        [ sh:defaultValue "translation" ;
+            sh:description "The type of transformation" ;
+            sh:in ( "identity" "map_axis" "translation" "scale" "affine" "sequence" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/transformation_type> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The translation vector" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/translation> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the coordinate transformation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The source coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/input> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coord_transforms/Translation> .
+
+<https://w3id.org/cetmd/coordinate_systems/Axis> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An axis in a coordinate system" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The type of axis" ;
+            sh:in ( "space" "array" ) ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/coordinate_systems/axis_type> ],
+        [ sh:datatype xsd:string ;
+            sh:defaultValue "angstrom"^^xsd:string ;
+            sh:description "The unit of the axis" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coordinate_systems/axis_unit> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the axis" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coordinate_systems/axis_name> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coordinate_systems/Axis> .
+
+<https://w3id.org/cetmd/entities/:Dataset> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A dataset" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The name of a given entry" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/entities/:name> ],
+        [ sh:class <https://w3id.org/cetmd/entities/:Region> ;
+            sh:description "The regions in the dataset" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/entities/:regions> ],
+        [ sh:class <https://w3id.org/cetmd/entities/:Average> ;
+            sh:description "The averages in the dataset" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/entities/:averages> ] ;
+    sh:targetClass <https://w3id.org/cetmd/entities/:Dataset> .
+
+<https://w3id.org/cetmd/image/:Image2D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A 2D image." ;
+    sh:ignoredProperties ( <https://w3id.org/cetmd/image_entities/accumulated_dose> <https://w3id.org/cetmd/image_entities/ctf_metadata> rdf:type <https://w3id.org/cetmd/image_entities/nominal_tilt_angle> <https://w3id.org/cetmd/image_entities/section> <https://w3id.org/cetmd/image_entities/particle_index> <https://w3id.org/cetmd/image_entities/path> ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image/:Image2D> .
+
+<https://w3id.org/cetmd/image/:Image3D> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A 3D image." ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/cetmd/image_entities/path> ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "The depth of the image (z-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:depth> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image/:Image3D> .
+
+<https://w3id.org/cetmd/image_entities/DefectFile> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A detector defect file." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/DefectFile> .
+
+<https://w3id.org/cetmd/image_entities/GainFile> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A gain reference file." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/GainFile> .
+
+<https://w3id.org/cetmd/image_entities/MovieFrame> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An individual movie frame" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "0-based section index to the entity inside a stack." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image_entities/section> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The pre-exposure up to this image in e-/A^2" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image_entities/accumulated_dose> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The tilt angle reported by the microscope" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image_entities/nominal_tilt_angle> ],
+        [ sh:class <https://w3id.org/cetmd/image_entities/CTFMetadata> ;
+            sh:description "A set of CTF patameters for an image." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image_entities/ctf_metadata> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/MovieFrame> .
+
+<https://w3id.org/cetmd/image_entities/MovieStack> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A stack of movie frames." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:class <https://w3id.org/cetmd/image_entities/MovieFrame> ;
+            sh:description "The movie frames in the stack" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image_entities/images_movie> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/MovieStack> .
+
+<https://w3id.org/cetmd/image_entities/MovieStackSeries> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A group of movie stacks that belong to a single tilt series." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/image_entities/MovieStack> ;
+            sh:description "The movie stacks." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/stacks> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/MovieStackSeries> .
+
+<https://w3id.org/cetmd/image_entities/ParticleMap> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A 3D particle density map." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The depth of the image (z-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:depth> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/ParticleMap> .
+
+<https://w3id.org/cetmd/image_entities/ProjectionImage> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A projection image." ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/cetmd/image_entities/particle_index> ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "0-based section index to the entity inside a stack." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image_entities/section> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The pre-exposure up to this image in e-/A^2" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image_entities/accumulated_dose> ],
+        [ sh:class <https://w3id.org/cetmd/image_entities/CTFMetadata> ;
+            sh:description "A set of CTF patameters for an image." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image_entities/ctf_metadata> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The tilt angle reported by the microscope" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image_entities/nominal_tilt_angle> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/ProjectionImage> .
+
+<https://w3id.org/cetmd/image_entities/TiltSeries> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A stack of projection images." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/image_entities/ProjectionImage> ;
+            sh:description "The projections in the stack" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/images_tilt> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/TiltSeries> .
+
+<https://w3id.org/cetmd/image_entities/Tomogram> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A 3D tomogram." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "The height of the image (y-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image/:height> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ],
+        [ sh:class <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_transformations> ],
+        [ sh:class <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> ;
+            sh:description "Named coordinate systems for this entity" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/image/:coordinate_systems> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The depth of the image (z-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/image/:depth> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of the image (x-axis) in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image/:width> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/Tomogram> .
 
 <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Special device used to correct instrument inherent chromatic aberration." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Details of a given specialist instrument" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/acquisitioninstrument_type> ],
-        [ sh:datatype xsd:boolean ;
+    sh:property [ sh:datatype xsd:boolean ;
             sh:description "whether a specific instrument was used during data acquisition" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/acquisitionused> ] ;
+            sh:path <https://w3id.org/osc-em/acquisitionused> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Details of a given specialist instrument" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/acquisitioninstrument_type> ] ;
     sh:targetClass <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> .
 
 <https://w3id.org/osc-em/acquisitionPhaseplate> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Used to modulate the phase of the electron wave." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Type of phaseplate" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/acquisitioninstrument_type> ],
-        [ sh:datatype xsd:boolean ;
+    sh:property [ sh:datatype xsd:boolean ;
             sh:description "whether a specific instrument was used during data acquisition" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/acquisitionused> ] ;
+            sh:path <https://w3id.org/osc-em/acquisitionused> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of phaseplate" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/acquisitioninstrument_type> ] ;
     sh:targetClass <https://w3id.org/osc-em/acquisitionPhaseplate> .
 
 <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Special device used to correct instrument inherent spherical aberration." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Details of a given specialist instrument" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/acquisitioninstrument_type> ],
-        [ sh:datatype xsd:boolean ;
+    sh:property [ sh:datatype xsd:boolean ;
             sh:description "whether a specific instrument was used during data acquisition" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/acquisitionused> ] ;
+            sh:path <https://w3id.org/osc-em/acquisitionused> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Details of a given specialist instrument" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/acquisitioninstrument_type> ] ;
     sh:targetClass <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> .
 
 <https://w3id.org/osc-em/instrument/:Instrument> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Instrument values, mostly constant across a data collection." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Spherical aberration of the instrument, in mm" ;
+    sh:property [ sh:description "C2 aperture size used in data acquisition, in µm" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/instrument/:cs> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of electron source used in the microscope, such as FEG" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/instrument/:electron_source> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name/Type of the Microscope" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/instrument/:microscope> ],
+            sh:order 5 ;
+            sh:path <https://w3id.org/osc-em/instrument/:c2_aperture> ],
         [ sh:datatype xsd:string ;
             sh:description "Mode of imaging used during data collection" ;
             sh:maxCount 1 ;
@@ -470,17 +1637,32 @@
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/osc-em/instrument/:illumination> ],
-        [ sh:description "C2 aperture size used in data acquisition, in µm" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Type of electron source used in the microscope, such as FEG" ;
             sh:maxCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/osc-em/instrument/:c2_aperture> ],
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/instrument/:electron_source> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name/Type of the Microscope" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/instrument/:microscope> ],
         [ sh:description "Voltage used for the electron acceleration, in kV" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
             sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/instrument/:acceleration_voltage> ] ;
+            sh:path <https://w3id.org/osc-em/instrument/:acceleration_voltage> ],
+        [ sh:description "Spherical aberration of the instrument, in mm" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/instrument/:cs> ] ;
     sh:targetClass <https://w3id.org/osc-em/instrument/:Instrument> .
 
 <https://w3id.org/osc-em/organizational/:Author> a sh:NodeShape ;
@@ -488,18 +1670,17 @@
     sh:description "Details on the person performing the experiment." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "name" ;
+            sh:description "Role of the author, for example principal investigator" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <http://schema.org/name> ],
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/organizational/:role> ],
         [ sh:datatype xsd:string ;
-            sh:description "Name of the organization" ;
+            sh:description "work phone" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/organizational/:name_org> ],
+            sh:order 9 ;
+            sh:path <http://schema.org/telephone> ],
         [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
             sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
             sh:maxCount 1 ;
@@ -507,11 +1688,18 @@
             sh:order 4 ;
             sh:path <https://w3id.org/osc-em/organizational/:type_org> ],
         [ sh:datatype xsd:string ;
-            sh:description "ORCID of the author, a type of unique identifier" ;
+            sh:description "author_name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <http://schema.org/name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Country of the institution" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/organizational/:orcid> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/organizational/:country> ],
         [ sh:datatype xsd:string ;
             sh:description "email" ;
             sh:maxCount 1 ;
@@ -521,23 +1709,17 @@
             sh:path <http://schema.org/email> ;
             sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "Country of the institution" ;
+            sh:description "Name of the organization" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/organizational/:country> ],
-        [ sh:datatype xsd:string ;
-            sh:description "work phone" ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/organizational/:name_org> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "work status" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <http://schema.org/telephone> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Role of the author, for example principal investigator" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/organizational/:role> ],
+            sh:order 7 ;
+            sh:path <https://w3id.org/osc-em/organizational/:work_status> ],
         [ sh:datatype xsd:string ;
             sh:description "first name" ;
             sh:maxCount 1 ;
@@ -545,35 +1727,35 @@
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path <https://w3id.org/osc-em/organizational/:first_name> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "work status" ;
+        [ sh:datatype xsd:string ;
+            sh:description "ORCID of the author, a type of unique identifier" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/osc-em/organizational/:work_status> ] ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/organizational/:orcid> ] ;
     sh:targetClass <https://w3id.org/osc-em/organizational/:Author> .
 
 <https://w3id.org/osc-em/organizational/:Funder> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Description of the project funding" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
-            sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Country of the institution" ;
             sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/organizational/:type_org> ],
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/organizational/:country> ],
         [ sh:datatype xsd:string ;
             sh:description "funding organization/person." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/osc-em/organizational/:funder_name> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Country of the institution" ;
+        [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
+            sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/organizational/:country> ] ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/organizational/:type_org> ] ;
     sh:targetClass <https://w3id.org/osc-em/organizational/:Funder> .
 
 <https://w3id.org/osc-em/organizational/:Organizational> a sh:NodeShape ;
@@ -585,64 +1767,93 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/organizational/:funder> ],
-        [ sh:class <http://schema.org/Grant> ;
-            sh:description "List of grants associated with the project" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/organizational/:grants> ],
         [ sh:class <https://w3id.org/osc-em/organizational/:Author> ;
             sh:description "List of authors associated with the project" ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/organizational/:authors> ] ;
+            sh:path <https://w3id.org/osc-em/organizational/:authors> ],
+        [ sh:class <http://schema.org/Grant> ;
+            sh:description "List of grants associated with the project" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/organizational/:grants> ] ;
     sh:targetClass <https://w3id.org/osc-em/organizational/:Organizational> .
+
+<https://w3id.org/osc-em/oscem-schemas-subtomo/:Processing> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Information on the processing of tomography datasets, using the cryoET metadata standard" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/entities/:Average> ;
+            sh:description "A particle averaging experiment." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/oscem-schemas-subtomo/:average> ],
+        [ sh:class <https://w3id.org/cetmd/entities/:Region> ;
+            sh:description "Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/oscem-schemas-subtomo/:region> ],
+        [ sh:class <https://w3id.org/cetmd/entities/:Dataset> ;
+            sh:description "A dataset" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/oscem-schemas-subtomo/:dataset> ],
+        [ sh:class <https://w3id.org/cetmd/entities/:MovieStackCollection> ;
+            sh:description "A collection of movie stacks using the same gain and defect files." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/oscem-schemas-subtomo/:movie_stack_collection> ] ;
+    sh:targetClass <https://w3id.org/osc-em/oscem-schemas-subtomo/:Processing> .
 
 <https://w3id.org/osc-em/sample/:Grid> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Details on the grid used in the experiment." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Topology of the support film" ;
+            sh:description "Grid manufacturer" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/osc-em/sample/:film_topology> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Material out of which the grid is made" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/sample/:material> ],
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/sample/:manufacturer> ],
         [ sh:datatype xsd:boolean ;
             sh:description "Whether a support film was used" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <https://w3id.org/osc-em/sample/:film_support> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc." ;
+        [ sh:datatype xsd:float ;
+            sh:description "Grid mesh in lines per inch" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/osc-em/sample/:pretreatment_atmosphere> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Grid manufacturer" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/sample/:manufacturer> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Thickness of the support film" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/sample/:film_thickness> ],
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/sample/:mesh> ],
         [ sh:description "Length of time of the pretreatment in s" ;
             sh:maxCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
             sh:order 8 ;
             sh:path <https://w3id.org/osc-em/sample/:pretreatment_time> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Material out of which the grid is made" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/sample/:material> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Topology of the support film" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/osc-em/sample/:film_topology> ],
+        [ sh:description "Pressure of the chamber during pretreatment, in Pa" ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/osc-em/sample/:pretreatment_pressure> ],
         [ sh:datatype xsd:string ;
             sh:description "Type of material the support film is made of" ;
             sh:maxCount 1 ;
@@ -655,17 +1866,18 @@
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path <https://w3id.org/osc-em/sample/:pretreatment_type> ],
-        [ sh:description "Pressure of the chamber during pretreatment, in Pa" ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/osc-em/sample/:pretreatment_pressure> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Grid mesh in lines per inch" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Thickness of the support film" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/sample/:mesh> ] ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/sample/:film_thickness> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/osc-em/sample/:pretreatment_atmosphere> ] ;
     sh:targetClass <https://w3id.org/osc-em/sample/:Grid> .
 
 <https://w3id.org/osc-em/sample/:Ligand> a sh:NodeShape ;
@@ -697,11 +1909,24 @@
     sh:description "More detailed information about individual molecules." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
+            sh:description "Description of the overall molecular type, i.e., a complex" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/sample/:expression_system> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/sample/:molecular_type> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name of an individual molecule (often protein) in the sample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/sample/:name_mol> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Taxonomy ID of the expression system organism" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/osc-em/sample/:taxonomy_id_expression> ],
         [ sh:datatype xsd:string ;
             sh:description "Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here" ;
             sh:maxCount 1 ;
@@ -710,18 +1935,17 @@
             sh:order 3 ;
             sh:path <https://w3id.org/osc-em/sample/:sequence> ],
         [ sh:datatype xsd:string ;
+            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/sample/:expression_system> ],
+        [ sh:datatype xsd:string ;
             sh:description "Taxonomy ID of the natural source organism" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path <https://w3id.org/osc-em/sample/:taxonomy_id_source> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name of an individual molecule (often protein) in the sample" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/sample/:name_mol> ],
         [ sh:datatype xsd:string ;
             sh:description "Name of the gene of interest" ;
             sh:maxCount 1 ;
@@ -736,46 +1960,29 @@
             sh:order 4 ;
             sh:path <https://w3id.org/osc-em/sample/:natural_source> ],
         [ sh:datatype xsd:string ;
-            sh:description "Taxonomy ID of the expression system organism" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/osc-em/sample/:taxonomy_id_expression> ],
-        [ sh:datatype xsd:string ;
             sh:description "Class of the molecule" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/sample/:molecular_class> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Description of the overall molecular type, i.e., a complex" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/sample/:molecular_type> ] ;
+            sh:path <https://w3id.org/osc-em/sample/:molecular_class> ] ;
     sh:targetClass <https://w3id.org/osc-em/sample/:Molecule> .
 
 <https://w3id.org/osc-em/sample/:OverallMolecule> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Description of the overall molecule" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "What type of higher order structure your sample forms - if any." ;
-            sh:in ( "FILAMENT" "HELICAL ARRAY" "PARTICLE" ) ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/sample/:assembly> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/sample/:source> ],
-        [ sh:description "Description of the overall molecular type, i.e., a complex" ;
-            sh:in ( "CELL" "COMPLEX" "ORGANELLE OR CELLULAR COMPONENT" "RIBOSOME" "TISSUE" "VIRUS" ) ;
+        [ sh:description "Molecular weight in Da" ;
             sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/sample/:molecular_overall_type> ],
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/osc-em/sample/:molecular_weight> ],
         [ sh:datatype xsd:string ;
             sh:description "Name of the full sample" ;
             sh:maxCount 1 ;
@@ -783,11 +1990,16 @@
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/osc-em/sample/:name_sample> ],
-        [ sh:description "Molecular weight in Da" ;
+        [ sh:description "What type of higher order structure your sample forms - if any." ;
+            sh:in ( "FILAMENT" "HELICAL ARRAY" "PARTICLE" ) ;
             sh:maxCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/osc-em/sample/:molecular_weight> ] ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/sample/:assembly> ],
+        [ sh:description "Description of the overall molecular type, i.e., a complex" ;
+            sh:in ( "CELL" "COMPLEX" "ORGANELLE OR CELLULAR COMPONENT" "RIBOSOME" "TISSUE" "VIRUS" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/sample/:molecular_overall_type> ] ;
     sh:targetClass <https://w3id.org/osc-em/sample/:OverallMolecule> .
 
 <https://w3id.org/osc-em/sample/:Sample> a sh:NodeShape ;
@@ -800,6 +2012,12 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://w3id.org/osc-em/sample/:specimen> ],
+        [ sh:class <https://w3id.org/osc-em/sample/:Grid> ;
+            sh:description "Description of the grid used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/sample/:grid> ],
         [ sh:class <https://w3id.org/osc-em/sample/:OverallMolecule> ;
             sh:description "Description of the overall molecule" ;
             sh:maxCount 1 ;
@@ -807,56 +2025,39 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <https://w3id.org/osc-em/sample/:overall_molecule> ],
-        [ sh:class <https://w3id.org/osc-em/sample/:Grid> ;
-            sh:description "Description of the grid used" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/sample/:grid> ],
-        [ sh:class <https://w3id.org/osc-em/sample/:Ligand> ;
-            sh:description "List of ligands associated with the sample" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/sample/:ligands> ],
         [ sh:class <https://w3id.org/osc-em/sample/:Molecule> ;
             sh:description "List of molecule associated with the sample" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/sample/:molecule> ] ;
+            sh:path <https://w3id.org/osc-em/sample/:molecule> ],
+        [ sh:class <https://w3id.org/osc-em/sample/:Ligand> ;
+            sh:description "List of ligands associated with the sample" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/sample/:ligands> ] ;
     sh:targetClass <https://w3id.org/osc-em/sample/:Sample> .
 
 <https://w3id.org/osc-em/sample/:Specimen> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Description of specimen handling." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Concentration of the (supra)molecule in the sample, in mg/ml" ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:description "Whether the sample was shadowed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/osc-em/sample/:shadowing> ],
+        [ sh:description "Concentration of the (supra)molecule in the sample, in mg/ml" ;
             sh:maxCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
             sh:order 1 ;
             sh:path <https://w3id.org/osc-em/sample/:concentration> ],
         [ sh:datatype xsd:string ;
-            sh:description "Which cryogen was used for vitrification" ;
+            sh:description "Name/composition of the (chemical) sample buffer during grid preparation" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/sample/:vitrification_cryogen> ],
-        [ sh:datatype xsd:float ;
-            sh:description "pH of the sample buffer" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/sample/:ph> ],
-        [ sh:description "Environmental temperature just before vitrification, in K" ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/sample/:temperature> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was embedded" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/osc-em/sample/:embedding> ],
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/sample/:buffer> ],
         [ sh:description "Environmental humidity just before vitrification, in %" ;
             sh:maxCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
@@ -868,47 +2069,64 @@
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <https://w3id.org/osc-em/sample/:vitrification> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Which cryogen was used for vitrification" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/sample/:vitrification_cryogen> ],
         [ sh:datatype xsd:boolean ;
             sh:description "Whether the sample was stained" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path <https://w3id.org/osc-em/sample/:staining> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name/composition of the (chemical) sample buffer during grid preparation" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/sample/:buffer> ],
         [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was shadowed" ;
+            sh:description "Whether the sample was embedded" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/osc-em/sample/:shadowing> ] ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/osc-em/sample/:embedding> ],
+        [ sh:datatype xsd:float ;
+            sh:description "pH of the sample buffer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/sample/:ph> ],
+        [ sh:description "Environmental temperature just before vitrification, in K" ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/sample/:temperature> ] ;
     sh:targetClass <https://w3id.org/osc-em/sample/:Specimen> .
 
 <https://w3id.org/osc-em/tomography/:AcquisitionTomo> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
-            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Speciman holder model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/osc-em/acquisitionholder> ],
+        [ sh:description "Pixel size, in Angstrom" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/osc-em/acquisitionpixel_size> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
-        [ sh:class <https://w3id.org/osc-em/custom_typesBoundingBox2D> ;
-            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbeamshift> ],
+            sh:nodeKind sh:Literal ;
+            sh:order 27 ;
+            sh:path <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
         [ sh:class <https://w3id.org/osc-em/custom_typesRange> ;
             sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
             sh:maxCount 1 ;
@@ -916,78 +2134,83 @@
             sh:order 3 ;
             sh:path <https://w3id.org/osc-em/acquisitioncalibrated_defocus> ],
         [ sh:datatype xsd:integer ;
+            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 20 ;
+            sh:path <https://w3id.org/osc-em/acquisitionimages_generated> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
+        [ sh:datatype xsd:dateTime ;
+            sh:description "Time and date of the data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/osc-em/acquisitiondate_time> ],
+        [ sh:datatype xsd:integer ;
             sh:description "Calculated magnification, no unit" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path <https://w3id.org/osc-em/acquisitioncalibrated_magnification> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/osc-em/acquisitiongrids_imaged> ],
-        [ sh:class <https://w3id.org/osc-em/acquisitionEnergyFilter> ;
-            sh:description "Wether an energy filter was used and its specifics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/osc-em/acquisitionenergy_filter> ],
-        [ sh:class <https://w3id.org/osc-em/custom_typesImageSize> ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path <https://w3id.org/osc-em/acquisitionimage_size> ],
-        [ sh:class <https://w3id.org/osc-em/custom_typesBoundingBox2D> ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/osc-em/acquisitionimageshift> ],
-        [ sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 12 ;
-            sh:path <https://w3id.org/osc-em/acquisitiondose_per_movie> ],
-        [ sh:class <https://w3id.org/osc-em/custom_typesRange> ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/osc-em/acquisitiontemperature_range> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 28 ;
-            sh:path <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 27 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbeamtiltgroups> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 17 ;
-            sh:path <https://w3id.org/osc-em/acquisitioncryogen> ],
         [ sh:class <https://w3id.org/osc-em/custom_typesRange> ;
             sh:description "Target defocus set, min and max values in µm." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/acquisitionnominal_defocus> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Level of binning on the images applied during data collection" ;
+        [ sh:class <https://w3id.org/osc-em/custom_typesBoundingBox2D> ;
+            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path <https://w3id.org/osc-em/acquisitionbeamshift> ],
+        [ sh:class <https://w3id.org/osc-em/acquisitionEnergyFilter> ;
+            sh:description "Wether an energy filter was used and its specifics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/osc-em/acquisitionenergy_filter> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/osc-em/acquisitionholder_cryogen> ],
+        [ sh:description "Time of data acquisition per movie/tilt - in s" ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 16 ;
+            sh:path <https://w3id.org/osc-em/acquisitionexposure_time> ],
+        [ sh:class <https://w3id.org/osc-em/acquisitionSpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 23 ;
+            sh:path <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
+        [ sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/osc-em/acquisitiondose_per_movie> ],
+        [ sh:class <https://w3id.org/osc-em/custom_typesImageSize> ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 14 ;
+            sh:path <https://w3id.org/osc-em/acquisitionimage_size> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 21 ;
-            sh:path <https://w3id.org/osc-em/acquisitionbinning_camera> ],
+            sh:order 17 ;
+            sh:path <https://w3id.org/osc-em/acquisitioncryogen> ],
         [ sh:datatype xsd:float ;
             sh:description "The tilt axis angle of a tomography series" ;
             sh:maxCount 1 ;
@@ -1002,42 +2225,43 @@
             sh:nodeKind sh:Literal ;
             sh:order 10 ;
             sh:path <https://w3id.org/osc-em/acquisitiondetector> ],
-        [ sh:description "Time of data acquisition per movie/tilt - in s" ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 16 ;
-            sh:path <https://w3id.org/osc-em/acquisitionexposure_time> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/osc-em/acquisitionmicroscope_software> ],
-        [ sh:datatype xsd:dateTime ;
-            sh:description "Time and date of the data acquisition" ;
+            sh:order 18 ;
+            sh:path <https://w3id.org/osc-em/acquisitionframes_per_movie> ],
+        [ sh:class <https://w3id.org/osc-em/custom_typesBoundingBox2D> ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 26 ;
+            sh:path <https://w3id.org/osc-em/acquisitionimageshift> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Level of binning on the images applied during data collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path <https://w3id.org/osc-em/acquisitiondate_time> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Operating mode of the detector" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/osc-em/acquisitiondetector_mode> ],
+            sh:order 21 ;
+            sh:path <https://w3id.org/osc-em/acquisitionbinning_camera> ],
         [ sh:class <https://w3id.org/osc-em/custom_typesBoundingBox2D> ;
             sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 25 ;
             sh:path <https://w3id.org/osc-em/acquisitionbeamtilt> ],
-        [ sh:class <https://w3id.org/osc-em/acquisitionSpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Operating mode of the detector" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 23 ;
-            sh:path <https://w3id.org/osc-em/acquisitionspecialist_optics> ],
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/osc-em/acquisitiondetector_mode> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 28 ;
+            sh:path <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> ],
         [ sh:class <https://w3id.org/osc-em/tomography/:TiltAngle> ;
             sh:description "The min, max and increment of the tilt angle in a tomography session. Unit is degree." ;
             sh:maxCount 1 ;
@@ -1045,37 +2269,31 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/osc-em/tomography/:tilt_angle> ],
+        [ sh:class <https://w3id.org/osc-em/custom_typesRange> ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/osc-em/acquisitiontemperature_range> ],
         [ sh:datatype xsd:integer ;
-            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path <https://w3id.org/osc-em/acquisitionimages_generated> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/osc-em/acquisitionnominal_magnification> ],
-        [ sh:description "Pixel size, in Angstrom" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/osc-em/acquisitionpixel_size> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/osc-em/acquisitionholder> ] ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/osc-em/acquisitiongrids_imaged> ] ;
     sh:targetClass <https://w3id.org/osc-em/tomography/:AcquisitionTomo> .
 
 <https://w3id.org/osc-em/tomography/:TiltAngle> a sh:NodeShape ;
     sh:closed true ;
     sh:description "The min, max and increment of the tilt angle in a tomography session. Unit is degree." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Increment between elements of a series" ;
+    sh:property [ sh:description "Maximal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/custom_typesmaximal> ],
+        [ sh:description "Increment between elements of a series" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
@@ -1086,32 +2304,114 @@
             sh:minCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/custom_typesminimal> ],
-        [ sh:description "Maximal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/custom_typesmaximal> ] ;
+            sh:path <https://w3id.org/osc-em/custom_typesminimal> ] ;
     sh:targetClass <https://w3id.org/osc-em/tomography/:TiltAngle> .
+
+<https://w3id.org/cetmd/annotation/Annotation> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A primitive annotation." ;
+    sh:ignoredProperties ( <https://w3id.org/cetmd/annotation/origin3D> <https://w3id.org/cetmd/image/:coordinate_systems> <https://w3id.org/cetmd/annotation/matrix3D> <https://w3id.org/cetmd/image/:depth> <https://w3id.org/cetmd/annotation/vector3D> <https://w3id.org/cetmd/image/:coordinate_transformations> <https://w3id.org/cetmd/annotation/matrix2D> rdf:type <https://w3id.org/cetmd/annotation/vector2D> <https://w3id.org/cetmd/annotation/origin2D> <https://w3id.org/cetmd/image/:height> <https://w3id.org/cetmd/image/:width> ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Path to a file." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/path> ] ;
+    sh:targetClass <https://w3id.org/cetmd/annotation/Annotation> .
+
+<https://w3id.org/cetmd/entities/:Average> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A particle averaging experiment." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/annotation/Annotation> ;
+            sh:description "The annotations" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/entities/:annotations> ],
+        [ sh:class <https://w3id.org/cetmd/image_entities/ParticleMap> ;
+            sh:description "The particle maps" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/entities/:particle_maps> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of a given entry" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/entities/:name> ] ;
+    sh:targetClass <https://w3id.org/cetmd/entities/:Average> .
+
+<https://w3id.org/cetmd/entities/:MovieStackCollection> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A collection of movie stacks using the same gain and defect files." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/image_entities/MovieStackSeries> ;
+            sh:description "The movie stacks in the collection" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/entities/:movie_stacks> ],
+        [ sh:class <https://w3id.org/cetmd/image_entities/DefectFile> ;
+            sh:description "The defect file for the movie stacks" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/entities/:defect_file> ],
+        [ sh:class <https://w3id.org/cetmd/image_entities/GainFile> ;
+            sh:description "The gain file for the movie stacks" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/entities/:gain_file> ] ;
+    sh:targetClass <https://w3id.org/cetmd/entities/:MovieStackCollection> .
+
+<https://w3id.org/cetmd/entities/:Region> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Raw data (movie stacks) and derived data (tilt series, tomograms, annotations) from a single region of a specimen." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/image_entities/Tomogram> ;
+            sh:description "The tomograms" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/cetmd/entities/:tomograms> ],
+        [ sh:class <https://w3id.org/cetmd/entities/:MovieStackCollection> ;
+            sh:description "The movie stack" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/entities/:movie_stack_collections> ],
+        [ sh:class <https://w3id.org/cetmd/image_entities/TiltSeries> ;
+            sh:description "The tilt series" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/entities/:tilt_series> ],
+        [ sh:class <https://w3id.org/cetmd/annotation/Annotation> ;
+            sh:description "The annotations" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/entities/:annotations> ],
+        [ sh:class <https://w3id.org/cetmd/alignment/Alignment> ;
+            sh:description "The alignments" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/entities/:alignments> ] ;
+    sh:targetClass <https://w3id.org/cetmd/entities/:Region> .
 
 <https://w3id.org/osc-em/acquisitionEnergyFilter> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A device used to filter for electrons with specific energy." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Make and model of a specilized device" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/acquisitionmodel> ],
+        [ sh:datatype xsd:boolean ;
             sh:description "whether a specific instrument was used during data acquisition" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/osc-em/acquisitionused> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Make and model of a specilized device" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/acquisitionmodel> ],
         [ sh:description "Width of the energy filter used." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -1130,18 +2430,18 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector> ],
-        [ sh:class <https://w3id.org/osc-em/acquisitionPhaseplate> ;
-            sh:description "Phaseplate is a special optics device that can be used to enhance contrast" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/acquisitionphaseplate> ],
         [ sh:class <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> ;
             sh:description "Specialist device to correct for spherical aberration of the microscope lenses" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ] ;
+            sh:path <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector> ],
+        [ sh:class <https://w3id.org/osc-em/acquisitionPhaseplate> ;
+            sh:description "Phaseplate is a special optics device that can be used to enhance contrast" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/acquisitionphaseplate> ] ;
     sh:targetClass <https://w3id.org/osc-em/acquisitionSpecialistOptics> .
 
 <https://w3id.org/osc-em/custom_typesImageSize> a sh:NodeShape ;
@@ -1153,14 +2453,38 @@
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/custom_typesheight> ],
+            sh:path <https://w3id.org/osc-em/custom_typesheight_im> ],
         [ sh:datatype xsd:integer ;
             sh:description "The width of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/custom_typeswidth> ] ;
+            sh:path <https://w3id.org/osc-em/custom_typeswidth_im> ] ;
     sh:targetClass <https://w3id.org/osc-em/custom_typesImageSize> .
+
+<https://w3id.org/cetmd/image_entities/CTFMetadata> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of CTF patameters for an image." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Estimated defocus V for this image in Angstrom, underfocus positive." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/image_entities/defocus_v> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Estimated defocus U for this image in Angstrom, underfocus positive." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/image_entities/defocus_u> ],
+        [ sh:datatype xsd:float ;
+            sh:description "Estimated angle of astigmatism." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/image_entities/defocus_angle> ] ;
+    sh:targetClass <https://w3id.org/cetmd/image_entities/CTFMetadata> .
 
 linkml:Any a sh:NodeShape ;
     sh:closed true ;
@@ -1172,17 +2496,7 @@ linkml:Any a sh:NodeShape ;
     sh:closed true ;
     sh:description "an axis-aligned 2D bounding box (float units)" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "maximum x" ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/custom_typesx_max> ],
-        [ sh:description "minimum y" ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/osc-em/custom_typesy_min> ],
-        [ sh:description "maximum y" ;
+    sh:property [ sh:description "maximum y" ;
             sh:maxCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
             sh:order 3 ;
@@ -1191,13 +2505,23 @@ linkml:Any a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
             sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/custom_typesx_min> ] ;
+            sh:path <https://w3id.org/osc-em/custom_typesx_min> ],
+        [ sh:description "minimum y" ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/osc-em/custom_typesy_min> ],
+        [ sh:description "maximum x" ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/osc-em/custom_typesx_max> ] ;
     sh:targetClass <https://w3id.org/osc-em/custom_typesBoundingBox2D> .
 
 <https://w3id.org/osc-em/custom_typesRange> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( <https://w3id.org/osc-em/custom_typesincrement> rdf:type ) ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/osc-em/custom_typesincrement> ) ;
     sh:property [ sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:or ( [ sh:class <http://qudt.org/schema/qudt/quantityValue> ] [ sh:class <https://w3id.org/osc-em/custom_typesQuantitySI> ] ) ;
@@ -1210,6 +2534,54 @@ linkml:Any a sh:NodeShape ;
             sh:path <https://w3id.org/osc-em/custom_typesmaximal> ] ;
     sh:targetClass <https://w3id.org/osc-em/custom_typesRange> .
 
+<https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A coordinate system" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/cetmd/coordinate_systems/Axis> ;
+            sh:description "The axes of the coordinate system" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coordinate_systems/axes> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the coordinate system" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coordinate_systems/name> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coordinate_systems/CoordinateSystem> .
+
+<https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A coordinate transformation" ;
+    sh:ignoredProperties ( <https://w3id.org/cetmd/coord_transforms/scale> <https://w3id.org/osc-em/sample/:sequence> rdf:type <https://w3id.org/cetmd/coord_transforms/map_axis> <https://w3id.org/cetmd/coord_transforms/translation> <https://w3id.org/cetmd/coord_transforms/affine> ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The name of the coordinate transformation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The source coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/input> ],
+        [ sh:description "The type of transformation" ;
+            sh:in ( "identity" "map_axis" "translation" "scale" "affine" "sequence" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/transformation_type> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The target coordinate system name" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/cetmd/coord_transforms/output> ] ;
+    sh:targetClass <https://w3id.org/cetmd/coord_transforms/CoordinateTransformation> .
+
 <https://w3id.org/osc-em/custom_typesQuantitySI> a sh:NodeShape ;
     sh:closed true ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
@@ -1221,6 +2593,12 @@ linkml:Any a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <http://qudt.org/schema/qudt/hasQuantityKind> ],
+        [ sh:datatype xsd:float ;
+            sh:description "value of a given field in respect to its SI unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/osc-em/custom_typesvalueSI> ],
         [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
@@ -1233,19 +2611,13 @@ linkml:Any a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://w3id.org/osc-em/custom_typesunitSI> ],
-        [ sh:datatype xsd:float ;
-            sh:description "value of a given field in respect to its SI unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/osc-em/custom_typesvalueSI> ] ;
+            sh:path <https://w3id.org/osc-em/custom_typesunitSI> ] ;
     sh:targetClass <https://w3id.org/osc-em/custom_typesQuantitySI> .
 
 <http://qudt.org/schema/qudt/quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( <https://w3id.org/osc-em/custom_typesunitSI> <https://w3id.org/osc-em/custom_typesvalueSI> rdf:type ) ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/osc-em/custom_typesunitSI> <https://w3id.org/osc-em/custom_typesvalueSI> ) ;
     sh:property [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
