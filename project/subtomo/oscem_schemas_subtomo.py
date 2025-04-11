@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_subtomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-03-03T13:35:01
+# Generation date: 2025-04-11T14:42:11
 # Schema: oscem-schemas-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-subtomo
@@ -99,10 +99,10 @@ class Acquisition(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Acquisition")
 
     detector: str = None
-    dose_per_movie: Union[dict, "Any"] = None
+    dose_per_movie: Union[dict, "QuantitySI"] = None
     date_time: Union[str, XSDDateTime] = None
     binning_camera: float = None
-    pixel_size: Union[dict, "Any"] = None
+    pixel_size: Union[dict, "QuantitySI"] = None
     nominal_defocus: Optional[Union[dict, "Range"]] = None
     calibrated_defocus: Optional[Union[dict, "Range"]] = None
     nominal_magnification: Optional[int] = None
@@ -114,7 +114,7 @@ class Acquisition(YAMLRoot):
     detector_mode: Optional[str] = None
     energy_filter: Optional[Union[dict, "EnergyFilter"]] = None
     image_size: Optional[Union[dict, "ImageSize"]] = None
-    exposure_time: Optional[Union[dict, "Any"]] = None
+    exposure_time: Optional[Union[dict, "QuantitySI"]] = None
     cryogen: Optional[str] = None
     frames_per_movie: Optional[int] = None
     grids_imaged: Optional[int] = None
@@ -132,6 +132,11 @@ class Acquisition(YAMLRoot):
         if not isinstance(self.detector, str):
             self.detector = str(self.detector)
 
+        if self._is_empty(self.dose_per_movie):
+            self.MissingRequiredField("dose_per_movie")
+        if not isinstance(self.dose_per_movie, QuantitySI):
+            self.dose_per_movie = QuantitySI(**as_dict(self.dose_per_movie))
+
         if self._is_empty(self.date_time):
             self.MissingRequiredField("date_time")
         if not isinstance(self.date_time, XSDDateTime):
@@ -141,6 +146,11 @@ class Acquisition(YAMLRoot):
             self.MissingRequiredField("binning_camera")
         if not isinstance(self.binning_camera, float):
             self.binning_camera = float(self.binning_camera)
+
+        if self._is_empty(self.pixel_size):
+            self.MissingRequiredField("pixel_size")
+        if not isinstance(self.pixel_size, QuantitySI):
+            self.pixel_size = QuantitySI(**as_dict(self.pixel_size))
 
         if self.nominal_defocus is not None and not isinstance(self.nominal_defocus, Range):
             self.nominal_defocus = Range(**as_dict(self.nominal_defocus))
@@ -174,6 +184,9 @@ class Acquisition(YAMLRoot):
 
         if self.image_size is not None and not isinstance(self.image_size, ImageSize):
             self.image_size = ImageSize(**as_dict(self.image_size))
+
+        if self.exposure_time is not None and not isinstance(self.exposure_time, QuantitySI):
+            self.exposure_time = QuantitySI(**as_dict(self.exposure_time))
 
         if self.cryogen is not None and not isinstance(self.cryogen, str):
             self.cryogen = str(self.cryogen)
@@ -221,7 +234,7 @@ class EnergyFilter(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/EnergyFilter")
 
     used: Union[bool, Bool] = None
-    width_energy_filter: Union[dict, "Any"] = None
+    width_energy_filter: Union[dict, "QuantitySI"] = None
     model: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -229,6 +242,11 @@ class EnergyFilter(YAMLRoot):
             self.MissingRequiredField("used")
         if not isinstance(self.used, Bool):
             self.used = Bool(self.used)
+
+        if self._is_empty(self.width_energy_filter):
+            self.MissingRequiredField("width_energy_filter")
+        if not isinstance(self.width_energy_filter, QuantitySI):
+            self.width_energy_filter = QuantitySI(**as_dict(self.width_energy_filter))
 
         if self.model is not None and not isinstance(self.model, str):
             self.model = str(self.model)
@@ -368,9 +386,9 @@ class Instrument(YAMLRoot):
     illumination: str = None
     imaging: str = None
     electron_source: str = None
-    acceleration_voltage: Union[dict, "Any"] = None
-    cs: Union[dict, "Any"] = None
-    c2_aperture: Optional[Union[dict, "Any"]] = None
+    acceleration_voltage: Union[dict, "QuantitySI"] = None
+    cs: Union[dict, "QuantitySI"] = None
+    c2_aperture: Optional[Union[dict, "QuantitySI"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.microscope):
@@ -392,6 +410,19 @@ class Instrument(YAMLRoot):
             self.MissingRequiredField("electron_source")
         if not isinstance(self.electron_source, str):
             self.electron_source = str(self.electron_source)
+
+        if self._is_empty(self.acceleration_voltage):
+            self.MissingRequiredField("acceleration_voltage")
+        if not isinstance(self.acceleration_voltage, QuantitySI):
+            self.acceleration_voltage = QuantitySI(**as_dict(self.acceleration_voltage))
+
+        if self._is_empty(self.cs):
+            self.MissingRequiredField("cs")
+        if not isinstance(self.cs, QuantitySI):
+            self.cs = QuantitySI(**as_dict(self.cs))
+
+        if self.c2_aperture is not None and not isinstance(self.c2_aperture, QuantitySI):
+            self.c2_aperture = QuantitySI(**as_dict(self.c2_aperture))
 
         super().__post_init__(**kwargs)
 
@@ -450,7 +481,7 @@ class OverallMolecule(YAMLRoot):
     name_sample: str = None
     source: str = None
     molecular_overall_type: Optional[Union[str, "MoleculeClassEnum"]] = None
-    molecular_weight: Optional[Union[dict, "Any"]] = None
+    molecular_weight: Optional[Union[dict, "QuantitySI"]] = None
     assembly: Optional[Union[str, "AssemblyEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -466,6 +497,9 @@ class OverallMolecule(YAMLRoot):
 
         if self.molecular_overall_type is not None and not isinstance(self.molecular_overall_type, MoleculeClassEnum):
             self.molecular_overall_type = MoleculeClassEnum(self.molecular_overall_type)
+
+        if self.molecular_weight is not None and not isinstance(self.molecular_weight, QuantitySI):
+            self.molecular_weight = QuantitySI(**as_dict(self.molecular_weight))
 
         if self.assembly is not None and not isinstance(self.assembly, AssemblyEnum):
             self.assembly = AssemblyEnum(self.assembly)
@@ -574,12 +608,12 @@ class Specimen(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Specimen")
 
     buffer: Optional[str] = None
-    concentration: Optional[Union[dict, "Any"]] = None
+    concentration: Optional[Union[dict, "QuantitySI"]] = None
     ph: Optional[float] = None
     vitrification: Optional[Union[bool, Bool]] = None
     vitrification_cryogen: Optional[str] = None
-    humidity: Optional[Union[dict, "Any"]] = None
-    temperature: Optional[Union[dict, "Any"]] = None
+    humidity: Optional[Union[dict, "QuantitySI"]] = None
+    temperature: Optional[Union[dict, "QuantitySI"]] = None
     staining: Optional[Union[bool, Bool]] = None
     embedding: Optional[Union[bool, Bool]] = None
     shadowing: Optional[Union[bool, Bool]] = None
@@ -587,6 +621,9 @@ class Specimen(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.buffer is not None and not isinstance(self.buffer, str):
             self.buffer = str(self.buffer)
+
+        if self.concentration is not None and not isinstance(self.concentration, QuantitySI):
+            self.concentration = QuantitySI(**as_dict(self.concentration))
 
         if self.ph is not None and not isinstance(self.ph, float):
             self.ph = float(self.ph)
@@ -596,6 +633,12 @@ class Specimen(YAMLRoot):
 
         if self.vitrification_cryogen is not None and not isinstance(self.vitrification_cryogen, str):
             self.vitrification_cryogen = str(self.vitrification_cryogen)
+
+        if self.humidity is not None and not isinstance(self.humidity, QuantitySI):
+            self.humidity = QuantitySI(**as_dict(self.humidity))
+
+        if self.temperature is not None and not isinstance(self.temperature, QuantitySI):
+            self.temperature = QuantitySI(**as_dict(self.temperature))
 
         if self.staining is not None and not isinstance(self.staining, Bool):
             self.staining = Bool(self.staining)
@@ -629,8 +672,8 @@ class Grid(YAMLRoot):
     film_topology: Optional[str] = None
     film_thickness: Optional[str] = None
     pretreatment_type: Optional[str] = None
-    pretreatment_time: Optional[Union[dict, "Any"]] = None
-    pretreatment_pressure: Optional[Union[dict, "Any"]] = None
+    pretreatment_time: Optional[Union[dict, "QuantitySI"]] = None
+    pretreatment_pressure: Optional[Union[dict, "QuantitySI"]] = None
     pretreatment_atmosphere: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -658,6 +701,12 @@ class Grid(YAMLRoot):
         if self.pretreatment_type is not None and not isinstance(self.pretreatment_type, str):
             self.pretreatment_type = str(self.pretreatment_type)
 
+        if self.pretreatment_time is not None and not isinstance(self.pretreatment_time, QuantitySI):
+            self.pretreatment_time = QuantitySI(**as_dict(self.pretreatment_time))
+
+        if self.pretreatment_pressure is not None and not isinstance(self.pretreatment_pressure, QuantitySI):
+            self.pretreatment_pressure = QuantitySI(**as_dict(self.pretreatment_pressure))
+
         if self.pretreatment_atmosphere is not None and not isinstance(self.pretreatment_atmosphere, str):
             self.pretreatment_atmosphere = str(self.pretreatment_atmosphere)
 
@@ -674,10 +723,10 @@ class AcquisitionTomo(Acquisition):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/AcquisitionTomo")
 
     detector: str = None
-    dose_per_movie: Union[dict, "Any"] = None
+    dose_per_movie: Union[dict, "QuantitySI"] = None
     date_time: Union[str, XSDDateTime] = None
     binning_camera: float = None
-    pixel_size: Union[dict, "Any"] = None
+    pixel_size: Union[dict, "QuantitySI"] = None
     tilt_axis_angle: float = None
     tilt_angle: Union[dict, "TiltAngle"] = None
 
@@ -834,8 +883,8 @@ class Grant(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Grant")
 
     grant_name: Optional[str] = None
-    start_date: Optional[Union[dict, "Any"]] = None
-    end_date: Optional[Union[dict, "Any"]] = None
+    start_date: Optional[Union[str, XSDDateTime]] = None
+    end_date: Optional[Union[str, XSDDateTime]] = None
     budget: Optional[Union[dict, "QuantityValue"]] = None
     project_id: Optional[str] = None
     country: Optional[str] = None
@@ -843,6 +892,12 @@ class Grant(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.grant_name is not None and not isinstance(self.grant_name, str):
             self.grant_name = str(self.grant_name)
+
+        if self.start_date is not None and not isinstance(self.start_date, XSDDateTime):
+            self.start_date = XSDDateTime(self.start_date)
+
+        if self.end_date is not None and not isinstance(self.end_date, XSDDateTime):
+            self.end_date = XSDDateTime(self.end_date)
 
         if self.budget is not None and not isinstance(self.budget, QuantityValue):
             self.budget = QuantityValue(**as_dict(self.budget))
@@ -957,8 +1012,18 @@ class Range(YAMLRoot):
     class_name: ClassVar[str] = "Range"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Range")
 
-    minimal: Optional[Union[dict, Any]] = None
-    maximal: Optional[Union[dict, Any]] = None
+    minimal: Optional[Union[dict, "QuantitySI"]] = None
+    maximal: Optional[Union[dict, "QuantitySI"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.minimal is not None and not isinstance(self.minimal, QuantitySI):
+            self.minimal = QuantitySI(**as_dict(self.minimal))
+
+        if self.maximal is not None and not isinstance(self.maximal, QuantitySI):
+            self.maximal = QuantitySI(**as_dict(self.maximal))
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
 class Series(Range):
@@ -972,7 +1037,14 @@ class Series(Range):
     class_name: ClassVar[str] = "Series"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/Series")
 
-    increment: Optional[Union[dict, Any]] = None
+    increment: Optional[Union[dict, "QuantitySI"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.increment is not None and not isinstance(self.increment, QuantitySI):
+            self.increment = QuantitySI(**as_dict(self.increment))
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
 class TiltAngle(Series):
@@ -986,9 +1058,28 @@ class TiltAngle(Series):
     class_name: ClassVar[str] = "TiltAngle"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/TiltAngle")
 
-    minimal: Union[dict, Any] = None
-    maximal: Union[dict, Any] = None
-    increment: Union[dict, Any] = None
+    minimal: Union[dict, "QuantitySI"] = None
+    maximal: Union[dict, "QuantitySI"] = None
+    increment: Union[dict, "QuantitySI"] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.minimal):
+            self.MissingRequiredField("minimal")
+        if not isinstance(self.minimal, QuantitySI):
+            self.minimal = QuantitySI(**as_dict(self.minimal))
+
+        if self._is_empty(self.maximal):
+            self.MissingRequiredField("maximal")
+        if not isinstance(self.maximal, QuantitySI):
+            self.maximal = QuantitySI(**as_dict(self.maximal))
+
+        if self._is_empty(self.increment):
+            self.MissingRequiredField("increment")
+        if not isinstance(self.increment, QuantitySI):
+            self.increment = QuantitySI(**as_dict(self.increment))
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
 class ImageSize(YAMLRoot):
@@ -1027,10 +1118,26 @@ class BoundingBox2D(YAMLRoot):
     class_name: ClassVar[str] = "BoundingBox2D"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/BoundingBox2D")
 
-    x_min: Optional[Union[dict, Any]] = None
-    x_max: Optional[Union[dict, Any]] = None
-    y_min: Optional[Union[dict, Any]] = None
-    y_max: Optional[Union[dict, Any]] = None
+    x_min: Optional[Union[dict, "QuantitySI"]] = None
+    x_max: Optional[Union[dict, "QuantitySI"]] = None
+    y_min: Optional[Union[dict, "QuantitySI"]] = None
+    y_max: Optional[Union[dict, "QuantitySI"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.x_min is not None and not isinstance(self.x_min, QuantitySI):
+            self.x_min = QuantitySI(**as_dict(self.x_min))
+
+        if self.x_max is not None and not isinstance(self.x_max, QuantitySI):
+            self.x_max = QuantitySI(**as_dict(self.x_max))
+
+        if self.y_min is not None and not isinstance(self.y_min, QuantitySI):
+            self.y_min = QuantitySI(**as_dict(self.y_min))
+
+        if self.y_max is not None and not isinstance(self.y_max, QuantitySI):
+            self.y_max = QuantitySI(**as_dict(self.y_max))
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
 class QuantityValue(YAMLRoot):
@@ -1075,22 +1182,10 @@ class QuantitySI(QuantityValue):
 
     unit: str = None
     value: float = None
-    si_value: str = None
-    si_unit: str = None
     valueSI: Optional[float] = None
     unitSI: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.si_value):
-            self.MissingRequiredField("si_value")
-        if not isinstance(self.si_value, str):
-            self.si_value = str(self.si_value)
-
-        if self._is_empty(self.si_unit):
-            self.MissingRequiredField("si_unit")
-        if not isinstance(self.si_unit, str):
-            self.si_unit = str(self.si_unit)
-
         if self.valueSI is not None and not isinstance(self.valueSI, float):
             self.valueSI = float(self.valueSI)
 
@@ -1249,7 +1344,7 @@ slots.detector_mode = Slot(uri=ACQUISITION.detector_mode, name="detector_mode", 
                    model_uri=DEFAULT_.detector_mode, domain=None, range=Optional[str])
 
 slots.dose_per_movie = Slot(uri=ACQUISITION.dose_per_movie, name="dose_per_movie", curie=ACQUISITION.curie('dose_per_movie'),
-                   model_uri=DEFAULT_.dose_per_movie, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.dose_per_movie, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.energy_filter = Slot(uri=ACQUISITION.energy_filter, name="energy_filter", curie=ACQUISITION.curie('energy_filter'),
                    model_uri=DEFAULT_.energy_filter, domain=None, range=Optional[Union[dict, EnergyFilter]])
@@ -1267,7 +1362,7 @@ slots.date_time = Slot(uri=ACQUISITION.date_time, name="date_time", curie=ACQUIS
                    model_uri=DEFAULT_.date_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
 slots.exposure_time = Slot(uri=ACQUISITION.exposure_time, name="exposure_time", curie=ACQUISITION.curie('exposure_time'),
-                   model_uri=DEFAULT_.exposure_time, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.exposure_time, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.cryogen = Slot(uri=ACQUISITION.cryogen, name="cryogen", curie=ACQUISITION.curie('cryogen'),
                    model_uri=DEFAULT_.cryogen, domain=None, range=Optional[str])
@@ -1285,7 +1380,7 @@ slots.binning_camera = Slot(uri=ACQUISITION.binning_camera, name="binning_camera
                    model_uri=DEFAULT_.binning_camera, domain=None, range=Optional[float])
 
 slots.pixel_size = Slot(uri=ACQUISITION.pixel_size, name="pixel_size", curie=ACQUISITION.curie('pixel_size'),
-                   model_uri=DEFAULT_.pixel_size, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.pixel_size, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.specialist_optics = Slot(uri=ACQUISITION.specialist_optics, name="specialist_optics", curie=ACQUISITION.curie('specialist_optics'),
                    model_uri=DEFAULT_.specialist_optics, domain=None, range=Optional[Union[dict, SpecialistOptics]])
@@ -1318,7 +1413,7 @@ slots.gainref_flip_rotate = Slot(uri=ACQUISITION.gainref_flip_rotate, name="gain
                    model_uri=DEFAULT_.gainref_flip_rotate, domain=None, range=Optional[str])
 
 slots.width_energy_filter = Slot(uri=ACQUISITION.width_energy_filter, name="width_energy_filter", curie=ACQUISITION.curie('width_energy_filter'),
-                   model_uri=DEFAULT_.width_energy_filter, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.width_energy_filter, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.microscope = Slot(uri=INSTRUMENT['/microscope'], name="microscope", curie=INSTRUMENT.curie('/microscope'),
                    model_uri=DEFAULT_.microscope, domain=None, range=Optional[str])
@@ -1333,13 +1428,13 @@ slots.electron_source = Slot(uri=INSTRUMENT['/electron_source'], name="electron_
                    model_uri=DEFAULT_.electron_source, domain=None, range=Optional[str])
 
 slots.acceleration_voltage = Slot(uri=INSTRUMENT['/acceleration_voltage'], name="acceleration_voltage", curie=INSTRUMENT.curie('/acceleration_voltage'),
-                   model_uri=DEFAULT_.acceleration_voltage, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.acceleration_voltage, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.c2_aperture = Slot(uri=INSTRUMENT['/c2_aperture'], name="c2_aperture", curie=INSTRUMENT.curie('/c2_aperture'),
-                   model_uri=DEFAULT_.c2_aperture, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.c2_aperture, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.cs = Slot(uri=INSTRUMENT['/cs'], name="cs", curie=INSTRUMENT.curie('/cs'),
-                   model_uri=DEFAULT_.cs, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.cs, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.molecular_type = Slot(uri=SAMPLE['/molecular_type'], name="molecular_type", curie=SAMPLE.curie('/molecular_type'),
                    model_uri=DEFAULT_.molecular_type, domain=None, range=Optional[str])
@@ -1351,7 +1446,7 @@ slots.source = Slot(uri=SAMPLE['/source'], name="source", curie=SAMPLE.curie('/s
                    model_uri=DEFAULT_.source, domain=None, range=Optional[str])
 
 slots.molecular_weight = Slot(uri=SAMPLE['/molecular_weight'], name="molecular_weight", curie=SAMPLE.curie('/molecular_weight'),
-                   model_uri=DEFAULT_.molecular_weight, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.molecular_weight, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.molecular_overall_type = Slot(uri=SAMPLE['/molecular_overall_type'], name="molecular_overall_type", curie=SAMPLE.curie('/molecular_overall_type'),
                    model_uri=DEFAULT_.molecular_overall_type, domain=None, range=Optional[Union[str, "MoleculeClassEnum"]])
@@ -1393,7 +1488,7 @@ slots.buffer = Slot(uri=SAMPLE['/buffer'], name="buffer", curie=SAMPLE.curie('/b
                    model_uri=DEFAULT_.buffer, domain=None, range=Optional[str])
 
 slots.concentration = Slot(uri=SAMPLE['/concentration'], name="concentration", curie=SAMPLE.curie('/concentration'),
-                   model_uri=DEFAULT_.concentration, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.concentration, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.ph = Slot(uri=SAMPLE['/ph'], name="ph", curie=SAMPLE.curie('/ph'),
                    model_uri=DEFAULT_.ph, domain=None, range=Optional[float])
@@ -1405,10 +1500,10 @@ slots.vitrification_cryogen = Slot(uri=SAMPLE['/vitrification_cryogen'], name="v
                    model_uri=DEFAULT_.vitrification_cryogen, domain=None, range=Optional[str])
 
 slots.humidity = Slot(uri=SAMPLE['/humidity'], name="humidity", curie=SAMPLE.curie('/humidity'),
-                   model_uri=DEFAULT_.humidity, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.humidity, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.temperature = Slot(uri=SAMPLE['/temperature'], name="temperature", curie=SAMPLE.curie('/temperature'),
-                   model_uri=DEFAULT_.temperature, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.temperature, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.staining = Slot(uri=SAMPLE['/staining'], name="staining", curie=SAMPLE.curie('/staining'),
                    model_uri=DEFAULT_.staining, domain=None, range=Optional[Union[bool, Bool]])
@@ -1444,10 +1539,10 @@ slots.pretreatment_type = Slot(uri=SAMPLE['/pretreatment_type'], name="pretreatm
                    model_uri=DEFAULT_.pretreatment_type, domain=None, range=Optional[str])
 
 slots.pretreatment_time = Slot(uri=SAMPLE['/pretreatment_time'], name="pretreatment_time", curie=SAMPLE.curie('/pretreatment_time'),
-                   model_uri=DEFAULT_.pretreatment_time, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.pretreatment_time, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.pretreatment_pressure = Slot(uri=SAMPLE['/pretreatment_pressure'], name="pretreatment_pressure", curie=SAMPLE.curie('/pretreatment_pressure'),
-                   model_uri=DEFAULT_.pretreatment_pressure, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.pretreatment_pressure, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.pretreatment_atmosphere = Slot(uri=SAMPLE['/pretreatment_atmosphere'], name="pretreatment_atmosphere", curie=SAMPLE.curie('/pretreatment_atmosphere'),
                    model_uri=DEFAULT_.pretreatment_atmosphere, domain=None, range=Optional[str])
@@ -1517,10 +1612,10 @@ slots.funder = Slot(uri=ORGANIZATIONAL.funder, name="funder", curie=ORGANIZATION
                    model_uri=DEFAULT_.funder, domain=None, range=Optional[Union[Union[dict, Funder], List[Union[dict, Funder]]]])
 
 slots.start_date = Slot(uri=ORGANIZATIONAL.start_date, name="start_date", curie=ORGANIZATIONAL.curie('start_date'),
-                   model_uri=DEFAULT_.start_date, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.start_date, domain=None, range=Optional[Union[str, XSDDateTime]])
 
 slots.end_date = Slot(uri=ORGANIZATIONAL.end_date, name="end_date", curie=ORGANIZATIONAL.curie('end_date'),
-                   model_uri=DEFAULT_.end_date, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.end_date, domain=None, range=Optional[Union[str, XSDDateTime]])
 
 slots.budget = Slot(uri=ORGANIZATIONAL.budget, name="budget", curie=ORGANIZATIONAL.curie('budget'),
                    model_uri=DEFAULT_.budget, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -1550,13 +1645,13 @@ slots.organizational = Slot(uri=OSCEM.organizational, name="organizational", cur
                    model_uri=DEFAULT_.organizational, domain=None, range=Optional[Union[dict, Any]])
 
 slots.minimal = Slot(uri=CUSTOM_TYPES.minimal, name="minimal", curie=CUSTOM_TYPES.curie('minimal'),
-                   model_uri=DEFAULT_.minimal, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.minimal, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.maximal = Slot(uri=CUSTOM_TYPES.maximal, name="maximal", curie=CUSTOM_TYPES.curie('maximal'),
-                   model_uri=DEFAULT_.maximal, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.maximal, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.increment = Slot(uri=CUSTOM_TYPES.increment, name="increment", curie=CUSTOM_TYPES.curie('increment'),
-                   model_uri=DEFAULT_.increment, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.increment, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.width = Slot(uri=CUSTOM_TYPES.width, name="width", curie=CUSTOM_TYPES.curie('width'),
                    model_uri=DEFAULT_.width, domain=None, range=Optional[int])
@@ -1565,16 +1660,16 @@ slots.height = Slot(uri=CUSTOM_TYPES.height, name="height", curie=CUSTOM_TYPES.c
                    model_uri=DEFAULT_.height, domain=None, range=Optional[int])
 
 slots.x_min = Slot(uri=CUSTOM_TYPES.x_min, name="x_min", curie=CUSTOM_TYPES.curie('x_min'),
-                   model_uri=DEFAULT_.x_min, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.x_min, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.x_max = Slot(uri=CUSTOM_TYPES.x_max, name="x_max", curie=CUSTOM_TYPES.curie('x_max'),
-                   model_uri=DEFAULT_.x_max, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.x_max, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.y_min = Slot(uri=CUSTOM_TYPES.y_min, name="y_min", curie=CUSTOM_TYPES.curie('y_min'),
-                   model_uri=DEFAULT_.y_min, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.y_min, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.y_max = Slot(uri=CUSTOM_TYPES.y_max, name="y_max", curie=CUSTOM_TYPES.curie('y_max'),
-                   model_uri=DEFAULT_.y_max, domain=None, range=Optional[Union[dict, Any]])
+                   model_uri=DEFAULT_.y_max, domain=None, range=Optional[Union[dict, QuantitySI]])
 
 slots.unit = Slot(uri=QUDT.hasUnit, name="unit", curie=QUDT.curie('hasUnit'),
                    model_uri=DEFAULT_.unit, domain=None, range=Optional[str])
@@ -1597,12 +1692,6 @@ slots.valueSI = Slot(uri=CUSTOM_TYPES.valueSI, name="valueSI", curie=CUSTOM_TYPE
 slots.unitSI = Slot(uri=CUSTOM_TYPES.unitSI, name="unitSI", curie=CUSTOM_TYPES.curie('unitSI'),
                    model_uri=DEFAULT_.unitSI, domain=None, range=Optional[str])
 
-slots.si_value = Slot(uri=DEFAULT_.si_value, name="si_value", curie=DEFAULT_.curie('si_value'),
-                   model_uri=DEFAULT_.si_value, domain=None, range=str)
-
-slots.si_unit = Slot(uri=DEFAULT_.si_unit, name="si_unit", curie=DEFAULT_.curie('si_unit'),
-                   model_uri=DEFAULT_.si_unit, domain=None, range=str)
-
 slots.EMDatasetTomo_acquisition = Slot(uri=OSCEM.acquisition, name="EMDatasetTomo_acquisition", curie=OSCEM.curie('acquisition'),
                    model_uri=DEFAULT_.EMDatasetTomo_acquisition, domain=EMDatasetTomo, range=Union[dict, AcquisitionTomo])
 
@@ -1619,7 +1708,7 @@ slots.Acquisition_detector = Slot(uri=ACQUISITION.detector, name="Acquisition_de
                    model_uri=DEFAULT_.Acquisition_detector, domain=Acquisition, range=str)
 
 slots.Acquisition_dose_per_movie = Slot(uri=ACQUISITION.dose_per_movie, name="Acquisition_dose_per_movie", curie=ACQUISITION.curie('dose_per_movie'),
-                   model_uri=DEFAULT_.Acquisition_dose_per_movie, domain=Acquisition, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.Acquisition_dose_per_movie, domain=Acquisition, range=Union[dict, "QuantitySI"])
 
 slots.Acquisition_date_time = Slot(uri=ACQUISITION.date_time, name="Acquisition_date_time", curie=ACQUISITION.curie('date_time'),
                    model_uri=DEFAULT_.Acquisition_date_time, domain=Acquisition, range=Union[str, XSDDateTime])
@@ -1628,13 +1717,13 @@ slots.Acquisition_binning_camera = Slot(uri=ACQUISITION.binning_camera, name="Ac
                    model_uri=DEFAULT_.Acquisition_binning_camera, domain=Acquisition, range=float)
 
 slots.Acquisition_pixel_size = Slot(uri=ACQUISITION.pixel_size, name="Acquisition_pixel_size", curie=ACQUISITION.curie('pixel_size'),
-                   model_uri=DEFAULT_.Acquisition_pixel_size, domain=Acquisition, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.Acquisition_pixel_size, domain=Acquisition, range=Union[dict, "QuantitySI"])
 
 slots.EnergyFilter_used = Slot(uri=ACQUISITION.used, name="EnergyFilter_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.EnergyFilter_used, domain=EnergyFilter, range=Union[bool, Bool])
 
 slots.EnergyFilter_width_energy_filter = Slot(uri=ACQUISITION.width_energy_filter, name="EnergyFilter_width_energy_filter", curie=ACQUISITION.curie('width_energy_filter'),
-                   model_uri=DEFAULT_.EnergyFilter_width_energy_filter, domain=EnergyFilter, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.EnergyFilter_width_energy_filter, domain=EnergyFilter, range=Union[dict, "QuantitySI"])
 
 slots.Phaseplate_used = Slot(uri=ACQUISITION.used, name="Phaseplate_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.Phaseplate_used, domain=Phaseplate, range=Union[bool, Bool])
@@ -1667,10 +1756,10 @@ slots.Instrument_electron_source = Slot(uri=INSTRUMENT['/electron_source'], name
                    model_uri=DEFAULT_.Instrument_electron_source, domain=Instrument, range=str)
 
 slots.Instrument_acceleration_voltage = Slot(uri=INSTRUMENT['/acceleration_voltage'], name="Instrument_acceleration_voltage", curie=INSTRUMENT.curie('/acceleration_voltage'),
-                   model_uri=DEFAULT_.Instrument_acceleration_voltage, domain=Instrument, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.Instrument_acceleration_voltage, domain=Instrument, range=Union[dict, "QuantitySI"])
 
 slots.Instrument_cs = Slot(uri=INSTRUMENT['/cs'], name="Instrument_cs", curie=INSTRUMENT.curie('/cs'),
-                   model_uri=DEFAULT_.Instrument_cs, domain=Instrument, range=Union[dict, "Any"])
+                   model_uri=DEFAULT_.Instrument_cs, domain=Instrument, range=Union[dict, "QuantitySI"])
 
 slots.Sample_overall_molecule = Slot(uri=SAMPLE['/overall_molecule'], name="Sample_overall_molecule", curie=SAMPLE.curie('/overall_molecule'),
                    model_uri=DEFAULT_.Sample_overall_molecule, domain=Sample, range=Union[dict, "OverallMolecule"])
@@ -1697,7 +1786,7 @@ slots.OverallMolecule_source = Slot(uri=SAMPLE['/source'], name="OverallMolecule
                    model_uri=DEFAULT_.OverallMolecule_source, domain=OverallMolecule, range=str)
 
 slots.OverallMolecule_molecular_weight = Slot(uri=SAMPLE['/molecular_weight'], name="OverallMolecule_molecular_weight", curie=SAMPLE.curie('/molecular_weight'),
-                   model_uri=DEFAULT_.OverallMolecule_molecular_weight, domain=OverallMolecule, range=Optional[Union[dict, "Any"]])
+                   model_uri=DEFAULT_.OverallMolecule_molecular_weight, domain=OverallMolecule, range=Optional[Union[dict, "QuantitySI"]])
 
 slots.OverallMolecule_assembly = Slot(uri=SAMPLE['/assembly'], name="OverallMolecule_assembly", curie=SAMPLE.curie('/assembly'),
                    model_uri=DEFAULT_.OverallMolecule_assembly, domain=OverallMolecule, range=Optional[Union[str, "AssemblyEnum"]])
@@ -1736,7 +1825,7 @@ slots.Specimen_buffer = Slot(uri=SAMPLE['/buffer'], name="Specimen_buffer", curi
                    model_uri=DEFAULT_.Specimen_buffer, domain=Specimen, range=Optional[str])
 
 slots.Specimen_concentration = Slot(uri=SAMPLE['/concentration'], name="Specimen_concentration", curie=SAMPLE.curie('/concentration'),
-                   model_uri=DEFAULT_.Specimen_concentration, domain=Specimen, range=Optional[Union[dict, "Any"]])
+                   model_uri=DEFAULT_.Specimen_concentration, domain=Specimen, range=Optional[Union[dict, "QuantitySI"]])
 
 slots.Specimen_ph = Slot(uri=SAMPLE['/ph'], name="Specimen_ph", curie=SAMPLE.curie('/ph'),
                    model_uri=DEFAULT_.Specimen_ph, domain=Specimen, range=Optional[float])
@@ -1748,10 +1837,10 @@ slots.Specimen_vitrification_cryogen = Slot(uri=SAMPLE['/vitrification_cryogen']
                    model_uri=DEFAULT_.Specimen_vitrification_cryogen, domain=Specimen, range=Optional[str])
 
 slots.Specimen_humidity = Slot(uri=SAMPLE['/humidity'], name="Specimen_humidity", curie=SAMPLE.curie('/humidity'),
-                   model_uri=DEFAULT_.Specimen_humidity, domain=Specimen, range=Optional[Union[dict, "Any"]])
+                   model_uri=DEFAULT_.Specimen_humidity, domain=Specimen, range=Optional[Union[dict, "QuantitySI"]])
 
 slots.Specimen_temperature = Slot(uri=SAMPLE['/temperature'], name="Specimen_temperature", curie=SAMPLE.curie('/temperature'),
-                   model_uri=DEFAULT_.Specimen_temperature, domain=Specimen, range=Optional[Union[dict, "Any"]])
+                   model_uri=DEFAULT_.Specimen_temperature, domain=Specimen, range=Optional[Union[dict, "QuantitySI"]])
 
 slots.Specimen_staining = Slot(uri=SAMPLE['/staining'], name="Specimen_staining", curie=SAMPLE.curie('/staining'),
                    model_uri=DEFAULT_.Specimen_staining, domain=Specimen, range=Optional[Union[bool, Bool]])
@@ -1787,22 +1876,22 @@ slots.Grid_pretreatment_type = Slot(uri=SAMPLE['/pretreatment_type'], name="Grid
                    model_uri=DEFAULT_.Grid_pretreatment_type, domain=Grid, range=Optional[str])
 
 slots.Grid_pretreatment_time = Slot(uri=SAMPLE['/pretreatment_time'], name="Grid_pretreatment_time", curie=SAMPLE.curie('/pretreatment_time'),
-                   model_uri=DEFAULT_.Grid_pretreatment_time, domain=Grid, range=Optional[Union[dict, "Any"]])
+                   model_uri=DEFAULT_.Grid_pretreatment_time, domain=Grid, range=Optional[Union[dict, "QuantitySI"]])
 
 slots.Grid_pretreatment_pressure = Slot(uri=SAMPLE['/pretreatment_pressure'], name="Grid_pretreatment_pressure", curie=SAMPLE.curie('/pretreatment_pressure'),
-                   model_uri=DEFAULT_.Grid_pretreatment_pressure, domain=Grid, range=Optional[Union[dict, "Any"]])
+                   model_uri=DEFAULT_.Grid_pretreatment_pressure, domain=Grid, range=Optional[Union[dict, "QuantitySI"]])
 
 slots.Grid_pretreatment_atmosphere = Slot(uri=SAMPLE['/pretreatment_atmosphere'], name="Grid_pretreatment_atmosphere", curie=SAMPLE.curie('/pretreatment_atmosphere'),
                    model_uri=DEFAULT_.Grid_pretreatment_atmosphere, domain=Grid, range=Optional[str])
 
 slots.TiltAngle_minimal = Slot(uri=CUSTOM_TYPES.minimal, name="TiltAngle_minimal", curie=CUSTOM_TYPES.curie('minimal'),
-                   model_uri=DEFAULT_.TiltAngle_minimal, domain=TiltAngle, range=Union[dict, Any])
+                   model_uri=DEFAULT_.TiltAngle_minimal, domain=TiltAngle, range=Union[dict, "QuantitySI"])
 
 slots.TiltAngle_maximal = Slot(uri=CUSTOM_TYPES.maximal, name="TiltAngle_maximal", curie=CUSTOM_TYPES.curie('maximal'),
-                   model_uri=DEFAULT_.TiltAngle_maximal, domain=TiltAngle, range=Union[dict, Any])
+                   model_uri=DEFAULT_.TiltAngle_maximal, domain=TiltAngle, range=Union[dict, "QuantitySI"])
 
 slots.TiltAngle_increment = Slot(uri=CUSTOM_TYPES.increment, name="TiltAngle_increment", curie=CUSTOM_TYPES.curie('increment'),
-                   model_uri=DEFAULT_.TiltAngle_increment, domain=TiltAngle, range=Union[dict, Any])
+                   model_uri=DEFAULT_.TiltAngle_increment, domain=TiltAngle, range=Union[dict, "QuantitySI"])
 
 slots.AcquisitionTomo_tilt_axis_angle = Slot(uri=TOMO['graphy/tilt_axis_angle'], name="AcquisitionTomo_tilt_axis_angle", curie=TOMO.curie('graphy/tilt_axis_angle'),
                    model_uri=DEFAULT_.AcquisitionTomo_tilt_axis_angle, domain=AcquisitionTomo, range=float)
@@ -1855,12 +1944,6 @@ slots.QuantityValue_unit = Slot(uri=QUDT.hasUnit, name="QuantityValue_unit", cur
 
 slots.QuantityValue_value = Slot(uri=QUDT.hasQuantityKind, name="QuantityValue_value", curie=QUDT.curie('hasQuantityKind'),
                    model_uri=DEFAULT_.QuantityValue_value, domain=QuantityValue, range=float)
-
-slots.QuantitySI_si_value = Slot(uri=DEFAULT_.si_value, name="QuantitySI_si_value", curie=DEFAULT_.curie('si_value'),
-                   model_uri=DEFAULT_.QuantitySI_si_value, domain=QuantitySI, range=str)
-
-slots.QuantitySI_si_unit = Slot(uri=DEFAULT_.si_unit, name="QuantitySI_si_unit", curie=DEFAULT_.curie('si_unit'),
-                   model_uri=DEFAULT_.QuantitySI_si_unit, domain=QuantitySI, range=str)
 
 slots.Descriptor_descriptor_name = Slot(uri=CUSTOM_TYPES.descriptor_name, name="Descriptor_descriptor_name", curie=CUSTOM_TYPES.curie('descriptor_name'),
                    model_uri=DEFAULT_.Descriptor_descriptor_name, domain=Descriptor, range=str)

@@ -242,10 +242,6 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [nominal_magnification](nominal_magnification.md) - Magnification level as indicated by the instrument, no unit
  * [num_source_micrographs](num_source_micrographs.md) - Total number of micrographs from which coordinates come from
      * [Coordinates➞num_source_micrographs](Coordinates_num_source_micrographs.md)
- * [number_classes_2D](number_classes_2D.md) - Number of 2D classes
-     * [Classes2D➞number_classes_2D](Classes2D_number_classes_2D.md)
- * [number_classes_3D](number_classes_3D.md) - Number of 3D classes
-     * [Classes3D➞number_classes_3D](Classes3D_number_classes_3D.md)
  * [number_micrographs](number_micrographs.md) - Number of micrographs
      * [Micrographs➞number_micrographs](Micrographs_number_micrographs.md)
  * [number_particles](number_particles.md) - Total number of particles
@@ -321,10 +317,6 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Molecule➞sequence](Molecule_sequence.md)
  * [shadowing](shadowing.md) - Whether the sample was shadowed
      * [Specimen➞shadowing](Specimen_shadowing.md)
- * [si_unit](si_unit.md)
-     * [QuantitySI➞si_unit](QuantitySI_si_unit.md)
- * [si_value](si_value.md)
-     * [QuantitySI➞si_value](QuantitySI_si_value.md)
  * [side_view](side_view.md) - Filename of the side view isosurface image
      * [IsosurfaceImages➞side_view](IsosurfaceImages_side_view.md)
  * [size](size.md) - Size of the volume

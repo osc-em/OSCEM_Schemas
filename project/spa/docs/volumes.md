@@ -6,7 +6,7 @@ Class representing volume metadata
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/Volumes](https://w3id.org/osc-em/oscem-schemas-spa/Volumes)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptors]<descriptors%200..*-++[Volumes&#124;volume_type:string;vol_number_particles:integer%20%3F;size:string%20%3F],[QuantityValue]<vol_resolution%200..1-++[Volumes],[IsosurfaceImages]<isosurface_images%200..1-++[Volumes],[OrthogonalSlices]<orthogonal_slices%200..1-++[Volumes],[Processing]++-%20volumes%200..*>[Volumes],[Processing]++-%20volumes(i)%200..*>[Volumes],[QuantityValue],[Processing],[OrthogonalSlices],[IsosurfaceImages],[Descriptors])](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptors]<descriptors%200..*-++[Volumes&#124;volume_type:string;vol_number_particles:integer%20%3F;size:string%20%3F],[QuantityValue]<vol_resolution%200..1-++[Volumes],[IsosurfaceImages]<isosurface_images%200..1-++[Volumes],[OrthogonalSlices]<orthogonal_slices%200..1-++[Volumes],[Processing]++-%20volumes%200..*>[Volumes],[Processing]++-%20volumes(i)%200..*>[Volumes],[QuantityValue],[Processing],[OrthogonalSlices],[IsosurfaceImages],[Descriptors])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptors]<descriptors%200..*-++[Volumes&#124;volume_type:string;vol_number_particles:integer%20%3F;size:integer%20*],[QuantityValue]<vol_resolution%200..1-++[Volumes],[IsosurfaceImages]<isosurface_images%200..1-++[Volumes],[OrthogonalSlices]<orthogonal_slices%200..1-++[Volumes],[Processing]++-%20volumes%200..*>[Volumes],[Processing]++-%20volumes(i)%200..*>[Volumes],[QuantityValue],[Processing],[OrthogonalSlices],[IsosurfaceImages],[Descriptors])](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptors]<descriptors%200..*-++[Volumes&#124;volume_type:string;vol_number_particles:integer%20%3F;size:integer%20*],[QuantityValue]<vol_resolution%200..1-++[Volumes],[IsosurfaceImages]<isosurface_images%200..1-++[Volumes],[OrthogonalSlices]<orthogonal_slices%200..1-++[Volumes],[Processing]++-%20volumes%200..*>[Volumes],[Processing]++-%20volumes(i)%200..*>[Volumes],[QuantityValue],[Processing],[OrthogonalSlices],[IsosurfaceImages],[Descriptors])
 
 ## Referenced by Class
 
@@ -24,9 +24,9 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Volumes](https://w3id.org/osc-em
  * [Volumes➞vol_number_particles](Volumes_vol_number_particles.md)  <sub>0..1</sub>
      * Description: Number of particles associated to volume
      * Range: [Integer](types/Integer.md)
- * [Volumes➞size](Volumes_size.md)  <sub>0..1</sub>
+ * [Volumes➞size](Volumes_size.md)  <sub>0..\*</sub>
      * Description: Size of the volume
-     * Range: [String](types/String.md)
+     * Range: [Integer](types/Integer.md)
  * [Volumes➞orthogonal_slices](Volumes_orthogonal_slices.md)  <sub>0..1</sub>
      * Description: orthogonal slices of volume
      * Range: [OrthogonalSlices](OrthogonalSlices.md)

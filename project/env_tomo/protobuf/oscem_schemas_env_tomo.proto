@@ -14,17 +14,17 @@ message Acquisition
   string microscopeSoftware = 0
   string detector = 0
   string detectorMode = 0
-  any dosePerMovie = 0
+  quantitySI dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
   datetime dateTime = 0
-  any exposureTime = 0
+  quantitySI exposureTime = 0
   string cryogen = 0
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
   float binningCamera = 0
-  any pixelSize = 0
+  quantitySI pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
   boundingBox2D beamtilt = 0
@@ -44,17 +44,17 @@ message AcquisitionTomo
   string microscopeSoftware = 0
   string detector = 0
   string detectorMode = 0
-  any dosePerMovie = 0
+  quantitySI dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
   datetime dateTime = 0
-  any exposureTime = 0
+  quantitySI exposureTime = 0
   string cryogen = 0
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
   float binningCamera = 0
-  any pixelSize = 0
+  quantitySI pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
   boundingBox2D beamtilt = 0
@@ -81,10 +81,10 @@ message Author
 // an axis-aligned 2D bounding box (float units)
 message BoundingBox2D
  {
-  any xMin = 0
-  any xMax = 0
-  any yMin = 0
-  any yMax = 0
+  quantitySI xMin = 0
+  quantitySI xMax = 0
+  quantitySI yMin = 0
+  quantitySI yMax = 0
  }
 // Special device used to correct instrument inherent chromatic aberration.
 message ChromaticAberrationCorrector
@@ -110,7 +110,7 @@ message EnergyFilter
  {
   boolean used = 0
   string model = 0
-  any widthEnergyFilter = 0
+  quantitySI widthEnergyFilter = 0
  }
 // how the sample was frozen.
 message Freezing
@@ -118,8 +118,8 @@ message Freezing
   string cryogenSampleEnv = 0
   freezingMethodEnum method = 0
   boolean blotting = 0
-  any humidityEnv = 0
-  any temperatureEnv = 0
+  quantitySI humidityEnv = 0
+  quantitySI temperatureEnv = 0
   string atmosphere = 0
   string details = 0
  }
@@ -134,8 +134,8 @@ message Funder
 message Grant
  {
   string grantName = 0
-  any startDate = 0
-  any endDate = 0
+  datetime startDate = 0
+  datetime endDate = 0
   quantityValue budget = 0
   string projectId = 0
   string country = 0
@@ -153,9 +153,9 @@ message Instrument
   string illumination = 0
   string imaging = 0
   string electronSource = 0
-  any accelerationVoltage = 0
-  any c2Aperture = 0
-  any cs = 0
+  quantitySI accelerationVoltage = 0
+  quantitySI c2Aperture = 0
+  quantitySI cs = 0
  }
 // Overarching category for authors and grants
 message Organizational
@@ -186,8 +186,6 @@ message QuantitySI
   float value = 0
   float valueSI = 0
   string unitSI = 0
-  string siValue = 0
-  string siUnit = 0
  }
 // if a value has a unit, it should be given as a unit value pair.
 message QuantityValue
@@ -198,8 +196,8 @@ message QuantityValue
 // A range constructed from min and max
 message Range
  {
-  any minimal = 0
-  any maximal = 0
+  quantitySI minimal = 0
+  quantitySI maximal = 0
  }
 // Unifying class to describe the full sample.
 message SampleEnv
@@ -212,9 +210,9 @@ message SampleEnv
 // A series of numbers constructed from min, max, and increment
 message Series
  {
-  any minimal = 0
-  any maximal = 0
-  any increment = 0
+  quantitySI minimal = 0
+  quantitySI maximal = 0
+  quantitySI increment = 0
  }
 // Optional optics used to correct for instrument limitations.
 message SpecialistOptics
@@ -245,15 +243,15 @@ message Thinning
   string methodThin = 0
   string instrumentThin = 0
   string ionSource = 0
-  any targetThickness = 0
+  quantitySI targetThickness = 0
   boolean liftOut = 0
  }
 // The min, max and increment of the tilt angle in a tomography session. Unit is degree.
 message TiltAngle
  {
-  any minimal = 0
-  any maximal = 0
-  any increment = 0
+  quantitySI minimal = 0
+  quantitySI maximal = 0
+  quantitySI increment = 0
  }
 // what was the target of the tomograms, and what area of a cell do they cover.
 message TomogramFeatures

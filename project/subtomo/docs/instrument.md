@@ -6,7 +6,7 @@ Instrument values, mostly constant across a data collection.
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Instrument](https://w3id.org/osc-em/oscem-schemas-subtomo/Instrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<cs%201..1-++[Instrument&#124;microscope:string;illumination:string;imaging:string;electron_source:string],[Any]<c2_aperture%200..1-++[Instrument],[Any]<acceleration_voltage%201..1-++[Instrument],[EMDatasetTomo]++-%20instrument%201..1>[Instrument],[EMDatasetTomo],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<cs%201..1-++[Instrument&#124;microscope:string;illumination:string;imaging:string;electron_source:string],[Any]<c2_aperture%200..1-++[Instrument],[Any]<acceleration_voltage%201..1-++[Instrument],[EMDatasetTomo]++-%20instrument%201..1>[Instrument],[EMDatasetTomo],[Any])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<cs%201..1-++[Instrument&#124;microscope:string;illumination:string;imaging:string;electron_source:string],[QuantitySI]<c2_aperture%200..1-++[Instrument],[QuantitySI]<acceleration_voltage%201..1-++[Instrument],[EMDatasetTomo]++-%20instrument%201..1>[Instrument],[EMDatasetTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<cs%201..1-++[Instrument&#124;microscope:string;illumination:string;imaging:string;electron_source:string],[QuantitySI]<c2_aperture%200..1-++[Instrument],[QuantitySI]<acceleration_voltage%201..1-++[Instrument],[EMDatasetTomo]++-%20instrument%201..1>[Instrument],[EMDatasetTomo])
 
 ## Referenced by Class
 
@@ -31,10 +31,10 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Instrument](https://w3id.org
      * Range: [String](types/String.md)
  * [Instrument➞acceleration_voltage](Instrument_acceleration_voltage.md)  <sub>1..1</sub>
      * Description: Voltage used for the electron acceleration, in kV
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [c2_aperture](c2_aperture.md)  <sub>0..1</sub>
      * Description: C2 aperture size used in data acquisition, in µm
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [Instrument➞cs](Instrument_cs.md)  <sub>1..1</sub>
      * Description: Spherical aberration of the instrument, in mm
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)

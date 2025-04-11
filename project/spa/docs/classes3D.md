@@ -6,7 +6,7 @@ Class representing classes 3D metadata
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/Classes3D](https://w3id.org/osc-em/oscem-schemas-spa/Classes3D)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Volume],[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes3D&#124;number_classes_3D:integer%20%3F;particles_per_3Dclass:integer%20*;images_classes_3D:string%20%3F],[QuantityValue]<resolution_classes_3D%200..1-++[Classes3D],[Volume]<volume%200..*-++[Classes3D],[Processing]++-%20classes3D%200..1>[Classes3D],[Processing]++-%20classes3D(i)%200..1>[Classes3D])](https://yuml.me/diagram/nofunky;dir:TB/class/[Volume],[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes3D&#124;number_classes_3D:integer%20%3F;particles_per_3Dclass:integer%20*;images_classes_3D:string%20%3F],[QuantityValue]<resolution_classes_3D%200..1-++[Classes3D],[Volume]<volume%200..*-++[Classes3D],[Processing]++-%20classes3D%200..1>[Classes3D],[Processing]++-%20classes3D(i)%200..1>[Classes3D])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Volume],[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes3D&#124;particles_per_3Dclass:integer%20*;images_classes_3D:string%20%3F],[QuantityValue]<resolution_classes_3D%200..1-++[Classes3D],[Volume]<volume%200..*-++[Classes3D],[Processing]++-%20classes3D%200..1>[Classes3D],[Processing]++-%20classes3D(i)%200..1>[Classes3D])](https://yuml.me/diagram/nofunky;dir:TB/class/[Volume],[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes3D&#124;particles_per_3Dclass:integer%20*;images_classes_3D:string%20%3F],[QuantityValue]<resolution_classes_3D%200..1-++[Classes3D],[Volume]<volume%200..*-++[Classes3D],[Processing]++-%20classes3D%200..1>[Classes3D],[Processing]++-%20classes3D(i)%200..1>[Classes3D])
 
 ## Referenced by Class
 
@@ -18,9 +18,6 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Classes3D](https://w3id.org/osc-
 
 ### Own
 
- * [Classes3D➞number_classes_3D](Classes3D_number_classes_3D.md)  <sub>0..1</sub>
-     * Description: Number of 3D classes
-     * Range: [Integer](types/Integer.md)
  * [Classes3D➞particles_per_3Dclass](Classes3D_particles_per_3Dclass.md)  <sub>0..\*</sub>
      * Description: Number of particles per 3D class
      * Range: [Integer](types/Integer.md)

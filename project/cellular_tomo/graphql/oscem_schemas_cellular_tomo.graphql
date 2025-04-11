@@ -25,17 +25,17 @@ type Acquisition
     microscopeSoftware: String
     detector: String!
     detectorMode: String
-    dosePerMovie: Any!
+    dosePerMovie: QuantitySI!
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
-    exposureTime: Any
+    exposureTime: QuantitySI
     cryogen: String
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
     binningCamera: Float!
-    pixelSize: Any!
+    pixelSize: QuantitySI!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
     beamtilt: BoundingBox2D
@@ -56,17 +56,17 @@ type AcquisitionTomo
     microscopeSoftware: String
     detector: String!
     detectorMode: String
-    dosePerMovie: Any!
+    dosePerMovie: QuantitySI!
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
-    exposureTime: Any
+    exposureTime: QuantitySI
     cryogen: String
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
     binningCamera: Float!
-    pixelSize: Any!
+    pixelSize: QuantitySI!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
     beamtilt: BoundingBox2D
@@ -97,10 +97,10 @@ type Author
 
 type BoundingBox2D
   {
-    xMin: Any
-    xMax: Any
-    yMin: Any
-    yMax: Any
+    xMin: QuantitySI
+    xMax: QuantitySI
+    yMin: QuantitySI
+    yMax: QuantitySI
   }
 
 type ChromaticAberrationCorrector
@@ -141,7 +141,7 @@ type EnergyFilter
   {
     used: Boolean!
     model: String
-    widthEnergyFilter: Any!
+    widthEnergyFilter: QuantitySI!
   }
 
 type Freezing
@@ -149,8 +149,8 @@ type Freezing
     cryogenSampleEnv: String
     method: FreezingMethodEnum
     blotting: Boolean
-    humidityEnv: Any
-    temperatureEnv: Any
+    humidityEnv: QuantitySI
+    temperatureEnv: QuantitySI
     atmosphere: String
     details: String
   }
@@ -165,8 +165,8 @@ type Funder
 type Grant
   {
     grantName: String
-    startDate: Any
-    endDate: Any
+    startDate: Datetime
+    endDate: Datetime
     budget: QuantityValue
     projectId: String
     country: String
@@ -179,7 +179,7 @@ type GrowthCondition
     cellCycle: String
     treatment: String
     atmosphereGrowth: String
-    temperatureGrowth: Any
+    temperatureGrowth: QuantitySI
   }
 
 type ImageSize
@@ -194,9 +194,9 @@ type Instrument
     illumination: String!
     imaging: String!
     electronSource: String!
-    accelerationVoltage: Any!
-    c2Aperture: Any
-    cs: Any!
+    accelerationVoltage: QuantitySI!
+    c2Aperture: QuantitySI
+    cs: QuantitySI!
   }
 
 type Organizational
@@ -227,8 +227,6 @@ type QuantitySI
     value: Float!
     valueSI: Float
     unitSI: String
-    siValue: String!
-    siUnit: String!
   }
 
 type QuantityValue
@@ -239,8 +237,8 @@ type QuantityValue
 
 type Range
   {
-    minimal: Any
-    maximal: Any
+    minimal: QuantitySI
+    maximal: QuantitySI
   }
 
 type SampleCell
@@ -262,9 +260,9 @@ type SampleEnv
 
 type Series
   {
-    minimal: Any
-    maximal: Any
-    increment: Any
+    minimal: QuantitySI
+    maximal: QuantitySI
+    increment: QuantitySI
   }
 
 type SpecialistOptics
@@ -295,15 +293,15 @@ type Thinning
     methodThin: String
     instrumentThin: String
     ionSource: String
-    targetThickness: Any
+    targetThickness: QuantitySI
     liftOut: Boolean
   }
 
 type TiltAngle
   {
-    minimal: Any!
-    maximal: Any!
-    increment: Any!
+    minimal: QuantitySI!
+    maximal: QuantitySI!
+    increment: QuantitySI!
   }
 
 type TomogramFeatures

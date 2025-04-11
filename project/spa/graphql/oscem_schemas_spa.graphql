@@ -36,17 +36,17 @@ type Acquisition
     microscopeSoftware: String
     detector: String!
     detectorMode: String
-    dosePerMovie: Any!
+    dosePerMovie: QuantitySI!
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
-    exposureTime: Any
+    exposureTime: QuantitySI
     cryogen: String
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
     binningCamera: Float!
-    pixelSize: Any!
+    pixelSize: QuantitySI!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
     beamtilt: BoundingBox2D
@@ -80,10 +80,10 @@ type Author
 
 type BoundingBox2D
   {
-    xMin: Any
-    xMax: Any
-    yMin: Any
-    yMax: Any
+    xMin: QuantitySI
+    xMax: QuantitySI
+    yMin: QuantitySI
+    yMax: QuantitySI
   }
 
 type ChromaticAberrationCorrector
@@ -94,7 +94,6 @@ type ChromaticAberrationCorrector
 
 type Classes2D
   {
-    numberClasses2D: Integer
     particlesPer2Dclass: [Integer]
     imagesClasses2D: String
     resolutionClasses2D: QuantityValue
@@ -103,7 +102,6 @@ type Classes2D
 
 type Classes3D
   {
-    numberClasses3D: Integer
     particlesPer3Dclass: [Integer]
     imagesClasses3D: String
     volume: [Volume]
@@ -172,7 +170,7 @@ type EnergyFilter
   {
     used: Boolean!
     model: String
-    widthEnergyFilter: Any!
+    widthEnergyFilter: QuantitySI!
   }
 
 type Funder
@@ -185,8 +183,8 @@ type Funder
 type Grant
   {
     grantName: String
-    startDate: Any
-    endDate: Any
+    startDate: Datetime
+    endDate: Datetime
     budget: QuantityValue
     projectId: String
     country: String
@@ -202,8 +200,8 @@ type Grid
     filmTopology: String
     filmThickness: String
     pretreatmentType: String
-    pretreatmentTime: Any
-    pretreatmentPressure: Any
+    pretreatmentTime: QuantitySI
+    pretreatmentPressure: QuantitySI
     pretreatmentAtmosphere: String
   }
 
@@ -219,9 +217,9 @@ type Instrument
     illumination: String!
     imaging: String!
     electronSource: String!
-    accelerationVoltage: Any!
-    c2Aperture: Any
-    cs: Any!
+    accelerationVoltage: QuantitySI!
+    c2Aperture: QuantitySI
+    cs: QuantitySI!
   }
 
 type IsosurfaceImages
@@ -285,7 +283,7 @@ type OverallMolecule
     molecularOverallType: MoleculeClassEnum
     nameSample: String!
     source: String!
-    molecularWeight: Any
+    molecularWeight: QuantitySI
     assembly: AssemblyEnum
   }
 
@@ -321,8 +319,6 @@ type QuantitySI
     value: Float!
     valueSI: Float
     unitSI: String
-    siValue: String!
-    siUnit: String!
   }
 
 type QuantityValue
@@ -333,8 +329,8 @@ type QuantityValue
 
 type Range
   {
-    minimal: Any
-    maximal: Any
+    minimal: QuantitySI
+    maximal: QuantitySI
   }
 
 type Resolution
@@ -356,9 +352,9 @@ type Sample
 
 type Series
   {
-    minimal: Any
-    maximal: Any
-    increment: Any
+    minimal: QuantitySI
+    maximal: QuantitySI
+    increment: QuantitySI
   }
 
 type SpecialistOptics
@@ -371,12 +367,12 @@ type SpecialistOptics
 type Specimen
   {
     buffer: String
-    concentration: Any
+    concentration: QuantitySI
     ph: Float
     vitrification: Boolean
     vitrificationCryogen: String
-    humidity: Any
-    temperature: Any
+    humidity: QuantitySI
+    temperature: QuantitySI
     staining: Boolean
     embedding: Boolean
     shadowing: Boolean
@@ -398,7 +394,7 @@ type Volumes
   {
     volumeType: String!
     volNumberParticles: Integer
-    size: String
+    size: [Integer]
     orthogonalSlices: OrthogonalSlices
     isosurfaceImages: IsosurfaceImages
     volResolution: QuantityValue

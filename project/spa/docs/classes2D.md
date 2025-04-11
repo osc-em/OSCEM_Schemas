@@ -6,7 +6,7 @@ Class representing classes 2D metadata
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/Classes2D](https://w3id.org/osc-em/oscem-schemas-spa/Classes2D)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes2D&#124;number_classes_2D:integer%20%3F;particles_per_2Dclass:integer%20*;images_classes_2D:string%20%3F],[QuantityValue]<resolution_classes_2D%200..1-++[Classes2D],[Processing]++-%20classes2D%200..1>[Classes2D],[Processing]++-%20classes2D(i)%200..1>[Classes2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes2D&#124;number_classes_2D:integer%20%3F;particles_per_2Dclass:integer%20*;images_classes_2D:string%20%3F],[QuantityValue]<resolution_classes_2D%200..1-++[Classes2D],[Processing]++-%20classes2D%200..1>[Classes2D],[Processing]++-%20classes2D(i)%200..1>[Classes2D])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes2D&#124;particles_per_2Dclass:integer%20*;images_classes_2D:string%20%3F],[QuantityValue]<resolution_classes_2D%200..1-++[Classes2D],[Processing]++-%20classes2D%200..1>[Classes2D],[Processing]++-%20classes2D(i)%200..1>[Classes2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes2D&#124;particles_per_2Dclass:integer%20*;images_classes_2D:string%20%3F],[QuantityValue]<resolution_classes_2D%200..1-++[Classes2D],[Processing]++-%20classes2D%200..1>[Classes2D],[Processing]++-%20classes2D(i)%200..1>[Classes2D])
 
 ## Referenced by Class
 
@@ -18,9 +18,6 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Classes2D](https://w3id.org/osc-
 
 ### Own
 
- * [Classes2D➞number_classes_2D](Classes2D_number_classes_2D.md)  <sub>0..1</sub>
-     * Description: Number of 2D classes
-     * Range: [Integer](types/Integer.md)
  * [Classes2D➞particles_per_2Dclass](Classes2D_particles_per_2Dclass.md)  <sub>0..\*</sub>
      * Description: Number of particles per 2D class
      * Range: [Integer](types/Integer.md)

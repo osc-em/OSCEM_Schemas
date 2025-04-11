@@ -128,10 +128,10 @@
 -- # Class: "Grant" Description: "Grant"
 --     * Slot: id Description: 
 --     * Slot: grant_name Description: name of the grant
+--     * Slot: start_date Description: start date
+--     * Slot: end_date Description: end date
 --     * Slot: project_id Description: project id
 --     * Slot: country Description: Country of the institution
---     * Slot: start_date_id Description: start date
---     * Slot: end_date_id Description: end date
 --     * Slot: budget_id Description: budget
 -- # Class: "Funder" Description: "Description of the project funding"
 --     * Slot: id Description: 
@@ -237,12 +237,10 @@
 --     * Slot: micrograph_examples Description: Filename of micrographs shown as examples in descending order based on the number of particles
 -- # Class: "Classes2D" Description: "Class representing classes 2D metadata"
 --     * Slot: id Description: 
---     * Slot: number_classes_2D Description: Number of 2D classes
 --     * Slot: images_classes_2D Description: Filename of the image containing 2D class images
 --     * Slot: resolution_classes_2D_id Description: Resolution of classes 2D
 -- # Class: "Classes3D" Description: "Class representing classes 3D metadata"
 --     * Slot: id Description: 
---     * Slot: number_classes_3D Description: Number of 3D classes
 --     * Slot: images_classes_3D Description: Filename of the image containing 3D class images
 --     * Slot: resolution_classes_3D_id Description: Resolution of volume
 -- # Class: "Volume" Description: "Class describing volume(s) obtained"
@@ -263,7 +261,6 @@
 --     * Slot: id Description: 
 --     * Slot: volume_type Description: Indicates the type of volume
 --     * Slot: vol_number_particles Description: Number of particles associated to volume
---     * Slot: size Description: Size of the volume
 --     * Slot: orthogonal_slices_id Description: orthogonal slices of volume
 --     * Slot: isosurface_images_id Description: isosurface images of volume
 --     * Slot: vol_resolution_id Description: Resolution of volume
@@ -317,6 +314,9 @@
 -- # Class: "Classes3D_descriptors" Description: ""
 --     * Slot: Classes3D_id Description: Autocreated FK slot
 --     * Slot: descriptors_id Description: List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
+-- # Class: "Volumes_size" Description: ""
+--     * Slot: Volumes_id Description: Autocreated FK slot
+--     * Slot: size Description: Size of the volume
 -- # Class: "Volumes_descriptors" Description: ""
 --     * Slot: Volumes_id Description: Autocreated FK slot
 --     * Slot: descriptors_id Description: List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
@@ -458,8 +458,8 @@ CREATE TABLE "Range" (
 	minimal_id INTEGER, 
 	maximal_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(minimal_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(maximal_id) REFERENCES "Any" (id)
+	FOREIGN KEY(minimal_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Series" (
 	id INTEGER NOT NULL, 
@@ -467,9 +467,9 @@ CREATE TABLE "Series" (
 	minimal_id INTEGER, 
 	maximal_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(increment_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(minimal_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(maximal_id) REFERENCES "Any" (id)
+	FOREIGN KEY(increment_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(minimal_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "BoundingBox2D" (
 	id INTEGER NOT NULL, 
@@ -478,10 +478,10 @@ CREATE TABLE "BoundingBox2D" (
 	y_min_id INTEGER, 
 	y_max_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(x_min_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(x_max_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(y_min_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(y_max_id) REFERENCES "Any" (id)
+	FOREIGN KEY(x_min_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(x_max_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(y_min_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(y_max_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Descriptor" (
 	id INTEGER NOT NULL, 
@@ -503,7 +503,7 @@ CREATE TABLE "EnergyFilter" (
 	model TEXT, 
 	width_energy_filter_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(width_energy_filter_id) REFERENCES "Any" (id)
+	FOREIGN KEY(width_energy_filter_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "SpecialistOptics" (
 	id INTEGER NOT NULL, 
@@ -525,21 +525,19 @@ CREATE TABLE "Instrument" (
 	c2_aperture_id INTEGER, 
 	cs_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(acceleration_voltage_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(c2_aperture_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(cs_id) REFERENCES "Any" (id)
+	FOREIGN KEY(acceleration_voltage_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(c2_aperture_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(cs_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Grant" (
 	id INTEGER NOT NULL, 
 	grant_name TEXT, 
+	start_date DATETIME, 
+	end_date DATETIME, 
 	project_id TEXT, 
 	country TEXT, 
-	start_date_id INTEGER, 
-	end_date_id INTEGER, 
 	budget_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(start_date_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(end_date_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(budget_id) REFERENCES "QuantityValue" (id)
 );
 CREATE TABLE "OverallMolecule" (
@@ -550,7 +548,7 @@ CREATE TABLE "OverallMolecule" (
 	assembly VARCHAR(13), 
 	molecular_weight_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(molecular_weight_id) REFERENCES "Any" (id)
+	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Specimen" (
 	id INTEGER NOT NULL, 
@@ -565,9 +563,9 @@ CREATE TABLE "Specimen" (
 	humidity_id INTEGER, 
 	temperature_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(concentration_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(humidity_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(temperature_id) REFERENCES "Any" (id)
+	FOREIGN KEY(concentration_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(humidity_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(temperature_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Grid" (
 	id INTEGER NOT NULL, 
@@ -583,8 +581,8 @@ CREATE TABLE "Grid" (
 	pretreatment_time_id INTEGER, 
 	pretreatment_pressure_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(pretreatment_time_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "Any" (id)
+	FOREIGN KEY(pretreatment_time_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "EMDatasetBase" (
 	id INTEGER NOT NULL, 
@@ -633,7 +631,6 @@ CREATE TABLE "Resolution" (
 );
 CREATE TABLE "Classes2D" (
 	id INTEGER NOT NULL, 
-	"number_classes_2D" INTEGER, 
 	"images_classes_2D" TEXT, 
 	"resolution_classes_2D_id" INTEGER, 
 	PRIMARY KEY (id), 
@@ -641,7 +638,6 @@ CREATE TABLE "Classes2D" (
 );
 CREATE TABLE "Classes3D" (
 	id INTEGER NOT NULL, 
-	"number_classes_3D" INTEGER, 
 	"images_classes_3D" TEXT, 
 	"resolution_classes_3D_id" INTEGER, 
 	PRIMARY KEY (id), 
@@ -659,7 +655,6 @@ CREATE TABLE "Volumes" (
 	id INTEGER NOT NULL, 
 	volume_type TEXT NOT NULL, 
 	vol_number_particles INTEGER, 
-	size TEXT, 
 	orthogonal_slices_id INTEGER, 
 	isosurface_images_id INTEGER, 
 	vol_resolution_id INTEGER, 
@@ -715,11 +710,11 @@ CREATE TABLE "Acquisition" (
 	FOREIGN KEY(nominal_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(calibrated_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(dose_per_movie_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(exposure_time_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(pixel_size_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 
@@ -806,6 +801,12 @@ CREATE TABLE "Classes3D_descriptors" (
 	PRIMARY KEY ("Classes3D_id", descriptors_id), 
 	FOREIGN KEY("Classes3D_id") REFERENCES "Classes3D" (id), 
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
+);
+CREATE TABLE "Volumes_size" (
+	"Volumes_id" INTEGER, 
+	size INTEGER, 
+	PRIMARY KEY ("Volumes_id", size), 
+	FOREIGN KEY("Volumes_id") REFERENCES "Volumes" (id)
 );
 CREATE TABLE "Volumes_descriptors" (
 	"Volumes_id" INTEGER, 
