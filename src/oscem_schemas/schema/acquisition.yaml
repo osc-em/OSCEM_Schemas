@@ -19,10 +19,13 @@ classes:
   Acquisition:
     description: A set of parameteres describing the data acquisition
     slots:
+    - screen_current
+    - target_defocus
     - nominal_defocus
     - calibrated_defocus
     - nominal_magnification
     - calibrated_magnification
+    - stem_magnification
     - holder
     - holder_cryogen
     - temperature_range
@@ -36,6 +39,7 @@ classes:
     - exposure_time
     - cryogen
     - frames_per_movie
+    - frame_time
     - grids_imaged
     - images_generated
     - binning_camera
@@ -67,6 +71,8 @@ classes:
     slot_usage:
       used:
         required: true
+      model:
+        required: false
       width_energy_filter:
         required: true
 
@@ -109,6 +115,12 @@ classes:
         required: true
 
 slots:
+  screen_current:
+    range: float
+    description: Last measured screen current, in nA.
+  target_defocus:
+    range: float
+    description: Target defocus, in nm.
   nominal_defocus:
     range: Range
     description: Target defocus set, min and max values in µm.
@@ -120,6 +132,9 @@ slots:
     range: integer
   calibrated_magnification:
     description: Calculated magnification, no unit
+    range: integer
+  stem_magnification:
+    description: STEM magnification, no unit
     range: integer
   holder:
     description: Speciman holder model
@@ -152,9 +167,6 @@ slots:
   used:
     description: whether a specific instrument was used during data acquisition
     range: boolean
-  model:
-    description: Make and model of a specilized device
-    range: string
   image_size:
     range: ImageSize
     description: The size of the image in pixels, height and width given.
@@ -177,6 +189,9 @@ slots:
   frames_per_movie:
     description: Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
     range: integer
+  frame_time:
+    description: Time per frame, in seconds
+    range: float
   grids_imaged:
     description: Number of grids imaged for this project - here with qualifier during this data acquisition
     range: integer
