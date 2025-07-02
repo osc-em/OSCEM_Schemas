@@ -25,7 +25,6 @@ classes:
     - calibrated_defocus
     - nominal_magnification
     - calibrated_magnification
-    - stem_magnification
     - holder
     - holder_cryogen
     - temperature_range
@@ -37,9 +36,9 @@ classes:
     - image_size
     - date_time
     - exposure_time
+    - frame_time
     - cryogen
     - frames_per_movie
-    - frame_time
     - grids_imaged
     - images_generated
     - binning_camera
@@ -116,11 +115,17 @@ classes:
 
 slots:
   screen_current:
-    range: float
     description: Last measured screen current, in nA.
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   target_defocus:
-    range: float
     description: Target defocus, in nm.
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   nominal_defocus:
     range: Range
     description: Target defocus set, min and max values in µm.
@@ -132,9 +137,6 @@ slots:
     range: integer
   calibrated_magnification:
     description: Calculated magnification, no unit
-    range: integer
-  stem_magnification:
-    description: STEM magnification, no unit
     range: integer
   holder:
     description: Speciman holder model
@@ -183,15 +185,18 @@ slots:
     any_of:
       - range:  QuantityValue
       - range:  QuantitySI
+  frame_time:
+    description: Time per frame - in s
+    range: Any
+    any_of:
+      - range:  QuantityValue
+      - range:  QuantitySI
   cryogen:
     description: Cryogen used in cooling the instrument and sample, usually nitrogen
     range: string
   frames_per_movie:
     description: Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
     range: integer
-  frame_time:
-    description: Time per frame, in seconds
-    range: float
   grids_imaged:
     description: Number of grids imaged for this project - here with qualifier during this data acquisition
     range: integer
