@@ -373,6 +373,13 @@
 
       Acquisition : frame_time
 
+
+
+
+    Acquisition --&gt; "0..1" Any : frame_time
+    click Any href "../Any"
+
+
       Acquisition : frames_per_movie
 
       Acquisition : gainref_flip_rotate
@@ -427,6 +434,13 @@
 
       Acquisition : screen_current
 
+
+
+
+    Acquisition --&gt; "0..1" Any : screen_current
+    click Any href "../Any"
+
+
       Acquisition : specialist_optics
 
 
@@ -436,9 +450,14 @@
     click SpecialistOptics href "../SpecialistOptics"
 
 
-      Acquisition : stem_magnification
-
       Acquisition : target_defocus
+
+
+
+
+    Acquisition --&gt; "0..1" Any : target_defocus
+    click Any href "../Any"
+
 
       Acquisition : temperature_range
 
@@ -471,13 +490,13 @@
 <tbody>
 <tr>
 <td><a href="../screen_current/">screen_current</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Last measured screen current, in nA</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../target_defocus/">target_defocus</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Target defocus, in nm</td>
 <td>direct</td>
 </tr>
@@ -503,12 +522,6 @@
 <td><a href="../calibrated_magnification/">calibrated_magnification</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Calculated magnification, no unit</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../stem_magnification/">stem_magnification</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>STEM magnification, no unit</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -578,6 +591,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../frame_time/">frame_time</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>Time per frame - in s</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../cryogen/">cryogen</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Cryogen used in cooling the instrument and sample, usually nitrogen</td>
@@ -587,12 +606,6 @@
 <td><a href="../frames_per_movie/">frames_per_movie</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Number of frames that on average constitute a full movie, can be a bit hard t...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../frame_time/">frame_time</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Time per frame, in seconds</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -695,7 +708,6 @@ slots:
 - calibrated_defocus
 - nominal_magnification
 - calibrated_magnification
-- stem_magnification
 - holder
 - holder_cryogen
 - temperature_range
@@ -707,9 +719,9 @@ slots:
 - image_size
 - date_time
 - exposure_time
+- frame_time
 - cryogen
 - frames_per_movie
-- frame_time
 - grids_imaged
 - images_generated
 - binning_camera
@@ -770,7 +782,10 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: float
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   target_defocus:
     name: target_defocus
     description: Target defocus, in nm.
@@ -780,7 +795,10 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: float
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   nominal_defocus:
     name: nominal_defocus
     description: Target defocus set, min and max values in µm.
@@ -818,16 +836,6 @@ attributes:
     from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
     rank: 1000
     alias: calibrated_magnification
-    owner: Acquisition
-    domain_of:
-    - Acquisition
-    range: integer
-  stem_magnification:
-    name: stem_magnification
-    description: STEM magnification, no unit
-    from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
-    rank: 1000
-    alias: stem_magnification
     owner: Acquisition
     domain_of:
     - Acquisition
@@ -952,6 +960,19 @@ attributes:
     any_of:
     - range: QuantityValue
     - range: QuantitySI
+  frame_time:
+    name: frame_time
+    description: Time per frame - in s
+    from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
+    rank: 1000
+    alias: frame_time
+    owner: Acquisition
+    domain_of:
+    - Acquisition
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   cryogen:
     name: cryogen
     description: Cryogen used in cooling the instrument and sample, usually nitrogen
@@ -973,16 +994,6 @@ attributes:
     domain_of:
     - Acquisition
     range: integer
-  frame_time:
-    name: frame_time
-    description: Time per frame, in seconds
-    from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
-    rank: 1000
-    alias: frame_time
-    owner: Acquisition
-    domain_of:
-    - Acquisition
-    range: float
   grids_imaged:
     name: grids_imaged
     description: Number of grids imaged for this project - here with qualifier during
