@@ -340,13 +340,6 @@
 
       Instrument : illumination
 
-
-
-
-    Instrument --&gt; "1" Illumination : illumination
-    click Illumination href "../Illumination"
-
-
       Instrument : imaging
 
       Instrument : microscope
@@ -382,7 +375,7 @@
 </tr>
 <tr>
 <td><a href="../illumination/">illumination</a></td>
-<td>1 <br/> <a href="../Illumination/">Illumination</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>Mode of illumination used during data collection</td>
 <td>direct</td>
 </tr>
@@ -419,13 +412,13 @@
 <tr>
 <td><a href="../operating_mode/">operating_mode</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Operating mode of the microscope</td>
+<td>Operating mode of the microscope, i</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../beam_convergence/">beam_convergence</a></td>
 <td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
-<td>Beam convergence, in mrad</td>
+<td>Refers to how tightly or widely the electron beam is focused onto the sample,...</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -575,7 +568,7 @@ attributes:
     owner: Instrument
     domain_of:
     - Instrument
-    range: Illumination
+    range: string
     required: true
   imaging:
     name: imaging
@@ -643,7 +636,7 @@ attributes:
     - range: QuantitySI
   operating_mode:
     name: operating_mode
-    description: Operating mode of the microscope
+    description: Operating mode of the microscope, i.e. "TEM", "STEM"
     from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
     rank: 1000
     alias: operating_mode
@@ -654,7 +647,8 @@ attributes:
     required: false
   beam_convergence:
     name: beam_convergence
-    description: Beam convergence, in mrad
+    description: Refers to how tightly or widely the electron beam is focused onto
+      the sample, in mrad. Typically low convergence for TEM and high for STEM.
     from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
     rank: 1000
     alias: beam_convergence

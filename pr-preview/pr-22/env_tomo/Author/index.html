@@ -312,15 +312,19 @@
 
       Author : email
 
-      Author : first_name
+      Author : family_name
 
-      Author : last_name
+      Author : given_name
+
+      Author : job_title
 
       Author : name_org
 
       Author : orcid
 
       Author : role
+
+      Author : telephone
 
       Author : type_org
 
@@ -330,10 +334,6 @@
     Author --&gt; "1" OrganizationTypeEnum : type_org
     click OrganizationTypeEnum href "../OrganizationTypeEnum"
 
-
-      Author : work_phone
-
-      Author : work_status
 
 
 </div>
@@ -386,21 +386,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../last_name/">last_name</a></td>
+<td><a href="../family_name/">family_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>last name</td>
 <td><a href="../Person/">Person</a></td>
 </tr>
 <tr>
-<td><a href="../first_name/">first_name</a></td>
+<td><a href="../given_name/">given_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>first name</td>
 <td><a href="../Person/">Person</a></td>
 </tr>
 <tr>
-<td><a href="../work_status/">work_status</a></td>
+<td><a href="../job_title/">job_title</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>work status</td>
+<td>job title</td>
 <td><a href="../Person/">Person</a></td>
 </tr>
 <tr>
@@ -410,7 +410,7 @@
 <td><a href="../Person/">Person</a></td>
 </tr>
 <tr>
-<td><a href="../work_phone/">work_phone</a></td>
+<td><a href="../telephone/">telephone</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>work phone</td>
 <td><a href="../Person/">Person</a></td>
@@ -475,11 +475,11 @@ slots:
 - name_org
 - type_org
 slot_usage:
-  last_name:
-    name: last_name
+  family_name:
+    name: family_name
     required: true
-  first_name:
-    name: first_name
+  given_name:
+    name: given_name
     required: true
   email:
     name: email
@@ -506,11 +506,11 @@ description: Details on the person performing the experiment.
 from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
 is_a: Person
 slot_usage:
-  last_name:
-    name: last_name
+  family_name:
+    name: family_name
     required: true
-  first_name:
-    name: first_name
+  given_name:
+    name: given_name
     required: true
   email:
     name: email
@@ -585,35 +585,37 @@ attributes:
     - Funder
     range: OrganizationTypeEnum
     required: true
-  last_name:
-    name: last_name
+  family_name:
+    name: family_name
     description: last name
     from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
     rank: 1000
-    slot_uri: schema:last_name
-    alias: last_name
+    slot_uri: schema:familyName
+    alias: family_name
     owner: Author
     domain_of:
     - Person
     range: string
     required: true
-  first_name:
-    name: first_name
+  given_name:
+    name: given_name
     description: first name
     from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
     rank: 1000
-    alias: first_name
+    slot_uri: schema:givenName
+    alias: given_name
     owner: Author
     domain_of:
     - Person
     range: string
     required: true
-  work_status:
-    name: work_status
-    description: work status
+  job_title:
+    name: job_title
+    description: job title
     from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
     rank: 1000
-    alias: work_status
+    slot_uri: schema:jobTitle
+    alias: job_title
     owner: Author
     domain_of:
     - Person
@@ -631,13 +633,13 @@ attributes:
     range: string
     required: true
     pattern: ^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$
-  work_phone:
-    name: work_phone
+  telephone:
+    name: telephone
     description: work phone
     from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
     rank: 1000
     slot_uri: schema:telephone
-    alias: work_phone
+    alias: telephone
     owner: Author
     domain_of:
     - Person
