@@ -340,16 +340,21 @@
 
       Acquisition : date_time
 
-      Acquisition : detector
+      Acquisition : detectors
 
-      Acquisition : detector_mode
+
+
+
+    Acquisition --&gt; "1..*" Detector : detectors
+    click Detector href "../Detector"
+
 
       Acquisition : dose_per_movie
 
 
 
 
-    Acquisition --&gt; "1" Any : dose_per_movie
+    Acquisition --&gt; "0..1" Any : dose_per_movie
     click Any href "../Any"
 
 
@@ -368,15 +373,6 @@
 
 
     Acquisition --&gt; "0..1" Any : exposure_time
-    click Any href "../Any"
-
-
-      Acquisition : frame_time
-
-
-
-
-    Acquisition --&gt; "0..1" Any : frame_time
     click Any href "../Any"
 
 
@@ -450,15 +446,6 @@
     click SpecialistOptics href "../SpecialistOptics"
 
 
-      Acquisition : target_defocus
-
-
-
-
-    Acquisition --&gt; "0..1" Any : target_defocus
-    click Any href "../Any"
-
-
       Acquisition : temperature_range
 
 
@@ -491,19 +478,13 @@
 <tr>
 <td><a href="../screen_current/">screen_current</a></td>
 <td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
-<td>Last measured screen current, in nA</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../target_defocus/">target_defocus</a></td>
-<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
-<td>Target defocus, in nm</td>
+<td>The total electron beam current hitting the viewing screen, in nA</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../nominal_defocus/">nominal_defocus</a></td>
 <td>0..1 <br/> <a href="../Range/">Range</a></td>
-<td>Target defocus set, min and max values in µm</td>
+<td>Target defocus set, min and max values in nm</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -549,27 +530,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../detector/">detector</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>Make and model of the detector used</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../detector_mode/">detector_mode</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Operating mode of the detector</td>
+<td><a href="../detectors/">detectors</a></td>
+<td>1..* <br/> <a href="../Detector/">Detector</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../dose_per_movie/">dose_per_movie</a></td>
-<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Average dose per image/movie/tilt - given in electrons per square Angstrom</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../energy_filter/">energy_filter</a></td>
 <td>0..1 <br/> <a href="../EnergyFilter/">EnergyFilter</a></td>
-<td>Wether an energy filter was used and its specifics</td>
+<td>Whether an energy filter was used and its specifics</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -588,12 +563,6 @@
 <td><a href="../exposure_time/">exposure_time</a></td>
 <td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Time of data acquisition per movie/tilt - in s</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../frame_time/">frame_time</a></td>
-<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
-<td>Time per frame - in s</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -622,7 +591,7 @@
 </tr>
 <tr>
 <td><a href="../binning_camera/">binning_camera</a></td>
-<td>1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Level of binning on the images applied during data collection</td>
 <td>direct</td>
 </tr>
@@ -703,7 +672,6 @@ description: A set of parameteres describing the data acquisition
 from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
 slots:
 - screen_current
-- target_defocus
 - nominal_defocus
 - calibrated_defocus
 - nominal_magnification
@@ -712,14 +680,12 @@ slots:
 - holder_cryogen
 - temperature_range
 - microscope_software
-- detector
-- detector_mode
+- detectors
 - dose_per_movie
 - energy_filter
 - image_size
 - date_time
 - exposure_time
-- frame_time
 - cryogen
 - frames_per_movie
 - grids_imaged
@@ -733,17 +699,11 @@ slots:
 - beamtiltgroups
 - gainref_flip_rotate
 slot_usage:
-  detector:
-    name: detector
-    required: true
-  dose_per_movie:
-    name: dose_per_movie
+  detectors:
+    name: detectors
     required: true
   date_time:
     name: date_time
-    required: true
-  binning_camera:
-    name: binning_camera
     required: true
   pixel_size:
     name: pixel_size
@@ -757,17 +717,11 @@ slot_usage:
 description: A set of parameteres describing the data acquisition
 from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
 slot_usage:
-  detector:
-    name: detector
-    required: true
-  dose_per_movie:
-    name: dose_per_movie
+  detectors:
+    name: detectors
     required: true
   date_time:
     name: date_time
-    required: true
-  binning_camera:
-    name: binning_camera
     required: true
   pixel_size:
     name: pixel_size
@@ -775,7 +729,7 @@ slot_usage:
 attributes:
   screen_current:
     name: screen_current
-    description: Last measured screen current, in nA.
+    description: The total electron beam current hitting the viewing screen, in nA.
     from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
     rank: 1000
     alias: screen_current
@@ -786,22 +740,9 @@ attributes:
     any_of:
     - range: QuantityValue
     - range: QuantitySI
-  target_defocus:
-    name: target_defocus
-    description: Target defocus, in nm.
-    from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
-    rank: 1000
-    alias: target_defocus
-    owner: Acquisition
-    domain_of:
-    - Acquisition
-    range: Any
-    any_of:
-    - range: QuantityValue
-    - range: QuantitySI
   nominal_defocus:
     name: nominal_defocus
-    description: Target defocus set, min and max values in µm.
+    description: Target defocus set, min and max values in nm.
     from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
     rank: 1000
     alias: nominal_defocus
@@ -880,27 +821,17 @@ attributes:
     domain_of:
     - Acquisition
     range: string
-  detector:
-    name: detector
-    description: Make and model of the detector used
+  detectors:
+    name: detectors
     from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
     rank: 1000
-    alias: detector
+    alias: detectors
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: string
+    range: Detector
     required: true
-  detector_mode:
-    name: detector_mode
-    description: Operating mode of the detector
-    from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
-    rank: 1000
-    alias: detector_mode
-    owner: Acquisition
-    domain_of:
-    - Acquisition
-    range: string
+    multivalued: true
   dose_per_movie:
     name: dose_per_movie
     description: Average dose per image/movie/tilt - given in electrons per square
@@ -912,13 +843,12 @@ attributes:
     domain_of:
     - Acquisition
     range: Any
-    required: true
     any_of:
     - range: QuantityValue
     - range: QuantitySI
   energy_filter:
     name: energy_filter
-    description: Wether an energy filter was used and its specifics.
+    description: Whether an energy filter was used and its specifics.
     from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
     rank: 1000
     alias: energy_filter
@@ -953,19 +883,6 @@ attributes:
     from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
     rank: 1000
     alias: exposure_time
-    owner: Acquisition
-    domain_of:
-    - Acquisition
-    range: Any
-    any_of:
-    - range: QuantityValue
-    - range: QuantitySI
-  frame_time:
-    name: frame_time
-    description: Time per frame - in s
-    from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
-    rank: 1000
-    alias: frame_time
     owner: Acquisition
     domain_of:
     - Acquisition
@@ -1027,7 +944,6 @@ attributes:
     domain_of:
     - Acquisition
     range: float
-    required: true
   pixel_size:
     name: pixel_size
     description: Pixel size, in Angstrom
