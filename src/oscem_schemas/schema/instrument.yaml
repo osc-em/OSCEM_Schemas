@@ -63,29 +63,10 @@ classes:
         required: false
       manufacturer:
         required: false
-  
-  Illumination:
-    description: Illumination information
-    class_uri: schema:Illumination
-    slots:
-     - mode
-     - probe_mode
-    slot_usage:
-      mode:
-        required: true
-      probe_mode:
-        required: false
 
 slots:
   class:
     description: Microscope class
-    range: string
-
-  mode:
-    description: Illumination mode
-    range: string
-  probe_mode:
-    description: Illumination probe mode
     range: string
 
   microscope:
@@ -93,7 +74,7 @@ slots:
     range: Microscope
   illumination:
     description: Mode of illumination used during data collection
-    range: Illumination
+    range: string
   imaging:
     description: Mode of imaging used during data collection
     range: string
@@ -119,10 +100,10 @@ slots:
       - range:  QuantityValue
       - range:  QuantitySI
   operating_mode:
-    description: Operating mode of the microscope
+    description: Operating mode of the microscope, i.e. "TEM", "STEM"
     range: string
   beam_convergence:
-    description: Beam convergence, in mrad
+    description: Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM.
     range: Any
     any_of:
       - range: QuantityValue
