@@ -47,19 +47,21 @@ classes:
   Sample:
     description: Unifying class to describe the full sample.
     slots:
-      - general
+      - name
+      - description
       - overall_molecule
       - molecule
       - ligands
       - specimen
       - grid
     slot_usage:
-      general:
-        # alias: General
-        required: false
+      name:
+        required: true
+      description:
+        required: true
       overall_molecule:
         # alias: Overall_Molecule
-        required: true
+        required: false
       molecule:
         # alias: Molecule
         required: false
@@ -70,17 +72,6 @@ classes:
         required: false
       grid:
         # alias: Grid
-
-  General:
-    description: General information about the sample
-    slots:
-      - name
-      - description
-    slot_usage:
-      name:
-        required: false
-      description:
-        required: false
 
   OverallMolecule:
     description: Description of the overall molecule
@@ -233,13 +224,15 @@ classes:
       pretreatment_atmosphere:
         # alias: Pretreatment_atmosphere
 
-  SampleGeneral:
+  SampleMolecular:
     is_a: Sample
     slot_usage:
-      general:
-        required: true
-      overall_molecule:
+      name:
         required: false
+      description:
+        required: false
+      overall_molecule:
+        required: true
 
 
 slots:
@@ -374,9 +367,6 @@ slots:
     description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
     range: string
 
-  general:
-    description: General information about the sample
-    range: General
   overall_molecule:
     description: Description of the overall molecule
     range: OverallMolecule
