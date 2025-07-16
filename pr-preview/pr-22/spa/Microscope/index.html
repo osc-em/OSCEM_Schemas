@@ -300,8 +300,6 @@
 <div class="mermaid"> classDiagram
     class Microscope
     click Microscope href "../Microscope"
-      Microscope : family
-
       Microscope : manufacturer
 
       Microscope : model
@@ -321,14 +319,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../family/">family</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>Microscope family, i</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../model/">model</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>The model of the item</td>
 <td>direct</td>
 </tr>
@@ -391,16 +383,12 @@
 description: Microscope information
 from_schema: https://w3id.org/osc-em/oscem-schemas-spa
 slots:
-- family
 - model
 - manufacturer
 slot_usage:
-  family:
-    name: family
-    required: true
   model:
     name: model
-    required: false
+    required: true
   manufacturer:
     name: manufacturer
     required: false
@@ -414,27 +402,13 @@ class_uri: schema:Microscope
 description: Microscope information
 from_schema: https://w3id.org/osc-em/oscem-schemas-spa
 slot_usage:
-  family:
-    name: family
-    required: true
   model:
     name: model
-    required: false
+    required: true
   manufacturer:
     name: manufacturer
     required: false
 attributes:
-  family:
-    name: family
-    description: Microscope family, i.e. "Titan", "Talos"
-    from_schema: https://w3id.org/osc-em/oscem-schemas-spa
-    rank: 1000
-    alias: family
-    owner: Microscope
-    domain_of:
-    - Microscope
-    range: string
-    required: true
   model:
     name: model
     description: The model of the item
@@ -446,7 +420,7 @@ attributes:
     - EnergyFilter
     - Microscope
     range: string
-    required: false
+    required: true
   manufacturer:
     name: manufacturer
     description: The name of the manufacturer
