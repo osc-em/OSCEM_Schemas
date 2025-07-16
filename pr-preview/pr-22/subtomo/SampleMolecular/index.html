@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://osc-em.github.io/OSCEM-schemas/subtomo/General/" rel="canonical"/>
+<link href="https://osc-em.github.io/OSCEM-schemas/subtomo/SampleMolecular/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: General - OSCEM-schemas</title>
+<title>Class: SampleMolecular - OSCEM-schemas</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-general">
+<a class="md-skip" href="#class-samplemolecular">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: General
+              Class: SampleMolecular
             
           </span>
 </div>
@@ -237,6 +237,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+    Inheritance
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -291,22 +296,75 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/osc-em/OSCEM-schemas/edit/master/docs/subtomo/General.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/osc-em/OSCEM-schemas/edit/master/docs/subtomo/SampleMolecular.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-general">Class: General</h1>
-<p><em>General information about the sample</em></p>
-<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-subtomo/:General">https://w3id.org/osc-em/oscem-schemas-subtomo/:General</a></p>
+<h1 id="class-samplemolecular">Class: SampleMolecular</h1>
+<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-subtomo/:SampleMolecular">https://w3id.org/osc-em/oscem-schemas-subtomo/:SampleMolecular</a></p>
 <div class="mermaid"> classDiagram
-    class General
-    click General href "../General"
-      General : description
+    class SampleMolecular
+    click SampleMolecular href "../SampleMolecular"
+      Sample &lt;|-- SampleMolecular
+        click Sample href "../Sample"
 
-      General : name
+      SampleMolecular : description
+
+      SampleMolecular : grid
+
+
+
+
+    SampleMolecular --&gt; "0..1" Grid : grid
+    click Grid href "../Grid"
+
+
+      SampleMolecular : ligands
+
+
+
+
+    SampleMolecular --&gt; "*" Ligand : ligands
+    click Ligand href "../Ligand"
+
+
+      SampleMolecular : molecule
+
+
+
+
+    SampleMolecular --&gt; "*" Molecule : molecule
+    click Molecule href "../Molecule"
+
+
+      SampleMolecular : name
+
+      SampleMolecular : overall_molecule
+
+
+
+
+    SampleMolecular --&gt; "1" OverallMolecule : overall_molecule
+    click OverallMolecule href "../OverallMolecule"
+
+
+      SampleMolecular : specimen
+
+
+
+
+    SampleMolecular --&gt; "0..1" Specimen : specimen
+    click Specimen href "../Specimen"
+
 
 
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Sample/">Sample</a><ul>
+<li><strong>SampleMolecular</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -322,13 +380,43 @@
 <td><a href="../name/">name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The name of the item</td>
-<td>direct</td>
+<td><a href="../Sample/">Sample</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The description of the item</td>
-<td>direct</td>
+<td><a href="../Sample/">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../overall_molecule/">overall_molecule</a></td>
+<td>1 <br/> <a href="../OverallMolecule/">OverallMolecule</a></td>
+<td>Description of the overall molecule</td>
+<td><a href="../Sample/">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../molecule/">molecule</a></td>
+<td>* <br/> <a href="../Molecule/">Molecule</a></td>
+<td>List of molecule associated with the sample</td>
+<td><a href="../Sample/">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../ligands/">ligands</a></td>
+<td>* <br/> <a href="../Ligand/">Ligand</a></td>
+<td>List of ligands associated with the sample</td>
+<td><a href="../Sample/">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../specimen/">specimen</a></td>
+<td>0..1 <br/> <a href="../Specimen/">Specimen</a></td>
+<td>Description of the specimen</td>
+<td><a href="../Sample/">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../grid/">grid</a></td>
+<td>0..1 <br/> <a href="../Grid/">Grid</a></td>
+<td>Description of the grid used</td>
+<td><a href="../Sample/">Sample</a></td>
 </tr>
 </tbody>
 </table>
@@ -344,16 +432,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Sample/">Sample</a></td>
-<td><a href="../general/">general</a></td>
+<td><a href="../EMDatasetTomo/">EMDatasetTomo</a></td>
+<td><a href="../sample/">sample</a></td>
 <td>range</td>
-<td><a href="./">General</a></td>
-</tr>
-<tr>
-<td><a href="../SampleGeneral/">SampleGeneral</a></td>
-<td><a href="../general/">general</a></td>
-<td>range</td>
-<td><a href="./">General</a></td>
+<td><a href="./">SampleMolecular</a></td>
 </tr>
 </tbody>
 </table>
@@ -373,11 +455,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>https://w3id.org/osc-em/oscem-schemas-subtomo/:General</td>
+<td>https://w3id.org/osc-em/oscem-schemas-subtomo/:SampleMolecular</td>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/osc-em/oscem-schemas-subtomo/:General</td>
+<td>https://w3id.org/osc-em/oscem-schemas-subtomo/:SampleMolecular</td>
 </tr>
 </tbody>
 </table>
@@ -385,12 +467,9 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: General
-description: General information about the sample
+<pre><code class="language-yaml">name: SampleMolecular
 from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
-slots:
-- name
-- description
+is_a: Sample
 slot_usage:
   name:
     name: name
@@ -398,14 +477,17 @@ slot_usage:
   description:
     name: description
     required: false
+  overall_molecule:
+    name: overall_molecule
+    required: true
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: General
-description: General information about the sample
+<pre><code class="language-yaml">name: SampleMolecular
 from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+is_a: Sample
 slot_usage:
   name:
     name: name
@@ -413,6 +495,9 @@ slot_usage:
   description:
     name: description
     required: false
+  overall_molecule:
+    name: overall_molecule
+    required: true
 attributes:
   name:
     name: name
@@ -420,10 +505,10 @@ attributes:
     from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
     rank: 1000
     alias: name
-    owner: General
+    owner: SampleMolecular
     domain_of:
     - Detector
-    - General
+    - Sample
     range: string
     required: false
   description:
@@ -432,11 +517,66 @@ attributes:
     from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
     rank: 1000
     alias: description
-    owner: General
+    owner: SampleMolecular
     domain_of:
-    - General
+    - Sample
     range: string
     required: false
+  overall_molecule:
+    name: overall_molecule
+    description: Description of the overall molecule
+    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+    rank: 1000
+    alias: overall_molecule
+    owner: SampleMolecular
+    domain_of:
+    - Sample
+    range: OverallMolecule
+    required: true
+  molecule:
+    name: molecule
+    description: List of molecule associated with the sample
+    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+    rank: 1000
+    alias: molecule
+    owner: SampleMolecular
+    domain_of:
+    - Sample
+    range: Molecule
+    required: false
+    multivalued: true
+  ligands:
+    name: ligands
+    description: List of ligands associated with the sample
+    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+    rank: 1000
+    alias: ligands
+    owner: SampleMolecular
+    domain_of:
+    - Sample
+    range: Ligand
+    multivalued: true
+  specimen:
+    name: specimen
+    description: Description of the specimen
+    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+    rank: 1000
+    alias: specimen
+    owner: SampleMolecular
+    domain_of:
+    - Sample
+    range: Specimen
+    required: false
+  grid:
+    name: grid
+    description: Description of the grid used
+    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+    rank: 1000
+    alias: grid
+    owner: SampleMolecular
+    domain_of:
+    - Sample
+    range: Grid
 
 </code></pre>
 </details>
