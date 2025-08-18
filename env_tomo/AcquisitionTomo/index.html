@@ -329,6 +329,13 @@
 
       AcquisitionTomo : binning_camera
 
+
+
+
+    AcquisitionTomo --&gt; "1" ImageSize : binning_camera
+    click ImageSize href "../ImageSize"
+
+
       AcquisitionTomo : calibrated_defocus
 
 
@@ -344,16 +351,21 @@
 
       AcquisitionTomo : date_time
 
-      AcquisitionTomo : detector
+      AcquisitionTomo : detectors
 
-      AcquisitionTomo : detector_mode
+
+
+
+    AcquisitionTomo --&gt; "1..*" Detector : detectors
+    click Detector href "../Detector"
+
 
       AcquisitionTomo : dose_per_movie
 
 
 
 
-    AcquisitionTomo --&gt; "1" Any : dose_per_movie
+    AcquisitionTomo --&gt; "0..1" Any : dose_per_movie
     click Any href "../Any"
 
 
@@ -427,6 +439,15 @@
     click Any href "../Any"
 
 
+      AcquisitionTomo : screen_current
+
+
+
+
+    AcquisitionTomo --&gt; "0..1" Any : screen_current
+    click Any href "../Any"
+
+
       AcquisitionTomo : specialist_optics
 
 
@@ -489,9 +510,15 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../screen_current/">screen_current</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>The total electron beam current hitting the viewing screen, in nA</td>
+<td><a href="../Acquisition/">Acquisition</a></td>
+</tr>
+<tr>
 <td><a href="../nominal_defocus/">nominal_defocus</a></td>
 <td>0..1 <br/> <a href="../Range/">Range</a></td>
-<td>Target defocus set, min and max values in µm</td>
+<td>Target defocus set, min and max values in nm</td>
 <td><a href="../Acquisition/">Acquisition</a></td>
 </tr>
 <tr>
@@ -537,27 +564,21 @@
 <td><a href="../Acquisition/">Acquisition</a></td>
 </tr>
 <tr>
-<td><a href="../detector/">detector</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>Make and model of the detector used</td>
-<td><a href="../Acquisition/">Acquisition</a></td>
-</tr>
-<tr>
-<td><a href="../detector_mode/">detector_mode</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Operating mode of the detector</td>
+<td><a href="../detectors/">detectors</a></td>
+<td>1..* <br/> <a href="../Detector/">Detector</a></td>
+<td></td>
 <td><a href="../Acquisition/">Acquisition</a></td>
 </tr>
 <tr>
 <td><a href="../dose_per_movie/">dose_per_movie</a></td>
-<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Average dose per image/movie/tilt - given in electrons per square Angstrom</td>
 <td><a href="../Acquisition/">Acquisition</a></td>
 </tr>
 <tr>
 <td><a href="../energy_filter/">energy_filter</a></td>
 <td>0..1 <br/> <a href="../EnergyFilter/">EnergyFilter</a></td>
-<td>Wether an energy filter was used and its specifics</td>
+<td>Whether an energy filter was used and its specifics</td>
 <td><a href="../Acquisition/">Acquisition</a></td>
 </tr>
 <tr>
@@ -604,7 +625,7 @@
 </tr>
 <tr>
 <td><a href="../binning_camera/">binning_camera</a></td>
-<td>1 <br/> <a href="../Float/">Float</a></td>
+<td>1 <br/> <a href="../ImageSize/">ImageSize</a></td>
 <td>Level of binning on the images applied during data collection</td>
 <td><a href="../Acquisition/">Acquisition</a></td>
 </tr>
@@ -751,9 +772,22 @@ attributes:
     - AcquisitionTomo
     range: TiltAngle
     required: true
+  screen_current:
+    name: screen_current
+    description: The total electron beam current hitting the viewing screen, in nA.
+    from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
+    rank: 1000
+    alias: screen_current
+    owner: AcquisitionTomo
+    domain_of:
+    - Acquisition
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   nominal_defocus:
     name: nominal_defocus
-    description: Target defocus set, min and max values in µm.
+    description: Target defocus set, min and max values in nm.
     from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
     rank: 1000
     alias: nominal_defocus
@@ -832,27 +866,17 @@ attributes:
     domain_of:
     - Acquisition
     range: string
-  detector:
-    name: detector
-    description: Make and model of the detector used
+  detectors:
+    name: detectors
     from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
     rank: 1000
-    alias: detector
+    alias: detectors
     owner: AcquisitionTomo
     domain_of:
     - Acquisition
-    range: string
+    range: Detector
     required: true
-  detector_mode:
-    name: detector_mode
-    description: Operating mode of the detector
-    from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
-    rank: 1000
-    alias: detector_mode
-    owner: AcquisitionTomo
-    domain_of:
-    - Acquisition
-    range: string
+    multivalued: true
   dose_per_movie:
     name: dose_per_movie
     description: Average dose per image/movie/tilt - given in electrons per square
@@ -864,13 +888,12 @@ attributes:
     domain_of:
     - Acquisition
     range: Any
-    required: true
     any_of:
     - range: QuantityValue
     - range: QuantitySI
   energy_filter:
     name: energy_filter
-    description: Wether an energy filter was used and its specifics.
+    description: Whether an energy filter was used and its specifics.
     from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
     rank: 1000
     alias: energy_filter
@@ -965,7 +988,7 @@ attributes:
     owner: AcquisitionTomo
     domain_of:
     - Acquisition
-    range: float
+    range: ImageSize
     required: true
   pixel_size:
     name: pixel_size

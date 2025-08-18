@@ -309,6 +309,15 @@
     click Any href "../Any"
 
 
+      Instrument : beam_convergence
+
+
+
+
+    Instrument --&gt; "0..1" Any : beam_convergence
+    click Any href "../Any"
+
+
       Instrument : c2_aperture
 
 
@@ -323,7 +332,7 @@
 
 
 
-    Instrument --&gt; "1" Any : cs
+    Instrument --&gt; "0..1" Any : cs
     click Any href "../Any"
 
 
@@ -334,6 +343,15 @@
       Instrument : imaging
 
       Instrument : microscope
+
+
+
+
+    Instrument --&gt; "1" Microscope : microscope
+    click Microscope href "../Microscope"
+
+
+      Instrument : operating_mode
 
 
 </div>
@@ -351,8 +369,8 @@
 <tbody>
 <tr>
 <td><a href="../microscope/">microscope</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>Name/Type of the Microscope</td>
+<td>1 <br/> <a href="../Microscope/">Microscope</a></td>
+<td>Microscope information</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -387,8 +405,20 @@
 </tr>
 <tr>
 <td><a href="../cs/">cs</a></td>
-<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Spherical aberration of the instrument, in mm</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../operating_mode/">operating_mode</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Operating mode of the microscope, i</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../beam_convergence/">beam_convergence</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>Refers to how tightly or widely the electron beam is focused onto the sample,...</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -451,6 +481,8 @@ slots:
 - acceleration_voltage
 - c2_aperture
 - cs
+- operating_mode
+- beam_convergence
 slot_usage:
   microscope:
     name: microscope
@@ -467,9 +499,18 @@ slot_usage:
   acceleration_voltage:
     name: acceleration_voltage
     required: true
+  c2_aperture:
+    name: c2_aperture
+    required: false
   cs:
     name: cs
-    required: true
+    required: false
+  operating_mode:
+    name: operating_mode
+    required: false
+  beam_convergence:
+    name: beam_convergence
+    required: false
 
 </code></pre>
 </details>
@@ -494,20 +535,29 @@ slot_usage:
   acceleration_voltage:
     name: acceleration_voltage
     required: true
+  c2_aperture:
+    name: c2_aperture
+    required: false
   cs:
     name: cs
-    required: true
+    required: false
+  operating_mode:
+    name: operating_mode
+    required: false
+  beam_convergence:
+    name: beam_convergence
+    required: false
 attributes:
   microscope:
     name: microscope
-    description: Name/Type of the Microscope
+    description: Microscope information
     from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
     rank: 1000
     alias: microscope
     owner: Instrument
     domain_of:
     - Instrument
-    range: string
+    range: Microscope
     required: true
   illumination:
     name: illumination
@@ -566,6 +616,7 @@ attributes:
     domain_of:
     - Instrument
     range: Any
+    required: false
     any_of:
     - range: QuantityValue
     - range: QuantitySI
@@ -579,7 +630,33 @@ attributes:
     domain_of:
     - Instrument
     range: Any
-    required: true
+    required: false
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
+  operating_mode:
+    name: operating_mode
+    description: Operating mode of the microscope, i.e. "TEM", "STEM"
+    from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
+    rank: 1000
+    alias: operating_mode
+    owner: Instrument
+    domain_of:
+    - Instrument
+    range: string
+    required: false
+  beam_convergence:
+    name: beam_convergence
+    description: Refers to how tightly or widely the electron beam is focused onto
+      the sample, in mrad. Typically low convergence for TEM and high for STEM.
+    from_schema: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
+    rank: 1000
+    alias: beam_convergence
+    owner: Instrument
+    domain_of:
+    - Instrument
+    range: Any
+    required: false
     any_of:
     - range: QuantityValue
     - range: QuantitySI

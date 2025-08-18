@@ -322,6 +322,13 @@
 
       Acquisition : binning_camera
 
+
+
+
+    Acquisition --&gt; "1" ImageSize : binning_camera
+    click ImageSize href "../ImageSize"
+
+
       Acquisition : calibrated_defocus
 
 
@@ -337,16 +344,21 @@
 
       Acquisition : date_time
 
-      Acquisition : detector
+      Acquisition : detectors
 
-      Acquisition : detector_mode
+
+
+
+    Acquisition --&gt; "1..*" Detector : detectors
+    click Detector href "../Detector"
+
 
       Acquisition : dose_per_movie
 
 
 
 
-    Acquisition --&gt; "1" Any : dose_per_movie
+    Acquisition --&gt; "0..1" Any : dose_per_movie
     click Any href "../Any"
 
 
@@ -420,6 +432,15 @@
     click Any href "../Any"
 
 
+      Acquisition : screen_current
+
+
+
+
+    Acquisition --&gt; "0..1" Any : screen_current
+    click Any href "../Any"
+
+
       Acquisition : specialist_optics
 
 
@@ -453,9 +474,15 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../screen_current/">screen_current</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>The total electron beam current hitting the viewing screen, in nA</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../nominal_defocus/">nominal_defocus</a></td>
 <td>0..1 <br/> <a href="../Range/">Range</a></td>
-<td>Target defocus set, min and max values in µm</td>
+<td>Target defocus set, min and max values in nm</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -501,27 +528,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../detector/">detector</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>Make and model of the detector used</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../detector_mode/">detector_mode</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Operating mode of the detector</td>
+<td><a href="../detectors/">detectors</a></td>
+<td>1..* <br/> <a href="../Detector/">Detector</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../dose_per_movie/">dose_per_movie</a></td>
-<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
 <td>Average dose per image/movie/tilt - given in electrons per square Angstrom</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../energy_filter/">energy_filter</a></td>
 <td>0..1 <br/> <a href="../EnergyFilter/">EnergyFilter</a></td>
-<td>Wether an energy filter was used and its specifics</td>
+<td>Whether an energy filter was used and its specifics</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -568,7 +589,7 @@
 </tr>
 <tr>
 <td><a href="../binning_camera/">binning_camera</a></td>
-<td>1 <br/> <a href="../Float/">Float</a></td>
+<td>1 <br/> <a href="../ImageSize/">ImageSize</a></td>
 <td>Level of binning on the images applied during data collection</td>
 <td>direct</td>
 </tr>
@@ -667,6 +688,7 @@
 description: A set of parameteres describing the data acquisition
 from_schema: https://w3id.org/osc-em/oscem-schemas-spa
 slots:
+- screen_current
 - nominal_defocus
 - calibrated_defocus
 - nominal_magnification
@@ -675,8 +697,7 @@ slots:
 - holder_cryogen
 - temperature_range
 - microscope_software
-- detector
-- detector_mode
+- detectors
 - dose_per_movie
 - energy_filter
 - image_size
@@ -695,11 +716,8 @@ slots:
 - beamtiltgroups
 - gainref_flip_rotate
 slot_usage:
-  detector:
-    name: detector
-    required: true
-  dose_per_movie:
-    name: dose_per_movie
+  detectors:
+    name: detectors
     required: true
   date_time:
     name: date_time
@@ -719,11 +737,8 @@ slot_usage:
 description: A set of parameteres describing the data acquisition
 from_schema: https://w3id.org/osc-em/oscem-schemas-spa
 slot_usage:
-  detector:
-    name: detector
-    required: true
-  dose_per_movie:
-    name: dose_per_movie
+  detectors:
+    name: detectors
     required: true
   date_time:
     name: date_time
@@ -735,9 +750,22 @@ slot_usage:
     name: pixel_size
     required: true
 attributes:
+  screen_current:
+    name: screen_current
+    description: The total electron beam current hitting the viewing screen, in nA.
+    from_schema: https://w3id.org/osc-em/oscem-schemas-spa
+    rank: 1000
+    alias: screen_current
+    owner: Acquisition
+    domain_of:
+    - Acquisition
+    range: Any
+    any_of:
+    - range: QuantityValue
+    - range: QuantitySI
   nominal_defocus:
     name: nominal_defocus
-    description: Target defocus set, min and max values in µm.
+    description: Target defocus set, min and max values in nm.
     from_schema: https://w3id.org/osc-em/oscem-schemas-spa
     rank: 1000
     alias: nominal_defocus
@@ -816,27 +844,17 @@ attributes:
     domain_of:
     - Acquisition
     range: string
-  detector:
-    name: detector
-    description: Make and model of the detector used
+  detectors:
+    name: detectors
     from_schema: https://w3id.org/osc-em/oscem-schemas-spa
     rank: 1000
-    alias: detector
+    alias: detectors
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: string
+    range: Detector
     required: true
-  detector_mode:
-    name: detector_mode
-    description: Operating mode of the detector
-    from_schema: https://w3id.org/osc-em/oscem-schemas-spa
-    rank: 1000
-    alias: detector_mode
-    owner: Acquisition
-    domain_of:
-    - Acquisition
-    range: string
+    multivalued: true
   dose_per_movie:
     name: dose_per_movie
     description: Average dose per image/movie/tilt - given in electrons per square
@@ -848,13 +866,12 @@ attributes:
     domain_of:
     - Acquisition
     range: Any
-    required: true
     any_of:
     - range: QuantityValue
     - range: QuantitySI
   energy_filter:
     name: energy_filter
-    description: Wether an energy filter was used and its specifics.
+    description: Whether an energy filter was used and its specifics.
     from_schema: https://w3id.org/osc-em/oscem-schemas-spa
     rank: 1000
     alias: energy_filter
@@ -949,7 +966,7 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: float
+    range: ImageSize
     required: true
   pixel_size:
     name: pixel_size
