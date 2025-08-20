@@ -19,6 +19,7 @@ classes:
   Acquisition:
     description: A set of parameteres describing the data acquisition
     slots:
+    - screen_current
     - nominal_defocus
     - calibrated_defocus
     - nominal_magnification
@@ -27,8 +28,7 @@ classes:
     - holder_cryogen
     - temperature_range
     - microscope_software
-    - detector
-    - detector_mode
+    - detectors
     - dose_per_movie
     - energy_filter
     - image_size
@@ -47,9 +47,7 @@ classes:
     - beamtiltgroups
     - gainref_flip_rotate
     slot_usage:
-      detector:
-        required: true
-      dose_per_movie:
+      detectors:
         required: true
       date_time:
         required: true
@@ -67,6 +65,8 @@ classes:
     slot_usage:
       used:
         required: true
+      model:
+        required: false
       width_energy_filter:
         required: true
 
@@ -76,6 +76,7 @@ classes:
     - phaseplate
     - spherical_aberration_corrector
     - chromatic_aberration_corrector
+
   Phaseplate:
     description: Used to modulate the phase of the electron wave.
     slots:
@@ -87,6 +88,7 @@ classes:
       instrument_type:
         description: Type of phaseplate
         required: true
+
   SphericalAberrationCorrector:
     description: Special device used to correct instrument inherent spherical aberration.
     slots:
@@ -97,6 +99,7 @@ classes:
         required: true
       instrument_type:
         required: true
+
   ChromaticAberrationCorrector:
     description: Special device used to correct instrument inherent chromatic aberration.
     slots:
@@ -108,10 +111,24 @@ classes:
       instrument_type:
         required: true
 
+  Detector:
+    description: Class representing a detector
+    slots:
+      - name
+      - mode
+      - dispersion
+      - collection_angle
+
 slots:
+  screen_current:
+    description: The total electron beam current hitting the viewing screen, in nA.
+    # range: Any
+    # any_of:
+    #   - range:  QuantityValue
+    range:  QuantitySI
   nominal_defocus:
     range: Range
-    description: Target defocus set, min and max values in µm.
+    description: Target defocus set, min and max values in nm.
   calibrated_defocus:
     range: Range
     description: Machine estimated defocus, min and max values in µm. Has a tendency to be off.
@@ -134,12 +151,6 @@ slots:
   microscope_software:
     description: Software used for instrument control,
     range: string
-  detector:
-    description: Make and model of the detector used
-    range: string
-  detector_mode:
-    description: Operating mode of the detector
-    range: string
   dose_per_movie:
     description: Average dose per image/movie/tilt - given in electrons per square Angstrom
     # range: Any
@@ -148,13 +159,13 @@ slots:
     range:  QuantitySI
   energy_filter:
     range: EnergyFilter
-    description: Wether an energy filter was used and its specifics.
+    description: Whether an energy filter was used and its specifics.
+  detectors:
+    range: Detector
+    multivalued: true
   used:
     description: whether a specific instrument was used during data acquisition
     range: boolean
-  model:
-    description: Make and model of a specilized device
-    range: string
   image_size:
     range: ImageSize
     description: The size of the image in pixels, height and width given.
@@ -185,7 +196,7 @@ slots:
     range: integer
   binning_camera:
     description: Level of binning on the images applied during data collection
-    range: float
+    range: ImageSize
   pixel_size:
     description: Pixel size, in Angstrom
     # range: Any
@@ -228,3 +239,16 @@ slots:
     #   - range:  QuantityValue
     range:  QuantitySI
     description: Width of the energy filter used.
+
+  mode:
+    description: Mode of the detector, e.g. "counting", "ScanningDetector", "ImagingDetector", etc.
+    range: string
+  dispersion:
+    description: Dispersion of an analytical detector, in eV
+    # range: Any
+    # any_of:
+    #   - range:  QuantityValue
+    range:  QuantitySI
+  collection_angle:
+    description: Collection angle set, min and max values in mrad.
+    range: Range

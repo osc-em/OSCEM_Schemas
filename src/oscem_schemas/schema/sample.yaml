@@ -3,11 +3,13 @@ name: sample
 description: >
   LinkML schema for electron microscopy sample and author-related metadata,
   broadly following the EMDB standard with some additions.
+
 prefixes:
   linkml: https://w3id.org/linkml/
   sample: https://w3id.org/osc-em/sample
+  types: https://w3id.org/osc-em/custom_types
 
-#default_prefix: sample
+default_prefix: sample
 
 imports:
   - linkml:types
@@ -45,15 +47,21 @@ classes:
   Sample:
     description: Unifying class to describe the full sample.
     slots:
+      - name
+      - description
       - overall_molecule
       - molecule
       - ligands
       - specimen
       - grid
     slot_usage:
+      name:
+        required: true
+      description:
+        required: true
       overall_molecule:
         # alias: Overall_Molecule
-        required: true
+        required: false
       molecule:
         # alias: Molecule
         required: false
@@ -216,6 +224,16 @@ classes:
       pretreatment_atmosphere:
         # alias: Pretreatment_atmosphere
 
+  SampleMolecular:
+    is_a: Sample
+    slot_usage:
+      name:
+        required: false
+      description:
+        required: false
+      overall_molecule:
+        required: true
+
 
 slots:
   molecular_type:
@@ -312,9 +330,6 @@ slots:
     description: Whether the sample was shadowed
     range: boolean
 
-  manufacturer:
-    description: Grid manufacturer
-    range: string
   material:
     description: Material out of which the grid is made
     range: string

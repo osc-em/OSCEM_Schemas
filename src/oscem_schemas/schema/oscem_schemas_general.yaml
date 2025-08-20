@@ -1,41 +1,33 @@
 ---
-id: https://w3id.org/osc-em/oscem-schemas-spa
-name: oscem-schemas-spa
-title: oscem-schemas-spa
+id: https://w3id.org/osc-em/oscem-schemas-general
+name: oscem-schemas-general
+title: oscem-schemas-general
 description: |-
   Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
 license: CC-BY
 see_also:
   - https://osc-em.github.io/oscem-schemas
 
-
 prefixes:
   linkml: https://w3id.org/linkml/
-
-#default_prefix: oscem_spa
-
-#default_range: string
 
 imports:
   - linkml:types
   - ./acquisition
   - ./instrument
-  - ./organizational
   - ./sample
+  - ./organizational
   - ./emdataset
-  - ./processing
 
 classes:
-  EMDatasetSpa:
+  EMDatasetGeneral:
     is_a: EMDatasetBase
     tree_root: true
-    description: Single particle cryo electron microscopy dataset
-    slots:
-    - processing
+    description: General dataset for TEM/STEM and EELS/EDX spectroscopy.
     slot_usage:
       acquisition:
-        description: Describe the data acquisition parameters
         range: Acquisition
+        description: Describe the data acquisition parameters
         required: true
       instrument:
         description: Describe the instrument used to acquire the data
@@ -43,15 +35,9 @@ classes:
         required: true
       sample:
         description: Sample information
-        range: SampleMolecular
+        range: Sample
         required: true
       organizational:
         description: Information on authors and grants
         range: Organizational
         required: true
-
-slots:
-  processing:
-    description: Processing information on the dataset
-    range: Processing
-    required: false
