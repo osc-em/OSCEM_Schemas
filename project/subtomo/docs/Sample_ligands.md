@@ -20,3 +20,4 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Sample_ligands](https://w3id
 ## Used by
 
  * [Sample](Sample.md)
+ * [SampleMolecular](SampleMolecular.md)
