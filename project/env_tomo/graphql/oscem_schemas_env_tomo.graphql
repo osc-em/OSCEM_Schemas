@@ -1,20 +1,7 @@
 # metamodel_version: 1.7.0
-enum FreezingMethodEnum
-  {
-    plunge_freezing
-    high_pressure_freezing
-  }
-
-enum OrganizationTypeEnum
-  {
-    Academic
-    Commercial
-    Government
-    Other
-  }
-
 type Acquisition
   {
+    screenCurrent: Any
     nominalDefocus: Range
     calibratedDefocus: Range
     nominalMagnification: Integer
@@ -23,9 +10,8 @@ type Acquisition
     holderCryogen: String
     temperature: Range
     microscopeSoftware: String
-    detector: String!
-    detectorMode: String
-    dosePerMovie: Any!
+    detectors: [Detector]!
+    dosePerMovie: Any
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
@@ -34,7 +20,7 @@ type Acquisition
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
-    binningCamera: Float!
+    binningCamera: ImageSize!
     pixelSize: Any!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
@@ -46,6 +32,7 @@ type Acquisition
 
 type AcquisitionTomo
   {
+    screenCurrent: Any
     nominalDefocus: Range
     calibratedDefocus: Range
     nominalMagnification: Integer
@@ -54,9 +41,8 @@ type AcquisitionTomo
     holderCryogen: String
     temperature: Range
     microscopeSoftware: String
-    detector: String!
-    detectorMode: String
-    dosePerMovie: Any!
+    detectors: [Detector]!
+    dosePerMovie: Any
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
@@ -65,7 +51,7 @@ type AcquisitionTomo
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
-    binningCamera: Float!
+    binningCamera: ImageSize!
     pixelSize: Any!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
@@ -83,15 +69,15 @@ type Any
 
 type Author
   {
-    workStatus: Boolean
-    workPhone: String
+    jobTitle: Boolean
+    telephone: String
     orcid: String
     country: String
     role: String
     nameOrg: String
     typeOrg: OrganizationTypeEnum!
-    name: String!
-    firstName: String!
+    familyName: String!
+    givenName: String!
     email: String!
   }
 
@@ -119,6 +105,14 @@ type Descriptors
   {
     descriptorName: String!
     descriptorThing: Any
+  }
+
+type Detector
+  {
+    name: String
+    mode: String
+    dispersion: Any
+    collectionAngle: Range
   }
 
 interface EMDatasetBase
@@ -180,13 +174,21 @@ type ImageSize
 
 type Instrument
   {
-    microscope: String!
+    microscope: Microscope!
     illumination: String!
     imaging: String!
     electronSource: String!
     accelerationVoltage: Any!
     c2Aperture: Any
-    cs: Any!
+    cs: Any
+    operatingMode: String
+    beamConvergence: Any
+  }
+
+type Microscope
+  {
+    model: String!
+    manufacturer: String
   }
 
 type Organizational
@@ -198,11 +200,11 @@ type Organizational
 
 type Person
   {
-    name: String
-    firstName: String
-    workStatus: Boolean
+    familyName: String
+    givenName: String
+    jobTitle: Boolean
     email: String
-    workPhone: String
+    telephone: String
   }
 
 type Phaseplate

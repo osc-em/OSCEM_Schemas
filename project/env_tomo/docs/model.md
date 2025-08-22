@@ -1,7 +1,7 @@
 
 # Slot: model
 
-Make and model of a specilized device
+The model of the item
 
 URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/model](https://w3id.org/osc-em/oscem-schemas-env-tomo/model)
 
@@ -15,7 +15,8 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [EnergyFilter➞model](EnergyFilter_model.md)
+ *  [Microscope➞model](Microscope_model.md)
 
 ## Used by
 
- * [EnergyFilter](EnergyFilter.md)

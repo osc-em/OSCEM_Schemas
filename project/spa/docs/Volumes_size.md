@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Volumes_size](https://w3id.org/o
 
 ## Domain and Range
 
-[Volumes](Volumes.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Volumes](Volumes.md) &#8594;  <sub>0..\*</sub> [Integer](types/Integer.md)
 
 ## Parents
 

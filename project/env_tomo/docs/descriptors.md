@@ -1,29 +1,20 @@
 
-# Class: Descriptors
+# Slot: descriptors
+
+List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
+
+URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/descriptors](https://w3id.org/osc-em/oscem-schemas-env-tomo/descriptors)
 
 
+## Domain and Range
 
-URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/Descriptors](https://w3id.org/osc-em/oscem-schemas-env-tomo/Descriptors)
-
-
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptor]^-[Descriptors&#124;descriptor_name(i):string],[Descriptor],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptor]^-[Descriptors&#124;descriptor_name(i):string],[Descriptor],[Any])
+None &#8594;  <sub>0..\*</sub> [Descriptors](Descriptors.md)
 
 ## Parents
 
- *  is_a: [Descriptor](Descriptor.md) - List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
 
-## Referenced by Class
-
- *  **None** *[descriptors](descriptors.md)*  <sub>0..\*</sub>  **[Descriptors](Descriptors.md)**
-
-## Attributes
+## Children
 
 
-### Inherited from Descriptor:
+## Used by
 
- * [Descriptor➞descriptor_name](Descriptor_descriptor_name.md)  <sub>1..1</sub>
-     * Description: Name defining the descriptor
-     * Range: [String](types/String.md)
- * [Descriptor➞descriptor_thing](Descriptor_descriptor_thing.md)  <sub>0..1</sub>
-     * Description: Description of the descriptor
-     * Range: [Any](Any.md)

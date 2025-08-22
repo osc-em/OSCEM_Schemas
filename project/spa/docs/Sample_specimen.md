@@ -20,3 +20,4 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Sample_specimen](https://w3id.or
 ## Used by
 
  * [Sample](Sample.md)
+ * [SampleMolecular](SampleMolecular.md)

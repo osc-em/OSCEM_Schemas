@@ -1,7 +1,7 @@
 
 # Slot: manufacturer
 
-Grid manufacturer
+The name of the manufacturer
 
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/Grid_manufacturer](https://w3id.org/osc-em/oscem-schemas-spa/Grid_manufacturer)
 

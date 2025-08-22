@@ -19,6 +19,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [ChromaticAberrationCorrector](ChromaticAberrationCorrector.md) - Special device used to correct instrument inherent chromatic aberration.
  * [Descriptor](Descriptor.md) - List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
      * [Descriptors](Descriptors.md)
+ * [Detector](Detector.md) - Class representing a detector
  * [EMDatasetBase](EMDatasetBase.md) - OSC-EM Metadata for a dataset
      * [EMDatasetEnv](EMDatasetEnv.md) - cryo electron tomography dataset of an environmental sample
  * [EnergyFilter](EnergyFilter.md) - A device used to filter for electrons with specific energy.
@@ -27,6 +28,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [Grant](Grant.md) - Grant
  * [ImageSize](ImageSize.md) - size of a 2D image (in integer units)
  * [Instrument](Instrument.md) - Instrument values, mostly constant across a data collection.
+ * [Microscope](Microscope.md) - Microscope information
  * [Organizational](Organizational.md) - Overarching category for authors and grants
  * [Person](Person.md) - personal information
      * [Author](Author.md) - Details on the person performing the experiment.
@@ -56,6 +58,8 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [atmosphere](atmosphere.md) - What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc.
  * [authors](authors.md) - List of authors associated with the project
      * [Organizational➞authors](Organizational_authors.md)
+ * [beam_convergence](beam_convergence.md) - Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM.
+     * [Instrument➞beam_convergence](Instrument_beam_convergence.md)
  * [beamshift](beamshift.md) - Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
  * [beamtilt](beamtilt.md) - Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
  * [beamtiltgroups](beamtiltgroups.md) - Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.
@@ -64,10 +68,12 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [blotting](blotting.md) - whether blotting was performed.
  * [budget](budget.md) - budget
  * [c2_aperture](c2_aperture.md) - C2 aperture size used in data acquisition, in µm
+     * [Instrument➞c2_aperture](Instrument_c2_aperture.md)
  * [calibrated_defocus](calibrated_defocus.md) - Machine estimated defocus, min and max values in µm. Has a tendency to be off.
  * [calibrated_magnification](calibrated_magnification.md) - Calculated magnification, no unit
  * [cellular_features](cellular_features.md) - What type of cellular features are present in your tomograms?
  * [chromatic_aberration_corrector](chromatic_aberration_corrector.md) - Specialist device to correct for chromatic aberration of the microscope lenses
+ * [collection_angle](collection_angle.md) - Collection angle set, min and max values in mrad.
  * [collection_date](collection_date.md) - When the sample was collected
  * [country](country.md) - Country of the institution
      * [Author➞country](Author_country.md)
@@ -77,6 +83,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Instrument➞cs](Instrument_cs.md)
  * [date_time](date_time.md) - Time and date of the data acquisition
      * [Acquisition➞date_time](Acquisition_date_time.md)
+ * [description](description.md) - The description of the item
  * [descriptor_name](descriptor_name.md) - Name defining the descriptor
      * [Descriptor➞descriptor_name](Descriptor_descriptor_name.md)
  * [descriptor_thing](descriptor_thing.md) - Description of the descriptor
@@ -84,26 +91,27 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [descriptors](descriptors.md) - List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
  * [details](details.md) - Any further comments on the freezing process go here.
  * [details_tomo](details_tomo.md) - If you have any further comments on your tomograms please leave them here
- * [detector](detector.md) - Make and model of the detector used
-     * [Acquisition➞detector](Acquisition_detector.md)
- * [detector_mode](detector_mode.md) - Operating mode of the detector
+ * [detectors](detectors.md)
+     * [Acquisition➞detectors](Acquisition_detectors.md)
+ * [dispersion](dispersion.md) - Dispersion of an analytical detector, in eV
  * [dose_per_movie](dose_per_movie.md) - Average dose per image/movie/tilt - given in electrons per square Angstrom
-     * [Acquisition➞dose_per_movie](Acquisition_dose_per_movie.md)
  * [electron_source](electron_source.md) - Type of electron source used in the microscope, such as FEG
      * [Instrument➞electron_source](Instrument_electron_source.md)
  * [email](email.md) - email
      * [Author➞email](Author_email.md)
  * [end_date](end_date.md) - end date
- * [energy_filter](energy_filter.md) - Wether an energy filter was used and its specifics.
+ * [energy_filter](energy_filter.md) - Whether an energy filter was used and its specifics.
  * [exposure_time](exposure_time.md) - Time of data acquisition per movie/tilt - in s
- * [first_name](first_name.md) - first name
-     * [Author➞first_name](Author_first_name.md)
+ * [family_name](family_name.md) - last name
+     * [Author➞family_name](Author_family_name.md)
  * [frames_per_movie](frames_per_movie.md) - Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
  * [freezing](freezing.md)
  * [funder](funder.md) - funding organization/person.
      * [Organizational➞funder](Organizational_funder.md)
  * [funder_name](funder_name.md) - funding organization/person.
  * [gainref_flip_rotate](gainref_flip_rotate.md) - Whether and how you have to flip or rotate the gainref in order to align with your acquired images
+ * [given_name](given_name.md) - first name
+     * [Author➞given_name](Author_given_name.md)
  * [grant_name](grant_name.md) - name of the grant
  * [grants](grants.md) - List of grants associated with the project
  * [grids_imaged](grids_imaged.md) - Number of grids imaged for this project - here with qualifier during this data acquisition
@@ -130,25 +138,32 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Phaseplate➞instrument_type](Phaseplate_instrument_type.md) - Type of phaseplate
      * [SphericalAberrationCorrector➞instrument_type](SphericalAberrationCorrector_instrument_type.md)
  * [ion_source](ion_source.md) - what ion source was used?
+ * [job_title](job_title.md) - job title
  * [lift_out](lift_out.md) - whether a lift out was performed
  * [location](location.md) - the geographical location of your source, optimally in a geographic coordinate system.
  * [main_target](main_target.md) - What was the main biological target of your research for this tomogram?
+ * [manufacturer](manufacturer.md) - The name of the manufacturer
+     * [Microscope➞manufacturer](Microscope_manufacturer.md)
  * [maximal](maximal.md) - Maximal value of a given dataset property
      * [TiltAngle➞maximal](TiltAngle_maximal.md)
  * [method](method.md) - freezing method - such as plunge freezing, high pressure freezing etc.
  * [method_thin](method_thin.md) - The thinning method used, such as FIB milling.
- * [microscope](microscope.md) - Name/Type of the Microscope
+ * [microscope](microscope.md) - Microscope information
      * [Instrument➞microscope](Instrument_microscope.md)
  * [microscope_software](microscope_software.md) - Software used for instrument control,
  * [minimal](minimal.md) - Minimal value of a given dataset property
      * [TiltAngle➞minimal](TiltAngle_minimal.md)
- * [model](model.md) - Make and model of a specilized device
- * [name](name.md) - name
-     * [Author➞name](Author_name.md)
+ * [mode](mode.md) - Mode of the detector, e.g. "counting", "ScanningDetector", "ImagingDetector", etc.
+ * [model](model.md) - The model of the item
+     * [EnergyFilter➞model](EnergyFilter_model.md)
+     * [Microscope➞model](Microscope_model.md)
+ * [name](name.md) - The name of the item
  * [name_org](name_org.md) - Name of the organization
      * [Author➞name_org](Author_name_org.md)
- * [nominal_defocus](nominal_defocus.md) - Target defocus set, min and max values in µm.
+ * [nominal_defocus](nominal_defocus.md) - Target defocus set, min and max values in nm.
  * [nominal_magnification](nominal_magnification.md) - Magnification level as indicated by the instrument, no unit
+ * [operating_mode](operating_mode.md) - Operating mode of the microscope, i.e. "TEM", "STEM"
+     * [Instrument➞operating_mode](Instrument_operating_mode.md)
  * [orcid](orcid.md) - ORCID of the author, a type of unique identifier
      * [Author➞orcid](Author_orcid.md)
  * [organelles](organelles.md) - What organelles; if any; are present?
@@ -166,6 +181,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [sample](sample.md)
      * [EMDatasetBase➞sample](EMDatasetBase_sample.md)
      * [EMDatasetEnv➞sample](EMDatasetEnv_sample.md) - Sample information
+ * [screen_current](screen_current.md) - The total electron beam current hitting the viewing screen, in nA.
  * [si_unit](si_unit.md)
      * [QuantitySI➞si_unit](QuantitySI_si_unit.md)
  * [si_value](si_value.md)
@@ -177,6 +193,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [spherical_aberration_corrector](spherical_aberration_corrector.md) - Specialist device to correct for spherical aberration of the microscope lenses
  * [start_date](start_date.md) - start date
  * [target_thickness](target_thickness.md) - What was the target thickness of the lamella; in nm.
+ * [telephone](telephone.md) - work phone
  * [temperature_env](temperature_env.md) - temperature of the sample right before freezing; in K.
  * [➞temperature](temperature_range.md) - Temperature during data collection, in K with min and max values.
  * [thinning](thinning.md)
@@ -202,8 +219,6 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [width](width.md) - The width of a given item - unit depends on item
  * [width_energy_filter](width_energy_filter.md) - Width of the energy filter used.
      * [EnergyFilter➞width_energy_filter](EnergyFilter_width_energy_filter.md)
- * [work_phone](work_phone.md) - work phone
- * [work_status](work_status.md) - work status
  * [x_max](x_max.md) - maximum x
  * [x_min](x_min.md) - minimum x
  * [y_max](y_max.md) - maximum y

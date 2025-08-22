@@ -34,8 +34,8 @@
                     ]
                 },
                 "binning_camera": {
-                    "description": "Level of binning on the images applied during data collection",
-                    "type": "number"
+                    "$ref": "#/$defs/ImageSize",
+                    "description": "Level of binning on the images applied during data collection"
                 },
                 "calibrated_defocus": {
                     "anyOf": [
@@ -67,25 +67,22 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "detector": {
-                    "description": "Make and model of the detector used",
-                    "type": "string"
-                },
-                "detector_mode": {
-                    "description": "Operating mode of the detector",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                "detectors": {
+                    "items": {
+                        "$ref": "#/$defs/Detector"
+                    },
+                    "type": "array"
                 },
                 "dose_per_movie": {
-                    "$ref": "#/$defs/Any",
                     "anyOf": [
                         {
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
                             "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom"
@@ -99,7 +96,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Wether an energy filter was used and its specifics."
+                    "description": "Whether an energy filter was used and its specifics."
                 },
                 "exposure_time": {
                     "anyOf": [
@@ -195,7 +192,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Target defocus set, min and max values in \u00b5m."
+                    "description": "Target defocus set, min and max values in nm."
                 },
                 "nominal_magnification": {
                     "description": "Magnification level as indicated by the instrument, no unit",
@@ -215,6 +212,20 @@
                         }
                     ],
                     "description": "Pixel size, in Angstrom"
+                },
+                "screen_current": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The total electron beam current hitting the viewing screen, in nA."
                 },
                 "specialist_optics": {
                     "anyOf": [
@@ -240,8 +251,7 @@
                 }
             },
             "required": [
-                "detector",
-                "dose_per_movie",
+                "detectors",
                 "date_time",
                 "binning_camera",
                 "pixel_size"
@@ -302,13 +312,20 @@
                     "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
                     "type": "string"
                 },
-                "first_name": {
+                "family_name": {
+                    "description": "last name",
+                    "type": "string"
+                },
+                "given_name": {
                     "description": "first name",
                     "type": "string"
                 },
-                "name": {
-                    "description": "name",
-                    "type": "string"
+                "job_title": {
+                    "description": "job title",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "name_org": {
                     "description": "Name of the organization",
@@ -331,29 +348,22 @@
                         "null"
                     ]
                 },
-                "type_org": {
-                    "$ref": "#/$defs/OrganizationTypeEnum",
-                    "description": "Type of organization, academic, commercial, governmental, etc."
-                },
-                "work_phone": {
+                "telephone": {
                     "description": "work phone",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "work_status": {
-                    "description": "work status",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
+                "type_org": {
+                    "$ref": "#/$defs/OrganizationTypeEnum",
+                    "description": "Type of organization, academic, commercial, governmental, etc."
                 }
             },
             "required": [
                 "type_org",
-                "name",
-                "first_name",
+                "family_name",
+                "given_name",
                 "email"
             ],
             "title": "Author",
@@ -522,13 +532,6 @@
                         "null"
                     ]
                 },
-                "number_classes_2D": {
-                    "description": "Number of 2D classes",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
                 "particles_per_2Dclass": {
                     "description": "Number of particles per 2D class",
                     "items": {
@@ -572,13 +575,6 @@
                     "description": "Filename of the image containing 3D class images",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "number_classes_3D": {
-                    "description": "Number of 3D classes",
-                    "type": [
-                        "integer",
                         "null"
                     ]
                 },
@@ -751,6 +747,53 @@
             "title": "Descriptors",
             "type": "object"
         },
+        "Detector": {
+            "additionalProperties": false,
+            "description": "Class representing a detector",
+            "properties": {
+                "collection_angle": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Collection angle set, min and max values in mrad."
+                },
+                "dispersion": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Dispersion of an analytical detector, in eV"
+                },
+                "mode": {
+                    "description": "Mode of the detector, e.g. \"counting\", \"ScanningDetector\", \"ImagingDetector\", etc.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The name of the item",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Detector",
+            "type": "object"
+        },
         "EMDatasetSpa": {
             "additionalProperties": false,
             "description": "Single particle cryo electron microscopy dataset",
@@ -779,7 +822,7 @@
                     "description": "Processing information on the dataset"
                 },
                 "sample": {
-                    "$ref": "#/$defs/Sample",
+                    "$ref": "#/$defs/SampleMolecular",
                     "description": "Sample information"
                 }
             },
@@ -797,7 +840,7 @@
             "description": "A device used to filter for electrons with specific energy.",
             "properties": {
                 "model": {
-                    "description": "Make and model of a specilized device",
+                    "description": "The model of the item",
                     "type": [
                         "string",
                         "null"
@@ -958,7 +1001,7 @@
                     ]
                 },
                 "manufacturer": {
-                    "description": "Grid manufacturer",
+                    "description": "The name of the manufacturer",
                     "type": [
                         "string",
                         "null"
@@ -1062,6 +1105,20 @@
                     ],
                     "description": "Voltage used for the electron acceleration, in kV"
                 },
+                "beam_convergence": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM."
+                },
                 "c2_aperture": {
                     "anyOf": [
                         {
@@ -1077,13 +1134,15 @@
                     "description": "C2 aperture size used in data acquisition, in \u00b5m"
                 },
                 "cs": {
-                    "$ref": "#/$defs/Any",
                     "anyOf": [
                         {
                             "$ref": "#/$defs/QuantityValue"
                         },
                         {
                             "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "description": "Spherical aberration of the instrument, in mm"
@@ -1101,8 +1160,15 @@
                     "type": "string"
                 },
                 "microscope": {
-                    "description": "Name/Type of the Microscope",
-                    "type": "string"
+                    "$ref": "#/$defs/Microscope",
+                    "description": "Microscope information"
+                },
+                "operating_mode": {
+                    "description": "Operating mode of the microscope, i.e. \"TEM\", \"STEM\"",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -1110,8 +1176,7 @@
                 "illumination",
                 "imaging",
                 "electron_source",
-                "acceleration_voltage",
-                "cs"
+                "acceleration_voltage"
             ],
             "title": "Instrument",
             "type": "object"
@@ -1197,6 +1262,28 @@
                 "number_micrographs"
             ],
             "title": "Micrographs",
+            "type": "object"
+        },
+        "Microscope": {
+            "additionalProperties": false,
+            "description": "Microscope information",
+            "properties": {
+                "manufacturer": {
+                    "description": "The name of the manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model": {
+                    "description": "The model of the item",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "model"
+            ],
+            "title": "Microscope",
             "type": "object"
         },
         "Molecule": {
@@ -1465,31 +1552,31 @@
                         "null"
                     ]
                 },
-                "first_name": {
+                "family_name": {
+                    "description": "last name",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "given_name": {
                     "description": "first name",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "name",
+                "job_title": {
+                    "description": "job title",
                     "type": [
-                        "string",
+                        "boolean",
                         "null"
                     ]
                 },
-                "work_phone": {
+                "telephone": {
                     "description": "work phone",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "work_status": {
-                    "description": "work status",
-                    "type": [
-                        "boolean",
                         "null"
                     ]
                 }
@@ -1743,6 +1830,10 @@
             "additionalProperties": false,
             "description": "Unifying class to describe the full sample.",
             "properties": {
+                "description": {
+                    "description": "The description of the item",
+                    "type": "string"
+                },
                 "grid": {
                     "anyOf": [
                         {
@@ -1774,6 +1865,89 @@
                         "null"
                     ]
                 },
+                "name": {
+                    "description": "The name of the item",
+                    "type": "string"
+                },
+                "overall_molecule": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OverallMolecule"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the overall molecule"
+                },
+                "specimen": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Specimen"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the specimen"
+                }
+            },
+            "required": [
+                "name",
+                "description"
+            ],
+            "title": "Sample",
+            "type": "object"
+        },
+        "SampleMolecular": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "description": {
+                    "description": "The description of the item",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grid": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Grid"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the grid used"
+                },
+                "ligands": {
+                    "description": "List of ligands associated with the sample",
+                    "items": {
+                        "$ref": "#/$defs/Ligand"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "molecule": {
+                    "description": "List of molecule associated with the sample",
+                    "items": {
+                        "$ref": "#/$defs/Molecule"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The name of the item",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "overall_molecule": {
                     "$ref": "#/$defs/OverallMolecule",
                     "description": "Description of the overall molecule"
@@ -1793,7 +1967,7 @@
             "required": [
                 "overall_molecule"
             ],
-            "title": "Sample",
+            "title": "SampleMolecular",
             "type": "object"
         },
         "Series": {
@@ -2074,8 +2248,11 @@
                 },
                 "size": {
                     "description": "Size of the volume",
+                    "items": {
+                        "type": "integer"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -2139,7 +2316,7 @@
             "description": "Processing information on the dataset"
         },
         "sample": {
-            "$ref": "#/$defs/Sample",
+            "$ref": "#/$defs/SampleMolecular",
             "description": "Sample information"
         }
     },

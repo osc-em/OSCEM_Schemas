@@ -1,7 +1,7 @@
 
 # Slot: name
 
-name
+The name of the item
 
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/name](https://w3id.org/osc-em/oscem-schemas-subtomo/name)
 
@@ -15,14 +15,8 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [Author➞name](Author_name.md)
+ *  [Sample➞name](Sample_name.md)
 
 ## Used by
 
- * [Person](Person.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **Mappings:** | | schema:name |
+ * [Detector](Detector.md)
