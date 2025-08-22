@@ -1,41 +1,23 @@
 
-# Class: Person
+# Slot: person
 
-personal information
+person
 
-URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Person](https://w3id.org/osc-em/oscem-schemas-subtomo/Person)
+URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/person](https://w3id.org/osc-em/oscem-schemas-subtomo/person)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person&#124;name:string%20%3F;first_name:string%20%3F;work_status:boolean%20%3F;email:string%20%3F;work_phone:string%20%3F]^-[Author],[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person&#124;name:string%20%3F;first_name:string%20%3F;work_status:boolean%20%3F;email:string%20%3F;work_phone:string%20%3F]^-[Author],[Author])
+## Domain and Range
+
+None &#8594;  <sub>0..1</sub> [Person](Person.md)
+
+## Parents
+
 
 ## Children
 
- * [Author](Author.md) - Details on the person performing the experiment.
 
-## Referenced by Class
+## Used by
 
- *  **None** *[person](person.md)*  <sub>0..1</sub>  **[Person](Person.md)**
-
-## Attributes
-
-
-### Own
-
- * [name](name.md)  <sub>0..1</sub>
-     * Description: name
-     * Range: [String](types/String.md)
- * [first_name](first_name.md)  <sub>0..1</sub>
-     * Description: first name
-     * Range: [String](types/String.md)
- * [work_status](work_status.md)  <sub>0..1</sub>
-     * Description: work status
-     * Range: [Boolean](types/Boolean.md)
- * [email](email.md)  <sub>0..1</sub>
-     * Description: email
-     * Range: [String](types/String.md)
- * [work_phone](work_phone.md)  <sub>0..1</sub>
-     * Description: work phone
-     * Range: [String](types/String.md)
 
 ## Other properties
 

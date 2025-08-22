@@ -20,3 +20,4 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Sample_molecule](https://w3i
 ## Used by
 
  * [Sample](Sample.md)
+ * [SampleMolecular](SampleMolecular.md)

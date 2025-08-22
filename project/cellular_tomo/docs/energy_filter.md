@@ -1,7 +1,7 @@
 
 # Slot: energy_filter
 
-Wether an energy filter was used and its specifics.
+Whether an energy filter was used and its specifics.
 
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/energy_filter](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/energy_filter)
 

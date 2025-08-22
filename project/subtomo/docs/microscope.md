@@ -1,14 +1,14 @@
 
 # Slot: microscope
 
-Name/Type of the Microscope
+Microscope information
 
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/microscope](https://w3id.org/osc-em/oscem-schemas-subtomo/microscope)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [Microscope](Microscope.md)
 
 ## Parents
 

@@ -6,7 +6,7 @@
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionTomo](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionTomo)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetCell],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;detector(i):string;detector_mode(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;binning_camera(i):float;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetCell]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetCell],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;detector(i):string;detector_mode(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;binning_camera(i):float;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetCell]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetCell],[Detector],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetCell]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetCell],[Detector],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetCell]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])
 
 ## Parents
 
@@ -30,8 +30,11 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionTomo](https
 
 ### Inherited from Acquisition:
 
+ * [screen_current](screen_current.md)  <sub>0..1</sub>
+     * Description: The total electron beam current hitting the viewing screen, in nA.
+     * Range: [QuantitySI](QuantitySI.md)
  * [nominal_defocus](nominal_defocus.md)  <sub>0..1</sub>
-     * Description: Target defocus set, min and max values in µm.
+     * Description: Target defocus set, min and max values in nm.
      * Range: [Range](Range.md)
  * [calibrated_defocus](calibrated_defocus.md)  <sub>0..1</sub>
      * Description: Machine estimated defocus, min and max values in µm. Has a tendency to be off.
@@ -54,17 +57,13 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionTomo](https
  * [microscope_software](microscope_software.md)  <sub>0..1</sub>
      * Description: Software used for instrument control,
      * Range: [String](types/String.md)
- * [Acquisition➞detector](Acquisition_detector.md)  <sub>1..1</sub>
-     * Description: Make and model of the detector used
-     * Range: [String](types/String.md)
- * [detector_mode](detector_mode.md)  <sub>0..1</sub>
-     * Description: Operating mode of the detector
-     * Range: [String](types/String.md)
- * [Acquisition➞dose_per_movie](Acquisition_dose_per_movie.md)  <sub>1..1</sub>
+ * [Acquisition➞detectors](Acquisition_detectors.md)  <sub>1..\*</sub>
+     * Range: [Detector](Detector.md)
+ * [dose_per_movie](dose_per_movie.md)  <sub>0..1</sub>
      * Description: Average dose per image/movie/tilt - given in electrons per square Angstrom
      * Range: [QuantitySI](QuantitySI.md)
  * [energy_filter](energy_filter.md)  <sub>0..1</sub>
-     * Description: Wether an energy filter was used and its specifics.
+     * Description: Whether an energy filter was used and its specifics.
      * Range: [EnergyFilter](EnergyFilter.md)
  * [image_size](image_size.md)  <sub>0..1</sub>
      * Description: The size of the image in pixels, height and width given.
@@ -89,7 +88,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionTomo](https
      * Range: [Integer](types/Integer.md)
  * [Acquisition➞binning_camera](Acquisition_binning_camera.md)  <sub>1..1</sub>
      * Description: Level of binning on the images applied during data collection
-     * Range: [Float](types/Float.md)
+     * Range: [ImageSize](ImageSize.md)
  * [Acquisition➞pixel_size](Acquisition_pixel_size.md)  <sub>1..1</sub>
      * Description: Pixel size, in Angstrom
      * Range: [QuantitySI](QuantitySI.md)

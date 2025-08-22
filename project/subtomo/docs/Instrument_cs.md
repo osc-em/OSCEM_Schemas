@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Instrument_cs](https://w3id.
 
 ## Domain and Range
 
-[Instrument](Instrument.md) &#8594;  <sub>1..1</sub> [QuantitySI](QuantitySI.md)
+[Instrument](Instrument.md) &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

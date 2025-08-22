@@ -15,7 +15,7 @@ None &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Children
 
+ *  [Instrument➞c2_aperture](Instrument_c2_aperture.md)
 
 ## Used by
 
- * [Instrument](Instrument.md)

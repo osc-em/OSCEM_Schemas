@@ -51,23 +51,22 @@
 --     * Slot: holder Description: Speciman holder model
 --     * Slot: holder_cryogen Description: Type of cryogen used in the holder - if the holder is cooled seperately
 --     * Slot: microscope_software Description: Software used for instrument control,
---     * Slot: detector Description: Make and model of the detector used
---     * Slot: detector_mode Description: Operating mode of the detector
 --     * Slot: date_time Description: Time and date of the data acquisition
 --     * Slot: cryogen Description: Cryogen used in cooling the instrument and sample, usually nitrogen
 --     * Slot: frames_per_movie Description: Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors
 --     * Slot: grids_imaged Description: Number of grids imaged for this project - here with qualifier during this data acquisition
 --     * Slot: images_generated Description: Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted
---     * Slot: binning_camera Description: Level of binning on the images applied during data collection
 --     * Slot: beamtiltgroups Description: Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.
 --     * Slot: gainref_flip_rotate Description: Whether and how you have to flip or rotate the gainref in order to align with your acquired images
---     * Slot: nominal_defocus_id Description: Target defocus set, min and max values in µm.
+--     * Slot: screen_current_id Description: The total electron beam current hitting the viewing screen, in nA.
+--     * Slot: nominal_defocus_id Description: Target defocus set, min and max values in nm.
 --     * Slot: calibrated_defocus_id Description: Machine estimated defocus, min and max values in µm. Has a tendency to be off.
 --     * Slot: temperature_id Description: Temperature during data collection, in K with min and max values.
 --     * Slot: dose_per_movie_id Description: Average dose per image/movie/tilt - given in electrons per square Angstrom
---     * Slot: energy_filter_id Description: Wether an energy filter was used and its specifics.
+--     * Slot: energy_filter_id Description: Whether an energy filter was used and its specifics.
 --     * Slot: image_size_id Description: The size of the image in pixels, height and width given.
 --     * Slot: exposure_time_id Description: Time of data acquisition per movie/tilt - in s
+--     * Slot: binning_camera_id Description: Level of binning on the images applied during data collection
 --     * Slot: pixel_size_id Description: Pixel size, in Angstrom
 --     * Slot: specialist_optics_id Description: Any type of special optics, such as a phaseplate
 --     * Slot: beamshift_id Description: Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
@@ -76,7 +75,7 @@
 -- # Class: "EnergyFilter" Description: "A device used to filter for electrons with specific energy."
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
---     * Slot: model Description: Make and model of a specilized device
+--     * Slot: model Description: The model of the item
 --     * Slot: width_energy_filter_id Description: Width of the energy filter used.
 -- # Class: "SpecialistOptics" Description: "Optional optics used to correct for instrument limitations."
 --     * Slot: id Description: 
@@ -95,24 +94,36 @@
 --     * Slot: id Description: 
 --     * Slot: used Description: whether a specific instrument was used during data acquisition
 --     * Slot: instrument_type Description: Details of a given specialist instrument
+-- # Class: "Detector" Description: "Class representing a detector"
+--     * Slot: id Description: 
+--     * Slot: name Description: The name of the item
+--     * Slot: mode Description: Mode of the detector, e.g. "counting", "ScanningDetector", "ImagingDetector", etc.
+--     * Slot: dispersion_id Description: Dispersion of an analytical detector, in eV
+--     * Slot: collection_angle_id Description: Collection angle set, min and max values in mrad.
 -- # Class: "Instrument" Description: "Instrument values, mostly constant across a data collection."
 --     * Slot: id Description: 
---     * Slot: microscope Description: Name/Type of the Microscope
 --     * Slot: illumination Description: Mode of illumination used during data collection
 --     * Slot: imaging Description: Mode of imaging used during data collection
 --     * Slot: electron_source Description: Type of electron source used in the microscope, such as FEG
+--     * Slot: operating_mode Description: Operating mode of the microscope, i.e. "TEM", "STEM"
+--     * Slot: microscope_id Description: Microscope information
 --     * Slot: acceleration_voltage_id Description: Voltage used for the electron acceleration, in kV
 --     * Slot: c2_aperture_id Description: C2 aperture size used in data acquisition, in µm
 --     * Slot: cs_id Description: Spherical aberration of the instrument, in mm
+--     * Slot: beam_convergence_id Description: Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM.
+-- # Class: "Microscope" Description: "Microscope information"
+--     * Slot: id Description: 
+--     * Slot: model Description: The model of the item
+--     * Slot: manufacturer Description: The name of the manufacturer
 -- # Class: "Organizational" Description: "Overarching category for authors and grants"
 --     * Slot: id Description: 
 -- # Class: "Person" Description: "personal information"
 --     * Slot: id Description: 
---     * Slot: name Description: name
---     * Slot: first_name Description: first name
---     * Slot: work_status Description: work status
+--     * Slot: family_name Description: last name
+--     * Slot: given_name Description: first name
+--     * Slot: job_title Description: job title
 --     * Slot: email Description: email
---     * Slot: work_phone Description: work phone
+--     * Slot: telephone Description: work phone
 -- # Class: "Author" Description: "Details on the person performing the experiment."
 --     * Slot: id Description: 
 --     * Slot: orcid Description: ORCID of the author, a type of unique identifier
@@ -120,11 +131,11 @@
 --     * Slot: role Description: Role of the author, for example principal investigator
 --     * Slot: name_org Description: Name of the organization
 --     * Slot: type_org Description: Type of organization, academic, commercial, governmental, etc.
---     * Slot: name Description: name
---     * Slot: first_name Description: first name
---     * Slot: work_status Description: work status
+--     * Slot: family_name Description: last name
+--     * Slot: given_name Description: first name
+--     * Slot: job_title Description: job title
 --     * Slot: email Description: email
---     * Slot: work_phone Description: work phone
+--     * Slot: telephone Description: work phone
 -- # Class: "Grant" Description: "Grant"
 --     * Slot: id Description: 
 --     * Slot: grant_name Description: name of the grant
@@ -140,6 +151,8 @@
 --     * Slot: country Description: Country of the institution
 -- # Class: "Sample" Description: "Unifying class to describe the full sample."
 --     * Slot: id Description: 
+--     * Slot: name Description: The name of the item
+--     * Slot: description Description: The description of the item
 --     * Slot: overall_molecule_id Description: Description of the overall molecule
 --     * Slot: specimen_id Description: Description of the specimen
 --     * Slot: grid_id Description: Description of the grid used
@@ -180,7 +193,7 @@
 --     * Slot: temperature_id Description: Environmental temperature just before vitrification, in K
 -- # Class: "Grid" Description: "Details on the grid used in the experiment."
 --     * Slot: id Description: 
---     * Slot: manufacturer Description: Grid manufacturer
+--     * Slot: manufacturer Description: The name of the manufacturer
 --     * Slot: material Description: Material out of which the grid is made
 --     * Slot: mesh Description: Grid mesh in lines per inch
 --     * Slot: film_support Description: Whether a support film was used
@@ -191,6 +204,13 @@
 --     * Slot: pretreatment_atmosphere Description: Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
 --     * Slot: pretreatment_time_id Description: Length of time of the pretreatment in s
 --     * Slot: pretreatment_pressure_id Description: Pressure of the chamber during pretreatment, in Pa
+-- # Class: "SampleMolecular" Description: ""
+--     * Slot: id Description: 
+--     * Slot: name Description: The name of the item
+--     * Slot: description Description: The description of the item
+--     * Slot: overall_molecule_id Description: Description of the overall molecule
+--     * Slot: specimen_id Description: Description of the specimen
+--     * Slot: grid_id Description: Description of the grid used
 -- # Class: "EMDatasetBase" Description: "OSC-EM Metadata for a dataset"
 --     * Slot: id Description: 
 --     * Slot: acquisition_id Description: 
@@ -272,6 +292,9 @@
 --     * Slot: coordinates_id Description: Coordinates metadata
 --     * Slot: classes2D_id Description: Classes 2D metadata
 --     * Slot: classes3D_id Description: Classes 3D metadata
+-- # Class: "Acquisition_detectors" Description: ""
+--     * Slot: Acquisition_id Description: Autocreated FK slot
+--     * Slot: detectors_id Description: 
 -- # Class: "Organizational_grants" Description: ""
 --     * Slot: Organizational_id Description: Autocreated FK slot
 --     * Slot: grants_id Description: List of grants associated with the project
@@ -286,6 +309,12 @@
 --     * Slot: molecule_id Description: List of molecule associated with the sample
 -- # Class: "Sample_ligands" Description: ""
 --     * Slot: Sample_id Description: Autocreated FK slot
+--     * Slot: ligands_id Description: List of ligands associated with the sample
+-- # Class: "SampleMolecular_molecule" Description: ""
+--     * Slot: SampleMolecular_id Description: Autocreated FK slot
+--     * Slot: molecule_id Description: List of molecule associated with the sample
+-- # Class: "SampleMolecular_ligands" Description: ""
+--     * Slot: SampleMolecular_id Description: Autocreated FK slot
 --     * Slot: ligands_id Description: List of ligands associated with the sample
 -- # Class: "Movies_descriptors" Description: ""
 --     * Slot: Movies_id Description: Autocreated FK slot
@@ -366,17 +395,23 @@ CREATE TABLE "ChromaticAberrationCorrector" (
 	instrument_type TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
+CREATE TABLE "Microscope" (
+	id INTEGER NOT NULL, 
+	model TEXT NOT NULL, 
+	manufacturer TEXT, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE "Organizational" (
 	id INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Person" (
 	id INTEGER NOT NULL, 
-	name TEXT, 
-	first_name TEXT, 
-	work_status BOOLEAN, 
+	family_name TEXT, 
+	given_name TEXT, 
+	job_title BOOLEAN, 
 	email TEXT, 
-	work_phone TEXT, 
+	telephone TEXT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Author" (
@@ -386,11 +421,11 @@ CREATE TABLE "Author" (
 	role TEXT, 
 	name_org TEXT, 
 	type_org VARCHAR(10) NOT NULL, 
-	name TEXT NOT NULL, 
-	first_name TEXT NOT NULL, 
-	work_status BOOLEAN, 
+	family_name TEXT NOT NULL, 
+	given_name TEXT NOT NULL, 
+	job_title BOOLEAN, 
 	email TEXT NOT NULL, 
-	work_phone TEXT, 
+	telephone TEXT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "Funder" (
@@ -517,17 +552,21 @@ CREATE TABLE "SpecialistOptics" (
 );
 CREATE TABLE "Instrument" (
 	id INTEGER NOT NULL, 
-	microscope TEXT NOT NULL, 
 	illumination TEXT NOT NULL, 
 	imaging TEXT NOT NULL, 
 	electron_source TEXT NOT NULL, 
+	operating_mode TEXT, 
+	microscope_id INTEGER NOT NULL, 
 	acceleration_voltage_id INTEGER NOT NULL, 
 	c2_aperture_id INTEGER, 
-	cs_id INTEGER NOT NULL, 
+	cs_id INTEGER, 
+	beam_convergence_id INTEGER, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(microscope_id) REFERENCES "Microscope" (id), 
 	FOREIGN KEY(acceleration_voltage_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(c2_aperture_id) REFERENCES "QuantitySI" (id), 
-	FOREIGN KEY(cs_id) REFERENCES "QuantitySI" (id)
+	FOREIGN KEY(cs_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(beam_convergence_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Grant" (
 	id INTEGER NOT NULL, 
@@ -684,29 +723,29 @@ CREATE TABLE "Acquisition" (
 	holder TEXT, 
 	holder_cryogen TEXT, 
 	microscope_software TEXT, 
-	detector TEXT NOT NULL, 
-	detector_mode TEXT, 
 	date_time DATETIME NOT NULL, 
 	cryogen TEXT, 
 	frames_per_movie INTEGER, 
 	grids_imaged INTEGER, 
 	images_generated INTEGER, 
-	binning_camera FLOAT NOT NULL, 
 	beamtiltgroups INTEGER, 
 	gainref_flip_rotate TEXT, 
+	screen_current_id INTEGER, 
 	nominal_defocus_id INTEGER, 
 	calibrated_defocus_id INTEGER, 
 	temperature_id INTEGER, 
-	dose_per_movie_id INTEGER NOT NULL, 
+	dose_per_movie_id INTEGER, 
 	energy_filter_id INTEGER, 
 	image_size_id INTEGER, 
 	exposure_time_id INTEGER, 
+	binning_camera_id INTEGER NOT NULL, 
 	pixel_size_id INTEGER NOT NULL, 
 	specialist_optics_id INTEGER, 
 	beamshift_id INTEGER, 
 	beamtilt_id INTEGER, 
 	imageshift_id INTEGER, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(screen_current_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(nominal_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(calibrated_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
@@ -714,14 +753,39 @@ CREATE TABLE "Acquisition" (
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(binning_camera_id) REFERENCES "ImageSize" (id), 
 	FOREIGN KEY(pixel_size_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(imageshift_id) REFERENCES "BoundingBox2D" (id)
 );
+CREATE TABLE "Detector" (
+	id INTEGER NOT NULL, 
+	name TEXT, 
+	mode TEXT, 
+	dispersion_id INTEGER, 
+	collection_angle_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(dispersion_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(collection_angle_id) REFERENCES "Range" (id)
+);
 CREATE TABLE "Sample" (
 	id INTEGER NOT NULL, 
+	name TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	overall_molecule_id INTEGER, 
+	specimen_id INTEGER, 
+	grid_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(overall_molecule_id) REFERENCES "OverallMolecule" (id), 
+	FOREIGN KEY(specimen_id) REFERENCES "Specimen" (id), 
+	FOREIGN KEY(grid_id) REFERENCES "Grid" (id)
+);
+CREATE TABLE "SampleMolecular" (
+	id INTEGER NOT NULL, 
+	name TEXT, 
+	description TEXT, 
 	overall_molecule_id INTEGER NOT NULL, 
 	specimen_id INTEGER, 
 	grid_id INTEGER, 
@@ -831,6 +895,13 @@ CREATE TABLE "Processing" (
 	FOREIGN KEY("classes2D_id") REFERENCES "Classes2D" (id), 
 	FOREIGN KEY("classes3D_id") REFERENCES "Classes3D" (id)
 );
+CREATE TABLE "Acquisition_detectors" (
+	"Acquisition_id" INTEGER, 
+	detectors_id INTEGER NOT NULL, 
+	PRIMARY KEY ("Acquisition_id", detectors_id), 
+	FOREIGN KEY("Acquisition_id") REFERENCES "Acquisition" (id), 
+	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
+);
 CREATE TABLE "Sample_molecule" (
 	"Sample_id" INTEGER, 
 	molecule_id INTEGER, 
@@ -843,6 +914,20 @@ CREATE TABLE "Sample_ligands" (
 	ligands_id INTEGER, 
 	PRIMARY KEY ("Sample_id", ligands_id), 
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id), 
+	FOREIGN KEY(ligands_id) REFERENCES "Ligand" (id)
+);
+CREATE TABLE "SampleMolecular_molecule" (
+	"SampleMolecular_id" INTEGER, 
+	molecule_id INTEGER, 
+	PRIMARY KEY ("SampleMolecular_id", molecule_id), 
+	FOREIGN KEY("SampleMolecular_id") REFERENCES "SampleMolecular" (id), 
+	FOREIGN KEY(molecule_id) REFERENCES "Molecule" (id)
+);
+CREATE TABLE "SampleMolecular_ligands" (
+	"SampleMolecular_id" INTEGER, 
+	ligands_id INTEGER, 
+	PRIMARY KEY ("SampleMolecular_id", ligands_id), 
+	FOREIGN KEY("SampleMolecular_id") REFERENCES "SampleMolecular" (id), 
 	FOREIGN KEY(ligands_id) REFERENCES "Ligand" (id)
 );
 CREATE TABLE "CTFs_descriptors" (
@@ -863,7 +948,7 @@ CREATE TABLE "EMDatasetSpa" (
 	FOREIGN KEY(processing_id) REFERENCES "Processing" (id), 
 	FOREIGN KEY(acquisition_id) REFERENCES "Acquisition" (id), 
 	FOREIGN KEY(instrument_id) REFERENCES "Instrument" (id), 
-	FOREIGN KEY(sample_id) REFERENCES "Sample" (id), 
+	FOREIGN KEY(sample_id) REFERENCES "SampleMolecular" (id), 
 	FOREIGN KEY(organizational_id) REFERENCES "Organizational" (id)
 );
 CREATE TABLE "Processing_volumes" (

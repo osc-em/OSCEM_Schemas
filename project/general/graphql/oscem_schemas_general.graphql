@@ -1,0 +1,291 @@
+# metamodel_version: 1.7.0
+type Acquisition
+  {
+    screenCurrent: QuantitySI
+    nominalDefocus: Range
+    calibratedDefocus: Range
+    nominalMagnification: Integer
+    calibratedMagnification: Integer
+    holder: String
+    holderCryogen: String
+    temperature: Range
+    microscopeSoftware: String
+    detectors: [Detector]!
+    dosePerMovie: QuantitySI
+    energyFilter: EnergyFilter
+    imageSize: ImageSize
+    dateTime: Datetime!
+    exposureTime: QuantitySI
+    cryogen: String
+    framesPerMovie: Integer
+    gridsImaged: Integer
+    imagesGenerated: Integer
+    binningCamera: ImageSize!
+    pixelSize: QuantitySI!
+    specialistOptics: SpecialistOptics
+    beamshift: BoundingBox2D
+    beamtilt: BoundingBox2D
+    imageshift: BoundingBox2D
+    beamtiltgroups: Integer
+    gainrefFlipRotate: String
+  }
+
+type Any
+  {
+  }
+
+type Author
+  {
+    jobTitle: Boolean
+    telephone: String
+    orcid: String
+    country: String
+    role: String
+    nameOrg: String
+    typeOrg: OrganizationTypeEnum!
+    familyName: String!
+    givenName: String!
+    email: String!
+  }
+
+type BoundingBox2D
+  {
+    xMin: QuantitySI
+    xMax: QuantitySI
+    yMin: QuantitySI
+    yMax: QuantitySI
+  }
+
+type ChromaticAberrationCorrector
+  {
+    used: Boolean!
+    instrumentType: String!
+  }
+
+interface Descriptor
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Descriptors
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Detector
+  {
+    name: String
+    mode: String
+    dispersion: QuantitySI
+    collectionAngle: Range
+  }
+
+interface EMDatasetBase
+  {
+    acquisition: Any
+    instrument: Any
+    sample: Any
+    organizational: Any
+  }
+
+type EMDatasetGeneral
+  {
+    acquisition: Acquisition!
+    instrument: Instrument!
+    sample: Sample!
+    organizational: Organizational!
+  }
+
+type EnergyFilter
+  {
+    used: Boolean!
+    model: String
+    widthEnergyFilter: QuantitySI!
+  }
+
+type Funder
+  {
+    funderName: String
+    typeOrg: OrganizationTypeEnum
+    country: String
+  }
+
+type Grant
+  {
+    grantName: String
+    startDate: Datetime
+    endDate: Datetime
+    budget: QuantityValue
+    projectId: String
+    country: String
+  }
+
+type Grid
+  {
+    manufacturer: String
+    material: String
+    mesh: Float
+    filmSupport: Boolean
+    filmMaterial: String
+    filmTopology: String
+    filmThickness: String
+    pretreatmentType: String
+    pretreatmentTime: QuantitySI
+    pretreatmentPressure: QuantitySI
+    pretreatmentAtmosphere: String
+  }
+
+type ImageSize
+  {
+    height: Integer
+    width: Integer
+  }
+
+type Instrument
+  {
+    microscope: Microscope!
+    illumination: String!
+    imaging: String!
+    electronSource: String!
+    accelerationVoltage: QuantitySI!
+    c2Aperture: QuantitySI
+    cs: QuantitySI
+    operatingMode: String
+    beamConvergence: QuantitySI
+  }
+
+type Ligand
+  {
+    present: Boolean
+    smiles: String
+    reference: String
+  }
+
+type Microscope
+  {
+    model: String!
+    manufacturer: String
+  }
+
+type Molecule
+  {
+    nameMol: String!
+    molecularType: String
+    molecularClass: String
+    sequence: String!
+    naturalSource: String!
+    taxonomyIdSource: String
+    expressionSystem: String
+    taxonomyIdExpression: String
+    geneName: String
+  }
+
+type Organizational
+  {
+    grants: [Grant]
+    authors: [Author]!
+    funder: [Funder]
+  }
+
+type OverallMolecule
+  {
+    molecularOverallType: MoleculeClassEnum
+    nameSample: String!
+    source: String!
+    molecularWeight: QuantitySI
+    assembly: AssemblyEnum
+  }
+
+type Person
+  {
+    familyName: String
+    givenName: String
+    jobTitle: Boolean
+    email: String
+    telephone: String
+  }
+
+type Phaseplate
+  {
+    used: Boolean!
+    instrumentType: String!
+  }
+
+type QuantitySI
+  {
+    unit: String!
+    value: Float!
+    valueSI: Float
+    unitSI: String
+  }
+
+type QuantityValue
+  {
+    unit: String!
+    value: Float!
+  }
+
+type Range
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+  }
+
+type Sample
+  {
+    name: String!
+    description: String!
+    overallMolecule: OverallMolecule
+    molecule: [Molecule]
+    ligands: [Ligand]
+    specimen: Specimen
+    grid: Grid
+  }
+
+type SampleMolecular
+  {
+    molecule: [Molecule]
+    ligands: [Ligand]
+    specimen: Specimen
+    grid: Grid
+    name: String
+    description: String
+    overallMolecule: OverallMolecule!
+  }
+
+type Series
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+    increment: QuantitySI
+  }
+
+type SpecialistOptics
+  {
+    phaseplate: Phaseplate
+    sphericalAberrationCorrector: SphericalAberrationCorrector
+    chromaticAberrationCorrector: ChromaticAberrationCorrector
+  }
+
+type Specimen
+  {
+    buffer: String
+    concentration: QuantitySI
+    ph: Float
+    vitrification: Boolean
+    vitrificationCryogen: String
+    humidity: QuantitySI
+    temperature: QuantitySI
+    staining: Boolean
+    embedding: Boolean
+    shadowing: Boolean
+  }
+
+type SphericalAberrationCorrector
+  {
+    used: Boolean!
+    instrumentType: String!
+  }
+

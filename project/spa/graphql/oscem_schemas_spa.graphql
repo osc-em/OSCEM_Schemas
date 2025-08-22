@@ -1,31 +1,7 @@
 # metamodel_version: 1.7.0
-enum AssemblyEnum
-  {
-    FILAMENT
-    HELICAL_ARRAY
-    PARTICLE
-  }
-
-enum MoleculeClassEnum
-  {
-    CELL
-    COMPLEX
-    ORGANELLE_OR_CELLULAR_COMPONENT
-    RIBOSOME
-    TISSUE
-    VIRUS
-  }
-
-enum OrganizationTypeEnum
-  {
-    Academic
-    Commercial
-    Government
-    Other
-  }
-
 type Acquisition
   {
+    screenCurrent: QuantitySI
     nominalDefocus: Range
     calibratedDefocus: Range
     nominalMagnification: Integer
@@ -34,9 +10,8 @@ type Acquisition
     holderCryogen: String
     temperature: Range
     microscopeSoftware: String
-    detector: String!
-    detectorMode: String
-    dosePerMovie: QuantitySI!
+    detectors: [Detector]!
+    dosePerMovie: QuantitySI
     energyFilter: EnergyFilter
     imageSize: ImageSize
     dateTime: Datetime!
@@ -45,7 +20,7 @@ type Acquisition
     framesPerMovie: Integer
     gridsImaged: Integer
     imagesGenerated: Integer
-    binningCamera: Float!
+    binningCamera: ImageSize!
     pixelSize: QuantitySI!
     specialistOptics: SpecialistOptics
     beamshift: BoundingBox2D
@@ -66,15 +41,15 @@ type Astigmatism
 
 type Author
   {
-    workStatus: Boolean
-    workPhone: String
+    jobTitle: Boolean
+    telephone: String
     orcid: String
     country: String
     role: String
     nameOrg: String
     typeOrg: OrganizationTypeEnum!
-    name: String!
-    firstName: String!
+    familyName: String!
+    givenName: String!
     email: String!
   }
 
@@ -149,6 +124,14 @@ type Descriptors
     descriptorThing: Any
   }
 
+type Detector
+  {
+    name: String
+    mode: String
+    dispersion: QuantitySI
+    collectionAngle: Range
+  }
+
 interface EMDatasetBase
   {
     acquisition: Any
@@ -162,7 +145,7 @@ type EMDatasetSpa
     processing: Processing
     acquisition: Acquisition!
     instrument: Instrument!
-    sample: Sample!
+    sample: SampleMolecular!
     organizational: Organizational!
   }
 
@@ -213,13 +196,15 @@ type ImageSize
 
 type Instrument
   {
-    microscope: String!
+    microscope: Microscope!
     illumination: String!
     imaging: String!
     electronSource: String!
     accelerationVoltage: QuantitySI!
     c2Aperture: QuantitySI
-    cs: QuantitySI!
+    cs: QuantitySI
+    operatingMode: String
+    beamConvergence: QuantitySI
   }
 
 type IsosurfaceImages
@@ -240,6 +225,12 @@ type Micrographs
   {
     numberMicrographs: Float!
     descriptors: [Descriptors]
+  }
+
+type Microscope
+  {
+    model: String!
+    manufacturer: String
   }
 
 type Molecule
@@ -289,11 +280,11 @@ type OverallMolecule
 
 type Person
   {
-    name: String
-    firstName: String
-    workStatus: Boolean
+    familyName: String
+    givenName: String
+    jobTitle: Boolean
     email: String
-    workPhone: String
+    telephone: String
   }
 
 type Phaseplate
@@ -343,11 +334,24 @@ type Resolution
 
 type Sample
   {
-    overallMolecule: OverallMolecule!
+    name: String!
+    description: String!
+    overallMolecule: OverallMolecule
     molecule: [Molecule]
     ligands: [Ligand]
     specimen: Specimen
     grid: Grid
+  }
+
+type SampleMolecular
+  {
+    molecule: [Molecule]
+    ligands: [Ligand]
+    specimen: Specimen
+    grid: Grid
+    name: String
+    description: String
+    overallMolecule: OverallMolecule!
   }
 
 type Series

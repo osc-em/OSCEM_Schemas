@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/EMDatasetTomo_sample](https:
 
 ## Domain and Range
 
-[EMDatasetTomo](EMDatasetTomo.md) &#8594;  <sub>1..1</sub> [Sample](Sample.md)
+[EMDatasetTomo](EMDatasetTomo.md) &#8594;  <sub>1..1</sub> [SampleMolecular](SampleMolecular.md)
 
 ## Parents
 

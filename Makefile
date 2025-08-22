@@ -231,5 +231,6 @@ clean:
 
 # Default target
 .PHONY: all
+gen-artifacts: gen-project gen-examples
 all: gen-project gen-examples gendoc test
 deploy: all mkdocs-deploy

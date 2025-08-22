@@ -1,7 +1,7 @@
 
 # Slot: nominal_defocus
 
-Target defocus set, min and max values in µm.
+Target defocus set, min and max values in nm.
 
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/nominal_defocus](https://w3id.org/osc-em/oscem-schemas-spa/nominal_defocus)
 

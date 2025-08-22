@@ -20,8 +20,8 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/EnergyFilter](https://
  * [EnergyFilter➞used](EnergyFilter_used.md)  <sub>1..1</sub>
      * Description: whether a specific instrument was used during data acquisition
      * Range: [Boolean](types/Boolean.md)
- * [model](model.md)  <sub>0..1</sub>
-     * Description: Make and model of a specilized device
+ * [EnergyFilter➞model](EnergyFilter_model.md)  <sub>0..1</sub>
+     * Description: The model of the item
      * Range: [String](types/String.md)
  * [EnergyFilter➞width_energy_filter](EnergyFilter_width_energy_filter.md)  <sub>1..1</sub>
      * Description: Width of the energy filter used.

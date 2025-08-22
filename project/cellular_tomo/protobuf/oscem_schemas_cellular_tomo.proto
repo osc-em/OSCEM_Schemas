@@ -4,6 +4,7 @@
 // A set of parameteres describing the data acquisition
 message Acquisition
  {
+  quantitySI screenCurrent = 0
   range nominalDefocus = 0
   range calibratedDefocus = 0
   integer nominalMagnification = 0
@@ -12,8 +13,7 @@ message Acquisition
   string holderCryogen = 0
   range temperature = 0
   string microscopeSoftware = 0
-  string detector = 0
-  string detectorMode = 0
+ repeated  detector detectors = 0
   quantitySI dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
@@ -23,7 +23,7 @@ message Acquisition
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
-  float binningCamera = 0
+  imageSize binningCamera = 0
   quantitySI pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
@@ -34,6 +34,7 @@ message Acquisition
  }
 message AcquisitionTomo
  {
+  quantitySI screenCurrent = 0
   range nominalDefocus = 0
   range calibratedDefocus = 0
   integer nominalMagnification = 0
@@ -42,8 +43,7 @@ message AcquisitionTomo
   string holderCryogen = 0
   range temperature = 0
   string microscopeSoftware = 0
-  string detector = 0
-  string detectorMode = 0
+ repeated  detector detectors = 0
   quantitySI dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
@@ -53,7 +53,7 @@ message AcquisitionTomo
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
-  float binningCamera = 0
+  imageSize binningCamera = 0
   quantitySI pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
@@ -67,15 +67,15 @@ message AcquisitionTomo
 // Details on the person performing the experiment.
 message Author
  {
-  boolean workStatus = 0
-  string workPhone = 0
+  boolean jobTitle = 0
+  string telephone = 0
   string orcid = 0
   string country = 0
   string role = 0
   string nameOrg = 0
   organizationTypeEnum typeOrg = 0
-  string name = 0
-  string firstName = 0
+  string familyName = 0
+  string givenName = 0
   string email = 0
  }
 // an axis-aligned 2D bounding box (float units)
@@ -96,6 +96,14 @@ message Descriptors
  {
   string descriptorName = 0
   any descriptorThing = 0
+ }
+// Class representing a detector
+message Detector
+ {
+  string name = 0
+  string mode = 0
+  quantitySI dispersion = 0
+  range collectionAngle = 0
  }
 // cryo electron tomography dataset of a cellular sample, lab grown
 message EMDatasetCell
@@ -159,13 +167,21 @@ message ImageSize
 // Instrument values, mostly constant across a data collection.
 message Instrument
  {
-  string microscope = 0
+  microscope microscope = 0
   string illumination = 0
   string imaging = 0
   string electronSource = 0
   quantitySI accelerationVoltage = 0
   quantitySI c2Aperture = 0
   quantitySI cs = 0
+  string operatingMode = 0
+  quantitySI beamConvergence = 0
+ }
+// Microscope information
+message Microscope
+ {
+  string model = 0
+  string manufacturer = 0
  }
 // Overarching category for authors and grants
 message Organizational
@@ -177,11 +193,11 @@ message Organizational
 // personal information
 message Person
  {
-  string name = 0
-  string firstName = 0
-  boolean workStatus = 0
+  string familyName = 0
+  string givenName = 0
+  boolean jobTitle = 0
   string email = 0
-  string workPhone = 0
+  string telephone = 0
  }
 // Used to modulate the phase of the electron wave.
 message Phaseplate
