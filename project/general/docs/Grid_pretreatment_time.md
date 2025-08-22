@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-general/Grid_pretreatment_time](http
 
 ## Domain and Range
 
-[Grid](Grid.md) &#8594;  <sub>0..1</sub> [Any](Any.md)
+[Grid](Grid.md) &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

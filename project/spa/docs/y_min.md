@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/y_min](https://w3id.org/osc-em/o
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Any](Any.md)
+None &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

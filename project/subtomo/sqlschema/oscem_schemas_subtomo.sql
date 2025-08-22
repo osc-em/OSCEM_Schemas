@@ -235,10 +235,10 @@
 -- # Class: "Grant" Description: "Grant"
 --     * Slot: id Description: 
 --     * Slot: grant_name Description: name of the grant
+--     * Slot: start_date Description: start date
+--     * Slot: end_date Description: end date
 --     * Slot: project_id Description: project id
 --     * Slot: country Description: Country of the institution
---     * Slot: start_date_id Description: start date
---     * Slot: end_date_id Description: end date
 --     * Slot: budget_id Description: budget
 -- # Class: "Funder" Description: "Description of the project funding"
 --     * Slot: id Description: 
@@ -386,8 +386,8 @@ CREATE TABLE "Range" (
 	minimal_id INTEGER, 
 	maximal_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(minimal_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(maximal_id) REFERENCES "Any" (id)
+	FOREIGN KEY(minimal_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Series" (
 	id INTEGER NOT NULL, 
@@ -395,9 +395,9 @@ CREATE TABLE "Series" (
 	minimal_id INTEGER, 
 	maximal_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(increment_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(minimal_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(maximal_id) REFERENCES "Any" (id)
+	FOREIGN KEY(increment_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(minimal_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "BoundingBox2D" (
 	id INTEGER NOT NULL, 
@@ -406,10 +406,10 @@ CREATE TABLE "BoundingBox2D" (
 	y_min_id INTEGER, 
 	y_max_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(x_min_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(x_max_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(y_min_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(y_max_id) REFERENCES "Any" (id)
+	FOREIGN KEY(x_min_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(x_max_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(y_min_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(y_max_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Descriptor" (
 	id INTEGER NOT NULL, 
@@ -431,7 +431,7 @@ CREATE TABLE "EnergyFilter" (
 	model TEXT, 
 	width_energy_filter_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(width_energy_filter_id) REFERENCES "Any" (id)
+	FOREIGN KEY(width_energy_filter_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "SpecialistOptics" (
 	id INTEGER NOT NULL, 
@@ -456,10 +456,10 @@ CREATE TABLE "Instrument" (
 	beam_convergence_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(microscope_id) REFERENCES "Microscope" (id), 
-	FOREIGN KEY(acceleration_voltage_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(c2_aperture_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(cs_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(beam_convergence_id) REFERENCES "Any" (id)
+	FOREIGN KEY(acceleration_voltage_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(c2_aperture_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(cs_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(beam_convergence_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "OverallMolecule" (
 	id INTEGER NOT NULL, 
@@ -469,7 +469,7 @@ CREATE TABLE "OverallMolecule" (
 	assembly VARCHAR(13), 
 	molecular_weight_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(molecular_weight_id) REFERENCES "Any" (id)
+	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Specimen" (
 	id INTEGER NOT NULL, 
@@ -484,9 +484,9 @@ CREATE TABLE "Specimen" (
 	humidity_id INTEGER, 
 	temperature_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(concentration_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(humidity_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(temperature_id) REFERENCES "Any" (id)
+	FOREIGN KEY(concentration_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(humidity_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(temperature_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Grid" (
 	id INTEGER NOT NULL, 
@@ -502,8 +502,8 @@ CREATE TABLE "Grid" (
 	pretreatment_time_id INTEGER, 
 	pretreatment_pressure_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(pretreatment_time_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "Any" (id)
+	FOREIGN KEY(pretreatment_time_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(pretreatment_pressure_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "TiltAngle" (
 	id INTEGER NOT NULL, 
@@ -511,21 +511,19 @@ CREATE TABLE "TiltAngle" (
 	minimal_id INTEGER NOT NULL, 
 	maximal_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(increment_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(minimal_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(maximal_id) REFERENCES "Any" (id)
+	FOREIGN KEY(increment_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(minimal_id) REFERENCES "QuantitySI" (id), 
+	FOREIGN KEY(maximal_id) REFERENCES "QuantitySI" (id)
 );
 CREATE TABLE "Grant" (
 	id INTEGER NOT NULL, 
 	grant_name TEXT, 
+	start_date DATETIME, 
+	end_date DATETIME, 
 	project_id TEXT, 
 	country TEXT, 
-	start_date_id INTEGER, 
-	end_date_id INTEGER, 
 	budget_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(start_date_id) REFERENCES "Any" (id), 
-	FOREIGN KEY(end_date_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(budget_id) REFERENCES "QuantityValue" (id)
 );
 CREATE TABLE "EMDatasetBase" (
@@ -583,16 +581,16 @@ CREATE TABLE "Acquisition" (
 	beamtilt_id INTEGER, 
 	imageshift_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(screen_current_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(screen_current_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(nominal_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(calibrated_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(dose_per_movie_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(exposure_time_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(binning_camera_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(pixel_size_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 
@@ -605,7 +603,7 @@ CREATE TABLE "Detector" (
 	dispersion_id INTEGER, 
 	collection_angle_id INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(dispersion_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(dispersion_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(collection_angle_id) REFERENCES "Range" (id)
 );
 CREATE TABLE "Sample" (
@@ -664,16 +662,16 @@ CREATE TABLE "AcquisitionTomo" (
 	imageshift_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(tilt_angle_id) REFERENCES "TiltAngle" (id), 
-	FOREIGN KEY(screen_current_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(screen_current_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(nominal_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(calibrated_defocus_id) REFERENCES "Range" (id), 
 	FOREIGN KEY(temperature_id) REFERENCES "Range" (id), 
-	FOREIGN KEY(dose_per_movie_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(dose_per_movie_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(energy_filter_id) REFERENCES "EnergyFilter" (id), 
 	FOREIGN KEY(image_size_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(exposure_time_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(binning_camera_id) REFERENCES "ImageSize" (id), 
-	FOREIGN KEY(pixel_size_id) REFERENCES "Any" (id), 
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantitySI" (id), 
 	FOREIGN KEY(specialist_optics_id) REFERENCES "SpecialistOptics" (id), 
 	FOREIGN KEY(beamshift_id) REFERENCES "BoundingBox2D" (id), 
 	FOREIGN KEY(beamtilt_id) REFERENCES "BoundingBox2D" (id), 

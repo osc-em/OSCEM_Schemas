@@ -230,10 +230,6 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Molecule➞sequence](Molecule_sequence.md)
  * [shadowing](shadowing.md) - Whether the sample was shadowed
      * [Specimen➞shadowing](Specimen_shadowing.md)
- * [si_unit](si_unit.md)
-     * [QuantitySI➞si_unit](QuantitySI_si_unit.md)
- * [si_value](si_value.md)
-     * [QuantitySI➞si_value](QuantitySI_si_value.md)
  * [smiles](smiles.md) - Provide a valid SMILES string of your ligand
  * [source](source.md) - Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
      * [OverallMolecule➞source](OverallMolecule_source.md)

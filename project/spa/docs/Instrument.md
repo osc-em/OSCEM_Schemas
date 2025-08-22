@@ -6,7 +6,7 @@ Instrument values, mostly constant across a data collection.
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/Instrument](https://w3id.org/osc-em/oscem-schemas-spa/Instrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Microscope],[Any]<beam_convergence%200..1-++[Instrument&#124;illumination:string;imaging:string;electron_source:string;operating_mode:string%20%3F],[Any]<cs%200..1-++[Instrument],[Any]<c2_aperture%200..1-++[Instrument],[Any]<acceleration_voltage%201..1-++[Instrument],[Microscope]<microscope%201..1-++[Instrument],[EMDatasetSpa]++-%20instrument%201..1>[Instrument],[EMDatasetSpa],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Microscope],[Any]<beam_convergence%200..1-++[Instrument&#124;illumination:string;imaging:string;electron_source:string;operating_mode:string%20%3F],[Any]<cs%200..1-++[Instrument],[Any]<c2_aperture%200..1-++[Instrument],[Any]<acceleration_voltage%201..1-++[Instrument],[Microscope]<microscope%201..1-++[Instrument],[EMDatasetSpa]++-%20instrument%201..1>[Instrument],[EMDatasetSpa],[Any])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[Microscope],[QuantitySI]<beam_convergence%200..1-++[Instrument&#124;illumination:string;imaging:string;electron_source:string;operating_mode:string%20%3F],[QuantitySI]<cs%200..1-++[Instrument],[QuantitySI]<c2_aperture%200..1-++[Instrument],[QuantitySI]<acceleration_voltage%201..1-++[Instrument],[Microscope]<microscope%201..1-++[Instrument],[EMDatasetSpa]++-%20instrument%201..1>[Instrument],[EMDatasetSpa])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[Microscope],[QuantitySI]<beam_convergence%200..1-++[Instrument&#124;illumination:string;imaging:string;electron_source:string;operating_mode:string%20%3F],[QuantitySI]<cs%200..1-++[Instrument],[QuantitySI]<c2_aperture%200..1-++[Instrument],[QuantitySI]<acceleration_voltage%201..1-++[Instrument],[Microscope]<microscope%201..1-++[Instrument],[EMDatasetSpa]++-%20instrument%201..1>[Instrument],[EMDatasetSpa])
 
 ## Referenced by Class
 
@@ -31,16 +31,16 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Instrument](https://w3id.org/osc
      * Range: [String](types/String.md)
  * [Instrument➞acceleration_voltage](Instrument_acceleration_voltage.md)  <sub>1..1</sub>
      * Description: Voltage used for the electron acceleration, in kV
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [Instrument➞c2_aperture](Instrument_c2_aperture.md)  <sub>0..1</sub>
      * Description: C2 aperture size used in data acquisition, in µm
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [Instrument➞cs](Instrument_cs.md)  <sub>0..1</sub>
      * Description: Spherical aberration of the instrument, in mm
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [Instrument➞operating_mode](Instrument_operating_mode.md)  <sub>0..1</sub>
      * Description: Operating mode of the microscope, i.e. "TEM", "STEM"
      * Range: [String](types/String.md)
  * [Instrument➞beam_convergence](Instrument_beam_convergence.md)  <sub>0..1</sub>
      * Description: Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM.
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)

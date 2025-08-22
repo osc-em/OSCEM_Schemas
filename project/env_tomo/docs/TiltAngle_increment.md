@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/TiltAngle_increment](https:
 
 ## Domain and Range
 
-[TiltAngle](TiltAngle.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
+[TiltAngle](TiltAngle.md) &#8594;  <sub>1..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

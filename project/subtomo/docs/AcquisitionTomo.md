@@ -6,7 +6,7 @@
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/AcquisitionTomo](https://w3id.org/osc-em/oscem-schemas-subtomo/AcquisitionTomo)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[ImageSize],[EnergyFilter],[EMDatasetTomo],[Detector],[BoundingBox2D],[Any],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetTomo]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[ImageSize],[EnergyFilter],[EMDatasetTomo],[Detector],[BoundingBox2D],[Any],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetTomo]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetTomo],[Detector],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetTomo]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetTomo],[Detector],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetTomo]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])
 
 ## Parents
 
@@ -32,7 +32,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/AcquisitionTomo](https://w3i
 
  * [screen_current](screen_current.md)  <sub>0..1</sub>
      * Description: The total electron beam current hitting the viewing screen, in nA.
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [nominal_defocus](nominal_defocus.md)  <sub>0..1</sub>
      * Description: Target defocus set, min and max values in nm.
      * Range: [Range](Range.md)
@@ -61,7 +61,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/AcquisitionTomo](https://w3i
      * Range: [Detector](Detector.md)
  * [dose_per_movie](dose_per_movie.md)  <sub>0..1</sub>
      * Description: Average dose per image/movie/tilt - given in electrons per square Angstrom
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [energy_filter](energy_filter.md)  <sub>0..1</sub>
      * Description: Whether an energy filter was used and its specifics.
      * Range: [EnergyFilter](EnergyFilter.md)
@@ -73,7 +73,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/AcquisitionTomo](https://w3i
      * Range: [Datetime](types/Datetime.md)
  * [exposure_time](exposure_time.md)  <sub>0..1</sub>
      * Description: Time of data acquisition per movie/tilt - in s
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [cryogen](cryogen.md)  <sub>0..1</sub>
      * Description: Cryogen used in cooling the instrument and sample, usually nitrogen
      * Range: [String](types/String.md)
@@ -91,7 +91,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/AcquisitionTomo](https://w3i
      * Range: [ImageSize](ImageSize.md)
  * [Acquisition➞pixel_size](Acquisition_pixel_size.md)  <sub>1..1</sub>
      * Description: Pixel size, in Angstrom
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [specialist_optics](specialist_optics.md)  <sub>0..1</sub>
      * Description: Any type of special optics, such as a phaseplate
      * Range: [SpecialistOptics](SpecialistOptics.md)

@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Instrument_c2_aperture](https://
 
 ## Domain and Range
 
-[Instrument](Instrument.md) &#8594;  <sub>0..1</sub> [Any](Any.md)
+[Instrument](Instrument.md) &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

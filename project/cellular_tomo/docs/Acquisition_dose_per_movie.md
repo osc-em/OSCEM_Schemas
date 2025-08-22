@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Acquisition_dose_per_m
 
 ## Domain and Range
 
-[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
+[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 
