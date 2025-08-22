@@ -6,7 +6,7 @@ Details on the person performing the experiment.
 URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/Author](https://w3id.org/osc-em/oscem-schemas-env-tomo/Author)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;name:string;first_name:string;email:string;work_status(i):boolean%20%3F;work_phone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;name:string;first_name:string;email:string;work_status(i):boolean%20%3F;work_phone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;family_name:string;given_name:string;email:string;job_title(i):boolean%20%3F;telephone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;family_name:string;given_name:string;email:string;job_title(i):boolean%20%3F;telephone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])
 
 ## Parents
 
@@ -37,10 +37,10 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/Author](https://w3id.org/os
  * [Author➞type_org](Author_type_org.md)  <sub>1..1</sub>
      * Description: Type of organization, academic, commercial, governmental, etc.
      * Range: [OrganizationTypeEnum](OrganizationTypeEnum.md)
- * [Author➞name](Author_name.md)  <sub>1..1</sub>
-     * Description: name
+ * [Author➞family_name](Author_family_name.md)  <sub>1..1</sub>
+     * Description: last name
      * Range: [String](types/String.md)
- * [Author➞first_name](Author_first_name.md)  <sub>1..1</sub>
+ * [Author➞given_name](Author_given_name.md)  <sub>1..1</sub>
      * Description: first name
      * Range: [String](types/String.md)
  * [Author➞email](Author_email.md)  <sub>1..1</sub>
@@ -49,9 +49,9 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/Author](https://w3id.org/os
 
 ### Inherited from Person:
 
- * [work_status](work_status.md)  <sub>0..1</sub>
-     * Description: work status
+ * [job_title](job_title.md)  <sub>0..1</sub>
+     * Description: job title
      * Range: [Boolean](types/Boolean.md)
- * [work_phone](work_phone.md)  <sub>0..1</sub>
+ * [telephone](telephone.md)  <sub>0..1</sub>
      * Description: work phone
      * Range: [String](types/String.md)

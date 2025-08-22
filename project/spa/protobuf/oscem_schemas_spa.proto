@@ -4,6 +4,7 @@
 // A set of parameteres describing the data acquisition
 message Acquisition
  {
+  any screenCurrent = 0
   range nominalDefocus = 0
   range calibratedDefocus = 0
   integer nominalMagnification = 0
@@ -12,8 +13,7 @@ message Acquisition
   string holderCryogen = 0
   range temperature = 0
   string microscopeSoftware = 0
-  string detector = 0
-  string detectorMode = 0
+ repeated  detector detectors = 0
   any dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
@@ -23,7 +23,7 @@ message Acquisition
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
-  float binningCamera = 0
+  imageSize binningCamera = 0
   any pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
@@ -40,15 +40,15 @@ message Astigmatism
 // Details on the person performing the experiment.
 message Author
  {
-  boolean workStatus = 0
-  string workPhone = 0
+  boolean jobTitle = 0
+  string telephone = 0
   string orcid = 0
   string country = 0
   string role = 0
   string nameOrg = 0
   organizationTypeEnum typeOrg = 0
-  string name = 0
-  string firstName = 0
+  string familyName = 0
+  string givenName = 0
   string email = 0
  }
 // an axis-aligned 2D bounding box (float units)
@@ -68,7 +68,6 @@ message ChromaticAberrationCorrector
 // Class representing classes 2D metadata
 message Classes2D
  {
-  integer numberClasses2D = 0
  repeated  integer particlesPer2Dclass = 0
   string imagesClasses2D = 0
   quantityValue resolutionClasses2D = 0
@@ -77,7 +76,6 @@ message Classes2D
 // Class representing classes 3D metadata
 message Classes3D
  {
-  integer numberClasses3D = 0
  repeated  integer particlesPer3Dclass = 0
   string imagesClasses3D = 0
  repeated  volume volume = 0
@@ -117,13 +115,21 @@ message Descriptors
   string descriptorName = 0
   any descriptorThing = 0
  }
+// Class representing a detector
+message Detector
+ {
+  string name = 0
+  string mode = 0
+  any dispersion = 0
+  range collectionAngle = 0
+ }
 // Single particle cryo electron microscopy dataset
 message EMDatasetSpa
  {
   processing processing = 0
   acquisition acquisition = 0
   instrument instrument = 0
-  sample sample = 0
+  sampleMolecular sample = 0
   organizational organizational = 0
  }
 // A device used to filter for electrons with specific energy.
@@ -174,13 +180,15 @@ message ImageSize
 // Instrument values, mostly constant across a data collection.
 message Instrument
  {
-  string microscope = 0
+  microscope microscope = 0
   string illumination = 0
   string imaging = 0
   string electronSource = 0
   any accelerationVoltage = 0
   any c2Aperture = 0
   any cs = 0
+  string operatingMode = 0
+  any beamConvergence = 0
  }
 // Class for the isosurface images
 message IsosurfaceImages
@@ -201,6 +209,12 @@ message Micrographs
  {
   float numberMicrographs = 0
  repeated  descriptors descriptors = 0
+ }
+// Microscope information
+message Microscope
+ {
+  string model = 0
+  string manufacturer = 0
  }
 // More detailed information about individual molecules.
 message Molecule
@@ -250,11 +264,11 @@ message OverallMolecule
 // personal information
 message Person
  {
-  string name = 0
-  string firstName = 0
-  boolean workStatus = 0
+  string familyName = 0
+  string givenName = 0
+  boolean jobTitle = 0
   string email = 0
-  string workPhone = 0
+  string telephone = 0
  }
 // Used to modulate the phase of the electron wave.
 message Phaseplate
@@ -306,11 +320,23 @@ message Resolution
 // Unifying class to describe the full sample.
 message Sample
  {
+  string name = 0
+  string description = 0
   overallMolecule overallMolecule = 0
  repeated  molecule molecule = 0
  repeated  ligand ligands = 0
   specimen specimen = 0
   grid grid = 0
+ }
+message SampleMolecular
+ {
+ repeated  molecule molecule = 0
+ repeated  ligand ligands = 0
+  specimen specimen = 0
+  grid grid = 0
+  string name = 0
+  string description = 0
+  overallMolecule overallMolecule = 0
  }
 // A series of numbers constructed from min, max, and increment
 message Series
@@ -357,7 +383,7 @@ message Volumes
  {
   string volumeType = 0
   integer volNumberParticles = 0
-  string size = 0
+ repeated  integer size = 0
   orthogonalSlices orthogonalSlices = 0
   isosurfaceImages isosurfaceImages = 0
   quantityValue volResolution = 0

@@ -1,7 +1,7 @@
 
 # Slot: name
 
-name
+The name of the item
 
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/name](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/name)
 
@@ -15,14 +15,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [Author➞name](Author_name.md)
 
 ## Used by
 
- * [Person](Person.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **Mappings:** | | schema:name |
+ * [Detector](Detector.md)

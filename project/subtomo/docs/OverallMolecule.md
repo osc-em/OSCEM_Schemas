@@ -6,11 +6,12 @@ Description of the overall molecule
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/OverallMolecule](https://w3id.org/osc-em/oscem-schemas-subtomo/OverallMolecule)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Any]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Any]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[Sample]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule],[Any])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleMolecular],[Sample],[Any]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[SampleMolecular]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule%200..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleMolecular],[Sample],[Any]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[SampleMolecular]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule%200..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule],[Any])
 
 ## Referenced by Class
 
- *  **[Sample](Sample.md)** *[Sample➞overall_molecule](Sample_overall_molecule.md)*  <sub>1..1</sub>  **[OverallMolecule](OverallMolecule.md)**
+ *  **[SampleMolecular](SampleMolecular.md)** *[SampleMolecular➞overall_molecule](SampleMolecular_overall_molecule.md)*  <sub>1..1</sub>  **[OverallMolecule](OverallMolecule.md)**
+ *  **[Sample](Sample.md)** *[Sample➞overall_molecule](Sample_overall_molecule.md)*  <sub>0..1</sub>  **[OverallMolecule](OverallMolecule.md)**
  *  **None** *[overall_molecule](overall_molecule.md)*  <sub>0..1</sub>  **[OverallMolecule](OverallMolecule.md)**
 
 ## Attributes

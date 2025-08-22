@@ -380,9 +380,33 @@
   ],
   "slots": [
     {
+      "name": "screen_current",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionscreen_current",
+      "description": "The total electron beam current hitting the viewing screen, in nA.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionscreen_current",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "any_of": [
+        {
+          "range": "QuantityValue",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "QuantitySI",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "nominal_defocus",
       "definition_uri": "https://w3id.org/osc-em/acquisitionnominal_defocus",
-      "description": "Target defocus set, min and max values in \u00b5m.",
+      "description": "Target defocus set, min and max values in nm.",
       "from_schema": "https://w3id.org/osc-em/acquisition",
       "slot_uri": "https://w3id.org/osc-em/acquisitionnominal_defocus",
       "owner": "Acquisition",
@@ -488,32 +512,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "detector",
-      "definition_uri": "https://w3id.org/osc-em/acquisitiondetector",
-      "description": "Make and model of the detector used",
-      "from_schema": "https://w3id.org/osc-em/acquisition",
-      "slot_uri": "https://w3id.org/osc-em/acquisitiondetector",
-      "owner": "Acquisition",
-      "domain_of": [
-        "Acquisition"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "detector_mode",
-      "definition_uri": "https://w3id.org/osc-em/acquisitiondetector_mode",
-      "description": "Operating mode of the detector",
-      "from_schema": "https://w3id.org/osc-em/acquisition",
-      "slot_uri": "https://w3id.org/osc-em/acquisitiondetector_mode",
-      "owner": "Acquisition",
-      "domain_of": [
-        "Acquisition"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "dose_per_movie",
       "definition_uri": "https://w3id.org/osc-em/acquisitiondose_per_movie",
       "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom",
@@ -540,7 +538,7 @@
     {
       "name": "energy_filter",
       "definition_uri": "https://w3id.org/osc-em/acquisitionenergy_filter",
-      "description": "Wether an energy filter was used and its specifics.",
+      "description": "Whether an energy filter was used and its specifics.",
       "from_schema": "https://w3id.org/osc-em/acquisition",
       "slot_uri": "https://w3id.org/osc-em/acquisitionenergy_filter",
       "owner": "Acquisition",
@@ -548,6 +546,20 @@
         "Acquisition"
       ],
       "range": "EnergyFilter",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "detectors",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiondetectors",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiondetectors",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "Detector",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -565,19 +577,6 @@
         "ChromaticAberrationCorrector"
       ],
       "range": "boolean",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "model",
-      "definition_uri": "https://w3id.org/osc-em/acquisitionmodel",
-      "description": "Make and model of a specilized device",
-      "from_schema": "https://w3id.org/osc-em/acquisition",
-      "slot_uri": "https://w3id.org/osc-em/acquisitionmodel",
-      "owner": "EnergyFilter",
-      "domain_of": [
-        "EnergyFilter"
-      ],
-      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -693,7 +692,8 @@
       "domain_of": [
         "Acquisition"
       ],
-      "range": "float",
+      "range": "ImageSize",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -884,24 +884,76 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "microscope",
-      "definition_uri": "https://w3id.org/osc-em/instrument/microscope",
-      "description": "Name/Type of the Microscope",
-      "from_schema": "https://w3id.org/osc-em/instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/microscope",
-      "owner": "Instrument",
+      "name": "mode",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionmode",
+      "description": "Mode of the detector, e.g. \"counting\", \"ScanningDetector\", \"ImagingDetector\", etc.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionmode",
+      "owner": "Detector",
       "domain_of": [
-        "Instrument"
+        "Detector"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
+      "name": "dispersion",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiondispersion",
+      "description": "Dispersion of an analytical detector, in eV",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiondispersion",
+      "owner": "Detector",
+      "domain_of": [
+        "Detector"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "any_of": [
+        {
+          "range": "QuantityValue",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "QuantitySI",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "collection_angle",
+      "definition_uri": "https://w3id.org/osc-em/acquisitioncollection_angle",
+      "description": "Collection angle set, min and max values in mrad.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitioncollection_angle",
+      "owner": "Detector",
+      "domain_of": [
+        "Detector"
+      ],
+      "range": "Range",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "microscope",
+      "definition_uri": "https://w3id.org/osc-em/instrumentmicroscope",
+      "description": "Microscope information",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentmicroscope",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "Microscope",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "illumination",
-      "definition_uri": "https://w3id.org/osc-em/instrument/illumination",
+      "definition_uri": "https://w3id.org/osc-em/instrumentillumination",
       "description": "Mode of illumination used during data collection",
       "from_schema": "https://w3id.org/osc-em/instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/illumination",
+      "slot_uri": "https://w3id.org/osc-em/instrumentillumination",
       "owner": "Instrument",
       "domain_of": [
         "Instrument"
@@ -911,10 +963,10 @@
     },
     {
       "name": "imaging",
-      "definition_uri": "https://w3id.org/osc-em/instrument/imaging",
+      "definition_uri": "https://w3id.org/osc-em/instrumentimaging",
       "description": "Mode of imaging used during data collection",
       "from_schema": "https://w3id.org/osc-em/instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/imaging",
+      "slot_uri": "https://w3id.org/osc-em/instrumentimaging",
       "owner": "Instrument",
       "domain_of": [
         "Instrument"
@@ -924,10 +976,10 @@
     },
     {
       "name": "electron_source",
-      "definition_uri": "https://w3id.org/osc-em/instrument/electron_source",
+      "definition_uri": "https://w3id.org/osc-em/instrumentelectron_source",
       "description": "Type of electron source used in the microscope, such as FEG",
       "from_schema": "https://w3id.org/osc-em/instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/electron_source",
+      "slot_uri": "https://w3id.org/osc-em/instrumentelectron_source",
       "owner": "Instrument",
       "domain_of": [
         "Instrument"
@@ -937,10 +989,10 @@
     },
     {
       "name": "acceleration_voltage",
-      "definition_uri": "https://w3id.org/osc-em/instrument/acceleration_voltage",
+      "definition_uri": "https://w3id.org/osc-em/instrumentacceleration_voltage",
       "description": "Voltage used for the electron acceleration, in kV",
       "from_schema": "https://w3id.org/osc-em/instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/acceleration_voltage",
+      "slot_uri": "https://w3id.org/osc-em/instrumentacceleration_voltage",
       "owner": "Instrument",
       "domain_of": [
         "Instrument"
@@ -961,10 +1013,10 @@
     },
     {
       "name": "c2_aperture",
-      "definition_uri": "https://w3id.org/osc-em/instrument/c2_aperture",
+      "definition_uri": "https://w3id.org/osc-em/instrumentc2_aperture",
       "description": "C2 aperture size used in data acquisition, in \u00b5m",
       "from_schema": "https://w3id.org/osc-em/instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/c2_aperture",
+      "slot_uri": "https://w3id.org/osc-em/instrumentc2_aperture",
       "owner": "Instrument",
       "domain_of": [
         "Instrument"
@@ -985,10 +1037,47 @@
     },
     {
       "name": "cs",
-      "definition_uri": "https://w3id.org/osc-em/instrument/cs",
+      "definition_uri": "https://w3id.org/osc-em/instrumentcs",
       "description": "Spherical aberration of the instrument, in mm",
       "from_schema": "https://w3id.org/osc-em/instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/cs",
+      "slot_uri": "https://w3id.org/osc-em/instrumentcs",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "any_of": [
+        {
+          "range": "QuantityValue",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "QuantitySI",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "operating_mode",
+      "definition_uri": "https://w3id.org/osc-em/instrumentoperating_mode",
+      "description": "Operating mode of the microscope, i.e. \"TEM\", \"STEM\"",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentoperating_mode",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beam_convergence",
+      "definition_uri": "https://w3id.org/osc-em/instrumentbeam_convergence",
+      "description": "Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM.",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentbeam_convergence",
       "owner": "Instrument",
       "domain_of": [
         "Instrument"
@@ -1408,11 +1497,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "first_name",
-      "definition_uri": "https://w3id.org/osc-em/organizational/first_name",
-      "description": "first name",
+      "name": "family_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/family_name",
+      "description": "last name",
       "from_schema": "https://w3id.org/osc-em/organizational",
-      "slot_uri": "https://w3id.org/osc-em/organizational/first_name",
+      "mappings": [
+        "http://schema.org/familyName"
+      ],
+      "slot_uri": "http://schema.org/familyName",
       "owner": "Person",
       "domain_of": [
         "Person"
@@ -1421,26 +1513,35 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "work_status",
-      "definition_uri": "https://w3id.org/osc-em/organizational/work_status",
-      "description": "work status",
+      "name": "given_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/given_name",
+      "description": "first name",
       "from_schema": "https://w3id.org/osc-em/organizational",
-      "slot_uri": "https://w3id.org/osc-em/organizational/work_status",
+      "mappings": [
+        "http://schema.org/givenName"
+      ],
+      "slot_uri": "http://schema.org/givenName",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "job_title",
+      "definition_uri": "https://w3id.org/osc-em/organizational/job_title",
+      "description": "job title",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/jobTitle"
+      ],
+      "slot_uri": "http://schema.org/jobTitle",
       "owner": "Person",
       "domain_of": [
         "Person"
       ],
       "range": "boolean",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "person",
-      "definition_uri": "https://w3id.org/osc-em/organizational/person",
-      "description": "person",
-      "from_schema": "https://w3id.org/osc-em/organizational",
-      "slot_uri": "https://w3id.org/osc-em/organizational/person",
-      "range": "Person",
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1461,8 +1562,8 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "work_phone",
-      "definition_uri": "https://w3id.org/osc-em/organizational/work_phone",
+      "name": "telephone",
+      "definition_uri": "https://w3id.org/osc-em/organizational/telephone",
       "description": "work phone",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "mappings": [
@@ -1477,19 +1578,16 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "name",
-      "definition_uri": "https://w3id.org/osc-em/organizational/name",
-      "description": "name",
+      "name": "person",
+      "definition_uri": "https://w3id.org/osc-em/organizational/person",
+      "description": "person",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "mappings": [
-        "http://schema.org/name"
+        "http://schema.org/Person"
       ],
-      "slot_uri": "http://schema.org/name",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "string",
+      "slot_uri": "http://schema.org/Person",
+      "range": "Person",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1759,6 +1857,55 @@
       ],
       "range": "Any",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesname",
+      "description": "The name of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesname",
+      "owner": "Detector",
+      "domain_of": [
+        "Detector"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "description",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescription",
+      "description": "The description of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescription",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "manufacturer",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "description": "The name of the manufacturer",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "owner": "Microscope",
+      "domain_of": [
+        "Microscope"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "model",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "description": "The model of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "owner": "Microscope",
+      "domain_of": [
+        "EnergyFilter",
+        "Microscope"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -2148,52 +2295,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Acquisition_detector",
-      "definition_uri": "https://w3id.org/osc-em/acquisitiondetector",
-      "description": "Make and model of the detector used",
+      "name": "Acquisition_detectors",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiondetectors",
       "from_schema": "https://w3id.org/osc-em/acquisition",
-      "is_a": "detector",
+      "is_a": "detectors",
       "domain": "Acquisition",
-      "slot_uri": "https://w3id.org/osc-em/acquisitiondetector",
-      "alias": "detector",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiondetectors",
+      "alias": "detectors",
       "owner": "Acquisition",
       "domain_of": [
         "Acquisition"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "detector",
-      "range": "string",
+      "usage_slot_name": "detectors",
+      "range": "Detector",
       "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Acquisition_dose_per_movie",
-      "definition_uri": "https://w3id.org/osc-em/acquisitiondose_per_movie",
-      "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom",
-      "from_schema": "https://w3id.org/osc-em/acquisition",
-      "is_a": "dose_per_movie",
-      "domain": "Acquisition",
-      "slot_uri": "https://w3id.org/osc-em/acquisitiondose_per_movie",
-      "alias": "dose_per_movie",
-      "owner": "Acquisition",
-      "domain_of": [
-        "Acquisition"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "dose_per_movie",
-      "range": "Any",
-      "required": true,
+      "multivalued": true,
       "inlined": true,
-      "any_of": [
-        {
-          "range": "QuantityValue",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "QuantitySI",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
@@ -2230,8 +2348,9 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "binning_camera",
-      "range": "float",
+      "range": "ImageSize",
       "required": true,
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2281,6 +2400,24 @@
       "usage_slot_name": "used",
       "range": "boolean",
       "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EnergyFilter_model",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "description": "The model of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "model",
+      "domain": "EnergyFilter",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "alias": "model",
+      "owner": "EnergyFilter",
+      "domain_of": [
+        "EnergyFilter"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "model",
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -2429,12 +2566,12 @@
     },
     {
       "name": "Instrument_microscope",
-      "definition_uri": "https://w3id.org/osc-em/instrument/microscope",
-      "description": "Name/Type of the Microscope",
+      "definition_uri": "https://w3id.org/osc-em/instrumentmicroscope",
+      "description": "Microscope information",
       "from_schema": "https://w3id.org/osc-em/instrument",
       "is_a": "microscope",
       "domain": "Instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/microscope",
+      "slot_uri": "https://w3id.org/osc-em/instrumentmicroscope",
       "alias": "microscope",
       "owner": "Instrument",
       "domain_of": [
@@ -2442,18 +2579,19 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "microscope",
-      "range": "string",
+      "range": "Microscope",
       "required": true,
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "Instrument_illumination",
-      "definition_uri": "https://w3id.org/osc-em/instrument/illumination",
+      "definition_uri": "https://w3id.org/osc-em/instrumentillumination",
       "description": "Mode of illumination used during data collection",
       "from_schema": "https://w3id.org/osc-em/instrument",
       "is_a": "illumination",
       "domain": "Instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/illumination",
+      "slot_uri": "https://w3id.org/osc-em/instrumentillumination",
       "alias": "illumination",
       "owner": "Instrument",
       "domain_of": [
@@ -2467,12 +2605,12 @@
     },
     {
       "name": "Instrument_imaging",
-      "definition_uri": "https://w3id.org/osc-em/instrument/imaging",
+      "definition_uri": "https://w3id.org/osc-em/instrumentimaging",
       "description": "Mode of imaging used during data collection",
       "from_schema": "https://w3id.org/osc-em/instrument",
       "is_a": "imaging",
       "domain": "Instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/imaging",
+      "slot_uri": "https://w3id.org/osc-em/instrumentimaging",
       "alias": "imaging",
       "owner": "Instrument",
       "domain_of": [
@@ -2486,12 +2624,12 @@
     },
     {
       "name": "Instrument_electron_source",
-      "definition_uri": "https://w3id.org/osc-em/instrument/electron_source",
+      "definition_uri": "https://w3id.org/osc-em/instrumentelectron_source",
       "description": "Type of electron source used in the microscope, such as FEG",
       "from_schema": "https://w3id.org/osc-em/instrument",
       "is_a": "electron_source",
       "domain": "Instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/electron_source",
+      "slot_uri": "https://w3id.org/osc-em/instrumentelectron_source",
       "alias": "electron_source",
       "owner": "Instrument",
       "domain_of": [
@@ -2505,12 +2643,12 @@
     },
     {
       "name": "Instrument_acceleration_voltage",
-      "definition_uri": "https://w3id.org/osc-em/instrument/acceleration_voltage",
+      "definition_uri": "https://w3id.org/osc-em/instrumentacceleration_voltage",
       "description": "Voltage used for the electron acceleration, in kV",
       "from_schema": "https://w3id.org/osc-em/instrument",
       "is_a": "acceleration_voltage",
       "domain": "Instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/acceleration_voltage",
+      "slot_uri": "https://w3id.org/osc-em/instrumentacceleration_voltage",
       "alias": "acceleration_voltage",
       "owner": "Instrument",
       "domain_of": [
@@ -2534,22 +2672,21 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Instrument_cs",
-      "definition_uri": "https://w3id.org/osc-em/instrument/cs",
-      "description": "Spherical aberration of the instrument, in mm",
+      "name": "Instrument_c2_aperture",
+      "definition_uri": "https://w3id.org/osc-em/instrumentc2_aperture",
+      "description": "C2 aperture size used in data acquisition, in \u00b5m",
       "from_schema": "https://w3id.org/osc-em/instrument",
-      "is_a": "cs",
+      "is_a": "c2_aperture",
       "domain": "Instrument",
-      "slot_uri": "https://w3id.org/osc-em/instrument/cs",
-      "alias": "cs",
+      "slot_uri": "https://w3id.org/osc-em/instrumentc2_aperture",
+      "alias": "c2_aperture",
       "owner": "Instrument",
       "domain_of": [
         "Instrument"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "cs",
+      "usage_slot_name": "c2_aperture",
       "range": "Any",
-      "required": true,
       "inlined": true,
       "any_of": [
         {
@@ -2561,6 +2698,119 @@
           "@type": "AnonymousSlotExpression"
         }
       ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_cs",
+      "definition_uri": "https://w3id.org/osc-em/instrumentcs",
+      "description": "Spherical aberration of the instrument, in mm",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "cs",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentcs",
+      "alias": "cs",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "cs",
+      "range": "Any",
+      "inlined": true,
+      "any_of": [
+        {
+          "range": "QuantityValue",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "QuantitySI",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_operating_mode",
+      "definition_uri": "https://w3id.org/osc-em/instrumentoperating_mode",
+      "description": "Operating mode of the microscope, i.e. \"TEM\", \"STEM\"",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "operating_mode",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentoperating_mode",
+      "alias": "operating_mode",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "operating_mode",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_beam_convergence",
+      "definition_uri": "https://w3id.org/osc-em/instrumentbeam_convergence",
+      "description": "Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM.",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "beam_convergence",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentbeam_convergence",
+      "alias": "beam_convergence",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "beam_convergence",
+      "range": "Any",
+      "inlined": true,
+      "any_of": [
+        {
+          "range": "QuantityValue",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "QuantitySI",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Microscope_model",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "description": "The model of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "model",
+      "domain": "Microscope",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "alias": "model",
+      "owner": "Microscope",
+      "domain_of": [
+        "Microscope"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "model",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Microscope_manufacturer",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "description": "The name of the manufacturer",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "manufacturer",
+      "domain": "Microscope",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "alias": "manufacturer",
+      "owner": "Microscope",
+      "domain_of": [
+        "Microscope"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "manufacturer",
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -2773,42 +3023,45 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Author_name",
-      "definition_uri": "https://w3id.org/osc-em/organizational/name",
-      "description": "name",
+      "name": "Author_family_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/family_name",
+      "description": "last name",
       "from_schema": "https://w3id.org/osc-em/organizational",
       "mappings": [
-        "http://schema.org/name"
+        "http://schema.org/familyName"
       ],
-      "is_a": "name",
+      "is_a": "family_name",
       "domain": "Author",
-      "slot_uri": "http://schema.org/name",
-      "alias": "name",
+      "slot_uri": "http://schema.org/familyName",
+      "alias": "family_name",
       "owner": "Author",
       "domain_of": [
         "Author"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "name",
+      "usage_slot_name": "family_name",
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Author_first_name",
-      "definition_uri": "https://w3id.org/osc-em/organizational/first_name",
+      "name": "Author_given_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/given_name",
       "description": "first name",
       "from_schema": "https://w3id.org/osc-em/organizational",
-      "is_a": "first_name",
+      "mappings": [
+        "http://schema.org/givenName"
+      ],
+      "is_a": "given_name",
       "domain": "Author",
-      "slot_uri": "https://w3id.org/osc-em/organizational/first_name",
-      "alias": "first_name",
+      "slot_uri": "http://schema.org/givenName",
+      "alias": "given_name",
       "owner": "Author",
       "domain_of": [
         "Author"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "first_name",
+      "usage_slot_name": "given_name",
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -3122,6 +3375,7 @@
       "description": "A set of parameteres describing the data acquisition",
       "from_schema": "https://w3id.org/osc-em/acquisition",
       "slots": [
+        "screen_current",
         "nominal_defocus",
         "calibrated_defocus",
         "nominal_magnification",
@@ -3130,9 +3384,8 @@
         "holder_cryogen",
         "temperature_range",
         "microscope_software",
-        "Acquisition_detector",
-        "detector_mode",
-        "Acquisition_dose_per_movie",
+        "Acquisition_detectors",
+        "dose_per_movie",
         "energy_filter",
         "image_size",
         "Acquisition_date_time",
@@ -3161,7 +3414,7 @@
       "from_schema": "https://w3id.org/osc-em/acquisition",
       "slots": [
         "EnergyFilter_used",
-        "model",
+        "EnergyFilter_model",
         "EnergyFilter_width_energy_filter"
       ],
       "slot_usage": {},
@@ -3222,8 +3475,23 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "Detector",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionDetector",
+      "description": "Class representing a detector",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slots": [
+        "name",
+        "mode",
+        "dispersion",
+        "collection_angle"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionDetector",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "Instrument",
-      "definition_uri": "https://w3id.org/osc-em/instrument/Instrument",
+      "definition_uri": "https://w3id.org/osc-em/instrumentInstrument",
       "description": "Instrument values, mostly constant across a data collection.",
       "from_schema": "https://w3id.org/osc-em/instrument",
       "slots": [
@@ -3232,11 +3500,29 @@
         "Instrument_imaging",
         "Instrument_electron_source",
         "Instrument_acceleration_voltage",
-        "c2_aperture",
-        "Instrument_cs"
+        "Instrument_c2_aperture",
+        "Instrument_cs",
+        "Instrument_operating_mode",
+        "Instrument_beam_convergence"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/osc-em/instrument/Instrument",
+      "class_uri": "https://w3id.org/osc-em/instrumentInstrument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Microscope",
+      "definition_uri": "https://w3id.org/osc-em/instrumentMicroscope",
+      "description": "Microscope information",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "mappings": [
+        "schema:Microscope"
+      ],
+      "slots": [
+        "Microscope_model",
+        "Microscope_manufacturer"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Microscope",
       "@type": "ClassDefinition"
     },
     {
@@ -3341,6 +3627,7 @@
       "from_schema": "https://w3id.org/osc-em/tomography",
       "is_a": "Acquisition",
       "slots": [
+        "screen_current",
         "nominal_defocus",
         "calibrated_defocus",
         "nominal_magnification",
@@ -3349,9 +3636,8 @@
         "holder_cryogen",
         "temperature_range",
         "microscope_software",
-        "Acquisition_detector",
-        "detector_mode",
-        "Acquisition_dose_per_movie",
+        "Acquisition_detectors",
+        "dose_per_movie",
         "energy_filter",
         "image_size",
         "Acquisition_date_time",
@@ -3398,11 +3684,11 @@
         "schema:Person"
       ],
       "slots": [
-        "name",
-        "first_name",
-        "work_status",
+        "family_name",
+        "given_name",
+        "job_title",
         "email",
-        "work_phone"
+        "telephone"
       ],
       "slot_usage": {},
       "class_uri": "http://schema.org/Person",
@@ -3415,15 +3701,15 @@
       "from_schema": "https://w3id.org/osc-em/organizational",
       "is_a": "Person",
       "slots": [
-        "work_status",
-        "work_phone",
+        "job_title",
+        "telephone",
         "Author_orcid",
         "Author_country",
         "role",
         "Author_name_org",
         "Author_type_org",
-        "Author_name",
-        "Author_first_name",
+        "Author_family_name",
+        "Author_given_name",
         "Author_email"
       ],
       "slot_usage": {},
@@ -3612,9 +3898,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "oscem_schemas_env_tomo.yaml",
-  "source_file_date": "2025-02-12T13:01:13",
+  "source_file_date": "2025-08-21T18:21:29",
   "source_file_size": 1183,
-  "generation_date": "2025-03-03T13:33:37",
+  "generation_date": "2025-08-21T18:22:03",
   "@type": "SchemaDefinition",
   "@context": [
     "project/env_tomo/jsonld/oscem_schemas_env_tomo.context.jsonld",

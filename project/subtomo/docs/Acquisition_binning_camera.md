@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Acquisition_binning_camera](
 
 ## Domain and Range
 
-[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [Float](types/Float.md)
+[Acquisition](Acquisition.md) &#8594;  <sub>1..1</sub> [ImageSize](ImageSize.md)
 
 ## Parents
 

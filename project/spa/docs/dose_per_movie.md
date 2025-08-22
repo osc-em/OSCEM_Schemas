@@ -15,7 +15,7 @@ None &#8594;  <sub>0..1</sub> [Any](Any.md)
 
 ## Children
 
- *  [Acquisition➞dose_per_movie](Acquisition_dose_per_movie.md)
 
 ## Used by
 
+ * [Acquisition](Acquisition.md)

@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/size](https://w3id.org/osc-em/os
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..\*</sub> [Integer](types/Integer.md)
 
 ## Parents
 

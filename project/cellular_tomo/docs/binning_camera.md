@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/binning_camera](https:
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [ImageSize](ImageSize.md)
 
 ## Parents
 

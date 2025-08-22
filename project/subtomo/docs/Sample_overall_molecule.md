@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Sample_overall_molecule](htt
 
 ## Domain and Range
 
-[Sample](Sample.md) &#8594;  <sub>1..1</sub> [OverallMolecule](OverallMolecule.md)
+[Sample](Sample.md) &#8594;  <sub>0..1</sub> [OverallMolecule](OverallMolecule.md)
 
 ## Parents
 
@@ -16,6 +16,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Sample_overall_molecule](htt
 
 ## Children
 
+ *  [SampleMolecular➞overall_molecule](SampleMolecular_overall_molecule.md)
 
 ## Used by
 
