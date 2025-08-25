@@ -46,7 +46,7 @@ jobs:
           git commit -m "Regenerate LinkML artifacts"
           git push origin auto/regenerate-artifacts
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN  }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create or update Pull Request
         run: |
@@ -56,7 +56,7 @@ jobs:
             --base main \
             --head auto/regenerate-artifacts || echo "Could not create PR"
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN  }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Merge Pull Request
         run: |
@@ -67,4 +67,4 @@ jobs:
             echo "No PR to merge"
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN  }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
