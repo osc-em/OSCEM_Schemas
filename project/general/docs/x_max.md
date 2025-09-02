@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-general/x_max](https://w3id.org/osc-
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Any](Any.md)
+None &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

@@ -6,7 +6,7 @@ A range constructed from min and max
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Range](https://w3id.org/osc-em/oscem-schemas-subtomo/Range)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[Any]<maximal%200..1-++[Range],[Any]<minimal%200..1-++[Range],[Acquisition]++-%20calibrated_defocus%200..1>[Range],[Detector]++-%20collection_angle%200..1>[Range],[Acquisition]++-%20nominal_defocus%200..1>[Range],[Acquisition]++-%20temperature%200..1>[Range],[Range]^-[Series],[Detector],[Any],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[Any]<maximal%200..1-++[Range],[Any]<minimal%200..1-++[Range],[Acquisition]++-%20calibrated_defocus%200..1>[Range],[Detector]++-%20collection_angle%200..1>[Range],[Acquisition]++-%20nominal_defocus%200..1>[Range],[Acquisition]++-%20temperature%200..1>[Range],[Range]^-[Series],[Detector],[Any],[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[QuantitySI]<maximal%200..1-++[Range],[QuantitySI]<minimal%200..1-++[Range],[Acquisition]++-%20calibrated_defocus%200..1>[Range],[Detector]++-%20collection_angle%200..1>[Range],[Acquisition]++-%20nominal_defocus%200..1>[Range],[Acquisition]++-%20temperature%200..1>[Range],[Range]^-[Series],[QuantitySI],[Detector],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[QuantitySI]<maximal%200..1-++[Range],[QuantitySI]<minimal%200..1-++[Range],[Acquisition]++-%20calibrated_defocus%200..1>[Range],[Detector]++-%20collection_angle%200..1>[Range],[Acquisition]++-%20nominal_defocus%200..1>[Range],[Acquisition]++-%20temperature%200..1>[Range],[Range]^-[Series],[QuantitySI],[Detector],[Acquisition])
 
 ## Children
 
@@ -26,7 +26,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Range](https://w3id.org/osc-
 
  * [minimal](minimal.md)  <sub>0..1</sub>
      * Description: Minimal value of a given dataset property
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [maximal](maximal.md)  <sub>0..1</sub>
      * Description: Maximal value of a given dataset property
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)

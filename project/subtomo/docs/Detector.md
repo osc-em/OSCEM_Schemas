@@ -6,7 +6,7 @@ Class representing a detector
 URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Detector](https://w3id.org/osc-em/oscem-schemas-subtomo/Detector)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Range],[Range]<collection_angle%200..1-++[Detector&#124;name:string%20%3F;mode:string%20%3F],[Any]<dispersion%200..1-++[Detector],[Acquisition]++-%20detectors%201..*>[Detector],[Acquisition]++-%20detectors(i)%200..*>[Detector],[Any],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Range],[Range]<collection_angle%200..1-++[Detector&#124;name:string%20%3F;mode:string%20%3F],[Any]<dispersion%200..1-++[Detector],[Acquisition]++-%20detectors%201..*>[Detector],[Acquisition]++-%20detectors(i)%200..*>[Detector],[Any],[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Range],[QuantitySI],[Range]<collection_angle%200..1-++[Detector&#124;name:string%20%3F;mode:string%20%3F],[QuantitySI]<dispersion%200..1-++[Detector],[Acquisition]++-%20detectors%201..*>[Detector],[Acquisition]++-%20detectors(i)%200..*>[Detector],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Range],[QuantitySI],[Range]<collection_angle%200..1-++[Detector&#124;name:string%20%3F;mode:string%20%3F],[QuantitySI]<dispersion%200..1-++[Detector],[Acquisition]++-%20detectors%201..*>[Detector],[Acquisition]++-%20detectors(i)%200..*>[Detector],[Acquisition])
 
 ## Referenced by Class
 
@@ -26,7 +26,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/Detector](https://w3id.org/o
      * Range: [String](types/String.md)
  * [dispersion](dispersion.md)  <sub>0..1</sub>
      * Description: Dispersion of an analytical detector, in eV
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [collection_angle](collection_angle.md)  <sub>0..1</sub>
      * Description: Collection angle set, min and max values in mrad.
      * Range: [Range](Range.md)

@@ -6,7 +6,7 @@ an axis-aligned 2D bounding box (float units)
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/BoundingBox2D](https://w3id.org/osc-em/oscem-schemas-spa/BoundingBox2D)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<y_max%200..1-++[BoundingBox2D],[Any]<y_min%200..1-++[BoundingBox2D],[Any]<x_max%200..1-++[BoundingBox2D],[Any]<x_min%200..1-++[BoundingBox2D],[Acquisition]++-%20beamshift%200..1>[BoundingBox2D],[Acquisition]++-%20beamtilt%200..1>[BoundingBox2D],[Acquisition]++-%20imageshift%200..1>[BoundingBox2D],[Any],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Any]<y_max%200..1-++[BoundingBox2D],[Any]<y_min%200..1-++[BoundingBox2D],[Any]<x_max%200..1-++[BoundingBox2D],[Any]<x_min%200..1-++[BoundingBox2D],[Acquisition]++-%20beamshift%200..1>[BoundingBox2D],[Acquisition]++-%20beamtilt%200..1>[BoundingBox2D],[Acquisition]++-%20imageshift%200..1>[BoundingBox2D],[Any],[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<y_max%200..1-++[BoundingBox2D],[QuantitySI]<y_min%200..1-++[BoundingBox2D],[QuantitySI]<x_max%200..1-++[BoundingBox2D],[QuantitySI]<x_min%200..1-++[BoundingBox2D],[Acquisition]++-%20beamshift%200..1>[BoundingBox2D],[Acquisition]++-%20beamtilt%200..1>[BoundingBox2D],[Acquisition]++-%20imageshift%200..1>[BoundingBox2D],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<y_max%200..1-++[BoundingBox2D],[QuantitySI]<y_min%200..1-++[BoundingBox2D],[QuantitySI]<x_max%200..1-++[BoundingBox2D],[QuantitySI]<x_min%200..1-++[BoundingBox2D],[Acquisition]++-%20beamshift%200..1>[BoundingBox2D],[Acquisition]++-%20beamtilt%200..1>[BoundingBox2D],[Acquisition]++-%20imageshift%200..1>[BoundingBox2D],[Acquisition])
 
 ## Referenced by Class
 
@@ -21,13 +21,13 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/BoundingBox2D](https://w3id.org/
 
  * [x_min](x_min.md)  <sub>0..1</sub>
      * Description: minimum x
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [x_max](x_max.md)  <sub>0..1</sub>
      * Description: maximum x
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [y_min](y_min.md)  <sub>0..1</sub>
      * Description: minimum y
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)
  * [y_max](y_max.md)  <sub>0..1</sub>
      * Description: maximum y
-     * Range: [Any](Any.md)
+     * Range: [QuantitySI](QuantitySI.md)

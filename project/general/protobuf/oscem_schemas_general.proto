@@ -4,7 +4,7 @@
 // A set of parameteres describing the data acquisition
 message Acquisition
  {
-  any screenCurrent = 0
+  quantitySI screenCurrent = 0
   range nominalDefocus = 0
   range calibratedDefocus = 0
   integer nominalMagnification = 0
@@ -14,17 +14,17 @@ message Acquisition
   range temperature = 0
   string microscopeSoftware = 0
  repeated  detector detectors = 0
-  any dosePerMovie = 0
+  quantitySI dosePerMovie = 0
   energyFilter energyFilter = 0
   imageSize imageSize = 0
   datetime dateTime = 0
-  any exposureTime = 0
+  quantitySI exposureTime = 0
   string cryogen = 0
   integer framesPerMovie = 0
   integer gridsImaged = 0
   integer imagesGenerated = 0
   imageSize binningCamera = 0
-  any pixelSize = 0
+  quantitySI pixelSize = 0
   specialistOptics specialistOptics = 0
   boundingBox2D beamshift = 0
   boundingBox2D beamtilt = 0
@@ -49,10 +49,10 @@ message Author
 // an axis-aligned 2D bounding box (float units)
 message BoundingBox2D
  {
-  any xMin = 0
-  any xMax = 0
-  any yMin = 0
-  any yMax = 0
+  quantitySI xMin = 0
+  quantitySI xMax = 0
+  quantitySI yMin = 0
+  quantitySI yMax = 0
  }
 // Special device used to correct instrument inherent chromatic aberration.
 message ChromaticAberrationCorrector
@@ -70,7 +70,7 @@ message Detector
  {
   string name = 0
   string mode = 0
-  any dispersion = 0
+  quantitySI dispersion = 0
   range collectionAngle = 0
  }
 // General dataset for TEM/STEM and EELS/EDX spectroscopy.
@@ -86,7 +86,7 @@ message EnergyFilter
  {
   boolean used = 0
   string model = 0
-  any widthEnergyFilter = 0
+  quantitySI widthEnergyFilter = 0
  }
 // Description of the project funding
 message Funder
@@ -99,8 +99,8 @@ message Funder
 message Grant
  {
   string grantName = 0
-  any startDate = 0
-  any endDate = 0
+  datetime startDate = 0
+  datetime endDate = 0
   quantityValue budget = 0
   string projectId = 0
   string country = 0
@@ -116,8 +116,8 @@ message Grid
   string filmTopology = 0
   string filmThickness = 0
   string pretreatmentType = 0
-  any pretreatmentTime = 0
-  any pretreatmentPressure = 0
+  quantitySI pretreatmentTime = 0
+  quantitySI pretreatmentPressure = 0
   string pretreatmentAtmosphere = 0
  }
 // size of a 2D image (in integer units)
@@ -133,11 +133,11 @@ message Instrument
   string illumination = 0
   string imaging = 0
   string electronSource = 0
-  any accelerationVoltage = 0
-  any c2Aperture = 0
-  any cs = 0
+  quantitySI accelerationVoltage = 0
+  quantitySI c2Aperture = 0
+  quantitySI cs = 0
   string operatingMode = 0
-  any beamConvergence = 0
+  quantitySI beamConvergence = 0
  }
 // Information on ligands if present.
 message Ligand
@@ -178,7 +178,7 @@ message OverallMolecule
   moleculeClassEnum molecularOverallType = 0
   string nameSample = 0
   string source = 0
-  any molecularWeight = 0
+  quantitySI molecularWeight = 0
   assemblyEnum assembly = 0
  }
 // personal information
@@ -203,8 +203,6 @@ message QuantitySI
   float value = 0
   float valueSI = 0
   string unitSI = 0
-  string siValue = 0
-  string siUnit = 0
  }
 // if a value has a unit, it should be given as a unit value pair.
 message QuantityValue
@@ -215,8 +213,8 @@ message QuantityValue
 // A range constructed from min and max
 message Range
  {
-  any minimal = 0
-  any maximal = 0
+  quantitySI minimal = 0
+  quantitySI maximal = 0
  }
 // Unifying class to describe the full sample.
 message Sample
@@ -242,9 +240,9 @@ message SampleMolecular
 // A series of numbers constructed from min, max, and increment
 message Series
  {
-  any minimal = 0
-  any maximal = 0
-  any increment = 0
+  quantitySI minimal = 0
+  quantitySI maximal = 0
+  quantitySI increment = 0
  }
 // Optional optics used to correct for instrument limitations.
 message SpecialistOptics
@@ -257,12 +255,12 @@ message SpecialistOptics
 message Specimen
  {
   string buffer = 0
-  any concentration = 0
+  quantitySI concentration = 0
   float ph = 0
   boolean vitrification = 0
   string vitrificationCryogen = 0
-  any humidity = 0
-  any temperature = 0
+  quantitySI humidity = 0
+  quantitySI temperature = 0
   boolean staining = 0
   boolean embedding = 0
   boolean shadowing = 0

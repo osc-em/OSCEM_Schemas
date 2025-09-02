@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/start_date](https://w3id.or
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Any](Any.md)
+None &#8594;  <sub>0..1</sub> [Datetime](types/Datetime.md)
 
 ## Parents
 

@@ -189,10 +189,6 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [EMDatasetBase➞sample](EMDatasetBase_sample.md)
      * [EMDatasetCell➞sample](EMDatasetCell_sample.md) - Sample information
  * [screen_current](screen_current.md) - The total electron beam current hitting the viewing screen, in nA.
- * [si_unit](si_unit.md)
-     * [QuantitySI➞si_unit](QuantitySI_si_unit.md)
- * [si_value](si_value.md)
-     * [QuantitySI➞si_value](QuantitySI_si_value.md)
  * [source_env](source_env.md) - where is this sample from? i.e. Hospital
  * [specialist_optics](specialist_optics.md) - Any type of special optics, such as a phaseplate
  * [specimen_env](specimen_env.md)

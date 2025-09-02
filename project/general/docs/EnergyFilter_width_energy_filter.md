@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-general/EnergyFilter_width_energy_fi
 
 ## Domain and Range
 
-[EnergyFilter](EnergyFilter.md) &#8594;  <sub>1..1</sub> [Any](Any.md)
+[EnergyFilter](EnergyFilter.md) &#8594;  <sub>1..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 

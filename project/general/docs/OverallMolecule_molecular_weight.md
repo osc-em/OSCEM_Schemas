@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-general/OverallMolecule_molecular_we
 
 ## Domain and Range
 
-[OverallMolecule](OverallMolecule.md) &#8594;  <sub>0..1</sub> [Any](Any.md)
+[OverallMolecule](OverallMolecule.md) &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
 
 ## Parents
 
