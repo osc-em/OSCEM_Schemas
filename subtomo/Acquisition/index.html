@@ -361,8 +361,8 @@
 
 
 
-    Acquisition --&gt; "0..1" Any : dose_per_movie
-    click Any href "../Any"
+    Acquisition --&gt; "0..1" QuantitySI : dose_per_movie
+    click QuantitySI href "../QuantitySI"
 
 
       Acquisition : energy_filter
@@ -379,8 +379,8 @@
 
 
 
-    Acquisition --&gt; "0..1" Any : exposure_time
-    click Any href "../Any"
+    Acquisition --&gt; "0..1" QuantitySI : exposure_time
+    click QuantitySI href "../QuantitySI"
 
 
       Acquisition : frames_per_movie
@@ -431,8 +431,8 @@
 
 
 
-    Acquisition --&gt; "1" Any : pixel_size
-    click Any href "../Any"
+    Acquisition --&gt; "1" QuantitySI : pixel_size
+    click QuantitySI href "../QuantitySI"
 
 
       Acquisition : screen_current
@@ -440,8 +440,8 @@
 
 
 
-    Acquisition --&gt; "0..1" Any : screen_current
-    click Any href "../Any"
+    Acquisition --&gt; "0..1" QuantitySI : screen_current
+    click QuantitySI href "../QuantitySI"
 
 
       Acquisition : specialist_optics
@@ -484,7 +484,7 @@
 <tbody>
 <tr>
 <td><a href="../screen_current/">screen_current</a></td>
-<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>0..1 <br/> <a href="../QuantitySI/">QuantitySI</a></td>
 <td>The total electron beam current hitting the viewing screen, in nA</td>
 <td>direct</td>
 </tr>
@@ -544,7 +544,7 @@
 </tr>
 <tr>
 <td><a href="../dose_per_movie/">dose_per_movie</a></td>
-<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>0..1 <br/> <a href="../QuantitySI/">QuantitySI</a></td>
 <td>Average dose per image/movie/tilt - given in electrons per square Angstrom</td>
 <td>direct</td>
 </tr>
@@ -568,7 +568,7 @@
 </tr>
 <tr>
 <td><a href="../exposure_time/">exposure_time</a></td>
-<td>0..1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>0..1 <br/> <a href="../QuantitySI/">QuantitySI</a></td>
 <td>Time of data acquisition per movie/tilt - in s</td>
 <td>direct</td>
 </tr>
@@ -604,7 +604,7 @@
 </tr>
 <tr>
 <td><a href="../pixel_size/">pixel_size</a></td>
-<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../QuantityValue/">QuantityValue</a> or <br/><a href="../QuantitySI/">QuantitySI</a></td>
+<td>1 <br/> <a href="../QuantitySI/">QuantitySI</a></td>
 <td>Pixel size, in Angstrom</td>
 <td>direct</td>
 </tr>
@@ -749,10 +749,7 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: Any
-    any_of:
-    - range: QuantityValue
-    - range: QuantitySI
+    range: QuantitySI
   nominal_defocus:
     name: nominal_defocus
     description: Target defocus set, min and max values in nm.
@@ -855,10 +852,7 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: Any
-    any_of:
-    - range: QuantityValue
-    - range: QuantitySI
+    range: QuantitySI
   energy_filter:
     name: energy_filter
     description: Whether an energy filter was used and its specifics.
@@ -899,10 +893,7 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: Any
-    any_of:
-    - range: QuantityValue
-    - range: QuantitySI
+    range: QuantitySI
   cryogen:
     name: cryogen
     description: Cryogen used in cooling the instrument and sample, usually nitrogen
@@ -967,11 +958,8 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    range: Any
+    range: QuantitySI
     required: true
-    any_of:
-    - range: QuantityValue
-    - range: QuantitySI
   specialist_optics:
     name: specialist_optics
     description: Any type of special optics, such as a phaseplate
