@@ -19,6 +19,7 @@ classes:
   Acquisition:
     description: A set of parameteres describing the data acquisition
     slots:
+    - technique
     - screen_current
     - nominal_defocus
     - calibrated_defocus
@@ -47,6 +48,8 @@ classes:
     - beamtiltgroups
     - gainref_flip_rotate
     slot_usage:
+      technique:
+        required: true
       detectors:
         required: true
       date_time:
@@ -55,6 +58,18 @@ classes:
         required: true
       pixel_size:
         required: true
+
+  AcquisitionGeneral:
+    is_a: Acquisition
+    slot_usage:
+      technique:
+        ifabsent: "general"
+
+  AcquisitionSpa:
+    is_a: Acquisition
+    slot_usage:
+      technique:
+        ifabsent: "spa"
 
   EnergyFilter:
     description: A device used to filter for electrons with specific energy.
@@ -120,6 +135,9 @@ classes:
       - collection_angle
 
 slots:
+  technique:
+    description: Specifies which subschema/class is in use.
+    range: string
   screen_current:
     description: The total electron beam current hitting the viewing screen, in nA.
     range:  QuantitySI
