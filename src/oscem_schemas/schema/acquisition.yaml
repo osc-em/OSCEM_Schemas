@@ -19,15 +19,10 @@ enums:
   AcquisitionTechnique:
     permissible_values:
       general:
-        description: General acquisition, covering the materials science use cases
       spa:
-        description: Single particle acquisition
       subtomo:
-        description: Subtomogram averaging
       env_tomo:
-        description: Environmental tomography
       cellular_tomo:
-        description: Cellular tomography
 
 classes:
   Acquisition:
@@ -77,12 +72,14 @@ classes:
     is_a: Acquisition
     attributes:
       technique:
+        description: General acquisition, covering the materials science use cases
         equals_string: general
 
   AcquisitionSpa:
     is_a: Acquisition
     attributes:
       technique:
+        description: Single particle acquisition
         equals_string: spa
 
   EnergyFilter:
@@ -150,7 +147,7 @@ classes:
 
 slots:
   technique:
-    description: Specifies which subschema/class is in use.
+    description: Specifies which Acquisition subschema/class is in use.
     range: AcquisitionTechnique
   screen_current:
     description: The total electron beam current hitting the viewing screen, in nA.
