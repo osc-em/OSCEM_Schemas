@@ -15,6 +15,20 @@ imports:
   - linkml:types
   - ./custom_types
 
+enums:
+  AcquisitionTechnique:
+    permissible_values:
+      general:
+        description: General acquisition, covering the materials science use cases
+      spa:
+        description: Single particle acquisition
+      subtomo:
+        description: Subtomogram averaging
+      env_tomo:
+        description: Environmental tomography
+      cellular_tomo:
+        description: Cellular tomography
+
 classes:
   Acquisition:
     description: A set of parameteres describing the data acquisition
@@ -61,15 +75,15 @@ classes:
 
   AcquisitionGeneral:
     is_a: Acquisition
-    slot_usage:
+    attributes:
       technique:
-        ifabsent: "general"
+        equals_string: general
 
   AcquisitionSpa:
     is_a: Acquisition
-    slot_usage:
+    attributes:
       technique:
-        ifabsent: "spa"
+        equals_string: spa
 
   EnergyFilter:
     description: A device used to filter for electrons with specific energy.
@@ -137,7 +151,7 @@ classes:
 slots:
   technique:
     description: Specifies which subschema/class is in use.
-    range: string
+    range: AcquisitionTechnique
   screen_current:
     description: The total electron beam current hitting the viewing screen, in nA.
     range:  QuantitySI
