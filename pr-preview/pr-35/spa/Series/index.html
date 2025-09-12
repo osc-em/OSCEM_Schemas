@@ -297,39 +297,20 @@
 <h1 id="class-series">Class: Series</h1>
 <p><em>A series of numbers constructed from min, max, and increment</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Series">https://w3id.org/osc-em/oscem-schemas-spa/:Series</a></p>
-<div class="mermaid"> classDiagram
-    class Series
-    click Series href "../Series"
-      Range &lt;|-- Series
-        click Range href "../Range"
+<div class="mermaid">erDiagram
+Series {
 
-      Series : increment
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-
-
-
-    Series --&gt; "0..1" QuantitySI : increment
-    click QuantitySI href "../QuantitySI"
-
-
-      Series : maximal
-
-
-
-
-    Series --&gt; "0..1" QuantitySI : maximal
-    click QuantitySI href "../QuantitySI"
-
-
-      Series : minimal
-
-
-
-
-    Series --&gt; "0..1" QuantitySI : minimal
-    click QuantitySI href "../QuantitySI"
-
-
+Series ||--|o QuantitySI : "increment"
+Series ||--|o QuantitySI : "minimal"
+Series ||--|o QuantitySI : "maximal"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>

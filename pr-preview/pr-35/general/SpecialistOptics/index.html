@@ -297,36 +297,26 @@
 <h1 id="class-specialistoptics">Class: SpecialistOptics</h1>
 <p><em>Optional optics used to correct for instrument limitations.</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-general/:SpecialistOptics">https://w3id.org/osc-em/oscem-schemas-general/:SpecialistOptics</a></p>
-<div class="mermaid"> classDiagram
-    class SpecialistOptics
-    click SpecialistOptics href "../SpecialistOptics"
-      SpecialistOptics : chromatic_aberration_corrector
+<div class="mermaid">erDiagram
+SpecialistOptics {
 
+}
+ChromaticAberrationCorrector {
+    boolean used  
+    string instrument_type  
+}
+SphericalAberrationCorrector {
+    boolean used  
+    string instrument_type  
+}
+Phaseplate {
+    boolean used  
+    string instrument_type  
+}
 
-
-
-    SpecialistOptics --&gt; "0..1" ChromaticAberrationCorrector : chromatic_aberration_corrector
-    click ChromaticAberrationCorrector href "../ChromaticAberrationCorrector"
-
-
-      SpecialistOptics : phaseplate
-
-
-
-
-    SpecialistOptics --&gt; "0..1" Phaseplate : phaseplate
-    click Phaseplate href "../Phaseplate"
-
-
-      SpecialistOptics : spherical_aberration_corrector
-
-
-
-
-    SpecialistOptics --&gt; "0..1" SphericalAberrationCorrector : spherical_aberration_corrector
-    click SphericalAberrationCorrector href "../SphericalAberrationCorrector"
-
-
+SpecialistOptics ||--|o Phaseplate : "phaseplate"
+SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
+SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
 
 </div>
 <!-- no inheritance hierarchy -->

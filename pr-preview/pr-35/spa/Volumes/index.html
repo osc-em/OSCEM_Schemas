@@ -297,51 +297,38 @@
 <h1 id="class-volumes">Class: Volumes</h1>
 <p><em>Class representing volume metadata</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Volumes">https://w3id.org/osc-em/oscem-schemas-spa/:Volumes</a></p>
-<div class="mermaid"> classDiagram
-    class Volumes
-    click Volumes href "../Volumes"
-      Volumes : descriptors
+<div class="mermaid">erDiagram
+Volumes {
+    string volume_type  
+    integer vol_number_particles  
+    integerList size  
+}
+Descriptors {
+    string descriptor_name  
+}
+Any {
 
+}
+QuantityValue {
+    string unit  
+    float value  
+}
+IsosurfaceImages {
+    string front_view  
+    string side_view  
+    string top_view  
+}
+OrthogonalSlices {
+    string orthogonal_slices_X  
+    string orthogonal_slices_Y  
+    string orthogonal_slices_Z  
+}
 
-
-
-    Volumes --&gt; "*" Descriptors : descriptors
-    click Descriptors href "../Descriptors"
-
-
-      Volumes : isosurface_images
-
-
-
-
-    Volumes --&gt; "0..1" IsosurfaceImages : isosurface_images
-    click IsosurfaceImages href "../IsosurfaceImages"
-
-
-      Volumes : orthogonal_slices
-
-
-
-
-    Volumes --&gt; "0..1" OrthogonalSlices : orthogonal_slices
-    click OrthogonalSlices href "../OrthogonalSlices"
-
-
-      Volumes : size
-
-      Volumes : vol_number_particles
-
-      Volumes : vol_resolution
-
-
-
-
-    Volumes --&gt; "0..1" QuantityValue : vol_resolution
-    click QuantityValue href "../QuantityValue"
-
-
-      Volumes : volume_type
-
+Volumes ||--|o OrthogonalSlices : "orthogonal_slices"
+Volumes ||--|o IsosurfaceImages : "isosurface_images"
+Volumes ||--|o QuantityValue : "vol_resolution"
+Volumes ||--}o Descriptors : "descriptors"
+Descriptors ||--|o Any : "descriptor_thing"
 
 </div>
 <!-- no inheritance hierarchy -->

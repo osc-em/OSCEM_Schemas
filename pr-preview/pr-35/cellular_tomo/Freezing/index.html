@@ -297,44 +297,23 @@
 <h1 id="class-freezing">Class: Freezing</h1>
 <p><em>how the sample was frozen.</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:Freezing">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:Freezing</a></p>
-<div class="mermaid"> classDiagram
-    class Freezing
-    click Freezing href "../Freezing"
-      Freezing : atmosphere
+<div class="mermaid">erDiagram
+Freezing {
+    string cryogen_sample_env  
+    FreezingMethodEnum method  
+    boolean blotting  
+    string atmosphere  
+    string details  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-      Freezing : blotting
-
-      Freezing : cryogen_sample_env
-
-      Freezing : details
-
-      Freezing : humidity_env
-
-
-
-
-    Freezing --&gt; "0..1" QuantitySI : humidity_env
-    click QuantitySI href "../QuantitySI"
-
-
-      Freezing : method
-
-
-
-
-    Freezing --&gt; "0..1" FreezingMethodEnum : method
-    click FreezingMethodEnum href "../FreezingMethodEnum"
-
-
-      Freezing : temperature_env
-
-
-
-
-    Freezing --&gt; "0..1" QuantitySI : temperature_env
-    click QuantitySI href "../QuantitySI"
-
-
+Freezing ||--|o QuantitySI : "humidity_env"
+Freezing ||--|o QuantitySI : "temperature_env"
 
 </div>
 <!-- no inheritance hierarchy -->

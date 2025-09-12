@@ -297,48 +297,184 @@
 <h1 id="class-emdatasetcell">Class: EMDatasetCell</h1>
 <p><em>cryo electron tomography dataset of a cellular sample, lab grown</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:EMDatasetCell">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:EMDatasetCell</a></p>
-<div class="mermaid"> classDiagram
-    class EMDatasetCell
-    click EMDatasetCell href "../EMDatasetCell"
-      EMDatasetBase &lt;|-- EMDatasetCell
-        click EMDatasetBase href "../EMDatasetBase"
+<div class="mermaid">erDiagram
+EMDatasetCell {
 
-      EMDatasetCell : acquisition
+}
+Organizational {
 
+}
+Funder {
+    string funder_name  
+    OrganizationTypeEnum type_org  
+    string country  
+}
+Author {
+    string orcid  
+    string country  
+    string role  
+    string name_org  
+    OrganizationTypeEnum type_org  
+    string family_name  
+    string given_name  
+    boolean job_title  
+    string email  
+    string telephone  
+}
+Grant {
+    string grant_name  
+    datetime start_date  
+    datetime end_date  
+    string project_id  
+    string country  
+}
+SampleCell {
 
+}
+TomogramFeatures {
+    string cellular_features  
+    stringList organelles  
+    string main_target  
+    string details_tomo  
+}
+Thinning {
+    string method_thin  
+    string instrument_thin  
+    string ion_source  
+    boolean lift_out  
+}
+Freezing {
+    string cryogen_sample_env  
+    FreezingMethodEnum method  
+    boolean blotting  
+    string atmosphere  
+    string details  
+}
+SpecimenEnv {
+    stringList organism  
+    string tissue  
+    string source_env  
+    string location  
+    date collection_date  
+    string handling  
+}
+GrowthCondition {
+    string media  
+    string growth_location  
+    string cell_cycle  
+    string treatment  
+    string atmosphere_growth  
+}
+Instrument {
+    string illumination  
+    string imaging  
+    string electron_source  
+    string operating_mode  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
+Microscope {
+    string model  
+    string manufacturer  
+}
+AcquisitionCelTomo {
+    string technique  
+    float tilt_axis_angle  
+    integer nominal_magnification  
+    integer calibrated_magnification  
+    string holder  
+    string holder_cryogen  
+    string microscope_software  
+    datetime date_time  
+    string cryogen  
+    integer frames_per_movie  
+    integer grids_imaged  
+    integer images_generated  
+    integer beamtiltgroups  
+    string gainref_flip_rotate  
+}
+BoundingBox2D {
 
+}
+SpecialistOptics {
 
-    EMDatasetCell --&gt; "1" AcquisitionCelTomo : acquisition
-    click AcquisitionCelTomo href "../AcquisitionCelTomo"
+}
+ImageSize {
+    integer height  
+    integer width  
+}
+EnergyFilter {
+    boolean used  
+    string model  
+}
+Detector {
+    string name  
+    string mode  
+}
+Range {
 
+}
+TiltAngle {
 
-      EMDatasetCell : instrument
+}
 
-
-
-
-    EMDatasetCell --&gt; "1" Instrument : instrument
-    click Instrument href "../Instrument"
-
-
-      EMDatasetCell : organizational
-
-
-
-
-    EMDatasetCell --&gt; "1" Organizational : organizational
-    click Organizational href "../Organizational"
-
-
-      EMDatasetCell : sample
-
-
-
-
-    EMDatasetCell --&gt; "1" SampleCell : sample
-    click SampleCell href "../SampleCell"
-
-
+EMDatasetCell ||--|| AcquisitionCelTomo : "acquisition"
+EMDatasetCell ||--|| Instrument : "instrument"
+EMDatasetCell ||--|| SampleCell : "sample"
+EMDatasetCell ||--|| Organizational : "organizational"
+Organizational ||--}o Grant : "grants"
+Organizational ||--}| Author : "authors"
+Organizational ||--}o Funder : "funder"
+Grant ||--|o QuantityValue : "budget"
+SampleCell ||--|o GrowthCondition : "growth_condition"
+SampleCell ||--|| SpecimenEnv : "specimen_env"
+SampleCell ||--|o Freezing : "freezing"
+SampleCell ||--|o Thinning : "thinning"
+SampleCell ||--|o TomogramFeatures : "tomogram_features"
+Thinning ||--|o QuantitySI : "target_thickness"
+Freezing ||--|o QuantitySI : "humidity_env"
+Freezing ||--|o QuantitySI : "temperature_env"
+GrowthCondition ||--|o QuantitySI : "temperature_growth"
+Instrument ||--|| Microscope : "microscope"
+Instrument ||--|| QuantitySI : "acceleration_voltage"
+Instrument ||--|o QuantitySI : "c2_aperture"
+Instrument ||--|o QuantitySI : "cs"
+Instrument ||--|o QuantitySI : "beam_convergence"
+AcquisitionCelTomo ||--|| TiltAngle : "tilt_angle"
+AcquisitionCelTomo ||--|o QuantitySI : "screen_current"
+AcquisitionCelTomo ||--|o Range : "nominal_defocus"
+AcquisitionCelTomo ||--|o Range : "calibrated_defocus"
+AcquisitionCelTomo ||--|o Range : "temperature_range"
+AcquisitionCelTomo ||--}| Detector : "detectors"
+AcquisitionCelTomo ||--|o QuantitySI : "dose_per_movie"
+AcquisitionCelTomo ||--|o EnergyFilter : "energy_filter"
+AcquisitionCelTomo ||--|o ImageSize : "image_size"
+AcquisitionCelTomo ||--|o QuantitySI : "exposure_time"
+AcquisitionCelTomo ||--|| ImageSize : "binning_camera"
+AcquisitionCelTomo ||--|| QuantitySI : "pixel_size"
+AcquisitionCelTomo ||--|o SpecialistOptics : "specialist_optics"
+AcquisitionCelTomo ||--|o BoundingBox2D : "beamshift"
+AcquisitionCelTomo ||--|o BoundingBox2D : "beamtilt"
+AcquisitionCelTomo ||--|o BoundingBox2D : "imageshift"
+BoundingBox2D ||--|o QuantitySI : "x_min"
+BoundingBox2D ||--|o QuantitySI : "x_max"
+BoundingBox2D ||--|o QuantitySI : "y_min"
+BoundingBox2D ||--|o QuantitySI : "y_max"
+SpecialistOptics ||--|o Phaseplate : "phaseplate"
+SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
+SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
+EnergyFilter ||--|| QuantitySI : "width_energy_filter"
+Detector ||--|o QuantitySI : "dispersion"
+Detector ||--|o Range : "collection_angle"
+Range ||--|o QuantitySI : "minimal"
+Range ||--|o QuantitySI : "maximal"
+TiltAngle ||--|| QuantitySI : "increment"
+TiltAngle ||--|| QuantitySI : "minimal"
+TiltAngle ||--|| QuantitySI : "maximal"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>

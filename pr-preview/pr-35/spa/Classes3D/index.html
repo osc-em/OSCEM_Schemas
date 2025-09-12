@@ -297,40 +297,41 @@
 <h1 id="class-classes3d">Class: Classes3D</h1>
 <p><em>Class representing classes 3D metadata</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Classes3D">https://w3id.org/osc-em/oscem-schemas-spa/:Classes3D</a></p>
-<div class="mermaid"> classDiagram
-    class Classes3D
-    click Classes3D href "../Classes3D"
-      Classes3D : descriptors
+<div class="mermaid">erDiagram
+Classes3D {
+    integerList particles_per_3Dclass  
+    string images_classes_3D  
+}
+Descriptors {
+    string descriptor_name  
+}
+Any {
 
+}
+QuantityValue {
+    string unit  
+    float value  
+}
+Volume {
 
+}
+IsosurfaceImages {
+    string front_view  
+    string side_view  
+    string top_view  
+}
+OrthogonalSlices {
+    string orthogonal_slices_X  
+    string orthogonal_slices_Y  
+    string orthogonal_slices_Z  
+}
 
-
-    Classes3D --&gt; "*" Descriptors : descriptors
-    click Descriptors href "../Descriptors"
-
-
-      Classes3D : images_classes_3D
-
-      Classes3D : particles_per_3Dclass
-
-      Classes3D : resolution_classes_3D
-
-
-
-
-    Classes3D --&gt; "0..1" QuantityValue : resolution_classes_3D
-    click QuantityValue href "../QuantityValue"
-
-
-      Classes3D : volume
-
-
-
-
-    Classes3D --&gt; "*" Volume : volume
-    click Volume href "../Volume"
-
-
+Classes3D ||--}o Volume : "volume"
+Classes3D ||--|o QuantityValue : "resolution_classes_3D"
+Classes3D ||--}o Descriptors : "descriptors"
+Descriptors ||--|o Any : "descriptor_thing"
+Volume ||--|o OrthogonalSlices : "orthogonal_slices"
+Volume ||--|o IsosurfaceImages : "isosurface_images"
 
 </div>
 <!-- no inheritance hierarchy -->

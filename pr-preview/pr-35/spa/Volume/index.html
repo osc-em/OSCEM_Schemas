@@ -297,27 +297,23 @@
 <h1 id="class-volume">Class: Volume</h1>
 <p><em>Class describing volume(s) obtained</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Volume">https://w3id.org/osc-em/oscem-schemas-spa/:Volume</a></p>
-<div class="mermaid"> classDiagram
-    class Volume
-    click Volume href "../Volume"
-      Volume : isosurface_images
+<div class="mermaid">erDiagram
+Volume {
 
+}
+IsosurfaceImages {
+    string front_view  
+    string side_view  
+    string top_view  
+}
+OrthogonalSlices {
+    string orthogonal_slices_X  
+    string orthogonal_slices_Y  
+    string orthogonal_slices_Z  
+}
 
-
-
-    Volume --&gt; "0..1" IsosurfaceImages : isosurface_images
-    click IsosurfaceImages href "../IsosurfaceImages"
-
-
-      Volume : orthogonal_slices
-
-
-
-
-    Volume --&gt; "0..1" OrthogonalSlices : orthogonal_slices
-    click OrthogonalSlices href "../OrthogonalSlices"
-
-
+Volume ||--|o OrthogonalSlices : "orthogonal_slices"
+Volume ||--|o IsosurfaceImages : "isosurface_images"
 
 </div>
 <!-- no inheritance hierarchy -->

@@ -297,28 +297,23 @@
 <h1 id="class-coordinates">Class: Coordinates</h1>
 <p><em>Class representing coordinates metadata</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Coordinates">https://w3id.org/osc-em/oscem-schemas-spa/:Coordinates</a></p>
-<div class="mermaid"> classDiagram
-    class Coordinates
-    click Coordinates href "../Coordinates"
-      Coordinates : descriptors
+<div class="mermaid">erDiagram
+Coordinates {
+    integer number_particles  
+    float particles_per_micrograph  
+    integer num_source_micrographs  
+    string particles_histogram  
+    string micrograph_examples  
+}
+Descriptors {
+    string descriptor_name  
+}
+Any {
 
+}
 
-
-
-    Coordinates --&gt; "*" Descriptors : descriptors
-    click Descriptors href "../Descriptors"
-
-
-      Coordinates : micrograph_examples
-
-      Coordinates : num_source_micrographs
-
-      Coordinates : number_particles
-
-      Coordinates : particles_histogram
-
-      Coordinates : particles_per_micrograph
-
+Coordinates ||--}o Descriptors : "descriptors"
+Descriptors ||--|o Any : "descriptor_thing"
 
 </div>
 <!-- no inheritance hierarchy -->

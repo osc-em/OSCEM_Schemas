@@ -296,184 +296,97 @@
 </a>
 <h1 id="class-acquisitionenvtomo">Class: AcquisitionEnvTomo</h1>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-subtomo/:AcquisitionEnvTomo">https://w3id.org/osc-em/oscem-schemas-subtomo/:AcquisitionEnvTomo</a></p>
-<div class="mermaid"> classDiagram
-    class AcquisitionEnvTomo
-    click AcquisitionEnvTomo href "../AcquisitionEnvTomo"
-      AcquisitionTomo &lt;|-- AcquisitionEnvTomo
-        click AcquisitionTomo href "../AcquisitionTomo"
-
-      AcquisitionEnvTomo : beamshift
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" BoundingBox2D : beamshift
-    click BoundingBox2D href "../BoundingBox2D"
-
-
-      AcquisitionEnvTomo : beamtilt
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" BoundingBox2D : beamtilt
-    click BoundingBox2D href "../BoundingBox2D"
-
-
-      AcquisitionEnvTomo : beamtiltgroups
-
-      AcquisitionEnvTomo : binning_camera
-
-
-
-
-    AcquisitionEnvTomo --&gt; "1" ImageSize : binning_camera
-    click ImageSize href "../ImageSize"
-
-
-      AcquisitionEnvTomo : calibrated_defocus
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" Range : calibrated_defocus
-    click Range href "../Range"
-
-
-      AcquisitionEnvTomo : calibrated_magnification
-
-      AcquisitionEnvTomo : cryogen
-
-      AcquisitionEnvTomo : date_time
-
-      AcquisitionEnvTomo : detectors
-
-
-
-
-    AcquisitionEnvTomo --&gt; "1..*" Detector : detectors
-    click Detector href "../Detector"
-
-
-      AcquisitionEnvTomo : dose_per_movie
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" QuantitySI : dose_per_movie
-    click QuantitySI href "../QuantitySI"
-
-
-      AcquisitionEnvTomo : energy_filter
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" EnergyFilter : energy_filter
-    click EnergyFilter href "../EnergyFilter"
-
-
-      AcquisitionEnvTomo : exposure_time
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" QuantitySI : exposure_time
-    click QuantitySI href "../QuantitySI"
-
-
-      AcquisitionEnvTomo : frames_per_movie
-
-      AcquisitionEnvTomo : gainref_flip_rotate
-
-      AcquisitionEnvTomo : grids_imaged
-
-      AcquisitionEnvTomo : holder
-
-      AcquisitionEnvTomo : holder_cryogen
-
-      AcquisitionEnvTomo : image_size
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" ImageSize : image_size
-    click ImageSize href "../ImageSize"
-
-
-      AcquisitionEnvTomo : images_generated
-
-      AcquisitionEnvTomo : imageshift
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" BoundingBox2D : imageshift
-    click BoundingBox2D href "../BoundingBox2D"
-
-
-      AcquisitionEnvTomo : microscope_software
-
-      AcquisitionEnvTomo : nominal_defocus
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" Range : nominal_defocus
-    click Range href "../Range"
-
-
-      AcquisitionEnvTomo : nominal_magnification
-
-      AcquisitionEnvTomo : pixel_size
-
-
-
-
-    AcquisitionEnvTomo --&gt; "1" QuantitySI : pixel_size
-    click QuantitySI href "../QuantitySI"
-
-
-      AcquisitionEnvTomo : screen_current
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" QuantitySI : screen_current
-    click QuantitySI href "../QuantitySI"
-
-
-      AcquisitionEnvTomo : specialist_optics
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" SpecialistOptics : specialist_optics
-    click SpecialistOptics href "../SpecialistOptics"
-
-
-      AcquisitionEnvTomo : technique
-
-      AcquisitionEnvTomo : temperature_range
-
-
-
-
-    AcquisitionEnvTomo --&gt; "0..1" Range : temperature_range
-    click Range href "../Range"
-
-
-      AcquisitionEnvTomo : tilt_angle
-
-
-
-
-    AcquisitionEnvTomo --&gt; "1" TiltAngle : tilt_angle
-    click TiltAngle href "../TiltAngle"
-
-
-      AcquisitionEnvTomo : tilt_axis_angle
-
+<div class="mermaid">erDiagram
+AcquisitionEnvTomo {
+    string technique  
+    float tilt_axis_angle  
+    integer nominal_magnification  
+    integer calibrated_magnification  
+    string holder  
+    string holder_cryogen  
+    string microscope_software  
+    datetime date_time  
+    string cryogen  
+    integer frames_per_movie  
+    integer grids_imaged  
+    integer images_generated  
+    integer beamtiltgroups  
+    string gainref_flip_rotate  
+}
+BoundingBox2D {
+
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
+SpecialistOptics {
+
+}
+ChromaticAberrationCorrector {
+    boolean used  
+    string instrument_type  
+}
+SphericalAberrationCorrector {
+    boolean used  
+    string instrument_type  
+}
+Phaseplate {
+    boolean used  
+    string instrument_type  
+}
+ImageSize {
+    integer height  
+    integer width  
+}
+EnergyFilter {
+    boolean used  
+    string model  
+}
+Detector {
+    string name  
+    string mode  
+}
+Range {
+
+}
+TiltAngle {
+
+}
+
+AcquisitionEnvTomo ||--|| TiltAngle : "tilt_angle"
+AcquisitionEnvTomo ||--|o QuantitySI : "screen_current"
+AcquisitionEnvTomo ||--|o Range : "nominal_defocus"
+AcquisitionEnvTomo ||--|o Range : "calibrated_defocus"
+AcquisitionEnvTomo ||--|o Range : "temperature_range"
+AcquisitionEnvTomo ||--}| Detector : "detectors"
+AcquisitionEnvTomo ||--|o QuantitySI : "dose_per_movie"
+AcquisitionEnvTomo ||--|o EnergyFilter : "energy_filter"
+AcquisitionEnvTomo ||--|o ImageSize : "image_size"
+AcquisitionEnvTomo ||--|o QuantitySI : "exposure_time"
+AcquisitionEnvTomo ||--|| ImageSize : "binning_camera"
+AcquisitionEnvTomo ||--|| QuantitySI : "pixel_size"
+AcquisitionEnvTomo ||--|o SpecialistOptics : "specialist_optics"
+AcquisitionEnvTomo ||--|o BoundingBox2D : "beamshift"
+AcquisitionEnvTomo ||--|o BoundingBox2D : "beamtilt"
+AcquisitionEnvTomo ||--|o BoundingBox2D : "imageshift"
+BoundingBox2D ||--|o QuantitySI : "x_min"
+BoundingBox2D ||--|o QuantitySI : "x_max"
+BoundingBox2D ||--|o QuantitySI : "y_min"
+BoundingBox2D ||--|o QuantitySI : "y_max"
+SpecialistOptics ||--|o Phaseplate : "phaseplate"
+SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
+SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
+EnergyFilter ||--|| QuantitySI : "width_energy_filter"
+Detector ||--|o QuantitySI : "dispersion"
+Detector ||--|o Range : "collection_angle"
+Range ||--|o QuantitySI : "minimal"
+Range ||--|o QuantitySI : "maximal"
+TiltAngle ||--|| QuantitySI : "increment"
+TiltAngle ||--|| QuantitySI : "minimal"
+TiltAngle ||--|| QuantitySI : "maximal"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -498,6 +411,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../technique/">technique</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>Environmental tomography</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../tilt_axis_angle/">tilt_axis_angle</a></td>
 <td>1 <br/> <a href="../Float/">Float</a></td>
 <td>The tilt axis angle of a tomography series</td>
@@ -508,12 +427,6 @@
 <td>1 <br/> <a href="../TiltAngle/">TiltAngle</a></td>
 <td>The min, max and increment of the tilt angle in a tomography session</td>
 <td><a href="../AcquisitionTomo/">AcquisitionTomo</a></td>
-</tr>
-<tr>
-<td><a href="../technique/">technique</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>Specifies which subschema/class is in use</td>
-<td><a href="../Acquisition/">Acquisition</a></td>
 </tr>
 <tr>
 <td><a href="../screen_current/">screen_current</a></td>
@@ -710,10 +623,19 @@
 <pre><code class="language-yaml">name: AcquisitionEnvTomo
 from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
 is_a: AcquisitionTomo
-slot_usage:
+attributes:
   technique:
     name: technique
-    ifabsent: env_tomo
+    description: Environmental tomography
+    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+    domain_of:
+    - Acquisition
+    - AcquisitionGeneral
+    - AcquisitionSpa
+    - AcquisitionSubTomo
+    - AcquisitionEnvTomo
+    - AcquisitionCelTomo
+    equals_string: env_tomo
 
 </code></pre>
 </details>
@@ -722,11 +644,22 @@ slot_usage:
 <pre><code class="language-yaml">name: AcquisitionEnvTomo
 from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
 is_a: AcquisitionTomo
-slot_usage:
+attributes:
   technique:
     name: technique
-    ifabsent: env_tomo
-attributes:
+    description: Environmental tomography
+    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+    alias: technique
+    owner: AcquisitionEnvTomo
+    domain_of:
+    - Acquisition
+    - AcquisitionGeneral
+    - AcquisitionSpa
+    - AcquisitionSubTomo
+    - AcquisitionEnvTomo
+    - AcquisitionCelTomo
+    required: true
+    equals_string: env_tomo
   tilt_axis_angle:
     name: tilt_axis_angle
     description: The tilt axis angle of a tomography series
@@ -749,18 +682,6 @@ attributes:
     domain_of:
     - AcquisitionTomo
     range: TiltAngle
-    required: true
-  technique:
-    name: technique
-    description: Specifies which subschema/class is in use.
-    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
-    rank: 1000
-    ifabsent: env_tomo
-    alias: technique
-    owner: AcquisitionEnvTomo
-    domain_of:
-    - Acquisition
-    range: string
     required: true
   screen_current:
     name: screen_current

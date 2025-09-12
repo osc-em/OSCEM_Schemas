@@ -302,30 +302,19 @@
 <h1 id="class-range">Class: Range</h1>
 <p><em>A range constructed from min and max</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Range">https://w3id.org/osc-em/oscem-schemas-spa/:Range</a></p>
-<div class="mermaid"> classDiagram
-    class Range
-    click Range href "../Range"
-      Range &lt;|-- Series
-        click Series href "../Series"
+<div class="mermaid">erDiagram
+Range {
 
-      Range : maximal
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-
-
-
-    Range --&gt; "0..1" QuantitySI : maximal
-    click QuantitySI href "../QuantitySI"
-
-
-      Range : minimal
-
-
-
-
-    Range --&gt; "0..1" QuantitySI : minimal
-    click QuantitySI href "../QuantitySI"
-
-
+Range ||--|o QuantitySI : "minimal"
+Range ||--|o QuantitySI : "maximal"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>

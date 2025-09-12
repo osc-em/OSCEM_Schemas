@@ -297,36 +297,43 @@
 <h1 id="class-organizational">Class: Organizational</h1>
 <p><em>Overarching category for authors and grants</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-general/:Organizational">https://w3id.org/osc-em/oscem-schemas-general/:Organizational</a></p>
-<div class="mermaid"> classDiagram
-    class Organizational
-    click Organizational href "../Organizational"
-      Organizational : authors
+<div class="mermaid">erDiagram
+Organizational {
 
+}
+Funder {
+    string funder_name  
+    OrganizationTypeEnum type_org  
+    string country  
+}
+Author {
+    string orcid  
+    string country  
+    string role  
+    string name_org  
+    OrganizationTypeEnum type_org  
+    string family_name  
+    string given_name  
+    boolean job_title  
+    string email  
+    string telephone  
+}
+Grant {
+    string grant_name  
+    datetime start_date  
+    datetime end_date  
+    string project_id  
+    string country  
+}
+QuantityValue {
+    string unit  
+    float value  
+}
 
-
-
-    Organizational --&gt; "1..*" Author : authors
-    click Author href "../Author"
-
-
-      Organizational : funder
-
-
-
-
-    Organizational --&gt; "*" Funder : funder
-    click Funder href "../Funder"
-
-
-      Organizational : grants
-
-
-
-
-    Organizational --&gt; "*" Grant : grants
-    click Grant href "../Grant"
-
-
+Organizational ||--}o Grant : "grants"
+Organizational ||--}| Author : "authors"
+Organizational ||--}o Funder : "funder"
+Grant ||--|o QuantityValue : "budget"
 
 </div>
 <!-- no inheritance hierarchy -->

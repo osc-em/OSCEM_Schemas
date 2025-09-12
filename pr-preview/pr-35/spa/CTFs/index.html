@@ -297,47 +297,42 @@
 <h1 id="class-ctfs">Class: CTFs</h1>
 <p><em>Class representing Contrast Transfer Function (CTF) metadata</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:CTFs">https://w3id.org/osc-em/oscem-schemas-spa/:CTFs</a></p>
-<div class="mermaid"> classDiagram
-    class CTFs
-    click CTFs href "../CTFs"
-      CTFs : amplitude_contrast
+<div class="mermaid">erDiagram
+CTFs {
+    float amplitude_contrast  
+}
+Descriptors {
+    string descriptor_name  
+}
+Any {
 
-      CTFs : astigmatism
+}
+Astigmatism {
+    string astigmatism_histogram  
+}
+Resolution {
+    string resolution_histogram  
+}
+QuantityValue {
+    string unit  
+    float value  
+}
+Defocus {
+    string defocus_histogram  
+    string defocus_micrograph_examples  
+}
 
-
-
-
-    CTFs --&gt; "0..1" Astigmatism : astigmatism
-    click Astigmatism href "../Astigmatism"
-
-
-      CTFs : defocus
-
-
-
-
-    CTFs --&gt; "0..1" Defocus : defocus
-    click Defocus href "../Defocus"
-
-
-      CTFs : descriptors
-
-
-
-
-    CTFs --&gt; "*" Descriptors : descriptors
-    click Descriptors href "../Descriptors"
-
-
-      CTFs : resolution
-
-
-
-
-    CTFs --&gt; "0..1" Resolution : resolution
-    click Resolution href "../Resolution"
-
-
+CTFs ||--|o Defocus : "defocus"
+CTFs ||--|o Resolution : "resolution"
+CTFs ||--|o Astigmatism : "astigmatism"
+CTFs ||--}o Descriptors : "descriptors"
+Descriptors ||--|o Any : "descriptor_thing"
+Resolution ||--|o QuantityValue : "output_min_resolution"
+Resolution ||--|o QuantityValue : "output_max_resolution"
+Resolution ||--|o QuantityValue : "output_avg_resolution"
+Defocus ||--|o QuantityValue : "output_min_defocus"
+Defocus ||--|o QuantityValue : "output_max_defocus"
+Defocus ||--|o QuantityValue : "output_avg_defocus"
 
 </div>
 <!-- no inheritance hierarchy -->

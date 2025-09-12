@@ -302,39 +302,20 @@
 <h1 id="class-tiltangle">Class: TiltAngle</h1>
 <p><em>The min, max and increment of the tilt angle in a tomography session. Unit is degree.</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:TiltAngle">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:TiltAngle</a></p>
-<div class="mermaid"> classDiagram
-    class TiltAngle
-    click TiltAngle href "../TiltAngle"
-      Series &lt;|-- TiltAngle
-        click Series href "../Series"
+<div class="mermaid">erDiagram
+TiltAngle {
 
-      TiltAngle : increment
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-
-
-
-    TiltAngle --&gt; "1" QuantitySI : increment
-    click QuantitySI href "../QuantitySI"
-
-
-      TiltAngle : maximal
-
-
-
-
-    TiltAngle --&gt; "1" QuantitySI : maximal
-    click QuantitySI href "../QuantitySI"
-
-
-      TiltAngle : minimal
-
-
-
-
-    TiltAngle --&gt; "1" QuantitySI : minimal
-    click QuantitySI href "../QuantitySI"
-
-
+TiltAngle ||--|| QuantitySI : "increment"
+TiltAngle ||--|| QuantitySI : "minimal"
+TiltAngle ||--|| QuantitySI : "maximal"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>

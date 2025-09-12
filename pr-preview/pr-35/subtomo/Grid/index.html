@@ -297,45 +297,27 @@
 <h1 id="class-grid">Class: Grid</h1>
 <p><em>Details on the grid used in the experiment.</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-subtomo/:Grid">https://w3id.org/osc-em/oscem-schemas-subtomo/:Grid</a></p>
-<div class="mermaid"> classDiagram
-    class Grid
-    click Grid href "../Grid"
-      Grid : film_material
+<div class="mermaid">erDiagram
+Grid {
+    string manufacturer  
+    string material  
+    float mesh  
+    boolean film_support  
+    string film_material  
+    string film_topology  
+    string film_thickness  
+    string pretreatment_type  
+    string pretreatment_atmosphere  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-      Grid : film_support
-
-      Grid : film_thickness
-
-      Grid : film_topology
-
-      Grid : manufacturer
-
-      Grid : material
-
-      Grid : mesh
-
-      Grid : pretreatment_atmosphere
-
-      Grid : pretreatment_pressure
-
-
-
-
-    Grid --&gt; "0..1" QuantitySI : pretreatment_pressure
-    click QuantitySI href "../QuantitySI"
-
-
-      Grid : pretreatment_time
-
-
-
-
-    Grid --&gt; "0..1" QuantitySI : pretreatment_time
-    click QuantitySI href "../QuantitySI"
-
-
-      Grid : pretreatment_type
-
+Grid ||--|o QuantitySI : "pretreatment_time"
+Grid ||--|o QuantitySI : "pretreatment_pressure"
 
 </div>
 <!-- no inheritance hierarchy -->

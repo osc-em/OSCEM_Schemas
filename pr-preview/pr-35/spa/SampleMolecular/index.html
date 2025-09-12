@@ -301,61 +301,71 @@
 </a>
 <h1 id="class-samplemolecular">Class: SampleMolecular</h1>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:SampleMolecular">https://w3id.org/osc-em/oscem-schemas-spa/:SampleMolecular</a></p>
-<div class="mermaid"> classDiagram
-    class SampleMolecular
-    click SampleMolecular href "../SampleMolecular"
-      Sample &lt;|-- SampleMolecular
-        click Sample href "../Sample"
+<div class="mermaid">erDiagram
+SampleMolecular {
+    string name  
+    string description  
+}
+Grid {
+    string manufacturer  
+    string material  
+    float mesh  
+    boolean film_support  
+    string film_material  
+    string film_topology  
+    string film_thickness  
+    string pretreatment_type  
+    string pretreatment_atmosphere  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
+Specimen {
+    string buffer  
+    float ph  
+    boolean vitrification  
+    string vitrification_cryogen  
+    boolean staining  
+    boolean embedding  
+    boolean shadowing  
+}
+Ligand {
+    boolean present  
+    string smiles  
+    string reference  
+}
+Molecule {
+    string name_mol  
+    string molecular_type  
+    string molecular_class  
+    string sequence  
+    string natural_source  
+    string taxonomy_id_source  
+    string expression_system  
+    string taxonomy_id_expression  
+    string gene_name  
+}
+OverallMolecule {
+    MoleculeClassEnum molecular_overall_type  
+    string name_sample  
+    string source  
+    AssemblyEnum assembly  
+}
 
-      SampleMolecular : description
-
-      SampleMolecular : grid
-
-
-
-
-    SampleMolecular --&gt; "0..1" Grid : grid
-    click Grid href "../Grid"
-
-
-      SampleMolecular : ligands
-
-
-
-
-    SampleMolecular --&gt; "*" Ligand : ligands
-    click Ligand href "../Ligand"
-
-
-      SampleMolecular : molecule
-
-
-
-
-    SampleMolecular --&gt; "*" Molecule : molecule
-    click Molecule href "../Molecule"
-
-
-      SampleMolecular : name
-
-      SampleMolecular : overall_molecule
-
-
-
-
-    SampleMolecular --&gt; "1" OverallMolecule : overall_molecule
-    click OverallMolecule href "../OverallMolecule"
-
-
-      SampleMolecular : specimen
-
-
-
-
-    SampleMolecular --&gt; "0..1" Specimen : specimen
-    click Specimen href "../Specimen"
-
-
+SampleMolecular ||--|| OverallMolecule : "overall_molecule"
+SampleMolecular ||--}o Molecule : "molecule"
+SampleMolecular ||--}o Ligand : "ligands"
+SampleMolecular ||--|o Specimen : "specimen"
+SampleMolecular ||--|o Grid : "grid"
+Grid ||--|o QuantitySI : "pretreatment_time"
+Grid ||--|o QuantitySI : "pretreatment_pressure"
+Specimen ||--|o QuantitySI : "concentration"
+Specimen ||--|o QuantitySI : "humidity"
+Specimen ||--|o QuantitySI : "temperature"
+OverallMolecule ||--|o QuantitySI : "molecular_weight"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>

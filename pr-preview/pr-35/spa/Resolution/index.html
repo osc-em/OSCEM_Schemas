@@ -297,38 +297,18 @@
 <h1 id="class-resolution">Class: Resolution</h1>
 <p><em>Resolution-related metadata</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Resolution">https://w3id.org/osc-em/oscem-schemas-spa/:Resolution</a></p>
-<div class="mermaid"> classDiagram
-    class Resolution
-    click Resolution href "../Resolution"
-      Resolution : output_avg_resolution
+<div class="mermaid">erDiagram
+Resolution {
+    string resolution_histogram  
+}
+QuantityValue {
+    string unit  
+    float value  
+}
 
-
-
-
-    Resolution --&gt; "0..1" QuantityValue : output_avg_resolution
-    click QuantityValue href "../QuantityValue"
-
-
-      Resolution : output_max_resolution
-
-
-
-
-    Resolution --&gt; "0..1" QuantityValue : output_max_resolution
-    click QuantityValue href "../QuantityValue"
-
-
-      Resolution : output_min_resolution
-
-
-
-
-    Resolution --&gt; "0..1" QuantityValue : output_min_resolution
-    click QuantityValue href "../QuantityValue"
-
-
-      Resolution : resolution_histogram
-
+Resolution ||--|o QuantityValue : "output_min_resolution"
+Resolution ||--|o QuantityValue : "output_max_resolution"
+Resolution ||--|o QuantityValue : "output_avg_resolution"
 
 </div>
 <!-- no inheritance hierarchy -->

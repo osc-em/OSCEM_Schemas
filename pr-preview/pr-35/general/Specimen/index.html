@@ -297,50 +297,26 @@
 <h1 id="class-specimen">Class: Specimen</h1>
 <p><em>Description of specimen handling.</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-general/:Specimen">https://w3id.org/osc-em/oscem-schemas-general/:Specimen</a></p>
-<div class="mermaid"> classDiagram
-    class Specimen
-    click Specimen href "../Specimen"
-      Specimen : buffer
+<div class="mermaid">erDiagram
+Specimen {
+    string buffer  
+    float ph  
+    boolean vitrification  
+    string vitrification_cryogen  
+    boolean staining  
+    boolean embedding  
+    boolean shadowing  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-      Specimen : concentration
-
-
-
-
-    Specimen --&gt; "0..1" QuantitySI : concentration
-    click QuantitySI href "../QuantitySI"
-
-
-      Specimen : embedding
-
-      Specimen : humidity
-
-
-
-
-    Specimen --&gt; "0..1" QuantitySI : humidity
-    click QuantitySI href "../QuantitySI"
-
-
-      Specimen : ph
-
-      Specimen : shadowing
-
-      Specimen : staining
-
-      Specimen : temperature
-
-
-
-
-    Specimen --&gt; "0..1" QuantitySI : temperature
-    click QuantitySI href "../QuantitySI"
-
-
-      Specimen : vitrification
-
-      Specimen : vitrification_cryogen
-
+Specimen ||--|o QuantitySI : "concentration"
+Specimen ||--|o QuantitySI : "humidity"
+Specimen ||--|o QuantitySI : "temperature"
 
 </div>
 <!-- no inheritance hierarchy -->

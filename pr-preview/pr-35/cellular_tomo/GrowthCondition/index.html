@@ -297,28 +297,22 @@
 <h1 id="class-growthcondition">Class: GrowthCondition</h1>
 <p><em>how the cells were grown</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:GrowthCondition">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:GrowthCondition</a></p>
-<div class="mermaid"> classDiagram
-    class GrowthCondition
-    click GrowthCondition href "../GrowthCondition"
-      GrowthCondition : atmosphere_growth
+<div class="mermaid">erDiagram
+GrowthCondition {
+    string media  
+    string growth_location  
+    string cell_cycle  
+    string treatment  
+    string atmosphere_growth  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-      GrowthCondition : cell_cycle
-
-      GrowthCondition : growth_location
-
-      GrowthCondition : media
-
-      GrowthCondition : temperature_growth
-
-
-
-
-    GrowthCondition --&gt; "0..1" QuantitySI : temperature_growth
-    click QuantitySI href "../QuantitySI"
-
-
-      GrowthCondition : treatment
-
+GrowthCondition ||--|o QuantitySI : "temperature_growth"
 
 </div>
 <!-- no inheritance hierarchy -->
