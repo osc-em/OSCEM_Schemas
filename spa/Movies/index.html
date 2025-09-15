@@ -297,40 +297,26 @@
 <h1 id="class-movies">Class: Movies</h1>
 <p><em>Class representing movies metadata</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Movies">https://w3id.org/osc-em/oscem-schemas-spa/:Movies</a></p>
-<div class="mermaid"> classDiagram
-    class Movies
-    click Movies href "../Movies"
-      Movies : dark_image
+<div class="mermaid">erDiagram
+Movies {
+    string gain_image  
+    string dark_image  
+}
+Descriptors {
+    string descriptor_name  
+}
+Any {
 
-      Movies : descriptors
+}
+QuantityValue {
+    string unit  
+    float value  
+}
 
-
-
-
-    Movies --&gt; "*" Descriptors : descriptors
-    click Descriptors href "../Descriptors"
-
-
-      Movies : dose_per_image
-
-
-
-
-    Movies --&gt; "0..1" QuantityValue : dose_per_image
-    click QuantityValue href "../QuantityValue"
-
-
-      Movies : gain_image
-
-      Movies : initial_dose
-
-
-
-
-    Movies --&gt; "0..1" QuantityValue : initial_dose
-    click QuantityValue href "../QuantityValue"
-
-
+Movies ||--|o QuantityValue : "dose_per_image"
+Movies ||--|o QuantityValue : "initial_dose"
+Movies ||--}o Descriptors : "descriptors"
+Descriptors ||--|o Any : "descriptor_thing"
 
 </div>
 <!-- no inheritance hierarchy -->

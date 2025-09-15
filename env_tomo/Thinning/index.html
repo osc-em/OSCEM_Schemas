@@ -297,26 +297,21 @@
 <h1 id="class-thinning">Class: Thinning</h1>
 <p><em>how the frozen sample was thinned by i.e. FiB-milling</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-env-tomo/:Thinning">https://w3id.org/osc-em/oscem-schemas-env-tomo/:Thinning</a></p>
-<div class="mermaid"> classDiagram
-    class Thinning
-    click Thinning href "../Thinning"
-      Thinning : instrument_thin
+<div class="mermaid">erDiagram
+Thinning {
+    string method_thin  
+    string instrument_thin  
+    string ion_source  
+    boolean lift_out  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-      Thinning : ion_source
-
-      Thinning : lift_out
-
-      Thinning : method_thin
-
-      Thinning : target_thickness
-
-
-
-
-    Thinning --&gt; "0..1" QuantitySI : target_thickness
-    click QuantitySI href "../QuantitySI"
-
-
+Thinning ||--|o QuantitySI : "target_thickness"
 
 </div>
 <!-- no inheritance hierarchy -->

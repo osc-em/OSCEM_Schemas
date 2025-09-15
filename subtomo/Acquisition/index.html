@@ -297,176 +297,96 @@
 <h1 id="class-acquisition">Class: Acquisition</h1>
 <p><em>A set of parameteres describing the data acquisition</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-subtomo/:Acquisition">https://w3id.org/osc-em/oscem-schemas-subtomo/:Acquisition</a></p>
-<div class="mermaid"> classDiagram
-    class Acquisition
-    click Acquisition href "../Acquisition"
-      Acquisition &lt;|-- AcquisitionTomo
-        click AcquisitionTomo href "../AcquisitionTomo"
-
-      Acquisition : beamshift
-
-
-
-
-    Acquisition --&gt; "0..1" BoundingBox2D : beamshift
-    click BoundingBox2D href "../BoundingBox2D"
-
-
-      Acquisition : beamtilt
-
-
-
-
-    Acquisition --&gt; "0..1" BoundingBox2D : beamtilt
-    click BoundingBox2D href "../BoundingBox2D"
-
-
-      Acquisition : beamtiltgroups
-
-      Acquisition : binning_camera
-
-
-
-
-    Acquisition --&gt; "1" ImageSize : binning_camera
-    click ImageSize href "../ImageSize"
-
-
-      Acquisition : calibrated_defocus
-
-
-
-
-    Acquisition --&gt; "0..1" Range : calibrated_defocus
-    click Range href "../Range"
-
-
-      Acquisition : calibrated_magnification
-
-      Acquisition : cryogen
-
-      Acquisition : date_time
-
-      Acquisition : detectors
-
-
-
-
-    Acquisition --&gt; "1..*" Detector : detectors
-    click Detector href "../Detector"
-
-
-      Acquisition : dose_per_movie
-
-
-
-
-    Acquisition --&gt; "0..1" QuantitySI : dose_per_movie
-    click QuantitySI href "../QuantitySI"
-
-
-      Acquisition : energy_filter
-
-
-
-
-    Acquisition --&gt; "0..1" EnergyFilter : energy_filter
-    click EnergyFilter href "../EnergyFilter"
-
-
-      Acquisition : exposure_time
-
-
-
-
-    Acquisition --&gt; "0..1" QuantitySI : exposure_time
-    click QuantitySI href "../QuantitySI"
-
-
-      Acquisition : frames_per_movie
-
-      Acquisition : gainref_flip_rotate
-
-      Acquisition : grids_imaged
-
-      Acquisition : holder
-
-      Acquisition : holder_cryogen
-
-      Acquisition : image_size
-
-
-
-
-    Acquisition --&gt; "0..1" ImageSize : image_size
-    click ImageSize href "../ImageSize"
-
-
-      Acquisition : images_generated
-
-      Acquisition : imageshift
-
-
-
-
-    Acquisition --&gt; "0..1" BoundingBox2D : imageshift
-    click BoundingBox2D href "../BoundingBox2D"
-
-
-      Acquisition : microscope_software
-
-      Acquisition : nominal_defocus
-
-
-
-
-    Acquisition --&gt; "0..1" Range : nominal_defocus
-    click Range href "../Range"
-
-
-      Acquisition : nominal_magnification
-
-      Acquisition : pixel_size
-
-
-
-
-    Acquisition --&gt; "1" QuantitySI : pixel_size
-    click QuantitySI href "../QuantitySI"
-
-
-      Acquisition : screen_current
-
-
-
-
-    Acquisition --&gt; "0..1" QuantitySI : screen_current
-    click QuantitySI href "../QuantitySI"
-
-
-      Acquisition : specialist_optics
-
-
-
-
-    Acquisition --&gt; "0..1" SpecialistOptics : specialist_optics
-    click SpecialistOptics href "../SpecialistOptics"
-
-
-      Acquisition : temperature_range
-
-
-
-
-    Acquisition --&gt; "0..1" Range : temperature_range
-    click Range href "../Range"
-
-
+<div class="mermaid">erDiagram
+Acquisition {
+    AcquisitionTechnique technique  
+    integer nominal_magnification  
+    integer calibrated_magnification  
+    string holder  
+    string holder_cryogen  
+    string microscope_software  
+    datetime date_time  
+    string cryogen  
+    integer frames_per_movie  
+    integer grids_imaged  
+    integer images_generated  
+    integer beamtiltgroups  
+    string gainref_flip_rotate  
+}
+BoundingBox2D {
+
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
+SpecialistOptics {
+
+}
+ChromaticAberrationCorrector {
+    boolean used  
+    string instrument_type  
+}
+SphericalAberrationCorrector {
+    boolean used  
+    string instrument_type  
+}
+Phaseplate {
+    boolean used  
+    string instrument_type  
+}
+ImageSize {
+    integer height  
+    integer width  
+}
+EnergyFilter {
+    boolean used  
+    string model  
+}
+Detector {
+    string name  
+    string mode  
+}
+Range {
+
+}
+
+Acquisition ||--|o QuantitySI : "screen_current"
+Acquisition ||--|o Range : "nominal_defocus"
+Acquisition ||--|o Range : "calibrated_defocus"
+Acquisition ||--|o Range : "temperature_range"
+Acquisition ||--}| Detector : "detectors"
+Acquisition ||--|o QuantitySI : "dose_per_movie"
+Acquisition ||--|o EnergyFilter : "energy_filter"
+Acquisition ||--|o ImageSize : "image_size"
+Acquisition ||--|o QuantitySI : "exposure_time"
+Acquisition ||--|| ImageSize : "binning_camera"
+Acquisition ||--|| QuantitySI : "pixel_size"
+Acquisition ||--|o SpecialistOptics : "specialist_optics"
+Acquisition ||--|o BoundingBox2D : "beamshift"
+Acquisition ||--|o BoundingBox2D : "beamtilt"
+Acquisition ||--|o BoundingBox2D : "imageshift"
+BoundingBox2D ||--|o QuantitySI : "x_min"
+BoundingBox2D ||--|o QuantitySI : "x_max"
+BoundingBox2D ||--|o QuantitySI : "y_min"
+BoundingBox2D ||--|o QuantitySI : "y_max"
+SpecialistOptics ||--|o Phaseplate : "phaseplate"
+SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
+SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
+EnergyFilter ||--|| QuantitySI : "width_energy_filter"
+Detector ||--|o QuantitySI : "dispersion"
+Detector ||--|o Range : "collection_angle"
+Range ||--|o QuantitySI : "minimal"
+Range ||--|o QuantitySI : "maximal"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Acquisition</strong><ul>
+<li><a href="../AcquisitionGeneral/">AcquisitionGeneral</a></li>
+<li><a href="../AcquisitionSpa/">AcquisitionSpa</a></li>
 <li><a href="../AcquisitionTomo/">AcquisitionTomo</a></li>
 </ul>
 </li>
@@ -482,6 +402,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../technique/">technique</a></td>
+<td>1 <br/> <a href="../AcquisitionTechnique/">AcquisitionTechnique</a></td>
+<td>Specifies which Acquisition subschema/class is in use</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../screen_current/">screen_current</a></td>
 <td>0..1 <br/> <a href="../QuantitySI/">QuantitySI</a></td>
@@ -678,6 +604,7 @@
 description: A set of parameteres describing the data acquisition
 from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
 slots:
+- technique
 - screen_current
 - nominal_defocus
 - calibrated_defocus
@@ -706,6 +633,9 @@ slots:
 - beamtiltgroups
 - gainref_flip_rotate
 slot_usage:
+  technique:
+    name: technique
+    required: true
   detectors:
     name: detectors
     required: true
@@ -727,6 +657,9 @@ slot_usage:
 description: A set of parameteres describing the data acquisition
 from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
 slot_usage:
+  technique:
+    name: technique
+    required: true
   detectors:
     name: detectors
     required: true
@@ -740,6 +673,22 @@ slot_usage:
     name: pixel_size
     required: true
 attributes:
+  technique:
+    name: technique
+    description: Specifies which Acquisition subschema/class is in use.
+    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+    rank: 1000
+    alias: technique
+    owner: Acquisition
+    domain_of:
+    - Acquisition
+    - AcquisitionGeneral
+    - AcquisitionSpa
+    - AcquisitionSubTomo
+    - AcquisitionEnvTomo
+    - AcquisitionCelTomo
+    range: AcquisitionTechnique
+    required: true
   screen_current:
     name: screen_current
     description: The total electron beam current hitting the viewing screen, in nA.

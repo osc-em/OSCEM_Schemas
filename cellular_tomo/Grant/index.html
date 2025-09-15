@@ -297,28 +297,20 @@
 <h1 id="class-grant">Class: Grant</h1>
 <p><em>Grant</em></p>
 <p>URI: <a href="http://schema.org/Grant">schema:Grant</a></p>
-<div class="mermaid"> classDiagram
-    class Grant
-    click Grant href "../Grant"
-      Grant : budget
+<div class="mermaid">erDiagram
+Grant {
+    string grant_name  
+    datetime start_date  
+    datetime end_date  
+    string project_id  
+    string country  
+}
+QuantityValue {
+    string unit  
+    float value  
+}
 
-
-
-
-    Grant --&gt; "0..1" QuantityValue : budget
-    click QuantityValue href "../QuantityValue"
-
-
-      Grant : country
-
-      Grant : end_date
-
-      Grant : grant_name
-
-      Grant : project_id
-
-      Grant : start_date
-
+Grant ||--|o QuantityValue : "budget"
 
 </div>
 <!-- no inheritance hierarchy -->

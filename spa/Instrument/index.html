@@ -297,62 +297,29 @@
 <h1 id="class-instrument">Class: Instrument</h1>
 <p><em>Instrument values, mostly constant across a data collection.</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Instrument">https://w3id.org/osc-em/oscem-schemas-spa/:Instrument</a></p>
-<div class="mermaid"> classDiagram
-    class Instrument
-    click Instrument href "../Instrument"
-      Instrument : acceleration_voltage
+<div class="mermaid">erDiagram
+Instrument {
+    string illumination  
+    string imaging  
+    string electron_source  
+    string operating_mode  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
+Microscope {
+    string model  
+    string manufacturer  
+}
 
-
-
-
-    Instrument --&gt; "1" QuantitySI : acceleration_voltage
-    click QuantitySI href "../QuantitySI"
-
-
-      Instrument : beam_convergence
-
-
-
-
-    Instrument --&gt; "0..1" QuantitySI : beam_convergence
-    click QuantitySI href "../QuantitySI"
-
-
-      Instrument : c2_aperture
-
-
-
-
-    Instrument --&gt; "0..1" QuantitySI : c2_aperture
-    click QuantitySI href "../QuantitySI"
-
-
-      Instrument : cs
-
-
-
-
-    Instrument --&gt; "0..1" QuantitySI : cs
-    click QuantitySI href "../QuantitySI"
-
-
-      Instrument : electron_source
-
-      Instrument : illumination
-
-      Instrument : imaging
-
-      Instrument : microscope
-
-
-
-
-    Instrument --&gt; "1" Microscope : microscope
-    click Microscope href "../Microscope"
-
-
-      Instrument : operating_mode
-
+Instrument ||--|| Microscope : "microscope"
+Instrument ||--|| QuantitySI : "acceleration_voltage"
+Instrument ||--|o QuantitySI : "c2_aperture"
+Instrument ||--|o QuantitySI : "cs"
+Instrument ||--|o QuantitySI : "beam_convergence"
 
 </div>
 <!-- no inheritance hierarchy -->

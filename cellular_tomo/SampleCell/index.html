@@ -302,57 +302,60 @@
 <h1 id="class-samplecell">Class: SampleCell</h1>
 <p><em>Unifying class to describe the full sample with growth conditions</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:SampleCell">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:SampleCell</a></p>
-<div class="mermaid"> classDiagram
-    class SampleCell
-    click SampleCell href "../SampleCell"
-      SampleEnv &lt;|-- SampleCell
-        click SampleEnv href "../SampleEnv"
+<div class="mermaid">erDiagram
+SampleCell {
 
-      SampleCell : freezing
+}
+TomogramFeatures {
+    string cellular_features  
+    stringList organelles  
+    string main_target  
+    string details_tomo  
+}
+Thinning {
+    string method_thin  
+    string instrument_thin  
+    string ion_source  
+    boolean lift_out  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
+Freezing {
+    string cryogen_sample_env  
+    FreezingMethodEnum method  
+    boolean blotting  
+    string atmosphere  
+    string details  
+}
+SpecimenEnv {
+    stringList organism  
+    string tissue  
+    string source_env  
+    string location  
+    date collection_date  
+    string handling  
+}
+GrowthCondition {
+    string media  
+    string growth_location  
+    string cell_cycle  
+    string treatment  
+    string atmosphere_growth  
+}
 
-
-
-
-    SampleCell --&gt; "0..1" Freezing : freezing
-    click Freezing href "../Freezing"
-
-
-      SampleCell : growth_condition
-
-
-
-
-    SampleCell --&gt; "0..1" GrowthCondition : growth_condition
-    click GrowthCondition href "../GrowthCondition"
-
-
-      SampleCell : specimen_env
-
-
-
-
-    SampleCell --&gt; "1" SpecimenEnv : specimen_env
-    click SpecimenEnv href "../SpecimenEnv"
-
-
-      SampleCell : thinning
-
-
-
-
-    SampleCell --&gt; "0..1" Thinning : thinning
-    click Thinning href "../Thinning"
-
-
-      SampleCell : tomogram_features
-
-
-
-
-    SampleCell --&gt; "0..1" TomogramFeatures : tomogram_features
-    click TomogramFeatures href "../TomogramFeatures"
-
-
+SampleCell ||--|o GrowthCondition : "growth_condition"
+SampleCell ||--|| SpecimenEnv : "specimen_env"
+SampleCell ||--|o Freezing : "freezing"
+SampleCell ||--|o Thinning : "thinning"
+SampleCell ||--|o TomogramFeatures : "tomogram_features"
+Thinning ||--|o QuantitySI : "target_thickness"
+Freezing ||--|o QuantitySI : "humidity_env"
+Freezing ||--|o QuantitySI : "temperature_env"
+GrowthCondition ||--|o QuantitySI : "temperature_growth"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>

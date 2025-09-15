@@ -297,31 +297,25 @@
 <h1 id="class-detector">Class: Detector</h1>
 <p><em>Class representing a detector</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:Detector">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:Detector</a></p>
-<div class="mermaid"> classDiagram
-    class Detector
-    click Detector href "../Detector"
-      Detector : collection_angle
+<div class="mermaid">erDiagram
+Detector {
+    string name  
+    string mode  
+}
+Range {
 
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-
-
-    Detector --&gt; "0..1" Range : collection_angle
-    click Range href "../Range"
-
-
-      Detector : dispersion
-
-
-
-
-    Detector --&gt; "0..1" QuantitySI : dispersion
-    click QuantitySI href "../QuantitySI"
-
-
-      Detector : mode
-
-      Detector : name
-
+Detector ||--|o QuantitySI : "dispersion"
+Detector ||--|o Range : "collection_angle"
+Range ||--|o QuantitySI : "minimal"
+Range ||--|o QuantitySI : "maximal"
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -380,7 +374,37 @@
 <td><a href="./">Detector</a></td>
 </tr>
 <tr>
+<td><a href="../AcquisitionGeneral/">AcquisitionGeneral</a></td>
+<td><a href="../detectors/">detectors</a></td>
+<td>range</td>
+<td><a href="./">Detector</a></td>
+</tr>
+<tr>
+<td><a href="../AcquisitionSpa/">AcquisitionSpa</a></td>
+<td><a href="../detectors/">detectors</a></td>
+<td>range</td>
+<td><a href="./">Detector</a></td>
+</tr>
+<tr>
 <td><a href="../AcquisitionTomo/">AcquisitionTomo</a></td>
+<td><a href="../detectors/">detectors</a></td>
+<td>range</td>
+<td><a href="./">Detector</a></td>
+</tr>
+<tr>
+<td><a href="../AcquisitionSubTomo/">AcquisitionSubTomo</a></td>
+<td><a href="../detectors/">detectors</a></td>
+<td>range</td>
+<td><a href="./">Detector</a></td>
+</tr>
+<tr>
+<td><a href="../AcquisitionEnvTomo/">AcquisitionEnvTomo</a></td>
+<td><a href="../detectors/">detectors</a></td>
+<td>range</td>
+<td><a href="./">Detector</a></td>
+</tr>
+<tr>
+<td><a href="../AcquisitionCelTomo/">AcquisitionCelTomo</a></td>
 <td><a href="../detectors/">detectors</a></td>
 <td>range</td>
 <td><a href="./">Detector</a></td>

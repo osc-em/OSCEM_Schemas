@@ -297,40 +297,21 @@
 <h1 id="class-overallmolecule">Class: OverallMolecule</h1>
 <p><em>Description of the overall molecule</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-general/:OverallMolecule">https://w3id.org/osc-em/oscem-schemas-general/:OverallMolecule</a></p>
-<div class="mermaid"> classDiagram
-    class OverallMolecule
-    click OverallMolecule href "../OverallMolecule"
-      OverallMolecule : assembly
+<div class="mermaid">erDiagram
+OverallMolecule {
+    MoleculeClassEnum molecular_overall_type  
+    string name_sample  
+    string source  
+    AssemblyEnum assembly  
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 
-
-
-
-    OverallMolecule --&gt; "0..1" AssemblyEnum : assembly
-    click AssemblyEnum href "../AssemblyEnum"
-
-
-      OverallMolecule : molecular_overall_type
-
-
-
-
-    OverallMolecule --&gt; "0..1" MoleculeClassEnum : molecular_overall_type
-    click MoleculeClassEnum href "../MoleculeClassEnum"
-
-
-      OverallMolecule : molecular_weight
-
-
-
-
-    OverallMolecule --&gt; "0..1" QuantitySI : molecular_weight
-    click QuantitySI href "../QuantitySI"
-
-
-      OverallMolecule : name_sample
-
-      OverallMolecule : source
-
+OverallMolecule ||--|o QuantitySI : "molecular_weight"
 
 </div>
 <!-- no inheritance hierarchy -->

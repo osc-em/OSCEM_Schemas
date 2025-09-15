@@ -297,31 +297,25 @@
 <h1 id="class-classes2d">Class: Classes2D</h1>
 <p><em>Class representing classes 2D metadata</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Classes2D">https://w3id.org/osc-em/oscem-schemas-spa/:Classes2D</a></p>
-<div class="mermaid"> classDiagram
-    class Classes2D
-    click Classes2D href "../Classes2D"
-      Classes2D : descriptors
+<div class="mermaid">erDiagram
+Classes2D {
+    integerList particles_per_2Dclass  
+    string images_classes_2D  
+}
+Descriptors {
+    string descriptor_name  
+}
+Any {
 
+}
+QuantityValue {
+    string unit  
+    float value  
+}
 
-
-
-    Classes2D --&gt; "*" Descriptors : descriptors
-    click Descriptors href "../Descriptors"
-
-
-      Classes2D : images_classes_2D
-
-      Classes2D : particles_per_2Dclass
-
-      Classes2D : resolution_classes_2D
-
-
-
-
-    Classes2D --&gt; "0..1" QuantityValue : resolution_classes_2D
-    click QuantityValue href "../QuantityValue"
-
-
+Classes2D ||--|o QuantityValue : "resolution_classes_2D"
+Classes2D ||--}o Descriptors : "descriptors"
+Descriptors ||--|o Any : "descriptor_thing"
 
 </div>
 <!-- no inheritance hierarchy -->

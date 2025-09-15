@@ -297,40 +297,19 @@
 <h1 id="class-defocus">Class: Defocus</h1>
 <p><em>Defocus-related metadata</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Defocus">https://w3id.org/osc-em/oscem-schemas-spa/:Defocus</a></p>
-<div class="mermaid"> classDiagram
-    class Defocus
-    click Defocus href "../Defocus"
-      Defocus : defocus_histogram
+<div class="mermaid">erDiagram
+Defocus {
+    string defocus_histogram  
+    string defocus_micrograph_examples  
+}
+QuantityValue {
+    string unit  
+    float value  
+}
 
-      Defocus : defocus_micrograph_examples
-
-      Defocus : output_avg_defocus
-
-
-
-
-    Defocus --&gt; "0..1" QuantityValue : output_avg_defocus
-    click QuantityValue href "../QuantityValue"
-
-
-      Defocus : output_max_defocus
-
-
-
-
-    Defocus --&gt; "0..1" QuantityValue : output_max_defocus
-    click QuantityValue href "../QuantityValue"
-
-
-      Defocus : output_min_defocus
-
-
-
-
-    Defocus --&gt; "0..1" QuantityValue : output_min_defocus
-    click QuantityValue href "../QuantityValue"
-
-
+Defocus ||--|o QuantityValue : "output_min_defocus"
+Defocus ||--|o QuantityValue : "output_max_defocus"
+Defocus ||--|o QuantityValue : "output_avg_defocus"
 
 </div>
 <!-- no inheritance hierarchy -->
