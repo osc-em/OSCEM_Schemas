@@ -109,7 +109,7 @@ gendoc-%:
 	@echo "Generating documentation for schema $*"
 	mkdir -p $(DOCDIR)/$*
 	cp -rf $(SRC)/docs/files/* $(DOCDIR)/$*
-	$(RUN) gen-doc $(GEN_DOC_ARGS) -d $(DOCDIR)/$* src/oscem_schemas/schema/oscem_schemas_$*.yaml
+	$(RUN) gen-doc --diagram-type er_diagram $(GEN_DOC_ARGS) -d $(DOCDIR)/$* src/oscem_schemas/schema/oscem_schemas_$*.yaml
 	cp $(PERMDOCS)/* $(DOCDIR)/
 
 

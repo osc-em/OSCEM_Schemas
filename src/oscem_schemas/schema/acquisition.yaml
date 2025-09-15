@@ -15,10 +15,20 @@ imports:
   - linkml:types
   - ./custom_types
 
+enums:
+  AcquisitionTechnique:
+    permissible_values:
+      general:
+      spa:
+      subtomo:
+      env_tomo:
+      cellular_tomo:
+
 classes:
   Acquisition:
     description: A set of parameteres describing the data acquisition
     slots:
+    - technique
     - screen_current
     - nominal_defocus
     - calibrated_defocus
@@ -47,6 +57,8 @@ classes:
     - beamtiltgroups
     - gainref_flip_rotate
     slot_usage:
+      technique:
+        required: true
       detectors:
         required: true
       date_time:
@@ -55,6 +67,20 @@ classes:
         required: true
       pixel_size:
         required: true
+
+  AcquisitionGeneral:
+    is_a: Acquisition
+    attributes:
+      technique:
+        description: General acquisition, covering the materials science use cases
+        equals_string: general
+
+  AcquisitionSpa:
+    is_a: Acquisition
+    attributes:
+      technique:
+        description: Single particle acquisition
+        equals_string: spa
 
   EnergyFilter:
     description: A device used to filter for electrons with specific energy.
@@ -120,6 +146,9 @@ classes:
       - collection_angle
 
 slots:
+  technique:
+    description: Specifies which Acquisition subschema/class is in use.
+    range: AcquisitionTechnique
   screen_current:
     description: The total electron beam current hitting the viewing screen, in nA.
     range:  QuantitySI
