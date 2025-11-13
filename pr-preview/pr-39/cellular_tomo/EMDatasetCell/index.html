@@ -424,7 +424,7 @@ TiltAngle {
 
 EMDatasetCell ||--|| AcquisitionCelTomo : "acquisition"
 EMDatasetCell ||--|| Instrument : "instrument"
-EMDatasetCell ||--|| SampleCell : "sample"
+EMDatasetCell ||--|o SampleCell : "sample"
 EMDatasetCell ||--|o Organizational : "organizational"
 Organizational ||--}o Grant : "grants"
 Organizational ||--}| Author : "authors"
@@ -509,7 +509,7 @@ TiltAngle ||--|| QuantitySI : "maximal"
 </tr>
 <tr>
 <td><a href="../sample/">sample</a></td>
-<td>1 <br/> <a href="../SampleCell/">SampleCell</a></td>
+<td>0..1 <br/> <a href="../SampleCell/">SampleCell</a></td>
 <td>Sample information</td>
 <td><a href="../EMDatasetBase/">EMDatasetBase</a></td>
 </tr>
@@ -568,7 +568,7 @@ slot_usage:
     name: sample
     description: Sample information
     range: SampleCell
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
@@ -599,7 +599,7 @@ slot_usage:
     name: sample
     description: Sample information
     range: SampleCell
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
@@ -638,7 +638,7 @@ attributes:
     domain_of:
     - EMDatasetBase
     range: SampleCell
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants

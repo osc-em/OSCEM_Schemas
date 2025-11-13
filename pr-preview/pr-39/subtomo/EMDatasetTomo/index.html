@@ -433,7 +433,7 @@ TiltAngle {
 
 EMDatasetTomo ||--|| AcquisitionSubTomo : "acquisition"
 EMDatasetTomo ||--|| Instrument : "instrument"
-EMDatasetTomo ||--|| SampleMolecular : "sample"
+EMDatasetTomo ||--|o SampleMolecular : "sample"
 EMDatasetTomo ||--|o Organizational : "organizational"
 Organizational ||--}o Grant : "grants"
 Organizational ||--}| Author : "authors"
@@ -520,7 +520,7 @@ TiltAngle ||--|| QuantitySI : "maximal"
 </tr>
 <tr>
 <td><a href="../sample/">sample</a></td>
-<td>1 <br/> <a href="../SampleMolecular/">SampleMolecular</a></td>
+<td>0..1 <br/> <a href="../SampleMolecular/">SampleMolecular</a></td>
 <td>Sample information</td>
 <td><a href="../EMDatasetBase/">EMDatasetBase</a></td>
 </tr>
@@ -580,7 +580,7 @@ slot_usage:
     name: sample
     description: Sample information
     range: SampleMolecular
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
@@ -612,7 +612,7 @@ slot_usage:
     name: sample
     description: Sample information
     range: SampleMolecular
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
@@ -651,7 +651,7 @@ attributes:
     domain_of:
     - EMDatasetBase
     range: SampleMolecular
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
