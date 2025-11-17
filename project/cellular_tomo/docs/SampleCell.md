@@ -6,7 +6,7 @@ Unifying class to describe the full sample with growth conditions
 URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SampleCell](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SampleCell)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[SampleEnv],[GrowthCondition]<growth_condition%200..1-++[SampleCell],[EMDatasetCell]++-%20sample%201..1>[SampleCell],[SampleEnv]^-[SampleCell],[GrowthCondition],[Freezing],[EMDatasetCell])](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[SampleEnv],[GrowthCondition]<growth_condition%200..1-++[SampleCell],[EMDatasetCell]++-%20sample%201..1>[SampleCell],[SampleEnv]^-[SampleCell],[GrowthCondition],[Freezing],[EMDatasetCell])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[SampleEnv],[GrowthCondition]<growth_condition%200..1-++[SampleCell],[EMDatasetCell]++-%20sample%200..1>[SampleCell],[SampleEnv]^-[SampleCell],[GrowthCondition],[Freezing],[EMDatasetCell])](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[SampleEnv],[GrowthCondition]<growth_condition%200..1-++[SampleCell],[EMDatasetCell]++-%20sample%200..1>[SampleCell],[SampleEnv]^-[SampleCell],[GrowthCondition],[Freezing],[EMDatasetCell])
 
 ## Parents
 
@@ -14,7 +14,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/SampleCell](https://w3
 
 ## Referenced by Class
 
- *  **[EMDatasetCell](EMDatasetCell.md)** *[EMDatasetCell➞sample](EMDatasetCell_sample.md)*  <sub>1..1</sub>  **[SampleCell](SampleCell.md)**
+ *  **[EMDatasetCell](EMDatasetCell.md)** *[EMDatasetCell➞sample](EMDatasetCell_sample.md)*  <sub>0..1</sub>  **[SampleCell](SampleCell.md)**
 
 ## Attributes
 

@@ -19,4 +19,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/AcquisitionTomo_tilt_angle]
 
 ## Used by
 
+ * [AcquisitionCelTomo](AcquisitionCelTomo.md)
+ * [AcquisitionEnvTomo](AcquisitionEnvTomo.md)
+ * [AcquisitionSubTomo](AcquisitionSubTomo.md)
  * [AcquisitionTomo](AcquisitionTomo.md)

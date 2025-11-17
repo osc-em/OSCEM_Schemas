@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_general.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-02T07:07:05
+# Generation date: 2025-11-17T12:49:37
 # Schema: oscem-schemas-general
 #
 # id: https://w3id.org/osc-em/oscem-schemas-general
@@ -53,7 +53,8 @@ DEFAULT_ = CurieNamespace('', 'https://w3id.org/osc-em/oscem-schemas-general/')
 @dataclass(repr=False)
 class Acquisition(YAMLRoot):
     """
-    A set of parameteres describing the data acquisition
+    General acquisition covering materials science and other use cases. For specialized techniques, use the
+    appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -66,6 +67,7 @@ class Acquisition(YAMLRoot):
     date_time: Union[str, XSDDateTime] = None
     binning_camera: Union[dict, "ImageSize"] = None
     pixel_size: Union[dict, "QuantitySI"] = None
+    technique: Optional[str] = None
     screen_current: Optional[Union[dict, "QuantitySI"]] = None
     nominal_defocus: Optional[Union[dict, "Range"]] = None
     calibrated_defocus: Optional[Union[dict, "Range"]] = None
@@ -111,6 +113,9 @@ class Acquisition(YAMLRoot):
             self.MissingRequiredField("pixel_size")
         if not isinstance(self.pixel_size, QuantitySI):
             self.pixel_size = QuantitySI(**as_dict(self.pixel_size))
+
+        if self.technique is not None and not isinstance(self.technique, str):
+            self.technique = str(self.technique)
 
         if self.screen_current is not None and not isinstance(self.screen_current, QuantitySI):
             self.screen_current = QuantitySI(**as_dict(self.screen_current))
@@ -180,6 +185,30 @@ class Acquisition(YAMLRoot):
 
         if self.gainref_flip_rotate is not None and not isinstance(self.gainref_flip_rotate, str):
             self.gainref_flip_rotate = str(self.gainref_flip_rotate)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AcquisitionSpa(Acquisition):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ACQUISITION["AcquisitionSpa"]
+    class_class_curie: ClassVar[str] = "acquisition:AcquisitionSpa"
+    class_name: ClassVar[str] = "AcquisitionSpa"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-general/AcquisitionSpa")
+
+    detectors: Union[Union[dict, "Detector"], List[Union[dict, "Detector"]]] = None
+    date_time: Union[str, XSDDateTime] = None
+    binning_camera: Union[dict, "ImageSize"] = None
+    pixel_size: Union[dict, "QuantitySI"] = None
+    technique: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.technique):
+            self.MissingRequiredField("technique")
+        if not isinstance(self.technique, str):
+            self.technique = str(self.technique)
 
         super().__post_init__(**kwargs)
 
@@ -1007,8 +1036,8 @@ class EMDatasetGeneral(EMDatasetBase):
 
     acquisition: Union[dict, Acquisition] = None
     instrument: Union[dict, Instrument] = None
-    sample: Union[dict, Sample] = None
-    organizational: Union[dict, Organizational] = None
+    sample: Optional[Union[dict, Sample]] = None
+    organizational: Optional[Union[dict, Organizational]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.acquisition):
@@ -1021,14 +1050,10 @@ class EMDatasetGeneral(EMDatasetBase):
         if not isinstance(self.instrument, Instrument):
             self.instrument = Instrument(**as_dict(self.instrument))
 
-        if self._is_empty(self.sample):
-            self.MissingRequiredField("sample")
-        if not isinstance(self.sample, Sample):
+        if self.sample is not None and not isinstance(self.sample, Sample):
             self.sample = Sample(**as_dict(self.sample))
 
-        if self._is_empty(self.organizational):
-            self.MissingRequiredField("organizational")
-        if not isinstance(self.organizational, Organizational):
+        if self.organizational is not None and not isinstance(self.organizational, Organizational):
             self.organizational = Organizational(**as_dict(self.organizational))
 
         super().__post_init__(**kwargs)
@@ -1233,6 +1258,17 @@ class Descriptors(Descriptor):
     descriptor_name: str = None
 
 # Enumerations
+class AcquisitionTechnique(EnumDefinitionImpl):
+
+    spa = PermissibleValue(text="spa")
+    subtomo = PermissibleValue(text="subtomo")
+    env_tomo = PermissibleValue(text="env_tomo")
+    cellular_tomo = PermissibleValue(text="cellular_tomo")
+
+    _defn = EnumDefinition(
+        name="AcquisitionTechnique",
+    )
+
 class MoleculeClassEnum(EnumDefinitionImpl):
     """
     Allowed molecule class values - compatible with the EMDB.
@@ -1313,6 +1349,9 @@ class OrganizationTypeEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.technique = Slot(uri=ACQUISITION.technique, name="technique", curie=ACQUISITION.curie('technique'),
+                   model_uri=DEFAULT_.technique, domain=None, range=Optional[str])
 
 slots.screen_current = Slot(uri=ACQUISITION.screen_current, name="screen_current", curie=ACQUISITION.curie('screen_current'),
                    model_uri=DEFAULT_.screen_current, domain=None, range=Optional[Union[dict, QuantitySI]])
@@ -1715,10 +1754,13 @@ slots.EMDatasetGeneral_instrument = Slot(uri=OSCEM.instrument, name="EMDatasetGe
                    model_uri=DEFAULT_.EMDatasetGeneral_instrument, domain=EMDatasetGeneral, range=Union[dict, Instrument])
 
 slots.EMDatasetGeneral_sample = Slot(uri=OSCEM.sample, name="EMDatasetGeneral_sample", curie=OSCEM.curie('sample'),
-                   model_uri=DEFAULT_.EMDatasetGeneral_sample, domain=EMDatasetGeneral, range=Union[dict, Sample])
+                   model_uri=DEFAULT_.EMDatasetGeneral_sample, domain=EMDatasetGeneral, range=Optional[Union[dict, Sample]])
 
 slots.EMDatasetGeneral_organizational = Slot(uri=OSCEM.organizational, name="EMDatasetGeneral_organizational", curie=OSCEM.curie('organizational'),
-                   model_uri=DEFAULT_.EMDatasetGeneral_organizational, domain=EMDatasetGeneral, range=Union[dict, Organizational])
+                   model_uri=DEFAULT_.EMDatasetGeneral_organizational, domain=EMDatasetGeneral, range=Optional[Union[dict, Organizational]])
+
+slots.Acquisition_technique = Slot(uri=ACQUISITION.technique, name="Acquisition_technique", curie=ACQUISITION.curie('technique'),
+                   model_uri=DEFAULT_.Acquisition_technique, domain=Acquisition, range=Optional[str])
 
 slots.Acquisition_detectors = Slot(uri=ACQUISITION.detectors, name="Acquisition_detectors", curie=ACQUISITION.curie('detectors'),
                    model_uri=DEFAULT_.Acquisition_detectors, domain=Acquisition, range=Union[Union[dict, "Detector"], List[Union[dict, "Detector"]]])
@@ -1731,6 +1773,9 @@ slots.Acquisition_binning_camera = Slot(uri=ACQUISITION.binning_camera, name="Ac
 
 slots.Acquisition_pixel_size = Slot(uri=ACQUISITION.pixel_size, name="Acquisition_pixel_size", curie=ACQUISITION.curie('pixel_size'),
                    model_uri=DEFAULT_.Acquisition_pixel_size, domain=Acquisition, range=Union[dict, "QuantitySI"])
+
+slots.AcquisitionSpa_technique = Slot(uri=ACQUISITION.technique, name="AcquisitionSpa_technique", curie=ACQUISITION.curie('technique'),
+                   model_uri=DEFAULT_.AcquisitionSpa_technique, domain=AcquisitionSpa, range=str)
 
 slots.EnergyFilter_used = Slot(uri=ACQUISITION.used, name="EnergyFilter_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.EnergyFilter_used, domain=EnergyFilter, range=Union[bool, Bool])

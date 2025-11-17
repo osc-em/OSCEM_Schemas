@@ -6,15 +6,20 @@
 URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/AcquisitionTomo](https://w3id.org/osc-em/oscem-schemas-env-tomo/AcquisitionTomo)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetEnv],[Detector],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetEnv]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetEnv],[Detector],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[EMDatasetEnv]++-%20acquisition%201..1>[AcquisitionTomo],[Acquisition]^-[AcquisitionTomo],[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[Detector],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;technique(i):string%20%3F;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[AcquisitionTomo]^-[AcquisitionSubTomo],[AcquisitionTomo]^-[AcquisitionEnvTomo],[AcquisitionTomo]^-[AcquisitionCelTomo],[Acquisition]^-[AcquisitionTomo],[AcquisitionSubTomo],[AcquisitionEnvTomo],[AcquisitionCelTomo],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[Detector],[BoundingBox2D],[TiltAngle]<tilt_angle%201..1-++[AcquisitionTomo&#124;tilt_axis_angle:float;technique(i):string%20%3F;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F],[AcquisitionTomo]^-[AcquisitionSubTomo],[AcquisitionTomo]^-[AcquisitionEnvTomo],[AcquisitionTomo]^-[AcquisitionCelTomo],[Acquisition]^-[AcquisitionTomo],[AcquisitionSubTomo],[AcquisitionEnvTomo],[AcquisitionCelTomo],[Acquisition])
 
 ## Parents
 
- *  is_a: [Acquisition](Acquisition.md) - A set of parameteres describing the data acquisition
+ *  is_a: [Acquisition](Acquisition.md) - General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).
+
+## Children
+
+ * [AcquisitionCelTomo](AcquisitionCelTomo.md)
+ * [AcquisitionEnvTomo](AcquisitionEnvTomo.md)
+ * [AcquisitionSubTomo](AcquisitionSubTomo.md)
 
 ## Referenced by Class
 
- *  **[EMDatasetEnv](EMDatasetEnv.md)** *[EMDatasetEnv➞acquisition](EMDatasetEnv_acquisition.md)*  <sub>1..1</sub>  **[AcquisitionTomo](AcquisitionTomo.md)**
 
 ## Attributes
 
@@ -30,6 +35,9 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/AcquisitionTomo](https://w3
 
 ### Inherited from Acquisition:
 
+ * [Acquisition➞technique](Acquisition_technique.md)  <sub>0..1</sub>
+     * Description: Specifies which Acquisition subschema/class is in use.
+     * Range: [String](types/String.md)
  * [screen_current](screen_current.md)  <sub>0..1</sub>
      * Description: The total electron beam current hitting the viewing screen, in nA.
      * Range: [QuantitySI](QuantitySI.md)

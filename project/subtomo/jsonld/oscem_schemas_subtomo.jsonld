@@ -338,6 +338,25 @@
   ],
   "enums": [
     {
+      "name": "AcquisitionTechnique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionAcquisitionTechnique",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "permissible_values": [
+        {
+          "text": "spa"
+        },
+        {
+          "text": "subtomo"
+        },
+        {
+          "text": "env_tomo"
+        },
+        {
+          "text": "cellular_tomo"
+        }
+      ]
+    },
+    {
       "name": "MoleculeClassEnum",
       "definition_uri": "https://w3id.org/osc-em/sampleMoleculeClassEnum",
       "description": "Allowed molecule class values - compatible with the EMDB.",
@@ -415,6 +434,19 @@
     }
   ],
   "slots": [
+    {
+      "name": "technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Specifies which Acquisition subschema/class is in use.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
     {
       "name": "screen_current",
       "definition_uri": "https://w3id.org/osc-em/acquisitionscreen_current",
@@ -2249,7 +2281,7 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "acquisition",
-      "range": "AcquisitionTomo",
+      "range": "AcquisitionSubTomo",
       "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
@@ -2290,7 +2322,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "sample",
       "range": "SampleMolecular",
-      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2310,8 +2341,25 @@
       "is_usage_slot": true,
       "usage_slot_name": "organizational",
       "range": "Organizational",
-      "required": true,
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Acquisition_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Specifies which Acquisition subschema/class is in use.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "technique",
+      "domain": "Acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -2391,6 +2439,26 @@
       "range": "QuantitySI",
       "required": true,
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcquisitionSpa_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Single particle acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition_technique",
+      "domain": "AcquisitionSpa",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "AcquisitionSpa",
+      "domain_of": [
+        "AcquisitionSpa"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
+      "required": true,
+      "equals_string": "spa",
       "@type": "SlotDefinition"
     },
     {
@@ -3723,6 +3791,66 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "AcquisitionSubTomo_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Subtomogram averaging",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition_technique",
+      "domain": "AcquisitionSubTomo",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "AcquisitionSubTomo",
+      "domain_of": [
+        "AcquisitionSubTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
+      "required": true,
+      "equals_string": "subtomo",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcquisitionEnvTomo_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Environmental tomography",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition_technique",
+      "domain": "AcquisitionEnvTomo",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "AcquisitionEnvTomo",
+      "domain_of": [
+        "AcquisitionEnvTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
+      "required": true,
+      "equals_string": "env_tomo",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcquisitionCelTomo_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Cellular tomography",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition_technique",
+      "domain": "AcquisitionCelTomo",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "AcquisitionCelTomo",
+      "domain_of": [
+        "AcquisitionCelTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
+      "required": true,
+      "equals_string": "cellular_tomo",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "Organizational_authors",
       "definition_uri": "https://w3id.org/osc-em/organizational/authors",
       "description": "List of authors associated with the project",
@@ -4079,9 +4207,10 @@
     {
       "name": "Acquisition",
       "definition_uri": "https://w3id.org/osc-em/acquisitionAcquisition",
-      "description": "A set of parameteres describing the data acquisition",
+      "description": "General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).",
       "from_schema": "https://w3id.org/osc-em/acquisition",
       "slots": [
+        "Acquisition_technique",
         "screen_current",
         "nominal_defocus",
         "calibrated_defocus",
@@ -4112,6 +4241,45 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/acquisitionAcquisition",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionSpa",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionAcquisitionSpa",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition",
+      "slots": [
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate",
+        "AcquisitionSpa_technique"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionAcquisitionSpa",
       "@type": "ClassDefinition"
     },
     {
@@ -4382,6 +4550,7 @@
       "from_schema": "https://w3id.org/osc-em/tomography",
       "is_a": "Acquisition",
       "slots": [
+        "Acquisition_technique",
         "screen_current",
         "nominal_defocus",
         "calibrated_defocus",
@@ -4414,6 +4583,129 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/osc-em/tomography/AcquisitionTomo",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionSubTomo",
+      "definition_uri": "https://w3id.org/osc-em/tomography/AcquisitionSubTomo",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "AcquisitionTomo",
+      "slots": [
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate",
+        "AcquisitionTomo_tilt_axis_angle",
+        "AcquisitionTomo_tilt_angle",
+        "AcquisitionSubTomo_technique"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/tomography/AcquisitionSubTomo",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionEnvTomo",
+      "definition_uri": "https://w3id.org/osc-em/tomography/AcquisitionEnvTomo",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "AcquisitionTomo",
+      "slots": [
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate",
+        "AcquisitionTomo_tilt_axis_angle",
+        "AcquisitionTomo_tilt_angle",
+        "AcquisitionEnvTomo_technique"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/tomography/AcquisitionEnvTomo",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionCelTomo",
+      "definition_uri": "https://w3id.org/osc-em/tomography/AcquisitionCelTomo",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "AcquisitionTomo",
+      "slots": [
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate",
+        "AcquisitionTomo_tilt_axis_angle",
+        "AcquisitionTomo_tilt_angle",
+        "AcquisitionCelTomo_technique"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/tomography/AcquisitionCelTomo",
       "@type": "ClassDefinition"
     },
     {
@@ -4651,9 +4943,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "oscem_schemas_subtomo.yaml",
-  "source_file_date": "2025-09-02T07:06:15",
-  "source_file_size": 1210,
-  "generation_date": "2025-09-02T07:07:35",
+  "source_file_date": "2025-11-17T12:48:32",
+  "source_file_size": 1212,
+  "generation_date": "2025-11-17T12:50:09",
   "@type": "SchemaDefinition",
   "@context": [
     "project/subtomo/jsonld/oscem_schemas_subtomo.context.jsonld",

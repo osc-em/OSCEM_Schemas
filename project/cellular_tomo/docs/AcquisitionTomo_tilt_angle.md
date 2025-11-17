@@ -19,4 +19,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionTomo_tilt_a
 
 ## Used by
 
+ * [AcquisitionCelTomo](AcquisitionCelTomo.md)
+ * [AcquisitionEnvTomo](AcquisitionEnvTomo.md)
+ * [AcquisitionSubTomo](AcquisitionSubTomo.md)
  * [AcquisitionTomo](AcquisitionTomo.md)

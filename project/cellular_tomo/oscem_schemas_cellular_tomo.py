@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-02T07:06:39
+# Generation date: 2025-11-17T12:48:59
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
@@ -55,7 +55,8 @@ DEFAULT_ = CurieNamespace('', 'https://w3id.org/osc-em/oscem-schemas-cellular-to
 @dataclass(repr=False)
 class Acquisition(YAMLRoot):
     """
-    A set of parameteres describing the data acquisition
+    General acquisition covering materials science and other use cases. For specialized techniques, use the
+    appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -68,6 +69,7 @@ class Acquisition(YAMLRoot):
     date_time: Union[str, XSDDateTime] = None
     binning_camera: Union[dict, "ImageSize"] = None
     pixel_size: Union[dict, "QuantitySI"] = None
+    technique: Optional[str] = None
     screen_current: Optional[Union[dict, "QuantitySI"]] = None
     nominal_defocus: Optional[Union[dict, "Range"]] = None
     calibrated_defocus: Optional[Union[dict, "Range"]] = None
@@ -113,6 +115,9 @@ class Acquisition(YAMLRoot):
             self.MissingRequiredField("pixel_size")
         if not isinstance(self.pixel_size, QuantitySI):
             self.pixel_size = QuantitySI(**as_dict(self.pixel_size))
+
+        if self.technique is not None and not isinstance(self.technique, str):
+            self.technique = str(self.technique)
 
         if self.screen_current is not None and not isinstance(self.screen_current, QuantitySI):
             self.screen_current = QuantitySI(**as_dict(self.screen_current))
@@ -182,6 +187,30 @@ class Acquisition(YAMLRoot):
 
         if self.gainref_flip_rotate is not None and not isinstance(self.gainref_flip_rotate, str):
             self.gainref_flip_rotate = str(self.gainref_flip_rotate)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AcquisitionSpa(Acquisition):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ACQUISITION["AcquisitionSpa"]
+    class_class_curie: ClassVar[str] = "acquisition:AcquisitionSpa"
+    class_name: ClassVar[str] = "AcquisitionSpa"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionSpa")
+
+    detectors: Union[Union[dict, "Detector"], List[Union[dict, "Detector"]]] = None
+    date_time: Union[str, XSDDateTime] = None
+    binning_camera: Union[dict, "ImageSize"] = None
+    pixel_size: Union[dict, "QuantitySI"] = None
+    technique: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.technique):
+            self.MissingRequiredField("technique")
+        if not isinstance(self.technique, str):
+            self.technique = str(self.technique)
 
         super().__post_init__(**kwargs)
 
@@ -530,6 +559,84 @@ class AcquisitionTomo(Acquisition):
 
 
 @dataclass(repr=False)
+class AcquisitionSubTomo(AcquisitionTomo):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionSubTomo"]
+    class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionSubTomo"
+    class_name: ClassVar[str] = "AcquisitionSubTomo"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionSubTomo")
+
+    detectors: Union[Union[dict, Detector], List[Union[dict, Detector]]] = None
+    date_time: Union[str, XSDDateTime] = None
+    binning_camera: Union[dict, "ImageSize"] = None
+    pixel_size: Union[dict, "QuantitySI"] = None
+    tilt_axis_angle: float = None
+    tilt_angle: Union[dict, "TiltAngle"] = None
+    technique: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.technique):
+            self.MissingRequiredField("technique")
+        if not isinstance(self.technique, str):
+            self.technique = str(self.technique)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AcquisitionEnvTomo(AcquisitionTomo):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionEnvTomo"]
+    class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionEnvTomo"
+    class_name: ClassVar[str] = "AcquisitionEnvTomo"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionEnvTomo")
+
+    detectors: Union[Union[dict, Detector], List[Union[dict, Detector]]] = None
+    date_time: Union[str, XSDDateTime] = None
+    binning_camera: Union[dict, "ImageSize"] = None
+    pixel_size: Union[dict, "QuantitySI"] = None
+    tilt_axis_angle: float = None
+    tilt_angle: Union[dict, "TiltAngle"] = None
+    technique: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.technique):
+            self.MissingRequiredField("technique")
+        if not isinstance(self.technique, str):
+            self.technique = str(self.technique)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AcquisitionCelTomo(AcquisitionTomo):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionCelTomo"]
+    class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionCelTomo"
+    class_name: ClassVar[str] = "AcquisitionCelTomo"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionCelTomo")
+
+    detectors: Union[Union[dict, Detector], List[Union[dict, Detector]]] = None
+    date_time: Union[str, XSDDateTime] = None
+    binning_camera: Union[dict, "ImageSize"] = None
+    pixel_size: Union[dict, "QuantitySI"] = None
+    tilt_axis_angle: float = None
+    tilt_angle: Union[dict, "TiltAngle"] = None
+    technique: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.technique):
+            self.MissingRequiredField("technique")
+        if not isinstance(self.technique, str):
+            self.technique = str(self.technique)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Organizational(YAMLRoot):
     """
     Overarching category for authors and grants
@@ -754,30 +861,26 @@ class EMDatasetCell(EMDatasetBase):
     class_name: ClassVar[str] = "EMDatasetCell"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/EMDatasetCell")
 
-    acquisition: Union[dict, AcquisitionTomo] = None
+    acquisition: Union[dict, AcquisitionCelTomo] = None
     instrument: Union[dict, Instrument] = None
-    sample: Union[dict, "SampleCell"] = None
-    organizational: Union[dict, Organizational] = None
+    sample: Optional[Union[dict, "SampleCell"]] = None
+    organizational: Optional[Union[dict, Organizational]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.acquisition):
             self.MissingRequiredField("acquisition")
-        if not isinstance(self.acquisition, AcquisitionTomo):
-            self.acquisition = AcquisitionTomo(**as_dict(self.acquisition))
+        if not isinstance(self.acquisition, AcquisitionCelTomo):
+            self.acquisition = AcquisitionCelTomo(**as_dict(self.acquisition))
 
         if self._is_empty(self.instrument):
             self.MissingRequiredField("instrument")
         if not isinstance(self.instrument, Instrument):
             self.instrument = Instrument(**as_dict(self.instrument))
 
-        if self._is_empty(self.sample):
-            self.MissingRequiredField("sample")
-        if not isinstance(self.sample, SampleCell):
+        if self.sample is not None and not isinstance(self.sample, SampleCell):
             self.sample = SampleCell(**as_dict(self.sample))
 
-        if self._is_empty(self.organizational):
-            self.MissingRequiredField("organizational")
-        if not isinstance(self.organizational, Organizational):
+        if self.organizational is not None and not isinstance(self.organizational, Organizational):
             self.organizational = Organizational(**as_dict(self.organizational))
 
         super().__post_init__(**kwargs)
@@ -1234,6 +1337,17 @@ class TomogramFeatures(YAMLRoot):
 
 
 # Enumerations
+class AcquisitionTechnique(EnumDefinitionImpl):
+
+    spa = PermissibleValue(text="spa")
+    subtomo = PermissibleValue(text="subtomo")
+    env_tomo = PermissibleValue(text="env_tomo")
+    cellular_tomo = PermissibleValue(text="cellular_tomo")
+
+    _defn = EnumDefinition(
+        name="AcquisitionTechnique",
+    )
+
 class OrganizationTypeEnum(EnumDefinitionImpl):
     """
     Allowed values for authors organizations.
@@ -1275,6 +1389,9 @@ class FreezingMethodEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.technique = Slot(uri=ACQUISITION.technique, name="technique", curie=ACQUISITION.curie('technique'),
+                   model_uri=DEFAULT_.technique, domain=None, range=Optional[str])
 
 slots.screen_current = Slot(uri=ACQUISITION.screen_current, name="screen_current", curie=ACQUISITION.curie('screen_current'),
                    model_uri=DEFAULT_.screen_current, domain=None, range=Optional[Union[dict, QuantitySI]])
@@ -1650,16 +1767,19 @@ slots.specimen_env = Slot(uri=SAMPLE_ENV.specimen_env, name="specimen_env", curi
                    model_uri=DEFAULT_.specimen_env, domain=None, range=Optional[Union[dict, SpecimenEnv]])
 
 slots.EMDatasetCell_acquisition = Slot(uri=OSCEM.acquisition, name="EMDatasetCell_acquisition", curie=OSCEM.curie('acquisition'),
-                   model_uri=DEFAULT_.EMDatasetCell_acquisition, domain=EMDatasetCell, range=Union[dict, AcquisitionTomo])
+                   model_uri=DEFAULT_.EMDatasetCell_acquisition, domain=EMDatasetCell, range=Union[dict, AcquisitionCelTomo])
 
 slots.EMDatasetCell_instrument = Slot(uri=OSCEM.instrument, name="EMDatasetCell_instrument", curie=OSCEM.curie('instrument'),
                    model_uri=DEFAULT_.EMDatasetCell_instrument, domain=EMDatasetCell, range=Union[dict, Instrument])
 
 slots.EMDatasetCell_sample = Slot(uri=OSCEM.sample, name="EMDatasetCell_sample", curie=OSCEM.curie('sample'),
-                   model_uri=DEFAULT_.EMDatasetCell_sample, domain=EMDatasetCell, range=Union[dict, "SampleCell"])
+                   model_uri=DEFAULT_.EMDatasetCell_sample, domain=EMDatasetCell, range=Optional[Union[dict, "SampleCell"]])
 
 slots.EMDatasetCell_organizational = Slot(uri=OSCEM.organizational, name="EMDatasetCell_organizational", curie=OSCEM.curie('organizational'),
-                   model_uri=DEFAULT_.EMDatasetCell_organizational, domain=EMDatasetCell, range=Union[dict, Organizational])
+                   model_uri=DEFAULT_.EMDatasetCell_organizational, domain=EMDatasetCell, range=Optional[Union[dict, Organizational]])
+
+slots.Acquisition_technique = Slot(uri=ACQUISITION.technique, name="Acquisition_technique", curie=ACQUISITION.curie('technique'),
+                   model_uri=DEFAULT_.Acquisition_technique, domain=Acquisition, range=Optional[str])
 
 slots.Acquisition_detectors = Slot(uri=ACQUISITION.detectors, name="Acquisition_detectors", curie=ACQUISITION.curie('detectors'),
                    model_uri=DEFAULT_.Acquisition_detectors, domain=Acquisition, range=Union[Union[dict, "Detector"], List[Union[dict, "Detector"]]])
@@ -1672,6 +1792,9 @@ slots.Acquisition_binning_camera = Slot(uri=ACQUISITION.binning_camera, name="Ac
 
 slots.Acquisition_pixel_size = Slot(uri=ACQUISITION.pixel_size, name="Acquisition_pixel_size", curie=ACQUISITION.curie('pixel_size'),
                    model_uri=DEFAULT_.Acquisition_pixel_size, domain=Acquisition, range=Union[dict, "QuantitySI"])
+
+slots.AcquisitionSpa_technique = Slot(uri=ACQUISITION.technique, name="AcquisitionSpa_technique", curie=ACQUISITION.curie('technique'),
+                   model_uri=DEFAULT_.AcquisitionSpa_technique, domain=AcquisitionSpa, range=str)
 
 slots.EnergyFilter_used = Slot(uri=ACQUISITION.used, name="EnergyFilter_used", curie=ACQUISITION.curie('used'),
                    model_uri=DEFAULT_.EnergyFilter_used, domain=EnergyFilter, range=Union[bool, Bool])
@@ -1747,6 +1870,15 @@ slots.AcquisitionTomo_tilt_axis_angle = Slot(uri=TOMO['graphy/tilt_axis_angle'],
 
 slots.AcquisitionTomo_tilt_angle = Slot(uri=TOMO['graphy/tilt_angle'], name="AcquisitionTomo_tilt_angle", curie=TOMO.curie('graphy/tilt_angle'),
                    model_uri=DEFAULT_.AcquisitionTomo_tilt_angle, domain=AcquisitionTomo, range=Union[dict, "TiltAngle"])
+
+slots.AcquisitionSubTomo_technique = Slot(uri=ACQUISITION.technique, name="AcquisitionSubTomo_technique", curie=ACQUISITION.curie('technique'),
+                   model_uri=DEFAULT_.AcquisitionSubTomo_technique, domain=AcquisitionSubTomo, range=str)
+
+slots.AcquisitionEnvTomo_technique = Slot(uri=ACQUISITION.technique, name="AcquisitionEnvTomo_technique", curie=ACQUISITION.curie('technique'),
+                   model_uri=DEFAULT_.AcquisitionEnvTomo_technique, domain=AcquisitionEnvTomo, range=str)
+
+slots.AcquisitionCelTomo_technique = Slot(uri=ACQUISITION.technique, name="AcquisitionCelTomo_technique", curie=ACQUISITION.curie('technique'),
+                   model_uri=DEFAULT_.AcquisitionCelTomo_technique, domain=AcquisitionCelTomo, range=str)
 
 slots.Organizational_authors = Slot(uri=ORGANIZATIONAL.authors, name="Organizational_authors", curie=ORGANIZATIONAL.curie('authors'),
                    model_uri=DEFAULT_.Organizational_authors, domain=Organizational, range=Union[Union[dict, "Author"], List[Union[dict, "Author"]]])

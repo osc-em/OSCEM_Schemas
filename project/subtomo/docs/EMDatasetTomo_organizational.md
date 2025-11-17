@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/EMDatasetTomo_organizational
 
 ## Domain and Range
 
-[EMDatasetTomo](EMDatasetTomo.md) &#8594;  <sub>1..1</sub> [Organizational](Organizational.md)
+[EMDatasetTomo](EMDatasetTomo.md) &#8594;  <sub>0..1</sub> [Organizational](Organizational.md)
 
 ## Parents
 

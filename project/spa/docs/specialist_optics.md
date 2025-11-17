@@ -19,3 +19,4 @@ None &#8594;  <sub>0..1</sub> [SpecialistOptics](SpecialistOptics.md)
 ## Used by
 
  * [Acquisition](Acquisition.md)
+ * [AcquisitionSpa](AcquisitionSpa.md)

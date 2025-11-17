@@ -6,7 +6,7 @@ Unifying class to describe the full sample.
 URI: [https://w3id.org/osc-em/oscem-schemas-general/Sample](https://w3id.org/osc-em/oscem-schemas-general/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[SampleMolecular],[Grid]<grid%200..1-++[Sample&#124;name:string;description:string],[Specimen]<specimen%200..1-++[Sample],[Ligand]<ligands%200..*-++[Sample],[Molecule]<molecule%200..*-++[Sample],[OverallMolecule]<overall_molecule%200..1-++[Sample],[EMDatasetGeneral]++-%20sample%201..1>[Sample],[Sample]^-[SampleMolecular],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetGeneral])](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[SampleMolecular],[Grid]<grid%200..1-++[Sample&#124;name:string;description:string],[Specimen]<specimen%200..1-++[Sample],[Ligand]<ligands%200..*-++[Sample],[Molecule]<molecule%200..*-++[Sample],[OverallMolecule]<overall_molecule%200..1-++[Sample],[EMDatasetGeneral]++-%20sample%201..1>[Sample],[Sample]^-[SampleMolecular],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetGeneral])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[SampleMolecular],[Grid]<grid%200..1-++[Sample&#124;name:string;description:string],[Specimen]<specimen%200..1-++[Sample],[Ligand]<ligands%200..*-++[Sample],[Molecule]<molecule%200..*-++[Sample],[OverallMolecule]<overall_molecule%200..1-++[Sample],[EMDatasetGeneral]++-%20sample%200..1>[Sample],[Sample]^-[SampleMolecular],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetGeneral])](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[SampleMolecular],[Grid]<grid%200..1-++[Sample&#124;name:string;description:string],[Specimen]<specimen%200..1-++[Sample],[Ligand]<ligands%200..*-++[Sample],[Molecule]<molecule%200..*-++[Sample],[OverallMolecule]<overall_molecule%200..1-++[Sample],[EMDatasetGeneral]++-%20sample%200..1>[Sample],[Sample]^-[SampleMolecular],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetGeneral])
 
 ## Children
 
@@ -14,7 +14,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-general/Sample](https://w3id.org/osc
 
 ## Referenced by Class
 
- *  **[EMDatasetGeneral](EMDatasetGeneral.md)** *[EMDatasetGeneral➞sample](EMDatasetGeneral_sample.md)*  <sub>1..1</sub>  **[Sample](Sample.md)**
+ *  **[EMDatasetGeneral](EMDatasetGeneral.md)** *[EMDatasetGeneral➞sample](EMDatasetGeneral_sample.md)*  <sub>0..1</sub>  **[Sample](Sample.md)**
 
 ## Attributes
 

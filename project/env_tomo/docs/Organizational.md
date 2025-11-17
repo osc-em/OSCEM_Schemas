@@ -6,11 +6,11 @@ Overarching category for authors and grants
 URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/Organizational](https://w3id.org/osc-em/oscem-schemas-env-tomo/Organizational)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%200..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetEnv]++-%20organizational%201..1>[Organizational],[Grant],[Funder],[EMDatasetEnv],[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%200..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetEnv]++-%20organizational%201..1>[Organizational],[Grant],[Funder],[EMDatasetEnv],[Author])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%200..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetEnv]++-%20organizational%200..1>[Organizational],[Grant],[Funder],[EMDatasetEnv],[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%200..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetEnv]++-%20organizational%200..1>[Organizational],[Grant],[Funder],[EMDatasetEnv],[Author])
 
 ## Referenced by Class
 
- *  **[EMDatasetEnv](EMDatasetEnv.md)** *[EMDatasetEnv➞organizational](EMDatasetEnv_organizational.md)*  <sub>1..1</sub>  **[Organizational](Organizational.md)**
+ *  **[EMDatasetEnv](EMDatasetEnv.md)** *[EMDatasetEnv➞organizational](EMDatasetEnv_organizational.md)*  <sub>0..1</sub>  **[Organizational](Organizational.md)**
 
 ## Attributes
 

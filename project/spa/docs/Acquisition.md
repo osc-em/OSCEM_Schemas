@@ -1,22 +1,28 @@
 
 # Class: Acquisition
 
-A set of parameteres describing the data acquisition
+General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).
 
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/Acquisition](https://w3id.org/osc-em/oscem-schemas-spa/Acquisition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetSpa],[Detector],[BoundingBox2D],[BoundingBox2D]<imageshift%200..1-++[Acquisition&#124;nominal_magnification:integer%20%3F;calibrated_magnification:integer%20%3F;holder:string%20%3F;holder_cryogen:string%20%3F;microscope_software:string%20%3F;date_time:datetime;cryogen:string%20%3F;frames_per_movie:integer%20%3F;grids_imaged:integer%20%3F;images_generated:integer%20%3F;beamtiltgroups:integer%20%3F;gainref_flip_rotate:string%20%3F],[BoundingBox2D]<beamtilt%200..1-++[Acquisition],[BoundingBox2D]<beamshift%200..1-++[Acquisition],[SpecialistOptics]<specialist_optics%200..1-++[Acquisition],[QuantitySI]<pixel_size%201..1-++[Acquisition],[ImageSize]<binning_camera%201..1-++[Acquisition],[QuantitySI]<exposure_time%200..1-++[Acquisition],[ImageSize]<image_size%200..1-++[Acquisition],[EnergyFilter]<energy_filter%200..1-++[Acquisition],[QuantitySI]<dose_per_movie%200..1-++[Acquisition],[Detector]<detectors%201..*-++[Acquisition],[Range]<temperature%200..1-++[Acquisition],[Range]<calibrated_defocus%200..1-++[Acquisition],[Range]<nominal_defocus%200..1-++[Acquisition],[QuantitySI]<screen_current%200..1-++[Acquisition],[EMDatasetSpa]++-%20acquisition%201..1>[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[EMDatasetSpa],[Detector],[BoundingBox2D],[BoundingBox2D]<imageshift%200..1-++[Acquisition&#124;nominal_magnification:integer%20%3F;calibrated_magnification:integer%20%3F;holder:string%20%3F;holder_cryogen:string%20%3F;microscope_software:string%20%3F;date_time:datetime;cryogen:string%20%3F;frames_per_movie:integer%20%3F;grids_imaged:integer%20%3F;images_generated:integer%20%3F;beamtiltgroups:integer%20%3F;gainref_flip_rotate:string%20%3F],[BoundingBox2D]<beamtilt%200..1-++[Acquisition],[BoundingBox2D]<beamshift%200..1-++[Acquisition],[SpecialistOptics]<specialist_optics%200..1-++[Acquisition],[QuantitySI]<pixel_size%201..1-++[Acquisition],[ImageSize]<binning_camera%201..1-++[Acquisition],[QuantitySI]<exposure_time%200..1-++[Acquisition],[ImageSize]<image_size%200..1-++[Acquisition],[EnergyFilter]<energy_filter%200..1-++[Acquisition],[QuantitySI]<dose_per_movie%200..1-++[Acquisition],[Detector]<detectors%201..*-++[Acquisition],[Range]<temperature%200..1-++[Acquisition],[Range]<calibrated_defocus%200..1-++[Acquisition],[Range]<nominal_defocus%200..1-++[Acquisition],[QuantitySI]<screen_current%200..1-++[Acquisition],[EMDatasetSpa]++-%20acquisition%201..1>[Acquisition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[Detector],[BoundingBox2D],[AcquisitionSpa],[BoundingBox2D]<imageshift%200..1-++[Acquisition&#124;technique:string%20%3F;nominal_magnification:integer%20%3F;calibrated_magnification:integer%20%3F;holder:string%20%3F;holder_cryogen:string%20%3F;microscope_software:string%20%3F;date_time:datetime;cryogen:string%20%3F;frames_per_movie:integer%20%3F;grids_imaged:integer%20%3F;images_generated:integer%20%3F;beamtiltgroups:integer%20%3F;gainref_flip_rotate:string%20%3F],[BoundingBox2D]<beamtilt%200..1-++[Acquisition],[BoundingBox2D]<beamshift%200..1-++[Acquisition],[SpecialistOptics]<specialist_optics%200..1-++[Acquisition],[QuantitySI]<pixel_size%201..1-++[Acquisition],[ImageSize]<binning_camera%201..1-++[Acquisition],[QuantitySI]<exposure_time%200..1-++[Acquisition],[ImageSize]<image_size%200..1-++[Acquisition],[EnergyFilter]<energy_filter%200..1-++[Acquisition],[QuantitySI]<dose_per_movie%200..1-++[Acquisition],[Detector]<detectors%201..*-++[Acquisition],[Range]<temperature%200..1-++[Acquisition],[Range]<calibrated_defocus%200..1-++[Acquisition],[Range]<nominal_defocus%200..1-++[Acquisition],[QuantitySI]<screen_current%200..1-++[Acquisition],[Acquisition]^-[AcquisitionSpa])](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[Detector],[BoundingBox2D],[AcquisitionSpa],[BoundingBox2D]<imageshift%200..1-++[Acquisition&#124;technique:string%20%3F;nominal_magnification:integer%20%3F;calibrated_magnification:integer%20%3F;holder:string%20%3F;holder_cryogen:string%20%3F;microscope_software:string%20%3F;date_time:datetime;cryogen:string%20%3F;frames_per_movie:integer%20%3F;grids_imaged:integer%20%3F;images_generated:integer%20%3F;beamtiltgroups:integer%20%3F;gainref_flip_rotate:string%20%3F],[BoundingBox2D]<beamtilt%200..1-++[Acquisition],[BoundingBox2D]<beamshift%200..1-++[Acquisition],[SpecialistOptics]<specialist_optics%200..1-++[Acquisition],[QuantitySI]<pixel_size%201..1-++[Acquisition],[ImageSize]<binning_camera%201..1-++[Acquisition],[QuantitySI]<exposure_time%200..1-++[Acquisition],[ImageSize]<image_size%200..1-++[Acquisition],[EnergyFilter]<energy_filter%200..1-++[Acquisition],[QuantitySI]<dose_per_movie%200..1-++[Acquisition],[Detector]<detectors%201..*-++[Acquisition],[Range]<temperature%200..1-++[Acquisition],[Range]<calibrated_defocus%200..1-++[Acquisition],[Range]<nominal_defocus%200..1-++[Acquisition],[QuantitySI]<screen_current%200..1-++[Acquisition],[Acquisition]^-[AcquisitionSpa])
+
+## Children
+
+ * [AcquisitionSpa](AcquisitionSpa.md)
 
 ## Referenced by Class
 
- *  **[EMDatasetSpa](EMDatasetSpa.md)** *[EMDatasetSpa➞acquisition](EMDatasetSpa_acquisition.md)*  <sub>1..1</sub>  **[Acquisition](Acquisition.md)**
 
 ## Attributes
 
 
 ### Own
 
+ * [Acquisition➞technique](Acquisition_technique.md)  <sub>0..1</sub>
+     * Description: Specifies which Acquisition subschema/class is in use.
+     * Range: [String](types/String.md)
  * [screen_current](screen_current.md)  <sub>0..1</sub>
      * Description: The total electron beam current hitting the viewing screen, in nA.
      * Range: [QuantitySI](QuantitySI.md)
