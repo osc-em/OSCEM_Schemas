@@ -1,6 +1,7 @@
 # metamodel_version: 1.7.0
 type Acquisition
   {
+    technique: String
     screenCurrent: QuantitySI
     nominalDefocus: Range
     calibratedDefocus: Range
@@ -28,6 +29,38 @@ type Acquisition
     imageshift: BoundingBox2D
     beamtiltgroups: Integer
     gainrefFlipRotate: String
+  }
+
+type AcquisitionSpa
+  {
+    screenCurrent: QuantitySI
+    nominalDefocus: Range
+    calibratedDefocus: Range
+    nominalMagnification: Integer
+    calibratedMagnification: Integer
+    holder: String
+    holderCryogen: String
+    temperature: Range
+    microscopeSoftware: String
+    detectors: [Detector]!
+    dosePerMovie: QuantitySI
+    energyFilter: EnergyFilter
+    imageSize: ImageSize
+    dateTime: Datetime!
+    exposureTime: QuantitySI
+    cryogen: String
+    framesPerMovie: Integer
+    gridsImaged: Integer
+    imagesGenerated: Integer
+    binningCamera: ImageSize!
+    pixelSize: QuantitySI!
+    specialistOptics: SpecialistOptics
+    beamshift: BoundingBox2D
+    beamtilt: BoundingBox2D
+    imageshift: BoundingBox2D
+    beamtiltgroups: Integer
+    gainrefFlipRotate: String
+    technique: String!
   }
 
 type Any
@@ -94,8 +127,8 @@ type EMDatasetGeneral
   {
     acquisition: Acquisition!
     instrument: Instrument!
-    sample: Sample!
-    organizational: Organizational!
+    sample: Sample
+    organizational: Organizational
   }
 
 type EnergyFilter

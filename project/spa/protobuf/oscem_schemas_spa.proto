@@ -1,8 +1,39 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// A set of parameteres describing the data acquisition
+// General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).
 message Acquisition
+ {
+  string technique = 0
+  quantitySI screenCurrent = 0
+  range nominalDefocus = 0
+  range calibratedDefocus = 0
+  integer nominalMagnification = 0
+  integer calibratedMagnification = 0
+  string holder = 0
+  string holderCryogen = 0
+  range temperature = 0
+  string microscopeSoftware = 0
+ repeated  detector detectors = 0
+  quantitySI dosePerMovie = 0
+  energyFilter energyFilter = 0
+  imageSize imageSize = 0
+  datetime dateTime = 0
+  quantitySI exposureTime = 0
+  string cryogen = 0
+  integer framesPerMovie = 0
+  integer gridsImaged = 0
+  integer imagesGenerated = 0
+  imageSize binningCamera = 0
+  quantitySI pixelSize = 0
+  specialistOptics specialistOptics = 0
+  boundingBox2D beamshift = 0
+  boundingBox2D beamtilt = 0
+  boundingBox2D imageshift = 0
+  integer beamtiltgroups = 0
+  string gainrefFlipRotate = 0
+ }
+message AcquisitionSpa
  {
   quantitySI screenCurrent = 0
   range nominalDefocus = 0
@@ -31,6 +62,7 @@ message Acquisition
   boundingBox2D imageshift = 0
   integer beamtiltgroups = 0
   string gainrefFlipRotate = 0
+  string technique = 0
  }
 // Astigmatism-related metadata
 message Astigmatism
@@ -127,7 +159,7 @@ message Detector
 message EMDatasetSpa
  {
   processing processing = 0
-  acquisition acquisition = 0
+  acquisitionSpa acquisition = 0
   instrument instrument = 0
   sampleMolecular sample = 0
   organizational organizational = 0

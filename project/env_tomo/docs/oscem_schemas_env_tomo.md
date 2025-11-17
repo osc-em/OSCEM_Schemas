@@ -12,8 +12,12 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
 
 ### Classes
 
- * [Acquisition](Acquisition.md) - A set of parameteres describing the data acquisition
+ * [Acquisition](Acquisition.md) - General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).
+     * [AcquisitionSpa](AcquisitionSpa.md)
      * [AcquisitionTomo](AcquisitionTomo.md)
+         * [AcquisitionCelTomo](AcquisitionCelTomo.md)
+         * [AcquisitionEnvTomo](AcquisitionEnvTomo.md)
+         * [AcquisitionSubTomo](AcquisitionSubTomo.md)
  * [Any](Any.md) - Any type, used as the base for type-narrowing.
  * [BoundingBox2D](BoundingBox2D.md) - an axis-aligned 2D bounding box (float units)
  * [ChromaticAberrationCorrector](ChromaticAberrationCorrector.md) - Special device used to correct instrument inherent chromatic aberration.
@@ -189,6 +193,12 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
  * [spherical_aberration_corrector](spherical_aberration_corrector.md) - Specialist device to correct for spherical aberration of the microscope lenses
  * [start_date](start_date.md) - start date
  * [target_thickness](target_thickness.md) - What was the target thickness of the lamella; in nm.
+ * [technique](technique.md) - Specifies which Acquisition subschema/class is in use.
+     * [Acquisition➞technique](Acquisition_technique.md)
+         * [AcquisitionCelTomo➞technique](AcquisitionCelTomo_technique.md) - Cellular tomography
+         * [AcquisitionEnvTomo➞technique](AcquisitionEnvTomo_technique.md) - Environmental tomography
+         * [AcquisitionSpa➞technique](AcquisitionSpa_technique.md) - Single particle acquisition
+         * [AcquisitionSubTomo➞technique](AcquisitionSubTomo_technique.md) - Subtomogram averaging
  * [telephone](telephone.md) - work phone
  * [temperature_env](temperature_env.md) - temperature of the sample right before freezing; in K.
  * [➞temperature](temperature_range.md) - Temperature during data collection, in K with min and max values.
@@ -222,6 +232,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
 
 ### Enums
 
+ * [AcquisitionTechnique](AcquisitionTechnique.md)
  * [FreezingMethodEnum](FreezingMethodEnum.md) - Allowed freezing options.
  * [OrganizationTypeEnum](OrganizationTypeEnum.md) - Allowed values for authors organizations.
 

@@ -6,7 +6,7 @@
 URI: [https://w3id.org/osc-em/oscem-schemas-spa/SampleMolecular](https://w3id.org/osc-em/oscem-schemas-spa/SampleMolecular)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[OverallMolecule]<overall_molecule%201..1-++[SampleMolecular&#124;name:string%20%3F;description:string%20%3F],[EMDatasetSpa]++-%20sample%201..1>[SampleMolecular],[Sample]^-[SampleMolecular],[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetSpa])](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[OverallMolecule]<overall_molecule%201..1-++[SampleMolecular&#124;name:string%20%3F;description:string%20%3F],[EMDatasetSpa]++-%20sample%201..1>[SampleMolecular],[Sample]^-[SampleMolecular],[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetSpa])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[OverallMolecule]<overall_molecule%201..1-++[SampleMolecular&#124;name:string%20%3F;description:string%20%3F],[EMDatasetSpa]++-%20sample%200..1>[SampleMolecular],[Sample]^-[SampleMolecular],[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetSpa])](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[OverallMolecule]<overall_molecule%201..1-++[SampleMolecular&#124;name:string%20%3F;description:string%20%3F],[EMDatasetSpa]++-%20sample%200..1>[SampleMolecular],[Sample]^-[SampleMolecular],[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetSpa])
 
 ## Parents
 
@@ -14,7 +14,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/SampleMolecular](https://w3id.or
 
 ## Referenced by Class
 
- *  **[EMDatasetSpa](EMDatasetSpa.md)** *[EMDatasetSpa➞sample](EMDatasetSpa_sample.md)*  <sub>1..1</sub>  **[SampleMolecular](SampleMolecular.md)**
+ *  **[EMDatasetSpa](EMDatasetSpa.md)** *[EMDatasetSpa➞sample](EMDatasetSpa_sample.md)*  <sub>0..1</sub>  **[SampleMolecular](SampleMolecular.md)**
 
 ## Attributes
 

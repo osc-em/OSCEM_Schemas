@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/EMDatasetCell_organiza
 
 ## Domain and Range
 
-[EMDatasetCell](EMDatasetCell.md) &#8594;  <sub>1..1</sub> [Organizational](Organizational.md)
+[EMDatasetCell](EMDatasetCell.md) &#8594;  <sub>0..1</sub> [Organizational](Organizational.md)
 
 ## Parents
 

@@ -8,7 +8,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-general/EMDatasetGeneral_sample](htt
 
 ## Domain and Range
 
-[EMDatasetGeneral](EMDatasetGeneral.md) &#8594;  <sub>1..1</sub> [Sample](Sample.md)
+[EMDatasetGeneral](EMDatasetGeneral.md) &#8594;  <sub>0..1</sub> [Sample](Sample.md)
 
 ## Parents
 

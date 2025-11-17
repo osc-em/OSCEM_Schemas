@@ -20,3 +20,4 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Acquisition_date_time](https://w
 ## Used by
 
  * [Acquisition](Acquisition.md)
+ * [AcquisitionSpa](AcquisitionSpa.md)

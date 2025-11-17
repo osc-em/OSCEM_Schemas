@@ -20,4 +20,8 @@ URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/Acquisition_detectors](http
 ## Used by
 
  * [Acquisition](Acquisition.md)
+ * [AcquisitionCelTomo](AcquisitionCelTomo.md)
+ * [AcquisitionEnvTomo](AcquisitionEnvTomo.md)
+ * [AcquisitionSpa](AcquisitionSpa.md)
+ * [AcquisitionSubTomo](AcquisitionSubTomo.md)
  * [AcquisitionTomo](AcquisitionTomo.md)

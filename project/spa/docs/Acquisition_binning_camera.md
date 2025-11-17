@@ -20,3 +20,4 @@ URI: [https://w3id.org/osc-em/oscem-schemas-spa/Acquisition_binning_camera](http
 ## Used by
 
  * [Acquisition](Acquisition.md)
+ * [AcquisitionSpa](AcquisitionSpa.md)

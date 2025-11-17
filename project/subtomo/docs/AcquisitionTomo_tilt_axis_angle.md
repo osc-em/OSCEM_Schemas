@@ -19,4 +19,7 @@ URI: [https://w3id.org/osc-em/oscem-schemas-subtomo/AcquisitionTomo_tilt_axis_an
 
 ## Used by
 
+ * [AcquisitionCelTomo](AcquisitionCelTomo.md)
+ * [AcquisitionEnvTomo](AcquisitionEnvTomo.md)
+ * [AcquisitionSubTomo](AcquisitionSubTomo.md)
  * [AcquisitionTomo](AcquisitionTomo.md)

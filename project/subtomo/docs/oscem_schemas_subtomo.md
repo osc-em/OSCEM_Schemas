@@ -12,8 +12,12 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
 
 ### Classes
 
- * [Acquisition](Acquisition.md) - A set of parameteres describing the data acquisition
+ * [Acquisition](Acquisition.md) - General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).
+     * [AcquisitionSpa](AcquisitionSpa.md)
      * [AcquisitionTomo](AcquisitionTomo.md)
+         * [AcquisitionCelTomo](AcquisitionCelTomo.md)
+         * [AcquisitionEnvTomo](AcquisitionEnvTomo.md)
+         * [AcquisitionSubTomo](AcquisitionSubTomo.md)
  * [Any](Any.md) - Any type, used as the base for type-narrowing.
  * [BoundingBox2D](BoundingBox2D.md) - an axis-aligned 2D bounding box (float units)
  * [ChromaticAberrationCorrector](ChromaticAberrationCorrector.md) - Special device used to correct instrument inherent chromatic aberration.
@@ -249,6 +253,12 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
      * [Molecule➞taxonomy_id_expression](Molecule_taxonomy_id_expression.md)
  * [taxonomy_id_source](taxonomy_id_source.md) - Taxonomy ID of the natural source organism
      * [Molecule➞taxonomy_id_source](Molecule_taxonomy_id_source.md)
+ * [technique](technique.md) - Specifies which Acquisition subschema/class is in use.
+     * [Acquisition➞technique](Acquisition_technique.md)
+         * [AcquisitionCelTomo➞technique](AcquisitionCelTomo_technique.md) - Cellular tomography
+         * [AcquisitionEnvTomo➞technique](AcquisitionEnvTomo_technique.md) - Environmental tomography
+         * [AcquisitionSpa➞technique](AcquisitionSpa_technique.md) - Single particle acquisition
+         * [AcquisitionSubTomo➞technique](AcquisitionSubTomo_technique.md) - Subtomogram averaging
  * [telephone](telephone.md) - work phone
  * [temperature](temperature.md) - Environmental temperature just before vitrification, in K
      * [Specimen➞temperature](Specimen_temperature.md)
@@ -284,6 +294,7 @@ Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
 
 ### Enums
 
+ * [AcquisitionTechnique](AcquisitionTechnique.md)
  * [AssemblyEnum](AssemblyEnum.md) - Allowed molecular assembly values - compatible with the EMDB.
  * [MoleculeClassEnum](MoleculeClassEnum.md) - Allowed molecule class values - compatible with the EMDB.
  * [OrganizationTypeEnum](OrganizationTypeEnum.md) - Allowed values for authors organizations.

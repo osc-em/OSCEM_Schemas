@@ -1,6 +1,7 @@
 # metamodel_version: 1.7.0
 type Acquisition
   {
+    technique: String
     screenCurrent: QuantitySI
     nominalDefocus: Range
     calibratedDefocus: Range
@@ -30,8 +31,143 @@ type Acquisition
     gainrefFlipRotate: String
   }
 
+type AcquisitionCelTomo
+  {
+    screenCurrent: QuantitySI
+    nominalDefocus: Range
+    calibratedDefocus: Range
+    nominalMagnification: Integer
+    calibratedMagnification: Integer
+    holder: String
+    holderCryogen: String
+    temperature: Range
+    microscopeSoftware: String
+    detectors: [Detector]!
+    dosePerMovie: QuantitySI
+    energyFilter: EnergyFilter
+    imageSize: ImageSize
+    dateTime: Datetime!
+    exposureTime: QuantitySI
+    cryogen: String
+    framesPerMovie: Integer
+    gridsImaged: Integer
+    imagesGenerated: Integer
+    binningCamera: ImageSize!
+    pixelSize: QuantitySI!
+    specialistOptics: SpecialistOptics
+    beamshift: BoundingBox2D
+    beamtilt: BoundingBox2D
+    imageshift: BoundingBox2D
+    beamtiltgroups: Integer
+    gainrefFlipRotate: String
+    tiltAxisAngle: Float!
+    tiltAngle: TiltAngle!
+    technique: String!
+  }
+
+type AcquisitionEnvTomo
+  {
+    screenCurrent: QuantitySI
+    nominalDefocus: Range
+    calibratedDefocus: Range
+    nominalMagnification: Integer
+    calibratedMagnification: Integer
+    holder: String
+    holderCryogen: String
+    temperature: Range
+    microscopeSoftware: String
+    detectors: [Detector]!
+    dosePerMovie: QuantitySI
+    energyFilter: EnergyFilter
+    imageSize: ImageSize
+    dateTime: Datetime!
+    exposureTime: QuantitySI
+    cryogen: String
+    framesPerMovie: Integer
+    gridsImaged: Integer
+    imagesGenerated: Integer
+    binningCamera: ImageSize!
+    pixelSize: QuantitySI!
+    specialistOptics: SpecialistOptics
+    beamshift: BoundingBox2D
+    beamtilt: BoundingBox2D
+    imageshift: BoundingBox2D
+    beamtiltgroups: Integer
+    gainrefFlipRotate: String
+    tiltAxisAngle: Float!
+    tiltAngle: TiltAngle!
+    technique: String!
+  }
+
+type AcquisitionSpa
+  {
+    screenCurrent: QuantitySI
+    nominalDefocus: Range
+    calibratedDefocus: Range
+    nominalMagnification: Integer
+    calibratedMagnification: Integer
+    holder: String
+    holderCryogen: String
+    temperature: Range
+    microscopeSoftware: String
+    detectors: [Detector]!
+    dosePerMovie: QuantitySI
+    energyFilter: EnergyFilter
+    imageSize: ImageSize
+    dateTime: Datetime!
+    exposureTime: QuantitySI
+    cryogen: String
+    framesPerMovie: Integer
+    gridsImaged: Integer
+    imagesGenerated: Integer
+    binningCamera: ImageSize!
+    pixelSize: QuantitySI!
+    specialistOptics: SpecialistOptics
+    beamshift: BoundingBox2D
+    beamtilt: BoundingBox2D
+    imageshift: BoundingBox2D
+    beamtiltgroups: Integer
+    gainrefFlipRotate: String
+    technique: String!
+  }
+
+type AcquisitionSubTomo
+  {
+    screenCurrent: QuantitySI
+    nominalDefocus: Range
+    calibratedDefocus: Range
+    nominalMagnification: Integer
+    calibratedMagnification: Integer
+    holder: String
+    holderCryogen: String
+    temperature: Range
+    microscopeSoftware: String
+    detectors: [Detector]!
+    dosePerMovie: QuantitySI
+    energyFilter: EnergyFilter
+    imageSize: ImageSize
+    dateTime: Datetime!
+    exposureTime: QuantitySI
+    cryogen: String
+    framesPerMovie: Integer
+    gridsImaged: Integer
+    imagesGenerated: Integer
+    binningCamera: ImageSize!
+    pixelSize: QuantitySI!
+    specialistOptics: SpecialistOptics
+    beamshift: BoundingBox2D
+    beamtilt: BoundingBox2D
+    imageshift: BoundingBox2D
+    beamtiltgroups: Integer
+    gainrefFlipRotate: String
+    tiltAxisAngle: Float!
+    tiltAngle: TiltAngle!
+    technique: String!
+  }
+
 type AcquisitionTomo
   {
+    technique: String
     screenCurrent: QuantitySI
     nominalDefocus: Range
     calibratedDefocus: Range
@@ -125,10 +261,10 @@ interface EMDatasetBase
 
 type EMDatasetTomo
   {
-    acquisition: AcquisitionTomo!
+    acquisition: AcquisitionSubTomo!
     instrument: Instrument!
-    sample: SampleMolecular!
-    organizational: Organizational!
+    sample: SampleMolecular
+    organizational: Organizational
   }
 
 type EnergyFilter

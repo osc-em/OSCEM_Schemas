@@ -19,4 +19,8 @@ None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 ## Used by
 
  * [Acquisition](Acquisition.md)
+ * [AcquisitionCelTomo](AcquisitionCelTomo.md)
+ * [AcquisitionEnvTomo](AcquisitionEnvTomo.md)
+ * [AcquisitionSpa](AcquisitionSpa.md)
+ * [AcquisitionSubTomo](AcquisitionSubTomo.md)
  * [AcquisitionTomo](AcquisitionTomo.md)

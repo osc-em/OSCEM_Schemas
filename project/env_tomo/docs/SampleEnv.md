@@ -6,11 +6,11 @@ Unifying class to describe the full sample.
 URI: [https://w3id.org/osc-em/oscem-schemas-env-tomo/SampleEnv](https://w3id.org/osc-em/oscem-schemas-env-tomo/SampleEnv)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[TomogramFeatures]<tomogram_features%200..1-++[SampleEnv],[Thinning]<thinning%200..1-++[SampleEnv],[Freezing]<freezing%200..1-++[SampleEnv],[SpecimenEnv]<specimen_env%201..1-++[SampleEnv],[EMDatasetEnv]++-%20sample%201..1>[SampleEnv],[Freezing],[EMDatasetEnv])](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[TomogramFeatures]<tomogram_features%200..1-++[SampleEnv],[Thinning]<thinning%200..1-++[SampleEnv],[Freezing]<freezing%200..1-++[SampleEnv],[SpecimenEnv]<specimen_env%201..1-++[SampleEnv],[EMDatasetEnv]++-%20sample%201..1>[SampleEnv],[Freezing],[EMDatasetEnv])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[TomogramFeatures]<tomogram_features%200..1-++[SampleEnv],[Thinning]<thinning%200..1-++[SampleEnv],[Freezing]<freezing%200..1-++[SampleEnv],[SpecimenEnv]<specimen_env%201..1-++[SampleEnv],[EMDatasetEnv]++-%20sample%200..1>[SampleEnv],[Freezing],[EMDatasetEnv])](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[TomogramFeatures]<tomogram_features%200..1-++[SampleEnv],[Thinning]<thinning%200..1-++[SampleEnv],[Freezing]<freezing%200..1-++[SampleEnv],[SpecimenEnv]<specimen_env%201..1-++[SampleEnv],[EMDatasetEnv]++-%20sample%200..1>[SampleEnv],[Freezing],[EMDatasetEnv])
 
 ## Referenced by Class
 
- *  **[EMDatasetEnv](EMDatasetEnv.md)** *[EMDatasetEnv➞sample](EMDatasetEnv_sample.md)*  <sub>1..1</sub>  **[SampleEnv](SampleEnv.md)**
+ *  **[EMDatasetEnv](EMDatasetEnv.md)** *[EMDatasetEnv➞sample](EMDatasetEnv_sample.md)*  <sub>0..1</sub>  **[SampleEnv](SampleEnv.md)**
 
 ## Attributes
 
