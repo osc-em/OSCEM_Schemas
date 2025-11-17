@@ -247,6 +247,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+    Usages
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
     Identifier and Mapping Information
   </a>
@@ -295,11 +300,11 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-acquisition">Class: Acquisition</h1>
-<p><em>A set of parameteres describing the data acquisition</em></p>
+<p><em>General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).</em></p>
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-general/:Acquisition">https://w3id.org/osc-em/oscem-schemas-general/:Acquisition</a></p>
 <div class="mermaid">erDiagram
 Acquisition {
-    AcquisitionTechnique technique  
+    string technique  
     integer nominal_magnification  
     integer calibrated_magnification  
     string holder  
@@ -385,7 +390,6 @@ Range ||--|o QuantitySI : "maximal"
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Acquisition</strong><ul>
-<li><a href="../AcquisitionGeneral/">AcquisitionGeneral</a></li>
 <li><a href="../AcquisitionSpa/">AcquisitionSpa</a></li>
 </ul>
 </li>
@@ -403,7 +407,7 @@ Range ||--|o QuantitySI : "maximal"
 <tbody>
 <tr>
 <td><a href="../technique/">technique</a></td>
-<td>1 <br/> <a href="../AcquisitionTechnique/">AcquisitionTechnique</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Specifies which Acquisition subschema/class is in use</td>
 <td>direct</td>
 </tr>
@@ -571,6 +575,25 @@ Range ||--|o QuantitySI : "maximal"
 </tr>
 </tbody>
 </table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../EMDatasetGeneral/">EMDatasetGeneral</a></td>
+<td><a href="../acquisition/">acquisition</a></td>
+<td>range</td>
+<td><a href="./">Acquisition</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -600,7 +623,9 @@ Range ||--|o QuantitySI : "maximal"
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Acquisition
-description: A set of parameteres describing the data acquisition
+description: General acquisition covering materials science and other use cases. For
+  specialized techniques, use the appropriate subclass (AcquisitionSpa for single
+  particle, or tomography subclasses).
 from_schema: https://w3id.org/osc-em/oscem-schemas-general
 slots:
 - technique
@@ -634,7 +659,7 @@ slots:
 slot_usage:
   technique:
     name: technique
-    required: true
+    required: false
   detectors:
     name: detectors
     required: true
@@ -653,12 +678,14 @@ slot_usage:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Acquisition
-description: A set of parameteres describing the data acquisition
+description: General acquisition covering materials science and other use cases. For
+  specialized techniques, use the appropriate subclass (AcquisitionSpa for single
+  particle, or tomography subclasses).
 from_schema: https://w3id.org/osc-em/oscem-schemas-general
 slot_usage:
   technique:
     name: technique
-    required: true
+    required: false
   detectors:
     name: detectors
     required: true
@@ -681,10 +708,8 @@ attributes:
     owner: Acquisition
     domain_of:
     - Acquisition
-    - AcquisitionGeneral
-    - AcquisitionSpa
-    range: AcquisitionTechnique
-    required: true
+    range: string
+    required: false
   screen_current:
     name: screen_current
     description: The total electron beam current hitting the viewing screen, in nA.

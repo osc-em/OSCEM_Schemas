@@ -303,8 +303,8 @@
 <p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-env-tomo/:AcquisitionEnvTomo">https://w3id.org/osc-em/oscem-schemas-env-tomo/:AcquisitionEnvTomo</a></p>
 <div class="mermaid">erDiagram
 AcquisitionEnvTomo {
-    string technique  
     float tilt_axis_angle  
+    string technique  
     integer nominal_magnification  
     integer calibrated_magnification  
     string holder  
@@ -416,12 +416,6 @@ TiltAngle ||--|| QuantitySI : "maximal"
 </thead>
 <tbody>
 <tr>
-<td><a href="../technique/">technique</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>Environmental tomography</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../tilt_axis_angle/">tilt_axis_angle</a></td>
 <td>1 <br/> <a href="../Float/">Float</a></td>
 <td>The tilt axis angle of a tomography series</td>
@@ -432,6 +426,12 @@ TiltAngle ||--|| QuantitySI : "maximal"
 <td>1 <br/> <a href="../TiltAngle/">TiltAngle</a></td>
 <td>The min, max and increment of the tilt angle in a tomography session</td>
 <td><a href="../AcquisitionTomo/">AcquisitionTomo</a></td>
+</tr>
+<tr>
+<td><a href="../technique/">technique</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>Environmental tomography</td>
+<td><a href="../Acquisition/">Acquisition</a></td>
 </tr>
 <tr>
 <td><a href="../screen_current/">screen_current</a></td>
@@ -647,18 +647,11 @@ TiltAngle ||--|| QuantitySI : "maximal"
 <pre><code class="language-yaml">name: AcquisitionEnvTomo
 from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
 is_a: AcquisitionTomo
-attributes:
+slot_usage:
   technique:
     name: technique
     description: Environmental tomography
-    from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
-    domain_of:
-    - Acquisition
-    - AcquisitionGeneral
-    - AcquisitionSpa
-    - AcquisitionSubTomo
-    - AcquisitionEnvTomo
-    - AcquisitionCelTomo
+    required: true
     equals_string: env_tomo
 
 </code></pre>
@@ -668,22 +661,13 @@ attributes:
 <pre><code class="language-yaml">name: AcquisitionEnvTomo
 from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
 is_a: AcquisitionTomo
-attributes:
+slot_usage:
   technique:
     name: technique
     description: Environmental tomography
-    from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
-    alias: technique
-    owner: AcquisitionEnvTomo
-    domain_of:
-    - Acquisition
-    - AcquisitionGeneral
-    - AcquisitionSpa
-    - AcquisitionSubTomo
-    - AcquisitionEnvTomo
-    - AcquisitionCelTomo
     required: true
     equals_string: env_tomo
+attributes:
   tilt_axis_angle:
     name: tilt_axis_angle
     description: The tilt axis angle of a tomography series
@@ -707,6 +691,18 @@ attributes:
     - AcquisitionTomo
     range: TiltAngle
     required: true
+  technique:
+    name: technique
+    description: Environmental tomography
+    from_schema: https://w3id.org/osc-em/oscem-schemas-env-tomo
+    rank: 1000
+    alias: technique
+    owner: AcquisitionEnvTomo
+    domain_of:
+    - Acquisition
+    range: string
+    required: true
+    equals_string: env_tomo
   screen_current:
     name: screen_current
     description: The total electron beam current hitting the viewing screen, in nA.

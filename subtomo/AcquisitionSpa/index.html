@@ -403,7 +403,7 @@ Range ||--|o QuantitySI : "maximal"
 <td><a href="../technique/">technique</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>Single particle acquisition</td>
-<td>direct</td>
+<td><a href="../Acquisition/">Acquisition</a></td>
 </tr>
 <tr>
 <td><a href="../screen_current/">screen_current</a></td>
@@ -600,18 +600,11 @@ Range ||--|o QuantitySI : "maximal"
 <pre><code class="language-yaml">name: AcquisitionSpa
 from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
 is_a: Acquisition
-attributes:
+slot_usage:
   technique:
     name: technique
     description: Single particle acquisition
-    from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
-    domain_of:
-    - Acquisition
-    - AcquisitionGeneral
-    - AcquisitionSpa
-    - AcquisitionSubTomo
-    - AcquisitionEnvTomo
-    - AcquisitionCelTomo
+    required: true
     equals_string: spa
 
 </code></pre>
@@ -621,20 +614,23 @@ attributes:
 <pre><code class="language-yaml">name: AcquisitionSpa
 from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
 is_a: Acquisition
+slot_usage:
+  technique:
+    name: technique
+    description: Single particle acquisition
+    required: true
+    equals_string: spa
 attributes:
   technique:
     name: technique
     description: Single particle acquisition
     from_schema: https://w3id.org/osc-em/oscem-schemas-subtomo
+    rank: 1000
     alias: technique
     owner: AcquisitionSpa
     domain_of:
     - Acquisition
-    - AcquisitionGeneral
-    - AcquisitionSpa
-    - AcquisitionSubTomo
-    - AcquisitionEnvTomo
-    - AcquisitionCelTomo
+    range: string
     required: true
     equals_string: spa
   screen_current:

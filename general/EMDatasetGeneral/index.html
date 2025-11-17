@@ -390,7 +390,7 @@ Microscope {
     string model  
     string manufacturer  
 }
-AcquisitionGeneral {
+Acquisition {
     string technique  
     integer nominal_magnification  
     integer calibrated_magnification  
@@ -427,10 +427,10 @@ Range {
 
 }
 
-EMDatasetGeneral ||--|| AcquisitionGeneral : "acquisition"
+EMDatasetGeneral ||--|| Acquisition : "acquisition"
 EMDatasetGeneral ||--|| Instrument : "instrument"
-EMDatasetGeneral ||--|| Sample : "sample"
-EMDatasetGeneral ||--|| Organizational : "organizational"
+EMDatasetGeneral ||--|o Sample : "sample"
+EMDatasetGeneral ||--|o Organizational : "organizational"
 Organizational ||--}o Grant : "grants"
 Organizational ||--}| Author : "authors"
 Organizational ||--}o Funder : "funder"
@@ -451,21 +451,21 @@ Instrument ||--|| QuantitySI : "acceleration_voltage"
 Instrument ||--|o QuantitySI : "c2_aperture"
 Instrument ||--|o QuantitySI : "cs"
 Instrument ||--|o QuantitySI : "beam_convergence"
-AcquisitionGeneral ||--|o QuantitySI : "screen_current"
-AcquisitionGeneral ||--|o Range : "nominal_defocus"
-AcquisitionGeneral ||--|o Range : "calibrated_defocus"
-AcquisitionGeneral ||--|o Range : "temperature_range"
-AcquisitionGeneral ||--}| Detector : "detectors"
-AcquisitionGeneral ||--|o QuantitySI : "dose_per_movie"
-AcquisitionGeneral ||--|o EnergyFilter : "energy_filter"
-AcquisitionGeneral ||--|o ImageSize : "image_size"
-AcquisitionGeneral ||--|o QuantitySI : "exposure_time"
-AcquisitionGeneral ||--|| ImageSize : "binning_camera"
-AcquisitionGeneral ||--|| QuantitySI : "pixel_size"
-AcquisitionGeneral ||--|o SpecialistOptics : "specialist_optics"
-AcquisitionGeneral ||--|o BoundingBox2D : "beamshift"
-AcquisitionGeneral ||--|o BoundingBox2D : "beamtilt"
-AcquisitionGeneral ||--|o BoundingBox2D : "imageshift"
+Acquisition ||--|o QuantitySI : "screen_current"
+Acquisition ||--|o Range : "nominal_defocus"
+Acquisition ||--|o Range : "calibrated_defocus"
+Acquisition ||--|o Range : "temperature_range"
+Acquisition ||--}| Detector : "detectors"
+Acquisition ||--|o QuantitySI : "dose_per_movie"
+Acquisition ||--|o EnergyFilter : "energy_filter"
+Acquisition ||--|o ImageSize : "image_size"
+Acquisition ||--|o QuantitySI : "exposure_time"
+Acquisition ||--|| ImageSize : "binning_camera"
+Acquisition ||--|| QuantitySI : "pixel_size"
+Acquisition ||--|o SpecialistOptics : "specialist_optics"
+Acquisition ||--|o BoundingBox2D : "beamshift"
+Acquisition ||--|o BoundingBox2D : "beamtilt"
+Acquisition ||--|o BoundingBox2D : "imageshift"
 BoundingBox2D ||--|o QuantitySI : "x_min"
 BoundingBox2D ||--|o QuantitySI : "x_max"
 BoundingBox2D ||--|o QuantitySI : "y_min"
@@ -500,7 +500,7 @@ Range ||--|o QuantitySI : "maximal"
 <tbody>
 <tr>
 <td><a href="../acquisition/">acquisition</a></td>
-<td>1 <br/> <a href="../AcquisitionGeneral/">AcquisitionGeneral</a></td>
+<td>1 <br/> <a href="../Acquisition/">Acquisition</a></td>
 <td>Describe the data acquisition parameters</td>
 <td><a href="../EMDatasetBase/">EMDatasetBase</a></td>
 </tr>
@@ -512,13 +512,13 @@ Range ||--|o QuantitySI : "maximal"
 </tr>
 <tr>
 <td><a href="../sample/">sample</a></td>
-<td>1 <br/> <a href="../Sample/">Sample</a></td>
+<td>0..1 <br/> <a href="../Sample/">Sample</a></td>
 <td>Sample information</td>
 <td><a href="../EMDatasetBase/">EMDatasetBase</a></td>
 </tr>
 <tr>
 <td><a href="../organizational/">organizational</a></td>
-<td>1 <br/> <a href="../Organizational/">Organizational</a></td>
+<td>0..1 <br/> <a href="../Organizational/">Organizational</a></td>
 <td>Information on authors and grants</td>
 <td><a href="../EMDatasetBase/">EMDatasetBase</a></td>
 </tr>
@@ -560,7 +560,7 @@ slot_usage:
   acquisition:
     name: acquisition
     description: Describe the data acquisition parameters
-    range: AcquisitionGeneral
+    range: Acquisition
     required: true
   instrument:
     name: instrument
@@ -571,12 +571,12 @@ slot_usage:
     name: sample
     description: Sample information
     range: Sample
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
     range: Organizational
-    required: true
+    required: false
 tree_root: true
 
 </code></pre>
@@ -591,7 +591,7 @@ slot_usage:
   acquisition:
     name: acquisition
     description: Describe the data acquisition parameters
-    range: AcquisitionGeneral
+    range: Acquisition
     required: true
   instrument:
     name: instrument
@@ -602,12 +602,12 @@ slot_usage:
     name: sample
     description: Sample information
     range: Sample
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
     range: Organizational
-    required: true
+    required: false
 attributes:
   acquisition:
     name: acquisition
@@ -618,7 +618,7 @@ attributes:
     owner: EMDatasetGeneral
     domain_of:
     - EMDatasetBase
-    range: AcquisitionGeneral
+    range: Acquisition
     required: true
   instrument:
     name: instrument
@@ -641,7 +641,7 @@ attributes:
     domain_of:
     - EMDatasetBase
     range: Sample
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
@@ -652,7 +652,7 @@ attributes:
     domain_of:
     - EMDatasetBase
     range: Organizational
-    required: true
+    required: false
 tree_root: true
 
 </code></pre>

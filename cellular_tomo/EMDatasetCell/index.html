@@ -382,8 +382,8 @@ Microscope {
     string manufacturer  
 }
 AcquisitionCelTomo {
-    string technique  
     float tilt_axis_angle  
+    string technique  
     integer nominal_magnification  
     integer calibrated_magnification  
     string holder  
@@ -424,8 +424,8 @@ TiltAngle {
 
 EMDatasetCell ||--|| AcquisitionCelTomo : "acquisition"
 EMDatasetCell ||--|| Instrument : "instrument"
-EMDatasetCell ||--|| SampleCell : "sample"
-EMDatasetCell ||--|| Organizational : "organizational"
+EMDatasetCell ||--|o SampleCell : "sample"
+EMDatasetCell ||--|o Organizational : "organizational"
 Organizational ||--}o Grant : "grants"
 Organizational ||--}| Author : "authors"
 Organizational ||--}o Funder : "funder"
@@ -509,13 +509,13 @@ TiltAngle ||--|| QuantitySI : "maximal"
 </tr>
 <tr>
 <td><a href="../sample/">sample</a></td>
-<td>1 <br/> <a href="../SampleCell/">SampleCell</a></td>
+<td>0..1 <br/> <a href="../SampleCell/">SampleCell</a></td>
 <td>Sample information</td>
 <td><a href="../EMDatasetBase/">EMDatasetBase</a></td>
 </tr>
 <tr>
 <td><a href="../organizational/">organizational</a></td>
-<td>1 <br/> <a href="../Organizational/">Organizational</a></td>
+<td>0..1 <br/> <a href="../Organizational/">Organizational</a></td>
 <td>Information on authors and grants</td>
 <td><a href="../EMDatasetBase/">EMDatasetBase</a></td>
 </tr>
@@ -568,12 +568,12 @@ slot_usage:
     name: sample
     description: Sample information
     range: SampleCell
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
     range: Organizational
-    required: true
+    required: false
 tree_root: true
 
 </code></pre>
@@ -599,12 +599,12 @@ slot_usage:
     name: sample
     description: Sample information
     range: SampleCell
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
     range: Organizational
-    required: true
+    required: false
 attributes:
   acquisition:
     name: acquisition
@@ -638,7 +638,7 @@ attributes:
     domain_of:
     - EMDatasetBase
     range: SampleCell
-    required: true
+    required: false
   organizational:
     name: organizational
     description: Information on authors and grants
@@ -649,7 +649,7 @@ attributes:
     domain_of:
     - EMDatasetBase
     range: Organizational
-    required: true
+    required: false
 tree_root: true
 
 </code></pre>
