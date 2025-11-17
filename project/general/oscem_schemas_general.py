@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_general.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-17T12:49:37
+# Generation date: 2025-11-17T17:51:53
 # Schema: oscem-schemas-general
 #
 # id: https://w3id.org/osc-em/oscem-schemas-general
@@ -37,7 +37,7 @@ CUSTOM_TYPES = CurieNamespace('custom_types', 'https://w3id.org/osc-em/custom_ty
 INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/osc-em/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/osc-em/organizational/')
-OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/OSCEM_schemas')
+OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/oscem-schemas')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 SAMPLE = CurieNamespace('sample', 'https://w3id.org/osc-em/sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
@@ -1029,8 +1029,8 @@ class EMDatasetGeneral(EMDatasetBase):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-general/EMDatasetGeneral")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = OSCEM["-general/EMDatasetGeneral"]
+    class_class_curie: ClassVar[str] = "oscem:-general/EMDatasetGeneral"
     class_name: ClassVar[str] = "EMDatasetGeneral"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-general/EMDatasetGeneral")
 

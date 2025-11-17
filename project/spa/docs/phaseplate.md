@@ -1,21 +1,25 @@
 
-# Slot: phaseplate
+# Class: Phaseplate
 
-Phaseplate is a special optics device that can be used to enhance contrast
+Used to modulate the phase of the electron wave.
 
-URI: [https://w3id.org/osc-em/oscem-schemas-spa/phaseplate](https://w3id.org/osc-em/oscem-schemas-spa/phaseplate)
-
-
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [Phaseplate](Phaseplate.md)
-
-## Parents
+URI: [https://w3id.org/osc-em/oscem-schemas-spa/Phaseplate](https://w3id.org/osc-em/oscem-schemas-spa/Phaseplate)
 
 
-## Children
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics]++-%20phaseplate%200..1>[Phaseplate&#124;used:boolean;instrument_type:string],[SpecialistOptics])](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics]++-%20phaseplate%200..1>[Phaseplate&#124;used:boolean;instrument_type:string],[SpecialistOptics])
+
+## Referenced by Class
+
+ *  **None** *[phaseplate](phaseplate.md)*  <sub>0..1</sub>  **[Phaseplate](Phaseplate.md)**
+
+## Attributes
 
 
-## Used by
+### Own
 
- * [SpecialistOptics](SpecialistOptics.md)
+ * [Phaseplate➞used](Phaseplate_used.md)  <sub>1..1</sub>
+     * Description: whether a specific instrument was used during data acquisition
+     * Range: [Boolean](types/Boolean.md)
+ * [Phaseplate➞instrument_type](Phaseplate_instrument_type.md)  <sub>1..1</sub>
+     * Description: Type of phaseplate
+     * Range: [String](types/String.md)

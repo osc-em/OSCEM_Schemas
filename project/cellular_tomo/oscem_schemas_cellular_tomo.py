@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-17T12:48:59
+# Generation date: 2025-11-17T17:51:36
 # Schema: oscem-schemas-cellular-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-cellular-tomo
@@ -38,7 +38,7 @@ CUSTOM_TYPES = CurieNamespace('custom_types', 'https://w3id.org/osc-em/custom_ty
 INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/osc-em/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/osc-em/organizational/')
-OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/OSCEM_schemas')
+OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/oscem-schemas')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 SAMPLE_ENV = CurieNamespace('sample_env', 'https://w3id.org/osc-em/environmental_sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
@@ -856,8 +856,8 @@ class EMDatasetCell(EMDatasetBase):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/EMDatasetCell")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = OSCEM["-cellular-tomo/EMDatasetCell"]
+    class_class_curie: ClassVar[str] = "oscem:-cellular-tomo/EMDatasetCell"
     class_name: ClassVar[str] = "EMDatasetCell"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-cellular-tomo/EMDatasetCell")
 

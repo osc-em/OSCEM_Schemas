@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_spa.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-17T12:49:52
+# Generation date: 2025-11-17T17:51:59
 # Schema: oscem-schemas-spa
 #
 # id: https://w3id.org/osc-em/oscem-schemas-spa
@@ -43,7 +43,7 @@ LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 MICROGRAPHS = CurieNamespace('micrographs', 'https://w3id.org/osc-em/micrographs')
 MOVIES = CurieNamespace('movies', 'https://w3id.org/osc-em/movies')
 ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/osc-em/organizational/')
-OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/OSCEM_schemas')
+OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/oscem-schemas')
 PROCESSING = CurieNamespace('processing', 'https://w3id.org/osc-em/processing')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 SAMPLE = CurieNamespace('sample', 'https://w3id.org/osc-em/sample')
@@ -1037,8 +1037,8 @@ class EMDatasetSpa(EMDatasetBase):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/EMDatasetSpa")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = OSCEM["-spa/EMDatasetSpa"]
+    class_class_curie: ClassVar[str] = "oscem:-spa/EMDatasetSpa"
     class_name: ClassVar[str] = "EMDatasetSpa"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-spa/EMDatasetSpa")
 

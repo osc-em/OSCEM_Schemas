@@ -9,17 +9,16 @@ in a pull request.
 
 ## Table Of Contents
 
-- [Contributing to oscem-schemas](#contributing-to-oscem-schemas)
-  - [Table Of Contents](#table-of-contents)
-  - [Code of Conduct](#code-of-conduct)
-  - [Guidelines for Contributions and Requests](#guidelines-for-contributions-and-requests)
-    - [Reporting problems and suggesting changes to with the data model](#reporting-problems-and-suggesting-changes-to-with-the-data-model)
-    - [Questions and Discussions](#questions-and-discussions)
-    - [Adding new elements yourself](#adding-new-elements-yourself)
-  - [Best Practices](#best-practices)
-    - [GitHub Best Practice](#github-best-practice)
-    - [Understanding LinkML](#understanding-linkml)
-    - [Modeling Best Practice](#modeling-best-practice)
+- [Table Of Contents](#table-of-contents)
+- [Code of Conduct](#code-of-conduct)
+- [Guidelines for Contributions and Requests](#guidelines-for-contributions-and-requests)
+  - [Reporting problems and suggesting changes to with the data model](#reporting-problems-and-suggesting-changes-to-with-the-data-model)
+  - [Questions and Discussions](#questions-and-discussions)
+  - [Adding new elements yourself](#adding-new-elements-yourself)
+- [Best Practices](#best-practices)
+  - [GitHub Best Practice](#github-best-practice)
+  - [Understanding LinkML](#understanding-linkml)
+  - [Modeling Best Practice](#modeling-best-practice)
 
 <a id="code-of-conduct"></a>
 
