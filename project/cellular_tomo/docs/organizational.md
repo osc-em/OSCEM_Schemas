@@ -1,22 +1,28 @@
 
-# Slot: organizational
+# Class: Organizational
+
+Overarching category for authors and grants
+
+URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Organizational](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Organizational)
 
 
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%200..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetCell]++-%20organizational%200..1>[Organizational],[Grant],[Funder],[EMDatasetCell],[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%200..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetCell]++-%20organizational%200..1>[Organizational],[Grant],[Funder],[EMDatasetCell],[Author])
 
-URI: [https://w3id.org/osc-em/oscem-schemas-cellular-tomo/organizational](https://w3id.org/osc-em/oscem-schemas-cellular-tomo/organizational)
+## Referenced by Class
 
+ *  **[EMDatasetCell](EMDatasetCell.md)** *[EMDatasetCell➞organizational](EMDatasetCell_organizational.md)*  <sub>0..1</sub>  **[Organizational](Organizational.md)**
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [Any](Any.md)
-
-## Parents
+## Attributes
 
 
-## Children
+### Own
 
- *  [EMDatasetBase➞organizational](EMDatasetBase_organizational.md)
- *  [EMDatasetCell➞organizational](EMDatasetCell_organizational.md)
-
-## Used by
-
+ * [grants](grants.md)  <sub>0..\*</sub>
+     * Description: List of grants associated with the project
+     * Range: [Grant](Grant.md)
+ * [Organizational➞authors](Organizational_authors.md)  <sub>1..\*</sub>
+     * Description: List of authors associated with the project
+     * Range: [Author](Author.md)
+ * [Organizational➞funder](Organizational_funder.md)  <sub>0..\*</sub>
+     * Description: funding organization/person.
+     * Range: [Funder](Funder.md)

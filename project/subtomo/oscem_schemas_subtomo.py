@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_subtomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-17T12:50:11
+# Generation date: 2025-11-17T17:52:09
 # Schema: oscem-schemas-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-subtomo
@@ -37,7 +37,7 @@ CUSTOM_TYPES = CurieNamespace('custom_types', 'https://w3id.org/osc-em/custom_ty
 INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/osc-em/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/osc-em/organizational/')
-OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/OSCEM_schemas')
+OSCEM = CurieNamespace('oscem', 'https://w3id.org/osc-em/oscem-schemas')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 SAMPLE = CurieNamespace('sample', 'https://w3id.org/osc-em/sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
@@ -1138,8 +1138,8 @@ class EMDatasetTomo(EMDatasetBase):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/EMDatasetTomo")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = OSCEM["-subtomo/EMDatasetTomo"]
+    class_class_curie: ClassVar[str] = "oscem:-subtomo/EMDatasetTomo"
     class_name: ClassVar[str] = "EMDatasetTomo"
     class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/osc-em/oscem-schemas-subtomo/EMDatasetTomo")
 

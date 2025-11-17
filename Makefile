@@ -103,7 +103,7 @@ gen-project-%:
 
 # Generate documentation for all schemas
 .PHONY: gendoc
-gendoc: $(SCHEMA_NAMES:%=gendoc-%) 
+gendoc: $(SCHEMA_NAMES:%=gendoc-%)
 
 gendoc-%:
 	@echo "Generating documentation for schema $*"
@@ -126,7 +126,7 @@ gen-examples-%:
 # Run tests for all schemas
 test-python: $(SCHEMA_NAMES:%=test-%)
 test-lint: $(SCHEMA_NAMES:%=lint-%)
-test-examples: $(SCHEMA_NAMES:%=examples-%) 
+test-examples: $(SCHEMA_NAMES:%=examples-%)
 test: test-lint test-examples
 .PHONY: test test-lint test-examples
 
@@ -139,17 +139,17 @@ test-%:
 	fi
 
 lint-%:
-	@echo "Running lint for schema $*" 
+	@echo "Running lint for schema $*"
 	$(RUN) linkml-lint --validate --all --ignore-warnings src/oscem_schemas/schema/oscem_schemas_$*.yaml; \
 
 examples-%:
-	@echo "Validating examples against schema $*"	
+	@echo "Validating examples against schema $*"
 	@if [ -f src/data/examples/example_valid_$*.yaml ]; then \
 		$(RUN) linkml-validate -s src/oscem_schemas/schema/oscem_schemas_$*.yaml src/data/examples/example_valid_$*.yaml ; \
 	else \
 		echo "No example found"; \
 	fi
-	
+
 ##		 $(RUN) python -m unittest discover; \
 
 prepare-mkdocs: $(SCHEMA_NAMES:%=prepare-mkdocs-%)
@@ -175,11 +175,11 @@ prepare-mkdocs-%:
 	@echo "  - Home: index.md" >> $(DOCDIR)/$*/mkdocs.yml
 
 
-	@echo "site_url: https://osc-em.github.io/OSCEM-schemas_$*" >> $(DOCDIR)/$*/mkdocs.yml
-	@echo "repo_url: https://github.com/osc-em/OSCEM_Schemas" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "site_url: https://osc-em.github.io/oscem-schemas_$*" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "repo_url: https://github.com/osc-em/oscem-schemas" >> $(DOCDIR)/$*/mkdocs.yml
 
 # Build Independent MkDocs Sites
-mkdocs-build: 
+mkdocs-build:
 	prepare-mkdocs $(SCHEMA_NAMES:%=build-%)
 
 build-test-%:

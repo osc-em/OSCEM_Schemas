@@ -1,21 +1,26 @@
 
-# Slot: volume
+# Class: Volume
 
-Describes volume(s) obtained
+Class describing volume(s) obtained
 
-URI: [https://w3id.org/osc-em/oscem-schemas-spa/volume](https://w3id.org/osc-em/oscem-schemas-spa/volume)
-
-
-## Domain and Range
-
-None &#8594;  <sub>0..\*</sub> [Volume](Volume.md)
-
-## Parents
+URI: [https://w3id.org/osc-em/oscem-schemas-spa/Volume](https://w3id.org/osc-em/oscem-schemas-spa/Volume)
 
 
-## Children
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[IsosurfaceImages]<isosurface_images%200..1-++[Volume],[OrthogonalSlices]<orthogonal_slices%200..1-++[Volume],[Classes3D]++-%20volume%200..*>[Volume],[Classes3D]++-%20volume(i)%200..*>[Volume],[OrthogonalSlices],[IsosurfaceImages],[Classes3D])](https://yuml.me/diagram/nofunky;dir:TB/class/[IsosurfaceImages]<isosurface_images%200..1-++[Volume],[OrthogonalSlices]<orthogonal_slices%200..1-++[Volume],[Classes3D]++-%20volume%200..*>[Volume],[Classes3D]++-%20volume(i)%200..*>[Volume],[OrthogonalSlices],[IsosurfaceImages],[Classes3D])
 
- *  [Classes3D➞volume](Classes3D_volume.md)
+## Referenced by Class
 
-## Used by
+ *  **[Classes3D](Classes3D.md)** *[Classes3D➞volume](Classes3D_volume.md)*  <sub>0..\*</sub>  **[Volume](Volume.md)**
+ *  **None** *[volume](volume.md)*  <sub>0..\*</sub>  **[Volume](Volume.md)**
 
+## Attributes
+
+
+### Own
+
+ * [Volume➞orthogonal_slices](Volume_orthogonal_slices.md)  <sub>0..1</sub>
+     * Description: orthogonal slices of volume
+     * Range: [OrthogonalSlices](OrthogonalSlices.md)
+ * [Volume➞isosurface_images](Volume_isosurface_images.md)  <sub>0..1</sub>
+     * Description: isosurface images of volume
+     * Range: [IsosurfaceImages](IsosurfaceImages.md)
