@@ -18,7 +18,6 @@ imports:
 enums:
   AcquisitionTechnique:
     permissible_values:
-      general:
       spa:
       subtomo:
       env_tomo:
@@ -26,7 +25,7 @@ enums:
 
 classes:
   Acquisition:
-    description: A set of parameteres describing the data acquisition
+    description: General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).
     slots:
     - technique
     - screen_current
@@ -58,7 +57,7 @@ classes:
     - gainref_flip_rotate
     slot_usage:
       technique:
-        required: true
+        required: false
       detectors:
         required: true
       date_time:
@@ -68,18 +67,12 @@ classes:
       pixel_size:
         required: true
 
-  AcquisitionGeneral:
-    is_a: Acquisition
-    attributes:
-      technique:
-        description: General acquisition, covering the materials science use cases
-        equals_string: general
-
   AcquisitionSpa:
     is_a: Acquisition
-    attributes:
+    slot_usage:
       technique:
         description: Single particle acquisition
+        required: true
         equals_string: spa
 
   EnergyFilter:
@@ -148,7 +141,7 @@ classes:
 slots:
   technique:
     description: Specifies which Acquisition subschema/class is in use.
-    range: AcquisitionTechnique
+    range: string
   screen_current:
     description: The total electron beam current hitting the viewing screen, in nA.
     range:  QuantitySI
