@@ -7,7 +7,7 @@ from linkml_runtime.loaders import yaml_loader
 from oscem_schemas.datamodel.oscem_schemas import EMDataset
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
-DATA_DIR = os.path.join(ROOT, "src", "data", "examples")
+DATA_DIR = os.path.join(ROOT, "test", "data", "examples")
 
 EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR, '*.yaml')) + glob.glob(os.path.join(DATA_DIR, '*.json'))
 
