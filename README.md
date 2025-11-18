@@ -26,14 +26,14 @@ All schemas are available in YAML format under the directory `src/oscem_schemas/
 ### Generated Artifacts
 Schemas are automatically exported to various formats (JSON Schema, JSON-LD, OWL, GraphQL, etc.) and made available through:
 
+- **GitHub Pages**: Direct access to artifacts:
+  - `https://osc-em.github.io/oscem-schemas/artifacts/latest/spa/jsonschema/oscem_schemas_spa.schema.json`
+
+- **Release Assets**: Downloadable archives from [GitHub Releases](https://github.com/osc-em/oscem-schemas/releases)
+
 - **Permanent URLs**: Via w3id.org for stable, citable links:
   - Latest: `https://w3id.org/osc-em/oscem-schemas/latest/spa/jsonschema/`
   - Versioned: `https://w3id.org/osc-em/oscem-schemas/v1.0.0/spa/jsonschema/`
-
-- **GitHub Pages**: Direct access to artifacts:
-  - `https://osc-em.github.io/OSCEM_Schemas/artifacts/latest/spa/jsonschema/oscem_schemas_spa.schema.json`
-
-- **Release Assets**: Downloadable archives from [GitHub Releases](https://github.com/osc-em/OSCEM_Schemas/releases)
 
 For metadata validation, we recommend using the JSON Schema versions.
 
