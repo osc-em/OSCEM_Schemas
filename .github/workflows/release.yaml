@@ -1,0 +1,104 @@
+---
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: Build and publish release artifacts
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install Poetry
+        run: |
+          pipx install poetry
+          poetry self add "poetry-dynamic-versioning[plugin]"
+
+      - name: Install dependencies
+        run: poetry install --no-interaction
+
+      # Generate artifacts once, use everywhere
+      - name: Generate project artifacts
+        run: make gen-project
+
+      # 1. Deploy to GitHub Pages for permanent URLs
+      - name: Prepare artifacts for GitHub Pages
+        run: |
+          mkdir -p artifacts-pages
+          VERSION="${{ github.event.release.tag_name }}"
+          
+          echo "Deploying version: $VERSION"
+          
+          # Copy to versioned directory and latest
+          cp -r project "artifacts-pages/$VERSION"
+          cp -r project "artifacts-pages/latest"
+          
+          # Create index
+          cat > artifacts-pages/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>OSC-EM Schema Artifacts</title>
+            <meta http-equiv="refresh" content="0; url=https://osc-em.github.io/OSCEM_Schemas/">
+          </head>
+          <body>
+            <p>Redirecting to <a href="https://osc-em.github.io/OSCEM_Schemas/">documentation</a>...</p>
+          </body>
+          </html>
+          EOF
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./artifacts-pages
+          publish_branch: gh-pages
+          destination_dir: artifacts
+          keep_files: true
+          commit_message: "Deploy artifacts for ${{ github.event.release.tag_name }}"
+
+      # 2. Create downloadable archives for release assets
+      - name: Create artifact archives
+        run: |
+          cd project
+          for schema in */; do
+            schema_name="${schema%/}"
+            tar -czf "../${schema_name}-artifacts.tar.gz" "$schema_name"
+            zip -r "../${schema_name}-artifacts.zip" "$schema_name"
+          done
+          cd ..
+
+      - name: Upload to release assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for file in *-artifacts.tar.gz *-artifacts.zip; do
+            gh release upload ${{ github.event.release.tag_name }} "$file" --clobber
+          done
+
+      # 3. Publish to PyPI
+      - name: Build Python package
+        run: poetry build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.2.2
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_PASSWORD }}

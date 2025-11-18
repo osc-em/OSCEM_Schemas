@@ -24,7 +24,7 @@ Current versions are a work in progress, details might change.
 
 ## Website
 Here you can browse all our keywords for the different schemas with descriptions:
-[https://osc-em.github.io/OSCEM_Schemas/](https://osc-em.github.io/OSCEM_Schemas/)
+[https://osc-em.github.io/oscem-schemas/](https://osc-em.github.io/oscem-schemas/)
 
 ## Repository Structure
 
