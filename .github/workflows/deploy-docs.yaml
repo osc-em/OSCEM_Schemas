@@ -1,40 +1,40 @@
 ---
-name: Auto-deployment of oscem_schemas Documentation
+name: Deploy Documentation
+
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-docs:
     runs-on: ubuntu-latest
 
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
-      contents: write  # to let mkdocs write the new docs
-      pages: write     # to deploy to Pages
-      id-token: write  # to verify the deployment originates from an appropriate source
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
+          fetch-depth: 0
 
-      - name: Set up Python.
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
 
-      - name: Install Poetry.
+      - name: Install Poetry
         run: pipx install poetry
 
-      - name: Install dependencies.
+      - name: Install dependencies
         run: poetry install -E docs
 
-      - name: Build documentation.
+      - name: Build documentation
         run: |
           mkdir -p docs
           touch docs/.nojekyll
           make gendoc
-          ([ ! -f docs/about.md ] && cp src/docs/about.md docs/) || true
           make mkd-gh-deploy

@@ -175,8 +175,8 @@ prepare-mkdocs-%:
 	@echo "  - Home: index.md" >> $(DOCDIR)/$*/mkdocs.yml
 
 
-	@echo "site_url: https://osc-em.github.io/OSCEM-schemas_$*" >> $(DOCDIR)/$*/mkdocs.yml
-	@echo "repo_url: https://github.com/osc-em/OSCEM_Schemas" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "site_url: https://osc-em.github.io/oscem-schemas_$*" >> $(DOCDIR)/$*/mkdocs.yml
+	@echo "repo_url: https://github.com/osc-em/oscem-schemas" >> $(DOCDIR)/$*/mkdocs.yml
 
 # Build Independent MkDocs Sites
 mkdocs-build: 
