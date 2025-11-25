@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_general.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-24T09:43:15
+# Generation date: 2025-11-25T16:27:46
 # Schema: oscem-schemas-general
 #
 # id: https://w3id.org/osc-em/oscem-schemas-general

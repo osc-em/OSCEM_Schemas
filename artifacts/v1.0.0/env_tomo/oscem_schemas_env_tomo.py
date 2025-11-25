@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_env_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-24T09:42:57
+# Generation date: 2025-11-25T16:27:27
 # Schema: oscem-schemas-env-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-env-tomo

@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_subtomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-24T09:43:49
+# Generation date: 2025-11-25T16:28:22
 # Schema: oscem-schemas-tomo
 #
 # id: https://w3id.org/osc-em/oscem-schemas-subtomo
