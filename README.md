@@ -43,7 +43,7 @@ Schemas are automatically exported to various formats (JSON Schema, JSON-LD, OWL
 | graphql    | `oscem_schemas_{SCHEMA}.graphql`        |
 | java       | `oscem_schemas_{SCHEMA}.java`           |
 | jsonld     | `oscem_schemas_{SCHEMA}.jsonld`         |
-|            | `oscem_schemas_{SCHEMA}.context.jsonld` |
+| jsonld     | `oscem_schemas_{SCHEMA}.context.jsonld` |
 | jsonschema | `oscem_schemas_{SCHEMA}.schema.json`    |
 | owl        | `oscem_schemas_{SCHEMA}.owl.ttl`        |
 | prefixmap  | `oscem_schemas_{SCHEMA}.yaml`           |
