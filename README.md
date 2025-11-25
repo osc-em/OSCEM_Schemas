@@ -1,4 +1,3 @@
-
 # OSCEM schemas
 Schema for the Open Standards Community for Electron Microscopy (OSC-EM): Defining the electron microscopy-related fields required by the OSCEM standard.
 
@@ -27,13 +26,13 @@ All schemas are available in YAML format under the directory `src/oscem_schemas/
 Schemas are automatically exported to various formats (JSON Schema, JSON-LD, OWL, GraphQL, etc.) and made available through:
 
 - **GitHub Pages**: Direct access to artifacts:
-  - `https://osc-em.github.io/oscem-schemas/artifacts/latest/spa/jsonschema/oscem_schemas_spa.schema.json`
+  - https://osc-em.github.io/oscem-schemas/artifacts/latest/spa/jsonschema/oscem_schemas_spa.schema.json
 
 - **Release Assets**: Downloadable archives from [GitHub Releases](https://github.com/osc-em/oscem-schemas/releases)
 
-- **Permanent URLs**: Via w3id.org for stable, citable links:
-  - Latest: `https://w3id.org/osc-em/oscem-schemas/latest/spa/jsonschema/`
-  - Versioned: `https://w3id.org/osc-em/oscem-schemas/v1.0.0/spa/jsonschema/`
+- **Permanent URLs**: Via `w3id.org` for stable, citable links:
+  - Latest: `https://w3id.org/oscem-schemas/latest/...`
+  - Versioned: `https://w3id.org/oscem-schemas/v1.0.0/...`
 
 For metadata validation, we recommend using the JSON Schema versions.
 
