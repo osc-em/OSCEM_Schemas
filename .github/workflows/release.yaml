@@ -4,6 +4,12 @@ name: Release
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version tag (e.g., v1.0.0)"
+        required: true
+        type: string
 
 jobs:
   release:
@@ -42,7 +48,7 @@ jobs:
       - name: Prepare artifacts for GitHub Pages
         run: |
           mkdir -p artifacts-pages
-          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${{ github.event.release.tag_name || inputs.version }}"
           
           echo "Deploying version: $VERSION"
           
@@ -72,7 +78,7 @@ jobs:
           publish_branch: gh-pages
           destination_dir: artifacts
           keep_files: true
-          commit_message: "Deploy artifacts for ${{ github.event.release.tag_name }}"
+          commit_message: "Deploy artifacts for ${{ github.event.release.tag_name || inputs.version }}"
 
       # 2. Create downloadable archives for release assets
       - name: Create artifact archives
@@ -86,6 +92,7 @@ jobs:
           cd ..
 
       - name: Upload to release assets
+        if: github.event_name == "release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -98,6 +105,7 @@ jobs:
         run: poetry build
 
       - name: Publish to PyPI
+        if: github.event_name == "release"
         uses: pypa/gh-action-pypi-publish@v1.2.2
         with:
           user: __token__
