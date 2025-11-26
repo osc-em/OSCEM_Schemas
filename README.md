@@ -12,7 +12,7 @@ To increase compatibility with different formats, we utilize [LinkML](https://li
 
 Five schemas are currently implemented. The `general` schema is the broadest definition, while other schemas specify additional structure relevant for particular experimental techniques.
 
-1. `general`: **General** metadata schema. Used for material sciences and general EM data.
+1. `general`: **General** metadata schema. Used for materials science and general EM data.
 2. `spa`: **Single particle analysis**
 3. `subtomo`: **Subtomogram averaging**
 4. `cellular_tomo`: **Cellular tomography** with a well-characterized sample
