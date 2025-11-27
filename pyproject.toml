@@ -1,23 +1,49 @@
-[tool.poetry]
+[project]
 name = "oscem_schemas"
-version = "0.1.0"
+version = "1.0.1"
 description = "Schema for the Open Standards Community for Electron Microscopy (OSC-EM)"
-authors = ["Yves Tittes <yves.tittes@unibas.ch>"]
-license = "BSD-3"
+authors = [
+    {name="Spencer Bliven", email="spencer.bliven@gmail.com"},
+    {name="Yves Tittes"},
+    {name="Carlos Oscar S. Sorzano"},
+    {name="Lola Sánchez de Lara García"},
+    {name="Despina Adamopoulou"},
+]
+license = "BSD-3-Clause"
 readme = "README.md"
 include = ["README.md", "src/oscem_schemas/schema"]
+keywords = ["electron microscopy", "schemas", "linkml", "open standards"]
+# set dynamically via poetry
+dynamic = [ "classifiers", "dependencies" ]
+requires-python = ">=3.9"
 
-[tool.poetry.dependencies]
-python = "^3.9"
-linkml-runtime = "^1.1.24"
+[project.urls]
+homepage = "https://osc-em.github.io/"
+repository = "https://github.com/osc-em/oscem-schemas"
+documentation = "https://osc-em.github.io/oscem-schemas/"
+
+[tool.poetry]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Image Processing",
+    "Topic :: File Formats :: JSON :: JSON Schema",
+]
 
 [tool.poetry-dynamic-versioning]
 enable = true
 vcs = "git"
 style = "pep440"
 
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+linkml-runtime = "^1.1.24"
+
 [tool.poetry.group.dev.dependencies]
-linkml = "^1.3.5"
+linkml = "^1.9.5"
 mkdocs-material = "^8.2.8"
 mkdocs-mermaid2-plugin = "^1.1.1"
 schemasheets = "^0.1.14"
@@ -26,5 +52,5 @@ schemasheets = "^0.1.14"
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
 
-[tool.poetry.extras]
-docs = ["linkml", "mkdocs-material"]
+[project.optional-dependencies]
+docs = ["linkml", "mkdocs-material", "mkdocs-mermaid2-plugin"]
