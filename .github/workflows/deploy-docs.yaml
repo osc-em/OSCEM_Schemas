@@ -34,7 +34,15 @@ jobs:
 
       - name: Build documentation
         run: |
-          mkdir -p docs
-          touch docs/.nojekyll
           make gendoc
-          make mkd-gh-deploy
+          poetry run mkdocs build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          keep_files: true
+          enable_jekyll: false
+          commit_message: "Deploy docs for ${{ github.sha }}"
