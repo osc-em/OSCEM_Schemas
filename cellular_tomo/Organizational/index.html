@@ -8,7 +8,7 @@
 <meta content="OSC-EM" name="author"/>
 <link href="https://osc-em.github.io/oscem-schemas/cellular_tomo/Organizational/" rel="canonical"/>
 <link href="https://raw.githubusercontent.com/osc-em/osc-em.github.io/refs/heads/main/docs/assets/img/oscem_icon.svg" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: Organizational - OSC-EM Schemas</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -244,16 +244,8 @@
 </a>
 <h1 id="class-organizational">Class: Organizational</h1>
 <p><em>Overarching category for authors and grants</em></p>
-<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:Organizational">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:Organizational</a></p>
+<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Organizational">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Organizational</a></p>
 <div class="mermaid">erDiagram
-Organizational {
-
-}
-Funder {
-    string funder_name  
-    OrganizationTypeEnum type_org  
-    string country  
-}
 Author {
     string orcid  
     string country  
@@ -266,6 +258,11 @@ Author {
     string email  
     string telephone  
 }
+Funder {
+    string funder_name  
+    OrganizationTypeEnum type_org  
+    string country  
+}
 Grant {
     string grant_name  
     datetime start_date  
@@ -273,15 +270,18 @@ Grant {
     string project_id  
     string country  
 }
+Organizational {
+
+}
 QuantityValue {
     string unit  
     float value  
 }
 
+Grant ||--|o QuantityValue : "budget"
+Organizational ||--}o Funder : "funder"
 Organizational ||--}o Grant : "grants"
 Organizational ||--}| Author : "authors"
-Organizational ||--}o Funder : "funder"
-Grant ||--|o QuantityValue : "budget"
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -351,11 +351,11 @@ Grant ||--|o QuantityValue : "budget"
 <tbody>
 <tr>
 <td>self</td>
-<td>https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:Organizational</td>
+<td>https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Organizational</td>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:Organizational</td>
+<td>https://w3id.org/osc-em/oscem-schemas-cellular-tomo/Organizational</td>
 </tr>
 </tbody>
 </table>

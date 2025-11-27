@@ -8,7 +8,7 @@
 <meta content="OSC-EM" name="author"/>
 <link href="https://osc-em.github.io/oscem-schemas/subtomo/Sample/" rel="canonical"/>
 <link href="https://raw.githubusercontent.com/osc-em/osc-em.github.io/refs/heads/main/docs/assets/img/oscem_icon.svg" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: Sample - OSC-EM Schemas</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -244,12 +244,8 @@
 </a>
 <h1 id="class-sample">Class: Sample</h1>
 <p><em>Unifying class to describe the full sample.</em></p>
-<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-subtomo/:Sample">https://w3id.org/osc-em/oscem-schemas-subtomo/:Sample</a></p>
+<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-subtomo/Sample">https://w3id.org/osc-em/oscem-schemas-subtomo/Sample</a></p>
 <div class="mermaid">erDiagram
-Sample {
-    string name  
-    string description  
-}
 Grid {
     string manufacturer  
     string material  
@@ -260,21 +256,6 @@ Grid {
     string film_thickness  
     string pretreatment_type  
     string pretreatment_atmosphere  
-}
-QuantitySI {
-    float valueSI  
-    string unitSI  
-    string unit  
-    float value  
-}
-Specimen {
-    string buffer  
-    float ph  
-    boolean vitrification  
-    string vitrification_cryogen  
-    boolean staining  
-    boolean embedding  
-    boolean shadowing  
 }
 Ligand {
     boolean present  
@@ -298,18 +279,37 @@ OverallMolecule {
     string source  
     AssemblyEnum assembly  
 }
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
+Sample {
+    string name  
+    string description  
+}
+Specimen {
+    string buffer  
+    float ph  
+    boolean vitrification  
+    string vitrification_cryogen  
+    boolean staining  
+    boolean embedding  
+    boolean shadowing  
+}
 
-Sample ||--|o OverallMolecule : "overall_molecule"
-Sample ||--}o Molecule : "molecule"
-Sample ||--}o Ligand : "ligands"
-Sample ||--|o Specimen : "specimen"
-Sample ||--|o Grid : "grid"
-Grid ||--|o QuantitySI : "pretreatment_time"
 Grid ||--|o QuantitySI : "pretreatment_pressure"
+Grid ||--|o QuantitySI : "pretreatment_time"
+OverallMolecule ||--|o QuantitySI : "molecular_weight"
+Sample ||--|o Grid : "grid"
+Sample ||--|o OverallMolecule : "overall_molecule"
+Sample ||--|o Specimen : "specimen"
+Sample ||--}o Ligand : "ligands"
+Sample ||--}o Molecule : "molecule"
 Specimen ||--|o QuantitySI : "concentration"
 Specimen ||--|o QuantitySI : "humidity"
 Specimen ||--|o QuantitySI : "temperature"
-OverallMolecule ||--|o QuantitySI : "molecular_weight"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -390,11 +390,11 @@ OverallMolecule ||--|o QuantitySI : "molecular_weight"
 <tbody>
 <tr>
 <td>self</td>
-<td>https://w3id.org/osc-em/oscem-schemas-subtomo/:Sample</td>
+<td>https://w3id.org/osc-em/oscem-schemas-subtomo/Sample</td>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/osc-em/oscem-schemas-subtomo/:Sample</td>
+<td>https://w3id.org/osc-em/oscem-schemas-subtomo/Sample</td>
 </tr>
 </tbody>
 </table>

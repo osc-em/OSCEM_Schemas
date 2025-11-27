@@ -8,7 +8,7 @@
 <meta content="OSC-EM" name="author"/>
 <link href="https://osc-em.github.io/oscem-schemas/env_tomo/AcquisitionEnvTomo/" rel="canonical"/>
 <link href="https://raw.githubusercontent.com/osc-em/osc-em.github.io/refs/heads/main/docs/assets/img/oscem_icon.svg" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: AcquisitionEnvTomo - OSC-EM Schemas</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -248,7 +248,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-acquisitionenvtomo">Class: AcquisitionEnvTomo</h1>
-<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-env-tomo/:AcquisitionEnvTomo">https://w3id.org/osc-em/oscem-schemas-env-tomo/:AcquisitionEnvTomo</a></p>
+<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-env-tomo/AcquisitionEnvTomo">https://w3id.org/osc-em/oscem-schemas-env-tomo/AcquisitionEnvTomo</a></p>
 <div class="mermaid">erDiagram
 AcquisitionEnvTomo {
     float tilt_axis_angle  
@@ -269,77 +269,77 @@ AcquisitionEnvTomo {
 BoundingBox2D {
 
 }
+ChromaticAberrationCorrector {
+    boolean used  
+    string instrument_type  
+}
+Detector {
+    string name  
+    string mode  
+}
+EnergyFilter {
+    boolean used  
+    string model  
+}
+ImageSize {
+    integer height  
+    integer width  
+}
+Phaseplate {
+    boolean used  
+    string instrument_type  
+}
 QuantitySI {
     float valueSI  
     string unitSI  
     string unit  
     float value  
 }
-SpecialistOptics {
+Range {
 
 }
-ChromaticAberrationCorrector {
-    boolean used  
-    string instrument_type  
+SpecialistOptics {
+
 }
 SphericalAberrationCorrector {
     boolean used  
     string instrument_type  
 }
-Phaseplate {
-    boolean used  
-    string instrument_type  
-}
-ImageSize {
-    integer height  
-    integer width  
-}
-EnergyFilter {
-    boolean used  
-    string model  
-}
-Detector {
-    string name  
-    string mode  
-}
-Range {
-
-}
 TiltAngle {
 
 }
 
-AcquisitionEnvTomo ||--|| TiltAngle : "tilt_angle"
-AcquisitionEnvTomo ||--|o QuantitySI : "screen_current"
-AcquisitionEnvTomo ||--|o Range : "nominal_defocus"
-AcquisitionEnvTomo ||--|o Range : "calibrated_defocus"
-AcquisitionEnvTomo ||--|o Range : "temperature_range"
-AcquisitionEnvTomo ||--}| Detector : "detectors"
-AcquisitionEnvTomo ||--|o QuantitySI : "dose_per_movie"
-AcquisitionEnvTomo ||--|o EnergyFilter : "energy_filter"
-AcquisitionEnvTomo ||--|o ImageSize : "image_size"
-AcquisitionEnvTomo ||--|o QuantitySI : "exposure_time"
-AcquisitionEnvTomo ||--|| ImageSize : "binning_camera"
-AcquisitionEnvTomo ||--|| QuantitySI : "pixel_size"
-AcquisitionEnvTomo ||--|o SpecialistOptics : "specialist_optics"
 AcquisitionEnvTomo ||--|o BoundingBox2D : "beamshift"
 AcquisitionEnvTomo ||--|o BoundingBox2D : "beamtilt"
 AcquisitionEnvTomo ||--|o BoundingBox2D : "imageshift"
-BoundingBox2D ||--|o QuantitySI : "x_min"
+AcquisitionEnvTomo ||--|o EnergyFilter : "energy_filter"
+AcquisitionEnvTomo ||--|o ImageSize : "image_size"
+AcquisitionEnvTomo ||--|o QuantitySI : "dose_per_movie"
+AcquisitionEnvTomo ||--|o QuantitySI : "exposure_time"
+AcquisitionEnvTomo ||--|o QuantitySI : "screen_current"
+AcquisitionEnvTomo ||--|o Range : "calibrated_defocus"
+AcquisitionEnvTomo ||--|o Range : "nominal_defocus"
+AcquisitionEnvTomo ||--|o Range : "temperature_range"
+AcquisitionEnvTomo ||--|o SpecialistOptics : "specialist_optics"
+AcquisitionEnvTomo ||--|| ImageSize : "binning_camera"
+AcquisitionEnvTomo ||--|| QuantitySI : "pixel_size"
+AcquisitionEnvTomo ||--|| TiltAngle : "tilt_angle"
+AcquisitionEnvTomo ||--}| Detector : "detectors"
 BoundingBox2D ||--|o QuantitySI : "x_max"
-BoundingBox2D ||--|o QuantitySI : "y_min"
+BoundingBox2D ||--|o QuantitySI : "x_min"
 BoundingBox2D ||--|o QuantitySI : "y_max"
-SpecialistOptics ||--|o Phaseplate : "phaseplate"
-SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
-SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
-EnergyFilter ||--|| QuantitySI : "width_energy_filter"
+BoundingBox2D ||--|o QuantitySI : "y_min"
 Detector ||--|o QuantitySI : "dispersion"
 Detector ||--|o Range : "collection_angle"
-Range ||--|o QuantitySI : "minimal"
+EnergyFilter ||--|| QuantitySI : "width_energy_filter"
 Range ||--|o QuantitySI : "maximal"
+Range ||--|o QuantitySI : "minimal"
+SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
+SpecialistOptics ||--|o Phaseplate : "phaseplate"
+SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
 TiltAngle ||--|| QuantitySI : "increment"
-TiltAngle ||--|| QuantitySI : "minimal"
 TiltAngle ||--|| QuantitySI : "maximal"
+TiltAngle ||--|| QuantitySI : "minimal"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -580,11 +580,11 @@ TiltAngle ||--|| QuantitySI : "maximal"
 <tbody>
 <tr>
 <td>self</td>
-<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/:AcquisitionEnvTomo</td>
+<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/AcquisitionEnvTomo</td>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/:AcquisitionEnvTomo</td>
+<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/AcquisitionEnvTomo</td>
 </tr>
 </tbody>
 </table>

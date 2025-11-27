@@ -8,7 +8,7 @@
 <meta content="OSC-EM" name="author"/>
 <link href="https://osc-em.github.io/oscem-schemas/env_tomo/EMDatasetEnv/" rel="canonical"/>
 <link href="https://raw.githubusercontent.com/osc-em/osc-em.github.io/refs/heads/main/docs/assets/img/oscem_icon.svg" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: EMDatasetEnv - OSC-EM Schemas</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -244,84 +244,8 @@
 </a>
 <h1 id="class-emdatasetenv">Class: EMDatasetEnv</h1>
 <p><em>cryo electron tomography dataset of an environmental sample</em></p>
-<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-env-tomo/:EMDatasetEnv">https://w3id.org/osc-em/oscem-schemas-env-tomo/:EMDatasetEnv</a></p>
+<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-env-tomo/EMDatasetEnv">https://w3id.org/osc-em/oscem-schemas-env-tomo/EMDatasetEnv</a></p>
 <div class="mermaid">erDiagram
-EMDatasetEnv {
-
-}
-Organizational {
-
-}
-Funder {
-    string funder_name  
-    OrganizationTypeEnum type_org  
-    string country  
-}
-Author {
-    string orcid  
-    string country  
-    string role  
-    string name_org  
-    OrganizationTypeEnum type_org  
-    string family_name  
-    string given_name  
-    boolean job_title  
-    string email  
-    string telephone  
-}
-Grant {
-    string grant_name  
-    datetime start_date  
-    datetime end_date  
-    string project_id  
-    string country  
-}
-SampleEnv {
-
-}
-TomogramFeatures {
-    string cellular_features  
-    stringList organelles  
-    string main_target  
-    string details_tomo  
-}
-Thinning {
-    string method_thin  
-    string instrument_thin  
-    string ion_source  
-    boolean lift_out  
-}
-Freezing {
-    string cryogen_sample_env  
-    FreezingMethodEnum method  
-    boolean blotting  
-    string atmosphere  
-    string details  
-}
-SpecimenEnv {
-    stringList organism  
-    string tissue  
-    string source_env  
-    string location  
-    date collection_date  
-    string handling  
-}
-Instrument {
-    string illumination  
-    string imaging  
-    string electron_source  
-    string operating_mode  
-}
-QuantitySI {
-    float valueSI  
-    string unitSI  
-    string unit  
-    float value  
-}
-Microscope {
-    string model  
-    string manufacturer  
-}
 AcquisitionEnvTomo {
     float tilt_axis_angle  
     string technique  
@@ -338,82 +262,158 @@ AcquisitionEnvTomo {
     integer beamtiltgroups  
     string gainref_flip_rotate  
 }
+Author {
+    string orcid  
+    string country  
+    string role  
+    string name_org  
+    OrganizationTypeEnum type_org  
+    string family_name  
+    string given_name  
+    boolean job_title  
+    string email  
+    string telephone  
+}
 BoundingBox2D {
 
-}
-SpecialistOptics {
-
-}
-ImageSize {
-    integer height  
-    integer width  
-}
-EnergyFilter {
-    boolean used  
-    string model  
 }
 Detector {
     string name  
     string mode  
 }
+EMDatasetEnv {
+
+}
+EnergyFilter {
+    boolean used  
+    string model  
+}
+Freezing {
+    string cryogen_sample_env  
+    FreezingMethodEnum method  
+    boolean blotting  
+    string atmosphere  
+    string details  
+}
+Funder {
+    string funder_name  
+    OrganizationTypeEnum type_org  
+    string country  
+}
+Grant {
+    string grant_name  
+    datetime start_date  
+    datetime end_date  
+    string project_id  
+    string country  
+}
+ImageSize {
+    integer height  
+    integer width  
+}
+Instrument {
+    string illumination  
+    string imaging  
+    string electron_source  
+    string operating_mode  
+}
+Microscope {
+    string model  
+    string manufacturer  
+}
+Organizational {
+
+}
+QuantitySI {
+    float valueSI  
+    string unitSI  
+    string unit  
+    float value  
+}
 Range {
 
+}
+SampleEnv {
+
+}
+SpecialistOptics {
+
+}
+SpecimenEnv {
+    stringList organism  
+    string tissue  
+    string source_env  
+    string location  
+    date collection_date  
+    string handling  
+}
+Thinning {
+    string method_thin  
+    string instrument_thin  
+    string ion_source  
+    boolean lift_out  
 }
 TiltAngle {
 
 }
+TomogramFeatures {
+    string cellular_features  
+    stringList organelles  
+    string main_target  
+    string details_tomo  
+}
 
-EMDatasetEnv ||--|| AcquisitionEnvTomo : "acquisition"
-EMDatasetEnv ||--|| Instrument : "instrument"
-EMDatasetEnv ||--|o SampleEnv : "sample"
-EMDatasetEnv ||--|o Organizational : "organizational"
-Organizational ||--}o Grant : "grants"
-Organizational ||--}| Author : "authors"
-Organizational ||--}o Funder : "funder"
-Grant ||--|o QuantityValue : "budget"
-SampleEnv ||--|| SpecimenEnv : "specimen_env"
-SampleEnv ||--|o Freezing : "freezing"
-SampleEnv ||--|o Thinning : "thinning"
-SampleEnv ||--|o TomogramFeatures : "tomogram_features"
-Thinning ||--|o QuantitySI : "target_thickness"
-Freezing ||--|o QuantitySI : "humidity_env"
-Freezing ||--|o QuantitySI : "temperature_env"
-Instrument ||--|| Microscope : "microscope"
-Instrument ||--|| QuantitySI : "acceleration_voltage"
-Instrument ||--|o QuantitySI : "c2_aperture"
-Instrument ||--|o QuantitySI : "cs"
-Instrument ||--|o QuantitySI : "beam_convergence"
-AcquisitionEnvTomo ||--|| TiltAngle : "tilt_angle"
-AcquisitionEnvTomo ||--|o QuantitySI : "screen_current"
-AcquisitionEnvTomo ||--|o Range : "nominal_defocus"
-AcquisitionEnvTomo ||--|o Range : "calibrated_defocus"
-AcquisitionEnvTomo ||--|o Range : "temperature_range"
-AcquisitionEnvTomo ||--}| Detector : "detectors"
-AcquisitionEnvTomo ||--|o QuantitySI : "dose_per_movie"
-AcquisitionEnvTomo ||--|o EnergyFilter : "energy_filter"
-AcquisitionEnvTomo ||--|o ImageSize : "image_size"
-AcquisitionEnvTomo ||--|o QuantitySI : "exposure_time"
-AcquisitionEnvTomo ||--|| ImageSize : "binning_camera"
-AcquisitionEnvTomo ||--|| QuantitySI : "pixel_size"
-AcquisitionEnvTomo ||--|o SpecialistOptics : "specialist_optics"
 AcquisitionEnvTomo ||--|o BoundingBox2D : "beamshift"
 AcquisitionEnvTomo ||--|o BoundingBox2D : "beamtilt"
 AcquisitionEnvTomo ||--|o BoundingBox2D : "imageshift"
-BoundingBox2D ||--|o QuantitySI : "x_min"
+AcquisitionEnvTomo ||--|o EnergyFilter : "energy_filter"
+AcquisitionEnvTomo ||--|o ImageSize : "image_size"
+AcquisitionEnvTomo ||--|o QuantitySI : "dose_per_movie"
+AcquisitionEnvTomo ||--|o QuantitySI : "exposure_time"
+AcquisitionEnvTomo ||--|o QuantitySI : "screen_current"
+AcquisitionEnvTomo ||--|o Range : "calibrated_defocus"
+AcquisitionEnvTomo ||--|o Range : "nominal_defocus"
+AcquisitionEnvTomo ||--|o Range : "temperature_range"
+AcquisitionEnvTomo ||--|o SpecialistOptics : "specialist_optics"
+AcquisitionEnvTomo ||--|| ImageSize : "binning_camera"
+AcquisitionEnvTomo ||--|| QuantitySI : "pixel_size"
+AcquisitionEnvTomo ||--|| TiltAngle : "tilt_angle"
+AcquisitionEnvTomo ||--}| Detector : "detectors"
 BoundingBox2D ||--|o QuantitySI : "x_max"
-BoundingBox2D ||--|o QuantitySI : "y_min"
+BoundingBox2D ||--|o QuantitySI : "x_min"
 BoundingBox2D ||--|o QuantitySI : "y_max"
-SpecialistOptics ||--|o Phaseplate : "phaseplate"
-SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
-SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
-EnergyFilter ||--|| QuantitySI : "width_energy_filter"
+BoundingBox2D ||--|o QuantitySI : "y_min"
 Detector ||--|o QuantitySI : "dispersion"
 Detector ||--|o Range : "collection_angle"
-Range ||--|o QuantitySI : "minimal"
+EMDatasetEnv ||--|o Organizational : "organizational"
+EMDatasetEnv ||--|o SampleEnv : "sample"
+EMDatasetEnv ||--|| AcquisitionEnvTomo : "acquisition"
+EMDatasetEnv ||--|| Instrument : "instrument"
+EnergyFilter ||--|| QuantitySI : "width_energy_filter"
+Freezing ||--|o QuantitySI : "humidity_env"
+Freezing ||--|o QuantitySI : "temperature_env"
+Grant ||--|o QuantityValue : "budget"
+Instrument ||--|o QuantitySI : "beam_convergence"
+Instrument ||--|o QuantitySI : "c2_aperture"
+Instrument ||--|o QuantitySI : "cs"
+Instrument ||--|| Microscope : "microscope"
+Instrument ||--|| QuantitySI : "acceleration_voltage"
+Organizational ||--}o Funder : "funder"
+Organizational ||--}o Grant : "grants"
+Organizational ||--}| Author : "authors"
 Range ||--|o QuantitySI : "maximal"
+Range ||--|o QuantitySI : "minimal"
+SampleEnv ||--|o Freezing : "freezing"
+SampleEnv ||--|o Thinning : "thinning"
+SampleEnv ||--|o TomogramFeatures : "tomogram_features"
+SampleEnv ||--|| SpecimenEnv : "specimen_env"
+SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
+SpecialistOptics ||--|o Phaseplate : "phaseplate"
+SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
+Thinning ||--|o QuantitySI : "target_thickness"
 TiltAngle ||--|| QuantitySI : "increment"
-TiltAngle ||--|| QuantitySI : "minimal"
 TiltAngle ||--|| QuantitySI : "maximal"
+TiltAngle ||--|| QuantitySI : "minimal"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -476,11 +476,11 @@ TiltAngle ||--|| QuantitySI : "maximal"
 <tbody>
 <tr>
 <td>self</td>
-<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/:EMDatasetEnv</td>
+<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/EMDatasetEnv</td>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/:EMDatasetEnv</td>
+<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/EMDatasetEnv</td>
 </tr>
 </tbody>
 </table>

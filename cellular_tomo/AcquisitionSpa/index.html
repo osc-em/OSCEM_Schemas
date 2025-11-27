@@ -8,7 +8,7 @@
 <meta content="OSC-EM" name="author"/>
 <link href="https://osc-em.github.io/oscem-schemas/cellular_tomo/AcquisitionSpa/" rel="canonical"/>
 <link href="https://raw.githubusercontent.com/osc-em/osc-em.github.io/refs/heads/main/docs/assets/img/oscem_icon.svg" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: AcquisitionSpa - OSC-EM Schemas</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -243,7 +243,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-acquisitionspa">Class: AcquisitionSpa</h1>
-<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:AcquisitionSpa">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:AcquisitionSpa</a></p>
+<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionSpa">https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionSpa</a></p>
 <div class="mermaid">erDiagram
 AcquisitionSpa {
     string technique  
@@ -263,70 +263,70 @@ AcquisitionSpa {
 BoundingBox2D {
 
 }
+ChromaticAberrationCorrector {
+    boolean used  
+    string instrument_type  
+}
+Detector {
+    string name  
+    string mode  
+}
+EnergyFilter {
+    boolean used  
+    string model  
+}
+ImageSize {
+    integer height  
+    integer width  
+}
+Phaseplate {
+    boolean used  
+    string instrument_type  
+}
 QuantitySI {
     float valueSI  
     string unitSI  
     string unit  
     float value  
 }
-SpecialistOptics {
+Range {
 
 }
-ChromaticAberrationCorrector {
-    boolean used  
-    string instrument_type  
+SpecialistOptics {
+
 }
 SphericalAberrationCorrector {
     boolean used  
     string instrument_type  
 }
-Phaseplate {
-    boolean used  
-    string instrument_type  
-}
-ImageSize {
-    integer height  
-    integer width  
-}
-EnergyFilter {
-    boolean used  
-    string model  
-}
-Detector {
-    string name  
-    string mode  
-}
-Range {
 
-}
-
-AcquisitionSpa ||--|o QuantitySI : "screen_current"
-AcquisitionSpa ||--|o Range : "nominal_defocus"
-AcquisitionSpa ||--|o Range : "calibrated_defocus"
-AcquisitionSpa ||--|o Range : "temperature_range"
-AcquisitionSpa ||--}| Detector : "detectors"
-AcquisitionSpa ||--|o QuantitySI : "dose_per_movie"
-AcquisitionSpa ||--|o EnergyFilter : "energy_filter"
-AcquisitionSpa ||--|o ImageSize : "image_size"
-AcquisitionSpa ||--|o QuantitySI : "exposure_time"
-AcquisitionSpa ||--|| ImageSize : "binning_camera"
-AcquisitionSpa ||--|| QuantitySI : "pixel_size"
-AcquisitionSpa ||--|o SpecialistOptics : "specialist_optics"
 AcquisitionSpa ||--|o BoundingBox2D : "beamshift"
 AcquisitionSpa ||--|o BoundingBox2D : "beamtilt"
 AcquisitionSpa ||--|o BoundingBox2D : "imageshift"
-BoundingBox2D ||--|o QuantitySI : "x_min"
+AcquisitionSpa ||--|o EnergyFilter : "energy_filter"
+AcquisitionSpa ||--|o ImageSize : "image_size"
+AcquisitionSpa ||--|o QuantitySI : "dose_per_movie"
+AcquisitionSpa ||--|o QuantitySI : "exposure_time"
+AcquisitionSpa ||--|o QuantitySI : "screen_current"
+AcquisitionSpa ||--|o Range : "calibrated_defocus"
+AcquisitionSpa ||--|o Range : "nominal_defocus"
+AcquisitionSpa ||--|o Range : "temperature_range"
+AcquisitionSpa ||--|o SpecialistOptics : "specialist_optics"
+AcquisitionSpa ||--|| ImageSize : "binning_camera"
+AcquisitionSpa ||--|| QuantitySI : "pixel_size"
+AcquisitionSpa ||--}| Detector : "detectors"
 BoundingBox2D ||--|o QuantitySI : "x_max"
-BoundingBox2D ||--|o QuantitySI : "y_min"
+BoundingBox2D ||--|o QuantitySI : "x_min"
 BoundingBox2D ||--|o QuantitySI : "y_max"
-SpecialistOptics ||--|o Phaseplate : "phaseplate"
-SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
-SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
-EnergyFilter ||--|| QuantitySI : "width_energy_filter"
+BoundingBox2D ||--|o QuantitySI : "y_min"
 Detector ||--|o QuantitySI : "dispersion"
 Detector ||--|o Range : "collection_angle"
-Range ||--|o QuantitySI : "minimal"
+EnergyFilter ||--|| QuantitySI : "width_energy_filter"
 Range ||--|o QuantitySI : "maximal"
+Range ||--|o QuantitySI : "minimal"
+SpecialistOptics ||--|o ChromaticAberrationCorrector : "chromatic_aberration_corrector"
+SpecialistOptics ||--|o Phaseplate : "phaseplate"
+SpecialistOptics ||--|o SphericalAberrationCorrector : "spherical_aberration_corrector"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -533,11 +533,11 @@ Range ||--|o QuantitySI : "maximal"
 <tbody>
 <tr>
 <td>self</td>
-<td>https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:AcquisitionSpa</td>
+<td>https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionSpa</td>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/osc-em/oscem-schemas-cellular-tomo/:AcquisitionSpa</td>
+<td>https://w3id.org/osc-em/oscem-schemas-cellular-tomo/AcquisitionSpa</td>
 </tr>
 </tbody>
 </table>

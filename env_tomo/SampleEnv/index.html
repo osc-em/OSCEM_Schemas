@@ -8,7 +8,7 @@
 <meta content="OSC-EM" name="author"/>
 <link href="https://osc-em.github.io/oscem-schemas/env_tomo/SampleEnv/" rel="canonical"/>
 <link href="https://raw.githubusercontent.com/osc-em/osc-em.github.io/refs/heads/main/docs/assets/img/oscem_icon.svg" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: SampleEnv - OSC-EM Schemas</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -244,22 +244,14 @@
 </a>
 <h1 id="class-sampleenv">Class: SampleEnv</h1>
 <p><em>Unifying class to describe the full sample.</em></p>
-<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-env-tomo/:SampleEnv">https://w3id.org/osc-em/oscem-schemas-env-tomo/:SampleEnv</a></p>
+<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-env-tomo/SampleEnv">https://w3id.org/osc-em/oscem-schemas-env-tomo/SampleEnv</a></p>
 <div class="mermaid">erDiagram
-SampleEnv {
-
-}
-TomogramFeatures {
-    string cellular_features  
-    stringList organelles  
-    string main_target  
-    string details_tomo  
-}
-Thinning {
-    string method_thin  
-    string instrument_thin  
-    string ion_source  
-    boolean lift_out  
+Freezing {
+    string cryogen_sample_env  
+    FreezingMethodEnum method  
+    boolean blotting  
+    string atmosphere  
+    string details  
 }
 QuantitySI {
     float valueSI  
@@ -267,12 +259,8 @@ QuantitySI {
     string unit  
     float value  
 }
-Freezing {
-    string cryogen_sample_env  
-    FreezingMethodEnum method  
-    boolean blotting  
-    string atmosphere  
-    string details  
+SampleEnv {
+
 }
 SpecimenEnv {
     stringList organism  
@@ -282,14 +270,26 @@ SpecimenEnv {
     date collection_date  
     string handling  
 }
+Thinning {
+    string method_thin  
+    string instrument_thin  
+    string ion_source  
+    boolean lift_out  
+}
+TomogramFeatures {
+    string cellular_features  
+    stringList organelles  
+    string main_target  
+    string details_tomo  
+}
 
-SampleEnv ||--|| SpecimenEnv : "specimen_env"
+Freezing ||--|o QuantitySI : "humidity_env"
+Freezing ||--|o QuantitySI : "temperature_env"
 SampleEnv ||--|o Freezing : "freezing"
 SampleEnv ||--|o Thinning : "thinning"
 SampleEnv ||--|o TomogramFeatures : "tomogram_features"
+SampleEnv ||--|| SpecimenEnv : "specimen_env"
 Thinning ||--|o QuantitySI : "target_thickness"
-Freezing ||--|o QuantitySI : "humidity_env"
-Freezing ||--|o QuantitySI : "temperature_env"
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -365,11 +365,11 @@ Freezing ||--|o QuantitySI : "temperature_env"
 <tbody>
 <tr>
 <td>self</td>
-<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/:SampleEnv</td>
+<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/SampleEnv</td>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/:SampleEnv</td>
+<td>https://w3id.org/osc-em/oscem-schemas-env-tomo/SampleEnv</td>
 </tr>
 </tbody>
 </table>

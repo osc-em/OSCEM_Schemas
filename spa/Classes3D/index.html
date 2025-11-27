@@ -8,7 +8,7 @@
 <meta content="OSC-EM" name="author"/>
 <link href="https://osc-em.github.io/oscem-schemas/spa/Classes3D/" rel="canonical"/>
 <link href="https://raw.githubusercontent.com/osc-em/osc-em.github.io/refs/heads/main/docs/assets/img/oscem_icon.svg" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: Classes3D - OSC-EM Schemas</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -244,24 +244,17 @@
 </a>
 <h1 id="class-classes3d">Class: Classes3D</h1>
 <p><em>Class representing classes 3D metadata</em></p>
-<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/:Classes3D">https://w3id.org/osc-em/oscem-schemas-spa/:Classes3D</a></p>
+<p>URI: <a href="https://w3id.org/osc-em/oscem-schemas-spa/Classes3D">https://w3id.org/osc-em/oscem-schemas-spa/Classes3D</a></p>
 <div class="mermaid">erDiagram
+Any {
+
+}
 Classes3D {
     integerList particles_per_3Dclass  
     string images_classes_3D  
 }
 Descriptors {
     string descriptor_name  
-}
-Any {
-
-}
-QuantityValue {
-    string unit  
-    float value  
-}
-Volume {
-
 }
 IsosurfaceImages {
     string front_view  
@@ -273,13 +266,20 @@ OrthogonalSlices {
     string orthogonal_slices_Y  
     string orthogonal_slices_Z  
 }
+QuantityValue {
+    string unit  
+    float value  
+}
+Volume {
 
-Classes3D ||--}o Volume : "volume"
+}
+
 Classes3D ||--|o QuantityValue : "resolution_classes_3D"
 Classes3D ||--}o Descriptors : "descriptors"
+Classes3D ||--}o Volume : "volume"
 Descriptors ||--|o Any : "descriptor_thing"
-Volume ||--|o OrthogonalSlices : "orthogonal_slices"
 Volume ||--|o IsosurfaceImages : "isosurface_images"
+Volume ||--|o OrthogonalSlices : "orthogonal_slices"
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -361,11 +361,11 @@ Volume ||--|o IsosurfaceImages : "isosurface_images"
 <tbody>
 <tr>
 <td>self</td>
-<td>https://w3id.org/osc-em/oscem-schemas-spa/:Classes3D</td>
+<td>https://w3id.org/osc-em/oscem-schemas-spa/Classes3D</td>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/osc-em/oscem-schemas-spa/:Classes3D</td>
+<td>https://w3id.org/osc-em/oscem-schemas-spa/Classes3D</td>
 </tr>
 </tbody>
 </table>
