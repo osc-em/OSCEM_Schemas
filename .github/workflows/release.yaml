@@ -44,6 +44,12 @@ jobs:
       - name: Generate project artifacts
         run: make gen-project
 
+      # Update artifacts documentation page
+      - name: Update artifacts.md with new version
+        run: |
+          VERSION="${{ github.event.release.tag_name || inputs.version }}"
+          python3 scripts/update_artifacts_page.py "$VERSION" "${{ github.repository }}"
+
       # 1. Deploy to GitHub Pages for permanent URLs
       - name: Prepare artifacts for GitHub Pages
         run: |
@@ -53,19 +59,81 @@ jobs:
           echo "Deploying version: $VERSION"
           
           # Copy to versioned directory and latest
-          cp -r project "artifacts-pages/$VERSION"
-          cp -r project "artifacts-pages/latest"
+          cp -r project/* "artifacts-pages/$VERSION/"
+          cp -r project/* "artifacts-pages/latest/"
           
-          # Create index
+          # Create root index that redirects to docs
           cat > artifacts-pages/index.html << 'EOF'
           <!DOCTYPE html>
           <html>
           <head>
             <title>OSC-EM Schema Artifacts</title>
-            <meta http-equiv="refresh" content="0; url=https://osc-em.github.io/oscem-schemas/">
+            <meta http-equiv="refresh" content="0; url=https://osc-em.github.io/oscem-schemas/artifacts.html">
           </head>
           <body>
-            <p>Redirecting to <a href="https://osc-em.github.io/oscem-schemas/">documentation</a>...</p>
+            <p>Redirecting to <a href="https://osc-em.github.io/oscem-schemas/artifacts.html">artifacts documentation</a>...</p>
+          </body>
+          </html>
+          EOF
+          
+          # Create index for latest version
+          cat > "artifacts-pages/latest/index.html" << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>OSC-EM Schema Artifacts - Latest</title>
+            <style>
+              body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+              h1 { color: #333; }
+              ul { list-style: none; padding: 0; }
+              li { margin: 10px 0; }
+              a { color: #0066cc; text-decoration: none; font-size: 18px; }
+              a:hover { text-decoration: underline; }
+              .description { color: #666; font-size: 14px; margin-left: 10px; }
+            </style>
+          </head>
+          <body>
+            <h1>OSC-EM Schema Artifacts - Latest Version</h1>
+            <p>Select a schema type to browse:</p>
+            <ul>
+              <li><a href="spa/">Single Particle Analysis (SPA)</a> <span class="description">- Schemas for single particle cryo-EM</span></li>
+              <li><a href="cellular_tomo/">Cellular Tomography</a> <span class="description">- Schemas for cellular cryo-tomography</span></li>
+              <li><a href="env_tomo/">Environmental Tomography</a> <span class="description">- Schemas for environmental tomography</span></li>
+              <li><a href="subtomo/">Sub-Tomogram Averaging</a> <span class="description">- Schemas for sub-tomogram averaging</span></li>
+              <li><a href="general/">General</a> <span class="description">- General schemas and shared definitions</span></li>
+            </ul>
+            <p><a href="https://osc-em.github.io/oscem-schemas/artifacts.html">← Back to all versions</a></p>
+          </body>
+          </html>
+          EOF
+          
+          # Create the same index for versioned directory
+          cat > "artifacts-pages/$VERSION/index.html" << EOF
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>OSC-EM Schema Artifacts - $VERSION</title>
+            <style>
+              body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+              h1 { color: #333; }
+              ul { list-style: none; padding: 0; }
+              li { margin: 10px 0; }
+              a { color: #0066cc; text-decoration: none; font-size: 18px; }
+              a:hover { text-decoration: underline; }
+              .description { color: #666; font-size: 14px; margin-left: 10px; }
+            </style>
+          </head>
+          <body>
+            <h1>OSC-EM Schema Artifacts - $VERSION</h1>
+            <p>Select a schema type to browse:</p>
+            <ul>
+              <li><a href="spa/">Single Particle Analysis (SPA)</a> <span class="description">- Schemas for single particle cryo-EM</span></li>
+              <li><a href="cellular_tomo/">Cellular Tomography</a> <span class="description">- Schemas for cellular cryo-tomography</span></li>
+              <li><a href="env_tomo/">Environmental Tomography</a> <span class="description">- Schemas for environmental tomography</span></li>
+              <li><a href="subtomo/">Sub-Tomogram Averaging</a> <span class="description">- Schemas for sub-tomogram averaging</span></li>
+              <li><a href="general/">General</a> <span class="description">- General schemas and shared definitions</span></li>
+            </ul>
+            <p><a href="https://osc-em.github.io/oscem-schemas/artifacts.html">← Back to all versions</a></p>
           </body>
           </html>
           EOF
@@ -79,6 +147,15 @@ jobs:
           destination_dir: artifacts
           keep_files: true
           commit_message: "Deploy artifacts for ${{ github.event.release.tag_name || inputs.version }}"
+
+      # Commit updated artifacts.md back to repository
+      - name: Commit updated artifacts page
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add perm_docs/artifacts.md
+          git diff --staged --quiet || git commit -m "docs: Update artifacts.md with version ${{ github.event.release.tag_name || inputs.version }}"
+          git push
 
       # 2. Create downloadable archives for release assets
       - name: Create artifact archives
