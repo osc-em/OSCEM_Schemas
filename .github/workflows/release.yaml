@@ -41,7 +41,7 @@ jobs:
 
       # Update artifacts documentation page dynamically
       - name: Generate artifacts.md page
-        run: python3 scripts/generate_artifacts_page.py "${{ github.repository }}"
+        run: poetry run python scripts/generate_artifacts_page.py "${{ github.repository }}"
 
       # 1. Deploy to GitHub Pages for permanent URLs
       - name: Prepare artifacts for GitHub Pages
@@ -75,8 +75,8 @@ jobs:
           EOF
 
           # Generate index pages dynamically based on actual schemas
-          python3 scripts/generate_index_pages.py project "artifacts-pages/latest" "latest"
-          python3 scripts/generate_index_pages.py project "artifacts-pages/$VERSION" "$VERSION"
+          poetry run python scripts/generate_index_pages.py project "artifacts-pages/latest" "latest"
+          poetry run python scripts/generate_index_pages.py project "artifacts-pages/$VERSION" "$VERSION"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
