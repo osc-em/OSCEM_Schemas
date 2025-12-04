@@ -102,7 +102,7 @@ def generate_version_index(version: str, schemas: List[Dict[str, str]]) -> str:
     {supporting_html}
   </ul>
   <div class="separator"></div>
-  <p class="back-link"><a href="https://osc-em.github.io/oscem-schemas/artifacts.html">Back to all versions</a></p>
+  <p class="back-link"><a href="https://osc-em.github.io/oscem-schemas/artifacts/">Back to all versions</a></p>
 </body>
 </html>"""
 

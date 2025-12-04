@@ -10,30 +10,30 @@ Browse the latest release artifacts:
 
 ### Main Technique Schemas
 
-- [oscem-schemas-cellular-tomo](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_cellular_tomo/)
-- [oscem-schemas-env-tomo](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_env_tomo/)
-- [oscem-schemas-general](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_general/)
-- [oscem-schemas-spa](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_spa/)
-- [oscem-schemas-tomo](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_subtomo/)
+- [Cellular Tomography](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_cellular_tomo/)
+- [Environmental Tomography](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_env_tomo/)
+- [General](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_general/)
+- [Single Particle Analysis](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_spa/)
+- [Subtomogram Averaging](https://osc-em.github.io/oscem-schemas/artifacts/latest/oscem_schemas_subtomo/)
 
 ### Supporting Schemas
 
-- [OSCEMCTFs](https://osc-em.github.io/oscem-schemas/artifacts/latest/CTFs/)
-- [OSCEMAcquisiton](https://osc-em.github.io/oscem-schemas/artifacts/latest/acquisition/)
-- [OSCEMClasses2D](https://osc-em.github.io/oscem-schemas/artifacts/latest/classes2D/)
-- [OSCEMClasses3D](https://osc-em.github.io/oscem-schemas/artifacts/latest/classes3D/)
-- [OSCEMCoordinates](https://osc-em.github.io/oscem-schemas/artifacts/latest/coordinates/)
-- [custom_types](https://osc-em.github.io/oscem-schemas/artifacts/latest/custom_types/)
-- [OSCEMInstrument](https://osc-em.github.io/oscem-schemas/artifacts/latest/instrument/)
-- [OSCEMMicrographs](https://osc-em.github.io/oscem-schemas/artifacts/latest/micrographs/)
-- [OSCEMMovies](https://osc-em.github.io/oscem-schemas/artifacts/latest/movies/)
-- [OSCEMorg](https://osc-em.github.io/oscem-schemas/artifacts/latest/organizational/)
-- [OSCEMProcessing](https://osc-em.github.io/oscem-schemas/artifacts/latest/processing/)
-- [sample](https://osc-em.github.io/oscem-schemas/artifacts/latest/sample/)
-- [sample-cellular-tomo-lab](https://osc-em.github.io/oscem-schemas/artifacts/latest/sample_cellular_tomo_lab/)
-- [sample-env](https://osc-em.github.io/oscem-schemas/artifacts/latest/sample_environmental/)
-- [TomoAdditionalFields](https://osc-em.github.io/oscem-schemas/artifacts/latest/tomography/)
-- [OSCEMVolume](https://osc-em.github.io/oscem-schemas/artifacts/latest/volumes/)
+- [CTFs](https://osc-em.github.io/oscem-schemas/artifacts/latest/CTFs/)
+- [Acquisiton](https://osc-em.github.io/oscem-schemas/artifacts/latest/acquisition/)
+- [Classes 2D](https://osc-em.github.io/oscem-schemas/artifacts/latest/classes2D/)
+- [Classes 3D](https://osc-em.github.io/oscem-schemas/artifacts/latest/classes3D/)
+- [Coordinates](https://osc-em.github.io/oscem-schemas/artifacts/latest/coordinates/)
+- [Custom Types](https://osc-em.github.io/oscem-schemas/artifacts/latest/custom_types/)
+- [Instrument](https://osc-em.github.io/oscem-schemas/artifacts/latest/instrument/)
+- [Micrographs](https://osc-em.github.io/oscem-schemas/artifacts/latest/micrographs/)
+- [Movies](https://osc-em.github.io/oscem-schemas/artifacts/latest/movies/)
+- [Organizational](https://osc-em.github.io/oscem-schemas/artifacts/latest/organizational/)
+- [Processing](https://osc-em.github.io/oscem-schemas/artifacts/latest/processing/)
+- [Sample](https://osc-em.github.io/oscem-schemas/artifacts/latest/sample/)
+- [Sample for Cellular Tomography, Lab Grown](https://osc-em.github.io/oscem-schemas/artifacts/latest/sample_cellular_tomo_lab/)
+- [Sample for Environmental Tomography](https://osc-em.github.io/oscem-schemas/artifacts/latest/sample_environmental/)
+- [Tomography Additional Fields](https://osc-em.github.io/oscem-schemas/artifacts/latest/tomography/)
+- [Volumes](https://osc-em.github.io/oscem-schemas/artifacts/latest/volumes/)
 
 ## Available Versions
 
