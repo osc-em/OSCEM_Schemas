@@ -37,7 +37,11 @@ jobs:
 
       # Generate artifacts once, use everywhere
       - name: Generate project artifacts
-        run: make gen-project
+        run: make gen-all-schemas
+
+      # Update artifacts documentation page dynamically
+      - name: Generate artifacts.md page
+        run: python3 scripts/generate_artifacts_page.py "${{ github.repository }}"
 
       # 1. Deploy to GitHub Pages for permanent URLs
       - name: Prepare artifacts for GitHub Pages
@@ -48,22 +52,26 @@ jobs:
           echo "Deploying version: $VERSION"
           
           # Copy to versioned directory and latest
-          cp -r project "artifacts-pages/$VERSION"
-          cp -r project "artifacts-pages/latest"
+          cp -r project/* "artifacts-pages/$VERSION/"
+          cp -r project/* "artifacts-pages/latest/"
           
-          # Create index
+          # Create root index that redirects to docs
           cat > artifacts-pages/index.html << 'EOF'
           <!DOCTYPE html>
           <html>
           <head>
             <title>OSC-EM Schema Artifacts</title>
-            <meta http-equiv="refresh" content="0; url=https://osc-em.github.io/oscem-schemas/">
+            <meta http-equiv="refresh" content="0; url=https://osc-em.github.io/oscem-schemas/artifacts.html">
           </head>
           <body>
-            <p>Redirecting to <a href="https://osc-em.github.io/oscem-schemas/">documentation</a>...</p>
+            <p>Redirecting to <a href="https://osc-em.github.io/oscem-schemas/artifacts.html">artifacts documentation</a>...</p>
           </body>
           </html>
           EOF
+
+          # Generate index pages dynamically based on actual schemas
+          python3 scripts/generate_index_pages.py project "artifacts-pages/latest" "latest"
+          python3 scripts/generate_index_pages.py project "artifacts-pages/$VERSION" "$VERSION"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -74,6 +82,15 @@ jobs:
           destination_dir: artifacts
           keep_files: true
           commit_message: "Deploy artifacts for ${{ github.event.release.tag_name }}"
+
+      # Commit updated artifacts.md back to repository
+      - name: Commit updated artifacts page
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add perm_docs/artifacts.md
+          git diff --staged --quiet || git commit -m "docs: Update artifacts.md with version ${{ github.event.release.tag_name }}"
+          git push
 
       # 2. Create downloadable archives for release assets
       - name: Create artifact archives
