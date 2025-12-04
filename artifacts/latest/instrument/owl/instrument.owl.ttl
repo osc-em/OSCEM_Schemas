@@ -1,0 +1,521 @@
+@prefix instrument: <https://w3id.org/oscem-schemas/latest/instrument> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix types: <https://w3id.org/oscem-schemas/latest/custom_types> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+types:BoundingBox2D a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "BoundingBox2D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:y_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:y_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:x_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:x_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:y_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:x_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:y_max ] ;
+    skos:definition "an axis-aligned 2D bounding box (float units)" ;
+    skos:inScheme types: .
+
+types:ImageSize a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ImageSize" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:width ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty types:height ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:height ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty types:width ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:width ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:height ] ;
+    skos:definition "size of a 2D image (in integer units)" ;
+    skos:inScheme types: .
+
+types:Series a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Series" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:increment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:increment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:increment ],
+        types:Range ;
+    skos:definition "A series of numbers constructed from min, max, and increment" ;
+    skos:inScheme types: .
+
+types:description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    rdfs:range linkml:String ;
+    skos:definition "The description of the item" ;
+    skos:inScheme types: .
+
+types:descriptors a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptors" ;
+    rdfs:range types:Descriptors ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+    skos:inScheme types: .
+
+types:name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the item" ;
+    skos:inScheme types: .
+
+instrument:Instrument a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Instrument" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty instrument:cs ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty instrument:acceleration_voltage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty instrument:c2_aperture ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty instrument:acceleration_voltage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty instrument:acceleration_voltage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty instrument:imaging ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty instrument:cs ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty instrument:c2_aperture ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty instrument:electron_source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty instrument:electron_source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty instrument:operating_mode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty instrument:imaging ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty instrument:operating_mode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty instrument:illumination ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty instrument:imaging ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty instrument:beam_convergence ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty instrument:microscope ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty instrument:illumination ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty instrument:c2_aperture ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty instrument:beam_convergence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty instrument:illumination ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty instrument:cs ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty instrument:electron_source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty instrument:operating_mode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom instrument:Microscope ;
+            owl:onProperty instrument:microscope ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty instrument:beam_convergence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty instrument:microscope ] ;
+    skos:definition "Instrument values, mostly constant across a data collection." ;
+    skos:inScheme instrument: .
+
+types:Descriptor a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:descriptor_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:descriptor_thing ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:Any ;
+            owl:onProperty types:descriptor_thing ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:descriptor_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:descriptor_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:descriptor_thing ] ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
+    skos:inScheme types: .
+
+types:Descriptors a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptors" ;
+    rdfs:subClassOf types:Descriptor ;
+    skos:inScheme types: .
+
+types:QuantityValue a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantityValue" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty types:value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:value ] ;
+    skos:definition "if a value has a unit, it should be given as a unit value pair." ;
+    skos:exactMatch <qudt:quantityValue> ;
+    skos:inScheme types: .
+
+types:Range a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Range" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:minimal ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:minimal ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:minimal ] ;
+    skos:definition "A range constructed from min and max" ;
+    skos:inScheme types: .
+
+types:Any a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Any" ;
+    skos:definition "Any type, used as the base for type-narrowing." ;
+    skos:exactMatch linkml:Any ;
+    skos:inScheme types: .
+
+instrument:Microscope a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Microscope" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:manufacturer ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:manufacturer ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:model ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:model ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:model ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:manufacturer ] ;
+    skos:definition "Microscope information" ;
+    skos:exactMatch <http://schema.org/Microscope> ;
+    skos:inScheme instrument: .
+
+types:descriptor_name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_name" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name defining the descriptor" ;
+    skos:inScheme types: .
+
+types:descriptor_thing a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_thing" ;
+    rdfs:range types:Any ;
+    skos:definition "Description of the descriptor" ;
+    skos:inScheme types: .
+
+types:height a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "height" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The height of a given item - unit depends on item" ;
+    skos:inScheme types: .
+
+types:increment a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "increment" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Increment between elements of a series" ;
+    skos:inScheme types: .
+
+types:manufacturer a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "manufacturer" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the manufacturer" ;
+    skos:inScheme types: .
+
+types:maximal a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "maximal" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Maximal value of a given dataset property" ;
+    skos:inScheme types: .
+
+types:minimal a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "minimal" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Minimal value of a given dataset property" ;
+    skos:inScheme types: .
+
+types:model a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "model" ;
+    rdfs:range linkml:String ;
+    skos:definition "The model of the item" ;
+    skos:inScheme types: .
+
+types:unit a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unit" ;
+    rdfs:range linkml:String ;
+    skos:definition "the unit of a given value" ;
+    skos:inScheme types: .
+
+types:unitSI a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unitSI" ;
+    rdfs:range linkml:String ;
+    skos:definition "the SI unit attached to a si value" ;
+    skos:inScheme types: .
+
+types:value a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "value" ;
+    rdfs:range linkml:Float ;
+    skos:definition "the value of a field with a unit" ;
+    skos:inScheme types: .
+
+types:valueSI a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "valueSI" ;
+    rdfs:range linkml:Float ;
+    skos:definition "value of a given field in respect to its SI unit" ;
+    skos:inScheme types: .
+
+types:width a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "width" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The width of a given item - unit depends on item" ;
+    skos:inScheme types: .
+
+types:x_max a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_max" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "maximum x" ;
+    skos:inScheme types: .
+
+types:x_min a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_min" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "minimum x" ;
+    skos:inScheme types: .
+
+types:y_max a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_max" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "maximum y" ;
+    skos:inScheme types: .
+
+types:y_min a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_min" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "minimum y" ;
+    skos:inScheme types: .
+
+instrument:acceleration_voltage a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "acceleration_voltage" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Voltage used for the electron acceleration, in kV" ;
+    skos:inScheme instrument: .
+
+instrument:beam_convergence a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "beam_convergence" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM." ;
+    skos:inScheme instrument: .
+
+instrument:c2_aperture a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "c2_aperture" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "C2 aperture size used in data acquisition, in µm" ;
+    skos:inScheme instrument: .
+
+instrument:cs a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "cs" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Spherical aberration of the instrument, in mm" ;
+    skos:inScheme instrument: .
+
+instrument:electron_source a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "electron_source" ;
+    rdfs:range linkml:String ;
+    skos:definition "Type of electron source used in the microscope, such as FEG" ;
+    skos:inScheme instrument: .
+
+instrument:illumination a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "illumination" ;
+    rdfs:range linkml:String ;
+    skos:definition "Mode of illumination used during data collection" ;
+    skos:inScheme instrument: .
+
+instrument:imaging a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "imaging" ;
+    rdfs:range linkml:String ;
+    skos:definition "Mode of imaging used during data collection" ;
+    skos:inScheme instrument: .
+
+instrument:microscope a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "microscope" ;
+    rdfs:range instrument:Microscope ;
+    skos:definition "Microscope information" ;
+    skos:inScheme instrument: .
+
+instrument:operating_mode a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "operating_mode" ;
+    rdfs:range linkml:String ;
+    skos:definition "Operating mode of the microscope, i.e. \"TEM\", \"STEM\"" ;
+    skos:inScheme instrument: .
+
+instrument: a owl:Ontology ;
+    rdfs:label "Instrument" ;
+    skos:definition """LinkML schema for electron microscopy instrument and related metadata, broadly following the EMDB standard with some additions.
+""" .
+
+types:QuantitySI a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantitySI" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:valueSI ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:valueSI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:unitSI ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:unitSI ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:unitSI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty types:valueSI ],
+        types:QuantityValue ;
+    skos:definition "unit value extended to have two additional fields si_value and si_unit" ;
+    skos:inScheme types: .
+

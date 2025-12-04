@@ -1,0 +1,20 @@
+
+# Slot: acceleration_voltage
+
+Voltage used for the electron acceleration, in kV
+
+URI: [instrument:acceleration_voltage](https://w3id.org/oscem-schemas/latest/instrumentacceleration_voltage)
+
+
+## Domain and Range
+
+None &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
+
+## Parents
+
+
+## Children
+
+ *  [Instrument➞acceleration_voltage](Instrument_acceleration_voltage.md)
+
+## Used by

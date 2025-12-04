@@ -1,0 +1,110 @@
+# metamodel_version: 1.7.0
+enum OrganizationTypeEnum
+  {
+    Academic
+    Commercial
+    Government
+    Other
+  }
+
+scalar Any
+
+type Author
+  {
+    jobTitle: Boolean
+    telephone: String
+    orcid: String
+    country: String
+    role: String
+    nameOrg: String
+    typeOrg: OrganizationTypeEnum!
+    familyName: String!
+    givenName: String!
+    email: String!
+  }
+
+type BoundingBox2D
+  {
+    xMin: QuantitySI
+    xMax: QuantitySI
+    yMin: QuantitySI
+    yMax: QuantitySI
+  }
+
+interface Descriptor
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Descriptors
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Funder
+  {
+    funderName: String
+    typeOrg: OrganizationTypeEnum
+    country: String
+  }
+
+type Grant
+  {
+    grantName: String
+    startDate: String
+    endDate: String
+    budget: QuantityValue
+    projectId: String
+    country: String
+  }
+
+type ImageSize
+  {
+    height: Int
+    width: Int
+  }
+
+type Organizational
+  {
+    grants: [Grant]
+    authors: [Author]!
+    funder: [Funder]
+  }
+
+type Person
+  {
+    familyName: String
+    givenName: String
+    jobTitle: Boolean
+    email: String
+    telephone: String
+  }
+
+type QuantitySI
+  {
+    unit: String!
+    value: Float!
+    valueSI: Float
+    unitSI: String
+  }
+
+type QuantityValue
+  {
+    unit: String!
+    value: Float!
+  }
+
+type Range
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+  }
+
+type Series
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+    increment: QuantitySI
+  }

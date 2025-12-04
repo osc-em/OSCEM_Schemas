@@ -1,0 +1,503 @@
+{
+    "$defs": {
+        "Any": {
+            "additionalProperties": true,
+            "description": "Any type, used as the base for type-narrowing.",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
+        "BoundingBox2D": {
+            "additionalProperties": false,
+            "description": "an axis-aligned 2D bounding box (float units)",
+            "properties": {
+                "x_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum x"
+                },
+                "x_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum x"
+                },
+                "y_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum y"
+                },
+                "y_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum y"
+                }
+            },
+            "title": "BoundingBox2D",
+            "type": "object"
+        },
+        "Descriptors": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "descriptor_name": {
+                    "description": "Name defining the descriptor",
+                    "type": "string"
+                },
+                "descriptor_thing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the descriptor"
+                }
+            },
+            "required": [
+                "descriptor_name"
+            ],
+            "title": "Descriptors",
+            "type": "object"
+        },
+        "Freezing": {
+            "additionalProperties": false,
+            "description": "how the sample was frozen.",
+            "properties": {
+                "atmosphere": {
+                    "description": "What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blotting": {
+                    "description": "whether blotting was performed.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "cryogen_sample_env": {
+                    "description": "the cryogen used to freeze the sample, i.e. ethane",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "details": {
+                    "description": "Any further comments on the freezing process go here.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "humidity_env": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "humidity of the atmosphere right before/ during freezing; in %."
+                },
+                "method": {
+                    "$ref": "#/$defs/FreezingMethodEnum",
+                    "description": "freezing method - such as plunge freezing, high pressure freezing etc."
+                },
+                "temperature_env": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "temperature of the sample right before freezing; in K."
+                }
+            },
+            "title": "Freezing",
+            "type": "object"
+        },
+        "FreezingMethodEnum": {
+            "description": "Allowed freezing options.",
+            "enum": [
+                "plunge_freezing",
+                "high_pressure_freezing"
+            ],
+            "title": "FreezingMethodEnum",
+            "type": "string"
+        },
+        "ImageSize": {
+            "additionalProperties": false,
+            "description": "size of a 2D image (in integer units)",
+            "properties": {
+                "height": {
+                    "description": "The height of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "width": {
+                    "description": "The width of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImageSize",
+            "type": "object"
+        },
+        "QuantitySI": {
+            "additionalProperties": false,
+            "description": "unit value extended to have two additional fields si_value and si_unit",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "unitSI": {
+                    "description": "the SI unit attached to a si value",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                },
+                "valueSI": {
+                    "description": "value of a given field in respect to its SI unit",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantitySI",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "if a value has a unit, it should be given as a unit value pair.",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantityValue",
+            "type": "object"
+        },
+        "Range": {
+            "additionalProperties": false,
+            "description": "A range constructed from min and max",
+            "properties": {
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Range",
+            "type": "object"
+        },
+        "SampleEnv": {
+            "additionalProperties": false,
+            "description": "Unifying class to describe the full sample.",
+            "properties": {
+                "freezing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Freezing"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "specimen_env": {
+                    "$ref": "#/$defs/SpecimenEnv"
+                },
+                "thinning": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Thinning"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "tomogram_features": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TomogramFeatures"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "specimen_env"
+            ],
+            "title": "SampleEnv",
+            "type": "object"
+        },
+        "Series": {
+            "additionalProperties": false,
+            "description": "A series of numbers constructed from min, max, and increment",
+            "properties": {
+                "increment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Increment between elements of a series"
+                },
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Series",
+            "type": "object"
+        },
+        "SpecimenEnv": {
+            "additionalProperties": false,
+            "description": "base information on the acquisition and treatment of the sample itself.",
+            "properties": {
+                "collection_date": {
+                    "description": "When the sample was collected",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "handling": {
+                    "description": "What was done to the sample, please give an overview of relevant treatments.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "location": {
+                    "description": "the geographical location of your source, optimally in a geographic coordinate system.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism": {
+                    "description": "the organism(s) present in your sample, if not perfectly defined try to asses as close as possible.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "source_env": {
+                    "description": "where is this sample from? i.e. Hospital",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tissue": {
+                    "description": "if the sample is a tissue sample please indicate what type of tissue.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "organism"
+            ],
+            "title": "SpecimenEnv",
+            "type": "object"
+        },
+        "Thinning": {
+            "additionalProperties": false,
+            "description": "how the frozen sample was thinned by i.e. FiB-milling",
+            "properties": {
+                "instrument_thin": {
+                    "description": "Instrument used for thinning the sample",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ion_source": {
+                    "description": "what ion source was used?",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lift_out": {
+                    "description": "whether a lift out was performed",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "method_thin": {
+                    "description": "The thinning method used, such as FIB milling.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "target_thickness": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "What was the target thickness of the lamella; in nm."
+                }
+            },
+            "title": "Thinning",
+            "type": "object"
+        },
+        "TomogramFeatures": {
+            "additionalProperties": false,
+            "description": "what was the target of the tomograms, and what area of a cell do they cover.",
+            "properties": {
+                "cellular_features": {
+                    "description": "What type of cellular features are present in your tomograms?",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "details_tomo": {
+                    "description": "If you have any further comments on your tomograms please leave them here",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "main_target": {
+                    "description": "What was the main biological target of your research for this tomogram?",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organelles": {
+                    "description": "What organelles; if any; are present?",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "TomogramFeatures",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/oscem-schemas/latest/sample-env",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "SampleEnvironmentalTomography",
+    "type": "object",
+    "version": null
+}

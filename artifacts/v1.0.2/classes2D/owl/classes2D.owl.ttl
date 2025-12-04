@@ -1,0 +1,402 @@
+@prefix classes2D: <https://w3id.org/oscem-schemas/latest/classes2D> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+classes2D:Classes2D a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Classes2D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty classes2D:particles_per_2Dclass ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty classes2D:resolution_classes_2D ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty classes2D:resolution_classes_2D ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty classes2D:particles_per_2Dclass ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty classes2D:images_classes_2D ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty classes2D:images_classes_2D ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> ;
+            owl:onProperty classes2D:resolution_classes_2D ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty classes2D:images_classes_2D ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ] ;
+    skos:definition "Class representing classes 2D metadata" ;
+    skos:inScheme classes2D: .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "BoundingBox2D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ] ;
+    skos:definition "an axis-aligned 2D bounding box (float units)" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesImageSize> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ImageSize" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ] ;
+    skos:definition "size of a 2D image (in integer units)" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesSeries> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Series" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
+        <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
+    skos:definition "A series of numbers constructed from min, max, and increment" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesdescription> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    rdfs:range linkml:String ;
+    skos:definition "The description of the item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "manufacturer" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the manufacturer" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesmodel> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "model" ;
+    rdfs:range linkml:String ;
+    skos:definition "The model of the item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesname> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesAny> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesRange> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Range" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ] ;
+    skos:definition "A range constructed from min and max" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+classes2D:particles_per_2Dclass a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "particles_per_2Dclass" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of particles per 2D class" ;
+    skos:inScheme classes2D: .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesAny> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Any" ;
+    skos:definition "Any type, used as the base for type-narrowing." ;
+    skos:exactMatch linkml:Any ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptors" ;
+    rdfs:subClassOf <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptors" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+classes2D:images_classes_2D a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "images_classes_2D" ;
+    rdfs:range linkml:String ;
+    skos:definition "Filename of the image containing 2D class images" ;
+    skos:inScheme classes2D: .
+
+classes2D:resolution_classes_2D a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "resolution_classes_2D" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> ;
+    skos:definition "Resolution of classes 2D" ;
+    skos:inScheme classes2D: .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantityValue" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ] ;
+    skos:definition "if a value has a unit, it should be given as a unit value pair." ;
+    skos:exactMatch <qudt:quantityValue> ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_name" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name defining the descriptor" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_thing" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesAny> ;
+    skos:definition "Description of the descriptor" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesheight> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "height" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The height of a given item - unit depends on item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesincrement> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "increment" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "Increment between elements of a series" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesmaximal> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "maximal" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "Maximal value of a given dataset property" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesminimal> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "minimal" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "Minimal value of a given dataset property" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesunit> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unit" ;
+    rdfs:range linkml:String ;
+    skos:definition "the unit of a given value" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesunitSI> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unitSI" ;
+    rdfs:range linkml:String ;
+    skos:definition "the SI unit attached to a si value" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesvalue> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "value" ;
+    rdfs:range linkml:Float ;
+    skos:definition "the value of a field with a unit" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "valueSI" ;
+    rdfs:range linkml:Float ;
+    skos:definition "value of a given field in respect to its SI unit" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typeswidth> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "width" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The width of a given item - unit depends on item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesx_max> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_max" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "maximum x" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesx_min> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_min" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "minimum x" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesy_max> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_max" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "maximum y" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesy_min> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_min" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "minimum y" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+classes2D: a owl:Ontology ;
+    rdfs:label "Classes2D" ;
+    skos:definition """LinkML schema for electron microscopy 2D classes generated when processing.
+""" .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantitySI" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
+        <https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> ;
+    skos:definition "unit value extended to have two additional fields si_value and si_unit" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+

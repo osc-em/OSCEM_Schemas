@@ -1,0 +1,65 @@
+# metamodel_version: 1.7.0
+scalar Any
+
+type BoundingBox2D
+  {
+    xMin: QuantitySI
+    xMax: QuantitySI
+    yMin: QuantitySI
+    yMax: QuantitySI
+  }
+
+type Coordinates
+  {
+    numberParticles: Int!
+    particlesPerMicrograph: Float
+    numSourceMicrographs: Int
+    particlesHistogram: String
+    micrographExamples: String
+    descriptors: [Descriptors]
+  }
+
+interface Descriptor
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Descriptors
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type ImageSize
+  {
+    height: Int
+    width: Int
+  }
+
+type QuantitySI
+  {
+    unit: String!
+    value: Float!
+    valueSI: Float
+    unitSI: String
+  }
+
+type QuantityValue
+  {
+    unit: String!
+    value: Float!
+  }
+
+type Range
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+  }
+
+type Series
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+    increment: QuantitySI
+  }

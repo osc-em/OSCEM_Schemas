@@ -1,0 +1,84 @@
+# metamodel_version: 1.7.0
+scalar Any
+
+type BoundingBox2D
+  {
+    xMin: QuantitySI
+    xMax: QuantitySI
+    yMin: QuantitySI
+    yMax: QuantitySI
+  }
+
+type Classes3D
+  {
+    particlesPer3Dclass: [Int]
+    imagesClasses3D: String
+    volume: [Volume]
+    resolutionClasses3D: QuantityValue
+    descriptors: [Descriptors]
+  }
+
+interface Descriptor
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Descriptors
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type ImageSize
+  {
+    height: Int
+    width: Int
+  }
+
+type IsosurfaceImages
+  {
+    frontView: String
+    sideView: String
+    topView: String
+  }
+
+type OrthogonalSlices
+  {
+    orthogonalSlicesX: String
+    orthogonalSlicesY: String
+    orthogonalSlicesZ: String
+  }
+
+type QuantitySI
+  {
+    unit: String!
+    value: Float!
+    valueSI: Float
+    unitSI: String
+  }
+
+type QuantityValue
+  {
+    unit: String!
+    value: Float!
+  }
+
+type Range
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+  }
+
+type Series
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+    increment: QuantitySI
+  }
+
+type Volume
+  {
+    orthogonalSlices: OrthogonalSlices
+    isosurfaceImages: IsosurfaceImages
+  }

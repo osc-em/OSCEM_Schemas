@@ -1,0 +1,928 @@
+{
+    "$defs": {
+        "Acquisition": {
+            "additionalProperties": false,
+            "description": "General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).",
+            "properties": {
+                "beamshift": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BoundingBox2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "beamtilt": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BoundingBox2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "beamtiltgroups": {
+                    "description": "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "binning_camera": {
+                    "$ref": "#/$defs/ImageSize",
+                    "description": "Level of binning on the images applied during data collection"
+                },
+                "calibrated_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Machine estimated defocus, min and max values in \u00b5m. Has a tendency to be off."
+                },
+                "calibrated_magnification": {
+                    "description": "Calculated magnification, no unit",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "cryogen": {
+                    "description": "Cryogen used in cooling the instrument and sample, usually nitrogen",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_time": {
+                    "description": "Time and date of the data acquisition",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "detectors": {
+                    "items": {
+                        "$ref": "#/$defs/Detector"
+                    },
+                    "type": "array"
+                },
+                "dose_per_movie": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom"
+                },
+                "energy_filter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EnergyFilter"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Whether an energy filter was used and its specifics."
+                },
+                "exposure_time": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Time of data acquisition per movie/tilt - in s"
+                },
+                "frames_per_movie": {
+                    "description": "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "gainref_flip_rotate": {
+                    "description": "Whether and how you have to flip or rotate the gainref in order to align with your acquired images",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grids_imaged": {
+                    "description": "Number of grids imaged for this project - here with qualifier during this data acquisition",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "holder": {
+                    "description": "Speciman holder model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "holder_cryogen": {
+                    "description": "Type of cryogen used in the holder - if the holder is cooled seperately",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "image_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ImageSize"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The size of the image in pixels, height and width given."
+                },
+                "images_generated": {
+                    "description": "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "imageshift": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BoundingBox2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Movement of the Beam below the image in order to shift the image on the detector. Given in \u00b5m."
+                },
+                "microscope_software": {
+                    "description": "Software used for instrument control,",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nominal_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target defocus set, min and max values in nm."
+                },
+                "nominal_magnification": {
+                    "description": "Magnification level as indicated by the instrument, no unit",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "pixel_size": {
+                    "$ref": "#/$defs/QuantitySI",
+                    "description": "Pixel size, in Angstrom"
+                },
+                "screen_current": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The total electron beam current hitting the viewing screen, in nA."
+                },
+                "specialist_optics": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SpecialistOptics"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Any type of special optics, such as a phaseplate"
+                },
+                "technique": {
+                    "description": "Specifies which Acquisition subschema/class is in use.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Temperature during data collection, in K with min and max values."
+                }
+            },
+            "required": [
+                "detectors",
+                "date_time",
+                "binning_camera",
+                "pixel_size"
+            ],
+            "title": "Acquisition",
+            "type": "object"
+        },
+        "AcquisitionSpa": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "beamshift": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BoundingBox2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "beamtilt": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BoundingBox2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad."
+                },
+                "beamtiltgroups": {
+                    "description": "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "binning_camera": {
+                    "$ref": "#/$defs/ImageSize",
+                    "description": "Level of binning on the images applied during data collection"
+                },
+                "calibrated_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Machine estimated defocus, min and max values in \u00b5m. Has a tendency to be off."
+                },
+                "calibrated_magnification": {
+                    "description": "Calculated magnification, no unit",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "cryogen": {
+                    "description": "Cryogen used in cooling the instrument and sample, usually nitrogen",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_time": {
+                    "description": "Time and date of the data acquisition",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "detectors": {
+                    "items": {
+                        "$ref": "#/$defs/Detector"
+                    },
+                    "type": "array"
+                },
+                "dose_per_movie": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom"
+                },
+                "energy_filter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EnergyFilter"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Whether an energy filter was used and its specifics."
+                },
+                "exposure_time": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Time of data acquisition per movie/tilt - in s"
+                },
+                "frames_per_movie": {
+                    "description": "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "gainref_flip_rotate": {
+                    "description": "Whether and how you have to flip or rotate the gainref in order to align with your acquired images",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grids_imaged": {
+                    "description": "Number of grids imaged for this project - here with qualifier during this data acquisition",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "holder": {
+                    "description": "Speciman holder model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "holder_cryogen": {
+                    "description": "Type of cryogen used in the holder - if the holder is cooled seperately",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "image_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ImageSize"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The size of the image in pixels, height and width given."
+                },
+                "images_generated": {
+                    "description": "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "imageshift": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BoundingBox2D"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Movement of the Beam below the image in order to shift the image on the detector. Given in \u00b5m."
+                },
+                "microscope_software": {
+                    "description": "Software used for instrument control,",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nominal_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target defocus set, min and max values in nm."
+                },
+                "nominal_magnification": {
+                    "description": "Magnification level as indicated by the instrument, no unit",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "pixel_size": {
+                    "$ref": "#/$defs/QuantitySI",
+                    "description": "Pixel size, in Angstrom"
+                },
+                "screen_current": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The total electron beam current hitting the viewing screen, in nA."
+                },
+                "specialist_optics": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SpecialistOptics"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Any type of special optics, such as a phaseplate"
+                },
+                "technique": {
+                    "const": "spa",
+                    "description": "Single particle acquisition",
+                    "type": "string"
+                },
+                "temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Temperature during data collection, in K with min and max values."
+                }
+            },
+            "required": [
+                "technique",
+                "detectors",
+                "date_time",
+                "binning_camera",
+                "pixel_size"
+            ],
+            "title": "AcquisitionSpa",
+            "type": "object"
+        },
+        "AcquisitionTechnique": {
+            "description": "",
+            "enum": [
+                "spa",
+                "subtomo",
+                "env_tomo",
+                "cellular_tomo"
+            ],
+            "title": "AcquisitionTechnique",
+            "type": "string"
+        },
+        "Any": {
+            "additionalProperties": true,
+            "description": "Any type, used as the base for type-narrowing.",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
+        "BoundingBox2D": {
+            "additionalProperties": false,
+            "description": "an axis-aligned 2D bounding box (float units)",
+            "properties": {
+                "x_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum x"
+                },
+                "x_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum x"
+                },
+                "y_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum y"
+                },
+                "y_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum y"
+                }
+            },
+            "title": "BoundingBox2D",
+            "type": "object"
+        },
+        "ChromaticAberrationCorrector": {
+            "additionalProperties": false,
+            "description": "Special device used to correct instrument inherent chromatic aberration.",
+            "properties": {
+                "instrument_type": {
+                    "description": "Details of a given specialist instrument",
+                    "type": "string"
+                },
+                "used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "used",
+                "instrument_type"
+            ],
+            "title": "ChromaticAberrationCorrector",
+            "type": "object"
+        },
+        "Descriptors": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "descriptor_name": {
+                    "description": "Name defining the descriptor",
+                    "type": "string"
+                },
+                "descriptor_thing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the descriptor"
+                }
+            },
+            "required": [
+                "descriptor_name"
+            ],
+            "title": "Descriptors",
+            "type": "object"
+        },
+        "Detector": {
+            "additionalProperties": false,
+            "description": "Class representing a detector",
+            "properties": {
+                "collection_angle": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Range"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Collection angle set, min and max values in mrad."
+                },
+                "dispersion": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Dispersion of an analytical detector, in eV"
+                },
+                "mode": {
+                    "description": "Mode of the detector, e.g. \"counting\", \"ScanningDetector\", \"ImagingDetector\", etc.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The name of the item",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Detector",
+            "type": "object"
+        },
+        "EnergyFilter": {
+            "additionalProperties": false,
+            "description": "A device used to filter for electrons with specific energy.",
+            "properties": {
+                "model": {
+                    "description": "The model of the item",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                },
+                "width_energy_filter": {
+                    "$ref": "#/$defs/QuantitySI",
+                    "description": "Width of the energy filter used."
+                }
+            },
+            "required": [
+                "used",
+                "width_energy_filter"
+            ],
+            "title": "EnergyFilter",
+            "type": "object"
+        },
+        "ImageSize": {
+            "additionalProperties": false,
+            "description": "size of a 2D image (in integer units)",
+            "properties": {
+                "height": {
+                    "description": "The height of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "width": {
+                    "description": "The width of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImageSize",
+            "type": "object"
+        },
+        "Phaseplate": {
+            "additionalProperties": false,
+            "description": "Used to modulate the phase of the electron wave.",
+            "properties": {
+                "instrument_type": {
+                    "description": "Type of phaseplate",
+                    "type": "string"
+                },
+                "used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "used",
+                "instrument_type"
+            ],
+            "title": "Phaseplate",
+            "type": "object"
+        },
+        "QuantitySI": {
+            "additionalProperties": false,
+            "description": "unit value extended to have two additional fields si_value and si_unit",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "unitSI": {
+                    "description": "the SI unit attached to a si value",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                },
+                "valueSI": {
+                    "description": "value of a given field in respect to its SI unit",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantitySI",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "if a value has a unit, it should be given as a unit value pair.",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantityValue",
+            "type": "object"
+        },
+        "Range": {
+            "additionalProperties": false,
+            "description": "A range constructed from min and max",
+            "properties": {
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Range",
+            "type": "object"
+        },
+        "Series": {
+            "additionalProperties": false,
+            "description": "A series of numbers constructed from min, max, and increment",
+            "properties": {
+                "increment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Increment between elements of a series"
+                },
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Series",
+            "type": "object"
+        },
+        "SpecialistOptics": {
+            "additionalProperties": false,
+            "description": "Optional optics used to correct for instrument limitations.",
+            "properties": {
+                "chromatic_aberration_corrector": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ChromaticAberrationCorrector"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Specialist device to correct for chromatic aberration of the microscope lenses"
+                },
+                "phaseplate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Phaseplate"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Phaseplate is a special optics device that can be used to enhance contrast"
+                },
+                "spherical_aberration_corrector": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SphericalAberrationCorrector"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Specialist device to correct for spherical aberration of the microscope lenses"
+                }
+            },
+            "title": "SpecialistOptics",
+            "type": "object"
+        },
+        "SphericalAberrationCorrector": {
+            "additionalProperties": false,
+            "description": "Special device used to correct instrument inherent spherical aberration.",
+            "properties": {
+                "instrument_type": {
+                    "description": "Details of a given specialist instrument",
+                    "type": "string"
+                },
+                "used": {
+                    "description": "whether a specific instrument was used during data acquisition",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "used",
+                "instrument_type"
+            ],
+            "title": "SphericalAberrationCorrector",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/oscem-schemas/latest/acquisition",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "Acquisition",
+    "type": "object",
+    "version": null
+}

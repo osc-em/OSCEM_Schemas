@@ -1,0 +1,733 @@
+{
+    "$defs": {
+        "Any": {
+            "additionalProperties": true,
+            "description": "Any type, used as the base for type-narrowing.",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
+        "AssemblyEnum": {
+            "description": "Allowed molecular assembly values - compatible with the EMDB.",
+            "enum": [
+                "FILAMENT",
+                "HELICAL ARRAY",
+                "PARTICLE"
+            ],
+            "title": "AssemblyEnum",
+            "type": "string"
+        },
+        "BoundingBox2D": {
+            "additionalProperties": false,
+            "description": "an axis-aligned 2D bounding box (float units)",
+            "properties": {
+                "x_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum x"
+                },
+                "x_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum x"
+                },
+                "y_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum y"
+                },
+                "y_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum y"
+                }
+            },
+            "title": "BoundingBox2D",
+            "type": "object"
+        },
+        "Descriptors": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "descriptor_name": {
+                    "description": "Name defining the descriptor",
+                    "type": "string"
+                },
+                "descriptor_thing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the descriptor"
+                }
+            },
+            "required": [
+                "descriptor_name"
+            ],
+            "title": "Descriptors",
+            "type": "object"
+        },
+        "Grid": {
+            "additionalProperties": false,
+            "description": "Details on the grid used in the experiment.",
+            "properties": {
+                "film_material": {
+                    "description": "Type of material the support film is made of",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "film_support": {
+                    "description": "Whether a support film was used",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "film_thickness": {
+                    "description": "Thickness of the support film",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "film_topology": {
+                    "description": "Topology of the support film",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "manufacturer": {
+                    "description": "The name of the manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "material": {
+                    "description": "Material out of which the grid is made",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "mesh": {
+                    "description": "Grid mesh in lines per inch",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pretreatment_atmosphere": {
+                    "description": "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pretreatment_pressure": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pressure of the chamber during pretreatment, in Pa"
+                },
+                "pretreatment_time": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Length of time of the pretreatment in s"
+                },
+                "pretreatment_type": {
+                    "description": "Type of pretreatment of the grid, i.e., glow discharge",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Grid",
+            "type": "object"
+        },
+        "ImageSize": {
+            "additionalProperties": false,
+            "description": "size of a 2D image (in integer units)",
+            "properties": {
+                "height": {
+                    "description": "The height of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "width": {
+                    "description": "The width of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImageSize",
+            "type": "object"
+        },
+        "Ligand": {
+            "additionalProperties": false,
+            "description": "Information on ligands if present.",
+            "properties": {
+                "present": {
+                    "description": "Whether the model contains any ligands",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "reference": {
+                    "description": "Link to a reference of your ligand, i.e., CCD, PubChem, etc.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "smiles": {
+                    "description": "Provide a valid SMILES string of your ligand",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Ligand",
+            "type": "object"
+        },
+        "Molecule": {
+            "additionalProperties": false,
+            "description": "More detailed information about individual molecules.",
+            "properties": {
+                "expression_system": {
+                    "description": "Scientific name of the organism used to produce the molecule of interest",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gene_name": {
+                    "description": "Name of the gene of interest",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "molecular_class": {
+                    "description": "Class of the molecule",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "molecular_type": {
+                    "description": "Description of the overall molecular type, i.e., a complex",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name_mol": {
+                    "description": "Name of an individual molecule (often protein) in the sample",
+                    "type": "string"
+                },
+                "natural_source": {
+                    "description": "Scientific name of the natural host organism",
+                    "type": "string"
+                },
+                "sequence": {
+                    "description": "Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here",
+                    "type": "string"
+                },
+                "taxonomy_id_expression": {
+                    "description": "Taxonomy ID of the expression system organism",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxonomy_id_source": {
+                    "description": "Taxonomy ID of the natural source organism",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "name_mol",
+                "sequence",
+                "natural_source"
+            ],
+            "title": "Molecule",
+            "type": "object"
+        },
+        "MoleculeClassEnum": {
+            "description": "Allowed molecule class values - compatible with the EMDB.",
+            "enum": [
+                "CELL",
+                "COMPLEX",
+                "ORGANELLE OR CELLULAR COMPONENT",
+                "RIBOSOME",
+                "TISSUE",
+                "VIRUS"
+            ],
+            "title": "MoleculeClassEnum",
+            "type": "string"
+        },
+        "OverallMolecule": {
+            "additionalProperties": false,
+            "description": "Description of the overall molecule",
+            "properties": {
+                "assembly": {
+                    "$ref": "#/$defs/AssemblyEnum",
+                    "description": "What type of higher order structure your sample forms - if any."
+                },
+                "molecular_overall_type": {
+                    "$ref": "#/$defs/MoleculeClassEnum",
+                    "description": "Description of the overall molecular type, i.e., a complex"
+                },
+                "molecular_weight": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Molecular weight in Da"
+                },
+                "name_sample": {
+                    "description": "Name of the full sample",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name_sample",
+                "source"
+            ],
+            "title": "OverallMolecule",
+            "type": "object"
+        },
+        "QuantitySI": {
+            "additionalProperties": false,
+            "description": "unit value extended to have two additional fields si_value and si_unit",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "unitSI": {
+                    "description": "the SI unit attached to a si value",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                },
+                "valueSI": {
+                    "description": "value of a given field in respect to its SI unit",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantitySI",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "if a value has a unit, it should be given as a unit value pair.",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantityValue",
+            "type": "object"
+        },
+        "Range": {
+            "additionalProperties": false,
+            "description": "A range constructed from min and max",
+            "properties": {
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Range",
+            "type": "object"
+        },
+        "Sample": {
+            "additionalProperties": false,
+            "description": "Unifying class to describe the full sample.",
+            "properties": {
+                "description": {
+                    "description": "The description of the item",
+                    "type": "string"
+                },
+                "grid": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Grid"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the grid used"
+                },
+                "ligands": {
+                    "description": "List of ligands associated with the sample",
+                    "items": {
+                        "$ref": "#/$defs/Ligand"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "molecule": {
+                    "description": "List of molecule associated with the sample",
+                    "items": {
+                        "$ref": "#/$defs/Molecule"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The name of the item",
+                    "type": "string"
+                },
+                "overall_molecule": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OverallMolecule"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the overall molecule"
+                },
+                "specimen": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Specimen"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the specimen"
+                }
+            },
+            "required": [
+                "name",
+                "description"
+            ],
+            "title": "Sample",
+            "type": "object"
+        },
+        "SampleMolecular": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "description": {
+                    "description": "The description of the item",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grid": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Grid"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the grid used"
+                },
+                "ligands": {
+                    "description": "List of ligands associated with the sample",
+                    "items": {
+                        "$ref": "#/$defs/Ligand"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "molecule": {
+                    "description": "List of molecule associated with the sample",
+                    "items": {
+                        "$ref": "#/$defs/Molecule"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The name of the item",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "overall_molecule": {
+                    "$ref": "#/$defs/OverallMolecule",
+                    "description": "Description of the overall molecule"
+                },
+                "specimen": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Specimen"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the specimen"
+                }
+            },
+            "required": [
+                "overall_molecule"
+            ],
+            "title": "SampleMolecular",
+            "type": "object"
+        },
+        "Series": {
+            "additionalProperties": false,
+            "description": "A series of numbers constructed from min, max, and increment",
+            "properties": {
+                "increment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Increment between elements of a series"
+                },
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Series",
+            "type": "object"
+        },
+        "Specimen": {
+            "additionalProperties": false,
+            "description": "Description of specimen handling.",
+            "properties": {
+                "buffer": {
+                    "description": "Name/composition of the (chemical) sample buffer during grid preparation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "concentration": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Concentration of the (supra)molecule in the sample, in mg/ml"
+                },
+                "embedding": {
+                    "description": "Whether the sample was embedded",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "humidity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Environmental humidity just before vitrification, in %"
+                },
+                "ph": {
+                    "description": "pH of the sample buffer",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "shadowing": {
+                    "description": "Whether the sample was shadowed",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "staining": {
+                    "description": "Whether the sample was stained",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Environmental temperature just before vitrification, in K"
+                },
+                "vitrification": {
+                    "description": "Whether the sample was vitrified",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "vitrification_cryogen": {
+                    "description": "Which cryogen was used for vitrification",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Specimen",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/oscem-schemas/latest/sample",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "Sample",
+    "type": "object",
+    "version": null
+}

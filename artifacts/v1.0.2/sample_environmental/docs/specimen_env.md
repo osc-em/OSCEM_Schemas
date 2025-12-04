@@ -1,0 +1,20 @@
+
+# Slot: specimen_env
+
+
+
+URI: [sample_env:specimen_env](https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env)
+
+
+## Domain and Range
+
+None &#8594;  <sub>0..1</sub> [SpecimenEnv](SpecimenEnv.md)
+
+## Parents
+
+
+## Children
+
+ *  [SampleEnv➞specimen_env](SampleEnv_specimen_env.md)
+
+## Used by

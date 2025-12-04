@@ -1,0 +1,424 @@
+{
+    "$defs": {
+        "Any": {
+            "additionalProperties": true,
+            "description": "Any type, used as the base for type-narrowing.",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
+        "Astigmatism": {
+            "additionalProperties": false,
+            "description": "Astigmatism-related metadata",
+            "properties": {
+                "astigmatism_histogram": {
+                    "description": "Filename of the astigmatism values histogram",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Astigmatism",
+            "type": "object"
+        },
+        "BoundingBox2D": {
+            "additionalProperties": false,
+            "description": "an axis-aligned 2D bounding box (float units)",
+            "properties": {
+                "x_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum x"
+                },
+                "x_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum x"
+                },
+                "y_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum y"
+                },
+                "y_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum y"
+                }
+            },
+            "title": "BoundingBox2D",
+            "type": "object"
+        },
+        "CTFs": {
+            "additionalProperties": false,
+            "description": "Class representing Contrast Transfer Function (CTF) metadata",
+            "properties": {
+                "amplitude_contrast": {
+                    "description": "Amplitude contrast",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "astigmatism": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Astigmatism"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Astigmatism metadata"
+                },
+                "defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Defocus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus metadata"
+                },
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Resolution"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution metadata"
+                }
+            },
+            "title": "CTFs",
+            "type": "object"
+        },
+        "Defocus": {
+            "additionalProperties": false,
+            "description": "Defocus-related metadata",
+            "properties": {
+                "defocus_histogram": {
+                    "description": "Filename of the defocus values histogram",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "defocus_micrograph_examples": {
+                    "description": "Filename of micrographs shown as examples in ascending order of defocus value",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "output_avg_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average value of defocus"
+                },
+                "output_max_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum defocus"
+                },
+                "output_min_defocus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum defocus"
+                }
+            },
+            "title": "Defocus",
+            "type": "object"
+        },
+        "Descriptors": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "descriptor_name": {
+                    "description": "Name defining the descriptor",
+                    "type": "string"
+                },
+                "descriptor_thing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the descriptor"
+                }
+            },
+            "required": [
+                "descriptor_name"
+            ],
+            "title": "Descriptors",
+            "type": "object"
+        },
+        "ImageSize": {
+            "additionalProperties": false,
+            "description": "size of a 2D image (in integer units)",
+            "properties": {
+                "height": {
+                    "description": "The height of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "width": {
+                    "description": "The width of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImageSize",
+            "type": "object"
+        },
+        "QuantitySI": {
+            "additionalProperties": false,
+            "description": "unit value extended to have two additional fields si_value and si_unit",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "unitSI": {
+                    "description": "the SI unit attached to a si value",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                },
+                "valueSI": {
+                    "description": "value of a given field in respect to its SI unit",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantitySI",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "if a value has a unit, it should be given as a unit value pair.",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantityValue",
+            "type": "object"
+        },
+        "Range": {
+            "additionalProperties": false,
+            "description": "A range constructed from min and max",
+            "properties": {
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Range",
+            "type": "object"
+        },
+        "Resolution": {
+            "additionalProperties": false,
+            "description": "Resolution-related metadata",
+            "properties": {
+                "output_avg_resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average value of resolution"
+                },
+                "output_max_resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum resolution"
+                },
+                "output_min_resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum resolution"
+                },
+                "resolution_histogram": {
+                    "description": "Filename of the resolution values histogram",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Resolution",
+            "type": "object"
+        },
+        "Series": {
+            "additionalProperties": false,
+            "description": "A series of numbers constructed from min, max, and increment",
+            "properties": {
+                "increment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Increment between elements of a series"
+                },
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Series",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/oscem-schemas/latest/ctfs",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "CTFs",
+    "type": "object",
+    "version": null
+}

@@ -1,0 +1,496 @@
+{
+    "$defs": {
+        "Any": {
+            "additionalProperties": true,
+            "description": "Any type, used as the base for type-narrowing.",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
+        "Author": {
+            "additionalProperties": false,
+            "description": "Details on the person performing the experiment.",
+            "properties": {
+                "country": {
+                    "description": "Country of the institution",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "email": {
+                    "description": "email",
+                    "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+                    "type": "string"
+                },
+                "family_name": {
+                    "description": "last name",
+                    "type": "string"
+                },
+                "given_name": {
+                    "description": "first name",
+                    "type": "string"
+                },
+                "job_title": {
+                    "description": "job title",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "name_org": {
+                    "description": "Name of the organization",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "orcid": {
+                    "description": "ORCID of the author, a type of unique identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "role": {
+                    "description": "Role of the author, for example principal investigator",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "telephone": {
+                    "description": "work phone",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type_org": {
+                    "$ref": "#/$defs/OrganizationTypeEnum",
+                    "description": "Type of organization, academic, commercial, governmental, etc."
+                }
+            },
+            "required": [
+                "type_org",
+                "family_name",
+                "given_name",
+                "email"
+            ],
+            "title": "Author",
+            "type": "object"
+        },
+        "BoundingBox2D": {
+            "additionalProperties": false,
+            "description": "an axis-aligned 2D bounding box (float units)",
+            "properties": {
+                "x_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum x"
+                },
+                "x_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum x"
+                },
+                "y_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum y"
+                },
+                "y_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum y"
+                }
+            },
+            "title": "BoundingBox2D",
+            "type": "object"
+        },
+        "Descriptors": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "descriptor_name": {
+                    "description": "Name defining the descriptor",
+                    "type": "string"
+                },
+                "descriptor_thing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the descriptor"
+                }
+            },
+            "required": [
+                "descriptor_name"
+            ],
+            "title": "Descriptors",
+            "type": "object"
+        },
+        "Funder": {
+            "additionalProperties": false,
+            "description": "Description of the project funding",
+            "properties": {
+                "country": {
+                    "description": "Country of the institution",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "funder_name": {
+                    "description": "funding organization/person.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type_org": {
+                    "$ref": "#/$defs/OrganizationTypeEnum",
+                    "description": "Type of organization, academic, commercial, governmental, etc."
+                }
+            },
+            "title": "Funder",
+            "type": "object"
+        },
+        "Grant": {
+            "additionalProperties": false,
+            "description": "Grant",
+            "properties": {
+                "budget": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "budget"
+                },
+                "country": {
+                    "description": "Country of the institution",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "end date",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grant_name": {
+                    "description": "name of the grant",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "project_id": {
+                    "description": "project id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "start_date": {
+                    "description": "start date",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Grant",
+            "type": "object"
+        },
+        "ImageSize": {
+            "additionalProperties": false,
+            "description": "size of a 2D image (in integer units)",
+            "properties": {
+                "height": {
+                    "description": "The height of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "width": {
+                    "description": "The width of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImageSize",
+            "type": "object"
+        },
+        "OrganizationTypeEnum": {
+            "description": "Allowed values for authors organizations.",
+            "enum": [
+                "Academic",
+                "Commercial",
+                "Government",
+                "Other"
+            ],
+            "title": "OrganizationTypeEnum",
+            "type": "string"
+        },
+        "Organizational": {
+            "additionalProperties": false,
+            "description": "Overarching category for authors and grants",
+            "properties": {
+                "authors": {
+                    "description": "List of authors associated with the project",
+                    "items": {
+                        "$ref": "#/$defs/Author"
+                    },
+                    "type": "array"
+                },
+                "funder": {
+                    "description": "funding organization/person.",
+                    "items": {
+                        "$ref": "#/$defs/Funder"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "grants": {
+                    "description": "List of grants associated with the project",
+                    "items": {
+                        "$ref": "#/$defs/Grant"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "authors"
+            ],
+            "title": "Organizational",
+            "type": "object"
+        },
+        "Person": {
+            "additionalProperties": false,
+            "description": "personal information",
+            "properties": {
+                "email": {
+                    "description": "email",
+                    "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "family_name": {
+                    "description": "last name",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "given_name": {
+                    "description": "first name",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "job_title": {
+                    "description": "job title",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "telephone": {
+                    "description": "work phone",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Person",
+            "type": "object"
+        },
+        "QuantitySI": {
+            "additionalProperties": false,
+            "description": "unit value extended to have two additional fields si_value and si_unit",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "unitSI": {
+                    "description": "the SI unit attached to a si value",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                },
+                "valueSI": {
+                    "description": "value of a given field in respect to its SI unit",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantitySI",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "if a value has a unit, it should be given as a unit value pair.",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantityValue",
+            "type": "object"
+        },
+        "Range": {
+            "additionalProperties": false,
+            "description": "A range constructed from min and max",
+            "properties": {
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Range",
+            "type": "object"
+        },
+        "Series": {
+            "additionalProperties": false,
+            "description": "A series of numbers constructed from min, max, and increment",
+            "properties": {
+                "increment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Increment between elements of a series"
+                },
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Series",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/oscem-schemas/latest/organizational",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "Organizational",
+    "type": "object",
+    "version": null
+}

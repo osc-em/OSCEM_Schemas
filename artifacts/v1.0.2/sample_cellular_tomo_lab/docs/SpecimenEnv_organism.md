@@ -1,0 +1,22 @@
+
+# Slot: organism
+
+the organism(s) present in your sample, if not perfectly defined try to asses as close as possible.
+
+URI: [cellular_tomo:SpecimenEnv_organism](https://w3id.org/oscem-schemas/latest/cellular_tomoSpecimenEnv_organism)
+
+
+## Domain and Range
+
+[SpecimenEnv](SpecimenEnv.md) &#8594;  <sub>1..\*</sub> [String](types/String.md)
+
+## Parents
+
+ *  is_a: [organism](organism.md)
+
+## Children
+
+
+## Used by
+
+ * [SpecimenEnv](SpecimenEnv.md)

@@ -1,0 +1,95 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// an axis-aligned 2D bounding box (float units)
+message BoundingBox2D
+ {
+  quantitySI xMin = 0
+  quantitySI xMax = 0
+  quantitySI yMin = 0
+  quantitySI yMax = 0
+ }
+message Descriptors
+ {
+  string descriptorName = 0
+  any descriptorThing = 0
+ }
+// how the sample was frozen.
+message Freezing
+ {
+  string cryogenSampleEnv = 0
+  freezingMethodEnum method = 0
+  boolean blotting = 0
+  quantitySI humidityEnv = 0
+  quantitySI temperatureEnv = 0
+  string atmosphere = 0
+  string details = 0
+ }
+// size of a 2D image (in integer units)
+message ImageSize
+ {
+  integer height = 0
+  integer width = 0
+ }
+// unit value extended to have two additional fields si_value and si_unit
+message QuantitySI
+ {
+  string unit = 0
+  float value = 0
+  float valueSI = 0
+  string unitSI = 0
+ }
+// if a value has a unit, it should be given as a unit value pair.
+message QuantityValue
+ {
+  string unit = 0
+  float value = 0
+ }
+// A range constructed from min and max
+message Range
+ {
+  quantitySI minimal = 0
+  quantitySI maximal = 0
+ }
+// Unifying class to describe the full sample.
+message SampleEnv
+ {
+  specimenEnv specimenEnv = 0
+  freezing freezing = 0
+  thinning thinning = 0
+  tomogramFeatures tomogramFeatures = 0
+ }
+// A series of numbers constructed from min, max, and increment
+message Series
+ {
+  quantitySI minimal = 0
+  quantitySI maximal = 0
+  quantitySI increment = 0
+ }
+// base information on the acquisition and treatment of the sample itself.
+message SpecimenEnv
+ {
+ repeated  string organism = 0
+  string tissue = 0
+  string sourceEnv = 0
+  string location = 0
+  date collectionDate = 0
+  string handling = 0
+ }
+// how the frozen sample was thinned by i.e. FiB-milling
+message Thinning
+ {
+  string methodThin = 0
+  string instrumentThin = 0
+  string ionSource = 0
+  quantitySI targetThickness = 0
+  boolean liftOut = 0
+ }
+// what was the target of the tomograms, and what area of a cell do they cover.
+message TomogramFeatures
+ {
+  string cellularFeatures = 0
+ repeated  string organelles = 0
+  string mainTarget = 0
+  string detailsTomo = 0
+ }

@@ -1,0 +1,928 @@
+@prefix cellular_tomo: <https://w3id.org/oscem-schemas/latest/cellular_tomo> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cellular_tomo:SampleCell a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SampleCell" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cellular_tomo:growth_condition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cellular_tomo:GrowthCondition ;
+            owl:onProperty cellular_tomo:growth_condition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cellular_tomo:growth_condition ],
+        <https://w3id.org/oscem-schemas/latest/environmental_sampleSampleEnv> ;
+    skos:definition "Unifying class to describe the full sample with growth conditions" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "BoundingBox2D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ] ;
+    skos:definition "an axis-aligned 2D bounding box (float units)" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesImageSize> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ImageSize" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ] ;
+    skos:definition "size of a 2D image (in integer units)" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesSeries> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Series" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
+        <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
+    skos:definition "A series of numbers constructed from min, max, and increment" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesdescription> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    rdfs:range linkml:String ;
+    skos:definition "The description of the item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptors" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "manufacturer" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the manufacturer" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesmodel> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "model" ;
+    rdfs:range linkml:String ;
+    skos:definition "The model of the item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesname> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesAny> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptors" ;
+    rdfs:subClassOf <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantityValue" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ] ;
+    skos:definition "if a value has a unit, it should be given as a unit value pair." ;
+    skos:exactMatch <qudt:quantityValue> ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesRange> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Range" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ] ;
+    skos:definition "A range constructed from min and max" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleSampleEnv> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SampleEnv" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplefreezing> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplethinning> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplefreezing> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplefreezing> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplethinning> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplethinning> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features> ] ;
+    skos:definition "Unifying class to describe the full sample." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/cellular_tomoFreezingMethodEnum#high_pressure_freezing> a owl:Class,
+        cellular_tomo:FreezingMethodEnum ;
+    rdfs:label "high_pressure_freezing" ;
+    rdfs:subClassOf cellular_tomo:FreezingMethodEnum ;
+    skos:definition "Usually used for larger organic complexes, such as organoids or even tissue samples." .
+
+<https://w3id.org/oscem-schemas/latest/cellular_tomoFreezingMethodEnum#plunge_freezing> a owl:Class,
+        cellular_tomo:FreezingMethodEnum ;
+    rdfs:label "plunge_freezing" ;
+    rdfs:subClassOf cellular_tomo:FreezingMethodEnum ;
+    skos:definition "Typically used for smaller and thinner samples in both SPA and tomography." .
+
+cellular_tomo:GrowthCondition a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "GrowthCondition" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cellular_tomo:growth_location ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cellular_tomo:atmosphere_growth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty cellular_tomo:treatment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cellular_tomo:media ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cellular_tomo:temperature_growth ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cellular_tomo:growth_location ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cellular_tomo:atmosphere_growth ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cellular_tomo:temperature_growth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty cellular_tomo:cell_cycle ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cellular_tomo:media ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty cellular_tomo:media ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty cellular_tomo:growth_location ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cellular_tomo:treatment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty cellular_tomo:atmosphere_growth ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cellular_tomo:cell_cycle ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cellular_tomo:cell_cycle ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cellular_tomo:treatment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty cellular_tomo:temperature_growth ] ;
+    skos:definition "How the cells were grown" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesAny> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Any" ;
+    skos:definition "Any type, used as the base for type-narrowing." ;
+    skos:exactMatch linkml:Any ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Freezing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplecryogen_sample_env> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletemperature_env> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplecryogen_sample_env> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplehumidity_env> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampledetails> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleblotting> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplemethod> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletemperature_env> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleblotting> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplehumidity_env> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplemethod> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampledetails> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplecryogen_sample_env> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampledetails> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleatmosphere> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplehumidity_env> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleblotting> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleatmosphere> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleatmosphere> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cellular_tomo:FreezingMethodEnum ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplemethod> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletemperature_env> ] ;
+    skos:definition "how the sample was frozen." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SpecimenEnv" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplehandling> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplesource_env> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplecollection_date> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplesource_env> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleorganism> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplelocation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletissue> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplelocation> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletissue> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplecollection_date> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplehandling> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletissue> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplelocation> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplesource_env> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplecollection_date> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleorganism> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplehandling> ] ;
+    skos:definition "base information on the acquisition and treatment of the sample itself." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Thinning" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletarget_thickness> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleion_source> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletarget_thickness> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplelift_out> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleion_source> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleinstrument_thin> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplelift_out> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleinstrument_thin> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleinstrument_thin> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleion_source> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampletarget_thickness> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplemethod_thin> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplemethod_thin> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplemethod_thin> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplelift_out> ] ;
+    skos:definition "how the frozen sample was thinned by i.e. FiB-milling" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "TomogramFeatures" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleorganelles> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampleorganelles> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplemain_target> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampledetails_tomo> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplemain_target> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplecellular_features> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplecellular_features> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampledetails_tomo> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplecellular_features> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_sampledetails_tomo> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/environmental_samplemain_target> ] ;
+    skos:definition "what was the target of the tomograms, and what area of a cell do they cover." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleorganelles> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "organelles" ;
+    rdfs:range linkml:String ;
+    skos:definition "What organelles; if any; are present?" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleorganism> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "organism" ;
+    rdfs:range linkml:String ;
+    skos:definition "the organism(s) present in your sample, if not perfectly defined try to asses as close as possible." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+cellular_tomo:atmosphere_growth a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "atmosphere_growth" ;
+    rdfs:range linkml:String ;
+    skos:definition "What was the atmosphere the sample was in, elaborate on any special gases present etc." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> .
+
+cellular_tomo:cell_cycle a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "cell_cycle" ;
+    rdfs:range linkml:String ;
+    skos:definition "What was the targeted cell cycle state, if any" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> .
+
+cellular_tomo:growth_condition a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "growth_condition" ;
+    rdfs:range cellular_tomo:GrowthCondition ;
+    skos:definition "How the specimen was grown" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> .
+
+cellular_tomo:growth_location a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "growth_location" ;
+    rdfs:range linkml:String ;
+    skos:definition "In/on what kind of surface/container the cells were grown; i.e. directly on a grid" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> .
+
+cellular_tomo:media a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "media" ;
+    rdfs:range linkml:String ;
+    skos:definition "What growth media was used" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> .
+
+cellular_tomo:temperature_growth a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "temperature_growth" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "Temperature of the sample; in K." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> .
+
+cellular_tomo:treatment a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "treatment" ;
+    rdfs:range linkml:String ;
+    skos:definition "Were there any special treatment conditions; such as addition of certain chemicals etc" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_name" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name defining the descriptor" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_thing" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesAny> ;
+    skos:definition "Description of the descriptor" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesheight> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "height" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The height of a given item - unit depends on item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesincrement> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "increment" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "Increment between elements of a series" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesmaximal> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "maximal" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "Maximal value of a given dataset property" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesminimal> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "minimal" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "Minimal value of a given dataset property" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesunit> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unit" ;
+    rdfs:range linkml:String ;
+    skos:definition "the unit of a given value" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesunitSI> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unitSI" ;
+    rdfs:range linkml:String ;
+    skos:definition "the SI unit attached to a si value" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesvalue> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "value" ;
+    rdfs:range linkml:Float ;
+    skos:definition "the value of a field with a unit" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "valueSI" ;
+    rdfs:range linkml:Float ;
+    skos:definition "value of a given field in respect to its SI unit" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typeswidth> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "width" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The width of a given item - unit depends on item" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesx_max> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_max" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "maximum x" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesx_min> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_min" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "minimum x" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesy_max> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_max" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "maximum y" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesy_min> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_min" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "minimum y" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleatmosphere> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "atmosphere" ;
+    rdfs:range linkml:String ;
+    skos:definition "What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleblotting> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "blotting" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "whether blotting was performed." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplecellular_features> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "cellular_features" ;
+    rdfs:range linkml:String ;
+    skos:definition "What type of cellular features are present in your tomograms?" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplecollection_date> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "collection_date" ;
+    rdfs:range linkml:Date ;
+    skos:definition "When the sample was collected" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplecryogen_sample_env> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "cryogen_sample_env" ;
+    rdfs:range linkml:String ;
+    skos:definition "the cryogen used to freeze the sample, i.e. ethane" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampledetails> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "details" ;
+    rdfs:range linkml:String ;
+    skos:definition "Any further comments on the freezing process go here." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampledetails_tomo> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "details_tomo" ;
+    rdfs:range linkml:String ;
+    skos:definition "If you have any further comments on your tomograms please leave them here" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplefreezing> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "freezing" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplehandling> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "handling" ;
+    rdfs:range linkml:String ;
+    skos:definition "What was done to the sample, please give an overview of relevant treatments." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplehumidity_env> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "humidity_env" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "humidity of the atmosphere right before/ during freezing; in %." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleinstrument_thin> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "instrument_thin" ;
+    rdfs:range linkml:String ;
+    skos:definition "Instrument used for thinning the sample" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleion_source> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "ion_source" ;
+    rdfs:range linkml:String ;
+    skos:definition "what ion source was used?" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplelift_out> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "lift_out" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "whether a lift out was performed" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplelocation> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "location" ;
+    rdfs:range linkml:String ;
+    skos:definition "the geographical location of your source, optimally in a geographic coordinate system." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplemain_target> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "main_target" ;
+    rdfs:range linkml:String ;
+    skos:definition "What was the main biological target of your research for this tomogram?" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplemethod> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "method" ;
+    rdfs:range cellular_tomo:FreezingMethodEnum ;
+    skos:definition "freezing method - such as plunge freezing, high pressure freezing etc." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplemethod_thin> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "method_thin" ;
+    rdfs:range linkml:String ;
+    skos:definition "The thinning method used, such as FIB milling." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplesource_env> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "source_env" ;
+    rdfs:range linkml:String ;
+    skos:definition "where is this sample from? i.e. Hospital" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "specimen_env" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv> ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampletarget_thickness> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "target_thickness" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "What was the target thickness of the lamella; in nm." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampletemperature_env> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "temperature_env" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    skos:definition "temperature of the sample right before freezing; in K." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_samplethinning> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "thinning" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampletissue> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "tissue" ;
+    rdfs:range linkml:String ;
+    skos:definition "if the sample is a tissue sample please indicate what type of tissue." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "tomogram_features" ;
+    rdfs:range <https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> .
+
+cellular_tomo:FreezingMethodEnum a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "FreezingMethodEnum" ;
+    owl:unionOf ( <https://w3id.org/oscem-schemas/latest/cellular_tomoFreezingMethodEnum#plunge_freezing> <https://w3id.org/oscem-schemas/latest/cellular_tomoFreezingMethodEnum#high_pressure_freezing> ) ;
+    skos:definition "Allowed freezing options." ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/sample-env> ;
+    linkml:permissible_values <https://w3id.org/oscem-schemas/latest/cellular_tomoFreezingMethodEnum#high_pressure_freezing>,
+        <https://w3id.org/oscem-schemas/latest/cellular_tomoFreezingMethodEnum#plunge_freezing> .
+
+<https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab> a owl:Ontology ;
+    rdfs:label "SampleCellularTomographyLabGrown" ;
+    skos:definition """LinkML schema for electron microscopy sample and author-related metadata, broadly following the EMDB standard with some additions.
+""" .
+
+<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantitySI" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
+        <https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> ;
+    skos:definition "unit value extended to have two additional fields si_value and si_unit" ;
+    skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
+

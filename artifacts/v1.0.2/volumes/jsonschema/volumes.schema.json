@@ -1,0 +1,467 @@
+{
+    "$defs": {
+        "Any": {
+            "additionalProperties": true,
+            "description": "Any type, used as the base for type-narrowing.",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
+        "BoundingBox2D": {
+            "additionalProperties": false,
+            "description": "an axis-aligned 2D bounding box (float units)",
+            "properties": {
+                "x_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum x"
+                },
+                "x_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum x"
+                },
+                "y_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "maximum y"
+                },
+                "y_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "minimum y"
+                }
+            },
+            "title": "BoundingBox2D",
+            "type": "object"
+        },
+        "Classes3D": {
+            "additionalProperties": false,
+            "description": "Class representing classes 3D metadata",
+            "properties": {
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "images_classes_3D": {
+                    "description": "Filename of the image containing 3D class images",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "particles_per_3Dclass": {
+                    "description": "Number of particles per 3D class",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "resolution_classes_3D": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution of volume"
+                },
+                "volume": {
+                    "description": "Describes volume(s) obtained",
+                    "items": {
+                        "$ref": "#/$defs/Volume"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Classes3D",
+            "type": "object"
+        },
+        "Descriptors": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "descriptor_name": {
+                    "description": "Name defining the descriptor",
+                    "type": "string"
+                },
+                "descriptor_thing": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of the descriptor"
+                }
+            },
+            "required": [
+                "descriptor_name"
+            ],
+            "title": "Descriptors",
+            "type": "object"
+        },
+        "ImageSize": {
+            "additionalProperties": false,
+            "description": "size of a 2D image (in integer units)",
+            "properties": {
+                "height": {
+                    "description": "The height of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "width": {
+                    "description": "The width of a given item - unit depends on item",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImageSize",
+            "type": "object"
+        },
+        "IsosurfaceImages": {
+            "additionalProperties": false,
+            "description": "Class for the isosurface images",
+            "properties": {
+                "front_view": {
+                    "description": "Filename of the front view isosurface image",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "side_view": {
+                    "description": "Filename of the side view isosurface image",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "top_view": {
+                    "description": "Filename of the top view isosurface image",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "IsosurfaceImages",
+            "type": "object"
+        },
+        "OrthogonalSlices": {
+            "additionalProperties": false,
+            "description": "Class for the orthogonal slices",
+            "properties": {
+                "orthogonal_slices_X": {
+                    "description": "Filename of orthogonal slices in X direction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "orthogonal_slices_Y": {
+                    "description": "Filename of orthogonal slices in Y direction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "orthogonal_slices_Z": {
+                    "description": "Filename of orthogonal slices in Z direction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "OrthogonalSlices",
+            "type": "object"
+        },
+        "QuantitySI": {
+            "additionalProperties": false,
+            "description": "unit value extended to have two additional fields si_value and si_unit",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "unitSI": {
+                    "description": "the SI unit attached to a si value",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                },
+                "valueSI": {
+                    "description": "value of a given field in respect to its SI unit",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantitySI",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "if a value has a unit, it should be given as a unit value pair.",
+            "properties": {
+                "unit": {
+                    "description": "the unit of a given value",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "the value of a field with a unit",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ],
+            "title": "QuantityValue",
+            "type": "object"
+        },
+        "Range": {
+            "additionalProperties": false,
+            "description": "A range constructed from min and max",
+            "properties": {
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Range",
+            "type": "object"
+        },
+        "Series": {
+            "additionalProperties": false,
+            "description": "A series of numbers constructed from min, max, and increment",
+            "properties": {
+                "increment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Increment between elements of a series"
+                },
+                "maximal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximal value of a given dataset property"
+                },
+                "minimal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantitySI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimal value of a given dataset property"
+                }
+            },
+            "title": "Series",
+            "type": "object"
+        },
+        "Volume": {
+            "additionalProperties": false,
+            "description": "Class describing volume(s) obtained",
+            "properties": {
+                "isosurface_images": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/IsosurfaceImages"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "isosurface images of volume"
+                },
+                "orthogonal_slices": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OrthogonalSlices"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "orthogonal slices of volume"
+                }
+            },
+            "title": "Volume",
+            "type": "object"
+        },
+        "Volumes": {
+            "additionalProperties": false,
+            "description": "Class representing volume metadata",
+            "properties": {
+                "descriptors": {
+                    "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+                    "items": {
+                        "$ref": "#/$defs/Descriptors"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "isosurface_images": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/IsosurfaceImages"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "isosurface images of volume"
+                },
+                "orthogonal_slices": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OrthogonalSlices"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "orthogonal slices of volume"
+                },
+                "size": {
+                    "description": "Size of the volume",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "vol_number_particles": {
+                    "description": "Number of particles associated to volume",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "vol_resolution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution of volume"
+                },
+                "volume_type": {
+                    "description": "Indicates the type of volume",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "volume_type"
+            ],
+            "title": "Volumes",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/oscem-schemas/latest/volumes",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "Volumes",
+    "type": "object",
+    "version": null
+}

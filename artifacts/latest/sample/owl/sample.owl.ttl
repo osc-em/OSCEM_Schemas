@@ -1,0 +1,1186 @@
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sample: <https://w3id.org/oscem-schemas/latest/sample> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix types: <https://w3id.org/oscem-schemas/latest/custom_types> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+types:BoundingBox2D a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "BoundingBox2D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:x_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:y_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:x_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:y_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:y_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:x_min ] ;
+    skos:definition "an axis-aligned 2D bounding box (float units)" ;
+    skos:inScheme types: .
+
+types:ImageSize a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ImageSize" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty types:height ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty types:width ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:height ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:height ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:width ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:width ] ;
+    skos:definition "size of a 2D image (in integer units)" ;
+    skos:inScheme types: .
+
+types:Series a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Series" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:increment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:increment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:increment ],
+        types:Range ;
+    skos:definition "A series of numbers constructed from min, max, and increment" ;
+    skos:inScheme types: .
+
+types:descriptors a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptors" ;
+    rdfs:range types:Descriptors ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+    skos:inScheme types: .
+
+types:model a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "model" ;
+    rdfs:range linkml:String ;
+    skos:definition "The model of the item" ;
+    skos:inScheme types: .
+
+sample:SampleMolecular a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SampleMolecular" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty sample:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty sample:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:overall_molecule ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:overall_molecule ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty sample:overall_molecule ],
+        sample:Sample ;
+    skos:inScheme sample: .
+
+types:Descriptor a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:descriptor_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:descriptor_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:descriptor_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:descriptor_thing ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:descriptor_thing ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:Any ;
+            owl:onProperty types:descriptor_thing ] ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
+    skos:inScheme types: .
+
+types:Descriptors a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptors" ;
+    rdfs:subClassOf types:Descriptor ;
+    skos:inScheme types: .
+
+types:QuantityValue a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantityValue" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty types:value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:unit ] ;
+    skos:definition "if a value has a unit, it should be given as a unit value pair." ;
+    skos:exactMatch <qudt:quantityValue> ;
+    skos:inScheme types: .
+
+types:Range a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Range" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:minimal ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:minimal ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:minimal ] ;
+    skos:definition "A range constructed from min and max" ;
+    skos:inScheme types: .
+
+sample:Sample a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Sample" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:grid ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:OverallMolecule ;
+            owl:onProperty sample:overall_molecule ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:specimen ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:Grid ;
+            owl:onProperty sample:grid ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:Specimen ;
+            owl:onProperty sample:specimen ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:grid ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:specimen ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:overall_molecule ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:overall_molecule ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:ligands ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:Molecule ;
+            owl:onProperty sample:molecule ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:Ligand ;
+            owl:onProperty sample:ligands ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:molecule ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:description ] ;
+    skos:definition "Unifying class to describe the full sample." ;
+    skos:inScheme sample: .
+
+types:Any a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Any" ;
+    skos:definition "Any type, used as the base for type-narrowing." ;
+    skos:exactMatch linkml:Any ;
+    skos:inScheme types: .
+
+<https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#FILAMENT> a owl:Class,
+        sample:AssemblyEnum ;
+    rdfs:label "FILAMENT" ;
+    rdfs:subClassOf sample:AssemblyEnum ;
+    skos:definition "If your protein (complex) of interest is forming filaments" .
+
+<https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#HELICAL%20ARRAY> a owl:Class,
+        sample:AssemblyEnum ;
+    rdfs:label "HELICAL ARRAY" ;
+    rdfs:subClassOf sample:AssemblyEnum ;
+    skos:definition "If your protein (complex) of interest is forming helical arrays (i.e. tubes)" .
+
+<https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#PARTICLE> a owl:Class,
+        sample:AssemblyEnum ;
+    rdfs:label "PARTICLE" ;
+    rdfs:subClassOf sample:AssemblyEnum ;
+    skos:definition "If your protein (complex) of interest forms individual particles on the grid with no orderd interactions" .
+
+sample:Grid a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Grid" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty sample:pretreatment_time ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:pretreatment_time ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:film_thickness ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:pretreatment_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:manufacturer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:film_thickness ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:film_material ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty sample:pretreatment_pressure ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:pretreatment_atmosphere ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:pretreatment_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:mesh ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:material ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:film_topology ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:film_material ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:pretreatment_pressure ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:film_support ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:manufacturer ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:pretreatment_pressure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:film_support ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:film_material ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:film_support ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:pretreatment_time ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:material ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:pretreatment_atmosphere ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:mesh ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:material ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:pretreatment_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:film_topology ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:film_topology ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:manufacturer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty sample:mesh ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:film_thickness ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:pretreatment_atmosphere ] ;
+    skos:definition "Details on the grid used in the experiment." ;
+    skos:inScheme sample: .
+
+sample:Ligand a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Ligand" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:reference ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:smiles ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:reference ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:present ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:present ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:smiles ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:reference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:present ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:smiles ] ;
+    skos:definition "Information on ligands if present." ;
+    skos:inScheme sample: .
+
+sample:Molecule a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Molecule" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:sequence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:sequence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:taxonomy_id_source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:sequence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:taxonomy_id_expression ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:molecular_class ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:name_mol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:gene_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:molecular_class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:expression_system ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:molecular_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:gene_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:name_mol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:expression_system ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:taxonomy_id_expression ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:molecular_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:gene_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:natural_source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:taxonomy_id_source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:expression_system ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:molecular_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:natural_source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:taxonomy_id_source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:taxonomy_id_expression ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:name_mol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:natural_source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:molecular_class ] ;
+    skos:definition "More detailed information about individual molecules." ;
+    skos:inScheme sample: .
+
+<https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#CELL> a owl:Class,
+        sample:MoleculeClassEnum ;
+    rdfs:label "CELL" ;
+    rdfs:subClassOf sample:MoleculeClassEnum ;
+    skos:definition "Cell" .
+
+<https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#COMPLEX> a owl:Class,
+        sample:MoleculeClassEnum ;
+    rdfs:label "COMPLEX" ;
+    rdfs:subClassOf sample:MoleculeClassEnum ;
+    skos:definition "complex of different parts e.g. protein complex" .
+
+<https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#ORGANELLE%20OR%20CELLULAR%20COMPONENT> a owl:Class,
+        sample:MoleculeClassEnum ;
+    rdfs:label "ORGANELLE OR CELLULAR COMPONENT" ;
+    rdfs:subClassOf sample:MoleculeClassEnum ;
+    skos:definition "Some form of cellular component" .
+
+<https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#RIBOSOME> a owl:Class,
+        sample:MoleculeClassEnum ;
+    rdfs:label "RIBOSOME" ;
+    rdfs:subClassOf sample:MoleculeClassEnum ;
+    skos:definition "A ribosome" .
+
+<https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#TISSUE> a owl:Class,
+        sample:MoleculeClassEnum ;
+    rdfs:label "TISSUE" ;
+    rdfs:subClassOf sample:MoleculeClassEnum ;
+    skos:definition "Tissue of any type." .
+
+<https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#VIRUS> a owl:Class,
+        sample:MoleculeClassEnum ;
+    rdfs:label "VIRUS" ;
+    rdfs:subClassOf sample:MoleculeClassEnum ;
+    skos:definition "A virus particle - or part thereof." .
+
+sample:OverallMolecule a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "OverallMolecule" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:name_sample ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:AssemblyEnum ;
+            owl:onProperty sample:assembly ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:name_sample ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:MoleculeClassEnum ;
+            owl:onProperty sample:molecular_overall_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:molecular_overall_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:assembly ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty sample:molecular_weight ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:assembly ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:molecular_overall_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:name_sample ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:molecular_weight ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:molecular_weight ] ;
+    skos:definition "Description of the overall molecule" ;
+    skos:inScheme sample: .
+
+sample:Specimen a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Specimen" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:humidity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty sample:ph ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:embedding ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:vitrification_cryogen ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:vitrification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:buffer ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:temperature ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:staining ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:vitrification_cryogen ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty sample:concentration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:staining ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:concentration ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:vitrification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:humidity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty sample:humidity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:embedding ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:shadowing ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:shadowing ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:embedding ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:ph ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty sample:temperature ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:ph ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:temperature ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:vitrification ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:buffer ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:staining ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:buffer ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:vitrification_cryogen ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:shadowing ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:concentration ] ;
+    skos:definition "Description of specimen handling." ;
+    skos:inScheme sample: .
+
+sample:ligands a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "ligands" ;
+    rdfs:range sample:Ligand ;
+    skos:definition "List of ligands associated with the sample" ;
+    skos:inScheme sample: .
+
+sample:molecule a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "molecule" ;
+    rdfs:range sample:Molecule ;
+    skos:definition "List of molecule associated with the sample" ;
+    skos:inScheme sample: .
+
+types:description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    rdfs:range linkml:String ;
+    skos:definition "The description of the item" ;
+    skos:inScheme types: .
+
+types:descriptor_name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_name" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name defining the descriptor" ;
+    skos:inScheme types: .
+
+types:descriptor_thing a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_thing" ;
+    rdfs:range types:Any ;
+    skos:definition "Description of the descriptor" ;
+    skos:inScheme types: .
+
+types:height a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "height" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The height of a given item - unit depends on item" ;
+    skos:inScheme types: .
+
+types:increment a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "increment" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Increment between elements of a series" ;
+    skos:inScheme types: .
+
+types:manufacturer a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "manufacturer" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the manufacturer" ;
+    skos:inScheme types: .
+
+types:maximal a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "maximal" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Maximal value of a given dataset property" ;
+    skos:inScheme types: .
+
+types:minimal a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "minimal" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Minimal value of a given dataset property" ;
+    skos:inScheme types: .
+
+types:name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the item" ;
+    skos:inScheme types: .
+
+types:unit a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unit" ;
+    rdfs:range linkml:String ;
+    skos:definition "the unit of a given value" ;
+    skos:inScheme types: .
+
+types:unitSI a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unitSI" ;
+    rdfs:range linkml:String ;
+    skos:definition "the SI unit attached to a si value" ;
+    skos:inScheme types: .
+
+types:value a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "value" ;
+    rdfs:range linkml:Float ;
+    skos:definition "the value of a field with a unit" ;
+    skos:inScheme types: .
+
+types:valueSI a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "valueSI" ;
+    rdfs:range linkml:Float ;
+    skos:definition "value of a given field in respect to its SI unit" ;
+    skos:inScheme types: .
+
+types:width a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "width" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The width of a given item - unit depends on item" ;
+    skos:inScheme types: .
+
+types:x_max a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_max" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "maximum x" ;
+    skos:inScheme types: .
+
+types:x_min a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_min" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "minimum x" ;
+    skos:inScheme types: .
+
+types:y_max a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_max" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "maximum y" ;
+    skos:inScheme types: .
+
+types:y_min a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_min" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "minimum y" ;
+    skos:inScheme types: .
+
+sample:assembly a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "assembly" ;
+    rdfs:range sample:AssemblyEnum ;
+    skos:definition "What type of higher order structure your sample forms - if any." ;
+    skos:inScheme sample: .
+
+sample:buffer a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "buffer" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name/composition of the (chemical) sample buffer during grid preparation" ;
+    skos:inScheme sample: .
+
+sample:concentration a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "concentration" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Concentration of the (supra)molecule in the sample, in mg/ml" ;
+    skos:inScheme sample: .
+
+sample:embedding a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "embedding" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "Whether the sample was embedded" ;
+    skos:inScheme sample: .
+
+sample:expression_system a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "expression_system" ;
+    rdfs:range linkml:String ;
+    skos:definition "Scientific name of the organism used to produce the molecule of interest" ;
+    skos:inScheme sample: .
+
+sample:film_material a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "film_material" ;
+    rdfs:range linkml:String ;
+    skos:definition "Type of material the support film is made of" ;
+    skos:inScheme sample: .
+
+sample:film_support a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "film_support" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "Whether a support film was used" ;
+    skos:inScheme sample: .
+
+sample:film_thickness a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "film_thickness" ;
+    rdfs:range linkml:String ;
+    skos:definition "Thickness of the support film" ;
+    skos:inScheme sample: .
+
+sample:film_topology a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "film_topology" ;
+    rdfs:range linkml:String ;
+    skos:definition "Topology of the support film" ;
+    skos:inScheme sample: .
+
+sample:gene_name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "gene_name" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name of the gene of interest" ;
+    skos:inScheme sample: .
+
+sample:grid a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "grid" ;
+    rdfs:range sample:Grid ;
+    skos:definition "Description of the grid used" ;
+    skos:inScheme sample: .
+
+sample:humidity a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "humidity" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Environmental humidity just before vitrification, in %" ;
+    skos:inScheme sample: .
+
+sample:material a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "material" ;
+    rdfs:range linkml:String ;
+    skos:definition "Material out of which the grid is made" ;
+    skos:inScheme sample: .
+
+sample:mesh a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "mesh" ;
+    rdfs:range linkml:Float ;
+    skos:definition "Grid mesh in lines per inch" ;
+    skos:inScheme sample: .
+
+sample:molecular_class a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "molecular_class" ;
+    rdfs:range linkml:String ;
+    skos:definition "Class of the molecule" ;
+    skos:inScheme sample: .
+
+sample:molecular_overall_type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "molecular_overall_type" ;
+    rdfs:range sample:MoleculeClassEnum ;
+    skos:definition "Description of the overall molecular type, i.e., a complex" ;
+    skos:inScheme sample: .
+
+sample:molecular_type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "molecular_type" ;
+    rdfs:range linkml:String ;
+    skos:definition "Description of the overall molecular type, i.e., a complex" ;
+    skos:inScheme sample: .
+
+sample:molecular_weight a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "molecular_weight" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Molecular weight in Da" ;
+    skos:inScheme sample: .
+
+sample:name_mol a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name_mol" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name of an individual molecule (often protein) in the sample" ;
+    skos:inScheme sample: .
+
+sample:name_sample a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name_sample" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name of the full sample" ;
+    skos:inScheme sample: .
+
+sample:natural_source a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "natural_source" ;
+    rdfs:range linkml:String ;
+    skos:definition "Scientific name of the natural host organism" ;
+    skos:inScheme sample: .
+
+sample:ph a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "ph" ;
+    rdfs:range linkml:Float ;
+    skos:definition "pH of the sample buffer" ;
+    skos:inScheme sample: .
+
+sample:present a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "present" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "Whether the model contains any ligands" ;
+    skos:inScheme sample: .
+
+sample:pretreatment_atmosphere a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "pretreatment_atmosphere" ;
+    rdfs:range linkml:String ;
+    skos:definition "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc." ;
+    skos:inScheme sample: .
+
+sample:pretreatment_pressure a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "pretreatment_pressure" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Pressure of the chamber during pretreatment, in Pa" ;
+    skos:inScheme sample: .
+
+sample:pretreatment_time a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "pretreatment_time" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Length of time of the pretreatment in s" ;
+    skos:inScheme sample: .
+
+sample:pretreatment_type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "pretreatment_type" ;
+    rdfs:range linkml:String ;
+    skos:definition "Type of pretreatment of the grid, i.e., glow discharge" ;
+    skos:inScheme sample: .
+
+sample:reference a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "reference" ;
+    rdfs:range linkml:String ;
+    skos:definition "Link to a reference of your ligand, i.e., CCD, PubChem, etc." ;
+    skos:inScheme sample: .
+
+sample:sequence a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sequence" ;
+    rdfs:range linkml:String ;
+    skos:definition "Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here" ;
+    skos:inScheme sample: .
+
+sample:shadowing a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "shadowing" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "Whether the sample was shadowed" ;
+    skos:inScheme sample: .
+
+sample:smiles a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "smiles" ;
+    rdfs:range linkml:String ;
+    skos:definition "Provide a valid SMILES string of your ligand" ;
+    skos:inScheme sample: .
+
+sample:source a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "source" ;
+    rdfs:range linkml:String ;
+    skos:definition "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc." ;
+    skos:inScheme sample: .
+
+sample:specimen a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "specimen" ;
+    rdfs:range sample:Specimen ;
+    skos:definition "Description of the specimen" ;
+    skos:inScheme sample: .
+
+sample:staining a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "staining" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "Whether the sample was stained" ;
+    skos:inScheme sample: .
+
+sample:taxonomy_id_expression a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "taxonomy_id_expression" ;
+    rdfs:range linkml:String ;
+    skos:definition "Taxonomy ID of the expression system organism" ;
+    skos:inScheme sample: .
+
+sample:taxonomy_id_source a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "taxonomy_id_source" ;
+    rdfs:range linkml:String ;
+    skos:definition "Taxonomy ID of the natural source organism" ;
+    skos:inScheme sample: .
+
+sample:temperature a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "temperature" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Environmental temperature just before vitrification, in K" ;
+    skos:inScheme sample: .
+
+sample:vitrification a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "vitrification" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "Whether the sample was vitrified" ;
+    skos:inScheme sample: .
+
+sample:vitrification_cryogen a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "vitrification_cryogen" ;
+    rdfs:range linkml:String ;
+    skos:definition "Which cryogen was used for vitrification" ;
+    skos:inScheme sample: .
+
+sample:overall_molecule a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "overall_molecule" ;
+    rdfs:range sample:OverallMolecule ;
+    skos:definition "Description of the overall molecule" ;
+    skos:inScheme sample: .
+
+sample:AssemblyEnum a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "AssemblyEnum" ;
+    owl:unionOf ( <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#FILAMENT> <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#HELICAL%20ARRAY> <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#PARTICLE> ) ;
+    skos:definition "Allowed molecular assembly values - compatible with the EMDB." ;
+    skos:inScheme sample: ;
+    linkml:permissible_values <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#FILAMENT>,
+        <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#HELICAL%20ARRAY>,
+        <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#PARTICLE> .
+
+sample:MoleculeClassEnum a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "MoleculeClassEnum" ;
+    owl:unionOf ( <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#CELL> <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#COMPLEX> <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#ORGANELLE%20OR%20CELLULAR%20COMPONENT> <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#RIBOSOME> <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#TISSUE> <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#VIRUS> ) ;
+    skos:definition "Allowed molecule class values - compatible with the EMDB." ;
+    skos:inScheme sample: ;
+    linkml:permissible_values <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#CELL>,
+        <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#COMPLEX>,
+        <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#ORGANELLE%20OR%20CELLULAR%20COMPONENT>,
+        <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#RIBOSOME>,
+        <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#TISSUE>,
+        <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#VIRUS> .
+
+types:QuantitySI a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantitySI" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:valueSI ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:unitSI ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:valueSI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:unitSI ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:unitSI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty types:valueSI ],
+        types:QuantityValue ;
+    skos:definition "unit value extended to have two additional fields si_value and si_unit" ;
+    skos:inScheme types: .
+
+sample: a owl:Ontology ;
+    rdfs:label "Sample" ;
+    skos:definition """LinkML schema for electron microscopy sample and author-related metadata, broadly following the EMDB standard with some additions.
+""" .
+

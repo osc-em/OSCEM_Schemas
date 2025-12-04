@@ -1,0 +1,86 @@
+# metamodel_version: 1.7.0
+scalar Any
+
+type Astigmatism
+  {
+    astigmatismHistogram: String
+  }
+
+type BoundingBox2D
+  {
+    xMin: QuantitySI
+    xMax: QuantitySI
+    yMin: QuantitySI
+    yMax: QuantitySI
+  }
+
+type CTFs
+  {
+    amplitudeContrast: Float
+    defocus: Defocus
+    resolution: Resolution
+    astigmatism: Astigmatism
+    descriptors: [Descriptors]
+  }
+
+type Defocus
+  {
+    outputMinDefocus: QuantityValue
+    outputMaxDefocus: QuantityValue
+    outputAvgDefocus: QuantityValue
+    defocusHistogram: String
+    defocusMicrographExamples: String
+  }
+
+interface Descriptor
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Descriptors
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type ImageSize
+  {
+    height: Int
+    width: Int
+  }
+
+type QuantitySI
+  {
+    unit: String!
+    value: Float!
+    valueSI: Float
+    unitSI: String
+  }
+
+type QuantityValue
+  {
+    unit: String!
+    value: Float!
+  }
+
+type Range
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+  }
+
+type Resolution
+  {
+    outputMinResolution: QuantityValue
+    outputMaxResolution: QuantityValue
+    outputAvgResolution: QuantityValue
+    resolutionHistogram: String
+  }
+
+type Series
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+    increment: QuantitySI
+  }

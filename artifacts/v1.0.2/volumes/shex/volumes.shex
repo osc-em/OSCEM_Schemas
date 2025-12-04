@@ -1,0 +1,204 @@
+# metamodel_version: 1.7.0
+BASE <https://w3id.org/oscem-schemas/latest/volumes/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX qudt: <http://example.org/UNKNOWN/qudt/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<https://w3id.org/oscem-schemas/latest/custom_typesAny> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesAny_tes> rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/custom_typesx_min> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+          ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesx_max> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+          ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesy_min> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+          ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesy_max> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+          ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/classes3DClasses3D> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/classes3DClasses3D_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/classes3Dparticles_per_3Dclass> @linkml:Integer * ;
+          <https://w3id.org/oscem-schemas/latest/classes3Dimages_classes_3D> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/classes3Dvolume> @<https://w3id.org/oscem-schemas/latest/classes3DVolume> * ;
+          <https://w3id.org/oscem-schemas/latest/classes3Dresolution_classes_3D>
+          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors>
+          @<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> *
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/classes3DClasses3D> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor>  (
+    {
+       (  $<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor_tes> ( 
+             <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> @linkml:String ;
+             <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing>
+             @<https://w3id.org/oscem-schemas/latest/custom_typesAny> ?
+          ) ;
+          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> ] ?
+       )
+    } OR @<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors>
+)
+
+<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors_tes> ( 
+          &<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor_tes> ;
+          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> ] ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesImageSize> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesImageSize_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/custom_typesheight> @linkml:Integer ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typeswidth> @linkml:Integer ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/classes3DIsosurfaceImages> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/classes3DIsosurfaceImages_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/classes3Dfront_view> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/classes3Dside_view> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/classes3Dtop_view> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/classes3DIsosurfaceImages> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_X> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_Y> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_Z> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI_tes> ( 
+          &<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue_tes> ;
+          rdf:type [ qudt:quantityValue ] ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> @linkml:Float ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue>  (
+    CLOSED {
+       (  $<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue_tes> (  qudt:hasUnit @linkml:String ;
+             qudt:hasQuantityKind @linkml:Float
+          ) ;
+          rdf:type [ qudt:quantityValue ] ?
+       )
+    } OR @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+)
+
+<https://w3id.org/oscem-schemas/latest/custom_typesRange>  (
+    CLOSED {
+       (  $<https://w3id.org/oscem-schemas/latest/custom_typesRange_tes> ( 
+             <https://w3id.org/oscem-schemas/latest/custom_typesminimal>
+             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
+             <https://w3id.org/oscem-schemas/latest/custom_typesmaximal>
+             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ?
+          ) ;
+          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesRange> ] ?
+       )
+    } OR @<https://w3id.org/oscem-schemas/latest/custom_typesSeries>
+)
+
+<https://w3id.org/oscem-schemas/latest/custom_typesSeries> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesSeries_tes> ( 
+          &<https://w3id.org/oscem-schemas/latest/custom_typesRange_tes> ;
+          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesRange> ] ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesincrement>
+          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesSeries> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/classes3DVolume> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/classes3DVolume_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices>
+          @<https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> ? ;
+          <https://w3id.org/oscem-schemas/latest/classes3Disosurface_images>
+          @<https://w3id.org/oscem-schemas/latest/classes3DIsosurfaceImages> ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/classes3DVolume> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/volumesVolumes> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/volumesVolumes_tes> (  <https://w3id.org/oscem-schemas/latest/volumesvolume_type>
+          @linkml:String ;
+          <https://w3id.org/oscem-schemas/latest/volumesvol_number_particles> @linkml:Integer ? ;
+          <https://w3id.org/oscem-schemas/latest/volumessize> @linkml:Integer * ;
+          <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices>
+          @<https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> ? ;
+          <https://w3id.org/oscem-schemas/latest/classes3Disosurface_images>
+          @<https://w3id.org/oscem-schemas/latest/classes3DIsosurfaceImages> ? ;
+          <https://w3id.org/oscem-schemas/latest/volumesvol_resolution>
+          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors>
+          @<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> *
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/volumesVolumes> ] ?
+    )
+}

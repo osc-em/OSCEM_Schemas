@@ -1,0 +1,21 @@
+
+# Slot: temperature_env
+
+temperature of the sample right before freezing; in K.
+
+URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/temperature_env](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/temperature_env)
+
+
+## Domain and Range
+
+None &#8594;  <sub>0..1</sub> [QuantitySI](QuantitySI.md)
+
+## Parents
+
+
+## Children
+
+
+## Used by
+
+ * [Freezing](Freezing.md)

@@ -1,0 +1,107 @@
+# metamodel_version: 1.7.0
+enum FreezingMethodEnum
+  {
+    plunge_freezing
+    high_pressure_freezing
+  }
+
+scalar Any
+
+type BoundingBox2D
+  {
+    xMin: QuantitySI
+    xMax: QuantitySI
+    yMin: QuantitySI
+    yMax: QuantitySI
+  }
+
+interface Descriptor
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Descriptors
+  {
+    descriptorName: String!
+    descriptorThing: Any
+  }
+
+type Freezing
+  {
+    cryogenSampleEnv: String
+    method: FreezingMethodEnum
+    blotting: Boolean
+    humidityEnv: QuantitySI
+    temperatureEnv: QuantitySI
+    atmosphere: String
+    details: String
+  }
+
+type ImageSize
+  {
+    height: Int
+    width: Int
+  }
+
+type QuantitySI
+  {
+    unit: String!
+    value: Float!
+    valueSI: Float
+    unitSI: String
+  }
+
+type QuantityValue
+  {
+    unit: String!
+    value: Float!
+  }
+
+type Range
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+  }
+
+type SampleEnv
+  {
+    specimenEnv: SpecimenEnv!
+    freezing: Freezing
+    thinning: Thinning
+    tomogramFeatures: TomogramFeatures
+  }
+
+type Series
+  {
+    minimal: QuantitySI
+    maximal: QuantitySI
+    increment: QuantitySI
+  }
+
+type SpecimenEnv
+  {
+    organism: [String]!
+    tissue: String
+    sourceEnv: String
+    location: String
+    collectionDate: String
+    handling: String
+  }
+
+type Thinning
+  {
+    methodThin: String
+    instrumentThin: String
+    ionSource: String
+    targetThickness: QuantitySI
+    liftOut: Boolean
+  }
+
+type TomogramFeatures
+  {
+    cellularFeatures: String
+    organelles: [String]
+    mainTarget: String
+    detailsTomo: String
+  }

@@ -1,0 +1,58 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// an axis-aligned 2D bounding box (float units)
+message BoundingBox2D
+ {
+  quantitySI xMin = 0
+  quantitySI xMax = 0
+  quantitySI yMin = 0
+  quantitySI yMax = 0
+ }
+message Descriptors
+ {
+  string descriptorName = 0
+  any descriptorThing = 0
+ }
+// size of a 2D image (in integer units)
+message ImageSize
+ {
+  integer height = 0
+  integer width = 0
+ }
+// Class representing movies metadata
+message Movies
+ {
+  quantityValue dosePerImage = 0
+  quantityValue initialDose = 0
+  string gainImage = 0
+  string darkImage = 0
+ repeated  descriptors descriptors = 0
+ }
+// unit value extended to have two additional fields si_value and si_unit
+message QuantitySI
+ {
+  string unit = 0
+  float value = 0
+  float valueSI = 0
+  string unitSI = 0
+ }
+// if a value has a unit, it should be given as a unit value pair.
+message QuantityValue
+ {
+  string unit = 0
+  float value = 0
+ }
+// A range constructed from min and max
+message Range
+ {
+  quantitySI minimal = 0
+  quantitySI maximal = 0
+ }
+// A series of numbers constructed from min, max, and increment
+message Series
+ {
+  quantitySI minimal = 0
+  quantitySI maximal = 0
+  quantitySI increment = 0
+ }

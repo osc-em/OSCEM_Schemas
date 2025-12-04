@@ -1,0 +1,1421 @@
+{
+  "name": "Organizational",
+  "description": "LinkML schema for electron microscopy grant and author-related metadata, broadly following the EMDB standard with some additions.\n",
+  "id": "https://w3id.org/oscem-schemas/latest/organizational",
+  "imports": [
+    "linkml:types",
+    "./custom_types"
+  ],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "prefixes": [
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "qudt",
+      "prefix_reference": "http://qudt.org/schema/qudt/"
+    },
+    {
+      "prefix_prefix": "organizational",
+      "prefix_reference": "https://w3id.org/oscem-schemas/latest/organizational/"
+    }
+  ],
+  "default_prefix": "https://w3id.org/oscem-schemas/latest/organizational/",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpointer",
+      "definition_uri": "https://w3id.org/linkml/Jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpath",
+      "definition_uri": "https://w3id.org/linkml/Jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "sparqlpath",
+      "definition_uri": "https://w3id.org/linkml/Sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "OrganizationTypeEnum",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/OrganizationTypeEnum",
+      "description": "Allowed values for authors organizations.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "permissible_values": [
+        {
+          "text": "Academic",
+          "description": "Academic institution"
+        },
+        {
+          "text": "Commercial",
+          "description": "Commercial entity"
+        },
+        {
+          "text": "Government",
+          "description": "Government organization"
+        },
+        {
+          "text": "Other",
+          "description": "Other types of organizations"
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "family_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/family_name",
+      "description": "last name",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/familyName"
+      ],
+      "slot_uri": "http://schema.org/familyName",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "given_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/given_name",
+      "description": "first name",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/givenName"
+      ],
+      "slot_uri": "http://schema.org/givenName",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "job_title",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/job_title",
+      "description": "job title",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/jobTitle"
+      ],
+      "slot_uri": "http://schema.org/jobTitle",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "email",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/email",
+      "description": "email",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/email"
+      ],
+      "slot_uri": "http://schema.org/email",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "telephone",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/telephone",
+      "description": "work phone",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/telephone"
+      ],
+      "slot_uri": "http://schema.org/telephone",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/person",
+      "description": "person",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/Person"
+      ],
+      "slot_uri": "http://schema.org/Person",
+      "range": "Person",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name_org",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/name_org",
+      "description": "Name of the organization",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/name_org",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type_org",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/type_org",
+      "description": "Type of organization, academic, commercial, governmental, etc.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/type_org",
+      "owner": "Funder",
+      "domain_of": [
+        "Author",
+        "Funder"
+      ],
+      "range": "OrganizationTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "country",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/country",
+      "description": "Country of the institution",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/country",
+      "owner": "Funder",
+      "domain_of": [
+        "Author",
+        "Grant",
+        "Funder"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "role",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/role",
+      "description": "Role of the author, for example principal investigator",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/role",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "orcid",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/orcid",
+      "description": "ORCID of the author, a type of unique identifier",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/orcid",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "funder_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/funder_name",
+      "description": "funding organization/person.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/funder_name",
+      "owner": "Funder",
+      "domain_of": [
+        "Funder"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "funder",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/funder",
+      "description": "funding organization/person.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/funder",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "range": "Funder",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "start_date",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/start_date",
+      "description": "start date",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/start_date",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "datetime",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "end_date",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/end_date",
+      "description": "end date",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/end_date",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "datetime",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "budget",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/budget",
+      "description": "budget",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/budget",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "project_id",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/project_id",
+      "description": "project id",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/identifier"
+      ],
+      "slot_uri": "http://schema.org/identifier",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "grants",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/grants",
+      "description": "List of grants associated with the project",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/grants",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "range": "Grant",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "authors",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/authors",
+      "description": "List of authors associated with the project",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/authors",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "range": "Author",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "grant_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/grant_name",
+      "description": "name of the grant",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/grant_name",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesname",
+      "description": "The name of the item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesname",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "description",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescription",
+      "description": "The description of the item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescription",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "manufacturer",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer",
+      "description": "The name of the manufacturer",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "model",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmodel",
+      "description": "The model of the item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmodel",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "minimal",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesminimal",
+      "description": "Minimal value of a given dataset property",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesminimal",
+      "owner": "Range",
+      "domain_of": [
+        "Range"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "maximal",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmaximal",
+      "description": "Maximal value of a given dataset property",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmaximal",
+      "owner": "Range",
+      "domain_of": [
+        "Range"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "increment",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesincrement",
+      "description": "Increment between elements of a series",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesincrement",
+      "owner": "Series",
+      "domain_of": [
+        "Series"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "width",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typeswidth",
+      "description": "The width of a given item - unit depends on item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typeswidth",
+      "owner": "ImageSize",
+      "domain_of": [
+        "ImageSize"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "height",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesheight",
+      "description": "The height of a given item - unit depends on item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesheight",
+      "owner": "ImageSize",
+      "domain_of": [
+        "ImageSize"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "x_min",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesx_min",
+      "description": "minimum x",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesx_min",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "x_max",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesx_max",
+      "description": "maximum x",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesx_max",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "y_min",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesy_min",
+      "description": "minimum y",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesy_min",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "y_max",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesy_max",
+      "description": "maximum y",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesy_max",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "unit",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesunit",
+      "description": "the unit of a given value",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasUnit"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/hasUnit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "value",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesvalue",
+      "description": "the value of a field with a unit",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptors",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_thing",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "valueSI",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesvalueSI",
+      "description": "value of a given field in respect to its SI unit",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesvalueSI",
+      "owner": "QuantitySI",
+      "domain_of": [
+        "QuantitySI"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "unitSI",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesunitSI",
+      "description": "the SI unit attached to a si value",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesunitSI",
+      "owner": "QuantitySI",
+      "domain_of": [
+        "QuantitySI"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Organizational_authors",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/authors",
+      "description": "List of authors associated with the project",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "is_a": "authors",
+      "domain": "Organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/authors",
+      "alias": "authors",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "authors",
+      "range": "Author",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Organizational_funder",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/funder",
+      "description": "funding organization/person.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "is_a": "funder",
+      "domain": "Organizational",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/funder",
+      "alias": "funder",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "funder",
+      "range": "Funder",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_family_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/family_name",
+      "description": "last name",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/familyName"
+      ],
+      "is_a": "family_name",
+      "domain": "Author",
+      "slot_uri": "http://schema.org/familyName",
+      "alias": "family_name",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "family_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_given_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/given_name",
+      "description": "first name",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/givenName"
+      ],
+      "is_a": "given_name",
+      "domain": "Author",
+      "slot_uri": "http://schema.org/givenName",
+      "alias": "given_name",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "given_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_email",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/email",
+      "description": "email",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "http://schema.org/email"
+      ],
+      "is_a": "email",
+      "domain": "Author",
+      "slot_uri": "http://schema.org/email",
+      "alias": "email",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "email",
+      "range": "string",
+      "required": true,
+      "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_orcid",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/orcid",
+      "description": "ORCID of the author, a type of unique identifier",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "is_a": "orcid",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/orcid",
+      "alias": "orcid",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "orcid",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_country",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/country",
+      "description": "Country of the institution",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "is_a": "country",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/country",
+      "alias": "country",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "country",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_type_org",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/type_org",
+      "description": "Type of organization, academic, commercial, governmental, etc.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "is_a": "type_org",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/type_org",
+      "alias": "type_org",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type_org",
+      "range": "OrganizationTypeEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_name_org",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/name_org",
+      "description": "Name of the organization",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "is_a": "name_org",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/organizational/name_org",
+      "alias": "name_org",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name_org",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_unit",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesunit",
+      "description": "the unit of a given value",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasUnit"
+      ],
+      "is_a": "unit",
+      "domain": "QuantityValue",
+      "slot_uri": "http://qudt.org/schema/qudt/hasUnit",
+      "alias": "unit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "unit",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_value",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesvalue",
+      "description": "the value of a field with a unit",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "is_a": "value",
+      "domain": "QuantityValue",
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
+      "alias": "value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "value",
+      "range": "float",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "descriptor_name",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name",
+      "alias": "descriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_thing",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "descriptor_thing",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing",
+      "alias": "descriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_thing",
+      "range": "Any",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "Organizational",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/Organizational",
+      "description": "Overarching category for authors and grants",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slots": [
+        "grants",
+        "Organizational_authors",
+        "Organizational_funder"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/organizational/Organizational",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Person",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/Person",
+      "description": "personal information",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "schema:Person"
+      ],
+      "slots": [
+        "family_name",
+        "given_name",
+        "job_title",
+        "email",
+        "telephone"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Person",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Author",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/Author",
+      "description": "Details on the person performing the experiment.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "is_a": "Person",
+      "slots": [
+        "job_title",
+        "telephone",
+        "Author_orcid",
+        "Author_country",
+        "role",
+        "Author_name_org",
+        "Author_type_org",
+        "Author_family_name",
+        "Author_given_name",
+        "Author_email"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/organizational/Author",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Grant",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/Grant",
+      "description": "Grant",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "mappings": [
+        "schema:Grant"
+      ],
+      "slots": [
+        "grant_name",
+        "start_date",
+        "end_date",
+        "budget",
+        "project_id",
+        "country"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Grant",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Funder",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/organizational/Funder",
+      "description": "Description of the project funding",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/organizational",
+      "slots": [
+        "funder_name",
+        "type_org",
+        "country"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/organizational/Funder",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Any",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesAny",
+      "description": "Any type, used as the base for type-narrowing.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "linkml:Any"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/Any",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Range",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesRange",
+      "description": "A range constructed from min and max",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slots": [
+        "minimal",
+        "maximal"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesRange",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Series",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesSeries",
+      "description": "A series of numbers constructed from min, max, and increment",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "Range",
+      "slots": [
+        "minimal",
+        "maximal",
+        "increment"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesSeries",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ImageSize",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesImageSize",
+      "description": "size of a 2D image (in integer units)",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slots": [
+        "height",
+        "width"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesImageSize",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "BoundingBox2D",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D",
+      "description": "an axis-aligned 2D bounding box (float units)",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slots": [
+        "x_min",
+        "x_max",
+        "y_min",
+        "y_max"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantityValue",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue",
+      "description": "if a value has a unit, it should be given as a unit value pair.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "qudt:quantityValue"
+      ],
+      "slots": [
+        "QuantityValue_unit",
+        "QuantityValue_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/quantityValue",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantitySI",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI",
+      "description": "unit value extended to have two additional fields si_value and si_unit",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "QuantityValue",
+      "slots": [
+        "QuantityValue_unit",
+        "QuantityValue_value",
+        "valueSI",
+        "unitSI"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptor",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesDescriptor",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "abstract": true,
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesDescriptor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptors",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesDescriptors",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "Descriptor",
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesDescriptors",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "organizational.yaml",
+  "source_file_date": "2025-12-04T16:29:18",
+  "source_file_size": 3779,
+  "generation_date": "2025-12-04T16:30:21",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "project/organizational/jsonld/organizational.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    "./custom_types.context.jsonld",
+    {
+      "@base": "https://w3id.org/oscem-schemas/latest/organizational/"
+    }
+  ]
+}

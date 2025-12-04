@@ -1,0 +1,23 @@
+
+# Slot: specimen
+
+Description of the specimen
+
+URI: [sample:Sample_specimen](https://w3id.org/oscem-schemas/latest/sampleSample_specimen)
+
+
+## Domain and Range
+
+[Sample](Sample.md) &#8594;  <sub>0..1</sub> [Specimen](Specimen.md)
+
+## Parents
+
+ *  is_a: [specimen](specimen.md)
+
+## Children
+
+
+## Used by
+
+ * [Sample](Sample.md)
+ * [SampleMolecular](SampleMolecular.md)

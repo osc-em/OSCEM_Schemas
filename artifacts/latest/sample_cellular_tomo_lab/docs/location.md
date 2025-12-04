@@ -1,0 +1,21 @@
+
+# Slot: location
+
+the geographical location of your source, optimally in a geographic coordinate system.
+
+URI: [cellular_tomo:location](https://w3id.org/oscem-schemas/latest/cellular_tomolocation)
+
+
+## Domain and Range
+
+None &#8594;  <sub>0..1</sub> [String](types/String.md)
+
+## Parents
+
+
+## Children
+
+
+## Used by
+
+ * [SpecimenEnv](SpecimenEnv.md)

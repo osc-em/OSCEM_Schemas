@@ -1,0 +1,1314 @@
+{
+  "name": "SampleEnvironmentalTomography",
+  "description": "LinkML schema for electron microscopy sample and author-related metadata, broadly following the EMDB standard with some additions.\n",
+  "id": "https://w3id.org/oscem-schemas/latest/sample-env",
+  "imports": [
+    "linkml:types",
+    "./custom_types"
+  ],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "prefixes": [
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "sample_env",
+      "prefix_reference": "https://w3id.org/oscem-schemas/latest/environmental_sample"
+    }
+  ],
+  "default_prefix": "sample_env",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpointer",
+      "definition_uri": "https://w3id.org/linkml/Jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpath",
+      "definition_uri": "https://w3id.org/linkml/Jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "sparqlpath",
+      "definition_uri": "https://w3id.org/linkml/Sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "FreezingMethodEnum",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleFreezingMethodEnum",
+      "description": "Allowed freezing options.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "permissible_values": [
+        {
+          "text": "plunge_freezing",
+          "description": "Typically used for smaller and thinner samples in both SPA and tomography."
+        },
+        {
+          "text": "high_pressure_freezing",
+          "description": "Usually used for larger organic complexes, such as organoids or even tissue samples."
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "organism",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleorganism",
+      "description": "the organism(s) present in your sample, if not perfectly defined try to asses as close as possible.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleorganism",
+      "owner": "SpecimenEnv",
+      "domain_of": [
+        "SpecimenEnv"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tissue",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampletissue",
+      "description": "if the sample is a tissue sample please indicate what type of tissue.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampletissue",
+      "owner": "SpecimenEnv",
+      "domain_of": [
+        "SpecimenEnv"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "source_env",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplesource_env",
+      "description": "where is this sample from? i.e. Hospital",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplesource_env",
+      "owner": "SpecimenEnv",
+      "domain_of": [
+        "SpecimenEnv"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "location",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplelocation",
+      "description": "the geographical location of your source, optimally in a geographic coordinate system.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplelocation",
+      "owner": "SpecimenEnv",
+      "domain_of": [
+        "SpecimenEnv"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "collection_date",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplecollection_date",
+      "description": "When the sample was collected",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplecollection_date",
+      "owner": "SpecimenEnv",
+      "domain_of": [
+        "SpecimenEnv"
+      ],
+      "range": "date",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "handling",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplehandling",
+      "description": "What was done to the sample, please give an overview of relevant treatments.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplehandling",
+      "owner": "SpecimenEnv",
+      "domain_of": [
+        "SpecimenEnv"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryogen_sample_env",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplecryogen_sample_env",
+      "description": "the cryogen used to freeze the sample, i.e. ethane",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplecryogen_sample_env",
+      "owner": "Freezing",
+      "domain_of": [
+        "Freezing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "method",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplemethod",
+      "description": "freezing method - such as plunge freezing, high pressure freezing etc.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplemethod",
+      "owner": "Freezing",
+      "domain_of": [
+        "Freezing"
+      ],
+      "range": "FreezingMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "blotting",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleblotting",
+      "description": "whether blotting was performed.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleblotting",
+      "owner": "Freezing",
+      "domain_of": [
+        "Freezing"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "humidity_env",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplehumidity_env",
+      "description": "humidity of the atmosphere right before/ during freezing; in %.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplehumidity_env",
+      "owner": "Freezing",
+      "domain_of": [
+        "Freezing"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "temperature_env",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampletemperature_env",
+      "description": "temperature of the sample right before freezing; in K.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampletemperature_env",
+      "owner": "Freezing",
+      "domain_of": [
+        "Freezing"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "atmosphere",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleatmosphere",
+      "description": "What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleatmosphere",
+      "owner": "Freezing",
+      "domain_of": [
+        "Freezing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "details",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampledetails",
+      "description": "Any further comments on the freezing process go here.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampledetails",
+      "owner": "Freezing",
+      "domain_of": [
+        "Freezing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "freezing",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplefreezing",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplefreezing",
+      "owner": "SampleEnv",
+      "domain_of": [
+        "SampleEnv"
+      ],
+      "range": "Freezing",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "thinning",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplethinning",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplethinning",
+      "owner": "SampleEnv",
+      "domain_of": [
+        "SampleEnv"
+      ],
+      "range": "Thinning",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "method_thin",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplemethod_thin",
+      "description": "The thinning method used, such as FIB milling.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplemethod_thin",
+      "owner": "Thinning",
+      "domain_of": [
+        "Thinning"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument_thin",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleinstrument_thin",
+      "description": "Instrument used for thinning the sample",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleinstrument_thin",
+      "owner": "Thinning",
+      "domain_of": [
+        "Thinning"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ion_source",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleion_source",
+      "description": "what ion source was used?",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleion_source",
+      "owner": "Thinning",
+      "domain_of": [
+        "Thinning"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "target_thickness",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampletarget_thickness",
+      "description": "What was the target thickness of the lamella; in nm.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampletarget_thickness",
+      "owner": "Thinning",
+      "domain_of": [
+        "Thinning"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "lift_out",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplelift_out",
+      "description": "whether a lift out was performed",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplelift_out",
+      "owner": "Thinning",
+      "domain_of": [
+        "Thinning"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tomogram_features",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features",
+      "owner": "SampleEnv",
+      "domain_of": [
+        "SampleEnv"
+      ],
+      "range": "TomogramFeatures",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cellular_features",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplecellular_features",
+      "description": "What type of cellular features are present in your tomograms?",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplecellular_features",
+      "owner": "TomogramFeatures",
+      "domain_of": [
+        "TomogramFeatures"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "organelles",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleorganelles",
+      "description": "What organelles; if any; are present?",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleorganelles",
+      "owner": "TomogramFeatures",
+      "domain_of": [
+        "TomogramFeatures"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "main_target",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplemain_target",
+      "description": "What was the main biological target of your research for this tomogram?",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplemain_target",
+      "owner": "TomogramFeatures",
+      "domain_of": [
+        "TomogramFeatures"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "details_tomo",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampledetails_tomo",
+      "description": "If you have any further comments on your tomograms please leave them here",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampledetails_tomo",
+      "owner": "TomogramFeatures",
+      "domain_of": [
+        "TomogramFeatures"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimen_env",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env",
+      "owner": "SampleEnv",
+      "domain_of": [
+        "SampleEnv"
+      ],
+      "range": "SpecimenEnv",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesname",
+      "description": "The name of the item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesname",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "description",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescription",
+      "description": "The description of the item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescription",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "manufacturer",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer",
+      "description": "The name of the manufacturer",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "model",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmodel",
+      "description": "The model of the item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmodel",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "minimal",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesminimal",
+      "description": "Minimal value of a given dataset property",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesminimal",
+      "owner": "Range",
+      "domain_of": [
+        "Range"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "maximal",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmaximal",
+      "description": "Maximal value of a given dataset property",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesmaximal",
+      "owner": "Range",
+      "domain_of": [
+        "Range"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "increment",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesincrement",
+      "description": "Increment between elements of a series",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesincrement",
+      "owner": "Series",
+      "domain_of": [
+        "Series"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "width",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typeswidth",
+      "description": "The width of a given item - unit depends on item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typeswidth",
+      "owner": "ImageSize",
+      "domain_of": [
+        "ImageSize"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "height",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesheight",
+      "description": "The height of a given item - unit depends on item",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesheight",
+      "owner": "ImageSize",
+      "domain_of": [
+        "ImageSize"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "x_min",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesx_min",
+      "description": "minimum x",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesx_min",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "x_max",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesx_max",
+      "description": "maximum x",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesx_max",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "y_min",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesy_min",
+      "description": "minimum y",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesy_min",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "y_max",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesy_max",
+      "description": "maximum y",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesy_max",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "unit",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesunit",
+      "description": "the unit of a given value",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "http://example.org/UNKNOWN/qudt/hasUnit"
+      ],
+      "slot_uri": "http://example.org/UNKNOWN/qudt/hasUnit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "value",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesvalue",
+      "description": "the value of a field with a unit",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "http://example.org/UNKNOWN/qudt/hasQuantityKind"
+      ],
+      "slot_uri": "http://example.org/UNKNOWN/qudt/hasQuantityKind",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptors",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_thing",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "valueSI",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesvalueSI",
+      "description": "value of a given field in respect to its SI unit",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesvalueSI",
+      "owner": "QuantitySI",
+      "domain_of": [
+        "QuantitySI"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "unitSI",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesunitSI",
+      "description": "the SI unit attached to a si value",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesunitSI",
+      "owner": "QuantitySI",
+      "domain_of": [
+        "QuantitySI"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SampleEnv_specimen_env",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "is_a": "specimen_env",
+      "domain": "SampleEnv",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env",
+      "alias": "specimen_env",
+      "owner": "SampleEnv",
+      "domain_of": [
+        "SampleEnv"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "specimen_env",
+      "range": "SpecimenEnv",
+      "required": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SpecimenEnv_organism",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleorganism",
+      "description": "the organism(s) present in your sample, if not perfectly defined try to asses as close as possible.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "is_a": "organism",
+      "domain": "SpecimenEnv",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleorganism",
+      "alias": "organism",
+      "owner": "SpecimenEnv",
+      "domain_of": [
+        "SpecimenEnv"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "organism",
+      "range": "string",
+      "required": true,
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_unit",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesunit",
+      "description": "the unit of a given value",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "http://example.org/UNKNOWN/qudt/hasUnit"
+      ],
+      "is_a": "unit",
+      "domain": "QuantityValue",
+      "slot_uri": "http://example.org/UNKNOWN/qudt/hasUnit",
+      "alias": "unit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "unit",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_value",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesvalue",
+      "description": "the value of a field with a unit",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "http://example.org/UNKNOWN/qudt/hasQuantityKind"
+      ],
+      "is_a": "value",
+      "domain": "QuantityValue",
+      "slot_uri": "http://example.org/UNKNOWN/qudt/hasQuantityKind",
+      "alias": "value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "value",
+      "range": "float",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_name",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "descriptor_name",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name",
+      "alias": "descriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_thing",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "descriptor_thing",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing",
+      "alias": "descriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_thing",
+      "range": "Any",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "SampleEnv",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleSampleEnv",
+      "description": "Unifying class to describe the full sample.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slots": [
+        "SampleEnv_specimen_env",
+        "freezing",
+        "thinning",
+        "tomogram_features"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleSampleEnv",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SpecimenEnv",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv",
+      "description": "base information on the acquisition and treatment of the sample itself.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slots": [
+        "SpecimenEnv_organism",
+        "tissue",
+        "source_env",
+        "location",
+        "collection_date",
+        "handling"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Freezing",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing",
+      "description": "how the sample was frozen.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slots": [
+        "cryogen_sample_env",
+        "method",
+        "blotting",
+        "humidity_env",
+        "temperature_env",
+        "atmosphere",
+        "details"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Thinning",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleThinning",
+      "description": "how the frozen sample was thinned by i.e. FiB-milling",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slots": [
+        "method_thin",
+        "instrument_thin",
+        "ion_source",
+        "target_thickness",
+        "lift_out"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleThinning",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TomogramFeatures",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures",
+      "description": "what was the target of the tomograms, and what area of a cell do they cover.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/sample-env",
+      "slots": [
+        "cellular_features",
+        "organelles",
+        "main_target",
+        "details_tomo"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Any",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesAny",
+      "description": "Any type, used as the base for type-narrowing.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "linkml:Any"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/Any",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Range",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesRange",
+      "description": "A range constructed from min and max",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slots": [
+        "minimal",
+        "maximal"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesRange",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Series",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesSeries",
+      "description": "A series of numbers constructed from min, max, and increment",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "Range",
+      "slots": [
+        "minimal",
+        "maximal",
+        "increment"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesSeries",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ImageSize",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesImageSize",
+      "description": "size of a 2D image (in integer units)",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slots": [
+        "height",
+        "width"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesImageSize",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "BoundingBox2D",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D",
+      "description": "an axis-aligned 2D bounding box (float units)",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "slots": [
+        "x_min",
+        "x_max",
+        "y_min",
+        "y_max"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantityValue",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue",
+      "description": "if a value has a unit, it should be given as a unit value pair.",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "mappings": [
+        "qudt:quantityValue"
+      ],
+      "slots": [
+        "QuantityValue_unit",
+        "QuantityValue_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://example.org/UNKNOWN/qudt/quantityValue",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantitySI",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI",
+      "description": "unit value extended to have two additional fields si_value and si_unit",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "QuantityValue",
+      "slots": [
+        "QuantityValue_unit",
+        "QuantityValue_value",
+        "valueSI",
+        "unitSI"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptor",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesDescriptor",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "abstract": true,
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesDescriptor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptors",
+      "definition_uri": "https://w3id.org/oscem-schemas/latest/custom_typesDescriptors",
+      "from_schema": "https://w3id.org/oscem-schemas/latest/custom_types",
+      "is_a": "Descriptor",
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/oscem-schemas/latest/custom_typesDescriptors",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "sample_environmental.yaml",
+  "source_file_date": "2025-12-04T16:29:18",
+  "source_file_size": 4481,
+  "generation_date": "2025-12-04T16:32:16",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "project/sample_environmental/jsonld/sample_environmental.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    "./custom_types.context.jsonld",
+    {
+      "@base": "https://w3id.org/oscem-schemas/latest/environmental_sample"
+    }
+  ]
+}

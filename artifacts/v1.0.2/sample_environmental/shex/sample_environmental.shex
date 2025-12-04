@@ -1,0 +1,211 @@
+# metamodel_version: 1.7.0
+BASE <https://w3id.org/oscem-schemas/latest/environmental_sample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX qudt: <http://example.org/UNKNOWN/qudt/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<https://w3id.org/oscem-schemas/latest/custom_typesAny> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesAny_tes> rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/custom_typesx_min> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+          ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesx_max> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+          ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesy_min> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+          ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesy_max> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+          ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor>  (
+    {
+       (  $<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor_tes> ( 
+             <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> @linkml:String ;
+             <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing>
+             @<https://w3id.org/oscem-schemas/latest/custom_typesAny> ?
+          ) ;
+          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> ] ?
+       )
+    } OR @<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors>
+)
+
+<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors_tes> ( 
+          &<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor_tes> ;
+          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> ] ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/environmental_samplecryogen_sample_env> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplemethod> [
+             <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezingMethodEnum#plunge_freezing>
+             <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezingMethodEnum#high_pressure_freezing> ] ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampleblotting> @linkml:Boolean ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplehumidity_env>
+          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampletemperature_env>
+          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampleatmosphere> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampledetails> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesImageSize> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesImageSize_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/custom_typesheight> @linkml:Integer ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typeswidth> @linkml:Integer ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI_tes> ( 
+          &<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue_tes> ;
+          rdf:type [ qudt:quantityValue ] ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> @linkml:Float ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue>  (
+    CLOSED {
+       (  $<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue_tes> (  qudt:hasUnit @linkml:String ;
+             qudt:hasQuantityKind @linkml:Float
+          ) ;
+          rdf:type [ qudt:quantityValue ] ?
+       )
+    } OR @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+)
+
+<https://w3id.org/oscem-schemas/latest/custom_typesRange>  (
+    CLOSED {
+       (  $<https://w3id.org/oscem-schemas/latest/custom_typesRange_tes> ( 
+             <https://w3id.org/oscem-schemas/latest/custom_typesminimal>
+             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
+             <https://w3id.org/oscem-schemas/latest/custom_typesmaximal>
+             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ?
+          ) ;
+          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesRange> ] ?
+       )
+    } OR @<https://w3id.org/oscem-schemas/latest/custom_typesSeries>
+)
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleSampleEnv> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/environmental_sampleSampleEnv_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env>
+          @<https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv> ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplefreezing>
+          @<https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplethinning>
+          @<https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features>
+          @<https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/environmental_sampleSampleEnv> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/custom_typesSeries> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/custom_typesSeries_tes> ( 
+          &<https://w3id.org/oscem-schemas/latest/custom_typesRange_tes> ;
+          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesRange> ] ? ;
+          <https://w3id.org/oscem-schemas/latest/custom_typesincrement>
+          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesSeries> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/environmental_sampleorganism> @linkml:String + ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampletissue> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplesource_env> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplelocation> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplecollection_date> @linkml:Date ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplehandling> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/environmental_sampleThinning_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/environmental_samplemethod_thin> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampleinstrument_thin> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampleion_source> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampletarget_thickness>
+          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplelift_out> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> ] ?
+    )
+}
+
+<https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> CLOSED {
+    (  $<https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures_tes> ( 
+          <https://w3id.org/oscem-schemas/latest/environmental_samplecellular_features> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampleorganelles> @linkml:String * ;
+          <https://w3id.org/oscem-schemas/latest/environmental_samplemain_target> @linkml:String ? ;
+          <https://w3id.org/oscem-schemas/latest/environmental_sampledetails_tomo> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> ] ?
+    )
+}

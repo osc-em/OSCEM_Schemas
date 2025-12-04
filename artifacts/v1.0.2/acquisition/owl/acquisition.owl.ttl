@@ -1,0 +1,1088 @@
+@prefix acquisition: <https://w3id.org/oscem-schemas/latest/acquisition> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix types: <https://w3id.org/oscem-schemas/latest/custom_types> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+acquisition:AcquisitionSpa a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "AcquisitionSpa" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:technique ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:string ;
+                    owl:withRestrictions ( [ xsd:pattern "spa" ] ) ] ;
+            owl:onProperty acquisition:technique ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:technique ],
+        acquisition:Acquisition ;
+    skos:inScheme acquisition: .
+
+types:Series a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Series" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:increment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:increment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:increment ],
+        types:Range ;
+    skos:definition "A series of numbers constructed from min, max, and increment" ;
+    skos:inScheme types: .
+
+types:description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    rdfs:range linkml:String ;
+    skos:definition "The description of the item" ;
+    skos:inScheme types: .
+
+types:descriptors a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptors" ;
+    rdfs:range types:Descriptors ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+    skos:inScheme types: .
+
+types:manufacturer a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "manufacturer" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the manufacturer" ;
+    skos:inScheme types: .
+
+acquisition:Acquisition a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Acquisition" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:gainref_flip_rotate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:screen_current ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:microscope_software ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:beamtiltgroups ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:nominal_defocus ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty acquisition:screen_current ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:temperature_range ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:energy_filter ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:binning_camera ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:beamtilt ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:frames_per_movie ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:beamshift ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:holder_cryogen ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom acquisition:Detector ;
+            owl:onProperty acquisition:detectors ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:gainref_flip_rotate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:cryogen ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:temperature_range ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty acquisition:grids_imaged ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:binning_camera ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:dose_per_movie ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:imageshift ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty acquisition:frames_per_movie ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:technique ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty acquisition:images_generated ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:beamshift ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty acquisition:date_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:holder ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:Range ;
+            owl:onProperty acquisition:nominal_defocus ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:images_generated ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:holder ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:detectors ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty acquisition:dose_per_movie ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:screen_current ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:ImageSize ;
+            owl:onProperty acquisition:binning_camera ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:image_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:image_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:pixel_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom acquisition:EnergyFilter ;
+            owl:onProperty acquisition:energy_filter ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:date_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:calibrated_magnification ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:imageshift ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:technique ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:frames_per_movie ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:calibrated_magnification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:gainref_flip_rotate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:nominal_magnification ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:calibrated_defocus ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:nominal_defocus ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty acquisition:nominal_magnification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:exposure_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:images_generated ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:technique ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty acquisition:exposure_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:holder_cryogen ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:ImageSize ;
+            owl:onProperty acquisition:image_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom acquisition:SpecialistOptics ;
+            owl:onProperty acquisition:specialist_optics ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:microscope_software ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:specialist_optics ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:specialist_optics ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:cryogen ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty acquisition:calibrated_magnification ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:Range ;
+            owl:onProperty acquisition:calibrated_defocus ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:holder_cryogen ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:date_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:cryogen ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:beamtiltgroups ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:nominal_magnification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:grids_imaged ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:beamtilt ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:BoundingBox2D ;
+            owl:onProperty acquisition:imageshift ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:exposure_time ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:grids_imaged ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:holder ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:energy_filter ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:BoundingBox2D ;
+            owl:onProperty acquisition:beamtilt ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty acquisition:beamtiltgroups ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty acquisition:pixel_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:microscope_software ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:dose_per_movie ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:BoundingBox2D ;
+            owl:onProperty acquisition:beamshift ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:calibrated_defocus ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:pixel_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:Range ;
+            owl:onProperty acquisition:temperature_range ] ;
+    skos:definition "General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses)." ;
+    skos:inScheme acquisition: .
+
+types:Descriptor a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:descriptor_thing ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:descriptor_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:descriptor_thing ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:descriptor_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:Any ;
+            owl:onProperty types:descriptor_thing ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:descriptor_name ] ;
+    skos:definition "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
+    skos:inScheme types: .
+
+types:Descriptors a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Descriptors" ;
+    rdfs:subClassOf types:Descriptor ;
+    skos:inScheme types: .
+
+types:QuantityValue a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantityValue" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty types:value ] ;
+    skos:definition "if a value has a unit, it should be given as a unit value pair." ;
+    skos:exactMatch <qudt:quantityValue> ;
+    skos:inScheme types: .
+
+<https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#cellular_tomo> a owl:Class,
+        acquisition:AcquisitionTechnique ;
+    rdfs:label "cellular_tomo" ;
+    rdfs:subClassOf acquisition:AcquisitionTechnique .
+
+<https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#env_tomo> a owl:Class,
+        acquisition:AcquisitionTechnique ;
+    rdfs:label "env_tomo" ;
+    rdfs:subClassOf acquisition:AcquisitionTechnique .
+
+<https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#spa> a owl:Class,
+        acquisition:AcquisitionTechnique ;
+    rdfs:label "spa" ;
+    rdfs:subClassOf acquisition:AcquisitionTechnique .
+
+<https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#subtomo> a owl:Class,
+        acquisition:AcquisitionTechnique ;
+    rdfs:label "subtomo" ;
+    rdfs:subClassOf acquisition:AcquisitionTechnique .
+
+acquisition:ChromaticAberrationCorrector a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ChromaticAberrationCorrector" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:used ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:used ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty acquisition:used ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:instrument_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:instrument_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:instrument_type ] ;
+    skos:definition "Special device used to correct instrument inherent chromatic aberration." ;
+    skos:inScheme acquisition: .
+
+acquisition:Detector a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Detector" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:dispersion ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:collection_angle ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:dispersion ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:mode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty acquisition:dispersion ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:mode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:collection_angle ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:mode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:Range ;
+            owl:onProperty acquisition:collection_angle ] ;
+    skos:definition "Class representing a detector" ;
+    skos:inScheme acquisition: .
+
+acquisition:EnergyFilter a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "EnergyFilter" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:used ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:width_energy_filter ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:model ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:used ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:width_energy_filter ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty acquisition:width_energy_filter ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:model ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:model ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty acquisition:used ] ;
+    skos:definition "A device used to filter for electrons with specific energy." ;
+    skos:inScheme acquisition: .
+
+acquisition:Phaseplate a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Phaseplate" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:used ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:instrument_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:instrument_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:instrument_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty acquisition:used ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:used ] ;
+    skos:definition "Used to modulate the phase of the electron wave." ;
+    skos:inScheme acquisition: .
+
+acquisition:SpecialistOptics a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SpecialistOptics" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:chromatic_aberration_corrector ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:spherical_aberration_corrector ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:phaseplate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom acquisition:Phaseplate ;
+            owl:onProperty acquisition:phaseplate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty acquisition:chromatic_aberration_corrector ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:phaseplate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom acquisition:SphericalAberrationCorrector ;
+            owl:onProperty acquisition:spherical_aberration_corrector ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom acquisition:ChromaticAberrationCorrector ;
+            owl:onProperty acquisition:chromatic_aberration_corrector ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:spherical_aberration_corrector ] ;
+    skos:definition "Optional optics used to correct for instrument limitations." ;
+    skos:inScheme acquisition: .
+
+acquisition:SphericalAberrationCorrector a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SphericalAberrationCorrector" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:instrument_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty acquisition:instrument_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty acquisition:used ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:instrument_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty acquisition:used ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty acquisition:used ] ;
+    skos:definition "Special device used to correct instrument inherent spherical aberration." ;
+    skos:inScheme acquisition: .
+
+acquisition:detectors a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "detectors" ;
+    rdfs:range acquisition:Detector ;
+    skos:inScheme acquisition: .
+
+types:Any a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Any" ;
+    skos:definition "Any type, used as the base for type-narrowing." ;
+    skos:exactMatch linkml:Any ;
+    skos:inScheme types: .
+
+acquisition:beamshift a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "beamshift" ;
+    rdfs:range types:BoundingBox2D ;
+    skos:definition "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+    skos:inScheme acquisition: .
+
+acquisition:beamtilt a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "beamtilt" ;
+    rdfs:range types:BoundingBox2D ;
+    skos:definition "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+    skos:inScheme acquisition: .
+
+acquisition:beamtiltgroups a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "beamtiltgroups" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+    skos:inScheme acquisition: .
+
+acquisition:binning_camera a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "binning_camera" ;
+    rdfs:range types:ImageSize ;
+    skos:definition "Level of binning on the images applied during data collection" ;
+    skos:inScheme acquisition: .
+
+acquisition:calibrated_defocus a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "calibrated_defocus" ;
+    rdfs:range types:Range ;
+    skos:definition "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
+    skos:inScheme acquisition: .
+
+acquisition:calibrated_magnification a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "calibrated_magnification" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Calculated magnification, no unit" ;
+    skos:inScheme acquisition: .
+
+acquisition:chromatic_aberration_corrector a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "chromatic_aberration_corrector" ;
+    rdfs:range acquisition:ChromaticAberrationCorrector ;
+    skos:definition "Specialist device to correct for chromatic aberration of the microscope lenses" ;
+    skos:inScheme acquisition: .
+
+acquisition:collection_angle a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "collection_angle" ;
+    rdfs:range types:Range ;
+    skos:definition "Collection angle set, min and max values in mrad." ;
+    skos:inScheme acquisition: .
+
+acquisition:cryogen a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "cryogen" ;
+    rdfs:range linkml:String ;
+    skos:definition "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
+    skos:inScheme acquisition: .
+
+acquisition:date_time a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "date_time" ;
+    rdfs:range linkml:Datetime ;
+    skos:definition "Time and date of the data acquisition" ;
+    skos:inScheme acquisition: .
+
+acquisition:dispersion a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dispersion" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Dispersion of an analytical detector, in eV" ;
+    skos:inScheme acquisition: .
+
+acquisition:dose_per_movie a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dose_per_movie" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+    skos:inScheme acquisition: .
+
+acquisition:energy_filter a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "energy_filter" ;
+    rdfs:range acquisition:EnergyFilter ;
+    skos:definition "Whether an energy filter was used and its specifics." ;
+    skos:inScheme acquisition: .
+
+acquisition:exposure_time a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "exposure_time" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Time of data acquisition per movie/tilt - in s" ;
+    skos:inScheme acquisition: .
+
+acquisition:frames_per_movie a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "frames_per_movie" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
+    skos:inScheme acquisition: .
+
+acquisition:gainref_flip_rotate a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "gainref_flip_rotate" ;
+    rdfs:range linkml:String ;
+    skos:definition "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
+    skos:inScheme acquisition: .
+
+acquisition:grids_imaged a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "grids_imaged" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
+    skos:inScheme acquisition: .
+
+acquisition:holder a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "holder" ;
+    rdfs:range linkml:String ;
+    skos:definition "Speciman holder model" ;
+    skos:inScheme acquisition: .
+
+acquisition:holder_cryogen a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "holder_cryogen" ;
+    rdfs:range linkml:String ;
+    skos:definition "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+    skos:inScheme acquisition: .
+
+acquisition:image_size a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "image_size" ;
+    rdfs:range types:ImageSize ;
+    skos:definition "The size of the image in pixels, height and width given." ;
+    skos:inScheme acquisition: .
+
+acquisition:images_generated a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "images_generated" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+    skos:inScheme acquisition: .
+
+acquisition:imageshift a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "imageshift" ;
+    rdfs:range types:BoundingBox2D ;
+    skos:definition "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+    skos:inScheme acquisition: .
+
+acquisition:microscope_software a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "microscope_software" ;
+    rdfs:range linkml:String ;
+    skos:definition "Software used for instrument control," ;
+    skos:inScheme acquisition: .
+
+acquisition:mode a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "mode" ;
+    rdfs:range linkml:String ;
+    skos:definition "Mode of the detector, e.g. \"counting\", \"ScanningDetector\", \"ImagingDetector\", etc." ;
+    skos:inScheme acquisition: .
+
+acquisition:nominal_defocus a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "nominal_defocus" ;
+    rdfs:range types:Range ;
+    skos:definition "Target defocus set, min and max values in nm." ;
+    skos:inScheme acquisition: .
+
+acquisition:nominal_magnification a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "nominal_magnification" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Magnification level as indicated by the instrument, no unit" ;
+    skos:inScheme acquisition: .
+
+acquisition:phaseplate a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "phaseplate" ;
+    rdfs:range acquisition:Phaseplate ;
+    skos:definition "Phaseplate is a special optics device that can be used to enhance contrast" ;
+    skos:inScheme acquisition: .
+
+acquisition:pixel_size a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "pixel_size" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Pixel size, in Angstrom" ;
+    skos:inScheme acquisition: .
+
+acquisition:screen_current a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "screen_current" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "The total electron beam current hitting the viewing screen, in nA." ;
+    skos:inScheme acquisition: .
+
+acquisition:specialist_optics a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "specialist_optics" ;
+    rdfs:range acquisition:SpecialistOptics ;
+    skos:definition "Any type of special optics, such as a phaseplate" ;
+    skos:inScheme acquisition: .
+
+acquisition:spherical_aberration_corrector a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "spherical_aberration_corrector" ;
+    rdfs:range acquisition:SphericalAberrationCorrector ;
+    skos:definition "Specialist device to correct for spherical aberration of the microscope lenses" ;
+    skos:inScheme acquisition: .
+
+acquisition:temperature_range a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "temperature_range" ;
+    rdfs:range types:Range ;
+    skos:definition "Temperature during data collection, in K with min and max values." ;
+    skos:inScheme acquisition: ;
+    skos:prefLabel "temperature" .
+
+acquisition:width_energy_filter a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "width_energy_filter" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Width of the energy filter used." ;
+    skos:inScheme acquisition: .
+
+types:descriptor_name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_name" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name defining the descriptor" ;
+    skos:inScheme types: .
+
+types:descriptor_thing a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "descriptor_thing" ;
+    rdfs:range types:Any ;
+    skos:definition "Description of the descriptor" ;
+    skos:inScheme types: .
+
+types:height a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "height" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The height of a given item - unit depends on item" ;
+    skos:inScheme types: .
+
+types:increment a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "increment" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Increment between elements of a series" ;
+    skos:inScheme types: .
+
+types:maximal a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "maximal" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Maximal value of a given dataset property" ;
+    skos:inScheme types: .
+
+types:minimal a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "minimal" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "Minimal value of a given dataset property" ;
+    skos:inScheme types: .
+
+types:model a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "model" ;
+    rdfs:range linkml:String ;
+    skos:definition "The model of the item" ;
+    skos:inScheme types: .
+
+types:name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    rdfs:range linkml:String ;
+    skos:definition "The name of the item" ;
+    skos:inScheme types: .
+
+types:unit a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unit" ;
+    rdfs:range linkml:String ;
+    skos:definition "the unit of a given value" ;
+    skos:inScheme types: .
+
+types:unitSI a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "unitSI" ;
+    rdfs:range linkml:String ;
+    skos:definition "the SI unit attached to a si value" ;
+    skos:inScheme types: .
+
+types:value a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "value" ;
+    rdfs:range linkml:Float ;
+    skos:definition "the value of a field with a unit" ;
+    skos:inScheme types: .
+
+types:valueSI a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "valueSI" ;
+    rdfs:range linkml:Float ;
+    skos:definition "value of a given field in respect to its SI unit" ;
+    skos:inScheme types: .
+
+types:width a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "width" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The width of a given item - unit depends on item" ;
+    skos:inScheme types: .
+
+types:x_max a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_max" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "maximum x" ;
+    skos:inScheme types: .
+
+types:x_min a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "x_min" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "minimum x" ;
+    skos:inScheme types: .
+
+types:y_max a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_max" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "maximum y" ;
+    skos:inScheme types: .
+
+types:y_min a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "y_min" ;
+    rdfs:range types:QuantitySI ;
+    skos:definition "minimum y" ;
+    skos:inScheme types: .
+
+types:ImageSize a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ImageSize" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:width ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:height ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:width ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:height ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty types:width ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty types:height ] ;
+    skos:definition "size of a 2D image (in integer units)" ;
+    skos:inScheme types: .
+
+acquisition:technique a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "technique" ;
+    rdfs:range linkml:String ;
+    skos:definition "Specifies which Acquisition subschema/class is in use." ;
+    skos:inScheme acquisition: .
+
+types:BoundingBox2D a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "BoundingBox2D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:y_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:x_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:x_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:y_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:x_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:y_min ] ;
+    skos:definition "an axis-aligned 2D bounding box (float units)" ;
+    skos:inScheme types: .
+
+acquisition:AcquisitionTechnique a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "AcquisitionTechnique" ;
+    owl:unionOf ( <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#spa> <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#subtomo> <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#env_tomo> <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#cellular_tomo> ) ;
+    skos:inScheme acquisition: ;
+    linkml:permissible_values <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#cellular_tomo>,
+        <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#env_tomo>,
+        <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#spa>,
+        <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionTechnique#subtomo> .
+
+acquisition:instrument_type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "instrument_type" ;
+    rdfs:range linkml:String ;
+    skos:definition "Details of a given specialist instrument" ;
+    skos:inScheme acquisition: .
+
+types:Range a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Range" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:minimal ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:minimal ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:minimal ] ;
+    skos:definition "A range constructed from min and max" ;
+    skos:inScheme types: .
+
+acquisition:used a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "used" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "whether a specific instrument was used during data acquisition" ;
+    skos:inScheme acquisition: .
+
+types:QuantitySI a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantitySI" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:valueSI ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:unitSI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty types:valueSI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:unitSI ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:valueSI ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:unitSI ],
+        types:QuantityValue ;
+    skos:definition "unit value extended to have two additional fields si_value and si_unit" ;
+    skos:inScheme types: .
+
+acquisition: a owl:Ontology ;
+    rdfs:label "Acquisition" ;
+    skos:definition """LinkML schema for electron microscopy acquisition and related metadata, broadly following the EMDB standard with some additions.
+""" .
+
