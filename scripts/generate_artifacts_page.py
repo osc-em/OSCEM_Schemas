@@ -89,14 +89,14 @@ def generate_artifacts_page(versions: List[str], schema_types: List[Dict[str, st
     main_links = []
     for schema in main_schemas:
         main_links.append(
-            f"- [{schema["name"]}](https://osc-em.github.io/oscem-schemas/artifacts/latest/{schema["id"]}/)"
+            f"- [{schema['name']}](https://osc-em.github.io/oscem-schemas/artifacts/latest/{schema['id']}/)"
         )
     
     # Build schema links for supporting schemas
     supporting_links = []
     for schema in supporting_schemas:
         supporting_links.append(
-            f"- [{schema["name"]}](https://osc-em.github.io/oscem-schemas/artifacts/latest/{schema["id"]}/)"
+            f"- [{schema['name']}](https://osc-em.github.io/oscem-schemas/artifacts/latest/{schema['id']}/)"
         )
 
     # Build version list
