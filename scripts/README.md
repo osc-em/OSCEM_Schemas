@@ -1,6 +1,4 @@
-# Scripts Documentation
-
-## Artifact Generation Scripts
+# Artifact Generation Scripts Documentation
 
 ### `generate_artifacts_page.py`
 
