@@ -52,24 +52,23 @@ def get_all_schema_ids(schema_dir: Path = None) -> list:
     yaml_files = list(schema_dir.glob("*.yaml"))
     # Extract schema IDs (filenames without .yaml extension)
     all_ids = [f.stem for f in yaml_files]
-    # Separate main and supporting schemas
-    main_schemas = sorted([sid for sid in all_ids if is_main_schema(sid)])
-    supporting_schemas = sorted([sid for sid in all_ids if not is_main_schema(sid)])
+    # Separate main and supporting schemas (case-insensitive alphabetical sorting)
+    main_schemas = sorted([sid for sid in all_ids if is_main_schema(sid)], key=str.lower)
+    supporting_schemas = sorted([sid for sid in all_ids if not is_main_schema(sid)], key=str.lower)
 
     return main_schemas + supporting_schemas
 
 
 def get_schema_sort_key(schema_id: str) -> tuple:
     """
-    Return a sort key that puts main schemas first (alphabetically),
-    then supporting schemas (alphabetically).
+    Return a sort key that puts main schemas first, then supporting schemas.
     """
     if is_main_schema(schema_id):
-        # Main schemas: sort alphabetically, group = 0
-        return (0, schema_id)
+        # Main schemas: group = 0
+        return (0, schema_id.lower())
     else:
-        # Supporting schemas: sort alphabetically, group = 1
-        return (1, schema_id)
+        # Supporting schemas: group = 1
+        return (1, schema_id.lower())
 
 
 def format_schema_name(schema_id: str, schema_dir: Path = None) -> str:
