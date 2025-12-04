@@ -48,13 +48,18 @@ jobs:
         run: |
           mkdir -p artifacts-pages
           VERSION="${{ github.event.release.tag_name }}"
-          
+
           echo "Deploying version: $VERSION"
-          
+
+          # Create version directories (clean latest to avoid stale files)
+          mkdir -p "artifacts-pages/$VERSION"
+          rm -rf "artifacts-pages/latest"
+          mkdir -p "artifacts-pages/latest"
+
           # Copy to versioned directory and latest
           cp -r project/* "artifacts-pages/$VERSION/"
           cp -r project/* "artifacts-pages/latest/"
-          
+
           # Create root index that redirects to docs
           cat > artifacts-pages/index.html << 'EOF'
           <!DOCTYPE html>
