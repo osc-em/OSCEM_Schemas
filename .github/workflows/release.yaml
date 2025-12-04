@@ -37,13 +37,11 @@ jobs:
 
       # Generate artifacts once, use everywhere
       - name: Generate project artifacts
-        run: make gen-project
+        run: make gen-all-schemas
 
-      # Update artifacts documentation page
-      - name: Update artifacts.md with new version
-        run: |
-          VERSION="${{ github.event.release.tag_name }}"
-          python3 scripts/update_artifacts_page.py "$VERSION" "${{ github.repository }}"
+      # Update artifacts documentation page dynamically
+      - name: Generate artifacts.md page
+        run: python3 scripts/generate_artifacts_page.py "${{ github.repository }}"
 
       # 1. Deploy to GitHub Pages for permanent URLs
       - name: Prepare artifacts for GitHub Pages
@@ -70,68 +68,10 @@ jobs:
           </body>
           </html>
           EOF
-          
-          # Create index for latest version
-          cat > "artifacts-pages/latest/index.html" << 'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>OSC-EM Schema Artifacts - Latest</title>
-            <style>
-              body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
-              h1 { color: #333; }
-              ul { list-style: none; padding: 0; }
-              li { margin: 10px 0; }
-              a { color: #0066cc; text-decoration: none; font-size: 18px; }
-              a:hover { text-decoration: underline; }
-              .description { color: #666; font-size: 14px; margin-left: 10px; }
-            </style>
-          </head>
-          <body>
-            <h1>OSC-EM Schema Artifacts - Latest Version</h1>
-            <p>Select a schema type to browse:</p>
-            <ul>
-              <li><a href="spa/">Single Particle Analysis (SPA)</a> <span class="description">- Schemas for single particle cryo-EM</span></li>
-              <li><a href="cellular_tomo/">Cellular Tomography</a> <span class="description">- Schemas for cellular cryo-tomography</span></li>
-              <li><a href="env_tomo/">Environmental Tomography</a> <span class="description">- Schemas for environmental tomography</span></li>
-              <li><a href="subtomo/">Sub-Tomogram Averaging</a> <span class="description">- Schemas for sub-tomogram averaging</span></li>
-              <li><a href="general/">General</a> <span class="description">- General schemas and shared definitions</span></li>
-            </ul>
-            <p><a href="https://osc-em.github.io/oscem-schemas/artifacts.html">← Back to all versions</a></p>
-          </body>
-          </html>
-          EOF
-          
-          # Create the same index for versioned directory
-          cat > "artifacts-pages/$VERSION/index.html" << EOF
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>OSC-EM Schema Artifacts - $VERSION</title>
-            <style>
-              body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
-              h1 { color: #333; }
-              ul { list-style: none; padding: 0; }
-              li { margin: 10px 0; }
-              a { color: #0066cc; text-decoration: none; font-size: 18px; }
-              a:hover { text-decoration: underline; }
-              .description { color: #666; font-size: 14px; margin-left: 10px; }
-            </style>
-          </head>
-          <body>
-            <h1>OSC-EM Schema Artifacts - $VERSION</h1>
-            <p>Select a schema type to browse:</p>
-            <ul>
-              <li><a href="spa/">Single Particle Analysis (SPA)</a> <span class="description">- Schemas for single particle cryo-EM</span></li>
-              <li><a href="cellular_tomo/">Cellular Tomography</a> <span class="description">- Schemas for cellular cryo-tomography</span></li>
-              <li><a href="env_tomo/">Environmental Tomography</a> <span class="description">- Schemas for environmental tomography</span></li>
-              <li><a href="subtomo/">Sub-Tomogram Averaging</a> <span class="description">- Schemas for sub-tomogram averaging</span></li>
-              <li><a href="general/">General</a> <span class="description">- General schemas and shared definitions</span></li>
-            </ul>
-            <p><a href="https://osc-em.github.io/oscem-schemas/artifacts.html">← Back to all versions</a></p>
-          </body>
-          </html>
-          EOF
+
+          # Generate index pages dynamically based on actual schemas
+          python3 scripts/generate_index_pages.py project "artifacts-pages/latest" "latest"
+          python3 scripts/generate_index_pages.py project "artifacts-pages/$VERSION" "$VERSION"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
