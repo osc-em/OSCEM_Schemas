@@ -6,8 +6,9 @@ This script fetches the actual deployed versions instead of maintaining a hardco
 
 import sys
 import json
+import os
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Optional
 import urllib.request
 import urllib.error
 
@@ -19,15 +20,22 @@ from schema_utils import (
 )
 
 
-def fetch_github_pages_versions() -> List[str]:
+def fetch_github_pages_versions(token: Optional[str] = None) -> List[str]:
     """
     Fetch available versions from the GitHub Pages artifacts directory.
     This queries the GitHub API to list directories in the gh-pages branch.
+    
+    Args:
+        token: Optional GitHub token for authenticated requests
     """
     api_url = "https://api.github.com/repos/osc-em/oscem-schemas/contents/artifacts?ref=gh-pages"
 
     try:
-        with urllib.request.urlopen(api_url) as response:
+        req = urllib.request.Request(api_url)
+        if token:
+            req.add_header("Authorization", f"token {token}")
+        
+        with urllib.request.urlopen(req) as response:
             data = json.loads(response.read().decode())
 
         # Filter for directories that look like version tags
@@ -176,9 +184,12 @@ def main():
     repo_root = script_dir.parent
     artifacts_file = repo_root / "docs" / "artifacts.md"
     project_dir = repo_root / "project"
+    
+    # Get GitHub token from environment if available
+    github_token = os.environ.get("GITHUB_TOKEN")
 
     print("Fetching versions from GitHub Pages...")
-    versions = fetch_github_pages_versions()
+    versions = fetch_github_pages_versions(token=github_token)
     print(f"Found {len(versions)} version(s): {', '.join(versions) if versions else 'none'}")
 
     print("Discovering schema types...")

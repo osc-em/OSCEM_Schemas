@@ -101,6 +101,8 @@ jobs:
           git checkout -q "$CURRENT_REF"
 
       - name: Generate artifacts documentation page
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Generate artifacts.md to docs/ directory
           poetry run python scripts/generate_artifacts_page.py "${{ github.repository }}"
