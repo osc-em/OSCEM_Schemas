@@ -89,7 +89,8 @@ jobs:
               echo "Regenerating missing index pages for $version"
 
               # Extract this version's artifacts from gh-pages to artifacts-pages/$version
-              git archive origin/gh-pages "artifacts/$version" | tar -x --strip-components=1 -C artifacts-pages
+              mkdir -p "artifacts-pages/$version"
+              git archive origin/gh-pages "artifacts/$version" | tar -x --strip-components=2 -C "artifacts-pages/$version"
 
               # Create symlinks for consistent naming (short name -> full oscem_schemas_* name)
               cd "artifacts-pages/$version"
