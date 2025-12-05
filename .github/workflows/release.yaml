@@ -88,9 +88,8 @@ jobs:
             if [ "$HAS_INDEXES" -le 1 ]; then
               echo "Regenerating missing index pages for $version"
 
-              # Extract this version's artifacts from gh-pages
-              mkdir -p "artifacts-pages/$version"
-              git archive origin/gh-pages "artifacts/$version" | tar -x -C artifacts-pages --strip-components=2
+              # Extract this version's artifacts from gh-pages to artifacts-pages/$version
+              git archive origin/gh-pages "artifacts/$version" | tar -x --strip-components=1 -C artifacts-pages
 
               # Generate index pages
               poetry run python scripts/generate_index_pages.py "artifacts-pages/$version" "artifacts-pages/$version" "$version"
