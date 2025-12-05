@@ -620,13 +620,13 @@ CREATE TABLE "SpecimenEnv_organism" (
 	organism TEXT NOT NULL,
 	PRIMARY KEY ("SpecimenEnv_id", organism),
 	FOREIGN KEY("SpecimenEnv_id") REFERENCES "SpecimenEnv" (id)
-);CREATE INDEX "ix_SpecimenEnv_organism_SpecimenEnv_id" ON "SpecimenEnv_organism" ("SpecimenEnv_id");CREATE INDEX "ix_SpecimenEnv_organism_organism" ON "SpecimenEnv_organism" (organism);
+);CREATE INDEX "ix_SpecimenEnv_organism_organism" ON "SpecimenEnv_organism" (organism);CREATE INDEX "ix_SpecimenEnv_organism_SpecimenEnv_id" ON "SpecimenEnv_organism" ("SpecimenEnv_id");
 CREATE TABLE "TomogramFeatures_organelles" (
 	"TomogramFeatures_id" INTEGER,
 	organelles TEXT,
 	PRIMARY KEY ("TomogramFeatures_id", organelles),
 	FOREIGN KEY("TomogramFeatures_id") REFERENCES "TomogramFeatures" (id)
-);CREATE INDEX "ix_TomogramFeatures_organelles_TomogramFeatures_id" ON "TomogramFeatures_organelles" ("TomogramFeatures_id");CREATE INDEX "ix_TomogramFeatures_organelles_organelles" ON "TomogramFeatures_organelles" (organelles);
+);CREATE INDEX "ix_TomogramFeatures_organelles_organelles" ON "TomogramFeatures_organelles" (organelles);CREATE INDEX "ix_TomogramFeatures_organelles_TomogramFeatures_id" ON "TomogramFeatures_organelles" ("TomogramFeatures_id");
 CREATE TABLE "Organizational_authors" (
 	"Organizational_id" INTEGER,
 	authors_id INTEGER NOT NULL,
@@ -640,7 +640,7 @@ CREATE TABLE "Organizational_funder" (
 	PRIMARY KEY ("Organizational_id", funder_id),
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id),
 	FOREIGN KEY(funder_id) REFERENCES "Funder" (id)
-);CREATE INDEX "ix_Organizational_funder_Organizational_id" ON "Organizational_funder" ("Organizational_id");CREATE INDEX "ix_Organizational_funder_funder_id" ON "Organizational_funder" (funder_id);
+);CREATE INDEX "ix_Organizational_funder_funder_id" ON "Organizational_funder" (funder_id);CREATE INDEX "ix_Organizational_funder_Organizational_id" ON "Organizational_funder" ("Organizational_id");
 CREATE TABLE "Acquisition" (
 	id INTEGER NOT NULL,
 	technique TEXT,
@@ -977,7 +977,7 @@ CREATE TABLE "AcquisitionSpa_detectors" (
 	PRIMARY KEY ("AcquisitionSpa_id", detectors_id),
 	FOREIGN KEY("AcquisitionSpa_id") REFERENCES "AcquisitionSpa" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_AcquisitionSpa_detectors_AcquisitionSpa_id" ON "AcquisitionSpa_detectors" ("AcquisitionSpa_id");CREATE INDEX "ix_AcquisitionSpa_detectors_detectors_id" ON "AcquisitionSpa_detectors" (detectors_id);
+);CREATE INDEX "ix_AcquisitionSpa_detectors_detectors_id" ON "AcquisitionSpa_detectors" (detectors_id);CREATE INDEX "ix_AcquisitionSpa_detectors_AcquisitionSpa_id" ON "AcquisitionSpa_detectors" ("AcquisitionSpa_id");
 CREATE TABLE "AcquisitionTomo_detectors" (
 	"AcquisitionTomo_id" INTEGER,
 	detectors_id INTEGER NOT NULL,
@@ -991,18 +991,18 @@ CREATE TABLE "AcquisitionSubTomo_detectors" (
 	PRIMARY KEY ("AcquisitionSubTomo_id", detectors_id),
 	FOREIGN KEY("AcquisitionSubTomo_id") REFERENCES "AcquisitionSubTomo" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_AcquisitionSubTomo_detectors_AcquisitionSubTomo_id" ON "AcquisitionSubTomo_detectors" ("AcquisitionSubTomo_id");CREATE INDEX "ix_AcquisitionSubTomo_detectors_detectors_id" ON "AcquisitionSubTomo_detectors" (detectors_id);
+);CREATE INDEX "ix_AcquisitionSubTomo_detectors_detectors_id" ON "AcquisitionSubTomo_detectors" (detectors_id);CREATE INDEX "ix_AcquisitionSubTomo_detectors_AcquisitionSubTomo_id" ON "AcquisitionSubTomo_detectors" ("AcquisitionSubTomo_id");
 CREATE TABLE "AcquisitionEnvTomo_detectors" (
 	"AcquisitionEnvTomo_id" INTEGER,
 	detectors_id INTEGER NOT NULL,
 	PRIMARY KEY ("AcquisitionEnvTomo_id", detectors_id),
 	FOREIGN KEY("AcquisitionEnvTomo_id") REFERENCES "AcquisitionEnvTomo" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_AcquisitionEnvTomo_detectors_detectors_id" ON "AcquisitionEnvTomo_detectors" (detectors_id);CREATE INDEX "ix_AcquisitionEnvTomo_detectors_AcquisitionEnvTomo_id" ON "AcquisitionEnvTomo_detectors" ("AcquisitionEnvTomo_id");
+);CREATE INDEX "ix_AcquisitionEnvTomo_detectors_AcquisitionEnvTomo_id" ON "AcquisitionEnvTomo_detectors" ("AcquisitionEnvTomo_id");CREATE INDEX "ix_AcquisitionEnvTomo_detectors_detectors_id" ON "AcquisitionEnvTomo_detectors" (detectors_id);
 CREATE TABLE "AcquisitionCelTomo_detectors" (
 	"AcquisitionCelTomo_id" INTEGER,
 	detectors_id INTEGER NOT NULL,
 	PRIMARY KEY ("AcquisitionCelTomo_id", detectors_id),
 	FOREIGN KEY("AcquisitionCelTomo_id") REFERENCES "AcquisitionCelTomo" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_AcquisitionCelTomo_detectors_AcquisitionCelTomo_id" ON "AcquisitionCelTomo_detectors" ("AcquisitionCelTomo_id");CREATE INDEX "ix_AcquisitionCelTomo_detectors_detectors_id" ON "AcquisitionCelTomo_detectors" (detectors_id);
+);CREATE INDEX "ix_AcquisitionCelTomo_detectors_detectors_id" ON "AcquisitionCelTomo_detectors" (detectors_id);CREATE INDEX "ix_AcquisitionCelTomo_detectors_AcquisitionCelTomo_id" ON "AcquisitionCelTomo_detectors" ("AcquisitionCelTomo_id");

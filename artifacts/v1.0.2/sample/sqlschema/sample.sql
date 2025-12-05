@@ -281,7 +281,7 @@ CREATE TABLE "Sample_ligands" (
 	PRIMARY KEY ("Sample_id", ligands_id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
 	FOREIGN KEY(ligands_id) REFERENCES "Ligand" (id)
-);CREATE INDEX "ix_Sample_ligands_Sample_id" ON "Sample_ligands" ("Sample_id");CREATE INDEX "ix_Sample_ligands_ligands_id" ON "Sample_ligands" (ligands_id);
+);CREATE INDEX "ix_Sample_ligands_ligands_id" ON "Sample_ligands" (ligands_id);CREATE INDEX "ix_Sample_ligands_Sample_id" ON "Sample_ligands" ("Sample_id");
 CREATE TABLE "SampleMolecular_molecule" (
 	"SampleMolecular_id" INTEGER,
 	molecule_id INTEGER,

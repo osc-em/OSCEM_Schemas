@@ -1,5 +1,5 @@
 # Auto generated from sample_cellular_tomo_lab.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T14:40:38
+# Generation date: 2025-12-05T15:44:38
 # Schema: SampleCellularTomographyLabGrown
 #
 # id: https://w3id.org/oscem-schemas/latest/sample-cellular-tomo-lab

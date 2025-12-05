@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_cellular_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T14:38:52
+# Generation date: 2025-12-05T15:42:55
 # Schema: CellularTomography
 #
 # id: https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo

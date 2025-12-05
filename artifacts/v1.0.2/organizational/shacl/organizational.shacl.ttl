@@ -8,20 +8,19 @@
 <http://schema.org/Person> a sh:NodeShape ;
     sh:closed true ;
     sh:description "personal information" ;
-    sh:ignoredProperties ( organizational:orcid organizational:name_org organizational:type_org organizational:country rdf:type organizational:role ) ;
+    sh:ignoredProperties ( organizational:type_org organizational:country organizational:role organizational:name_org rdf:type organizational:orcid ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "email" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <http://schema.org/email> ;
-            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
-        [ sh:datatype xsd:string ;
             sh:description "first name" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <http://schema.org/givenName> ],
+        [ sh:datatype xsd:string ;
+            sh:description "work phone" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <http://schema.org/telephone> ],
         [ sh:datatype xsd:string ;
             sh:description "last name" ;
             sh:maxCount 1 ;
@@ -29,11 +28,12 @@
             sh:order 0 ;
             sh:path <http://schema.org/familyName> ],
         [ sh:datatype xsd:string ;
-            sh:description "work phone" ;
+            sh:description "email" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <http://schema.org/telephone> ],
+            sh:order 3 ;
+            sh:path <http://schema.org/email> ;
+            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
         [ sh:datatype xsd:boolean ;
             sh:description "job title" ;
             sh:maxCount 1 ;
@@ -47,17 +47,17 @@
     sh:description "an axis-aligned 2D bounding box (float units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "minimum y" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "maximum x" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "minimum x" ;
             sh:maxCount 1 ;
@@ -65,11 +65,11 @@
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "minimum y" ;
+            sh:description "maximum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ] ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> a sh:NodeShape ;
@@ -114,35 +114,35 @@
     sh:description "size of a 2D image (in integer units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "The width of a given item - unit depends on item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
-        [ sh:datatype xsd:integer ;
             sh:description "The height of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesheight> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of a given item - unit depends on item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesRange> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ) ;
+    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesincrement> rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Maximal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Maximal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesRange> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesSeries> a sh:NodeShape ;
@@ -173,7 +173,12 @@ organizational:Organizational a sh:NodeShape ;
     sh:closed true ;
     sh:description "Overarching category for authors and grants" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class organizational:Author ;
+    sh:property [ sh:class organizational:Funder ;
+            sh:description "funding organization/person." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path organizational:funder ],
+        [ sh:class organizational:Author ;
             sh:description "List of authors associated with the project" ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -183,18 +188,13 @@ organizational:Organizational a sh:NodeShape ;
             sh:description "List of grants associated with the project" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path organizational:grants ],
-        [ sh:class organizational:Funder ;
-            sh:description "funding organization/person." ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path organizational:funder ] ;
+            sh:path organizational:grants ] ;
     sh:targetClass organizational:Organizational .
 
 qudt:quantityValue a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ) ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ) ;
     sh:property [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
@@ -215,24 +215,18 @@ qudt:quantityValue a sh:NodeShape ;
     sh:closed true ;
     sh:description "Grant" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "name of the grant" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path organizational:grant_name ],
-        [ sh:datatype xsd:string ;
-            sh:description "Country of the institution" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path organizational:country ],
-        [ sh:datatype xsd:dateTime ;
+    sh:property [ sh:datatype xsd:dateTime ;
             sh:description "start date" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path organizational:start_date ],
+        [ sh:class qudt:quantityValue ;
+            sh:description "budget" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path organizational:budget ],
         [ sh:datatype xsd:dateTime ;
             sh:description "end date" ;
             sh:maxCount 1 ;
@@ -240,17 +234,23 @@ qudt:quantityValue a sh:NodeShape ;
             sh:order 2 ;
             sh:path organizational:end_date ],
         [ sh:datatype xsd:string ;
+            sh:description "name of the grant" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path organizational:grant_name ],
+        [ sh:datatype xsd:string ;
             sh:description "project id" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path <http://schema.org/identifier> ],
-        [ sh:class qudt:quantityValue ;
-            sh:description "budget" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Country of the institution" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path organizational:budget ] ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path organizational:country ] ;
     sh:targetClass <http://schema.org/Grant> .
 
 organizational:Author a sh:NodeShape ;
@@ -258,30 +258,18 @@ organizational:Author a sh:NodeShape ;
     sh:description "Details on the person performing the experiment." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Country of the institution" ;
+            sh:description "ORCID of the author, a type of unique identifier" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path organizational:country ],
+            sh:order 0 ;
+            sh:path organizational:orcid ],
         [ sh:datatype xsd:string ;
-            sh:description "first name" ;
+            sh:description "last name" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <http://schema.org/givenName> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "job title" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <http://schema.org/jobTitle> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name of the organization" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path organizational:name_org ],
+            sh:order 5 ;
+            sh:path <http://schema.org/familyName> ],
         [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
             sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
             sh:maxCount 1 ;
@@ -295,24 +283,18 @@ organizational:Author a sh:NodeShape ;
             sh:order 9 ;
             sh:path <http://schema.org/telephone> ],
         [ sh:datatype xsd:string ;
-            sh:description "ORCID of the author, a type of unique identifier" ;
+            sh:description "Country of the institution" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path organizational:orcid ],
+            sh:order 1 ;
+            sh:path organizational:country ],
         [ sh:datatype xsd:string ;
-            sh:description "last name" ;
+            sh:description "first name" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <http://schema.org/familyName> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Role of the author, for example principal investigator" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path organizational:role ],
+            sh:order 6 ;
+            sh:path <http://schema.org/givenName> ],
         [ sh:datatype xsd:string ;
             sh:description "email" ;
             sh:maxCount 1 ;
@@ -320,7 +302,25 @@ organizational:Author a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 8 ;
             sh:path <http://schema.org/email> ;
-            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ] ;
+            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Role of the author, for example principal investigator" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path organizational:role ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name of the organization" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path organizational:name_org ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "job title" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <http://schema.org/jobTitle> ] ;
     sh:targetClass organizational:Author .
 
 organizational:Funder a sh:NodeShape ;
@@ -333,17 +333,17 @@ organizational:Funder a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path organizational:country ],
+        [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
+            sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path organizational:type_org ],
         [ sh:datatype xsd:string ;
             sh:description "funding organization/person." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path organizational:funder_name ],
-        [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
-            sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path organizational:type_org ] ;
+            sh:path organizational:funder_name ] ;
     sh:targetClass organizational:Funder .
 
 linkml:Any a sh:NodeShape ;
@@ -356,18 +356,19 @@ linkml:Any a sh:NodeShape ;
     sh:closed true ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "value of a given field in respect to its SI unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "the SI unit attached to a si value" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ sh:datatype xsd:string ;
+            sh:description "the unit of a given value" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path qudt:hasUnit ],
         [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
@@ -375,12 +376,11 @@ linkml:Any a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path qudt:hasQuantityKind ],
-        [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
+        [ sh:datatype xsd:float ;
+            sh:description "value of a given field in respect to its SI unit" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path qudt:hasUnit ] ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> .
 

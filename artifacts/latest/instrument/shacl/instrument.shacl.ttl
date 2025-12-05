@@ -16,11 +16,11 @@ types:BoundingBox2D a sh:NodeShape ;
             sh:order 2 ;
             sh:path types:y_min ],
         [ sh:class types:QuantitySI ;
-            sh:description "maximum x" ;
+            sh:description "minimum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path types:x_max ],
+            sh:order 0 ;
+            sh:path types:x_min ],
         [ sh:class types:QuantitySI ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
@@ -28,11 +28,11 @@ types:BoundingBox2D a sh:NodeShape ;
             sh:order 3 ;
             sh:path types:y_max ],
         [ sh:class types:QuantitySI ;
-            sh:description "minimum x" ;
+            sh:description "maximum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path types:x_min ] ;
+            sh:order 1 ;
+            sh:path types:x_max ] ;
     sh:targetClass types:BoundingBox2D .
 
 types:Descriptor a sh:NodeShape ;
@@ -57,19 +57,19 @@ types:Descriptor a sh:NodeShape ;
 types:Descriptors a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path types:descriptor_thing ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path types:descriptor_name ] ;
+            sh:path types:descriptor_name ],
+        [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path types:descriptor_thing ] ;
     sh:targetClass types:Descriptors .
 
 types:ImageSize a sh:NodeShape ;
@@ -93,19 +93,19 @@ types:ImageSize a sh:NodeShape ;
 types:Range a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( rdf:type types:increment ) ;
+    sh:ignoredProperties ( types:increment rdf:type ) ;
     sh:property [ sh:class types:QuantitySI ;
-            sh:description "Minimal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path types:minimal ],
-        [ sh:class types:QuantitySI ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path types:maximal ] ;
+            sh:path types:maximal ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Minimal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path types:minimal ] ;
     sh:targetClass types:Range .
 
 types:Series a sh:NodeShape ;
@@ -113,11 +113,11 @@ types:Series a sh:NodeShape ;
     sh:description "A series of numbers constructed from min, max, and increment" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class types:QuantitySI ;
-            sh:description "Maximal value of a given dataset property" ;
+            sh:description "Increment between elements of a series" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path types:maximal ],
+            sh:order 0 ;
+            sh:path types:increment ],
         [ sh:class types:QuantitySI ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -125,31 +125,18 @@ types:Series a sh:NodeShape ;
             sh:order 1 ;
             sh:path types:minimal ],
         [ sh:class types:QuantitySI ;
-            sh:description "Increment between elements of a series" ;
+            sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path types:increment ] ;
+            sh:order 2 ;
+            sh:path types:maximal ] ;
     sh:targetClass types:Series .
 
 instrument:Instrument a sh:NodeShape ;
     sh:closed true ;
     sh:description "Instrument values, mostly constant across a data collection." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Type of electron source used in the microscope, such as FEG" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path instrument:electron_source ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Spherical aberration of the instrument, in mm" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path instrument:cs ],
-        [ sh:class types:QuantitySI ;
+    sh:property [ sh:class types:QuantitySI ;
             sh:description "Voltage used for the electron acceleration, in kV" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -157,12 +144,11 @@ instrument:Instrument a sh:NodeShape ;
             sh:order 4 ;
             sh:path instrument:acceleration_voltage ],
         [ sh:datatype xsd:string ;
-            sh:description "Mode of illumination used during data collection" ;
+            sh:description "Operating mode of the microscope, i.e. \"TEM\", \"STEM\"" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path instrument:illumination ],
+            sh:order 7 ;
+            sh:path instrument:operating_mode ],
         [ sh:class <http://schema.org/Microscope> ;
             sh:description "Microscope information" ;
             sh:maxCount 1 ;
@@ -170,6 +156,12 @@ instrument:Instrument a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path instrument:microscope ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Spherical aberration of the instrument, in mm" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path instrument:cs ],
         [ sh:datatype xsd:string ;
             sh:description "Mode of imaging used during data collection" ;
             sh:maxCount 1 ;
@@ -178,17 +170,25 @@ instrument:Instrument a sh:NodeShape ;
             sh:order 2 ;
             sh:path instrument:imaging ],
         [ sh:datatype xsd:string ;
-            sh:description "Operating mode of the microscope, i.e. \"TEM\", \"STEM\"" ;
+            sh:description "Mode of illumination used during data collection" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path instrument:operating_mode ],
+            sh:order 1 ;
+            sh:path instrument:illumination ],
         [ sh:class types:QuantitySI ;
             sh:description "C2 aperture size used in data acquisition, in µm" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 5 ;
             sh:path instrument:c2_aperture ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of electron source used in the microscope, such as FEG" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path instrument:electron_source ],
         [ sh:class types:QuantitySI ;
             sh:description "Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM." ;
             sh:maxCount 1 ;
@@ -200,21 +200,21 @@ instrument:Instrument a sh:NodeShape ;
 <qudt:quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( types:unitSI rdf:type types:valueSI ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "the value of a field with a unit" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <qudt:hasQuantityKind> ],
-        [ sh:datatype xsd:string ;
+    sh:ignoredProperties ( types:valueSI types:unitSI rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <qudt:hasUnit> ] ;
+            sh:path <qudt:hasUnit> ],
+        [ sh:datatype xsd:float ;
+            sh:description "the value of a field with a unit" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <qudt:hasQuantityKind> ] ;
     sh:targetClass <qudt:quantityValue> .
 
 <http://schema.org/Microscope> a sh:NodeShape ;
@@ -222,18 +222,18 @@ instrument:Instrument a sh:NodeShape ;
     sh:description "Microscope information" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "The name of the manufacturer" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path types:manufacturer ],
-        [ sh:datatype xsd:string ;
             sh:description "The model of the item" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path types:model ] ;
+            sh:path types:model ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path types:manufacturer ] ;
     sh:targetClass <http://schema.org/Microscope> .
 
 linkml:Any a sh:NodeShape ;
@@ -247,11 +247,12 @@ types:QuantitySI a sh:NodeShape ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "the SI unit attached to a si value" ;
+            sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path types:unitSI ],
+            sh:order 2 ;
+            sh:path <qudt:hasUnit> ],
         [ sh:datatype xsd:float ;
             sh:description "value of a given field in respect to its SI unit" ;
             sh:maxCount 1 ;
@@ -259,12 +260,11 @@ types:QuantitySI a sh:NodeShape ;
             sh:order 0 ;
             sh:path types:valueSI ],
         [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
+            sh:description "the SI unit attached to a si value" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <qudt:hasUnit> ],
+            sh:order 1 ;
+            sh:path types:unitSI ],
         [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;

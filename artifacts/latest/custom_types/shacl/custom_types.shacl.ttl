@@ -9,17 +9,17 @@ custom_types:BoundingBox2D a sh:NodeShape ;
     sh:description "an axis-aligned 2D bounding box (float units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class custom_types:QuantitySI ;
-            sh:description "minimum y" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path custom_types:y_min ],
-        [ sh:class custom_types:QuantitySI ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path custom_types:y_max ],
+        [ sh:class custom_types:QuantitySI ;
+            sh:description "maximum x" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path custom_types:x_max ],
         [ sh:class custom_types:QuantitySI ;
             sh:description "minimum x" ;
             sh:maxCount 1 ;
@@ -27,11 +27,11 @@ custom_types:BoundingBox2D a sh:NodeShape ;
             sh:order 0 ;
             sh:path custom_types:x_min ],
         [ sh:class custom_types:QuantitySI ;
-            sh:description "maximum x" ;
+            sh:description "minimum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path custom_types:x_max ] ;
+            sh:order 2 ;
+            sh:path custom_types:y_min ] ;
     sh:targetClass custom_types:BoundingBox2D .
 
 custom_types:Descriptor a sh:NodeShape ;
@@ -92,7 +92,7 @@ custom_types:ImageSize a sh:NodeShape ;
 custom_types:Range a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( rdf:type custom_types:increment ) ;
+    sh:ignoredProperties ( custom_types:increment rdf:type ) ;
     sh:property [ sh:class custom_types:QuantitySI ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -134,21 +134,21 @@ custom_types:Series a sh:NodeShape ;
 <qudt:quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( rdf:type custom_types:valueSI custom_types:unitSI ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "the value of a field with a unit" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <qudt:hasQuantityKind> ],
-        [ sh:datatype xsd:string ;
+    sh:ignoredProperties ( custom_types:valueSI custom_types:unitSI rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <qudt:hasUnit> ] ;
+            sh:path <qudt:hasUnit> ],
+        [ sh:datatype xsd:float ;
+            sh:description "the value of a field with a unit" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <qudt:hasQuantityKind> ] ;
     sh:targetClass <qudt:quantityValue> .
 
 linkml:Any a sh:NodeShape ;
@@ -161,7 +161,13 @@ custom_types:QuantitySI a sh:NodeShape ;
     sh:closed true ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "value of a given field in respect to its SI unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path custom_types:valueSI ],
+        [ sh:datatype xsd:string ;
             sh:description "the SI unit attached to a si value" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -174,12 +180,6 @@ custom_types:QuantitySI a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <qudt:hasQuantityKind> ],
-        [ sh:datatype xsd:float ;
-            sh:description "value of a given field in respect to its SI unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path custom_types:valueSI ],
         [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;

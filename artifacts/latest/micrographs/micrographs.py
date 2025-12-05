@@ -1,5 +1,5 @@
 # Auto generated from micrographs.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T14:38:40
+# Generation date: 2025-12-05T15:42:42
 # Schema: Micrographs
 #
 # id: https://w3id.org/oscem-schemas/latest/micrographs
