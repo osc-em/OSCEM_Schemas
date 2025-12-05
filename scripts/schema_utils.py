@@ -32,8 +32,16 @@ def load_schema_metadata(schema_id: str, schema_dir: Path = None) -> dict:
 
 
 def is_main_schema(schema_id: str) -> bool:
-    """Check if a schema is a main technique schema (starts with oscem_schemas_)."""
-    return schema_id.startswith("oscem_schemas_")
+    """
+    Check if a schema is a main technique schema.
+    Main schemas are those that have a corresponding oscem_schemas_* YAML file.
+    """
+    script_dir = Path(__file__).parent
+
+    schema_dir = script_dir.parent / "src" / "oscem_schemas" / "schema"
+    main_schema_file = schema_dir / f"oscem_schemas_{schema_id}.yaml"
+
+    return main_schema_file.exists()
 
 
 def get_all_schema_ids(schema_dir: Path = None) -> list:
@@ -87,10 +95,7 @@ def get_schema_description(schema_id: str, schema_dir: Path = None) -> str:
     metadata = load_schema_metadata(schema_id, schema_dir)
 
     if metadata.get("description"):
-        # Return first line/sentence of description for brevity
-        desc = metadata["description"].strip() # .split("\n")[0]
-        # Remove extra whitespace
-        # desc = " ".join(desc.split())
+        desc = metadata["description"].strip()
         return desc
 
     return f"Schema for {schema_id}"
