@@ -207,7 +207,7 @@ CREATE TABLE "Organizational_funder" (
 	PRIMARY KEY ("Organizational_id", funder_id),
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id),
 	FOREIGN KEY(funder_id) REFERENCES "Funder" (id)
-);CREATE INDEX "ix_Organizational_funder_Organizational_id" ON "Organizational_funder" ("Organizational_id");CREATE INDEX "ix_Organizational_funder_funder_id" ON "Organizational_funder" (funder_id);
+);CREATE INDEX "ix_Organizational_funder_funder_id" ON "Organizational_funder" (funder_id);CREATE INDEX "ix_Organizational_funder_Organizational_id" ON "Organizational_funder" ("Organizational_id");
 CREATE TABLE "Organizational_grants" (
 	"Organizational_id" INTEGER,
 	grants_id INTEGER,

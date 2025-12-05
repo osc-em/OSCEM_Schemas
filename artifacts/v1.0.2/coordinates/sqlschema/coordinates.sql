@@ -131,4 +131,4 @@ CREATE TABLE "Coordinates_descriptors" (
 	PRIMARY KEY ("Coordinates_id", descriptors_id),
 	FOREIGN KEY("Coordinates_id") REFERENCES "Coordinates" (id),
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
-);CREATE INDEX "ix_Coordinates_descriptors_descriptors_id" ON "Coordinates_descriptors" (descriptors_id);CREATE INDEX "ix_Coordinates_descriptors_Coordinates_id" ON "Coordinates_descriptors" ("Coordinates_id");
+);CREATE INDEX "ix_Coordinates_descriptors_Coordinates_id" ON "Coordinates_descriptors" ("Coordinates_id");CREATE INDEX "ix_Coordinates_descriptors_descriptors_id" ON "Coordinates_descriptors" (descriptors_id);

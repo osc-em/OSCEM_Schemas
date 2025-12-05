@@ -10,39 +10,39 @@ custom_types:BoundingBox2D a owl:Class,
     rdfs:label "BoundingBox2D" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty custom_types:y_max ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty custom_types:x_max ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom custom_types:QuantitySI ;
             owl:onProperty custom_types:x_max ],
         [ a owl:Restriction ;
             owl:allValuesFrom custom_types:QuantitySI ;
             owl:onProperty custom_types:y_min ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty custom_types:y_min ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom custom_types:QuantitySI ;
             owl:onProperty custom_types:x_max ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom custom_types:QuantitySI ;
             owl:onProperty custom_types:y_max ],
         [ a owl:Restriction ;
-            owl:allValuesFrom custom_types:QuantitySI ;
+            owl:minCardinality 0 ;
             owl:onProperty custom_types:y_max ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty custom_types:y_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty custom_types:x_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty custom_types:y_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty custom_types:x_max ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty custom_types:x_min ],
         [ a owl:Restriction ;
-            owl:allValuesFrom custom_types:QuantitySI ;
-            owl:onProperty custom_types:x_min ],
+            owl:minCardinality 0 ;
+            owl:onProperty custom_types:y_min ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom custom_types:QuantitySI ;
             owl:onProperty custom_types:x_min ] ;
     skos:definition "an axis-aligned 2D bounding box (float units)" ;
     skos:inScheme custom_types: .
@@ -51,20 +51,20 @@ custom_types:ImageSize a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ImageSize" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty custom_types:width ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty custom_types:width ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty custom_types:width ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty custom_types:height ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty custom_types:height ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty custom_types:height ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty custom_types:width ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty custom_types:height ] ;
@@ -75,13 +75,13 @@ custom_types:Series a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Series" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty custom_types:increment ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty custom_types:increment ],
         [ a owl:Restriction ;
             owl:allValuesFrom custom_types:QuantitySI ;
-            owl:onProperty custom_types:increment ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty custom_types:increment ],
         custom_types:Range ;
     skos:definition "A series of numbers constructed from min, max, and increment" ;
@@ -126,23 +126,23 @@ custom_types:Descriptor a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Descriptor" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty custom_types:descriptor_thing ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty custom_types:descriptor_thing ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty custom_types:descriptor_name ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty custom_types:descriptor_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty custom_types:descriptor_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom custom_types:Any ;
             owl:onProperty custom_types:descriptor_thing ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty custom_types:descriptor_name ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty custom_types:descriptor_name ] ;
+            owl:onProperty custom_types:descriptor_thing ] ;
     skos:definition "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
     skos:inScheme custom_types: .
 
@@ -157,19 +157,19 @@ custom_types:QuantityValue a owl:Class,
     rdfs:label "QuantityValue" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty custom_types:unit ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
             owl:onProperty custom_types:value ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty custom_types:value ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty custom_types:unit ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty custom_types:unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty custom_types:unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty custom_types:value ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty custom_types:value ] ;
@@ -184,20 +184,20 @@ custom_types:Range a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty custom_types:minimal ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty custom_types:maximal ],
-        [ a owl:Restriction ;
             owl:allValuesFrom custom_types:QuantitySI ;
-            owl:onProperty custom_types:maximal ],
+            owl:onProperty custom_types:minimal ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty custom_types:minimal ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom custom_types:QuantitySI ;
             owl:onProperty custom_types:maximal ],
         [ a owl:Restriction ;
-            owl:allValuesFrom custom_types:QuantitySI ;
-            owl:onProperty custom_types:minimal ] ;
+            owl:minCardinality 0 ;
+            owl:onProperty custom_types:maximal ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty custom_types:maximal ] ;
     skos:definition "A range constructed from min and max" ;
     skos:inScheme custom_types: .
 
@@ -317,13 +317,13 @@ custom_types:QuantitySI a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "QuantitySI" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty custom_types:unitSI ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty custom_types:valueSI ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty custom_types:unitSI ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty custom_types:unitSI ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;

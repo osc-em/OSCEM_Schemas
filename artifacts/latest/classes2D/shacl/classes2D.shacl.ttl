@@ -8,7 +8,13 @@ classes2D:Classes2D a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing classes 2D metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <qudt:quantityValue> ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Filename of the image containing 2D class images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path classes2D:images_classes_2D ],
+        [ sh:class <qudt:quantityValue> ;
             sh:description "Resolution of classes 2D" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -19,12 +25,6 @@ classes2D:Classes2D a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Filename of the image containing 2D class images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path classes2D:images_classes_2D ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of particles per 2D class" ;
             sh:nodeKind sh:Literal ;
@@ -43,11 +43,11 @@ classes2D:Classes2D a sh:NodeShape ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "maximum y" ;
+            sh:description "minimum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "maximum x" ;
             sh:maxCount 1 ;
@@ -55,11 +55,11 @@ classes2D:Classes2D a sh:NodeShape ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "minimum x" ;
+            sh:description "maximum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ] ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> a sh:NodeShape ;
@@ -102,7 +102,7 @@ classes2D:Classes2D a sh:NodeShape ;
 <https://w3id.org/oscem-schemas/latest/custom_typesRange> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesincrement> rdf:type ) ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -122,17 +122,17 @@ classes2D:Classes2D a sh:NodeShape ;
     sh:description "A series of numbers constructed from min, max, and increment" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Minimal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Increment between elements of a series" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Minimal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -144,25 +144,25 @@ classes2D:Classes2D a sh:NodeShape ;
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
+        [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> .
 
 <qudt:quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ) ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ) ;
     sh:property [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
@@ -196,12 +196,11 @@ linkml:Any a sh:NodeShape ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
         [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
+            sh:description "the SI unit attached to a si value" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <qudt:hasUnit> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
         [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
@@ -210,10 +209,11 @@ linkml:Any a sh:NodeShape ;
             sh:order 3 ;
             sh:path <qudt:hasQuantityKind> ],
         [ sh:datatype xsd:string ;
-            sh:description "the SI unit attached to a si value" ;
+            sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ] ;
+            sh:order 2 ;
+            sh:path <qudt:hasUnit> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> .
 

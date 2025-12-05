@@ -1,5 +1,5 @@
 # Auto generated from sample_environmental.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T11:41:54
+# Generation date: 2025-12-05T11:52:33
 # Schema: SampleEnvironmentalTomography
 #
 # id: https://w3id.org/oscem-schemas/latest/sample-env

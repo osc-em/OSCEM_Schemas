@@ -128,7 +128,7 @@ CREATE TABLE "Classes2D_particles_per_2Dclass" (
 	"particles_per_2Dclass" INTEGER,
 	PRIMARY KEY ("Classes2D_id", "particles_per_2Dclass"),
 	FOREIGN KEY("Classes2D_id") REFERENCES "Classes2D" (id)
-);CREATE INDEX "ix_Classes2D_particles_per_2Dclass_particles_per_2Dclass" ON "Classes2D_particles_per_2Dclass" ("particles_per_2Dclass");CREATE INDEX "ix_Classes2D_particles_per_2Dclass_Classes2D_id" ON "Classes2D_particles_per_2Dclass" ("Classes2D_id");
+);CREATE INDEX "ix_Classes2D_particles_per_2Dclass_Classes2D_id" ON "Classes2D_particles_per_2Dclass" ("Classes2D_id");CREATE INDEX "ix_Classes2D_particles_per_2Dclass_particles_per_2Dclass" ON "Classes2D_particles_per_2Dclass" ("particles_per_2Dclass");
 CREATE TABLE "Classes2D_descriptors" (
 	"Classes2D_id" INTEGER,
 	descriptors_id INTEGER,
