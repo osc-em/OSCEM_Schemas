@@ -683,7 +683,7 @@ CREATE TABLE "AcquisitionTomo_detectors" (
 	PRIMARY KEY ("AcquisitionTomo_id", detectors_id),
 	FOREIGN KEY("AcquisitionTomo_id") REFERENCES "AcquisitionTomo" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_AcquisitionTomo_detectors_detectors_id" ON "AcquisitionTomo_detectors" (detectors_id);CREATE INDEX "ix_AcquisitionTomo_detectors_AcquisitionTomo_id" ON "AcquisitionTomo_detectors" ("AcquisitionTomo_id");
+);CREATE INDEX "ix_AcquisitionTomo_detectors_AcquisitionTomo_id" ON "AcquisitionTomo_detectors" ("AcquisitionTomo_id");CREATE INDEX "ix_AcquisitionTomo_detectors_detectors_id" ON "AcquisitionTomo_detectors" (detectors_id);
 CREATE TABLE "AcquisitionSubTomo_detectors" (
 	"AcquisitionSubTomo_id" INTEGER,
 	detectors_id INTEGER NOT NULL,

@@ -174,7 +174,7 @@ CREATE TABLE "Classes3D_volume" (
 	PRIMARY KEY ("Classes3D_id", volume_id),
 	FOREIGN KEY("Classes3D_id") REFERENCES "Classes3D" (id),
 	FOREIGN KEY(volume_id) REFERENCES "Volume" (id)
-);CREATE INDEX "ix_Classes3D_volume_volume_id" ON "Classes3D_volume" (volume_id);CREATE INDEX "ix_Classes3D_volume_Classes3D_id" ON "Classes3D_volume" ("Classes3D_id");
+);CREATE INDEX "ix_Classes3D_volume_Classes3D_id" ON "Classes3D_volume" ("Classes3D_id");CREATE INDEX "ix_Classes3D_volume_volume_id" ON "Classes3D_volume" (volume_id);
 CREATE TABLE "Classes3D_descriptors" (
 	"Classes3D_id" INTEGER,
 	descriptors_id INTEGER,

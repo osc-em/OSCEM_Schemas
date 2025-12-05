@@ -1,5 +1,5 @@
 # Auto generated from tomography.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T11:12:28
+# Generation date: 2025-12-05T11:41:59
 # Schema: TomographyAdditionalFields
 #
 # id: https://w3id.org/oscem-schemas/latest/tomography

@@ -11,38 +11,38 @@
         linkml:ClassDefinition ;
     rdfs:label "BoundingBox2D" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ] ;
@@ -53,14 +53,8 @@
         linkml:ClassDefinition ;
     rdfs:label "ImageSize" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
@@ -68,8 +62,14 @@
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ] ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesheight> ] ;
     skos:definition "size of a 2D image (in integer units)" ;
     skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
 
@@ -128,23 +128,23 @@ organizational:Organizational a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Organizational" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty organizational:authors ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom organizational:Grant ;
-            owl:onProperty organizational:grants ],
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:funder ],
         [ a owl:Restriction ;
             owl:allValuesFrom organizational:Author ;
             owl:onProperty organizational:authors ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom organizational:Funder ;
             owl:onProperty organizational:funder ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom organizational:Grant ;
+            owl:onProperty organizational:grants ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty organizational:grants ],
         [ a owl:Restriction ;
-            owl:allValuesFrom organizational:Funder ;
-            owl:onProperty organizational:funder ] ;
+            owl:minCardinality 1 ;
+            owl:onProperty organizational:authors ] ;
     skos:definition "Overarching category for authors and grants" ;
     skos:inScheme <https://w3id.org/oscem-schemas/latest/organizational> .
 
@@ -159,23 +159,23 @@ organizational:person a owl:ObjectProperty,
         linkml:ClassDefinition ;
     rdfs:label "Descriptor" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesAny> ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesAny> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
     skos:definition "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
     skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
 
@@ -190,13 +190,13 @@ organizational:person a owl:ObjectProperty,
     rdfs:label "Range" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
@@ -205,7 +205,7 @@ organizational:person a owl:ObjectProperty,
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ] ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ] ;
     skos:definition "A range constructed from min and max" ;
     skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
 
@@ -244,77 +244,77 @@ organizational:Author a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Author" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:email ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty organizational:given_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:family_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty organizational:family_name ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty organizational:type_org ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty organizational:country ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty organizational:role ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:country ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty organizational:email ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty organizational:type_org ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty organizational:given_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty organizational:given_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:name_org ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty organizational:role ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:orcid ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty organizational:orcid ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty organizational:email ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:role ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:orcid ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:name_org ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty organizational:family_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:country ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/organizational/:OrganizationTypeEnum> ;
             owl:onProperty organizational:type_org ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty organizational:given_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:name_org ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty organizational:orcid ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:email ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty organizational:orcid ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty organizational:role ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty organizational:country ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty organizational:name_org ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty organizational:name_org ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:country ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:orcid ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty organizational:role ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom owl:Thing ;
-            owl:onProperty organizational:given_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom owl:Thing ;
-            owl:onProperty organizational:email ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom owl:Thing ;
-            owl:onProperty organizational:family_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty organizational:family_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty organizational:country ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:family_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty organizational:email ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:given_name ],
         organizational:Person ;
     skos:definition "Details on the person performing the experiment." ;
     skos:inScheme <https://w3id.org/oscem-schemas/latest/organizational> .
@@ -323,6 +323,9 @@ organizational:Funder a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Funder" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty organizational:country ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty organizational:funder_name ],
         [ a owl:Restriction ;
@@ -330,25 +333,22 @@ organizational:Funder a owl:Class,
             owl:onProperty organizational:type_org ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty organizational:funder_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:type_org ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty organizational:country ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/organizational/:OrganizationTypeEnum> ;
             owl:onProperty organizational:type_org ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty organizational:country ],
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:type_org ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty organizational:funder_name ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:country ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty organizational:country ] ;
+            owl:onProperty organizational:funder_name ] ;
     skos:definition "Description of the project funding" ;
     skos:inScheme <https://w3id.org/oscem-schemas/latest/organizational> .
 
@@ -356,59 +356,59 @@ organizational:Grant a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Grant" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:end_date ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty organizational:end_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty organizational:country ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Datetime ;
             owl:onProperty organizational:end_date ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty organizational:project_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty organizational:country ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:start_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:project_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty organizational:grant_name ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty organizational:start_date ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty organizational:grant_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Datetime ;
-            owl:onProperty organizational:start_date ],
+            owl:onProperty organizational:budget ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> ;
             owl:onProperty organizational:budget ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty organizational:budget ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:budget ],
+            owl:onProperty organizational:country ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty organizational:grant_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty organizational:start_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:project_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:start_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:budget ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty organizational:end_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty organizational:country ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:grant_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:start_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:end_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty organizational:project_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty organizational:country ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty organizational:grant_name ] ;
+            owl:onProperty organizational:project_id ] ;
     skos:definition "Grant" ;
     skos:exactMatch <http://schema.org/Grant> ;
     skos:inScheme <https://w3id.org/oscem-schemas/latest/organizational> .
@@ -420,50 +420,50 @@ organizational:Person a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty organizational:given_name ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:job_title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty organizational:telephone ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:email ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:given_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty organizational:family_name ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty organizational:given_name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty organizational:telephone ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty organizational:telephone ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty organizational:job_title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty organizational:family_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Boolean ;
             owl:onProperty organizational:job_title ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty organizational:telephone ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:job_title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:email ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:telephone ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:family_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:telephone ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty organizational:email ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty organizational:job_title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty organizational:family_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty organizational:given_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ] ) ] ) ] ;
-            owl:onProperty organizational:email ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty organizational:family_name ] ;
+            owl:onProperty organizational:email ] ;
     skos:definition "personal information" ;
     skos:exactMatch <http://schema.org/Person> ;
     skos:inScheme <https://w3id.org/oscem-schemas/latest/organizational> .
@@ -493,23 +493,23 @@ organizational:grants a owl:ObjectProperty,
         linkml:ClassDefinition ;
     rdfs:label "QuantityValue" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunit> ] ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalue> ] ;
     skos:definition "if a value has a unit, it should be given as a unit value pair." ;
     skos:exactMatch qudt:quantityValue ;
     skos:inScheme <https://w3id.org/oscem-schemas/latest/custom_types> .
@@ -750,21 +750,21 @@ organizational:country a owl:ObjectProperty,
     rdfs:label "QuantitySI" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
         <https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> ;
     skos:definition "unit value extended to have two additional fields si_value and si_unit" ;
