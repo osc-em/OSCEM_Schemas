@@ -1,5 +1,5 @@
 # Auto generated from coordinates.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-04T16:30:04
+# Generation date: 2025-12-05T01:25:38
 # Schema: Coordinates
 #
 # id: https://w3id.org/oscem-schemas/latest/coordinates

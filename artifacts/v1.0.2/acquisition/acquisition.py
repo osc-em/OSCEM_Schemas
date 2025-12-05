@@ -1,5 +1,5 @@
 # Auto generated from acquisition.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-04T16:29:52
+# Generation date: 2025-12-05T01:25:26
 # Schema: Acquisition
 #
 # id: https://w3id.org/oscem-schemas/latest/acquisition

@@ -190,13 +190,13 @@ CREATE TABLE "SpecimenEnv_organism" (
 	organism TEXT NOT NULL,
 	PRIMARY KEY ("SpecimenEnv_id", organism),
 	FOREIGN KEY("SpecimenEnv_id") REFERENCES "SpecimenEnv" (id)
-);CREATE INDEX "ix_SpecimenEnv_organism_organism" ON "SpecimenEnv_organism" (organism);CREATE INDEX "ix_SpecimenEnv_organism_SpecimenEnv_id" ON "SpecimenEnv_organism" ("SpecimenEnv_id");
+);CREATE INDEX "ix_SpecimenEnv_organism_SpecimenEnv_id" ON "SpecimenEnv_organism" ("SpecimenEnv_id");CREATE INDEX "ix_SpecimenEnv_organism_organism" ON "SpecimenEnv_organism" (organism);
 CREATE TABLE "TomogramFeatures_organelles" (
 	"TomogramFeatures_id" INTEGER,
 	organelles TEXT,
 	PRIMARY KEY ("TomogramFeatures_id", organelles),
 	FOREIGN KEY("TomogramFeatures_id") REFERENCES "TomogramFeatures" (id)
-);CREATE INDEX "ix_TomogramFeatures_organelles_organelles" ON "TomogramFeatures_organelles" (organelles);CREATE INDEX "ix_TomogramFeatures_organelles_TomogramFeatures_id" ON "TomogramFeatures_organelles" ("TomogramFeatures_id");
+);CREATE INDEX "ix_TomogramFeatures_organelles_TomogramFeatures_id" ON "TomogramFeatures_organelles" ("TomogramFeatures_id");CREATE INDEX "ix_TomogramFeatures_organelles_organelles" ON "TomogramFeatures_organelles" (organelles);
 CREATE TABLE "SampleEnv" (
 	id INTEGER NOT NULL,
 	specimen_env_id INTEGER NOT NULL,

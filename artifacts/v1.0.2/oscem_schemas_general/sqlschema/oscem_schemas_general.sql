@@ -686,28 +686,28 @@ CREATE TABLE "Acquisition_detectors" (
 	PRIMARY KEY ("Acquisition_id", detectors_id),
 	FOREIGN KEY("Acquisition_id") REFERENCES "Acquisition" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_Acquisition_detectors_detectors_id" ON "Acquisition_detectors" (detectors_id);CREATE INDEX "ix_Acquisition_detectors_Acquisition_id" ON "Acquisition_detectors" ("Acquisition_id");
+);CREATE INDEX "ix_Acquisition_detectors_Acquisition_id" ON "Acquisition_detectors" ("Acquisition_id");CREATE INDEX "ix_Acquisition_detectors_detectors_id" ON "Acquisition_detectors" (detectors_id);
 CREATE TABLE "AcquisitionSpa_detectors" (
 	"AcquisitionSpa_id" INTEGER,
 	detectors_id INTEGER NOT NULL,
 	PRIMARY KEY ("AcquisitionSpa_id", detectors_id),
 	FOREIGN KEY("AcquisitionSpa_id") REFERENCES "AcquisitionSpa" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_AcquisitionSpa_detectors_AcquisitionSpa_id" ON "AcquisitionSpa_detectors" ("AcquisitionSpa_id");CREATE INDEX "ix_AcquisitionSpa_detectors_detectors_id" ON "AcquisitionSpa_detectors" (detectors_id);
+);CREATE INDEX "ix_AcquisitionSpa_detectors_detectors_id" ON "AcquisitionSpa_detectors" (detectors_id);CREATE INDEX "ix_AcquisitionSpa_detectors_AcquisitionSpa_id" ON "AcquisitionSpa_detectors" ("AcquisitionSpa_id");
 CREATE TABLE "Sample_molecule" (
 	"Sample_id" INTEGER,
 	molecule_id INTEGER,
 	PRIMARY KEY ("Sample_id", molecule_id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
 	FOREIGN KEY(molecule_id) REFERENCES "Molecule" (id)
-);CREATE INDEX "ix_Sample_molecule_Sample_id" ON "Sample_molecule" ("Sample_id");CREATE INDEX "ix_Sample_molecule_molecule_id" ON "Sample_molecule" (molecule_id);
+);CREATE INDEX "ix_Sample_molecule_molecule_id" ON "Sample_molecule" (molecule_id);CREATE INDEX "ix_Sample_molecule_Sample_id" ON "Sample_molecule" ("Sample_id");
 CREATE TABLE "Sample_ligands" (
 	"Sample_id" INTEGER,
 	ligands_id INTEGER,
 	PRIMARY KEY ("Sample_id", ligands_id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
 	FOREIGN KEY(ligands_id) REFERENCES "Ligand" (id)
-);CREATE INDEX "ix_Sample_ligands_Sample_id" ON "Sample_ligands" ("Sample_id");CREATE INDEX "ix_Sample_ligands_ligands_id" ON "Sample_ligands" (ligands_id);
+);CREATE INDEX "ix_Sample_ligands_ligands_id" ON "Sample_ligands" (ligands_id);CREATE INDEX "ix_Sample_ligands_Sample_id" ON "Sample_ligands" ("Sample_id");
 CREATE TABLE "SampleMolecular_molecule" (
 	"SampleMolecular_id" INTEGER,
 	molecule_id INTEGER,
@@ -721,4 +721,4 @@ CREATE TABLE "SampleMolecular_ligands" (
 	PRIMARY KEY ("SampleMolecular_id", ligands_id),
 	FOREIGN KEY("SampleMolecular_id") REFERENCES "SampleMolecular" (id),
 	FOREIGN KEY(ligands_id) REFERENCES "Ligand" (id)
-);CREATE INDEX "ix_SampleMolecular_ligands_SampleMolecular_id" ON "SampleMolecular_ligands" ("SampleMolecular_id");CREATE INDEX "ix_SampleMolecular_ligands_ligands_id" ON "SampleMolecular_ligands" (ligands_id);
+);CREATE INDEX "ix_SampleMolecular_ligands_ligands_id" ON "SampleMolecular_ligands" (ligands_id);CREATE INDEX "ix_SampleMolecular_ligands_SampleMolecular_id" ON "SampleMolecular_ligands" ("SampleMolecular_id");

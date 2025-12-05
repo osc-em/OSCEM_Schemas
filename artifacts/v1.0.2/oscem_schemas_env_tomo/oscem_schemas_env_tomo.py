@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_env_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-04T16:30:47
+# Generation date: 2025-12-05T01:26:22
 # Schema: EnvironmentalTomography
 #
 # id: https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo

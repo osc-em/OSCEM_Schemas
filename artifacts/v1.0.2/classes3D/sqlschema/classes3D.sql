@@ -167,7 +167,7 @@ CREATE TABLE "Classes3D_particles_per_3Dclass" (
 	"particles_per_3Dclass" INTEGER,
 	PRIMARY KEY ("Classes3D_id", "particles_per_3Dclass"),
 	FOREIGN KEY("Classes3D_id") REFERENCES "Classes3D" (id)
-);CREATE INDEX "ix_Classes3D_particles_per_3Dclass_Classes3D_id" ON "Classes3D_particles_per_3Dclass" ("Classes3D_id");CREATE INDEX "ix_Classes3D_particles_per_3Dclass_particles_per_3Dclass" ON "Classes3D_particles_per_3Dclass" ("particles_per_3Dclass");
+);CREATE INDEX "ix_Classes3D_particles_per_3Dclass_particles_per_3Dclass" ON "Classes3D_particles_per_3Dclass" ("particles_per_3Dclass");CREATE INDEX "ix_Classes3D_particles_per_3Dclass_Classes3D_id" ON "Classes3D_particles_per_3Dclass" ("Classes3D_id");
 CREATE TABLE "Classes3D_volume" (
 	"Classes3D_id" INTEGER,
 	volume_id INTEGER,

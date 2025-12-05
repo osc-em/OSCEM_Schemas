@@ -1,5 +1,5 @@
 # Auto generated from classes3D.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-04T16:30:00
+# Generation date: 2025-12-05T01:25:35
 # Schema: Classes3D
 #
 # id: https://w3id.org/oscem-schemas/latest/classes3D
