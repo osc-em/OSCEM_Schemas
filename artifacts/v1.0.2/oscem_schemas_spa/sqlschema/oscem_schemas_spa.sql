@@ -748,7 +748,7 @@ CREATE TABLE "Organizational_funder" (
 	PRIMARY KEY ("Organizational_id", funder_id),
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id),
 	FOREIGN KEY(funder_id) REFERENCES "Funder" (id)
-);CREATE INDEX "ix_Organizational_funder_funder_id" ON "Organizational_funder" (funder_id);CREATE INDEX "ix_Organizational_funder_Organizational_id" ON "Organizational_funder" ("Organizational_id");
+);CREATE INDEX "ix_Organizational_funder_Organizational_id" ON "Organizational_funder" ("Organizational_id");CREATE INDEX "ix_Organizational_funder_funder_id" ON "Organizational_funder" (funder_id);
 CREATE TABLE "Acquisition" (
 	id INTEGER NOT NULL,
 	technique TEXT,
@@ -890,14 +890,14 @@ CREATE TABLE "Organizational_grants" (
 	PRIMARY KEY ("Organizational_id", grants_id),
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id),
 	FOREIGN KEY(grants_id) REFERENCES "Grant" (id)
-);CREATE INDEX "ix_Organizational_grants_Organizational_id" ON "Organizational_grants" ("Organizational_id");CREATE INDEX "ix_Organizational_grants_grants_id" ON "Organizational_grants" (grants_id);
+);CREATE INDEX "ix_Organizational_grants_grants_id" ON "Organizational_grants" (grants_id);CREATE INDEX "ix_Organizational_grants_Organizational_id" ON "Organizational_grants" ("Organizational_id");
 CREATE TABLE "Movies_descriptors" (
 	"Movies_id" INTEGER,
 	descriptors_id INTEGER,
 	PRIMARY KEY ("Movies_id", descriptors_id),
 	FOREIGN KEY("Movies_id") REFERENCES "Movies" (id),
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
-);CREATE INDEX "ix_Movies_descriptors_descriptors_id" ON "Movies_descriptors" (descriptors_id);CREATE INDEX "ix_Movies_descriptors_Movies_id" ON "Movies_descriptors" ("Movies_id");
+);CREATE INDEX "ix_Movies_descriptors_Movies_id" ON "Movies_descriptors" ("Movies_id");CREATE INDEX "ix_Movies_descriptors_descriptors_id" ON "Movies_descriptors" (descriptors_id);
 CREATE TABLE "Micrographs_descriptors" (
 	"Micrographs_id" INTEGER,
 	descriptors_id INTEGER,
@@ -924,27 +924,27 @@ CREATE TABLE "Classes2D_descriptors" (
 	PRIMARY KEY ("Classes2D_id", descriptors_id),
 	FOREIGN KEY("Classes2D_id") REFERENCES "Classes2D" (id),
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
-);CREATE INDEX "ix_Classes2D_descriptors_descriptors_id" ON "Classes2D_descriptors" (descriptors_id);CREATE INDEX "ix_Classes2D_descriptors_Classes2D_id" ON "Classes2D_descriptors" ("Classes2D_id");
+);CREATE INDEX "ix_Classes2D_descriptors_Classes2D_id" ON "Classes2D_descriptors" ("Classes2D_id");CREATE INDEX "ix_Classes2D_descriptors_descriptors_id" ON "Classes2D_descriptors" (descriptors_id);
 CREATE TABLE "Classes3D_particles_per_3Dclass" (
 	"Classes3D_id" INTEGER,
 	"particles_per_3Dclass" INTEGER,
 	PRIMARY KEY ("Classes3D_id", "particles_per_3Dclass"),
 	FOREIGN KEY("Classes3D_id") REFERENCES "Classes3D" (id)
-);CREATE INDEX "ix_Classes3D_particles_per_3Dclass_particles_per_3Dclass" ON "Classes3D_particles_per_3Dclass" ("particles_per_3Dclass");CREATE INDEX "ix_Classes3D_particles_per_3Dclass_Classes3D_id" ON "Classes3D_particles_per_3Dclass" ("Classes3D_id");
+);CREATE INDEX "ix_Classes3D_particles_per_3Dclass_Classes3D_id" ON "Classes3D_particles_per_3Dclass" ("Classes3D_id");CREATE INDEX "ix_Classes3D_particles_per_3Dclass_particles_per_3Dclass" ON "Classes3D_particles_per_3Dclass" ("particles_per_3Dclass");
 CREATE TABLE "Classes3D_volume" (
 	"Classes3D_id" INTEGER,
 	volume_id INTEGER,
 	PRIMARY KEY ("Classes3D_id", volume_id),
 	FOREIGN KEY("Classes3D_id") REFERENCES "Classes3D" (id),
 	FOREIGN KEY(volume_id) REFERENCES "Volume" (id)
-);CREATE INDEX "ix_Classes3D_volume_Classes3D_id" ON "Classes3D_volume" ("Classes3D_id");CREATE INDEX "ix_Classes3D_volume_volume_id" ON "Classes3D_volume" (volume_id);
+);CREATE INDEX "ix_Classes3D_volume_volume_id" ON "Classes3D_volume" (volume_id);CREATE INDEX "ix_Classes3D_volume_Classes3D_id" ON "Classes3D_volume" ("Classes3D_id");
 CREATE TABLE "Classes3D_descriptors" (
 	"Classes3D_id" INTEGER,
 	descriptors_id INTEGER,
 	PRIMARY KEY ("Classes3D_id", descriptors_id),
 	FOREIGN KEY("Classes3D_id") REFERENCES "Classes3D" (id),
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
-);CREATE INDEX "ix_Classes3D_descriptors_Classes3D_id" ON "Classes3D_descriptors" ("Classes3D_id");CREATE INDEX "ix_Classes3D_descriptors_descriptors_id" ON "Classes3D_descriptors" (descriptors_id);
+);CREATE INDEX "ix_Classes3D_descriptors_descriptors_id" ON "Classes3D_descriptors" (descriptors_id);CREATE INDEX "ix_Classes3D_descriptors_Classes3D_id" ON "Classes3D_descriptors" ("Classes3D_id");
 CREATE TABLE "Volumes_size" (
 	"Volumes_id" INTEGER,
 	size INTEGER,
@@ -980,28 +980,28 @@ CREATE TABLE "Acquisition_detectors" (
 	PRIMARY KEY ("Acquisition_id", detectors_id),
 	FOREIGN KEY("Acquisition_id") REFERENCES "Acquisition" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_Acquisition_detectors_Acquisition_id" ON "Acquisition_detectors" ("Acquisition_id");CREATE INDEX "ix_Acquisition_detectors_detectors_id" ON "Acquisition_detectors" (detectors_id);
+);CREATE INDEX "ix_Acquisition_detectors_detectors_id" ON "Acquisition_detectors" (detectors_id);CREATE INDEX "ix_Acquisition_detectors_Acquisition_id" ON "Acquisition_detectors" ("Acquisition_id");
 CREATE TABLE "AcquisitionSpa_detectors" (
 	"AcquisitionSpa_id" INTEGER,
 	detectors_id INTEGER NOT NULL,
 	PRIMARY KEY ("AcquisitionSpa_id", detectors_id),
 	FOREIGN KEY("AcquisitionSpa_id") REFERENCES "AcquisitionSpa" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_AcquisitionSpa_detectors_detectors_id" ON "AcquisitionSpa_detectors" (detectors_id);CREATE INDEX "ix_AcquisitionSpa_detectors_AcquisitionSpa_id" ON "AcquisitionSpa_detectors" ("AcquisitionSpa_id");
+);CREATE INDEX "ix_AcquisitionSpa_detectors_AcquisitionSpa_id" ON "AcquisitionSpa_detectors" ("AcquisitionSpa_id");CREATE INDEX "ix_AcquisitionSpa_detectors_detectors_id" ON "AcquisitionSpa_detectors" (detectors_id);
 CREATE TABLE "Sample_molecule" (
 	"Sample_id" INTEGER,
 	molecule_id INTEGER,
 	PRIMARY KEY ("Sample_id", molecule_id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
 	FOREIGN KEY(molecule_id) REFERENCES "Molecule" (id)
-);CREATE INDEX "ix_Sample_molecule_molecule_id" ON "Sample_molecule" (molecule_id);CREATE INDEX "ix_Sample_molecule_Sample_id" ON "Sample_molecule" ("Sample_id");
+);CREATE INDEX "ix_Sample_molecule_Sample_id" ON "Sample_molecule" ("Sample_id");CREATE INDEX "ix_Sample_molecule_molecule_id" ON "Sample_molecule" (molecule_id);
 CREATE TABLE "Sample_ligands" (
 	"Sample_id" INTEGER,
 	ligands_id INTEGER,
 	PRIMARY KEY ("Sample_id", ligands_id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
 	FOREIGN KEY(ligands_id) REFERENCES "Ligand" (id)
-);CREATE INDEX "ix_Sample_ligands_ligands_id" ON "Sample_ligands" (ligands_id);CREATE INDEX "ix_Sample_ligands_Sample_id" ON "Sample_ligands" ("Sample_id");
+);CREATE INDEX "ix_Sample_ligands_Sample_id" ON "Sample_ligands" ("Sample_id");CREATE INDEX "ix_Sample_ligands_ligands_id" ON "Sample_ligands" (ligands_id);
 CREATE TABLE "SampleMolecular_molecule" (
 	"SampleMolecular_id" INTEGER,
 	molecule_id INTEGER,
@@ -1043,4 +1043,4 @@ CREATE TABLE "Processing_volumes" (
 	PRIMARY KEY ("Processing_id", volumes_id),
 	FOREIGN KEY("Processing_id") REFERENCES "Processing" (id),
 	FOREIGN KEY(volumes_id) REFERENCES "Volumes" (id)
-);CREATE INDEX "ix_Processing_volumes_volumes_id" ON "Processing_volumes" (volumes_id);CREATE INDEX "ix_Processing_volumes_Processing_id" ON "Processing_volumes" ("Processing_id");
+);CREATE INDEX "ix_Processing_volumes_Processing_id" ON "Processing_volumes" ("Processing_id");CREATE INDEX "ix_Processing_volumes_volumes_id" ON "Processing_volumes" (volumes_id);

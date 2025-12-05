@@ -21,17 +21,17 @@
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "minimum x" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "minimum x" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> a sh:NodeShape ;
@@ -58,17 +58,17 @@
     sh:description "size of a 2D image (in integer units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "The height of a given item - unit depends on item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
-        [ sh:datatype xsd:integer ;
             sh:description "The width of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of a given item - unit depends on item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesheight> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesRange> a sh:NodeShape ;
@@ -117,38 +117,38 @@ micrographs:Micrographs a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing micrographs metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
-            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
-        [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:float ;
             sh:description "Number of micrographs" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path micrographs:number_micrographs ] ;
+            sh:path micrographs:number_micrographs ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ] ;
     sh:targetClass micrographs:Micrographs .
 
 <qudt:quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
     sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <qudt:hasUnit> ],
-        [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <qudt:hasQuantityKind> ] ;
+            sh:path <qudt:hasQuantityKind> ],
+        [ sh:datatype xsd:string ;
+            sh:description "the unit of a given value" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <qudt:hasUnit> ] ;
     sh:targetClass <qudt:quantityValue> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> a sh:NodeShape ;
@@ -179,19 +179,13 @@ linkml:Any a sh:NodeShape ;
     sh:closed true ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "the value of a field with a unit" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <qudt:hasQuantityKind> ],
-        [ sh:datatype xsd:string ;
-            sh:description "the SI unit attached to a si value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+            sh:order 2 ;
+            sh:path <qudt:hasUnit> ],
         [ sh:datatype xsd:float ;
             sh:description "value of a given field in respect to its SI unit" ;
             sh:maxCount 1 ;
@@ -199,11 +193,17 @@ linkml:Any a sh:NodeShape ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
         [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
+            sh:description "the SI unit attached to a si value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ sh:datatype xsd:float ;
+            sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <qudt:hasUnit> ] ;
+            sh:order 3 ;
+            sh:path <qudt:hasQuantityKind> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> .
 

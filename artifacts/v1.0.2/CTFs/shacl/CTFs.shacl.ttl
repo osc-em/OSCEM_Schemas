@@ -8,17 +8,17 @@ ctf:CTFs a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing Contrast Transfer Function (CTF) metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "Amplitude contrast" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path ctf:amplitude_contrast ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
             sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
+        [ sh:class ctf:Resolution ;
+            sh:description "Resolution metadata" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path ctf:resolution ],
         [ sh:class ctf:Defocus ;
             sh:description "Defocus metadata" ;
             sh:maxCount 1 ;
@@ -31,12 +31,12 @@ ctf:CTFs a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path ctf:astigmatism ],
-        [ sh:class ctf:Resolution ;
-            sh:description "Resolution metadata" ;
+        [ sh:datatype xsd:float ;
+            sh:description "Amplitude contrast" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path ctf:resolution ] ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path ctf:amplitude_contrast ] ;
     sh:targetClass ctf:CTFs .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> a sh:NodeShape ;
@@ -44,6 +44,12 @@ ctf:CTFs a sh:NodeShape ;
     sh:description "an axis-aligned 2D bounding box (float units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "maximum x" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -56,12 +62,6 @@ ctf:CTFs a sh:NodeShape ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "maximum x" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "minimum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -73,19 +73,19 @@ ctf:CTFs a sh:NodeShape ;
     sh:closed false ;
     sh:description "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
+        [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> a sh:NodeShape ;
@@ -109,19 +109,19 @@ ctf:CTFs a sh:NodeShape ;
 <https://w3id.org/oscem-schemas/latest/custom_typesRange> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ) ;
+    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesincrement> rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Minimal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Minimal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesRange> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesSeries> a sh:NodeShape ;
@@ -129,11 +129,11 @@ ctf:CTFs a sh:NodeShape ;
     sh:description "A series of numbers constructed from min, max, and increment" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Increment between elements of a series" ;
+            sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -141,11 +141,11 @@ ctf:CTFs a sh:NodeShape ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Minimal value of a given dataset property" ;
+            sh:description "Increment between elements of a series" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ] ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesSeries> .
 
 ctf:Astigmatism a sh:NodeShape ;
@@ -165,23 +165,17 @@ ctf:Defocus a sh:NodeShape ;
     sh:description "Defocus-related metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <qudt:quantityValue> ;
-            sh:description "Average value of defocus" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path ctf:output_avg_defocus ],
-        [ sh:class <qudt:quantityValue> ;
             sh:description "Minimum defocus" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path ctf:output_min_defocus ],
-        [ sh:datatype xsd:string ;
-            sh:description "Filename of the defocus values histogram" ;
+        [ sh:class <qudt:quantityValue> ;
+            sh:description "Average value of defocus" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path ctf:defocus_histogram ],
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path ctf:output_avg_defocus ],
         [ sh:class <qudt:quantityValue> ;
             sh:description "Maximum defocus" ;
             sh:maxCount 1 ;
@@ -193,7 +187,13 @@ ctf:Defocus a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
-            sh:path ctf:defocus_micrograph_examples ] ;
+            sh:path ctf:defocus_micrograph_examples ],
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of the defocus values histogram" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path ctf:defocus_histogram ] ;
     sh:targetClass ctf:Defocus .
 
 ctf:Resolution a sh:NodeShape ;
@@ -201,11 +201,17 @@ ctf:Resolution a sh:NodeShape ;
     sh:description "Resolution-related metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <qudt:quantityValue> ;
-            sh:description "Average value of resolution" ;
+            sh:description "Minimum resolution" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path ctf:output_avg_resolution ],
+            sh:order 0 ;
+            sh:path ctf:output_min_resolution ],
+        [ sh:class <qudt:quantityValue> ;
+            sh:description "Maximum resolution" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path ctf:output_max_resolution ],
         [ sh:datatype xsd:string ;
             sh:description "Filename of the resolution values histogram" ;
             sh:maxCount 1 ;
@@ -213,35 +219,29 @@ ctf:Resolution a sh:NodeShape ;
             sh:order 3 ;
             sh:path ctf:resolution_histogram ],
         [ sh:class <qudt:quantityValue> ;
-            sh:description "Maximum resolution" ;
+            sh:description "Average value of resolution" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path ctf:output_max_resolution ],
-        [ sh:class <qudt:quantityValue> ;
-            sh:description "Minimum resolution" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path ctf:output_min_resolution ] ;
+            sh:order 2 ;
+            sh:path ctf:output_avg_resolution ] ;
     sh:targetClass ctf:Resolution .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
+        [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> .
 
 linkml:Any a sh:NodeShape ;
@@ -253,21 +253,21 @@ linkml:Any a sh:NodeShape ;
 <qudt:quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "the value of a field with a unit" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <qudt:hasQuantityKind> ],
-        [ sh:datatype xsd:string ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <qudt:hasUnit> ] ;
+            sh:path <qudt:hasUnit> ],
+        [ sh:datatype xsd:float ;
+            sh:description "the value of a field with a unit" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <qudt:hasQuantityKind> ] ;
     sh:targetClass <qudt:quantityValue> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> a sh:NodeShape ;
@@ -275,17 +275,18 @@ linkml:Any a sh:NodeShape ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
+            sh:description "the value of a field with a unit" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <qudt:hasQuantityKind> ],
+        [ sh:datatype xsd:float ;
             sh:description "value of a given field in respect to its SI unit" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
-        [ sh:datatype xsd:string ;
-            sh:description "the SI unit attached to a si value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
         [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
@@ -293,12 +294,11 @@ linkml:Any a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <qudt:hasUnit> ],
-        [ sh:datatype xsd:float ;
-            sh:description "the value of a field with a unit" ;
+        [ sh:datatype xsd:string ;
+            sh:description "the SI unit attached to a si value" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <qudt:hasQuantityKind> ] ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> .
 

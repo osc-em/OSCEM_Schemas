@@ -222,7 +222,7 @@ CREATE TABLE "TomogramFeatures_organelles" (
 	organelles TEXT,
 	PRIMARY KEY ("TomogramFeatures_id", organelles),
 	FOREIGN KEY("TomogramFeatures_id") REFERENCES "TomogramFeatures" (id)
-);CREATE INDEX "ix_TomogramFeatures_organelles_organelles" ON "TomogramFeatures_organelles" (organelles);CREATE INDEX "ix_TomogramFeatures_organelles_TomogramFeatures_id" ON "TomogramFeatures_organelles" ("TomogramFeatures_id");
+);CREATE INDEX "ix_TomogramFeatures_organelles_TomogramFeatures_id" ON "TomogramFeatures_organelles" ("TomogramFeatures_id");CREATE INDEX "ix_TomogramFeatures_organelles_organelles" ON "TomogramFeatures_organelles" (organelles);
 CREATE TABLE "SampleCell" (
 	id INTEGER NOT NULL,
 	growth_condition_id INTEGER,

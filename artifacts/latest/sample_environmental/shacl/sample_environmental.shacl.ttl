@@ -9,17 +9,17 @@
     sh:description "an axis-aligned 2D bounding box (float units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "minimum y" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "maximum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "minimum y" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
@@ -56,19 +56,19 @@
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
-        [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> a sh:NodeShape ;
@@ -76,17 +76,17 @@
     sh:description "size of a 2D image (in integer units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "The width of a given item - unit depends on item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
-        [ sh:datatype xsd:integer ;
             sh:description "The height of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesheight> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of a given item - unit depends on item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesRange> a sh:NodeShape ;
@@ -112,12 +112,6 @@
     sh:description "A series of numbers constructed from min, max, and increment" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Maximal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Increment between elements of a series" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -128,29 +122,35 @@
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Maximal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesSeries> .
 
 sample_env:SampleEnv a sh:NodeShape ;
     sh:closed true ;
     sh:description "Unifying class to describe the full sample." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class sample_env:SpecimenEnv ;
+    sh:property [ sh:class sample_env:TomogramFeatures ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path sample_env:specimen_env ],
+            sh:order 3 ;
+            sh:path sample_env:tomogram_features ],
         [ sh:class sample_env:Freezing ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path sample_env:freezing ],
-        [ sh:class sample_env:TomogramFeatures ;
+        [ sh:class sample_env:SpecimenEnv ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path sample_env:tomogram_features ],
+            sh:order 0 ;
+            sh:path sample_env:specimen_env ],
         [ sh:class sample_env:Thinning ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -182,35 +182,12 @@ sample_env:Freezing a sh:NodeShape ;
     sh:closed true ;
     sh:description "how the sample was frozen." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
-            sh:description "whether blotting was performed." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path sample_env:blotting ],
-        [ sh:description "freezing method - such as plunge freezing, high pressure freezing etc." ;
-            sh:in ( "plunge_freezing" "high_pressure_freezing" ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path sample_env:method ],
-        [ sh:datatype xsd:string ;
-            sh:description "Any further comments on the freezing process go here." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path sample_env:details ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "humidity of the atmosphere right before/ during freezing; in %." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path sample_env:humidity_env ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "temperature of the sample right before freezing; in K." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path sample_env:temperature_env ],
         [ sh:datatype xsd:string ;
             sh:description "What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc." ;
             sh:maxCount 1 ;
@@ -218,11 +195,34 @@ sample_env:Freezing a sh:NodeShape ;
             sh:order 5 ;
             sh:path sample_env:atmosphere ],
         [ sh:datatype xsd:string ;
+            sh:description "Any further comments on the freezing process go here." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path sample_env:details ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "temperature of the sample right before freezing; in K." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path sample_env:temperature_env ],
+        [ sh:description "freezing method - such as plunge freezing, high pressure freezing etc." ;
+            sh:in ( "plunge_freezing" "high_pressure_freezing" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path sample_env:method ],
+        [ sh:datatype xsd:string ;
             sh:description "the cryogen used to freeze the sample, i.e. ethane" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path sample_env:cryogen_sample_env ] ;
+            sh:path sample_env:cryogen_sample_env ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "whether blotting was performed." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path sample_env:blotting ] ;
     sh:targetClass sample_env:Freezing .
 
 sample_env:SpecimenEnv a sh:NodeShape ;
@@ -230,29 +230,11 @@ sample_env:SpecimenEnv a sh:NodeShape ;
     sh:description "base information on the acquisition and treatment of the sample itself." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "the geographical location of your source, optimally in a geographic coordinate system." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path sample_env:location ],
-        [ sh:datatype xsd:string ;
             sh:description "What was done to the sample, please give an overview of relevant treatments." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path sample_env:handling ],
-        [ sh:datatype xsd:string ;
-            sh:description "if the sample is a tissue sample please indicate what type of tissue." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path sample_env:tissue ],
-        [ sh:datatype xsd:date ;
-            sh:description "When the sample was collected" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path sample_env:collection_date ],
         [ sh:datatype xsd:string ;
             sh:description "the organism(s) present in your sample, if not perfectly defined try to asses as close as possible." ;
             sh:minCount 1 ;
@@ -264,7 +246,25 @@ sample_env:SpecimenEnv a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path sample_env:source_env ] ;
+            sh:path sample_env:source_env ],
+        [ sh:datatype xsd:date ;
+            sh:description "When the sample was collected" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path sample_env:collection_date ],
+        [ sh:datatype xsd:string ;
+            sh:description "if the sample is a tissue sample please indicate what type of tissue." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path sample_env:tissue ],
+        [ sh:datatype xsd:string ;
+            sh:description "the geographical location of your source, optimally in a geographic coordinate system." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path sample_env:location ] ;
     sh:targetClass sample_env:SpecimenEnv .
 
 sample_env:Thinning a sh:NodeShape ;
@@ -278,6 +278,18 @@ sample_env:Thinning a sh:NodeShape ;
             sh:order 3 ;
             sh:path sample_env:target_thickness ],
         [ sh:datatype xsd:string ;
+            sh:description "what ion source was used?" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path sample_env:ion_source ],
+        [ sh:datatype xsd:string ;
+            sh:description "The thinning method used, such as FIB milling." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sample_env:method_thin ],
+        [ sh:datatype xsd:string ;
             sh:description "Instrument used for thinning the sample" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -288,19 +300,7 @@ sample_env:Thinning a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
-            sh:path sample_env:lift_out ],
-        [ sh:datatype xsd:string ;
-            sh:description "The thinning method used, such as FIB milling." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sample_env:method_thin ],
-        [ sh:datatype xsd:string ;
-            sh:description "what ion source was used?" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path sample_env:ion_source ] ;
+            sh:path sample_env:lift_out ] ;
     sh:targetClass sample_env:Thinning .
 
 sample_env:TomogramFeatures a sh:NodeShape ;
@@ -308,6 +308,12 @@ sample_env:TomogramFeatures a sh:NodeShape ;
     sh:description "what was the target of the tomograms, and what area of a cell do they cover." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "What type of cellular features are present in your tomograms?" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sample_env:cellular_features ],
+        [ sh:datatype xsd:string ;
             sh:description "What organelles; if any; are present?" ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
@@ -323,13 +329,7 @@ sample_env:TomogramFeatures a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
-            sh:path sample_env:details_tomo ],
-        [ sh:datatype xsd:string ;
-            sh:description "What type of cellular features are present in your tomograms?" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sample_env:cellular_features ] ;
+            sh:path sample_env:details_tomo ] ;
     sh:targetClass sample_env:TomogramFeatures .
 
 linkml:Any a sh:NodeShape ;
@@ -343,19 +343,6 @@ linkml:Any a sh:NodeShape ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "the SI unit attached to a si value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
-        [ sh:datatype xsd:float ;
-            sh:description "the value of a field with a unit" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <qudt:hasQuantityKind> ],
-        [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -367,6 +354,19 @@ linkml:Any a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
+        [ sh:datatype xsd:float ;
+            sh:description "the value of a field with a unit" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <qudt:hasQuantityKind> ],
+        [ sh:datatype xsd:string ;
+            sh:description "the SI unit attached to a si value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> .
 

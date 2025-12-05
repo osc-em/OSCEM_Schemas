@@ -1,5 +1,5 @@
 # Auto generated from CTFs.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T01:25:22
+# Generation date: 2025-12-05T11:09:57
 # Schema: CTFs
 #
 # id: https://w3id.org/oscem-schemas/latest/ctfs

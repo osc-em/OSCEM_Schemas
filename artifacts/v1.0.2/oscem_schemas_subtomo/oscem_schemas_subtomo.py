@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_subtomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T01:27:15
+# Generation date: 2025-12-05T11:11:47
 # Schema: SubtomogramAveraging
 #
 # id: https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo

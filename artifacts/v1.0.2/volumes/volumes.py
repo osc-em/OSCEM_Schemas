@@ -1,5 +1,5 @@
 # Auto generated from volumes.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T01:28:07
+# Generation date: 2025-12-05T11:12:40
 # Schema: Volumes
 #
 # id: https://w3id.org/oscem-schemas/latest/volumes

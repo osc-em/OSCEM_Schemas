@@ -1,5 +1,5 @@
 # Auto generated from sample.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T01:27:42
+# Generation date: 2025-12-05T11:12:12
 # Schema: Sample
 #
 # id: https://w3id.org/oscem-schemas/latest/sample
