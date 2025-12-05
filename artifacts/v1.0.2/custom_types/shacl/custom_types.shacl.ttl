@@ -9,6 +9,12 @@ custom_types:BoundingBox2D a sh:NodeShape ;
     sh:description "an axis-aligned 2D bounding box (float units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class custom_types:QuantitySI ;
+            sh:description "minimum y" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path custom_types:y_min ],
+        [ sh:class custom_types:QuantitySI ;
             sh:description "maximum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -25,50 +31,44 @@ custom_types:BoundingBox2D a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path custom_types:x_min ],
-        [ sh:class custom_types:QuantitySI ;
-            sh:description "minimum y" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path custom_types:y_min ] ;
+            sh:path custom_types:x_min ] ;
     sh:targetClass custom_types:BoundingBox2D .
 
 custom_types:Descriptor a sh:NodeShape ;
     sh:closed false ;
     sh:description "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path custom_types:descriptor_thing ],
+        [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path custom_types:descriptor_name ],
-        [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path custom_types:descriptor_thing ] ;
+            sh:path custom_types:descriptor_name ] ;
     sh:targetClass custom_types:Descriptor .
 
 custom_types:Descriptors a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path custom_types:descriptor_thing ],
+        [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path custom_types:descriptor_name ],
-        [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path custom_types:descriptor_thing ] ;
+            sh:path custom_types:descriptor_name ] ;
     sh:targetClass custom_types:Descriptors .
 
 custom_types:ImageSize a sh:NodeShape ;
@@ -76,35 +76,35 @@ custom_types:ImageSize a sh:NodeShape ;
     sh:description "size of a 2D image (in integer units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "The height of a given item - unit depends on item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path custom_types:height ],
-        [ sh:datatype xsd:integer ;
             sh:description "The width of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path custom_types:width ] ;
+            sh:path custom_types:width ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of a given item - unit depends on item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path custom_types:height ] ;
     sh:targetClass custom_types:ImageSize .
 
 custom_types:Range a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( rdf:type custom_types:increment ) ;
+    sh:ignoredProperties ( custom_types:increment rdf:type ) ;
     sh:property [ sh:class custom_types:QuantitySI ;
-            sh:description "Maximal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path custom_types:maximal ],
-        [ sh:class custom_types:QuantitySI ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path custom_types:minimal ] ;
+            sh:path custom_types:minimal ],
+        [ sh:class custom_types:QuantitySI ;
+            sh:description "Maximal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path custom_types:maximal ] ;
     sh:targetClass custom_types:Range .
 
 custom_types:Series a sh:NodeShape ;
@@ -135,20 +135,20 @@ custom_types:Series a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
     sh:ignoredProperties ( custom_types:unitSI custom_types:valueSI rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <qudt:hasUnit> ],
-        [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <qudt:hasQuantityKind> ] ;
+            sh:path <qudt:hasQuantityKind> ],
+        [ sh:datatype xsd:string ;
+            sh:description "the unit of a given value" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <qudt:hasUnit> ] ;
     sh:targetClass <qudt:quantityValue> .
 
 linkml:Any a sh:NodeShape ;
@@ -167,12 +167,6 @@ custom_types:QuantitySI a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path custom_types:unitSI ],
-        [ sh:datatype xsd:float ;
-            sh:description "value of a given field in respect to its SI unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path custom_types:valueSI ],
         [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
@@ -186,6 +180,12 @@ custom_types:QuantitySI a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
-            sh:path <qudt:hasQuantityKind> ] ;
+            sh:path <qudt:hasQuantityKind> ],
+        [ sh:datatype xsd:float ;
+            sh:description "value of a given field in respect to its SI unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path custom_types:valueSI ] ;
     sh:targetClass custom_types:QuantitySI .
 

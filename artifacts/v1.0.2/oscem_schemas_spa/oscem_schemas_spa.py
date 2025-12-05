@@ -1,5 +1,5 @@
 # Auto generated from oscem_schemas_spa.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T11:51:33
+# Generation date: 2025-12-05T13:08:39
 # Schema: SingleParticleAnalysis
 #
 # id: https://w3id.org/oscem-schemas/latest/oscem-schemas-spa

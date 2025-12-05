@@ -77,17 +77,17 @@ types:ImageSize a sh:NodeShape ;
     sh:description "size of a 2D image (in integer units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "The height of a given item - unit depends on item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path types:height ],
-        [ sh:datatype xsd:integer ;
             sh:description "The width of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path types:width ] ;
+            sh:path types:width ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of a given item - unit depends on item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path types:height ] ;
     sh:targetClass types:ImageSize .
 
 types:Range a sh:NodeShape ;
@@ -119,34 +119,29 @@ types:Series a sh:NodeShape ;
             sh:order 0 ;
             sh:path types:increment ],
         [ sh:class types:QuantitySI ;
-            sh:description "Maximal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path types:maximal ],
-        [ sh:class types:QuantitySI ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path types:minimal ] ;
+            sh:path types:minimal ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Maximal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path types:maximal ] ;
     sh:targetClass types:Series .
 
 sample:Sample a sh:NodeShape ;
     sh:closed true ;
     sh:description "Unifying class to describe the full sample." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class sample:Grid ;
-            sh:description "Description of the grid used" ;
+    sh:property [ sh:class sample:Specimen ;
+            sh:description "Description of the specimen" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path sample:grid ],
-        [ sh:class sample:Molecule ;
-            sh:description "List of molecule associated with the sample" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path sample:molecule ],
+            sh:order 5 ;
+            sh:path sample:specimen ],
         [ sh:datatype xsd:string ;
             sh:description "The name of the item" ;
             sh:maxCount 1 ;
@@ -154,6 +149,12 @@ sample:Sample a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path types:name ],
+        [ sh:class sample:Grid ;
+            sh:description "Description of the grid used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path sample:grid ],
         [ sh:datatype xsd:string ;
             sh:description "The description of the item" ;
             sh:maxCount 1 ;
@@ -161,18 +162,17 @@ sample:Sample a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path types:description ],
+        [ sh:class sample:Molecule ;
+            sh:description "List of molecule associated with the sample" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path sample:molecule ],
         [ sh:class sample:OverallMolecule ;
             sh:description "Description of the overall molecule" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path sample:overall_molecule ],
-        [ sh:class sample:Specimen ;
-            sh:description "Description of the specimen" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path sample:specimen ],
         [ sh:class sample:Ligand ;
             sh:description "List of ligands associated with the sample" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -183,53 +183,53 @@ sample:Sample a sh:NodeShape ;
 sample:SampleMolecular a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "The description of the item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path types:description ],
-        [ sh:class sample:Specimen ;
-            sh:description "Description of the specimen" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path sample:specimen ],
-        [ sh:class sample:OverallMolecule ;
+    sh:property [ sh:class sample:OverallMolecule ;
             sh:description "Description of the overall molecule" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path sample:overall_molecule ],
+        [ sh:class sample:Ligand ;
+            sh:description "List of ligands associated with the sample" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path sample:ligands ],
+        [ sh:class sample:Molecule ;
+            sh:description "List of molecule associated with the sample" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path sample:molecule ],
+        [ sh:class sample:Specimen ;
+            sh:description "Description of the specimen" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path sample:specimen ],
+        [ sh:datatype xsd:string ;
+            sh:description "The description of the item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path types:description ],
         [ sh:datatype xsd:string ;
             sh:description "The name of the item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path types:name ],
-        [ sh:class sample:Ligand ;
-            sh:description "List of ligands associated with the sample" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path sample:ligands ],
         [ sh:class sample:Grid ;
             sh:description "Description of the grid used" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
-            sh:path sample:grid ],
-        [ sh:class sample:Molecule ;
-            sh:description "List of molecule associated with the sample" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path sample:molecule ] ;
+            sh:path sample:grid ] ;
     sh:targetClass sample:SampleMolecular .
 
 <qudt:quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( rdf:type types:unitSI types:valueSI ) ;
+    sh:ignoredProperties ( types:unitSI rdf:type types:valueSI ) ;
     sh:property [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
@@ -256,54 +256,30 @@ sample:Grid a sh:NodeShape ;
     sh:closed true ;
     sh:description "Details on the grid used in the experiment." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "Grid mesh in lines per inch" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path sample:mesh ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of pretreatment of the grid, i.e., glow discharge" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path sample:pretreatment_type ],
-        [ sh:datatype xsd:string ;
-            sh:description "Material out of which the grid is made" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path sample:material ],
-        [ sh:datatype xsd:string ;
-            sh:description "The name of the manufacturer" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path types:manufacturer ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Thickness of the support film" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path sample:film_thickness ],
-        [ sh:datatype xsd:string ;
-            sh:description "Topology of the support film" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path sample:film_topology ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of material the support film is made of" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path sample:film_material ],
         [ sh:class types:QuantitySI ;
             sh:description "Length of time of the pretreatment in s" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 8 ;
             sh:path sample:pretreatment_time ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of material the support film is made of" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path sample:film_material ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path types:manufacturer ],
         [ sh:datatype xsd:string ;
             sh:description "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc." ;
             sh:maxCount 1 ;
@@ -321,7 +297,31 @@ sample:Grid a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
-            sh:path sample:film_support ] ;
+            sh:path sample:film_support ],
+        [ sh:datatype xsd:float ;
+            sh:description "Grid mesh in lines per inch" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path sample:mesh ],
+        [ sh:datatype xsd:string ;
+            sh:description "Material out of which the grid is made" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path sample:material ],
+        [ sh:datatype xsd:string ;
+            sh:description "Topology of the support film" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path sample:film_topology ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of pretreatment of the grid, i.e., glow discharge" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path sample:pretreatment_type ] ;
     sh:targetClass sample:Grid .
 
 sample:Ligand a sh:NodeShape ;
@@ -334,18 +334,18 @@ sample:Ligand a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path sample:smiles ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether the model contains any ligands" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sample:present ],
         [ sh:datatype xsd:string ;
             sh:description "Link to a reference of your ligand, i.e., CCD, PubChem, etc." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path sample:reference ] ;
+            sh:path sample:reference ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether the model contains any ligands" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sample:present ] ;
     sh:targetClass sample:Ligand .
 
 sample:Molecule a sh:NodeShape ;
@@ -353,6 +353,18 @@ sample:Molecule a sh:NodeShape ;
     sh:description "More detailed information about individual molecules." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "Name of the gene of interest" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path sample:gene_name ],
+        [ sh:datatype xsd:string ;
+            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path sample:expression_system ],
+        [ sh:datatype xsd:string ;
             sh:description "Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -360,17 +372,30 @@ sample:Molecule a sh:NodeShape ;
             sh:order 3 ;
             sh:path sample:sequence ],
         [ sh:datatype xsd:string ;
+            sh:description "Taxonomy ID of the expression system organism" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path sample:taxonomy_id_expression ],
+        [ sh:datatype xsd:string ;
             sh:description "Taxonomy ID of the natural source organism" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path sample:taxonomy_id_source ],
         [ sh:datatype xsd:string ;
-            sh:description "Name of the gene of interest" ;
+            sh:description "Name of an individual molecule (often protein) in the sample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sample:name_mol ],
+        [ sh:datatype xsd:string ;
+            sh:description "Class of the molecule" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path sample:gene_name ],
+            sh:order 2 ;
+            sh:path sample:molecular_class ],
         [ sh:datatype xsd:string ;
             sh:description "Description of the overall molecular type, i.e., a complex" ;
             sh:maxCount 1 ;
@@ -383,45 +408,31 @@ sample:Molecule a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
-            sh:path sample:natural_source ],
-        [ sh:datatype xsd:string ;
-            sh:description "Class of the molecule" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path sample:molecular_class ],
-        [ sh:datatype xsd:string ;
-            sh:description "Taxonomy ID of the expression system organism" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path sample:taxonomy_id_expression ],
-        [ sh:datatype xsd:string ;
-            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path sample:expression_system ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name of an individual molecule (often protein) in the sample" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sample:name_mol ] ;
+            sh:path sample:natural_source ] ;
     sh:targetClass sample:Molecule .
 
 sample:OverallMolecule a sh:NodeShape ;
     sh:closed true ;
     sh:description "Description of the overall molecule" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class types:QuantitySI ;
+            sh:description "Molecular weight in Da" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path sample:molecular_weight ],
+        [ sh:datatype xsd:string ;
             sh:description "Name of the full sample" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path sample:name_sample ],
+        [ sh:description "What type of higher order structure your sample forms - if any." ;
+            sh:in ( "FILAMENT" "HELICAL ARRAY" "PARTICLE" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path sample:assembly ],
         [ sh:datatype xsd:string ;
             sh:description "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc." ;
             sh:maxCount 1 ;
@@ -433,72 +444,25 @@ sample:OverallMolecule a sh:NodeShape ;
             sh:in ( "CELL" "COMPLEX" "ORGANELLE OR CELLULAR COMPONENT" "RIBOSOME" "TISSUE" "VIRUS" ) ;
             sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path sample:molecular_overall_type ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Molecular weight in Da" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path sample:molecular_weight ],
-        [ sh:description "What type of higher order structure your sample forms - if any." ;
-            sh:in ( "FILAMENT" "HELICAL ARRAY" "PARTICLE" ) ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path sample:assembly ] ;
+            sh:path sample:molecular_overall_type ] ;
     sh:targetClass sample:OverallMolecule .
 
 sample:Specimen a sh:NodeShape ;
     sh:closed true ;
     sh:description "Description of specimen handling." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "pH of the sample buffer" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path sample:ph ],
-        [ sh:datatype xsd:boolean ;
+    sh:property [ sh:datatype xsd:boolean ;
             sh:description "Whether the sample was vitrified" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path sample:vitrification ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was shadowed" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path sample:shadowing ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Environmental humidity just before vitrification, in %" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path sample:humidity ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name/composition of the (chemical) sample buffer during grid preparation" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sample:buffer ],
         [ sh:class types:QuantitySI ;
             sh:description "Environmental temperature just before vitrification, in K" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path sample:temperature ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Concentration of the (supra)molecule in the sample, in mg/ml" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path sample:concentration ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was embedded" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path sample:embedding ],
         [ sh:datatype xsd:string ;
             sh:description "Which cryogen was used for vitrification" ;
             sh:maxCount 1 ;
@@ -506,18 +470,61 @@ sample:Specimen a sh:NodeShape ;
             sh:order 4 ;
             sh:path sample:vitrification_cryogen ],
         [ sh:datatype xsd:boolean ;
+            sh:description "Whether the sample was embedded" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path sample:embedding ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether the sample was shadowed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path sample:shadowing ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name/composition of the (chemical) sample buffer during grid preparation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sample:buffer ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Environmental humidity just before vitrification, in %" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path sample:humidity ],
+        [ sh:datatype xsd:boolean ;
             sh:description "Whether the sample was stained" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
-            sh:path sample:staining ] ;
+            sh:path sample:staining ],
+        [ sh:datatype xsd:float ;
+            sh:description "pH of the sample buffer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path sample:ph ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Concentration of the (supra)molecule in the sample, in mg/ml" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path sample:concentration ] ;
     sh:targetClass sample:Specimen .
 
 types:QuantitySI a sh:NodeShape ;
     sh:closed true ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "the unit of a given value" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <qudt:hasUnit> ],
+        [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -530,13 +537,6 @@ types:QuantitySI a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path types:valueSI ],
-        [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <qudt:hasUnit> ],
         [ sh:datatype xsd:string ;
             sh:description "the SI unit attached to a si value" ;
             sh:maxCount 1 ;

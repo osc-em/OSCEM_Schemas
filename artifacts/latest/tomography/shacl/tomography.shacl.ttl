@@ -6,200 +6,13 @@
 <https://w3id.org/oscem-schemas/latest/acquisitionAcquisition> a sh:NodeShape ;
     sh:closed true ;
     sh:description "General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses)." ;
-    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/tomography/tilt_axis_angle> <https://w3id.org/oscem-schemas/latest/tomography/tilt_angle> rdf:type ) ;
-    sh:property [ sh:datatype xsd:dateTime ;
-            sh:description "Time and date of the data acquisition" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
-        [ sh:class types:Range ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Time of data acquisition per movie/tilt - in s" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
-        [ sh:class types:Range ;
-            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
-        [ sh:datatype xsd:integer ;
+    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/tomography/tilt_angle> <https://w3id.org/oscem-schemas/latest/tomography/tilt_axis_angle> rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
             sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 17 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
-        [ sh:class types:Range ;
-            sh:description "Target defocus set, min and max values in nm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
-        [ sh:class types:ImageSize ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Specifies which Acquisition subschema/class is in use." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 25 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 27 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Calculated magnification, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Pixel size, in Angstrom" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
-            sh:description "Whether an energy filter was used and its specifics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 12 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
-        [ sh:class types:ImageSize ;
-            sh:description "Level of binning on the images applied during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 20 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 23 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ] ;
-    sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionAcquisition> .
-
-<https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionSpa> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class types:Range ;
-            sh:description "Target defocus set, min and max values in nm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
         [ sh:datatype xsd:dateTime ;
             sh:description "Time and date of the data acquisition" ;
             sh:maxCount 1 ;
@@ -207,24 +20,79 @@
             sh:nodeKind sh:Literal ;
             sh:order 14 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Calculated magnification, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
         [ sh:class types:Range ;
             sh:description "Temperature during data collection, in K with min and max values." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 8 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Speciman holder model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
+        [ sh:class types:Range ;
+            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Time of data acquisition per movie/tilt - in s" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Pixel size, in Angstrom" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 25 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
         [ sh:class types:ImageSize ;
             sh:description "Level of binning on the images applied during data collection" ;
             sh:maxCount 1 ;
@@ -232,6 +100,12 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 20 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
         [ sh:class types:BoundingBox2D ;
             sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
             sh:maxCount 1 ;
@@ -244,6 +118,105 @@
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Calculated magnification, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 27 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Specifies which Acquisition subschema/class is in use." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
+        [ sh:class types:Range ;
+            sh:description "Target defocus set, min and max values in nm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
+            sh:description "Whether an energy filter was used and its specifics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
+        [ sh:class types:ImageSize ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 26 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ] ;
+    sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionAcquisition> .
+
+<https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionSpa> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class types:BoundingBox2D ;
+            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 23 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
+        [ sh:class types:Range ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
+        [ sh:class types:ImageSize ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
         [ sh:datatype xsd:string ;
             sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
             sh:maxCount 1 ;
@@ -256,78 +229,24 @@
             sh:nodeKind sh:Literal ;
             sh:order 16 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 26 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
         [ sh:class types:QuantitySI ;
             sh:description "Time of data acquisition per movie/tilt - in s" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 15 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
-        [ sh:class types:ImageSize ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
         [ sh:datatype xsd:string ;
             sh:description "Software used for instrument control," ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 9 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Pixel size, in Angstrom" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 25 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 17 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
-        [ sh:class types:Range ;
-            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
         [ sh:datatype xsd:string ;
             sh:description "Single particle acquisition" ;
             sh:in ( "spa" ) ;
@@ -336,43 +255,124 @@
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
+        [ sh:class types:Range ;
+            sh:description "Target defocus set, min and max values in nm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 25 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
+        [ sh:class types:Range ;
+            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
             sh:description "Whether an energy filter was used and its specifics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 12 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
         [ sh:datatype xsd:string ;
             sh:description "Speciman holder model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Calculated magnification, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
+        [ sh:class types:ImageSize ;
+            sh:description "Level of binning on the images applied during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 20 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
+        [ sh:datatype xsd:dateTime ;
+            sh:description "Time and date of the data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 17 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Pixel size, in Angstrom" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionSpa> .
 
 types:Descriptor a sh:NodeShape ;
     sh:closed false ;
     sh:description "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class <https://w3id.org/linkml/Any> ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path types:descriptor_thing ],
+        [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path types:descriptor_name ],
-        [ sh:class <https://w3id.org/linkml/Any> ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path types:descriptor_thing ] ;
+            sh:path types:descriptor_name ] ;
     sh:targetClass types:Descriptor .
 
 types:Descriptors a sh:NodeShape ;
@@ -398,12 +398,6 @@ types:Series a sh:NodeShape ;
     sh:description "A series of numbers constructed from min, max, and increment" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class types:QuantitySI ;
-            sh:description "Increment between elements of a series" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path types:increment ],
-        [ sh:class types:QuantitySI ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -414,18 +408,71 @@ types:Series a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path types:minimal ] ;
+            sh:path types:minimal ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Increment between elements of a series" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path types:increment ] ;
     sh:targetClass types:Series .
 
 <https://w3id.org/oscem-schemas/latest/tomography/AcquisitionCelTomo> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
-            sh:description "Calculated magnification, no unit" ;
+    sh:property [ sh:class types:QuantitySI ;
+            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 25 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Time of data acquisition per movie/tilt - in s" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 17 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 27 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
+            sh:order 18 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
+        [ sh:class types:Range ;
+            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 20 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 29 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
         [ sh:datatype xsd:string ;
             sh:description "Cellular tomography" ;
             sh:in ( "cellular_tomo" ) ;
@@ -434,164 +481,18 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
-        [ sh:class types:Range ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
-        [ sh:class types:Range ;
-            sh:description "Target defocus set, min and max values in nm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 29 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/tomography/TiltAngle> ;
-            sh:description "The min, max and increment of the tilt angle in a tomography session. Unit is degree." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_angle> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 28 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 12 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
-            sh:description "Whether an energy filter was used and its specifics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 27 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
-        [ sh:class types:ImageSize ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
-        [ sh:class types:ImageSize ;
-            sh:description "Level of binning on the images applied during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
-        [ sh:class types:Range ;
-            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
             sh:description "Any type of special optics, such as a phaseplate" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 24 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 25 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 21 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
-        [ sh:datatype xsd:dateTime ;
-            sh:description "Time and date of the data acquisition" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
         [ sh:class types:QuantitySI ;
-            sh:description "Time of data acquisition per movie/tilt - in s" ;
+            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 17 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
         [ sh:class types:QuantitySI ;
             sh:description "Pixel size, in Angstrom" ;
             sh:maxCount 1 ;
@@ -599,60 +500,18 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 23 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
-        [ sh:datatype xsd:float ;
-            sh:description "The tilt axis angle of a tomography series" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_axis_angle> ] ;
-    sh:targetClass <https://w3id.org/oscem-schemas/latest/tomography/AcquisitionCelTomo> .
-
-<https://w3id.org/oscem-schemas/latest/tomography/AcquisitionEnvTomo> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class types:QuantitySI ;
-            sh:description "Time of data acquisition per movie/tilt - in s" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 17 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 25 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
+            sh:order 11 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
         [ sh:datatype xsd:integer ;
             sh:description "Calculated magnification, no unit" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 28 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 29 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
         [ sh:datatype xsd:float ;
             sh:description "The tilt axis angle of a tomography series" ;
             sh:maxCount 1 ;
@@ -660,12 +519,42 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_axis_angle> ],
-        [ sh:class types:Range ;
-            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
+            sh:description "Whether an energy filter was used and its specifics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
+            sh:order 14 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 26 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 28 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
             sh:maxCount 1 ;
@@ -673,11 +562,104 @@ types:Series a sh:NodeShape ;
             sh:order 21 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
         [ sh:class types:Range ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
+        [ sh:class types:ImageSize ;
+            sh:description "Level of binning on the images applied during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
+        [ sh:class types:ImageSize ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
+        [ sh:class types:Range ;
             sh:description "Target defocus set, min and max values in nm." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
+        [ sh:datatype xsd:dateTime ;
+            sh:description "Time and date of the data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Speciman holder model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/tomography/TiltAngle> ;
+            sh:description "The min, max and increment of the tilt angle in a tomography session. Unit is degree." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_angle> ] ;
+    sh:targetClass <https://w3id.org/oscem-schemas/latest/tomography/AcquisitionCelTomo> .
+
+<https://w3id.org/oscem-schemas/latest/tomography/AcquisitionEnvTomo> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class types:Range ;
+            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 28 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
+        [ sh:class types:Range ;
+            sh:description "Target defocus set, min and max values in nm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Pixel size, in Angstrom" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 23 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Speciman holder model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
+        [ sh:class types:ImageSize ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 21 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
         [ sh:datatype xsd:string ;
             sh:description "Environmental tomography" ;
             sh:in ( "env_tomo" ) ;
@@ -686,12 +668,25 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
         [ sh:class types:QuantitySI ;
-            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:description "Time of data acquisition per movie/tilt - in s" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
+            sh:order 17 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The tilt axis angle of a tomography series" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_axis_angle> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/tomography/TiltAngle> ;
             sh:description "The min, max and increment of the tilt angle in a tomography session. Unit is degree." ;
             sh:maxCount 1 ;
@@ -699,13 +694,6 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_angle> ],
-        [ sh:class types:ImageSize ;
-            sh:description "Level of binning on the images applied during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
         [ sh:class types:BoundingBox2D ;
             sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
             sh:maxCount 1 ;
@@ -725,106 +713,17 @@ types:Series a sh:NodeShape ;
             sh:order 11 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
         [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
+            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 12 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
-        [ sh:class types:Range ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:order 29 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
-        [ sh:class types:ImageSize ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Pixel size, in Angstrom" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 23 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
-            sh:description "Whether an energy filter was used and its specifics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
-        [ sh:datatype xsd:dateTime ;
-            sh:description "Time and date of the data acquisition" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ] ;
-    sh:targetClass <https://w3id.org/oscem-schemas/latest/tomography/AcquisitionEnvTomo> .
-
-<https://w3id.org/oscem-schemas/latest/tomography/AcquisitionSubTomo> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class types:QuantitySI ;
-            sh:description "Time of data acquisition per movie/tilt - in s" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 17 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 12 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
-            sh:description "Whether an energy filter was used and its specifics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
+            sh:order 26 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
         [ sh:datatype xsd:dateTime ;
             sh:description "Time and date of the data acquisition" ;
             sh:maxCount 1 ;
@@ -832,12 +731,107 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 16 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
         [ sh:datatype xsd:integer ;
-            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 21 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
+            sh:order 20 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
+            sh:description "Whether an energy filter was used and its specifics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 14 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
+        [ sh:class types:ImageSize ;
+            sh:description "Level of binning on the images applied during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Calculated magnification, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
+        [ sh:class types:Range ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 25 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ] ;
+    sh:targetClass <https://w3id.org/oscem-schemas/latest/tomography/AcquisitionEnvTomo> .
+
+<https://w3id.org/oscem-schemas/latest/tomography/AcquisitionSubTomo> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class types:Range ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Calculated magnification, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/tomography/TiltAngle> ;
             sh:description "The min, max and increment of the tilt angle in a tomography session. Unit is degree." ;
             sh:maxCount 1 ;
@@ -845,6 +839,12 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_angle> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
         [ sh:datatype xsd:string ;
             sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
             sh:maxCount 1 ;
@@ -852,73 +852,23 @@ types:Series a sh:NodeShape ;
             sh:order 29 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
         [ sh:datatype xsd:integer ;
-            sh:description "Calculated magnification, no unit" ;
+            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
-        [ sh:class types:Range ;
-            sh:description "Target defocus set, min and max values in nm." ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
+            sh:description "Whether an energy filter was used and its specifics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 28 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Pixel size, in Angstrom" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 23 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
-        [ sh:datatype xsd:float ;
-            sh:description "The tilt axis angle of a tomography series" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_axis_angle> ],
-        [ sh:class types:Range ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
+            sh:order 14 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
             sh:description "Any type of special optics, such as a phaseplate" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 24 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 27 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
         [ sh:class types:Range ;
             sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
             sh:maxCount 1 ;
@@ -926,23 +876,91 @@ types:Series a sh:NodeShape ;
             sh:order 5 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
         [ sh:datatype xsd:integer ;
-            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
+        [ sh:datatype xsd:dateTime ;
+            sh:description "Time and date of the data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 26 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
+        [ sh:class types:ImageSize ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 21 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The tilt axis angle of a tomography series" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_axis_angle> ],
         [ sh:class types:BoundingBox2D ;
             sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 25 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
+        [ sh:datatype xsd:string ;
+            sh:description "Speciman holder model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
+        [ sh:class types:ImageSize ;
+            sh:description "Level of binning on the images applied during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 28 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
+        [ sh:class types:Range ;
+            sh:description "Target defocus set, min and max values in nm." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 27 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
         [ sh:datatype xsd:string ;
             sh:description "Subtomogram averaging" ;
             sh:in ( "subtomo" ) ;
@@ -951,182 +969,6 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
-        [ sh:class types:ImageSize ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
-        [ sh:class types:ImageSize ;
-            sh:description "Level of binning on the images applied during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ] ;
-    sh:targetClass <https://w3id.org/oscem-schemas/latest/tomography/AcquisitionSubTomo> .
-
-<https://w3id.org/oscem-schemas/latest/tomography/AcquisitionTomo> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
-        [ sh:class types:Range ;
-            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
-        [ sh:datatype xsd:float ;
-            sh:description "The tilt axis angle of a tomography series" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_axis_angle> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 29 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Time of data acquisition per movie/tilt - in s" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 17 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 21 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
-            sh:description "Whether an energy filter was used and its specifics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
-        [ sh:class types:Range ;
-            sh:description "Target defocus set, min and max values in nm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
-        [ sh:datatype xsd:dateTime ;
-            sh:description "Time and date of the data acquisition" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
-        [ sh:class types:ImageSize ;
-            sh:description "Level of binning on the images applied during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
-        [ sh:class types:ImageSize ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 28 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 25 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 12 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
         [ sh:class types:QuantitySI ;
             sh:description "Pixel size, in Angstrom" ;
             sh:maxCount 1 ;
@@ -1134,6 +976,194 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 23 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 20 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Time of data acquisition per movie/tilt - in s" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 17 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ] ;
+    sh:targetClass <https://w3id.org/oscem-schemas/latest/tomography/AcquisitionSubTomo> .
+
+<https://w3id.org/oscem-schemas/latest/tomography/AcquisitionTomo> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Specifies which Acquisition subschema/class is in use." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
+        [ sh:datatype xsd:float ;
+            sh:description "The tilt axis angle of a tomography series" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_axis_angle> ],
+        [ sh:class types:ImageSize ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 28 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Calculated magnification, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
+        [ sh:class types:Range ;
+            sh:description "Target defocus set, min and max values in nm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 27 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Time of data acquisition per movie/tilt - in s" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 17 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
+        [ sh:class types:ImageSize ;
+            sh:description "Level of binning on the images applied during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Speciman holder model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
+            sh:description "Whether an energy filter was used and its specifics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 14 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 20 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 29 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 25 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
+        [ sh:class types:BoundingBox2D ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 26 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
+        [ sh:class types:Range ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Pixel size, in Angstrom" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 23 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
+        [ sh:class types:Range ;
+            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 21 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
+        [ sh:datatype xsd:dateTime ;
+            sh:description "Time and date of the data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/tomography/TiltAngle> ;
             sh:description "The min, max and increment of the tilt angle in a tomography session. Unit is degree." ;
             sh:maxCount 1 ;
@@ -1141,48 +1171,18 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/tomography/tilt_angle> ],
-        [ sh:class types:Range ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
+        [ sh:class types:QuantitySI ;
+            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Specifies which Acquisition subschema/class is in use." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Calculated magnification, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
-        [ sh:class types:BoundingBox2D ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 27 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ] ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/tomography/AcquisitionTomo> .
 
 <qudt:quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( types:unitSI types:valueSI rdf:type ) ;
+    sh:ignoredProperties ( types:valueSI types:unitSI rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
@@ -1203,20 +1203,20 @@ types:Series a sh:NodeShape ;
     sh:closed true ;
     sh:description "Special device used to correct instrument inherent chromatic aberration." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Details of a given specialist instrument" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioninstrument_type> ],
-        [ sh:datatype xsd:boolean ;
+    sh:property [ sh:datatype xsd:boolean ;
             sh:description "whether a specific instrument was used during data acquisition" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionused> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionused> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Details of a given specialist instrument" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioninstrument_type> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector> .
 
 <https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate> a sh:NodeShape ;
@@ -1277,26 +1277,32 @@ types:Series a sh:NodeShape ;
             sh:order 2 ;
             sh:path types:maximal ],
         [ sh:class types:QuantitySI ;
-            sh:description "Increment between elements of a series" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path types:increment ],
-        [ sh:class types:QuantitySI ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path types:minimal ] ;
+            sh:path types:minimal ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Increment between elements of a series" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path types:increment ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/tomography/TiltAngle> .
 
 <https://w3id.org/oscem-schemas/latest/acquisitionDetector> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing a detector" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class types:QuantitySI ;
+            sh:description "Dispersion of an analytical detector, in eV" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondispersion> ],
+        [ sh:datatype xsd:string ;
             sh:description "The name of the item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1313,13 +1319,7 @@ types:Series a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmode> ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Dispersion of an analytical detector, in eV" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondispersion> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmode> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionDetector> .
 
 <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> a sh:NodeShape ;
@@ -1332,27 +1332,33 @@ types:Series a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path types:model ],
-        [ sh:class types:QuantitySI ;
-            sh:description "Width of the energy filter used." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionwidth_energy_filter> ],
         [ sh:datatype xsd:boolean ;
             sh:description "whether a specific instrument was used during data acquisition" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionused> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionused> ],
+        [ sh:class types:QuantitySI ;
+            sh:description "Width of the energy filter used." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionwidth_energy_filter> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> .
 
 <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Optional optics used to correct for instrument limitations." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSphericalAberrationCorrector> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector> ;
+            sh:description "Specialist device to correct for chromatic aberration of the microscope lenses" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionchromatic_aberration_corrector> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSphericalAberrationCorrector> ;
             sh:description "Specialist device to correct for spherical aberration of the microscope lenses" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -1363,13 +1369,7 @@ types:Series a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionphaseplate> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector> ;
-            sh:description "Specialist device to correct for chromatic aberration of the microscope lenses" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionchromatic_aberration_corrector> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionphaseplate> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> .
 
 types:ImageSize a sh:NodeShape ;
@@ -1401,6 +1401,12 @@ types:BoundingBox2D a sh:NodeShape ;
             sh:order 2 ;
             sh:path types:y_min ],
         [ sh:class types:QuantitySI ;
+            sh:description "maximum x" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path types:x_max ],
+        [ sh:class types:QuantitySI ;
             sh:description "minimum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -1411,19 +1417,13 @@ types:BoundingBox2D a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
-            sh:path types:y_max ],
-        [ sh:class types:QuantitySI ;
-            sh:description "maximum x" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path types:x_max ] ;
+            sh:path types:y_max ] ;
     sh:targetClass types:BoundingBox2D .
 
 types:Range a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( rdf:type types:increment ) ;
+    sh:ignoredProperties ( types:increment rdf:type ) ;
     sh:property [ sh:class types:QuantitySI ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -1443,30 +1443,30 @@ types:QuantitySI a sh:NodeShape ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <qudt:hasUnit> ],
-        [ sh:datatype xsd:float ;
-            sh:description "value of a given field in respect to its SI unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path types:valueSI ],
-        [ sh:datatype xsd:string ;
             sh:description "the SI unit attached to a si value" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path types:unitSI ],
         [ sh:datatype xsd:float ;
+            sh:description "value of a given field in respect to its SI unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path types:valueSI ],
+        [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
-            sh:path <qudt:hasQuantityKind> ] ;
+            sh:path <qudt:hasQuantityKind> ],
+        [ sh:datatype xsd:string ;
+            sh:description "the unit of a given value" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <qudt:hasUnit> ] ;
     sh:targetClass types:QuantitySI .
 

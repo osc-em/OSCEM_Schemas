@@ -1,0 +1,4964 @@
+{
+  "name": "oscem-schemas-tomo",
+  "description": "Schema for the Open Standards Community for Electron Microscopy (OSC-EM)",
+  "title": "oscem-schemas-tomo",
+  "see_also": [
+    "https://osc-em.github.io/oscem-schemas"
+  ],
+  "id": "https://w3id.org/osc-em/oscem-schemas-subtomo",
+  "imports": [
+    "linkml:types",
+    "./acquisition",
+    "./instrument",
+    "./sample",
+    "./tomography",
+    "./organizational",
+    "./emdataset",
+    "./custom_types",
+    "acquisition"
+  ],
+  "license": "CC-BY",
+  "prefixes": [
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    }
+  ],
+  "default_prefix": "https://w3id.org/osc-em/oscem-schemas-subtomo/",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpointer",
+      "definition_uri": "https://w3id.org/linkml/Jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpath",
+      "definition_uri": "https://w3id.org/linkml/Jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "sparqlpath",
+      "definition_uri": "https://w3id.org/linkml/Sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "AcquisitionTechnique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionAcquisitionTechnique",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "permissible_values": [
+        {
+          "text": "spa"
+        },
+        {
+          "text": "subtomo"
+        },
+        {
+          "text": "env_tomo"
+        },
+        {
+          "text": "cellular_tomo"
+        }
+      ]
+    },
+    {
+      "name": "MoleculeClassEnum",
+      "definition_uri": "https://w3id.org/osc-em/sampleMoleculeClassEnum",
+      "description": "Allowed molecule class values - compatible with the EMDB.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "permissible_values": [
+        {
+          "text": "CELL",
+          "description": "Cell"
+        },
+        {
+          "text": "COMPLEX",
+          "description": "complex of different parts e.g. protein complex"
+        },
+        {
+          "text": "ORGANELLE OR CELLULAR COMPONENT",
+          "description": "Some form of cellular component"
+        },
+        {
+          "text": "RIBOSOME",
+          "description": "A ribosome"
+        },
+        {
+          "text": "TISSUE",
+          "description": "Tissue of any type."
+        },
+        {
+          "text": "VIRUS",
+          "description": "A virus particle - or part thereof."
+        }
+      ]
+    },
+    {
+      "name": "AssemblyEnum",
+      "definition_uri": "https://w3id.org/osc-em/sampleAssemblyEnum",
+      "description": "Allowed molecular assembly values - compatible with the EMDB.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "permissible_values": [
+        {
+          "text": "FILAMENT",
+          "description": "If your protein (complex) of interest is forming filaments"
+        },
+        {
+          "text": "HELICAL ARRAY",
+          "description": "If your protein (complex) of interest is forming helical arrays (i.e. tubes)"
+        },
+        {
+          "text": "PARTICLE",
+          "description": "If your protein (complex) of interest forms individual particles on the grid with no orderd interactions"
+        }
+      ]
+    },
+    {
+      "name": "OrganizationTypeEnum",
+      "definition_uri": "https://w3id.org/osc-em/organizational/OrganizationTypeEnum",
+      "description": "Allowed values for authors organizations.",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "permissible_values": [
+        {
+          "text": "Academic",
+          "description": "Academic institution"
+        },
+        {
+          "text": "Commercial",
+          "description": "Commercial entity"
+        },
+        {
+          "text": "Government",
+          "description": "Government organization"
+        },
+        {
+          "text": "Other",
+          "description": "Other types of organizations"
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Specifies which Acquisition subschema/class is in use.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "screen_current",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionscreen_current",
+      "description": "The total electron beam current hitting the viewing screen, in nA.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionscreen_current",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nominal_defocus",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionnominal_defocus",
+      "description": "Target defocus set, min and max values in nm.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionnominal_defocus",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "Range",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "calibrated_defocus",
+      "definition_uri": "https://w3id.org/osc-em/acquisitioncalibrated_defocus",
+      "description": "Machine estimated defocus, min and max values in \u00b5m. Has a tendency to be off.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitioncalibrated_defocus",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "Range",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nominal_magnification",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionnominal_magnification",
+      "description": "Magnification level as indicated by the instrument, no unit",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionnominal_magnification",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "calibrated_magnification",
+      "definition_uri": "https://w3id.org/osc-em/acquisitioncalibrated_magnification",
+      "description": "Calculated magnification, no unit",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitioncalibrated_magnification",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "holder",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionholder",
+      "description": "Speciman holder model",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionholder",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "holder_cryogen",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionholder_cryogen",
+      "description": "Type of cryogen used in the holder - if the holder is cooled seperately",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionholder_cryogen",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "temperature_range",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontemperature_range",
+      "description": "Temperature during data collection, in K with min and max values.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontemperature",
+      "alias": "temperature",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "Range",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "microscope_software",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionmicroscope_software",
+      "description": "Software used for instrument control,",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionmicroscope_software",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dose_per_movie",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiondose_per_movie",
+      "description": "Average dose per image/movie/tilt - given in electrons per square Angstrom",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiondose_per_movie",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "energy_filter",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionenergy_filter",
+      "description": "Whether an energy filter was used and its specifics.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionenergy_filter",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "EnergyFilter",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "detectors",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiondetectors",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiondetectors",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "Detector",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "used",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionused",
+      "description": "whether a specific instrument was used during data acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionused",
+      "owner": "ChromaticAberrationCorrector",
+      "domain_of": [
+        "EnergyFilter",
+        "Phaseplate",
+        "SphericalAberrationCorrector",
+        "ChromaticAberrationCorrector"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image_size",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionimage_size",
+      "description": "The size of the image in pixels, height and width given.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionimage_size",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "ImageSize",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "date_time",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiondate_time",
+      "description": "Time and date of the data acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiondate_time",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "datetime",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "exposure_time",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionexposure_time",
+      "description": "Time of data acquisition per movie/tilt - in s",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionexposure_time",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryogen",
+      "definition_uri": "https://w3id.org/osc-em/acquisitioncryogen",
+      "description": "Cryogen used in cooling the instrument and sample, usually nitrogen",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitioncryogen",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "frames_per_movie",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionframes_per_movie",
+      "description": "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionframes_per_movie",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "grids_imaged",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiongrids_imaged",
+      "description": "Number of grids imaged for this project - here with qualifier during this data acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiongrids_imaged",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "images_generated",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionimages_generated",
+      "description": "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionimages_generated",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "binning_camera",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionbinning_camera",
+      "description": "Level of binning on the images applied during data collection",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionbinning_camera",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "ImageSize",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pixel_size",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionpixel_size",
+      "description": "Pixel size, in Angstrom",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionpixel_size",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specialist_optics",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionspecialist_optics",
+      "description": "Any type of special optics, such as a phaseplate",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionspecialist_optics",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "SpecialistOptics",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "phaseplate",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionphaseplate",
+      "description": "Phaseplate is a special optics device that can be used to enhance contrast",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionphaseplate",
+      "owner": "SpecialistOptics",
+      "domain_of": [
+        "SpecialistOptics"
+      ],
+      "range": "Phaseplate",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument_type",
+      "definition_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
+      "description": "Details of a given specialist instrument",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
+      "owner": "ChromaticAberrationCorrector",
+      "domain_of": [
+        "Phaseplate",
+        "SphericalAberrationCorrector",
+        "ChromaticAberrationCorrector"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "spherical_aberration_corrector",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionspherical_aberration_corrector",
+      "description": "Specialist device to correct for spherical aberration of the microscope lenses",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionspherical_aberration_corrector",
+      "owner": "SpecialistOptics",
+      "domain_of": [
+        "SpecialistOptics"
+      ],
+      "range": "SphericalAberrationCorrector",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "chromatic_aberration_corrector",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector",
+      "description": "Specialist device to correct for chromatic aberration of the microscope lenses",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector",
+      "owner": "SpecialistOptics",
+      "domain_of": [
+        "SpecialistOptics"
+      ],
+      "range": "ChromaticAberrationCorrector",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamshift",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionbeamshift",
+      "description": "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionbeamshift",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "BoundingBox2D",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamtilt",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionbeamtilt",
+      "description": "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionbeamtilt",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "BoundingBox2D",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "imageshift",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionimageshift",
+      "description": "Movement of the Beam below the image in order to shift the image on the detector. Given in \u00b5m.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionimageshift",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "BoundingBox2D",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamtiltgroups",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionbeamtiltgroups",
+      "description": "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionbeamtiltgroups",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "gainref_flip_rotate",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiongainref_flip_rotate",
+      "description": "Whether and how you have to flip or rotate the gainref in order to align with your acquired images",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiongainref_flip_rotate",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "width_energy_filter",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionwidth_energy_filter",
+      "description": "Width of the energy filter used.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionwidth_energy_filter",
+      "owner": "EnergyFilter",
+      "domain_of": [
+        "EnergyFilter"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mode",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionmode",
+      "description": "Mode of the detector, e.g. \"counting\", \"ScanningDetector\", \"ImagingDetector\", etc.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionmode",
+      "owner": "Detector",
+      "domain_of": [
+        "Detector"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dispersion",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiondispersion",
+      "description": "Dispersion of an analytical detector, in eV",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiondispersion",
+      "owner": "Detector",
+      "domain_of": [
+        "Detector"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "collection_angle",
+      "definition_uri": "https://w3id.org/osc-em/acquisitioncollection_angle",
+      "description": "Collection angle set, min and max values in mrad.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitioncollection_angle",
+      "owner": "Detector",
+      "domain_of": [
+        "Detector"
+      ],
+      "range": "Range",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "microscope",
+      "definition_uri": "https://w3id.org/osc-em/instrumentmicroscope",
+      "description": "Microscope information",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentmicroscope",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "Microscope",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "illumination",
+      "definition_uri": "https://w3id.org/osc-em/instrumentillumination",
+      "description": "Mode of illumination used during data collection",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentillumination",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "imaging",
+      "definition_uri": "https://w3id.org/osc-em/instrumentimaging",
+      "description": "Mode of imaging used during data collection",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentimaging",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "electron_source",
+      "definition_uri": "https://w3id.org/osc-em/instrumentelectron_source",
+      "description": "Type of electron source used in the microscope, such as FEG",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentelectron_source",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "acceleration_voltage",
+      "definition_uri": "https://w3id.org/osc-em/instrumentacceleration_voltage",
+      "description": "Voltage used for the electron acceleration, in kV",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentacceleration_voltage",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "c2_aperture",
+      "definition_uri": "https://w3id.org/osc-em/instrumentc2_aperture",
+      "description": "C2 aperture size used in data acquisition, in \u00b5m",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentc2_aperture",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cs",
+      "definition_uri": "https://w3id.org/osc-em/instrumentcs",
+      "description": "Spherical aberration of the instrument, in mm",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentcs",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "operating_mode",
+      "definition_uri": "https://w3id.org/osc-em/instrumentoperating_mode",
+      "description": "Operating mode of the microscope, i.e. \"TEM\", \"STEM\"",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentoperating_mode",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beam_convergence",
+      "definition_uri": "https://w3id.org/osc-em/instrumentbeam_convergence",
+      "description": "Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM.",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentbeam_convergence",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "molecular_type",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecular_type",
+      "description": "Description of the overall molecular type, i.e., a complex",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecular_type",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name_sample",
+      "definition_uri": "https://w3id.org/osc-em/samplename_sample",
+      "description": "Name of the full sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplename_sample",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "source",
+      "definition_uri": "https://w3id.org/osc-em/samplesource",
+      "description": "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplesource",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "molecular_weight",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecular_weight",
+      "description": "Molecular weight in Da",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecular_weight",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "molecular_overall_type",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecular_overall_type",
+      "description": "Description of the overall molecular type, i.e., a complex",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecular_overall_type",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "range": "MoleculeClassEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name_mol",
+      "definition_uri": "https://w3id.org/osc-em/samplename_mol",
+      "description": "Name of an individual molecule (often protein) in the sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplename_mol",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "molecular_class",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecular_class",
+      "description": "Class of the molecule",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecular_class",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sequence",
+      "definition_uri": "https://w3id.org/osc-em/samplesequence",
+      "description": "Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplesequence",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "natural_source",
+      "definition_uri": "https://w3id.org/osc-em/samplenatural_source",
+      "description": "Scientific name of the natural host organism",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplenatural_source",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "taxonomy_id_source",
+      "definition_uri": "https://w3id.org/osc-em/sampletaxonomy_id_source",
+      "description": "Taxonomy ID of the natural source organism",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampletaxonomy_id_source",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "expression_system",
+      "definition_uri": "https://w3id.org/osc-em/sampleexpression_system",
+      "description": "Scientific name of the organism used to produce the molecule of interest",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleexpression_system",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "taxonomy_id_expression",
+      "definition_uri": "https://w3id.org/osc-em/sampletaxonomy_id_expression",
+      "description": "Taxonomy ID of the expression system organism",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampletaxonomy_id_expression",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "gene_name",
+      "definition_uri": "https://w3id.org/osc-em/samplegene_name",
+      "description": "Name of the gene of interest",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplegene_name",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "present",
+      "definition_uri": "https://w3id.org/osc-em/samplepresent",
+      "description": "Whether the model contains any ligands",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplepresent",
+      "owner": "Ligand",
+      "domain_of": [
+        "Ligand"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smiles",
+      "definition_uri": "https://w3id.org/osc-em/samplesmiles",
+      "description": "Provide a valid SMILES string of your ligand",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplesmiles",
+      "owner": "Ligand",
+      "domain_of": [
+        "Ligand"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "reference",
+      "definition_uri": "https://w3id.org/osc-em/samplereference",
+      "description": "Link to a reference of your ligand, i.e., CCD, PubChem, etc.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplereference",
+      "owner": "Ligand",
+      "domain_of": [
+        "Ligand"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "buffer",
+      "definition_uri": "https://w3id.org/osc-em/samplebuffer",
+      "description": "Name/composition of the (chemical) sample buffer during grid preparation",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplebuffer",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "concentration",
+      "definition_uri": "https://w3id.org/osc-em/sampleconcentration",
+      "description": "Concentration of the (supra)molecule in the sample, in mg/ml",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleconcentration",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ph",
+      "definition_uri": "https://w3id.org/osc-em/sampleph",
+      "description": "pH of the sample buffer",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleph",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "vitrification",
+      "definition_uri": "https://w3id.org/osc-em/samplevitrification",
+      "description": "Whether the sample was vitrified",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplevitrification",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "vitrification_cryogen",
+      "definition_uri": "https://w3id.org/osc-em/samplevitrification_cryogen",
+      "description": "Which cryogen was used for vitrification",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplevitrification_cryogen",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "humidity",
+      "definition_uri": "https://w3id.org/osc-em/samplehumidity",
+      "description": "Environmental humidity just before vitrification, in %",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplehumidity",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "temperature",
+      "definition_uri": "https://w3id.org/osc-em/sampletemperature",
+      "description": "Environmental temperature just before vitrification, in K",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampletemperature",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "staining",
+      "definition_uri": "https://w3id.org/osc-em/samplestaining",
+      "description": "Whether the sample was stained",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplestaining",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "embedding",
+      "definition_uri": "https://w3id.org/osc-em/sampleembedding",
+      "description": "Whether the sample was embedded",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleembedding",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "shadowing",
+      "definition_uri": "https://w3id.org/osc-em/sampleshadowing",
+      "description": "Whether the sample was shadowed",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleshadowing",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "material",
+      "definition_uri": "https://w3id.org/osc-em/samplematerial",
+      "description": "Material out of which the grid is made",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplematerial",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mesh",
+      "definition_uri": "https://w3id.org/osc-em/samplemesh",
+      "description": "Grid mesh in lines per inch",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplemesh",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "film_support",
+      "definition_uri": "https://w3id.org/osc-em/samplefilm_support",
+      "description": "Whether a support film was used",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplefilm_support",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "film_material",
+      "definition_uri": "https://w3id.org/osc-em/samplefilm_material",
+      "description": "Type of material the support film is made of",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplefilm_material",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "film_topology",
+      "definition_uri": "https://w3id.org/osc-em/samplefilm_topology",
+      "description": "Topology of the support film",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplefilm_topology",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "film_thickness",
+      "definition_uri": "https://w3id.org/osc-em/samplefilm_thickness",
+      "description": "Thickness of the support film",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplefilm_thickness",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pretreatment_type",
+      "definition_uri": "https://w3id.org/osc-em/samplepretreatment_type",
+      "description": "Type of pretreatment of the grid, i.e., glow discharge",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplepretreatment_type",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pretreatment_time",
+      "definition_uri": "https://w3id.org/osc-em/samplepretreatment_time",
+      "description": "Length of time of the pretreatment in s",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplepretreatment_time",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pretreatment_pressure",
+      "definition_uri": "https://w3id.org/osc-em/samplepretreatment_pressure",
+      "description": "Pressure of the chamber during pretreatment, in Pa",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplepretreatment_pressure",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pretreatment_atmosphere",
+      "definition_uri": "https://w3id.org/osc-em/samplepretreatment_atmosphere",
+      "description": "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplepretreatment_atmosphere",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "overall_molecule",
+      "definition_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
+      "description": "Description of the overall molecule",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OverallMolecule",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "molecule",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecule",
+      "description": "List of molecule associated with the sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecule",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "Molecule",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ligands",
+      "definition_uri": "https://w3id.org/osc-em/sampleligands",
+      "description": "List of ligands associated with the sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleligands",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "Ligand",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimen",
+      "definition_uri": "https://w3id.org/osc-em/samplespecimen",
+      "description": "Description of the specimen",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplespecimen",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "Specimen",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "grid",
+      "definition_uri": "https://w3id.org/osc-em/samplegrid",
+      "description": "Description of the grid used",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/samplegrid",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "Grid",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "assembly",
+      "definition_uri": "https://w3id.org/osc-em/sampleassembly",
+      "description": "What type of higher order structure your sample forms - if any.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleassembly",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "range": "AssemblyEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tilt_axis_angle",
+      "definition_uri": "https://w3id.org/osc-em/tomography/tilt_axis_angle",
+      "description": "The tilt axis angle of a tomography series",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "slot_uri": "https://w3id.org/osc-em/tomography/tilt_axis_angle",
+      "owner": "AcquisitionTomo",
+      "domain_of": [
+        "AcquisitionTomo"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tilt_angle",
+      "definition_uri": "https://w3id.org/osc-em/tomography/tilt_angle",
+      "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree.",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "slot_uri": "https://w3id.org/osc-em/tomography/tilt_angle",
+      "owner": "AcquisitionTomo",
+      "domain_of": [
+        "AcquisitionTomo"
+      ],
+      "range": "TiltAngle",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "family_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/family_name",
+      "description": "last name",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/familyName"
+      ],
+      "slot_uri": "http://schema.org/familyName",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "given_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/given_name",
+      "description": "first name",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/givenName"
+      ],
+      "slot_uri": "http://schema.org/givenName",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "job_title",
+      "definition_uri": "https://w3id.org/osc-em/organizational/job_title",
+      "description": "job title",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/jobTitle"
+      ],
+      "slot_uri": "http://schema.org/jobTitle",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "email",
+      "definition_uri": "https://w3id.org/osc-em/organizational/email",
+      "description": "email",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/email"
+      ],
+      "slot_uri": "http://schema.org/email",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "telephone",
+      "definition_uri": "https://w3id.org/osc-em/organizational/telephone",
+      "description": "work phone",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/telephone"
+      ],
+      "slot_uri": "http://schema.org/telephone",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person",
+      "definition_uri": "https://w3id.org/osc-em/organizational/person",
+      "description": "person",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/Person"
+      ],
+      "slot_uri": "http://schema.org/Person",
+      "range": "Person",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name_org",
+      "definition_uri": "https://w3id.org/osc-em/organizational/name_org",
+      "description": "Name of the organization",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/name_org",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type_org",
+      "definition_uri": "https://w3id.org/osc-em/organizational/type_org",
+      "description": "Type of organization, academic, commercial, governmental, etc.",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/type_org",
+      "owner": "Funder",
+      "domain_of": [
+        "Author",
+        "Funder"
+      ],
+      "range": "OrganizationTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "country",
+      "definition_uri": "https://w3id.org/osc-em/organizational/country",
+      "description": "Country of the institution",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/country",
+      "owner": "Funder",
+      "domain_of": [
+        "Author",
+        "Grant",
+        "Funder"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "role",
+      "definition_uri": "https://w3id.org/osc-em/organizational/role",
+      "description": "Role of the author, for example principal investigator",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/role",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "orcid",
+      "definition_uri": "https://w3id.org/osc-em/organizational/orcid",
+      "description": "ORCID of the author, a type of unique identifier",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/orcid",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "funder_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/funder_name",
+      "description": "funding organization/person.",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/funder_name",
+      "owner": "Funder",
+      "domain_of": [
+        "Funder"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "funder",
+      "definition_uri": "https://w3id.org/osc-em/organizational/funder",
+      "description": "funding organization/person.",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/funder",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "range": "Funder",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "start_date",
+      "definition_uri": "https://w3id.org/osc-em/organizational/start_date",
+      "description": "start date",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/start_date",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "datetime",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "end_date",
+      "definition_uri": "https://w3id.org/osc-em/organizational/end_date",
+      "description": "end date",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/end_date",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "datetime",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "budget",
+      "definition_uri": "https://w3id.org/osc-em/organizational/budget",
+      "description": "budget",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/budget",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "project_id",
+      "definition_uri": "https://w3id.org/osc-em/organizational/project_id",
+      "description": "project id",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/identifier"
+      ],
+      "slot_uri": "http://schema.org/identifier",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "grants",
+      "definition_uri": "https://w3id.org/osc-em/organizational/grants",
+      "description": "List of grants associated with the project",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/grants",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "range": "Grant",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "authors",
+      "definition_uri": "https://w3id.org/osc-em/organizational/authors",
+      "description": "List of authors associated with the project",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/authors",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "range": "Author",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "grant_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/grant_name",
+      "description": "name of the grant",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/grant_name",
+      "owner": "Grant",
+      "domain_of": [
+        "Grant"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "acquisition",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasacquisition",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemasacquisition",
+      "owner": "EMDatasetBase",
+      "domain_of": [
+        "EMDatasetBase"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasinstrument",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemasinstrument",
+      "owner": "EMDatasetBase",
+      "domain_of": [
+        "EMDatasetBase"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemassample",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemassample",
+      "owner": "EMDatasetBase",
+      "domain_of": [
+        "EMDatasetBase"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "organizational",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasorganizational",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemasorganizational",
+      "owner": "EMDatasetBase",
+      "domain_of": [
+        "EMDatasetBase"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesname",
+      "description": "The name of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesname",
+      "owner": "Sample",
+      "domain_of": [
+        "Detector",
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "description",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescription",
+      "description": "The description of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescription",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "manufacturer",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "description": "The name of the manufacturer",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "owner": "Grid",
+      "domain_of": [
+        "Microscope",
+        "Grid"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "model",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "description": "The model of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "owner": "Microscope",
+      "domain_of": [
+        "EnergyFilter",
+        "Microscope"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "minimal",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesminimal",
+      "description": "Minimal value of a given dataset property",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesminimal",
+      "owner": "Range",
+      "domain_of": [
+        "Range"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "maximal",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmaximal",
+      "description": "Maximal value of a given dataset property",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmaximal",
+      "owner": "Range",
+      "domain_of": [
+        "Range"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "increment",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesincrement",
+      "description": "Increment between elements of a series",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesincrement",
+      "owner": "Series",
+      "domain_of": [
+        "Series"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "width",
+      "definition_uri": "https://w3id.org/osc-em/custom_typeswidth",
+      "description": "The width of a given item - unit depends on item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typeswidth",
+      "owner": "ImageSize",
+      "domain_of": [
+        "ImageSize"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "height",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesheight",
+      "description": "The height of a given item - unit depends on item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesheight",
+      "owner": "ImageSize",
+      "domain_of": [
+        "ImageSize"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "x_min",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesx_min",
+      "description": "minimum x",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesx_min",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "x_max",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesx_max",
+      "description": "maximum x",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesx_max",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "y_min",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesy_min",
+      "description": "minimum y",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesy_min",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "y_max",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesy_max",
+      "description": "maximum y",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesy_max",
+      "owner": "BoundingBox2D",
+      "domain_of": [
+        "BoundingBox2D"
+      ],
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "unit",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesunit",
+      "description": "the unit of a given value",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasUnit"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/hasUnit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "value",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesvalue",
+      "description": "the value of a field with a unit",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptors",
+      "range": "Descriptors",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "descriptor_thing",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "valueSI",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesvalueSI",
+      "description": "value of a given field in respect to its SI unit",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesvalueSI",
+      "owner": "QuantitySI",
+      "domain_of": [
+        "QuantitySI"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "unitSI",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesunitSI",
+      "description": "the SI unit attached to a si value",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesunitSI",
+      "owner": "QuantitySI",
+      "domain_of": [
+        "QuantitySI"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EMDatasetTomo_acquisition",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasacquisition",
+      "description": "Describe the data acquisition parameters",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "is_a": "acquisition",
+      "domain": "EMDatasetTomo",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemasacquisition",
+      "alias": "acquisition",
+      "owner": "EMDatasetTomo",
+      "domain_of": [
+        "EMDatasetTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "acquisition",
+      "range": "AcquisitionSubTomo",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EMDatasetTomo_instrument",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasinstrument",
+      "description": "Describe the instrument used to acquire the data",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "is_a": "instrument",
+      "domain": "EMDatasetTomo",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemasinstrument",
+      "alias": "instrument",
+      "owner": "EMDatasetTomo",
+      "domain_of": [
+        "EMDatasetTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "instrument",
+      "range": "Instrument",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EMDatasetTomo_sample",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemassample",
+      "description": "Sample information",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "is_a": "sample",
+      "domain": "EMDatasetTomo",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemassample",
+      "alias": "sample",
+      "owner": "EMDatasetTomo",
+      "domain_of": [
+        "EMDatasetTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "sample",
+      "range": "SampleMolecular",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EMDatasetTomo_organizational",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasorganizational",
+      "description": "Information on authors and grants",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "is_a": "organizational",
+      "domain": "EMDatasetTomo",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemasorganizational",
+      "alias": "organizational",
+      "owner": "EMDatasetTomo",
+      "domain_of": [
+        "EMDatasetTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "organizational",
+      "range": "Organizational",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Acquisition_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Specifies which Acquisition subschema/class is in use.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "technique",
+      "domain": "Acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Acquisition_detectors",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiondetectors",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "detectors",
+      "domain": "Acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiondetectors",
+      "alias": "detectors",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "detectors",
+      "range": "Detector",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Acquisition_date_time",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiondate_time",
+      "description": "Time and date of the data acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "date_time",
+      "domain": "Acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiondate_time",
+      "alias": "date_time",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "date_time",
+      "range": "datetime",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Acquisition_binning_camera",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionbinning_camera",
+      "description": "Level of binning on the images applied during data collection",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "binning_camera",
+      "domain": "Acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionbinning_camera",
+      "alias": "binning_camera",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "binning_camera",
+      "range": "ImageSize",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Acquisition_pixel_size",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionpixel_size",
+      "description": "Pixel size, in Angstrom",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "pixel_size",
+      "domain": "Acquisition",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionpixel_size",
+      "alias": "pixel_size",
+      "owner": "Acquisition",
+      "domain_of": [
+        "Acquisition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "pixel_size",
+      "range": "QuantitySI",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcquisitionSpa_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Single particle acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition_technique",
+      "domain": "AcquisitionSpa",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "AcquisitionSpa",
+      "domain_of": [
+        "AcquisitionSpa"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
+      "required": true,
+      "equals_string": "spa",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EnergyFilter_used",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionused",
+      "description": "whether a specific instrument was used during data acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "used",
+      "domain": "EnergyFilter",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionused",
+      "alias": "used",
+      "owner": "EnergyFilter",
+      "domain_of": [
+        "EnergyFilter"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "used",
+      "range": "boolean",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EnergyFilter_model",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "description": "The model of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "model",
+      "domain": "EnergyFilter",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "alias": "model",
+      "owner": "EnergyFilter",
+      "domain_of": [
+        "EnergyFilter"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "model",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EnergyFilter_width_energy_filter",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionwidth_energy_filter",
+      "description": "Width of the energy filter used.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "width_energy_filter",
+      "domain": "EnergyFilter",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionwidth_energy_filter",
+      "alias": "width_energy_filter",
+      "owner": "EnergyFilter",
+      "domain_of": [
+        "EnergyFilter"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "width_energy_filter",
+      "range": "QuantitySI",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Phaseplate_used",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionused",
+      "description": "whether a specific instrument was used during data acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "used",
+      "domain": "Phaseplate",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionused",
+      "alias": "used",
+      "owner": "Phaseplate",
+      "domain_of": [
+        "Phaseplate"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "used",
+      "range": "boolean",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Phaseplate_instrument_type",
+      "definition_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
+      "description": "Type of phaseplate",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "instrument_type",
+      "domain": "Phaseplate",
+      "slot_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
+      "alias": "instrument_type",
+      "owner": "Phaseplate",
+      "domain_of": [
+        "Phaseplate"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "instrument_type",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SphericalAberrationCorrector_used",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionused",
+      "description": "whether a specific instrument was used during data acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "used",
+      "domain": "SphericalAberrationCorrector",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionused",
+      "alias": "used",
+      "owner": "SphericalAberrationCorrector",
+      "domain_of": [
+        "SphericalAberrationCorrector"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "used",
+      "range": "boolean",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SphericalAberrationCorrector_instrument_type",
+      "definition_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
+      "description": "Details of a given specialist instrument",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "instrument_type",
+      "domain": "SphericalAberrationCorrector",
+      "slot_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
+      "alias": "instrument_type",
+      "owner": "SphericalAberrationCorrector",
+      "domain_of": [
+        "SphericalAberrationCorrector"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "instrument_type",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ChromaticAberrationCorrector_used",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionused",
+      "description": "whether a specific instrument was used during data acquisition",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "used",
+      "domain": "ChromaticAberrationCorrector",
+      "slot_uri": "https://w3id.org/osc-em/acquisitionused",
+      "alias": "used",
+      "owner": "ChromaticAberrationCorrector",
+      "domain_of": [
+        "ChromaticAberrationCorrector"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "used",
+      "range": "boolean",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ChromaticAberrationCorrector_instrument_type",
+      "definition_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
+      "description": "Details of a given specialist instrument",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "instrument_type",
+      "domain": "ChromaticAberrationCorrector",
+      "slot_uri": "https://w3id.org/osc-em/acquisitioninstrument_type",
+      "alias": "instrument_type",
+      "owner": "ChromaticAberrationCorrector",
+      "domain_of": [
+        "ChromaticAberrationCorrector"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "instrument_type",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_microscope",
+      "definition_uri": "https://w3id.org/osc-em/instrumentmicroscope",
+      "description": "Microscope information",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "microscope",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentmicroscope",
+      "alias": "microscope",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "microscope",
+      "range": "Microscope",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_illumination",
+      "definition_uri": "https://w3id.org/osc-em/instrumentillumination",
+      "description": "Mode of illumination used during data collection",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "illumination",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentillumination",
+      "alias": "illumination",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "illumination",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_imaging",
+      "definition_uri": "https://w3id.org/osc-em/instrumentimaging",
+      "description": "Mode of imaging used during data collection",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "imaging",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentimaging",
+      "alias": "imaging",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "imaging",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_electron_source",
+      "definition_uri": "https://w3id.org/osc-em/instrumentelectron_source",
+      "description": "Type of electron source used in the microscope, such as FEG",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "electron_source",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentelectron_source",
+      "alias": "electron_source",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "electron_source",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_acceleration_voltage",
+      "definition_uri": "https://w3id.org/osc-em/instrumentacceleration_voltage",
+      "description": "Voltage used for the electron acceleration, in kV",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "acceleration_voltage",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentacceleration_voltage",
+      "alias": "acceleration_voltage",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "acceleration_voltage",
+      "range": "QuantitySI",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_c2_aperture",
+      "definition_uri": "https://w3id.org/osc-em/instrumentc2_aperture",
+      "description": "C2 aperture size used in data acquisition, in \u00b5m",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "c2_aperture",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentc2_aperture",
+      "alias": "c2_aperture",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "c2_aperture",
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_cs",
+      "definition_uri": "https://w3id.org/osc-em/instrumentcs",
+      "description": "Spherical aberration of the instrument, in mm",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "cs",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentcs",
+      "alias": "cs",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "cs",
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_operating_mode",
+      "definition_uri": "https://w3id.org/osc-em/instrumentoperating_mode",
+      "description": "Operating mode of the microscope, i.e. \"TEM\", \"STEM\"",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "operating_mode",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentoperating_mode",
+      "alias": "operating_mode",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "operating_mode",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_beam_convergence",
+      "definition_uri": "https://w3id.org/osc-em/instrumentbeam_convergence",
+      "description": "Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM.",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "is_a": "beam_convergence",
+      "domain": "Instrument",
+      "slot_uri": "https://w3id.org/osc-em/instrumentbeam_convergence",
+      "alias": "beam_convergence",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "beam_convergence",
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Microscope_model",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "description": "The model of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "model",
+      "domain": "Microscope",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmodel",
+      "alias": "model",
+      "owner": "Microscope",
+      "domain_of": [
+        "Microscope"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "model",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Microscope_manufacturer",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "description": "The name of the manufacturer",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "manufacturer",
+      "domain": "Microscope",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "alias": "manufacturer",
+      "owner": "Microscope",
+      "domain_of": [
+        "Microscope"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "manufacturer",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesname",
+      "description": "The name of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "name",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesname",
+      "alias": "name",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_description",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescription",
+      "description": "The description of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "description",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescription",
+      "alias": "description",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "description",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_overall_molecule",
+      "definition_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
+      "description": "Description of the overall molecule",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "overall_molecule",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
+      "alias": "overall_molecule",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "overall_molecule",
+      "range": "OverallMolecule",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_molecule",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecule",
+      "description": "List of molecule associated with the sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "molecule",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecule",
+      "alias": "molecule",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "molecule",
+      "range": "Molecule",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_ligands",
+      "definition_uri": "https://w3id.org/osc-em/sampleligands",
+      "description": "List of ligands associated with the sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "ligands",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/sampleligands",
+      "alias": "ligands",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "ligands",
+      "range": "Ligand",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_specimen",
+      "definition_uri": "https://w3id.org/osc-em/samplespecimen",
+      "description": "Description of the specimen",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "specimen",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/samplespecimen",
+      "alias": "specimen",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "specimen",
+      "range": "Specimen",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Sample_grid",
+      "definition_uri": "https://w3id.org/osc-em/samplegrid",
+      "description": "Description of the grid used",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "grid",
+      "domain": "Sample",
+      "slot_uri": "https://w3id.org/osc-em/samplegrid",
+      "alias": "grid",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "grid",
+      "range": "Grid",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OverallMolecule_molecular_overall_type",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecular_overall_type",
+      "description": "Description of the overall molecular type, i.e., a complex",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "molecular_overall_type",
+      "domain": "OverallMolecule",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecular_overall_type",
+      "alias": "molecular_overall_type",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "molecular_overall_type",
+      "range": "MoleculeClassEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OverallMolecule_name_sample",
+      "definition_uri": "https://w3id.org/osc-em/samplename_sample",
+      "description": "Name of the full sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "name_sample",
+      "domain": "OverallMolecule",
+      "slot_uri": "https://w3id.org/osc-em/samplename_sample",
+      "alias": "name_sample",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name_sample",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OverallMolecule_source",
+      "definition_uri": "https://w3id.org/osc-em/samplesource",
+      "description": "Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "source",
+      "domain": "OverallMolecule",
+      "slot_uri": "https://w3id.org/osc-em/samplesource",
+      "alias": "source",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "source",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OverallMolecule_molecular_weight",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecular_weight",
+      "description": "Molecular weight in Da",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "molecular_weight",
+      "domain": "OverallMolecule",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecular_weight",
+      "alias": "molecular_weight",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "molecular_weight",
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OverallMolecule_assembly",
+      "definition_uri": "https://w3id.org/osc-em/sampleassembly",
+      "description": "What type of higher order structure your sample forms - if any.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "assembly",
+      "domain": "OverallMolecule",
+      "slot_uri": "https://w3id.org/osc-em/sampleassembly",
+      "alias": "assembly",
+      "owner": "OverallMolecule",
+      "domain_of": [
+        "OverallMolecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "assembly",
+      "range": "AssemblyEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Molecule_name_mol",
+      "definition_uri": "https://w3id.org/osc-em/samplename_mol",
+      "description": "Name of an individual molecule (often protein) in the sample",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "name_mol",
+      "domain": "Molecule",
+      "slot_uri": "https://w3id.org/osc-em/samplename_mol",
+      "alias": "name_mol",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name_mol",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Molecule_molecular_type",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecular_type",
+      "description": "Description of the overall molecular type, i.e., a complex",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "molecular_type",
+      "domain": "Molecule",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecular_type",
+      "alias": "molecular_type",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "molecular_type",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Molecule_molecular_class",
+      "definition_uri": "https://w3id.org/osc-em/samplemolecular_class",
+      "description": "Class of the molecule",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "molecular_class",
+      "domain": "Molecule",
+      "slot_uri": "https://w3id.org/osc-em/samplemolecular_class",
+      "alias": "molecular_class",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "molecular_class",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Molecule_sequence",
+      "definition_uri": "https://w3id.org/osc-em/samplesequence",
+      "description": "Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "sequence",
+      "domain": "Molecule",
+      "slot_uri": "https://w3id.org/osc-em/samplesequence",
+      "alias": "sequence",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "sequence",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Molecule_natural_source",
+      "definition_uri": "https://w3id.org/osc-em/samplenatural_source",
+      "description": "Scientific name of the natural host organism",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "natural_source",
+      "domain": "Molecule",
+      "slot_uri": "https://w3id.org/osc-em/samplenatural_source",
+      "alias": "natural_source",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "natural_source",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Molecule_taxonomy_id_source",
+      "definition_uri": "https://w3id.org/osc-em/sampletaxonomy_id_source",
+      "description": "Taxonomy ID of the natural source organism",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "taxonomy_id_source",
+      "domain": "Molecule",
+      "slot_uri": "https://w3id.org/osc-em/sampletaxonomy_id_source",
+      "alias": "taxonomy_id_source",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "taxonomy_id_source",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Molecule_expression_system",
+      "definition_uri": "https://w3id.org/osc-em/sampleexpression_system",
+      "description": "Scientific name of the organism used to produce the molecule of interest",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "expression_system",
+      "domain": "Molecule",
+      "slot_uri": "https://w3id.org/osc-em/sampleexpression_system",
+      "alias": "expression_system",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "expression_system",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Molecule_taxonomy_id_expression",
+      "definition_uri": "https://w3id.org/osc-em/sampletaxonomy_id_expression",
+      "description": "Taxonomy ID of the expression system organism",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "taxonomy_id_expression",
+      "domain": "Molecule",
+      "slot_uri": "https://w3id.org/osc-em/sampletaxonomy_id_expression",
+      "alias": "taxonomy_id_expression",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "taxonomy_id_expression",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Molecule_gene_name",
+      "definition_uri": "https://w3id.org/osc-em/samplegene_name",
+      "description": "Name of the gene of interest",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "gene_name",
+      "domain": "Molecule",
+      "slot_uri": "https://w3id.org/osc-em/samplegene_name",
+      "alias": "gene_name",
+      "owner": "Molecule",
+      "domain_of": [
+        "Molecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "gene_name",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Ligand_present",
+      "definition_uri": "https://w3id.org/osc-em/samplepresent",
+      "description": "Whether the model contains any ligands",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "present",
+      "domain": "Ligand",
+      "slot_uri": "https://w3id.org/osc-em/samplepresent",
+      "alias": "present",
+      "owner": "Ligand",
+      "domain_of": [
+        "Ligand"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "present",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_buffer",
+      "definition_uri": "https://w3id.org/osc-em/samplebuffer",
+      "description": "Name/composition of the (chemical) sample buffer during grid preparation",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "buffer",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/samplebuffer",
+      "alias": "buffer",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "buffer",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_concentration",
+      "definition_uri": "https://w3id.org/osc-em/sampleconcentration",
+      "description": "Concentration of the (supra)molecule in the sample, in mg/ml",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "concentration",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/sampleconcentration",
+      "alias": "concentration",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "concentration",
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_ph",
+      "definition_uri": "https://w3id.org/osc-em/sampleph",
+      "description": "pH of the sample buffer",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "ph",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/sampleph",
+      "alias": "ph",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "ph",
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_vitrification",
+      "definition_uri": "https://w3id.org/osc-em/samplevitrification",
+      "description": "Whether the sample was vitrified",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "vitrification",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/samplevitrification",
+      "alias": "vitrification",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "vitrification",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_vitrification_cryogen",
+      "definition_uri": "https://w3id.org/osc-em/samplevitrification_cryogen",
+      "description": "Which cryogen was used for vitrification",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "vitrification_cryogen",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/samplevitrification_cryogen",
+      "alias": "vitrification_cryogen",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "vitrification_cryogen",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_humidity",
+      "definition_uri": "https://w3id.org/osc-em/samplehumidity",
+      "description": "Environmental humidity just before vitrification, in %",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "humidity",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/samplehumidity",
+      "alias": "humidity",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "humidity",
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_temperature",
+      "definition_uri": "https://w3id.org/osc-em/sampletemperature",
+      "description": "Environmental temperature just before vitrification, in K",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "temperature",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/sampletemperature",
+      "alias": "temperature",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "temperature",
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_staining",
+      "definition_uri": "https://w3id.org/osc-em/samplestaining",
+      "description": "Whether the sample was stained",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "staining",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/samplestaining",
+      "alias": "staining",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "staining",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_embedding",
+      "definition_uri": "https://w3id.org/osc-em/sampleembedding",
+      "description": "Whether the sample was embedded",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "embedding",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/sampleembedding",
+      "alias": "embedding",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "embedding",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Specimen_shadowing",
+      "definition_uri": "https://w3id.org/osc-em/sampleshadowing",
+      "description": "Whether the sample was shadowed",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "shadowing",
+      "domain": "Specimen",
+      "slot_uri": "https://w3id.org/osc-em/sampleshadowing",
+      "alias": "shadowing",
+      "owner": "Specimen",
+      "domain_of": [
+        "Specimen"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "shadowing",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_manufacturer",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "description": "The name of the manufacturer",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "manufacturer",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmanufacturer",
+      "alias": "manufacturer",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "manufacturer",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_material",
+      "definition_uri": "https://w3id.org/osc-em/samplematerial",
+      "description": "Material out of which the grid is made",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "material",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplematerial",
+      "alias": "material",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "material",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_mesh",
+      "definition_uri": "https://w3id.org/osc-em/samplemesh",
+      "description": "Grid mesh in lines per inch",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "mesh",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplemesh",
+      "alias": "mesh",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "mesh",
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_film_support",
+      "definition_uri": "https://w3id.org/osc-em/samplefilm_support",
+      "description": "Whether a support film was used",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "film_support",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplefilm_support",
+      "alias": "film_support",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "film_support",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_film_material",
+      "definition_uri": "https://w3id.org/osc-em/samplefilm_material",
+      "description": "Type of material the support film is made of",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "film_material",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplefilm_material",
+      "alias": "film_material",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "film_material",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_film_topology",
+      "definition_uri": "https://w3id.org/osc-em/samplefilm_topology",
+      "description": "Topology of the support film",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "film_topology",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplefilm_topology",
+      "alias": "film_topology",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "film_topology",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_film_thickness",
+      "definition_uri": "https://w3id.org/osc-em/samplefilm_thickness",
+      "description": "Thickness of the support film",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "film_thickness",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplefilm_thickness",
+      "alias": "film_thickness",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "film_thickness",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_pretreatment_type",
+      "definition_uri": "https://w3id.org/osc-em/samplepretreatment_type",
+      "description": "Type of pretreatment of the grid, i.e., glow discharge",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "pretreatment_type",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplepretreatment_type",
+      "alias": "pretreatment_type",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "pretreatment_type",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_pretreatment_time",
+      "definition_uri": "https://w3id.org/osc-em/samplepretreatment_time",
+      "description": "Length of time of the pretreatment in s",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "pretreatment_time",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplepretreatment_time",
+      "alias": "pretreatment_time",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "pretreatment_time",
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_pretreatment_pressure",
+      "definition_uri": "https://w3id.org/osc-em/samplepretreatment_pressure",
+      "description": "Pressure of the chamber during pretreatment, in Pa",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "pretreatment_pressure",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplepretreatment_pressure",
+      "alias": "pretreatment_pressure",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "pretreatment_pressure",
+      "range": "QuantitySI",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Grid_pretreatment_atmosphere",
+      "definition_uri": "https://w3id.org/osc-em/samplepretreatment_atmosphere",
+      "description": "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "pretreatment_atmosphere",
+      "domain": "Grid",
+      "slot_uri": "https://w3id.org/osc-em/samplepretreatment_atmosphere",
+      "alias": "pretreatment_atmosphere",
+      "owner": "Grid",
+      "domain_of": [
+        "Grid"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "pretreatment_atmosphere",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SampleMolecular_name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesname",
+      "description": "The name of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "Sample_name",
+      "domain": "SampleMolecular",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesname",
+      "alias": "name",
+      "owner": "SampleMolecular",
+      "domain_of": [
+        "SampleMolecular"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SampleMolecular_description",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescription",
+      "description": "The description of the item",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "Sample_description",
+      "domain": "SampleMolecular",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescription",
+      "alias": "description",
+      "owner": "SampleMolecular",
+      "domain_of": [
+        "SampleMolecular"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "description",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SampleMolecular_overall_molecule",
+      "definition_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
+      "description": "Description of the overall molecule",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "Sample_overall_molecule",
+      "domain": "SampleMolecular",
+      "slot_uri": "https://w3id.org/osc-em/sampleoverall_molecule",
+      "alias": "overall_molecule",
+      "owner": "SampleMolecular",
+      "domain_of": [
+        "SampleMolecular"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "overall_molecule",
+      "range": "OverallMolecule",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "TiltAngle_minimal",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesminimal",
+      "description": "Minimal value of a given dataset property",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "minimal",
+      "domain": "TiltAngle",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesminimal",
+      "alias": "minimal",
+      "owner": "TiltAngle",
+      "domain_of": [
+        "TiltAngle"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "minimal",
+      "range": "QuantitySI",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "TiltAngle_maximal",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesmaximal",
+      "description": "Maximal value of a given dataset property",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "maximal",
+      "domain": "TiltAngle",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesmaximal",
+      "alias": "maximal",
+      "owner": "TiltAngle",
+      "domain_of": [
+        "TiltAngle"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "maximal",
+      "range": "QuantitySI",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "TiltAngle_increment",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesincrement",
+      "description": "Increment between elements of a series",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "increment",
+      "domain": "TiltAngle",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesincrement",
+      "alias": "increment",
+      "owner": "TiltAngle",
+      "domain_of": [
+        "TiltAngle"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "increment",
+      "range": "QuantitySI",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcquisitionTomo_tilt_axis_angle",
+      "definition_uri": "https://w3id.org/osc-em/tomography/tilt_axis_angle",
+      "description": "The tilt axis angle of a tomography series",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "tilt_axis_angle",
+      "domain": "AcquisitionTomo",
+      "slot_uri": "https://w3id.org/osc-em/tomography/tilt_axis_angle",
+      "alias": "tilt_axis_angle",
+      "owner": "AcquisitionTomo",
+      "domain_of": [
+        "AcquisitionTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "tilt_axis_angle",
+      "range": "float",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcquisitionTomo_tilt_angle",
+      "definition_uri": "https://w3id.org/osc-em/tomography/tilt_angle",
+      "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree.",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "tilt_angle",
+      "domain": "AcquisitionTomo",
+      "slot_uri": "https://w3id.org/osc-em/tomography/tilt_angle",
+      "alias": "tilt_angle",
+      "owner": "AcquisitionTomo",
+      "domain_of": [
+        "AcquisitionTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "tilt_angle",
+      "range": "TiltAngle",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcquisitionSubTomo_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Subtomogram averaging",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition_technique",
+      "domain": "AcquisitionSubTomo",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "AcquisitionSubTomo",
+      "domain_of": [
+        "AcquisitionSubTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
+      "required": true,
+      "equals_string": "subtomo",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcquisitionEnvTomo_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Environmental tomography",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition_technique",
+      "domain": "AcquisitionEnvTomo",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "AcquisitionEnvTomo",
+      "domain_of": [
+        "AcquisitionEnvTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
+      "required": true,
+      "equals_string": "env_tomo",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcquisitionCelTomo_technique",
+      "definition_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "description": "Cellular tomography",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition_technique",
+      "domain": "AcquisitionCelTomo",
+      "slot_uri": "https://w3id.org/osc-em/acquisitiontechnique",
+      "alias": "technique",
+      "owner": "AcquisitionCelTomo",
+      "domain_of": [
+        "AcquisitionCelTomo"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "technique",
+      "range": "string",
+      "required": true,
+      "equals_string": "cellular_tomo",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Organizational_authors",
+      "definition_uri": "https://w3id.org/osc-em/organizational/authors",
+      "description": "List of authors associated with the project",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "authors",
+      "domain": "Organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/authors",
+      "alias": "authors",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "authors",
+      "range": "Author",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Organizational_funder",
+      "definition_uri": "https://w3id.org/osc-em/organizational/funder",
+      "description": "funding organization/person.",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "funder",
+      "domain": "Organizational",
+      "slot_uri": "https://w3id.org/osc-em/organizational/funder",
+      "alias": "funder",
+      "owner": "Organizational",
+      "domain_of": [
+        "Organizational"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "funder",
+      "range": "Funder",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_family_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/family_name",
+      "description": "last name",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/familyName"
+      ],
+      "is_a": "family_name",
+      "domain": "Author",
+      "slot_uri": "http://schema.org/familyName",
+      "alias": "family_name",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "family_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_given_name",
+      "definition_uri": "https://w3id.org/osc-em/organizational/given_name",
+      "description": "first name",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/givenName"
+      ],
+      "is_a": "given_name",
+      "domain": "Author",
+      "slot_uri": "http://schema.org/givenName",
+      "alias": "given_name",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "given_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_email",
+      "definition_uri": "https://w3id.org/osc-em/organizational/email",
+      "description": "email",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "http://schema.org/email"
+      ],
+      "is_a": "email",
+      "domain": "Author",
+      "slot_uri": "http://schema.org/email",
+      "alias": "email",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "email",
+      "range": "string",
+      "required": true,
+      "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_orcid",
+      "definition_uri": "https://w3id.org/osc-em/organizational/orcid",
+      "description": "ORCID of the author, a type of unique identifier",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "orcid",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/osc-em/organizational/orcid",
+      "alias": "orcid",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "orcid",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_country",
+      "definition_uri": "https://w3id.org/osc-em/organizational/country",
+      "description": "Country of the institution",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "country",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/osc-em/organizational/country",
+      "alias": "country",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "country",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_type_org",
+      "definition_uri": "https://w3id.org/osc-em/organizational/type_org",
+      "description": "Type of organization, academic, commercial, governmental, etc.",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "type_org",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/osc-em/organizational/type_org",
+      "alias": "type_org",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type_org",
+      "range": "OrganizationTypeEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Author_name_org",
+      "definition_uri": "https://w3id.org/osc-em/organizational/name_org",
+      "description": "Name of the organization",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "name_org",
+      "domain": "Author",
+      "slot_uri": "https://w3id.org/osc-em/organizational/name_org",
+      "alias": "name_org",
+      "owner": "Author",
+      "domain_of": [
+        "Author"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name_org",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EMDatasetBase_acquisition",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasacquisition",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "is_a": "acquisition",
+      "domain": "EMDatasetBase",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemasacquisition",
+      "alias": "acquisition",
+      "owner": "EMDatasetBase",
+      "domain_of": [
+        "EMDatasetBase"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "acquisition",
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EMDatasetBase_instrument",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasinstrument",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "is_a": "instrument",
+      "domain": "EMDatasetBase",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemasinstrument",
+      "alias": "instrument",
+      "owner": "EMDatasetBase",
+      "domain_of": [
+        "EMDatasetBase"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "instrument",
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EMDatasetBase_sample",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemassample",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "is_a": "sample",
+      "domain": "EMDatasetBase",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemassample",
+      "alias": "sample",
+      "owner": "EMDatasetBase",
+      "domain_of": [
+        "EMDatasetBase"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "sample",
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EMDatasetBase_organizational",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasorganizational",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "is_a": "organizational",
+      "domain": "EMDatasetBase",
+      "slot_uri": "https://w3id.org/osc-em/OSCEM_schemasorganizational",
+      "alias": "organizational",
+      "owner": "EMDatasetBase",
+      "domain_of": [
+        "EMDatasetBase"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "organizational",
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_unit",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesunit",
+      "description": "the unit of a given value",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasUnit"
+      ],
+      "is_a": "unit",
+      "domain": "QuantityValue",
+      "slot_uri": "http://qudt.org/schema/qudt/hasUnit",
+      "alias": "unit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "unit",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_value",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesvalue",
+      "description": "the value of a field with a unit",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "is_a": "value",
+      "domain": "QuantityValue",
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
+      "alias": "value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "value",
+      "range": "float",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_name",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "description": "Name defining the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptor_name",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_name",
+      "alias": "descriptor_name",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Descriptor_descriptor_thing",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "description": "Description of the descriptor",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "descriptor_thing",
+      "domain": "Descriptor",
+      "slot_uri": "https://w3id.org/osc-em/custom_typesdescriptor_thing",
+      "alias": "descriptor_thing",
+      "owner": "Descriptor",
+      "domain_of": [
+        "Descriptor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "descriptor_thing",
+      "range": "Any",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "EMDatasetTomo",
+      "definition_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/EMDatasetTomo",
+      "description": "cryo electron tomography dataset, with a focus on a single protein (complex) & subtomogram averaging",
+      "from_schema": "https://w3id.org/osc-em/oscem-schemas-subtomo",
+      "is_a": "EMDatasetBase",
+      "slots": [
+        "EMDatasetTomo_acquisition",
+        "EMDatasetTomo_instrument",
+        "EMDatasetTomo_sample",
+        "EMDatasetTomo_organizational"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/oscem-schemas-subtomo/EMDatasetTomo",
+      "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Acquisition",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionAcquisition",
+      "description": "General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses).",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slots": [
+        "Acquisition_technique",
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionAcquisition",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionSpa",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionAcquisitionSpa",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "is_a": "Acquisition",
+      "slots": [
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate",
+        "AcquisitionSpa_technique"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionAcquisitionSpa",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "EnergyFilter",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionEnergyFilter",
+      "description": "A device used to filter for electrons with specific energy.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slots": [
+        "EnergyFilter_used",
+        "EnergyFilter_model",
+        "EnergyFilter_width_energy_filter"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionEnergyFilter",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SpecialistOptics",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionSpecialistOptics",
+      "description": "Optional optics used to correct for instrument limitations.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slots": [
+        "phaseplate",
+        "spherical_aberration_corrector",
+        "chromatic_aberration_corrector"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionSpecialistOptics",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Phaseplate",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionPhaseplate",
+      "description": "Used to modulate the phase of the electron wave.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slots": [
+        "Phaseplate_used",
+        "Phaseplate_instrument_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionPhaseplate",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SphericalAberrationCorrector",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector",
+      "description": "Special device used to correct instrument inherent spherical aberration.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slots": [
+        "SphericalAberrationCorrector_used",
+        "SphericalAberrationCorrector_instrument_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ChromaticAberrationCorrector",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector",
+      "description": "Special device used to correct instrument inherent chromatic aberration.",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slots": [
+        "ChromaticAberrationCorrector_used",
+        "ChromaticAberrationCorrector_instrument_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Detector",
+      "definition_uri": "https://w3id.org/osc-em/acquisitionDetector",
+      "description": "Class representing a detector",
+      "from_schema": "https://w3id.org/osc-em/acquisition",
+      "slots": [
+        "name",
+        "mode",
+        "dispersion",
+        "collection_angle"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/acquisitionDetector",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Instrument",
+      "definition_uri": "https://w3id.org/osc-em/instrumentInstrument",
+      "description": "Instrument values, mostly constant across a data collection.",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "slots": [
+        "Instrument_microscope",
+        "Instrument_illumination",
+        "Instrument_imaging",
+        "Instrument_electron_source",
+        "Instrument_acceleration_voltage",
+        "Instrument_c2_aperture",
+        "Instrument_cs",
+        "Instrument_operating_mode",
+        "Instrument_beam_convergence"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/instrumentInstrument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Microscope",
+      "definition_uri": "https://w3id.org/osc-em/instrumentMicroscope",
+      "description": "Microscope information",
+      "from_schema": "https://w3id.org/osc-em/instrument",
+      "mappings": [
+        "schema:Microscope"
+      ],
+      "slots": [
+        "Microscope_model",
+        "Microscope_manufacturer"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Microscope",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Sample",
+      "definition_uri": "https://w3id.org/osc-em/sampleSample",
+      "description": "Unifying class to describe the full sample.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slots": [
+        "Sample_name",
+        "Sample_description",
+        "Sample_overall_molecule",
+        "Sample_molecule",
+        "Sample_ligands",
+        "Sample_specimen",
+        "Sample_grid"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/sampleSample",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OverallMolecule",
+      "definition_uri": "https://w3id.org/osc-em/sampleOverallMolecule",
+      "description": "Description of the overall molecule",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slots": [
+        "OverallMolecule_molecular_overall_type",
+        "OverallMolecule_name_sample",
+        "OverallMolecule_source",
+        "OverallMolecule_molecular_weight",
+        "OverallMolecule_assembly"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/sampleOverallMolecule",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Molecule",
+      "definition_uri": "https://w3id.org/osc-em/sampleMolecule",
+      "description": "More detailed information about individual molecules.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slots": [
+        "Molecule_name_mol",
+        "Molecule_molecular_type",
+        "Molecule_molecular_class",
+        "Molecule_sequence",
+        "Molecule_natural_source",
+        "Molecule_taxonomy_id_source",
+        "Molecule_expression_system",
+        "Molecule_taxonomy_id_expression",
+        "Molecule_gene_name"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/sampleMolecule",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Ligand",
+      "definition_uri": "https://w3id.org/osc-em/sampleLigand",
+      "description": "Information on ligands if present.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slots": [
+        "Ligand_present",
+        "smiles",
+        "reference"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/sampleLigand",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Specimen",
+      "definition_uri": "https://w3id.org/osc-em/sampleSpecimen",
+      "description": "Description of specimen handling.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slots": [
+        "Specimen_buffer",
+        "Specimen_concentration",
+        "Specimen_ph",
+        "Specimen_vitrification",
+        "Specimen_vitrification_cryogen",
+        "Specimen_humidity",
+        "Specimen_temperature",
+        "Specimen_staining",
+        "Specimen_embedding",
+        "Specimen_shadowing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/sampleSpecimen",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Grid",
+      "definition_uri": "https://w3id.org/osc-em/sampleGrid",
+      "description": "Details on the grid used in the experiment.",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "slots": [
+        "Grid_manufacturer",
+        "Grid_material",
+        "Grid_mesh",
+        "Grid_film_support",
+        "Grid_film_material",
+        "Grid_film_topology",
+        "Grid_film_thickness",
+        "Grid_pretreatment_type",
+        "Grid_pretreatment_time",
+        "Grid_pretreatment_pressure",
+        "Grid_pretreatment_atmosphere"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/sampleGrid",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SampleMolecular",
+      "definition_uri": "https://w3id.org/osc-em/sampleSampleMolecular",
+      "from_schema": "https://w3id.org/osc-em/sample",
+      "is_a": "Sample",
+      "slots": [
+        "Sample_molecule",
+        "Sample_ligands",
+        "Sample_specimen",
+        "Sample_grid",
+        "SampleMolecular_name",
+        "SampleMolecular_description",
+        "SampleMolecular_overall_molecule"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/sampleSampleMolecular",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TiltAngle",
+      "definition_uri": "https://w3id.org/osc-em/tomography/TiltAngle",
+      "description": "The min, max and increment of the tilt angle in a tomography session. Unit is degree.",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "Series",
+      "slots": [
+        "TiltAngle_minimal",
+        "TiltAngle_maximal",
+        "TiltAngle_increment"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/tomography/TiltAngle",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionTomo",
+      "definition_uri": "https://w3id.org/osc-em/tomography/AcquisitionTomo",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "Acquisition",
+      "slots": [
+        "Acquisition_technique",
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate",
+        "AcquisitionTomo_tilt_axis_angle",
+        "AcquisitionTomo_tilt_angle"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/tomography/AcquisitionTomo",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionSubTomo",
+      "definition_uri": "https://w3id.org/osc-em/tomography/AcquisitionSubTomo",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "AcquisitionTomo",
+      "slots": [
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate",
+        "AcquisitionTomo_tilt_axis_angle",
+        "AcquisitionTomo_tilt_angle",
+        "AcquisitionSubTomo_technique"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/tomography/AcquisitionSubTomo",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionEnvTomo",
+      "definition_uri": "https://w3id.org/osc-em/tomography/AcquisitionEnvTomo",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "AcquisitionTomo",
+      "slots": [
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate",
+        "AcquisitionTomo_tilt_axis_angle",
+        "AcquisitionTomo_tilt_angle",
+        "AcquisitionEnvTomo_technique"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/tomography/AcquisitionEnvTomo",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcquisitionCelTomo",
+      "definition_uri": "https://w3id.org/osc-em/tomography/AcquisitionCelTomo",
+      "from_schema": "https://w3id.org/osc-em/tomography",
+      "is_a": "AcquisitionTomo",
+      "slots": [
+        "screen_current",
+        "nominal_defocus",
+        "calibrated_defocus",
+        "nominal_magnification",
+        "calibrated_magnification",
+        "holder",
+        "holder_cryogen",
+        "temperature_range",
+        "microscope_software",
+        "Acquisition_detectors",
+        "dose_per_movie",
+        "energy_filter",
+        "image_size",
+        "Acquisition_date_time",
+        "exposure_time",
+        "cryogen",
+        "frames_per_movie",
+        "grids_imaged",
+        "images_generated",
+        "Acquisition_binning_camera",
+        "Acquisition_pixel_size",
+        "specialist_optics",
+        "beamshift",
+        "beamtilt",
+        "imageshift",
+        "beamtiltgroups",
+        "gainref_flip_rotate",
+        "AcquisitionTomo_tilt_axis_angle",
+        "AcquisitionTomo_tilt_angle",
+        "AcquisitionCelTomo_technique"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/tomography/AcquisitionCelTomo",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Organizational",
+      "definition_uri": "https://w3id.org/osc-em/organizational/Organizational",
+      "description": "Overarching category for authors and grants",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slots": [
+        "grants",
+        "Organizational_authors",
+        "Organizational_funder"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/organizational/Organizational",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Person",
+      "definition_uri": "https://w3id.org/osc-em/organizational/Person",
+      "description": "personal information",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "schema:Person"
+      ],
+      "slots": [
+        "family_name",
+        "given_name",
+        "job_title",
+        "email",
+        "telephone"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Person",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Author",
+      "definition_uri": "https://w3id.org/osc-em/organizational/Author",
+      "description": "Details on the person performing the experiment.",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "is_a": "Person",
+      "slots": [
+        "job_title",
+        "telephone",
+        "Author_orcid",
+        "Author_country",
+        "role",
+        "Author_name_org",
+        "Author_type_org",
+        "Author_family_name",
+        "Author_given_name",
+        "Author_email"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/organizational/Author",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Grant",
+      "definition_uri": "https://w3id.org/osc-em/organizational/Grant",
+      "description": "Grant",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "mappings": [
+        "schema:Grant"
+      ],
+      "slots": [
+        "grant_name",
+        "start_date",
+        "end_date",
+        "budget",
+        "project_id",
+        "country"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Grant",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Funder",
+      "definition_uri": "https://w3id.org/osc-em/organizational/Funder",
+      "description": "Description of the project funding",
+      "from_schema": "https://w3id.org/osc-em/organizational",
+      "slots": [
+        "funder_name",
+        "type_org",
+        "country"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/organizational/Funder",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "EMDatasetBase",
+      "definition_uri": "https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase",
+      "description": "OSC-EM Metadata for a dataset",
+      "from_schema": "https://w3id.org/osc-em/oscem-emdataset",
+      "abstract": true,
+      "slots": [
+        "EMDatasetBase_acquisition",
+        "EMDatasetBase_instrument",
+        "EMDatasetBase_sample",
+        "EMDatasetBase_organizational"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Any",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesAny",
+      "description": "Any type, used as the base for type-narrowing.",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "mappings": [
+        "linkml:Any"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/Any",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Range",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesRange",
+      "description": "A range constructed from min and max",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slots": [
+        "minimal",
+        "maximal"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesRange",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Series",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesSeries",
+      "description": "A series of numbers constructed from min, max, and increment",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "Range",
+      "slots": [
+        "minimal",
+        "maximal",
+        "increment"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesSeries",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ImageSize",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesImageSize",
+      "description": "size of a 2D image (in integer units)",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slots": [
+        "height",
+        "width"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesImageSize",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "BoundingBox2D",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesBoundingBox2D",
+      "description": "an axis-aligned 2D bounding box (float units)",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "slots": [
+        "x_min",
+        "x_max",
+        "y_min",
+        "y_max"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesBoundingBox2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantityValue",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesQuantityValue",
+      "description": "if a value has a unit, it should be given as a unit value pair.",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "mappings": [
+        "qudt:quantityValue"
+      ],
+      "slots": [
+        "QuantityValue_unit",
+        "QuantityValue_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/quantityValue",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantitySI",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesQuantitySI",
+      "description": "unit value extended to have two additional fields si_value and si_unit",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "QuantityValue",
+      "slots": [
+        "QuantityValue_unit",
+        "QuantityValue_value",
+        "valueSI",
+        "unitSI"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesQuantitySI",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptor",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesDescriptor",
+      "description": "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "abstract": true,
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesDescriptor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Descriptors",
+      "definition_uri": "https://w3id.org/osc-em/custom_typesDescriptors",
+      "from_schema": "https://w3id.org/osc-em/custom_types",
+      "is_a": "Descriptor",
+      "slots": [
+        "Descriptor_descriptor_name",
+        "Descriptor_descriptor_thing"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/osc-em/custom_typesDescriptors",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "oscem_schemas_subtomo.yaml",
+  "source_file_date": "2025-11-25T16:26:34",
+  "source_file_size": 1212,
+  "generation_date": "2025-11-25T16:28:19",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "project/subtomo/jsonld/oscem_schemas_subtomo.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    "./acquisition.context.jsonld",
+    "./instrument.context.jsonld",
+    "./sample.context.jsonld",
+    "./tomography.context.jsonld",
+    "./organizational.context.jsonld",
+    "./emdataset.context.jsonld",
+    "./custom_types.context.jsonld",
+    {
+      "@base": "https://w3id.org/osc-em/oscem-schemas-subtomo/"
+    }
+  ]
+}

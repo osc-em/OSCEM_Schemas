@@ -6,20 +6,19 @@
 <http://schema.org/Person> a sh:NodeShape ;
     sh:closed true ;
     sh:description "personal information" ;
-    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/organizational/role> <https://w3id.org/oscem-schemas/latest/organizational/type_org> <https://w3id.org/oscem-schemas/latest/organizational/country> rdf:type <https://w3id.org/oscem-schemas/latest/organizational/name_org> <https://w3id.org/oscem-schemas/latest/organizational/orcid> ) ;
+    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/organizational/role> <https://w3id.org/oscem-schemas/latest/organizational/orcid> rdf:type <https://w3id.org/oscem-schemas/latest/organizational/type_org> <https://w3id.org/oscem-schemas/latest/organizational/country> <https://w3id.org/oscem-schemas/latest/organizational/name_org> ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "email" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <http://schema.org/email> ;
-            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
-        [ sh:datatype xsd:string ;
             sh:description "first name" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <http://schema.org/givenName> ],
+        [ sh:datatype xsd:string ;
+            sh:description "work phone" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <http://schema.org/telephone> ],
         [ sh:datatype xsd:boolean ;
             sh:description "job title" ;
             sh:maxCount 1 ;
@@ -33,23 +32,19 @@
             sh:order 0 ;
             sh:path <http://schema.org/familyName> ],
         [ sh:datatype xsd:string ;
-            sh:description "work phone" ;
+            sh:description "email" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <http://schema.org/telephone> ] ;
+            sh:order 3 ;
+            sh:path <http://schema.org/email> ;
+            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ] ;
     sh:targetClass <http://schema.org/Person> .
 
 <https://w3id.org/oscem-schemas/latest/OSCEM_schemasEMDatasetBase> a sh:NodeShape ;
     sh:closed false ;
     sh:description "OSC-EM Metadata for a dataset" ;
-    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/processing> rdf:type ) ;
+    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/processing> ) ;
     sh:property [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/OSCEM_schemassample> ],
-        [ sh:class linkml:Any ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
@@ -63,7 +58,12 @@
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/OSCEM_schemasorganizational> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/OSCEM_schemasorganizational> ],
+        [ sh:class linkml:Any ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/OSCEM_schemassample> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/OSCEM_schemasEMDatasetBase> .
 
 <https://w3id.org/oscem-schemas/latest/acquisitionAcquisition> a sh:NodeShape ;
@@ -71,36 +71,23 @@
     sh:description "General acquisition covering materials science and other use cases. For specialized techniques, use the appropriate subclass (AcquisitionSpa for single particle, or tomography subclasses)." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "Magnification level as indicated by the instrument, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
-        [ sh:datatype xsd:dateTime ;
-            sh:description "Time and date of the data acquisition" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
-        [ sh:datatype xsd:integer ;
             sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 18 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
-            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+        [ sh:datatype xsd:string ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 23 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
             sh:maxCount 1 ;
@@ -113,109 +100,6 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
-            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 17 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 27 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Time of data acquisition per movie/tilt - in s" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Pixel size, in Angstrom" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Calculated magnification, no unit" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ;
-            sh:description "Level of binning on the images applied during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 20 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
-            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 25 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
             sh:description "Whether an energy filter was used and its specifics." ;
             sh:maxCount 1 ;
@@ -228,37 +112,153 @@
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Magnification level as indicated by the instrument, no unit" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
+            sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 25 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimageshift> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "The total electron beam current hitting the viewing screen, in nA." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 26 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Calculated magnification, no unit" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Time of data acquisition per movie/tilt - in s" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 27 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ;
+            sh:description "Level of binning on the images applied during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 20 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ;
+            sh:description "The size of the image in pixels, height and width given." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
+            sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Speciman holder model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
+        [ sh:datatype xsd:dateTime ;
+            sh:description "Time and date of the data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
+            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 23 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Pixel size, in Angstrom" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of frames that on average constitute a full movie, can be a bit hard to define for some detectors" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 17 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionAcquisition> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> a sh:NodeShape ;
     sh:closed false ;
     sh:description "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
-        [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesSeries> a sh:NodeShape ;
@@ -289,7 +289,13 @@
     sh:closed true ;
     sh:description "Single particle cryo electron microscopy dataset" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionSpa> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/sampleSampleMolecular> ;
+            sh:description "Sample information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/OSCEM_schemassample> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionSpa> ;
             sh:description "Describe the data acquisition parameters" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -303,42 +309,30 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/OSCEM_schemasinstrument> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/organizational/Organizational> ;
-            sh:description "Information on authors and grants" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/OSCEM_schemasorganizational> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleSampleMolecular> ;
-            sh:description "Sample information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/OSCEM_schemassample> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/processingProcessing> ;
             sh:description "Processing information on the dataset" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/processing> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/processing> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/organizational/Organizational> ;
+            sh:description "Information on authors and grants" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/OSCEM_schemasorganizational> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/EMDatasetSpa> .
 
 <https://w3id.org/oscem-schemas/latest/sampleSample> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Unifying class to describe the full sample." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/sampleSpecimen> ;
-            sh:description "Description of the specimen" ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/sampleGrid> ;
+            sh:description "Description of the grid used" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplespecimen> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleOverallMolecule> ;
-            sh:description "Description of the overall molecule" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/sampleoverall_molecule> ],
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplegrid> ],
         [ sh:datatype xsd:string ;
             sh:description "The name of the item" ;
             sh:maxCount 1 ;
@@ -346,6 +340,17 @@
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesname> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleMolecule> ;
+            sh:description "List of molecule associated with the sample" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplemolecule> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleOverallMolecule> ;
+            sh:description "Description of the overall molecule" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/sampleoverall_molecule> ],
         [ sh:datatype xsd:string ;
             sh:description "The description of the item" ;
             sh:maxCount 1 ;
@@ -353,22 +358,17 @@
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescription> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleMolecule> ;
-            sh:description "List of molecule associated with the sample" ;
+        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleSpecimen> ;
+            sh:description "Description of the specimen" ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplemolecule> ],
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplespecimen> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/sampleLigand> ;
             sh:description "List of ligands associated with the sample" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/sampleligands> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleGrid> ;
-            sh:description "Description of the grid used" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplegrid> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/sampleligands> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/sampleSample> .
 
 <http://schema.org/Grant> a sh:NodeShape ;
@@ -376,41 +376,41 @@
     sh:description "Grant" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "name of the grant" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/organizational/grant_name> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Country of the institution" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/organizational/country> ],
-        [ sh:datatype xsd:string ;
             sh:description "project id" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path <http://schema.org/identifier> ],
         [ sh:datatype xsd:dateTime ;
+            sh:description "start date" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/organizational/start_date> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Country of the institution" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/organizational/country> ],
+        [ sh:datatype xsd:dateTime ;
             sh:description "end date" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/organizational/end_date> ],
+        [ sh:datatype xsd:string ;
+            sh:description "name of the grant" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/organizational/grant_name> ],
         [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
             sh:description "budget" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/organizational/budget> ],
-        [ sh:datatype xsd:dateTime ;
-            sh:description "start date" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/organizational/start_date> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/organizational/budget> ] ;
     sh:targetClass <http://schema.org/Grant> .
 
 <http://schema.org/Microscope> a sh:NodeShape ;
@@ -436,126 +436,46 @@
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Single particle acquisition" ;
-            sh:in ( "spa" ) ;
+            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
-            sh:description "Temperature during data collection, in K with min and max values." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ;
-            sh:description "The size of the image in pixels, height and width given." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Time of data acquisition per movie/tilt - in s" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
+            sh:order 16 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
             sh:description "Machine estimated defocus, min and max values in µm. Has a tendency to be off." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 11 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Calculated magnification, no unit" ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for instrument control," ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
-            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
-            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
+            sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
-            sh:description "Target defocus set, min and max values in nm." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
+            sh:order 10 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
         [ sh:datatype xsd:integer ;
             sh:description "Magnification level as indicated by the instrument, no unit" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondetectors> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Cryogen used in cooling the instrument and sample, usually nitrogen" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
-            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ;
+            sh:description "The size of the image in pixels, height and width given." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 23 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
-            sh:description "Any type of special optics, such as a phaseplate" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 26 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Speciman holder model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 27 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
-            sh:description "Whether an energy filter was used and its specifics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 12 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
+            sh:order 13 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimage_size> ],
         [ sh:datatype xsd:dateTime ;
             sh:description "Time and date of the data acquisition" ;
             sh:maxCount 1 ;
@@ -563,6 +483,42 @@
             sh:nodeKind sh:Literal ;
             sh:order 14 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 26 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Time of data acquisition per movie/tilt - in s" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
+            sh:description "Target defocus set, min and max values in nm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
+            sh:description "Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of images generated total for this data collection - might need a qualifier for tilt series to determine whether full series or individual tilts are counted" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Average dose per image/movie/tilt - given in electrons per square Angstrom" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ;
             sh:description "Level of binning on the images applied during data collection" ;
             sh:maxCount 1 ;
@@ -571,11 +527,25 @@
             sh:order 20 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera> ],
         [ sh:datatype xsd:integer ;
-            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
+            sh:description "Calculated magnification, no unit" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ;
+            sh:description "Any type of special optics, such as a phaseplate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Single particle acquisition" ;
+            sh:in ( "spa" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Pixel size, in Angstrom" ;
             sh:maxCount 1 ;
@@ -589,18 +559,48 @@
             sh:nodeKind sh:Literal ;
             sh:order 17 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
+            sh:description "Temperature during data collection, in K with min and max values." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiontemperature_range> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "The total electron beam current hitting the viewing screen, in nA." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current> ],
         [ sh:datatype xsd:string ;
-            sh:description "Type of cryogen used in the holder - if the holder is cooled seperately" ;
+            sh:description "Speciman holder model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Software used for instrument control," ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionholder> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ;
+            sh:description "Whether an energy filter was used and its specifics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
+            sh:description "Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 23 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of grids imaged for this project - here with qualifier during this data acquisition" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> ],
+            sh:order 18 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Whether and how you have to flip or rotate the gainref in order to align with your acquired images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 27 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ;
             sh:description "Movement of the Beam below the image in order to shift the image on the detector. Given in µm." ;
             sh:maxCount 1 ;
@@ -613,28 +613,8 @@
     sh:closed true ;
     sh:description "Special device used to correct instrument inherent chromatic aberration." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
-            sh:description "whether a specific instrument was used during data acquisition" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionused> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Details of a given specialist instrument" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioninstrument_type> ] ;
-    sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector> .
-
-<https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate> a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "Used to modulate the phase of the electron wave." ;
-    sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Type of phaseplate" ;
+            sh:description "Details of a given specialist instrument" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -647,6 +627,26 @@
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionused> ] ;
+    sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector> .
+
+<https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Used to modulate the phase of the electron wave." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:description "whether a specific instrument was used during data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionused> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of phaseplate" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioninstrument_type> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate> .
 
 <https://w3id.org/oscem-schemas/latest/acquisitionSphericalAberrationCorrector> a sh:NodeShape ;
@@ -684,24 +684,30 @@
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/classes2Dimages_classes_2D> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of particles per 2D class" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes2Dparticles_per_2Dclass> ],
         [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
             sh:description "Resolution of classes 2D" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes2Dresolution_classes_2D> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes2Dresolution_classes_2D> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of particles per 2D class" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes2Dparticles_per_2Dclass> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/classes2DClasses2D> .
 
 <https://w3id.org/oscem-schemas/latest/classes3DClasses3D> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing classes 3D metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DVolume> ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Filename of the image containing 3D class images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dimages_classes_3D> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DVolume> ;
             sh:description "Describes volume(s) obtained" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
@@ -711,23 +717,17 @@
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/classes3Dparticles_per_3Dclass> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
         [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
             sh:description "Resolution of volume" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dresolution_classes_3D> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Filename of the image containing 3D class images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dimages_classes_3D> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
-            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dresolution_classes_3D> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/classes3DClasses3D> .
 
 <https://w3id.org/oscem-schemas/latest/classes3DVolume> a sh:NodeShape ;
@@ -752,7 +752,13 @@
     sh:closed true ;
     sh:description "Class representing coordinates metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Mean number of particles per micrograph" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesparticles_per_micrograph> ],
+        [ sh:datatype xsd:string ;
             sh:description "Filename of micrographs shown as examples in descending order based on the number of particles" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -763,31 +769,25 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 5 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Total number of particles" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesnumber_particles> ],
-        [ sh:datatype xsd:float ;
-            sh:description "Mean number of particles per micrograph" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of histogram for particle number per micrograph" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesparticles_per_micrograph> ],
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesparticles_histogram> ],
         [ sh:datatype xsd:integer ;
             sh:description "Total number of micrographs from which coordinates come from" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/coordinatesnum_source_micrographs> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Filename of histogram for particle number per micrograph" ;
+        [ sh:datatype xsd:integer ;
+            sh:description "Total number of particles" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesparticles_histogram> ] ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesnumber_particles> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/coordinatesCoordinates> .
 
 <https://w3id.org/oscem-schemas/latest/ctfsAstigmatism> a sh:NodeShape ;
@@ -806,35 +806,35 @@
     sh:closed true ;
     sh:description "Class representing Contrast Transfer Function (CTF) metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsDefocus> ;
-            sh:description "Defocus metadata" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsdefocus> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsAstigmatism> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsAstigmatism> ;
             sh:description "Astigmatism metadata" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/ctfsastigmatism> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
-            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
         [ sh:datatype xsd:float ;
             sh:description "Amplitude contrast" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/ctfsamplitude_contrast> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsResolution> ;
             sh:description "Resolution metadata" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsresolution> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsresolution> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsDefocus> ;
+            sh:description "Defocus metadata" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsdefocus> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/ctfsCTFs> .
 
 <https://w3id.org/oscem-schemas/latest/ctfsDefocus> a sh:NodeShape ;
@@ -847,6 +847,12 @@
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/ctfsdefocus_histogram> ],
+        [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
+            sh:description "Minimum defocus" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_min_defocus> ],
         [ sh:datatype xsd:string ;
             sh:description "Filename of micrographs shown as examples in ascending order of defocus value" ;
             sh:maxCount 1 ;
@@ -854,23 +860,17 @@
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/ctfsdefocus_micrograph_examples> ],
         [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
-            sh:description "Average value of defocus" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_avg_defocus> ],
-        [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
             sh:description "Maximum defocus" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_max_defocus> ],
         [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
-            sh:description "Minimum defocus" ;
+            sh:description "Average value of defocus" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_min_defocus> ] ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_avg_defocus> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/ctfsDefocus> .
 
 <https://w3id.org/oscem-schemas/latest/ctfsResolution> a sh:NodeShape ;
@@ -907,19 +907,13 @@
     sh:closed true ;
     sh:description "Instrument values, mostly constant across a data collection." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "C2 aperture size used in data acquisition, in µm" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/instrumentc2_aperture> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Voltage used for the electron acceleration, in kV" ;
+    sh:property [ sh:class <http://schema.org/Microscope> ;
+            sh:description "Microscope information" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/instrumentacceleration_voltage> ],
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/instrumentmicroscope> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Spherical aberration of the instrument, in mm" ;
             sh:maxCount 1 ;
@@ -933,26 +927,18 @@
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/instrumentelectron_source> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "C2 aperture size used in data acquisition, in µm" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/instrumentc2_aperture> ],
         [ sh:datatype xsd:string ;
             sh:description "Operating mode of the microscope, i.e. \"TEM\", \"STEM\"" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path <https://w3id.org/oscem-schemas/latest/instrumentoperating_mode> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Mode of illumination used during data collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/instrumentillumination> ],
-        [ sh:class <http://schema.org/Microscope> ;
-            sh:description "Microscope information" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/instrumentmicroscope> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM." ;
             sh:maxCount 1 ;
@@ -960,37 +946,63 @@
             sh:order 8 ;
             sh:path <https://w3id.org/oscem-schemas/latest/instrumentbeam_convergence> ],
         [ sh:datatype xsd:string ;
+            sh:description "Mode of illumination used during data collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/instrumentillumination> ],
+        [ sh:datatype xsd:string ;
             sh:description "Mode of imaging used during data collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/instrumentimaging> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/instrumentimaging> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Voltage used for the electron acceleration, in kV" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/instrumentacceleration_voltage> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/instrumentInstrument> .
 
 <https://w3id.org/oscem-schemas/latest/micrographsMicrographs> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing micrographs metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
+        [ sh:datatype xsd:float ;
             sh:description "Number of micrographs" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/micrographsnumber_micrographs> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
-            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/micrographsnumber_micrographs> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/micrographsMicrographs> .
 
 <https://w3id.org/oscem-schemas/latest/moviesMovies> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing movies metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
+            sh:description "Initial dose" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/moviesinitial_dose> ],
+        [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
+            sh:description "Dose per image" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/moviesdose_per_image> ],
+        [ sh:datatype xsd:string ;
             sh:description "Gain image filename" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1002,18 +1014,6 @@
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/moviesdark_image> ],
-        [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
-            sh:description "Dose per image" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/moviesdose_per_image> ],
-        [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
-            sh:description "Initial dose" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/moviesinitial_dose> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
             sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -1026,43 +1026,23 @@
     sh:description "Details on the person performing the experiment." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "work phone" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <http://schema.org/telephone> ],
+        [ sh:datatype xsd:string ;
             sh:description "ORCID of the author, a type of unique identifier" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/organizational/orcid> ],
         [ sh:datatype xsd:string ;
-            sh:description "email" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <http://schema.org/email> ;
-            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "work phone" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <http://schema.org/telephone> ],
-        [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
-            sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/organizational/type_org> ],
-        [ sh:datatype xsd:string ;
             sh:description "Name of the organization" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/organizational/name_org> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "job title" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <http://schema.org/jobTitle> ],
         [ sh:datatype xsd:string ;
             sh:description "Role of the author, for example principal investigator" ;
             sh:maxCount 1 ;
@@ -1077,18 +1057,38 @@
             sh:order 5 ;
             sh:path <http://schema.org/familyName> ],
         [ sh:datatype xsd:string ;
+            sh:description "first name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <http://schema.org/givenName> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "job title" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <http://schema.org/jobTitle> ],
+        [ sh:datatype xsd:string ;
             sh:description "Country of the institution" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/organizational/country> ],
         [ sh:datatype xsd:string ;
-            sh:description "first name" ;
+            sh:description "email" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <http://schema.org/givenName> ] ;
+            sh:order 8 ;
+            sh:path <http://schema.org/email> ;
+            sh:pattern "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$" ],
+        [ sh:description "Type of organization, academic, commercial, governmental, etc." ;
+            sh:in ( "Academic" "Commercial" "Government" "Other" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/organizational/type_org> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/organizational/Author> .
 
 <https://w3id.org/oscem-schemas/latest/organizational/Funder> a sh:NodeShape ;
@@ -1101,24 +1101,30 @@
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/organizational/type_org> ],
         [ sh:datatype xsd:string ;
-            sh:description "funding organization/person." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/organizational/funder_name> ],
-        [ sh:datatype xsd:string ;
             sh:description "Country of the institution" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/organizational/country> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/organizational/country> ],
+        [ sh:datatype xsd:string ;
+            sh:description "funding organization/person." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/organizational/funder_name> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/organizational/Funder> .
 
 <https://w3id.org/oscem-schemas/latest/organizational/Organizational> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Overarching category for authors and grants" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <http://schema.org/Grant> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/organizational/Author> ;
+            sh:description "List of authors associated with the project" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/organizational/authors> ],
+        [ sh:class <http://schema.org/Grant> ;
             sh:description "List of grants associated with the project" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
@@ -1127,60 +1133,54 @@
             sh:description "funding organization/person." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/organizational/funder> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/organizational/Author> ;
-            sh:description "List of authors associated with the project" ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/organizational/authors> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/organizational/funder> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/organizational/Organizational> .
 
 <https://w3id.org/oscem-schemas/latest/processingProcessing> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Set of parameters describing the data processing" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/classes2DClasses2D> ;
-            sh:description "Classes 2D metadata" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/processingclasses2D> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/micrographsMicrographs> ;
-            sh:description "Micrographs metadata" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/processingmicrographs> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/coordinatesCoordinates> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/coordinatesCoordinates> ;
             sh:description "Coordinates metadata" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/processingcoordinates> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/volumesVolumes> ;
-            sh:description "Volume metadata" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/processingvolumes> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsCTFs> ;
-            sh:description "CTFs metadata" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/processingctfs> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DClasses3D> ;
             sh:description "Classes 3D metadata" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 5 ;
             sh:path <https://w3id.org/oscem-schemas/latest/processingclasses3D> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsCTFs> ;
+            sh:description "CTFs metadata" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/processingctfs> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/moviesMovies> ;
             sh:description "Movies metadata" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/processingmovies> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/processingmovies> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/micrographsMicrographs> ;
+            sh:description "Micrographs metadata" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/processingmicrographs> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/volumesVolumes> ;
+            sh:description "Volume metadata" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/processingvolumes> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/classes2DClasses2D> ;
+            sh:description "Classes 2D metadata" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/processingclasses2D> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/processingProcessing> .
 
 <https://w3id.org/oscem-schemas/latest/sampleSampleMolecular> a sh:NodeShape ;
@@ -1193,87 +1193,87 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/sampleoverall_molecule> ],
-        [ sh:datatype xsd:string ;
-            sh:description "The name of the item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesname> ],
-        [ sh:datatype xsd:string ;
-            sh:description "The description of the item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescription> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleGrid> ;
-            sh:description "Description of the grid used" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplegrid> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/sampleLigand> ;
             sh:description "List of ligands associated with the sample" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/sampleligands> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleMolecule> ;
+            sh:description "List of molecule associated with the sample" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplemolecule> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/sampleSpecimen> ;
             sh:description "Description of the specimen" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 5 ;
             sh:path <https://w3id.org/oscem-schemas/latest/samplespecimen> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleMolecule> ;
-            sh:description "List of molecule associated with the sample" ;
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesname> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/sampleGrid> ;
+            sh:description "Description of the grid used" ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplemolecule> ] ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplegrid> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The description of the item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescription> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/sampleSampleMolecular> .
 
 <https://w3id.org/oscem-schemas/latest/volumesVolumes> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing volume metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
-            sh:description "Size of the volume" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/volumessize> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
-            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
-        [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
-            sh:description "Resolution of volume" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/volumesvol_resolution> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DIsosurfaceImages> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DIsosurfaceImages> ;
             sh:description "isosurface images of volume" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/classes3Disosurface_images> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of particles associated to volume" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/volumesvol_number_particles> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> ;
             sh:description "orthogonal slices of volume" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices> ],
+        [ sh:class <http://qudt.org/schema/qudt/quantityValue> ;
+            sh:description "Resolution of volume" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/volumesvol_resolution> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of particles associated to volume" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/volumesvol_number_particles> ],
         [ sh:datatype xsd:string ;
             sh:description "Indicates the type of volume" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/volumesvolume_type> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/volumesvolume_type> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Size of the volume" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/volumessize> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/volumesVolumes> .
 
 <https://w3id.org/oscem-schemas/latest/acquisitionDetector> a sh:NodeShape ;
@@ -1286,18 +1286,18 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitiondispersion> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
-            sh:description "Collection angle set, min and max values in mrad." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncollection_angle> ],
         [ sh:datatype xsd:string ;
             sh:description "The name of the item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesname> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesRange> ;
+            sh:description "Collection angle set, min and max values in mrad." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitioncollection_angle> ],
         [ sh:datatype xsd:string ;
             sh:description "Mode of the detector, e.g. \"counting\", \"ScanningDetector\", \"ImagingDetector\", etc." ;
             sh:maxCount 1 ;
@@ -1310,14 +1310,7 @@
     sh:closed true ;
     sh:description "A device used to filter for electrons with specific energy." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
-            sh:description "whether a specific instrument was used during data acquisition" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionused> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "The model of the item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1329,25 +1322,32 @@
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionwidth_energy_filter> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionwidth_energy_filter> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "whether a specific instrument was used during data acquisition" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionused> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> .
 
 <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Optional optics used to correct for instrument limitations." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSphericalAberrationCorrector> ;
-            sh:description "Specialist device to correct for spherical aberration of the microscope lenses" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspherical_aberration_corrector> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate> ;
             sh:description "Phaseplate is a special optics device that can be used to enhance contrast" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/acquisitionphaseplate> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionSphericalAberrationCorrector> ;
+            sh:description "Specialist device to correct for spherical aberration of the microscope lenses" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/acquisitionspherical_aberration_corrector> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector> ;
             sh:description "Specialist device to correct for chromatic aberration of the microscope lenses" ;
             sh:maxCount 1 ;
@@ -1361,12 +1361,6 @@
     sh:description "Class for the isosurface images" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Filename of the side view isosurface image" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dside_view> ],
-        [ sh:datatype xsd:string ;
             sh:description "Filename of the top view isosurface image" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1377,7 +1371,13 @@
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dfront_view> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dfront_view> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of the side view isosurface image" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dside_view> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/classes3DIsosurfaceImages> .
 
 <https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> a sh:NodeShape ;
@@ -1391,17 +1391,17 @@
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_Y> ],
         [ sh:datatype xsd:string ;
-            sh:description "Filename of orthogonal slices in Z direction" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_Z> ],
-        [ sh:datatype xsd:string ;
             sh:description "Filename of orthogonal slices in X direction" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_X> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_X> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of orthogonal slices in Z direction" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_Z> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> .
 
 <https://w3id.org/oscem-schemas/latest/sampleGrid> a sh:NodeShape ;
@@ -1409,11 +1409,47 @@
     sh:description "Details on the grid used in the experiment." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "Topology of the support film" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplefilm_topology> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether a support film was used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplefilm_support> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplepretreatment_atmosphere> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Thickness of the support film" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplefilm_thickness> ],
+        [ sh:datatype xsd:string ;
             sh:description "Type of material the support film is made of" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/samplefilm_material> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Material out of which the grid is made" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplematerial> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Pressure of the chamber during pretreatment, in Pa" ;
             sh:maxCount 1 ;
@@ -1426,54 +1462,18 @@
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/samplemesh> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplepretreatment_atmosphere> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether a support film was used" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplefilm_support> ],
-        [ sh:datatype xsd:string ;
-            sh:description "The name of the manufacturer" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Thickness of the support film" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplefilm_thickness> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Topology of the support film" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplefilm_topology> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of pretreatment of the grid, i.e., glow discharge" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplepretreatment_type> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Material out of which the grid is made" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplematerial> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Length of time of the pretreatment in s" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplepretreatment_time> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplepretreatment_time> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of pretreatment of the grid, i.e., glow discharge" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplepretreatment_type> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/sampleGrid> .
 
 <https://w3id.org/oscem-schemas/latest/sampleLigand> a sh:NodeShape ;
@@ -1505,17 +1505,11 @@
     sh:description "More detailed information about individual molecules." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Name of the gene of interest" ;
+            sh:description "Taxonomy ID of the natural source organism" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplegene_name> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Description of the overall molecular type, i.e., a complex" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplemolecular_type> ],
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/sampletaxonomy_id_source> ],
         [ sh:datatype xsd:string ;
             sh:description "Name of an individual molecule (often protein) in the sample" ;
             sh:maxCount 1 ;
@@ -1524,29 +1518,18 @@
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/samplename_mol> ],
         [ sh:datatype xsd:string ;
-            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
+            sh:description "Description of the overall molecular type, i.e., a complex" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/sampleexpression_system> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplemolecular_type> ],
         [ sh:datatype xsd:string ;
-            sh:description "Class of the molecule" ;
+            sh:description "Scientific name of the natural host organism" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplemolecular_class> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Taxonomy ID of the expression system organism" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/sampletaxonomy_id_expression> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Taxonomy ID of the natural source organism" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/sampletaxonomy_id_source> ],
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplenatural_source> ],
         [ sh:datatype xsd:string ;
             sh:description "Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here" ;
             sh:maxCount 1 ;
@@ -1555,19 +1538,41 @@
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/samplesequence> ],
         [ sh:datatype xsd:string ;
-            sh:description "Scientific name of the natural host organism" ;
+            sh:description "Scientific name of the organism used to produce the molecule of interest" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplenatural_source> ] ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/sampleexpression_system> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name of the gene of interest" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplegene_name> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Taxonomy ID of the expression system organism" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/sampletaxonomy_id_expression> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Class of the molecule" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplemolecular_class> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/sampleMolecule> .
 
 <https://w3id.org/oscem-schemas/latest/sampleOverallMolecule> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Description of the overall molecule" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    sh:property [ sh:description "What type of higher order structure your sample forms - if any." ;
+            sh:in ( "FILAMENT" "HELICAL ARRAY" "PARTICLE" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/sampleassembly> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Molecular weight in Da" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -1591,12 +1596,7 @@
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplesource> ],
-        [ sh:description "What type of higher order structure your sample forms - if any." ;
-            sh:in ( "FILAMENT" "HELICAL ARRAY" "PARTICLE" ) ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/sampleassembly> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplesource> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/sampleOverallMolecule> .
 
 <https://w3id.org/oscem-schemas/latest/sampleSpecimen> a sh:NodeShape ;
@@ -1610,11 +1610,23 @@
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/samplevitrification_cryogen> ],
         [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was stained" ;
+            sh:description "Whether the sample was vitrified" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplestaining> ],
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplevitrification> ],
+        [ sh:datatype xsd:float ;
+            sh:description "pH of the sample buffer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/sampleph> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Environmental humidity just before vitrification, in %" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplehumidity> ],
         [ sh:datatype xsd:string ;
             sh:description "Name/composition of the (chemical) sample buffer during grid preparation" ;
             sh:maxCount 1 ;
@@ -1622,17 +1634,11 @@
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/samplebuffer> ],
         [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was vitrified" ;
+            sh:description "Whether the sample was embedded" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplevitrification> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was shadowed" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/sampleshadowing> ],
+            sh:order 8 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/sampleembedding> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Environmental temperature just before vitrification, in K" ;
             sh:maxCount 1 ;
@@ -1640,29 +1646,23 @@
             sh:order 6 ;
             sh:path <https://w3id.org/oscem-schemas/latest/sampletemperature> ],
         [ sh:datatype xsd:boolean ;
-            sh:description "Whether the sample was embedded" ;
+            sh:description "Whether the sample was shadowed" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/sampleembedding> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Environmental humidity just before vitrification, in %" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/samplehumidity> ],
+            sh:order 9 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/sampleshadowing> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Concentration of the (supra)molecule in the sample, in mg/ml" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/sampleconcentration> ],
-        [ sh:datatype xsd:float ;
-            sh:description "pH of the sample buffer" ;
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether the sample was stained" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/sampleph> ] ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/samplestaining> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/sampleSpecimen> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> a sh:NodeShape ;
@@ -1694,11 +1694,11 @@ linkml:Any a sh:NodeShape ;
     sh:description "an axis-aligned 2D bounding box (float units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "minimum y" ;
+            sh:description "maximum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "minimum x" ;
             sh:maxCount 1 ;
@@ -1706,17 +1706,17 @@ linkml:Any a sh:NodeShape ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "minimum y" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "maximum x" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> a sh:NodeShape ;
@@ -1742,44 +1742,57 @@ linkml:Any a sh:NodeShape ;
     sh:description "A range constructed from min and max" ;
     sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Minimal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Minimal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesRange> .
 
 <http://qudt.org/schema/qudt/quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://qudt.org/schema/qudt/hasUnit> ],
-        [ sh:datatype xsd:float ;
+    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ) ;
+    sh:property [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <http://qudt.org/schema/qudt/hasQuantityKind> ] ;
+            sh:path <http://qudt.org/schema/qudt/hasQuantityKind> ],
+        [ sh:datatype xsd:string ;
+            sh:description "the unit of a given value" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <http://qudt.org/schema/qudt/hasUnit> ] ;
     sh:targetClass <http://qudt.org/schema/qudt/quantityValue> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> a sh:NodeShape ;
     sh:closed true ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "the unit of a given value" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <http://qudt.org/schema/qudt/hasUnit> ],
+        [ sh:datatype xsd:string ;
+            sh:description "the SI unit attached to a si value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ sh:datatype xsd:float ;
             sh:description "value of a given field in respect to its SI unit" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1791,19 +1804,6 @@ linkml:Any a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
-            sh:path <http://qudt.org/schema/qudt/hasQuantityKind> ],
-        [ sh:datatype xsd:string ;
-            sh:description "the SI unit attached to a si value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
-        [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <http://qudt.org/schema/qudt/hasUnit> ] ;
+            sh:path <http://qudt.org/schema/qudt/hasQuantityKind> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> .
 

@@ -1,5 +1,5 @@
 # Auto generated from processing.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T11:52:16
+# Generation date: 2025-12-05T13:09:17
 # Schema: Processing
 #
 # id: https://w3id.org/oscem-schemas/latest/processing

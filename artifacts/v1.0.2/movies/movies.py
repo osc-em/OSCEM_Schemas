@@ -1,5 +1,5 @@
 # Auto generated from movies.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T11:50:29
+# Generation date: 2025-12-05T13:07:39
 # Schema: Movies
 #
 # id: https://w3id.org/oscem-schemas/latest/movies

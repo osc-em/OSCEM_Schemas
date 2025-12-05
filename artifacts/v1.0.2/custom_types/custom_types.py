@@ -1,5 +1,5 @@
 # Auto generated from custom_types.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T11:50:18
+# Generation date: 2025-12-05T13:07:29
 # Schema: CustomTypes
 #
 # id: https://w3id.org/oscem-schemas/latest/custom_types

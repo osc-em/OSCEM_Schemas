@@ -1,0 +1,490 @@
+# metamodel_version: 1.7.0
+BASE <https://w3id.org/osc-em/oscem-schemas-cellular-tomo/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX schema1: <http://schema.org/>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX organizational: <https://w3id.org/osc-em/organizational/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<https://w3id.org/osc-em/acquisitionAcquisition>  (
+    CLOSED {
+       (  $<https://w3id.org/osc-em/acquisitionAcquisition_tes> (  <https://w3id.org/osc-em/acquisitiontechnique> @linkml:String ?
+             ;
+             <https://w3id.org/osc-em/acquisitionscreen_current> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+             <https://w3id.org/osc-em/acquisitionnominal_defocus> @<https://w3id.org/osc-em/custom_typesRange> ? ;
+             <https://w3id.org/osc-em/acquisitioncalibrated_defocus> @<https://w3id.org/osc-em/custom_typesRange> ? ;
+             <https://w3id.org/osc-em/acquisitionnominal_magnification> @linkml:Integer ? ;
+             <https://w3id.org/osc-em/acquisitioncalibrated_magnification> @linkml:Integer ? ;
+             <https://w3id.org/osc-em/acquisitionholder> @linkml:String ? ;
+             <https://w3id.org/osc-em/acquisitionholder_cryogen> @linkml:String ? ;
+             <https://w3id.org/osc-em/acquisitiontemperature> @<https://w3id.org/osc-em/custom_typesRange> ? ;
+             <https://w3id.org/osc-em/acquisitionmicroscope_software> @linkml:String ? ;
+             <https://w3id.org/osc-em/acquisitiondetectors> @<https://w3id.org/osc-em/acquisitionDetector> + ;
+             <https://w3id.org/osc-em/acquisitiondose_per_movie> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+             <https://w3id.org/osc-em/acquisitionenergy_filter> @<https://w3id.org/osc-em/acquisitionEnergyFilter> ? ;
+             <https://w3id.org/osc-em/acquisitionimage_size> @<https://w3id.org/osc-em/custom_typesImageSize> ? ;
+             <https://w3id.org/osc-em/acquisitiondate_time> @linkml:Datetime ;
+             <https://w3id.org/osc-em/acquisitionexposure_time> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+             <https://w3id.org/osc-em/acquisitioncryogen> @linkml:String ? ;
+             <https://w3id.org/osc-em/acquisitionframes_per_movie> @linkml:Integer ? ;
+             <https://w3id.org/osc-em/acquisitiongrids_imaged> @linkml:Integer ? ;
+             <https://w3id.org/osc-em/acquisitionimages_generated> @linkml:Integer ? ;
+             <https://w3id.org/osc-em/acquisitionbinning_camera> @<https://w3id.org/osc-em/custom_typesImageSize> ;
+             <https://w3id.org/osc-em/acquisitionpixel_size> @<https://w3id.org/osc-em/custom_typesQuantitySI> ;
+             <https://w3id.org/osc-em/acquisitionspecialist_optics> @<https://w3id.org/osc-em/acquisitionSpecialistOptics> ? ;
+             <https://w3id.org/osc-em/acquisitionbeamshift> @<https://w3id.org/osc-em/custom_typesBoundingBox2D> ? ;
+             <https://w3id.org/osc-em/acquisitionbeamtilt> @<https://w3id.org/osc-em/custom_typesBoundingBox2D> ? ;
+             <https://w3id.org/osc-em/acquisitionimageshift> @<https://w3id.org/osc-em/custom_typesBoundingBox2D> ? ;
+             <https://w3id.org/osc-em/acquisitionbeamtiltgroups> @linkml:Integer ? ;
+             <https://w3id.org/osc-em/acquisitiongainref_flip_rotate> @linkml:String ?
+          ) ;
+          rdf:type [ <https://w3id.org/osc-em/acquisitionAcquisition> ] ?
+       )
+    } OR @<https://w3id.org/osc-em/acquisitionAcquisitionSpa> OR @<https://w3id.org/osc-em/tomography/AcquisitionTomo>
+)
+
+<https://w3id.org/osc-em/tomography/AcquisitionCelTomo> CLOSED {
+    (  $<https://w3id.org/osc-em/tomography/AcquisitionCelTomo_tes> (  &<https://w3id.org/osc-em/tomography/AcquisitionTomo_tes> ;
+          rdf:type [ <https://w3id.org/osc-em/tomography/AcquisitionTomo> ] ? ;
+          <https://w3id.org/osc-em/acquisitiontechnique> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/tomography/AcquisitionCelTomo> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/tomography/AcquisitionEnvTomo> CLOSED {
+    (  $<https://w3id.org/osc-em/tomography/AcquisitionEnvTomo_tes> (  &<https://w3id.org/osc-em/tomography/AcquisitionTomo_tes> ;
+          rdf:type [ <https://w3id.org/osc-em/tomography/AcquisitionTomo> ] ? ;
+          <https://w3id.org/osc-em/acquisitiontechnique> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/tomography/AcquisitionEnvTomo> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/acquisitionAcquisitionSpa> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionAcquisitionSpa_tes> (  &<https://w3id.org/osc-em/acquisitionAcquisition_tes> ;
+          rdf:type [ <https://w3id.org/osc-em/acquisitionAcquisition> ] ? ;
+          <https://w3id.org/osc-em/acquisitiontechnique> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionAcquisitionSpa> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/tomography/AcquisitionSubTomo> CLOSED {
+    (  $<https://w3id.org/osc-em/tomography/AcquisitionSubTomo_tes> (  &<https://w3id.org/osc-em/tomography/AcquisitionTomo_tes> ;
+          rdf:type [ <https://w3id.org/osc-em/tomography/AcquisitionTomo> ] ? ;
+          <https://w3id.org/osc-em/acquisitiontechnique> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/tomography/AcquisitionSubTomo> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/tomography/AcquisitionTomo>  (
+    CLOSED {
+       (  $<https://w3id.org/osc-em/tomography/AcquisitionTomo_tes> (  &<https://w3id.org/osc-em/acquisitionAcquisition_tes> ;
+             rdf:type [ <https://w3id.org/osc-em/acquisitionAcquisition> ] ? ;
+             <https://w3id.org/osc-em/tomography/tilt_axis_angle> @linkml:Float ;
+             <https://w3id.org/osc-em/tomography/tilt_angle> @<https://w3id.org/osc-em/tomography/TiltAngle>
+          ) ;
+          rdf:type [ <https://w3id.org/osc-em/tomography/AcquisitionTomo> ] ?
+       )
+    } OR @<https://w3id.org/osc-em/tomography/AcquisitionCelTomo> OR @<https://w3id.org/osc-em/tomography/AcquisitionEnvTomo> OR
+    @<https://w3id.org/osc-em/tomography/AcquisitionSubTomo>
+)
+
+<https://w3id.org/osc-em/custom_typesAny> CLOSED {
+    (  $<https://w3id.org/osc-em/custom_typesAny_tes> rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
+organizational:Author CLOSED {
+    (  $organizational:Author_tes (  &organizational:Person_tes ;
+          rdf:type [ schema1:Person ] ? ;
+          organizational:orcid @linkml:String ? ;
+          organizational:country @linkml:String ? ;
+          organizational:role @linkml:String ? ;
+          organizational:name_org @linkml:String ? ;
+          organizational:type_org [ <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Academic>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Commercial>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Government>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Other> ] ;
+          schema1:familyName @linkml:String ;
+          schema1:givenName @linkml:String ;
+          schema1:email @linkml:String
+       ) ;
+       rdf:type [ organizational:Author ] ?
+    )
+}
+
+<https://w3id.org/osc-em/custom_typesBoundingBox2D> CLOSED {
+    (  $<https://w3id.org/osc-em/custom_typesBoundingBox2D_tes> (  <https://w3id.org/osc-em/custom_typesx_min>
+          @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+          <https://w3id.org/osc-em/custom_typesx_max> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+          <https://w3id.org/osc-em/custom_typesy_min> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+          <https://w3id.org/osc-em/custom_typesy_max> @<https://w3id.org/osc-em/custom_typesQuantitySI> ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/custom_typesBoundingBox2D> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector_tes> (  <https://w3id.org/osc-em/acquisitionused>
+          @linkml:Boolean ;
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/custom_typesDescriptor>  (
+    {
+       (  $<https://w3id.org/osc-em/custom_typesDescriptor_tes> (  <https://w3id.org/osc-em/custom_typesdescriptor_name>
+             @linkml:String ;
+             <https://w3id.org/osc-em/custom_typesdescriptor_thing> @<https://w3id.org/osc-em/custom_typesAny> ?
+          ) ;
+          rdf:type [ <https://w3id.org/osc-em/custom_typesDescriptor> ] ?
+       )
+    } OR @<https://w3id.org/osc-em/custom_typesDescriptors>
+)
+
+<https://w3id.org/osc-em/custom_typesDescriptors> CLOSED {
+    (  $<https://w3id.org/osc-em/custom_typesDescriptors_tes> (  &<https://w3id.org/osc-em/custom_typesDescriptor_tes> ;
+          rdf:type [ <https://w3id.org/osc-em/custom_typesDescriptor> ] ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/custom_typesDescriptors> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/acquisitionDetector> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionDetector_tes> (  <https://w3id.org/osc-em/custom_typesname> @linkml:String ? ;
+          <https://w3id.org/osc-em/acquisitionmode> @linkml:String ? ;
+          <https://w3id.org/osc-em/acquisitiondispersion> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+          <https://w3id.org/osc-em/acquisitioncollection_angle> @<https://w3id.org/osc-em/custom_typesRange> ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionDetector> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase>  (
+    {
+       (  $<https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase_tes> (  <https://w3id.org/osc-em/OSCEM_schemasacquisition>
+             @<https://w3id.org/osc-em/custom_typesAny> ? ;
+             <https://w3id.org/osc-em/OSCEM_schemasinstrument> @<https://w3id.org/osc-em/custom_typesAny> ? ;
+             <https://w3id.org/osc-em/OSCEM_schemassample> @<https://w3id.org/osc-em/custom_typesAny> ? ;
+             <https://w3id.org/osc-em/OSCEM_schemasorganizational> @<https://w3id.org/osc-em/custom_typesAny> ?
+          ) ;
+          rdf:type [ <https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase> ] ?
+       )
+    } OR @<EMDatasetCell>
+)
+
+<EMDatasetCell> CLOSED {
+    (  $<EMDatasetCell_tes> (  &<https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase_tes> ;
+          rdf:type [ <https://w3id.org/osc-em/OSCEM_schemasEMDatasetBase> ] ? ;
+          <https://w3id.org/osc-em/OSCEM_schemasacquisition> @<https://w3id.org/osc-em/tomography/AcquisitionCelTomo> ;
+          <https://w3id.org/osc-em/OSCEM_schemasinstrument> @<https://w3id.org/osc-em/instrumentInstrument> ;
+          <https://w3id.org/osc-em/OSCEM_schemassample> @<https://w3id.org/osc-em/cellular_tomoSampleCell> ? ;
+          <https://w3id.org/osc-em/OSCEM_schemasorganizational> @organizational:Organizational ?
+       ) ;
+       rdf:type [ <EMDatasetCell> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/acquisitionEnergyFilter> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionEnergyFilter_tes> (  <https://w3id.org/osc-em/acquisitionused> @linkml:Boolean ;
+          <https://w3id.org/osc-em/custom_typesmodel> @linkml:String ? ;
+          <https://w3id.org/osc-em/acquisitionwidth_energy_filter> @<https://w3id.org/osc-em/custom_typesQuantitySI>
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionEnergyFilter> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/environmental_sampleFreezing> CLOSED {
+    (  $<https://w3id.org/osc-em/environmental_sampleFreezing_tes> ( 
+          <https://w3id.org/osc-em/environmental_samplecryogen_sample_env> @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_samplemethod> [
+             <https://w3id.org/osc-em/environmental_sampleFreezingMethodEnum#plunge_freezing>
+             <https://w3id.org/osc-em/environmental_sampleFreezingMethodEnum#high_pressure_freezing> ] ? ;
+          <https://w3id.org/osc-em/environmental_sampleblotting> @linkml:Boolean ? ;
+          <https://w3id.org/osc-em/environmental_samplehumidity_env> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+          <https://w3id.org/osc-em/environmental_sampletemperature_env> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+          <https://w3id.org/osc-em/environmental_sampleatmosphere> @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_sampledetails> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/environmental_sampleFreezing> ] ?
+    )
+}
+
+organizational:Funder CLOSED {
+    (  $organizational:Funder_tes (  organizational:funder_name @linkml:String ? ;
+          organizational:type_org [ <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Academic>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Commercial>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Government>
+             <https://w3id.org/osc-em/organizational/OrganizationTypeEnum#Other> ] ? ;
+          organizational:country @linkml:String ?
+       ) ;
+       rdf:type [ organizational:Funder ] ?
+    )
+}
+
+organizational:Grant CLOSED {
+    (  $organizational:Grant_tes (  organizational:grant_name @linkml:String ? ;
+          organizational:start_date @linkml:Datetime ? ;
+          organizational:end_date @linkml:Datetime ? ;
+          organizational:budget @<https://w3id.org/osc-em/custom_typesQuantityValue> ? ;
+          schema1:identifier @linkml:String ? ;
+          organizational:country @linkml:String ?
+       ) ;
+       rdf:type [ schema1:Grant ] ?
+    )
+}
+
+<https://w3id.org/osc-em/cellular_tomoGrowthCondition> CLOSED {
+    (  $<https://w3id.org/osc-em/cellular_tomoGrowthCondition_tes> (  <https://w3id.org/osc-em/cellular_tomomedia> @linkml:String ?
+          ;
+          <https://w3id.org/osc-em/cellular_tomogrowth_location> @linkml:String ? ;
+          <https://w3id.org/osc-em/cellular_tomocell_cycle> @linkml:String ? ;
+          <https://w3id.org/osc-em/cellular_tomotreatment> @linkml:String ? ;
+          <https://w3id.org/osc-em/cellular_tomoatmosphere_growth> @linkml:String ? ;
+          <https://w3id.org/osc-em/cellular_tomotemperature_growth> @<https://w3id.org/osc-em/custom_typesQuantitySI> ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/cellular_tomoGrowthCondition> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/custom_typesImageSize> CLOSED {
+    (  $<https://w3id.org/osc-em/custom_typesImageSize_tes> (  <https://w3id.org/osc-em/custom_typesheight> @linkml:Integer ? ;
+          <https://w3id.org/osc-em/custom_typeswidth> @linkml:Integer ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/custom_typesImageSize> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/instrumentInstrument> CLOSED {
+    (  $<https://w3id.org/osc-em/instrumentInstrument_tes> (  <https://w3id.org/osc-em/instrumentmicroscope>
+          @<https://w3id.org/osc-em/instrumentMicroscope> ;
+          <https://w3id.org/osc-em/instrumentillumination> @linkml:String ;
+          <https://w3id.org/osc-em/instrumentimaging> @linkml:String ;
+          <https://w3id.org/osc-em/instrumentelectron_source> @linkml:String ;
+          <https://w3id.org/osc-em/instrumentacceleration_voltage> @<https://w3id.org/osc-em/custom_typesQuantitySI> ;
+          <https://w3id.org/osc-em/instrumentc2_aperture> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+          <https://w3id.org/osc-em/instrumentcs> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+          <https://w3id.org/osc-em/instrumentoperating_mode> @linkml:String ? ;
+          <https://w3id.org/osc-em/instrumentbeam_convergence> @<https://w3id.org/osc-em/custom_typesQuantitySI> ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/instrumentInstrument> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/instrumentMicroscope> CLOSED {
+    (  $<https://w3id.org/osc-em/instrumentMicroscope_tes> (  <https://w3id.org/osc-em/custom_typesmodel> @linkml:String ;
+          <https://w3id.org/osc-em/custom_typesmanufacturer> @linkml:String ?
+       ) ;
+       rdf:type [ schema1:Microscope ] ?
+    )
+}
+
+organizational:Organizational CLOSED {
+    (  $organizational:Organizational_tes (  organizational:grants @organizational:Grant * ;
+          organizational:authors @organizational:Author + ;
+          organizational:funder @organizational:Funder *
+       ) ;
+       rdf:type [ organizational:Organizational ] ?
+    )
+}
+
+organizational:Person  (
+    CLOSED {
+       (  $organizational:Person_tes (  schema1:familyName @linkml:String ? ;
+             schema1:givenName @linkml:String ? ;
+             schema1:jobTitle @linkml:Boolean ? ;
+             schema1:email @linkml:String ? ;
+             schema1:telephone @linkml:String ?
+          ) ;
+          rdf:type [ schema1:Person ] ?
+       )
+    } OR @organizational:Author
+)
+
+<https://w3id.org/osc-em/acquisitionPhaseplate> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionPhaseplate_tes> (  <https://w3id.org/osc-em/acquisitionused> @linkml:Boolean ;
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionPhaseplate> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/custom_typesQuantitySI> CLOSED {
+    (  $<https://w3id.org/osc-em/custom_typesQuantitySI_tes> (  &<https://w3id.org/osc-em/custom_typesQuantityValue_tes> ;
+          rdf:type [ qudt:quantityValue ] ? ;
+          <https://w3id.org/osc-em/custom_typesvalueSI> @linkml:Float ? ;
+          <https://w3id.org/osc-em/custom_typesunitSI> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/custom_typesQuantitySI> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/custom_typesQuantityValue>  (
+    CLOSED {
+       (  $<https://w3id.org/osc-em/custom_typesQuantityValue_tes> (  qudt:hasUnit @linkml:String ;
+             qudt:hasQuantityKind @linkml:Float
+          ) ;
+          rdf:type [ qudt:quantityValue ] ?
+       )
+    } OR @<https://w3id.org/osc-em/custom_typesQuantitySI>
+)
+
+<https://w3id.org/osc-em/custom_typesRange>  (
+    CLOSED {
+       (  $<https://w3id.org/osc-em/custom_typesRange_tes> (  <https://w3id.org/osc-em/custom_typesminimal>
+             @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+             <https://w3id.org/osc-em/custom_typesmaximal> @<https://w3id.org/osc-em/custom_typesQuantitySI> ?
+          ) ;
+          rdf:type [ <https://w3id.org/osc-em/custom_typesRange> ] ?
+       )
+    } OR @<https://w3id.org/osc-em/custom_typesSeries>
+)
+
+<https://w3id.org/osc-em/cellular_tomoSampleCell> CLOSED {
+    (  $<https://w3id.org/osc-em/cellular_tomoSampleCell_tes> (  &<https://w3id.org/osc-em/environmental_sampleSampleEnv_tes> ;
+          rdf:type [ <https://w3id.org/osc-em/environmental_sampleSampleEnv> ] ? ;
+          <https://w3id.org/osc-em/cellular_tomogrowth_condition> @<https://w3id.org/osc-em/cellular_tomoGrowthCondition> ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/cellular_tomoSampleCell> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/environmental_sampleSampleEnv>  (
+    CLOSED {
+       (  $<https://w3id.org/osc-em/environmental_sampleSampleEnv_tes> ( 
+             <https://w3id.org/osc-em/environmental_samplespecimen_env> @<https://w3id.org/osc-em/environmental_sampleSpecimenEnv>
+             ;
+             <https://w3id.org/osc-em/environmental_samplefreezing> @<https://w3id.org/osc-em/environmental_sampleFreezing> ? ;
+             <https://w3id.org/osc-em/environmental_samplethinning> @<https://w3id.org/osc-em/environmental_sampleThinning> ? ;
+             <https://w3id.org/osc-em/environmental_sampletomogram_features>
+             @<https://w3id.org/osc-em/environmental_sampleTomogramFeatures> ?
+          ) ;
+          rdf:type [ <https://w3id.org/osc-em/environmental_sampleSampleEnv> ] ?
+       )
+    } OR @<https://w3id.org/osc-em/cellular_tomoSampleCell>
+)
+
+<https://w3id.org/osc-em/custom_typesSeries>  (
+    CLOSED {
+       (  $<https://w3id.org/osc-em/custom_typesSeries_tes> (  &<https://w3id.org/osc-em/custom_typesRange_tes> ;
+             rdf:type [ <https://w3id.org/osc-em/custom_typesRange> ] ? ;
+             <https://w3id.org/osc-em/custom_typesincrement> @<https://w3id.org/osc-em/custom_typesQuantitySI> ?
+          ) ;
+          rdf:type [ <https://w3id.org/osc-em/custom_typesSeries> ] ?
+       )
+    } OR @<https://w3id.org/osc-em/tomography/TiltAngle>
+)
+
+<https://w3id.org/osc-em/acquisitionSpecialistOptics> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionSpecialistOptics_tes> (  <https://w3id.org/osc-em/acquisitionphaseplate>
+          @<https://w3id.org/osc-em/acquisitionPhaseplate> ? ;
+          <https://w3id.org/osc-em/acquisitionspherical_aberration_corrector>
+          @<https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> ? ;
+          <https://w3id.org/osc-em/acquisitionchromatic_aberration_corrector>
+          @<https://w3id.org/osc-em/acquisitionChromaticAberrationCorrector> ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionSpecialistOptics> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/environmental_sampleSpecimenEnv> CLOSED {
+    (  $<https://w3id.org/osc-em/environmental_sampleSpecimenEnv_tes> (  <https://w3id.org/osc-em/environmental_sampleorganism>
+          @linkml:String + ;
+          <https://w3id.org/osc-em/environmental_sampletissue> @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_samplesource_env> @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_samplelocation> @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_samplecollection_date> @linkml:Date ? ;
+          <https://w3id.org/osc-em/environmental_samplehandling> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/environmental_sampleSpecimenEnv> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> CLOSED {
+    (  $<https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector_tes> (  <https://w3id.org/osc-em/acquisitionused>
+          @linkml:Boolean ;
+          <https://w3id.org/osc-em/acquisitioninstrument_type> @linkml:String
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/acquisitionSphericalAberrationCorrector> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/environmental_sampleThinning> CLOSED {
+    (  $<https://w3id.org/osc-em/environmental_sampleThinning_tes> (  <https://w3id.org/osc-em/environmental_samplemethod_thin>
+          @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_sampleinstrument_thin> @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_sampleion_source> @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_sampletarget_thickness> @<https://w3id.org/osc-em/custom_typesQuantitySI> ? ;
+          <https://w3id.org/osc-em/environmental_samplelift_out> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/environmental_sampleThinning> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/tomography/TiltAngle> CLOSED {
+    (  $<https://w3id.org/osc-em/tomography/TiltAngle_tes> (  &<https://w3id.org/osc-em/custom_typesSeries_tes> ;
+          rdf:type [ <https://w3id.org/osc-em/custom_typesSeries> ] ? ;
+          <https://w3id.org/osc-em/custom_typesminimal> @<https://w3id.org/osc-em/custom_typesQuantitySI> ;
+          <https://w3id.org/osc-em/custom_typesmaximal> @<https://w3id.org/osc-em/custom_typesQuantitySI> ;
+          <https://w3id.org/osc-em/custom_typesincrement> @<https://w3id.org/osc-em/custom_typesQuantitySI>
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/tomography/TiltAngle> ] ?
+    )
+}
+
+<https://w3id.org/osc-em/environmental_sampleTomogramFeatures> CLOSED {
+    (  $<https://w3id.org/osc-em/environmental_sampleTomogramFeatures_tes> ( 
+          <https://w3id.org/osc-em/environmental_samplecellular_features> @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_sampleorganelles> @linkml:String * ;
+          <https://w3id.org/osc-em/environmental_samplemain_target> @linkml:String ? ;
+          <https://w3id.org/osc-em/environmental_sampledetails_tomo> @linkml:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/osc-em/environmental_sampleTomogramFeatures> ] ?
+    )
+}
