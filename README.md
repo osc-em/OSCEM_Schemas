@@ -78,12 +78,12 @@ from LinkML.
 
 ### Repository Structure
 
-- [examples/](examples/) - example data
 - [src/](src/) - source files (edit these)
   - [oscem_schemas](src/oscem_schemas)
     - [schema](src/oscem_schemas/schema) -- LinkML schema files (edit these). Files starting with `oscem_schemas_` are main technique schemas; others are supporting modules.
     - [datamodel](src/oscem_schemas/datamodel) -- generated Python datamodel
 - [tests/](tests/) - Python tests
+- [tests/data/examples/](tests/data/examples/) - example data
 - [perm_docs/](perm_docs/) - permanent documentation files
 - [src/docs/files/](src/docs/files/) - additional documentation
 - [scripts/](scripts/) - automation scripts for artifact generation
@@ -128,8 +128,8 @@ To add a new schema:
 
 1. Create a YAML file in `src/oscem_schemas/schema/` with standard LinkML structure including `id`, `name`, and `description` fields
 2. If it's a main technique schema, name it `oscem_schemas_*.yaml`; otherwise use a descriptive name for supporting schemas. Remember that for new main schemas the following changes are required, to update the website:
-  - Add the navigation link in [mkdocs.yml](./mkdocs.yml)
-  - Add it in the list of available schemas in [./perm_docs/index.md](./perm_docs/index.md)
+    - Add the navigation link in [mkdocs.yml](./mkdocs.yml)
+    - Add it in the list of available schemas in [./perm_docs/index.md](./perm_docs/index.md)
 3. Run `make gen-all-schemas` to test locally
 4. The schema will automatically appear in all generated documentation and artifacts on the next release
 
