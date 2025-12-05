@@ -81,8 +81,8 @@ jobs:
           fi
 
           for version in $VERSIONS; do
-            # Check if this version has subdirectory indexes by looking for any schema-level index.html
-            HAS_INDEXES=$(git ls-tree -r origin/gh-pages:artifacts/$version | grep -c '/index.html$' || echo "0")
+            # Check if this version has subdirectory indexes by counting index.html files
+            HAS_INDEXES=$(git ls-tree -r origin/gh-pages:artifacts/$version | grep '/index.html$' | wc -l)
 
             # If only 1 index.html exists (the top-level one), subdirectory indexes are missing
             if [ "$HAS_INDEXES" -le 1 ]; then
