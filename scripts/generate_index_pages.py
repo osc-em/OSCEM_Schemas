@@ -31,20 +31,6 @@ def discover_schemas(project_dir: Path) -> List[Dict[str, str]]:
     return schemas
 
 
-def generate_root_index() -> str:
-    """Generate root index.html that redirects to docs."""
-    return """<!DOCTYPE html>
-<html>
-<head>
-  <title>OSC-EM Schema Artifacts</title>
-  <meta http-equiv="refresh" content="0; url=https://osc-em.github.io/oscem-schemas/artifacts.html">
-</head>
-<body>
-  <p>Redirecting to <a href="https://osc-em.github.io/oscem-schemas/artifacts.html">artifacts documentation</a>...</p>
-</body>
-</html>"""
-
-
 def generate_version_index(version: str, schemas: List[Dict[str, str]]) -> str:
     """Generate index.html for a specific version."""
     # Separate main and supporting schemas

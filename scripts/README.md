@@ -2,33 +2,28 @@
 
 ### `generate_artifacts_page.py`
 
-**Purpose**: Dynamically generates the `perm_docs/artifacts.md` page by discovering versions from GitHub Pages.
+**Purpose**: Dynamically generates the `docs/artifacts.md` page by discovering versions from GitHub Pages.
 
 **Usage**:
 ```bash
-python3 scripts/generate_artifacts_page.py [repository]
+python3 scripts/generate_artifacts_page.py
 ```
 
-**Arguments**:
-- `repository` (optional): GitHub repository in format `owner/repo`. Default: `osc-em/oscem-schemas`
-
-**What it does**:
+**Description**:
 1. Queries the GitHub API to discover all deployed versions in the `gh-pages` branch
 2. Discovers available schema types from the `project/` directory
-3. Generates a complete `artifacts.md` page with links to all versions and schemas
+3. Generates a markdown page with links to all versions and schemas
+4. MkDocs converts this to HTML with proper styling during the build process
 
 **Used in**: `.github/workflows/release.yaml` during the release process
 
-**Key Features**:
-- No hardcoded version lists - automatically discovers versions from GitHub Pages
-- No hardcoded schema types - dynamically discovers from project directory
-- Automatically sorts versions (newest first)
+**Output**: The generated markdown is converted to HTML by MkDocs and deployed to `gh-pages/artifacts/index.html`
 
 ---
 
 ### `generate_index_pages.py`
 
-**Purpose**: Creates `index.html` pages for artifact directories.
+**Purpose**: Creates `index.html` pages for artifact version directories (latest/, v1.0.2/, etc.).
 
 **Usage**:
 ```bash
@@ -40,17 +35,15 @@ python3 scripts/generate_index_pages.py <project_dir> <output_dir> [version]
 - `output_dir`: Path where the index.html should be created
 - `version` (optional): Version string to display in the page. Default: `latest`
 
-**What it does**:
+**Description**:
 1. Scans the project directory to discover all schema types
 2. Generates an HTML index page with links to each schema type
-3. Includes descriptions for each schema type
+3. Separates main technique schemas from supporting schemas
+4. Includes descriptions for each schema type
 
-**Used in**: `.github/workflows/release.yaml` to create browsable artifact pages
+**Used in**: `.github/workflows/release.yaml` to create browsable navigation pages for each version
 
-**Key Features**:
-- Dynamically discovers schema types from directory structure
-- Creates user-friendly navigation pages
-- No hardcoded schema lists
+**Output**: Creates `index.html` files at `gh-pages/artifacts/latest/` and `gh-pages/artifacts/v1.0.2/` etc.
 
 ---
 
@@ -58,14 +51,10 @@ python3 scripts/generate_index_pages.py <project_dir> <output_dir> [version]
 
 **Purpose**: Shared utility module for schema naming and descriptions.
 
-**Contains**:
-- `format_schema_name(schema_id)`: Converts schema ID to a display name using the 'name' from the schema YAML file.
-- `get_schema_description(schema_id)`: Gets description from the schema YAML file.
-
 **Used by**: Both `generate_artifacts_page.py` and `generate_index_pages.py`
 
-**Note**: When updating the 'name' or 'description' at the top of a schema's YAML file, these changes with be automatically picked up next time the scripts run.
-When adding a new schema file, make sure to include 'name' and 'description', and it will automatically indexed in the docs.
+**Note**: When updating the 'name' or 'description' at the top of a schema's YAML file, these changes will be automatically picked up next time the scripts run.
+When adding a new schema file, make sure to include 'id', 'name' and 'description', and it will be automatically indexed in the docs.
 
 ---
 

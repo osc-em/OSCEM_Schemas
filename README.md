@@ -33,7 +33,7 @@ Schemas are automatically exported to various formats (JSON Schema, JSON-LD, OWL
   - URL Pattern: `https://w3id.org/oscem-schemas/{VERSION}/{SCHEMA}/{FORMAT}/{FILE}`
 - **GitHub Pages**: Direct access to the release artifacts without a redirect:
   - URL Pattern: `https://osc-em.github.io/oscem-schemas/artifacts/{VERSION}/{SCHEMA}/{FORMAT}/{FILE}`
-  - Browse all versions: [Artifacts Documentation](https://osc-em.github.io/oscem-schemas/artifacts.html)
+  - Browse all versions: [Artifacts Documentation](https://osc-em.github.io/oscem-schemas/artifacts)
 - **Release Assets**: Downloadable zip archives from [GitHub Releases](https://github.com/osc-em/oscem-schemas/releases)
 
 `VERSION` can be 'latest' or any valid git release (eg `v1.0.0`). `SCHEMA` can refer to any of the main technique schemas (spa, cellular_tomo, env_tomo, subtomo, general) or supporting schemas (instrument, acquisition, processing, etc.). The following `FORMAT` values are supported:
@@ -88,7 +88,7 @@ from LinkML.
 - [src/docs/files/](src/docs/files/) - additional documentation
 - [scripts/](scripts/) - automation scripts for artifact generation
 
-**Note**: Generated artifacts (JSON Schema, OWL, etc.) are not stored in the repository. They are automatically generated and deployed to GitHub Pages on each release. See [artifacts documentation](https://osc-em.github.io/oscem-schemas/artifacts.html) for available versions.
+**Note**: Generated artifacts (JSON Schema, OWL, etc.) are not stored in the repository. They are automatically generated and deployed to GitHub Pages on each release. See [artifacts documentation](https://osc-em.github.io/oscem-schemas/artifacts) for available versions.
 
 ### Building the project
 
@@ -112,7 +112,7 @@ This project uses a multi-schema approach with automated deployment:
 - **Multiple schemas**: Targets multiple schemas following the `oscem_schemas_*.yaml` pattern in `src/oscem_schemas/schema/` where `*` corresponds to the schema name (spa, cellular_tomo, etc.). These are the main technique schemas.
 - **Supporting schemas**: Individual module schemas (instrument, acquisition, processing, etc.) that are imported by the main schemas. These can also be accessed independently.
 - **Automatic discovery**: New schemas are automatically discovered and included in artifact generation. Schema metadata (name, description) is read directly from the YAML files.
-- **Documentation**: Generates an overall documentation webpage with subpages for each schema. The [artifacts page](https://osc-em.github.io/oscem-schemas/artifacts.html) is automatically updated with all available versions and schemas.
+- **Documentation**: Generates an overall documentation webpage with subpages for each schema. The [artifacts page](https://osc-em.github.io/oscem-schemas/artifacts) is automatically updated with all available versions and schemas.
 - **Examples**: Example data goes in `src/data/examples/` following the pattern `example_valid_*.yaml`
 - **Automated deployment**: On each release, artifacts are automatically:
   - Generated in multiple formats (JSON Schema, OWL, JSON-LD, etc.) for all schemas

@@ -174,7 +174,7 @@ New versions are deployed automatically when new releases are published. Each ve
 def main():
     script_dir = Path(__file__).parent
     repo_root = script_dir.parent
-    artifacts_file = repo_root / "perm_docs" / "artifacts.md"
+    artifacts_file = repo_root / "docs" / "artifacts.md"
     project_dir = repo_root / "project"
 
     print("Fetching versions from GitHub Pages...")
@@ -187,6 +187,7 @@ def main():
 
     content = generate_artifacts_page(versions, schema_types)
 
+    artifacts_file.parent.mkdir(parents=True, exist_ok=True)
     artifacts_file.write_text(content)
     print(f"Successfully generated {artifacts_file}")
 

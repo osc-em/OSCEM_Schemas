@@ -39,10 +39,6 @@ jobs:
       - name: Generate project artifacts
         run: make gen-all-schemas
 
-      # Update artifacts documentation page dynamically
-      - name: Generate artifacts.md page
-        run: poetry run python scripts/generate_artifacts_page.py "${{ github.repository }}"
-
       # 1. Deploy to GitHub Pages for permanent URLs
       - name: Prepare artifacts for GitHub Pages
         run: |
@@ -60,25 +56,26 @@ jobs:
           cp -r project/* "artifacts-pages/$VERSION/"
           cp -r project/* "artifacts-pages/latest/"
 
-          # Create root index that redirects to docs
-          cat > artifacts-pages/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>OSC-EM Schema Artifacts</title>
-            <meta http-equiv="refresh" content="0; url=https://osc-em.github.io/oscem-schemas/artifacts.html">
-          </head>
-          <body>
-            <p>Redirecting to <a href="https://osc-em.github.io/oscem-schemas/artifacts.html">artifacts documentation</a>...</p>
-          </body>
-          </html>
-          EOF
-
           # Generate index pages dynamically based on actual schemas
           poetry run python scripts/generate_index_pages.py project "artifacts-pages/latest" "latest"
           poetry run python scripts/generate_index_pages.py project "artifacts-pages/$VERSION" "$VERSION"
 
-      - name: Deploy to GitHub Pages
+      - name: Generate artifacts documentation page
+        run: |
+          # Generate artifacts.md to docs/ directory
+          poetry run python scripts/generate_artifacts_page.py "${{ github.repository }}"
+          
+          # Run gendoc to prepare docs
+          make gendoc
+          
+          # Build with MkDocs to get proper styling
+          poetry run mkdocs build
+          
+          # Copy the artifacts page HTML into the artifacts-pages deployment
+          # This puts it at gh-pages/artifacts/index.html
+          cp site/artifacts/index.html artifacts-pages/
+
+      - name: Deploy artifacts and documentation to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -87,15 +84,6 @@ jobs:
           destination_dir: artifacts
           keep_files: true
           commit_message: "Deploy artifacts for ${{ github.event.release.tag_name }}"
-
-      # Commit updated artifacts.md back to repository
-      - name: Commit updated artifacts page
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add perm_docs/artifacts.md
-          git diff --staged --quiet || git commit -m "docs: Update artifacts.md with version ${{ github.event.release.tag_name }}"
-          git push
 
       # 2. Create downloadable archives for release assets
       - name: Create artifact archives
