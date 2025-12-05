@@ -92,17 +92,12 @@ jobs:
               mkdir -p "artifacts-pages/$version"
               git archive origin/gh-pages "artifacts/$version" | tar -x --strip-components=2 -C "artifacts-pages/$version"
 
-              # Create symlinks for consistent naming (short name -> full oscem_schemas_* name)
+              # Remove any oscem_schemas_* directories from old deployments (keep only short names)
               cd "artifacts-pages/$version"
-              for short_name in cellular_tomo env_tomo general spa subtomo; do
-                if [ -d "$short_name" ] && [ ! -e "oscem_schemas_$short_name" ]; then
-                  ln -s "$short_name" "oscem_schemas_$short_name"
-                  echo "Created symlink: oscem_schemas_$short_name -> $short_name"
-                fi
-              done
+              rm -rf oscem_schemas_*
               cd - > /dev/null
 
-              # Generate index pages (will also create index pages for symlinked directories)
+              # Generate index pages for old version
               poetry run python scripts/generate_index_pages.py "artifacts-pages/$version" "artifacts-pages/$version" "$version"
             else
               echo "Skipping $version - already has $HAS_INDEXES index pages"

@@ -114,9 +114,15 @@ gen-all-schemas: $(ALL_SCHEMA_NAMES:%=gen-schema-%)
 
 gen-schema-%:
 	@echo "Generating artifacts for schema file $*"
-	@mkdir -p $(DEST)/$*
-	@$(RUN) gen-project $(CONFIG_YAML) -d $(DEST)/$* src/oscem_schemas/schema/$*.yaml || \
-		(echo "Warning: Could not generate artifacts for $* (may be import-only schema)" && rm -rf $(DEST)/$*)
+	@# Use short name for main schemas (oscem_schemas_*), full name for supporting schemas
+	@if [[ "$*" == oscem_schemas_* ]]; then \
+		SCHEMA_DIR=$$(echo "$*" | sed 's/^oscem_schemas_//'); \
+	else \
+		SCHEMA_DIR="$*"; \
+	fi; \
+	mkdir -p "$(DEST)/$$SCHEMA_DIR"; \
+	$(RUN) gen-project $(CONFIG_YAML) -d "$(DEST)/$$SCHEMA_DIR" src/oscem_schemas/schema/$*.yaml || \
+		(echo "Warning: Could not generate artifacts for $$SCHEMA_DIR (may be import-only schema)" && rm -rf "$(DEST)/$$SCHEMA_DIR")
 
 # Generate documentation for all schemas
 .PHONY: gendoc
