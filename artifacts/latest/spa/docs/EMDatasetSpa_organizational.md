@@ -3,7 +3,7 @@
 
 Information on authors and grants
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/EMDatasetSpa_organizational](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/EMDatasetSpa_organizational)
+URI: [https://w3id.org/oscem-schemas/latest/spa/EMDatasetSpa_organizational](https://w3id.org/oscem-schemas/latest/spa/EMDatasetSpa_organizational)
 
 
 ## Domain and Range

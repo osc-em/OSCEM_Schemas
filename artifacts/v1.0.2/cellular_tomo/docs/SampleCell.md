@@ -3,7 +3,7 @@
 
 Unifying class to describe the full sample with growth conditions
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SampleCell](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SampleCell)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/SampleCell](https://w3id.org/oscem-schemas/latest/cellular_tomo/SampleCell)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[SampleEnv],[GrowthCondition]<growth_condition%200..1-++[SampleCell],[EMDatasetCell]++-%20sample%200..1>[SampleCell],[SampleEnv]^-[SampleCell],[GrowthCondition],[Freezing],[EMDatasetCell])](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[SampleEnv],[GrowthCondition]<growth_condition%200..1-++[SampleCell],[EMDatasetCell]++-%20sample%200..1>[SampleCell],[SampleEnv]^-[SampleCell],[GrowthCondition],[Freezing],[EMDatasetCell])

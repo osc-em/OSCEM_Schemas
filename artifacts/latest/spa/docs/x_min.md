@@ -3,7 +3,7 @@
 
 minimum x
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/x_min](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/x_min)
+URI: [https://w3id.org/oscem-schemas/latest/spa/x_min](https://w3id.org/oscem-schemas/latest/spa/x_min)
 
 
 ## Domain and Range

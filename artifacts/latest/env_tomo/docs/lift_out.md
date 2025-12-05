@@ -3,7 +3,7 @@
 
 whether a lift out was performed
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/lift_out](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/lift_out)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/lift_out](https://w3id.org/oscem-schemas/latest/env_tomo/lift_out)
 
 
 ## Domain and Range

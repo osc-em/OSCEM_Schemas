@@ -3,7 +3,7 @@
 
 The height of a given item - unit depends on item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/height](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/height)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/height](https://w3id.org/oscem-schemas/latest/subtomo/height)
 
 
 ## Domain and Range

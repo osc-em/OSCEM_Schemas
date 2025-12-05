@@ -3,7 +3,7 @@
 
 first name
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Author_given_name](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Author_given_name)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Author_given_name](https://w3id.org/oscem-schemas/latest/spa/Author_given_name)
 
 
 ## Domain and Range

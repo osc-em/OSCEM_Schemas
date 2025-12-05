@@ -3,7 +3,7 @@
 
 the unit of a given value
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/unit](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/unit)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/unit](https://w3id.org/oscem-schemas/latest/subtomo/unit)
 
 
 ## Domain and Range

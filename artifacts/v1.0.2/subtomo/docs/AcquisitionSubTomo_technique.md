@@ -3,7 +3,7 @@
 
 Subtomogram averaging
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionSubTomo_technique](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionSubTomo_technique)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionSubTomo_technique](https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionSubTomo_technique)
 
 
 ## Domain and Range

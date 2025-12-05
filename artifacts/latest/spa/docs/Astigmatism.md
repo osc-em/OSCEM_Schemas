@@ -3,7 +3,7 @@
 
 Astigmatism-related metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Astigmatism](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Astigmatism)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Astigmatism](https://w3id.org/oscem-schemas/latest/spa/Astigmatism)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[CTFs],[CTFs]++-%20astigmatism%200..1>[Astigmatism&#124;astigmatism_histogram:string%20%3F],[CTFs]++-%20astigmatism(i)%200..1>[Astigmatism])](https://yuml.me/diagram/nofunky;dir:TB/class/[CTFs],[CTFs]++-%20astigmatism%200..1>[Astigmatism&#124;astigmatism_histogram:string%20%3F],[CTFs]++-%20astigmatism(i)%200..1>[Astigmatism])

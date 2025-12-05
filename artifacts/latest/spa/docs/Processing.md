@@ -3,7 +3,7 @@
 
 Set of parameters describing the data processing
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Processing](https://w3id.org/oscem-schemas/latest/spa/Processing)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Volumes],[Volumes]<volumes%200..*-++[Processing],[Classes3D]<classes3D%200..1-++[Processing],[Classes2D]<classes2D%200..1-++[Processing],[Coordinates]<coordinates%200..1-++[Processing],[CTFs]<ctfs%200..1-++[Processing],[Micrographs]<micrographs%200..1-++[Processing],[Movies]<movies%200..1-++[Processing],[EMDatasetSpa]++-%20processing%200..1>[Processing],[Movies],[Micrographs],[EMDatasetSpa],[Coordinates],[Classes3D],[Classes2D],[CTFs])](https://yuml.me/diagram/nofunky;dir:TB/class/[Volumes],[Volumes]<volumes%200..*-++[Processing],[Classes3D]<classes3D%200..1-++[Processing],[Classes2D]<classes2D%200..1-++[Processing],[Coordinates]<coordinates%200..1-++[Processing],[CTFs]<ctfs%200..1-++[Processing],[Micrographs]<micrographs%200..1-++[Processing],[Movies]<movies%200..1-++[Processing],[EMDatasetSpa]++-%20processing%200..1>[Processing],[Movies],[Micrographs],[EMDatasetSpa],[Coordinates],[Classes3D],[Classes2D],[CTFs])

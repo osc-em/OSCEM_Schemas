@@ -3,7 +3,7 @@
 
 funding organization/person.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Organizational_funder](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Organizational_funder)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Organizational_funder](https://w3id.org/oscem-schemas/latest/cellular_tomo/Organizational_funder)
 
 
 ## Domain and Range

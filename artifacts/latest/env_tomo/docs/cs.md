@@ -3,7 +3,7 @@
 
 Spherical aberration of the instrument, in mm
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/cs](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/cs)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/cs](https://w3id.org/oscem-schemas/latest/env_tomo/cs)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 List of authors associated with the project
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Organizational_authors](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Organizational_authors)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Organizational_authors](https://w3id.org/oscem-schemas/latest/spa/Organizational_authors)
 
 
 ## Domain and Range

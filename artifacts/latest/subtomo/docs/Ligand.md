@@ -3,7 +3,7 @@
 
 Information on ligands if present.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Ligand](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Ligand)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Ligand](https://w3id.org/oscem-schemas/latest/subtomo/Ligand)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20ligands%200..*>[Ligand&#124;present:boolean%20%3F;smiles:string%20%3F;reference:string%20%3F],[Sample]++-%20ligands(i)%200..*>[Ligand])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Sample]++-%20ligands%200..*>[Ligand&#124;present:boolean%20%3F;smiles:string%20%3F;reference:string%20%3F],[Sample]++-%20ligands(i)%200..*>[Ligand])

@@ -192,7 +192,7 @@ CREATE TABLE "Volumes_size" (
 	size INTEGER,
 	PRIMARY KEY ("Volumes_id", size),
 	FOREIGN KEY("Volumes_id") REFERENCES "Volumes" (id)
-);CREATE INDEX "ix_Volumes_size_size" ON "Volumes_size" (size);CREATE INDEX "ix_Volumes_size_Volumes_id" ON "Volumes_size" ("Volumes_id");
+);CREATE INDEX "ix_Volumes_size_Volumes_id" ON "Volumes_size" ("Volumes_id");CREATE INDEX "ix_Volumes_size_size" ON "Volumes_size" (size);
 CREATE TABLE "Volumes_descriptors" (
 	"Volumes_id" INTEGER,
 	descriptors_id INTEGER,

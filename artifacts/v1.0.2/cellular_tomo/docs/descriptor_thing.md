@@ -3,7 +3,7 @@
 
 Description of the descriptor
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/descriptor_thing](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/descriptor_thing)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/descriptor_thing](https://w3id.org/oscem-schemas/latest/cellular_tomo/descriptor_thing)
 
 
 ## Domain and Range

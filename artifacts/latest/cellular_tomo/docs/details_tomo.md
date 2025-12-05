@@ -3,7 +3,7 @@
 
 If you have any further comments on your tomograms please leave them here
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/details_tomo](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/details_tomo)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/details_tomo](https://w3id.org/oscem-schemas/latest/cellular_tomo/details_tomo)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/sample](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/sample)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/sample](https://w3id.org/oscem-schemas/latest/subtomo/sample)
 
 
 ## Domain and Range

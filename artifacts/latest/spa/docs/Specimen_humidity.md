@@ -3,7 +3,7 @@
 
 Environmental humidity just before vitrification, in %
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Specimen_humidity](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Specimen_humidity)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Specimen_humidity](https://w3id.org/oscem-schemas/latest/spa/Specimen_humidity)
 
 
 ## Domain and Range

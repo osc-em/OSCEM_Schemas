@@ -3,7 +3,7 @@
 
 Machine estimated defocus, min and max values in µm. Has a tendency to be off.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/calibrated_defocus](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/calibrated_defocus)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/calibrated_defocus](https://w3id.org/oscem-schemas/latest/subtomo/calibrated_defocus)
 
 
 ## Domain and Range

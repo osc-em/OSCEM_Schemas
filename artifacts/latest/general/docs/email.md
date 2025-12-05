@@ -3,7 +3,7 @@
 
 email
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/email](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/email)
+URI: [https://w3id.org/oscem-schemas/latest/general/email](https://w3id.org/oscem-schemas/latest/general/email)
 
 
 ## Domain and Range

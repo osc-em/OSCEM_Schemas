@@ -3,7 +3,7 @@
 
 Specialist device to correct for chromatic aberration of the microscope lenses
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/chromatic_aberration_corrector](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/chromatic_aberration_corrector)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/chromatic_aberration_corrector](https://w3id.org/oscem-schemas/latest/subtomo/chromatic_aberration_corrector)
 
 
 ## Domain and Range

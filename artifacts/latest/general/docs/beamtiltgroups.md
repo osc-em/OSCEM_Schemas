@@ -3,7 +3,7 @@
 
 Number of Beamtilt groups present in this dataset - for optimized processing split dataset into groups of same tilt angle. Despite its name Beamshift is often used to achive this result.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/beamtiltgroups](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/beamtiltgroups)
+URI: [https://w3id.org/oscem-schemas/latest/general/beamtiltgroups](https://w3id.org/oscem-schemas/latest/general/beamtiltgroups)
 
 
 ## Domain and Range

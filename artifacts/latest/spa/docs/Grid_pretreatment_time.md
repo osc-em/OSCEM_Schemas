@@ -3,7 +3,7 @@
 
 Length of time of the pretreatment in s
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Grid_pretreatment_time](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Grid_pretreatment_time)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Grid_pretreatment_time](https://w3id.org/oscem-schemas/latest/spa/Grid_pretreatment_time)
 
 
 ## Domain and Range

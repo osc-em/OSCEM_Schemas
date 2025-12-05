@@ -3,7 +3,7 @@
 
 Description of specimen handling.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Specimen](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Specimen)
+URI: [https://w3id.org/oscem-schemas/latest/general/Specimen](https://w3id.org/oscem-schemas/latest/general/Specimen)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI]<temperature%200..1-++[Specimen&#124;buffer:string%20%3F;ph:float%20%3F;vitrification:boolean%20%3F;vitrification_cryogen:string%20%3F;staining:boolean%20%3F;embedding:boolean%20%3F;shadowing:boolean%20%3F],[QuantitySI]<humidity%200..1-++[Specimen],[QuantitySI]<concentration%200..1-++[Specimen],[Sample]++-%20specimen%200..1>[Specimen],[Sample]++-%20specimen(i)%200..1>[Specimen],[Sample],[QuantitySI])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI]<temperature%200..1-++[Specimen&#124;buffer:string%20%3F;ph:float%20%3F;vitrification:boolean%20%3F;vitrification_cryogen:string%20%3F;staining:boolean%20%3F;embedding:boolean%20%3F;shadowing:boolean%20%3F],[QuantitySI]<humidity%200..1-++[Specimen],[QuantitySI]<concentration%200..1-++[Specimen],[Sample]++-%20specimen%200..1>[Specimen],[Sample]++-%20specimen(i)%200..1>[Specimen],[Sample],[QuantitySI])

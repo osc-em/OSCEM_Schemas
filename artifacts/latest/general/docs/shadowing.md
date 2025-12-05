@@ -3,7 +3,7 @@
 
 Whether the sample was shadowed
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/shadowing](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/shadowing)
+URI: [https://w3id.org/oscem-schemas/latest/general/shadowing](https://w3id.org/oscem-schemas/latest/general/shadowing)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Time and date of the data acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Acquisition_date_time](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Acquisition_date_time)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Acquisition_date_time](https://w3id.org/oscem-schemas/latest/env_tomo/Acquisition_date_time)
 
 
 ## Domain and Range

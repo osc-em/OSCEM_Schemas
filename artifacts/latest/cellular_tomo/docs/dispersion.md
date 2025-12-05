@@ -3,7 +3,7 @@
 
 Dispersion of an analytical detector, in eV
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/dispersion](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/dispersion)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/dispersion](https://w3id.org/oscem-schemas/latest/cellular_tomo/dispersion)
 
 
 ## Domain and Range

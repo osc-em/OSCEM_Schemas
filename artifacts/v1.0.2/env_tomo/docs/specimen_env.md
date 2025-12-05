@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/specimen_env](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/specimen_env)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/specimen_env](https://w3id.org/oscem-schemas/latest/env_tomo/specimen_env)
 
 
 ## Domain and Range

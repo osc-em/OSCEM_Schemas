@@ -3,7 +3,7 @@
 
 what was the target of the tomograms, and what area of a cell do they cover.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/TomogramFeatures](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/TomogramFeatures)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/TomogramFeatures](https://w3id.org/oscem-schemas/latest/env_tomo/TomogramFeatures)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv]++-%20tomogram_features%200..1>[TomogramFeatures&#124;cellular_features:string%20%3F;organelles:string%20*;main_target:string%20%3F;details_tomo:string%20%3F],[SampleEnv])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv]++-%20tomogram_features%200..1>[TomogramFeatures&#124;cellular_features:string%20%3F;organelles:string%20*;main_target:string%20%3F;details_tomo:string%20%3F],[SampleEnv])

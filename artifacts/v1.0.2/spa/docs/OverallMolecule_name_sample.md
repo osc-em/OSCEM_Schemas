@@ -3,7 +3,7 @@
 
 Name of the full sample
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/OverallMolecule_name_sample](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/OverallMolecule_name_sample)
+URI: [https://w3id.org/oscem-schemas/latest/spa/OverallMolecule_name_sample](https://w3id.org/oscem-schemas/latest/spa/OverallMolecule_name_sample)
 
 
 ## Domain and Range

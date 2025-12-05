@@ -3,7 +3,7 @@
 
 whether a specific instrument was used during data acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/used](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/used)
+URI: [https://w3id.org/oscem-schemas/latest/spa/used](https://w3id.org/oscem-schemas/latest/spa/used)
 
 
 ## Domain and Range

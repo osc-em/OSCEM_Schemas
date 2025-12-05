@@ -3,7 +3,7 @@
 
 The model of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/model](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/model)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/model](https://w3id.org/oscem-schemas/latest/cellular_tomo/model)
 
 
 ## Domain and Range

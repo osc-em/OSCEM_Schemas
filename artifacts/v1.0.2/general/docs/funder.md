@@ -3,7 +3,7 @@
 
 funding organization/person.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/funder](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/funder)
+URI: [https://w3id.org/oscem-schemas/latest/general/funder](https://w3id.org/oscem-schemas/latest/general/funder)
 
 
 ## Domain and Range

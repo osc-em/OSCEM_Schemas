@@ -3,7 +3,7 @@
 
 whether a specific instrument was used during data acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/used](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/used)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/used](https://w3id.org/oscem-schemas/latest/env_tomo/used)
 
 
 ## Domain and Range

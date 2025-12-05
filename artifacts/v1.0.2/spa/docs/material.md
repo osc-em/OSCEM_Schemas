@@ -3,7 +3,7 @@
 
 Material out of which the grid is made
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/material](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/material)
+URI: [https://w3id.org/oscem-schemas/latest/spa/material](https://w3id.org/oscem-schemas/latest/spa/material)
 
 
 ## Domain and Range

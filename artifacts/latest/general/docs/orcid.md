@@ -3,7 +3,7 @@
 
 ORCID of the author, a type of unique identifier
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/orcid](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/orcid)
+URI: [https://w3id.org/oscem-schemas/latest/general/orcid](https://w3id.org/oscem-schemas/latest/general/orcid)
 
 
 ## Domain and Range

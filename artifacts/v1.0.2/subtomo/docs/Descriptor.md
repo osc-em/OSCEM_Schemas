@@ -3,7 +3,7 @@
 
 List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Descriptor](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Descriptor)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Descriptor](https://w3id.org/oscem-schemas/latest/subtomo/Descriptor)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptors],[Any]<descriptor_thing%200..1-++[Descriptor&#124;descriptor_name:string],[Descriptor]^-[Descriptors],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptors],[Any]<descriptor_thing%200..1-++[Descriptor&#124;descriptor_name:string],[Descriptor]^-[Descriptors],[Any])

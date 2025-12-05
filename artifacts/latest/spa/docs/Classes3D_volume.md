@@ -3,7 +3,7 @@
 
 Describes volume(s) obtained
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes3D_volume](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes3D_volume)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Classes3D_volume](https://w3id.org/oscem-schemas/latest/spa/Classes3D_volume)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Width of the energy filter used.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/width_energy_filter](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/width_energy_filter)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/width_energy_filter](https://w3id.org/oscem-schemas/latest/cellular_tomo/width_energy_filter)
 
 
 ## Domain and Range

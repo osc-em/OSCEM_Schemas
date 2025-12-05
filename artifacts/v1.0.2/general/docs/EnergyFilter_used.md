@@ -3,7 +3,7 @@
 
 whether a specific instrument was used during data acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/EnergyFilter_used](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/EnergyFilter_used)
+URI: [https://w3id.org/oscem-schemas/latest/general/EnergyFilter_used](https://w3id.org/oscem-schemas/latest/general/EnergyFilter_used)
 
 
 ## Domain and Range

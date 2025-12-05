@@ -3,7 +3,7 @@
 
 Resolution of classes 2D
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/resolution_classes_2D](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/resolution_classes_2D)
+URI: [https://w3id.org/oscem-schemas/latest/spa/resolution_classes_2D](https://w3id.org/oscem-schemas/latest/spa/resolution_classes_2D)
 
 
 ## Domain and Range

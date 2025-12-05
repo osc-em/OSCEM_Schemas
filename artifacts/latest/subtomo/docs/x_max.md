@@ -3,7 +3,7 @@
 
 maximum x
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/x_max](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/x_max)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/x_max](https://w3id.org/oscem-schemas/latest/subtomo/x_max)
 
 
 ## Domain and Range

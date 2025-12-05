@@ -3,7 +3,7 @@
 
 Specifies which Acquisition subschema/class is in use.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Acquisition_technique](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Acquisition_technique)
+URI: [https://w3id.org/oscem-schemas/latest/general/Acquisition_technique](https://w3id.org/oscem-schemas/latest/general/Acquisition_technique)
 
 
 ## Domain and Range

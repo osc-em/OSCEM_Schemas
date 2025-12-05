@@ -3,7 +3,7 @@
 
 The model of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Microscope_model](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Microscope_model)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Microscope_model](https://w3id.org/oscem-schemas/latest/env_tomo/Microscope_model)
 
 
 ## Domain and Range

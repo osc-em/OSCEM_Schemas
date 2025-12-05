@@ -3,7 +3,7 @@
 
 Special device used to correct instrument inherent spherical aberration.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SphericalAberrationCorrector](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SphericalAberrationCorrector)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/SphericalAberrationCorrector](https://w3id.org/oscem-schemas/latest/cellular_tomo/SphericalAberrationCorrector)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics]++-%20spherical_aberration_corrector%200..1>[SphericalAberrationCorrector&#124;used:boolean;instrument_type:string],[SpecialistOptics])](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics]++-%20spherical_aberration_corrector%200..1>[SphericalAberrationCorrector&#124;used:boolean;instrument_type:string],[SpecialistOptics])

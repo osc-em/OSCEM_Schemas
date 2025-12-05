@@ -3,7 +3,7 @@
 
 The description of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Sample_description](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Sample_description)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Sample_description](https://w3id.org/oscem-schemas/latest/subtomo/Sample_description)
 
 
 ## Domain and Range

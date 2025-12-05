@@ -3,7 +3,7 @@
 
 Filename of the astigmatism values histogram
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Astigmatism_astigmatism_histogram](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Astigmatism_astigmatism_histogram)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Astigmatism_astigmatism_histogram](https://w3id.org/oscem-schemas/latest/spa/Astigmatism_astigmatism_histogram)
 
 
 ## Domain and Range

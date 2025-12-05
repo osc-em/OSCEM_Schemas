@@ -3,7 +3,7 @@
 
 Description of the grid used
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Sample_grid](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Sample_grid)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Sample_grid](https://w3id.org/oscem-schemas/latest/subtomo/Sample_grid)
 
 
 ## Domain and Range

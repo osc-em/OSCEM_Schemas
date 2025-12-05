@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/detectors](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/detectors)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/detectors](https://w3id.org/oscem-schemas/latest/env_tomo/detectors)
 
 
 ## Domain and Range

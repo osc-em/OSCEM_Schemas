@@ -3,7 +3,7 @@
 
 Resolution metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs_resolution](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs_resolution)
+URI: [https://w3id.org/oscem-schemas/latest/spa/CTFs_resolution](https://w3id.org/oscem-schemas/latest/spa/CTFs_resolution)
 
 
 ## Domain and Range

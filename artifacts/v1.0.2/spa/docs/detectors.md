@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/detectors](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/detectors)
+URI: [https://w3id.org/oscem-schemas/latest/spa/detectors](https://w3id.org/oscem-schemas/latest/spa/detectors)
 
 
 ## Domain and Range

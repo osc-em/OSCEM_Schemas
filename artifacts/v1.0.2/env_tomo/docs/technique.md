@@ -3,7 +3,7 @@
 
 Specifies which Acquisition subschema/class is in use.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/technique](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/technique)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/technique](https://w3id.org/oscem-schemas/latest/env_tomo/technique)
 
 
 ## Domain and Range

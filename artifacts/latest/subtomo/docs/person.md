@@ -3,7 +3,7 @@
 
 person
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/person](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/person)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/person](https://w3id.org/oscem-schemas/latest/subtomo/person)
 
 
 ## Domain and Range

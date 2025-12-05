@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/acquisition](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/acquisition)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/acquisition](https://w3id.org/oscem-schemas/latest/env_tomo/acquisition)
 
 
 ## Domain and Range

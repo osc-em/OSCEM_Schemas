@@ -190,7 +190,7 @@ CREATE TABLE "SpecimenEnv_organism" (
 	organism TEXT NOT NULL,
 	PRIMARY KEY ("SpecimenEnv_id", organism),
 	FOREIGN KEY("SpecimenEnv_id") REFERENCES "SpecimenEnv" (id)
-);CREATE INDEX "ix_SpecimenEnv_organism_SpecimenEnv_id" ON "SpecimenEnv_organism" ("SpecimenEnv_id");CREATE INDEX "ix_SpecimenEnv_organism_organism" ON "SpecimenEnv_organism" (organism);
+);CREATE INDEX "ix_SpecimenEnv_organism_organism" ON "SpecimenEnv_organism" (organism);CREATE INDEX "ix_SpecimenEnv_organism_SpecimenEnv_id" ON "SpecimenEnv_organism" ("SpecimenEnv_id");
 CREATE TABLE "TomogramFeatures_organelles" (
 	"TomogramFeatures_id" INTEGER,
 	organelles TEXT,

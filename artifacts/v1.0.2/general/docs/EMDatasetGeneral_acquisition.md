@@ -3,7 +3,7 @@
 
 Describe the data acquisition parameters
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/EMDatasetGeneral_acquisition](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/EMDatasetGeneral_acquisition)
+URI: [https://w3id.org/oscem-schemas/latest/general/EMDatasetGeneral_acquisition](https://w3id.org/oscem-schemas/latest/general/EMDatasetGeneral_acquisition)
 
 
 ## Domain and Range

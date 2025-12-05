@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/instrument](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/instrument)
+URI: [https://w3id.org/oscem-schemas/latest/general/instrument](https://w3id.org/oscem-schemas/latest/general/instrument)
 
 
 ## Domain and Range

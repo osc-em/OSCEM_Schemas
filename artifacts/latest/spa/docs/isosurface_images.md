@@ -3,7 +3,7 @@
 
 isosurface images of volume
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/isosurface_images](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/isosurface_images)
+URI: [https://w3id.org/oscem-schemas/latest/spa/isosurface_images](https://w3id.org/oscem-schemas/latest/spa/isosurface_images)
 
 
 ## Domain and Range

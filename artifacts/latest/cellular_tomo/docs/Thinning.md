@@ -3,7 +3,7 @@
 
 how the frozen sample was thinned by i.e. FiB-milling
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Thinning](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Thinning)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Thinning](https://w3id.org/oscem-schemas/latest/cellular_tomo/Thinning)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI]<target_thickness%200..1-++[Thinning&#124;method_thin:string%20%3F;instrument_thin:string%20%3F;ion_source:string%20%3F;lift_out:boolean%20%3F],[SampleEnv]++-%20thinning%200..1>[Thinning],[SampleEnv],[QuantitySI])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI]<target_thickness%200..1-++[Thinning&#124;method_thin:string%20%3F;instrument_thin:string%20%3F;ion_source:string%20%3F;lift_out:boolean%20%3F],[SampleEnv]++-%20thinning%200..1>[Thinning],[SampleEnv],[QuantitySI])

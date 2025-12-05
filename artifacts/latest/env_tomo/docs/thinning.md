@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/thinning](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/thinning)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/thinning](https://w3id.org/oscem-schemas/latest/env_tomo/thinning)
 
 
 ## Domain and Range

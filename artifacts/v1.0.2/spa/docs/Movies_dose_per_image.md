@@ -3,7 +3,7 @@
 
 Dose per image
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies_dose_per_image](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies_dose_per_image)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Movies_dose_per_image](https://w3id.org/oscem-schemas/latest/spa/Movies_dose_per_image)
 
 
 ## Domain and Range

@@ -683,14 +683,14 @@ CREATE TABLE "AcquisitionTomo_detectors" (
 	PRIMARY KEY ("AcquisitionTomo_id", detectors_id),
 	FOREIGN KEY("AcquisitionTomo_id") REFERENCES "AcquisitionTomo" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_AcquisitionTomo_detectors_AcquisitionTomo_id" ON "AcquisitionTomo_detectors" ("AcquisitionTomo_id");CREATE INDEX "ix_AcquisitionTomo_detectors_detectors_id" ON "AcquisitionTomo_detectors" (detectors_id);
+);CREATE INDEX "ix_AcquisitionTomo_detectors_detectors_id" ON "AcquisitionTomo_detectors" (detectors_id);CREATE INDEX "ix_AcquisitionTomo_detectors_AcquisitionTomo_id" ON "AcquisitionTomo_detectors" ("AcquisitionTomo_id");
 CREATE TABLE "AcquisitionSubTomo_detectors" (
 	"AcquisitionSubTomo_id" INTEGER,
 	detectors_id INTEGER NOT NULL,
 	PRIMARY KEY ("AcquisitionSubTomo_id", detectors_id),
 	FOREIGN KEY("AcquisitionSubTomo_id") REFERENCES "AcquisitionSubTomo" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_AcquisitionSubTomo_detectors_detectors_id" ON "AcquisitionSubTomo_detectors" (detectors_id);CREATE INDEX "ix_AcquisitionSubTomo_detectors_AcquisitionSubTomo_id" ON "AcquisitionSubTomo_detectors" ("AcquisitionSubTomo_id");
+);CREATE INDEX "ix_AcquisitionSubTomo_detectors_AcquisitionSubTomo_id" ON "AcquisitionSubTomo_detectors" ("AcquisitionSubTomo_id");CREATE INDEX "ix_AcquisitionSubTomo_detectors_detectors_id" ON "AcquisitionSubTomo_detectors" (detectors_id);
 CREATE TABLE "AcquisitionEnvTomo_detectors" (
 	"AcquisitionEnvTomo_id" INTEGER,
 	detectors_id INTEGER NOT NULL,
@@ -711,7 +711,7 @@ CREATE TABLE "Acquisition_detectors" (
 	PRIMARY KEY ("Acquisition_id", detectors_id),
 	FOREIGN KEY("Acquisition_id") REFERENCES "Acquisition" (id),
 	FOREIGN KEY(detectors_id) REFERENCES "Detector" (id)
-);CREATE INDEX "ix_Acquisition_detectors_detectors_id" ON "Acquisition_detectors" (detectors_id);CREATE INDEX "ix_Acquisition_detectors_Acquisition_id" ON "Acquisition_detectors" ("Acquisition_id");
+);CREATE INDEX "ix_Acquisition_detectors_Acquisition_id" ON "Acquisition_detectors" ("Acquisition_id");CREATE INDEX "ix_Acquisition_detectors_detectors_id" ON "Acquisition_detectors" (detectors_id);
 CREATE TABLE "AcquisitionSpa_detectors" (
 	"AcquisitionSpa_id" INTEGER,
 	detectors_id INTEGER NOT NULL,

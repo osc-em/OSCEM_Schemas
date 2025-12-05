@@ -3,7 +3,7 @@
 
 Class representing classes 2D metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes2D](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes2D)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Classes2D](https://w3id.org/oscem-schemas/latest/spa/Classes2D)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes2D&#124;particles_per_2Dclass:integer%20*;images_classes_2D:string%20%3F],[QuantityValue]<resolution_classes_2D%200..1-++[Classes2D],[Processing]++-%20classes2D%200..1>[Classes2D],[Processing]++-%20classes2D(i)%200..1>[Classes2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes2D&#124;particles_per_2Dclass:integer%20*;images_classes_2D:string%20%3F],[QuantityValue]<resolution_classes_2D%200..1-++[Classes2D],[Processing]++-%20classes2D%200..1>[Classes2D],[Processing]++-%20classes2D(i)%200..1>[Classes2D])

@@ -3,7 +3,7 @@
 
 Type of phaseplate
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Phaseplate_instrument_type](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Phaseplate_instrument_type)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Phaseplate_instrument_type](https://w3id.org/oscem-schemas/latest/cellular_tomo/Phaseplate_instrument_type)
 
 
 ## Domain and Range

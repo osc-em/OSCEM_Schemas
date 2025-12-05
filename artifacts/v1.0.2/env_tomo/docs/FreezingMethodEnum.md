@@ -3,7 +3,7 @@
 
 Allowed freezing options.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/FreezingMethodEnum](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/FreezingMethodEnum)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/FreezingMethodEnum](https://w3id.org/oscem-schemas/latest/env_tomo/FreezingMethodEnum)
 
 
 ## Permissible Values

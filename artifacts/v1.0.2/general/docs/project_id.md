@@ -3,7 +3,7 @@
 
 project id
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/project_id](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/project_id)
+URI: [https://w3id.org/oscem-schemas/latest/general/project_id](https://w3id.org/oscem-schemas/latest/general/project_id)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 project id
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/project_id](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/project_id)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/project_id](https://w3id.org/oscem-schemas/latest/cellular_tomo/project_id)
 
 
 ## Domain and Range

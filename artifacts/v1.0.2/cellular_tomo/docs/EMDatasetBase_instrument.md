@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetBase_instrument](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetBase_instrument)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetBase_instrument](https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetBase_instrument)
 
 
 ## Domain and Range

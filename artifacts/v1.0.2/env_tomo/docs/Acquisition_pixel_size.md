@@ -3,7 +3,7 @@
 
 Pixel size, in Angstrom
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Acquisition_pixel_size](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Acquisition_pixel_size)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Acquisition_pixel_size](https://w3id.org/oscem-schemas/latest/env_tomo/Acquisition_pixel_size)
 
 
 ## Domain and Range

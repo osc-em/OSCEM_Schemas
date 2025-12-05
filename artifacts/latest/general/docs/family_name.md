@@ -3,7 +3,7 @@
 
 last name
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/family_name](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/family_name)
+URI: [https://w3id.org/oscem-schemas/latest/general/family_name](https://w3id.org/oscem-schemas/latest/general/family_name)
 
 
 ## Domain and Range

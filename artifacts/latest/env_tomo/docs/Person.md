@@ -3,7 +3,7 @@
 
 personal information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Person](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Person)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Person](https://w3id.org/oscem-schemas/latest/env_tomo/Person)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person&#124;family_name:string%20%3F;given_name:string%20%3F;job_title:boolean%20%3F;email:string%20%3F;telephone:string%20%3F]^-[Author],[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person&#124;family_name:string%20%3F;given_name:string%20%3F;job_title:boolean%20%3F;email:string%20%3F;telephone:string%20%3F]^-[Author],[Author])

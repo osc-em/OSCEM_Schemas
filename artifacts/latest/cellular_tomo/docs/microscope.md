@@ -3,7 +3,7 @@
 
 Microscope information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/microscope](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/microscope)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/microscope](https://w3id.org/oscem-schemas/latest/cellular_tomo/microscope)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Astigmatism metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs_astigmatism](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs_astigmatism)
+URI: [https://w3id.org/oscem-schemas/latest/spa/CTFs_astigmatism](https://w3id.org/oscem-schemas/latest/spa/CTFs_astigmatism)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Defocus metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/defocus](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/defocus)
+URI: [https://w3id.org/oscem-schemas/latest/spa/defocus](https://w3id.org/oscem-schemas/latest/spa/defocus)
 
 
 ## Domain and Range

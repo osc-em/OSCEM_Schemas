@@ -3,7 +3,7 @@
 
 Cryo electron tomography dataset of a cellular sample, lab grown
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetCell](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetCell)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetCell](https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetCell)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleCell],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetCell],[SampleCell]<sample%200..1-++[EMDatasetCell],[Instrument]<instrument%201..1-++[EMDatasetCell],[AcquisitionCelTomo]<acquisition%201..1-++[EMDatasetCell],[EMDatasetBase]^-[EMDatasetCell],[EMDatasetBase],[AcquisitionCelTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleCell],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetCell],[SampleCell]<sample%200..1-++[EMDatasetCell],[Instrument]<instrument%201..1-++[EMDatasetCell],[AcquisitionCelTomo]<acquisition%201..1-++[EMDatasetCell],[EMDatasetBase]^-[EMDatasetCell],[EMDatasetBase],[AcquisitionCelTomo])

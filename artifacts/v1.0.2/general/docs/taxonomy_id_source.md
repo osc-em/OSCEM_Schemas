@@ -3,7 +3,7 @@
 
 Taxonomy ID of the natural source organism
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/taxonomy_id_source](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/taxonomy_id_source)
+URI: [https://w3id.org/oscem-schemas/latest/general/taxonomy_id_source](https://w3id.org/oscem-schemas/latest/general/taxonomy_id_source)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Description of the overall molecular type, i.e., a complex
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/molecular_type](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/molecular_type)
+URI: [https://w3id.org/oscem-schemas/latest/spa/molecular_type](https://w3id.org/oscem-schemas/latest/spa/molecular_type)
 
 
 ## Domain and Range

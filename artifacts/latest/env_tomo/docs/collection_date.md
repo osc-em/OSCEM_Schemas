@@ -3,7 +3,7 @@
 
 When the sample was collected
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/collection_date](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/collection_date)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/collection_date](https://w3id.org/oscem-schemas/latest/env_tomo/collection_date)
 
 
 ## Domain and Range

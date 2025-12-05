@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/AcquisitionCelTomo](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/AcquisitionCelTomo)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/AcquisitionCelTomo](https://w3id.org/oscem-schemas/latest/env_tomo/AcquisitionCelTomo)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[Detector],[BoundingBox2D],[AcquisitionTomo],[AcquisitionTomo]^-[AcquisitionCelTomo&#124;technique:string;tilt_axis_angle(i):float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F])](https://yuml.me/diagram/nofunky;dir:TB/class/[TiltAngle],[SpecialistOptics],[Range],[QuantitySI],[ImageSize],[EnergyFilter],[Detector],[BoundingBox2D],[AcquisitionTomo],[AcquisitionTomo]^-[AcquisitionCelTomo&#124;technique:string;tilt_axis_angle(i):float;nominal_magnification(i):integer%20%3F;calibrated_magnification(i):integer%20%3F;holder(i):string%20%3F;holder_cryogen(i):string%20%3F;microscope_software(i):string%20%3F;date_time(i):datetime;cryogen(i):string%20%3F;frames_per_movie(i):integer%20%3F;grids_imaged(i):integer%20%3F;images_generated(i):integer%20%3F;beamtiltgroups(i):integer%20%3F;gainref_flip_rotate(i):string%20%3F])

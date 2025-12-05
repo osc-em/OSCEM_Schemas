@@ -3,7 +3,7 @@
 
 Describe the data acquisition parameters
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv_acquisition](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv_acquisition)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetEnv_acquisition](https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetEnv_acquisition)
 
 
 ## Domain and Range

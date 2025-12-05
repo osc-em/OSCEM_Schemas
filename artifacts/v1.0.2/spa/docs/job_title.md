@@ -3,7 +3,7 @@
 
 job title
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/job_title](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/job_title)
+URI: [https://w3id.org/oscem-schemas/latest/spa/job_title](https://w3id.org/oscem-schemas/latest/spa/job_title)
 
 
 ## Domain and Range

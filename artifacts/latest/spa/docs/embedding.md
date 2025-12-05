@@ -3,7 +3,7 @@
 
 Whether the sample was embedded
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/embedding](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/embedding)
+URI: [https://w3id.org/oscem-schemas/latest/spa/embedding](https://w3id.org/oscem-schemas/latest/spa/embedding)
 
 
 ## Domain and Range

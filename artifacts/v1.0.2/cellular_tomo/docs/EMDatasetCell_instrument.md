@@ -3,7 +3,7 @@
 
 Describe the instrument used to acquire the data
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetCell_instrument](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetCell_instrument)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetCell_instrument](https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetCell_instrument)
 
 
 ## Domain and Range

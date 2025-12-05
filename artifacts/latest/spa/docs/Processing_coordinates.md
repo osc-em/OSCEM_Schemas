@@ -3,7 +3,7 @@
 
 Coordinates metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing_coordinates](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing_coordinates)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Processing_coordinates](https://w3id.org/oscem-schemas/latest/spa/Processing_coordinates)
 
 
 ## Domain and Range

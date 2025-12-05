@@ -3,7 +3,7 @@
 
 Speciman holder model
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/holder](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/holder)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/holder](https://w3id.org/oscem-schemas/latest/env_tomo/holder)
 
 
 ## Domain and Range

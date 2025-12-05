@@ -3,7 +3,7 @@
 
 Speciman holder model
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/holder](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/holder)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/holder](https://w3id.org/oscem-schemas/latest/cellular_tomo/holder)
 
 
 ## Domain and Range

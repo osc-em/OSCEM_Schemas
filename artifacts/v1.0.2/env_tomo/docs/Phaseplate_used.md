@@ -3,7 +3,7 @@
 
 whether a specific instrument was used during data acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Phaseplate_used](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Phaseplate_used)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Phaseplate_used](https://w3id.org/oscem-schemas/latest/env_tomo/Phaseplate_used)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Number of particles associated to volume
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Volumes_vol_number_particles](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Volumes_vol_number_particles)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Volumes_vol_number_particles](https://w3id.org/oscem-schemas/latest/spa/Volumes_vol_number_particles)
 
 
 ## Domain and Range

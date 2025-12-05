@@ -3,7 +3,7 @@
 
 Astigmatism metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/astigmatism](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/astigmatism)
+URI: [https://w3id.org/oscem-schemas/latest/spa/astigmatism](https://w3id.org/oscem-schemas/latest/spa/astigmatism)
 
 
 ## Domain and Range

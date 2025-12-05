@@ -1,8 +1,8 @@
 # Auto generated from oscem_schemas_subtomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T15:44:07
+# Generation date: 2025-12-05T16:06:02
 # Schema: SubtomogramAveraging
 #
-# id: https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo
+# id: https://w3id.org/oscem-schemas/latest/subtomo
 # description: Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
 # license: CC-BY
 
@@ -68,12 +68,12 @@ CUSTOM_TYPES = CurieNamespace('custom_types', 'https://w3id.org/oscem-schemas/la
 INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/oscem-schemas/latest/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/oscem-schemas/latest/organizational/')
-OSCEM = CurieNamespace('oscem', 'https://w3id.org/oscem-schemas/latest/OSCEM_schemas')
+OSCEM = CurieNamespace('oscem', 'https://w3id.org/oscem-schemas/latest/')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 SAMPLE = CurieNamespace('sample', 'https://w3id.org/oscem-schemas/latest/sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 TOMO = CurieNamespace('tomo', 'https://w3id.org/oscem-schemas/latest/tomo')
-DEFAULT_ = CurieNamespace('', 'https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/')
+DEFAULT_ = CurieNamespace('', 'https://w3id.org/oscem-schemas/latest/subtomo/')
 
 
 # Types
@@ -93,7 +93,7 @@ class Acquisition(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["Acquisition"]
     class_class_curie: ClassVar[str] = "acquisition:Acquisition"
     class_name: ClassVar[str] = "Acquisition"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Acquisition")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Acquisition")
 
     detectors: Union[Union[dict, "Detector"], list[Union[dict, "Detector"]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -228,7 +228,7 @@ class AcquisitionSpa(Acquisition):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["AcquisitionSpa"]
     class_class_curie: ClassVar[str] = "acquisition:AcquisitionSpa"
     class_name: ClassVar[str] = "AcquisitionSpa"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionSpa")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionSpa")
 
     detectors: Union[Union[dict, "Detector"], list[Union[dict, "Detector"]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -255,7 +255,7 @@ class EnergyFilter(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["EnergyFilter"]
     class_class_curie: ClassVar[str] = "acquisition:EnergyFilter"
     class_name: ClassVar[str] = "EnergyFilter"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EnergyFilter")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/EnergyFilter")
 
     used: Union[bool, Bool] = None
     width_energy_filter: Union[dict, "QuantitySI"] = None
@@ -288,7 +288,7 @@ class SpecialistOptics(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["SpecialistOptics"]
     class_class_curie: ClassVar[str] = "acquisition:SpecialistOptics"
     class_name: ClassVar[str] = "SpecialistOptics"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/SpecialistOptics")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/SpecialistOptics")
 
     phaseplate: Optional[Union[dict, "Phaseplate"]] = None
     spherical_aberration_corrector: Optional[Union[dict, "SphericalAberrationCorrector"]] = None
@@ -317,7 +317,7 @@ class Phaseplate(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["Phaseplate"]
     class_class_curie: ClassVar[str] = "acquisition:Phaseplate"
     class_name: ClassVar[str] = "Phaseplate"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Phaseplate")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Phaseplate")
 
     used: Union[bool, Bool] = None
     instrument_type: str = None
@@ -346,7 +346,7 @@ class SphericalAberrationCorrector(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["SphericalAberrationCorrector"]
     class_class_curie: ClassVar[str] = "acquisition:SphericalAberrationCorrector"
     class_name: ClassVar[str] = "SphericalAberrationCorrector"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/SphericalAberrationCorrector")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/SphericalAberrationCorrector")
 
     used: Union[bool, Bool] = None
     instrument_type: str = None
@@ -375,7 +375,7 @@ class ChromaticAberrationCorrector(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["ChromaticAberrationCorrector"]
     class_class_curie: ClassVar[str] = "acquisition:ChromaticAberrationCorrector"
     class_name: ClassVar[str] = "ChromaticAberrationCorrector"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/ChromaticAberrationCorrector")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/ChromaticAberrationCorrector")
 
     used: Union[bool, Bool] = None
     instrument_type: str = None
@@ -404,7 +404,7 @@ class Detector(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["Detector"]
     class_class_curie: ClassVar[str] = "acquisition:Detector"
     class_name: ClassVar[str] = "Detector"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Detector")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Detector")
 
     name: Optional[str] = None
     mode: Optional[str] = None
@@ -437,7 +437,7 @@ class Instrument(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = INSTRUMENT["Instrument"]
     class_class_curie: ClassVar[str] = "instrument:Instrument"
     class_name: ClassVar[str] = "Instrument"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Instrument")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Instrument")
 
     microscope: Union[dict, "Microscope"] = None
     illumination: str = None
@@ -500,7 +500,7 @@ class Microscope(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SCHEMA["Microscope"]
     class_class_curie: ClassVar[str] = "schema:Microscope"
     class_name: ClassVar[str] = "Microscope"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Microscope")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Microscope")
 
     model: str = None
     manufacturer: Optional[str] = None
@@ -527,7 +527,7 @@ class Sample(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE["Sample"]
     class_class_curie: ClassVar[str] = "sample:Sample"
     class_name: ClassVar[str] = "Sample"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Sample")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Sample")
 
     name: str = None
     description: str = None
@@ -578,7 +578,7 @@ class OverallMolecule(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE["OverallMolecule"]
     class_class_curie: ClassVar[str] = "sample:OverallMolecule"
     class_name: ClassVar[str] = "OverallMolecule"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/OverallMolecule")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/OverallMolecule")
 
     name_sample: str = None
     source: str = None
@@ -619,7 +619,7 @@ class Molecule(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE["Molecule"]
     class_class_curie: ClassVar[str] = "sample:Molecule"
     class_name: ClassVar[str] = "Molecule"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Molecule")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Molecule")
 
     name_mol: str = None
     sequence: str = None
@@ -678,7 +678,7 @@ class Ligand(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE["Ligand"]
     class_class_curie: ClassVar[str] = "sample:Ligand"
     class_name: ClassVar[str] = "Ligand"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Ligand")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Ligand")
 
     present: Optional[Union[bool, Bool]] = None
     smiles: Optional[str] = None
@@ -707,7 +707,7 @@ class Specimen(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE["Specimen"]
     class_class_curie: ClassVar[str] = "sample:Specimen"
     class_name: ClassVar[str] = "Specimen"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Specimen")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Specimen")
 
     buffer: Optional[str] = None
     concentration: Optional[Union[dict, "QuantitySI"]] = None
@@ -764,7 +764,7 @@ class Grid(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE["Grid"]
     class_class_curie: ClassVar[str] = "sample:Grid"
     class_name: ClassVar[str] = "Grid"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Grid")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Grid")
 
     manufacturer: Optional[str] = None
     material: Optional[str] = None
@@ -822,7 +822,7 @@ class SampleMolecular(Sample):
     class_class_uri: ClassVar[URIRef] = SAMPLE["SampleMolecular"]
     class_class_curie: ClassVar[str] = "sample:SampleMolecular"
     class_name: ClassVar[str] = "SampleMolecular"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/SampleMolecular")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/SampleMolecular")
 
     overall_molecule: Union[dict, OverallMolecule] = None
     name: Optional[str] = None
@@ -850,7 +850,7 @@ class AcquisitionTomo(Acquisition):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionTomo"]
     class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionTomo"
     class_name: ClassVar[str] = "AcquisitionTomo"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionTomo")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionTomo")
 
     detectors: Union[Union[dict, Detector], list[Union[dict, Detector]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -880,7 +880,7 @@ class AcquisitionSubTomo(AcquisitionTomo):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionSubTomo"]
     class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionSubTomo"
     class_name: ClassVar[str] = "AcquisitionSubTomo"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionSubTomo")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionSubTomo")
 
     detectors: Union[Union[dict, Detector], list[Union[dict, Detector]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -906,7 +906,7 @@ class AcquisitionEnvTomo(AcquisitionTomo):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionEnvTomo"]
     class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionEnvTomo"
     class_name: ClassVar[str] = "AcquisitionEnvTomo"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionEnvTomo")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionEnvTomo")
 
     detectors: Union[Union[dict, Detector], list[Union[dict, Detector]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -932,7 +932,7 @@ class AcquisitionCelTomo(AcquisitionTomo):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionCelTomo"]
     class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionCelTomo"
     class_name: ClassVar[str] = "AcquisitionCelTomo"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionCelTomo")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionCelTomo")
 
     detectors: Union[Union[dict, Detector], list[Union[dict, Detector]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -961,7 +961,7 @@ class Organizational(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Organizational"]
     class_class_curie: ClassVar[str] = "organizational:Organizational"
     class_name: ClassVar[str] = "Organizational"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Organizational")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Organizational")
 
     authors: Union[Union[dict, "Author"], list[Union[dict, "Author"]]] = None
     grants: Optional[Union[Union[dict, "Grant"], list[Union[dict, "Grant"]]]] = empty_list()
@@ -995,7 +995,7 @@ class Person(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SCHEMA["Person"]
     class_class_curie: ClassVar[str] = "schema:Person"
     class_name: ClassVar[str] = "Person"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Person")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Person")
 
     family_name: Optional[str] = None
     given_name: Optional[str] = None
@@ -1032,7 +1032,7 @@ class Author(Person):
     class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Author"]
     class_class_curie: ClassVar[str] = "organizational:Author"
     class_name: ClassVar[str] = "Author"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Author")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Author")
 
     type_org: Union[str, "OrganizationTypeEnum"] = None
     family_name: str = None
@@ -1089,7 +1089,7 @@ class Grant(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SCHEMA["Grant"]
     class_class_curie: ClassVar[str] = "schema:Grant"
     class_name: ClassVar[str] = "Grant"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Grant")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Grant")
 
     grant_name: Optional[str] = None
     start_date: Optional[Union[str, XSDDateTime]] = None
@@ -1130,7 +1130,7 @@ class Funder(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Funder"]
     class_class_curie: ClassVar[str] = "organizational:Funder"
     class_name: ClassVar[str] = "Funder"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Funder")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Funder")
 
     funder_name: Optional[str] = None
     type_org: Optional[Union[str, "OrganizationTypeEnum"]] = None
@@ -1159,7 +1159,7 @@ class EMDatasetBase(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = OSCEM["EMDatasetBase"]
     class_class_curie: ClassVar[str] = "oscem:EMDatasetBase"
     class_name: ClassVar[str] = "EMDatasetBase"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EMDatasetBase")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/EMDatasetBase")
 
     acquisition: Optional[Union[dict, "Any"]] = None
     instrument: Optional[Union[dict, "Any"]] = None
@@ -1173,10 +1173,10 @@ class EMDatasetTomo(EMDatasetBase):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EMDatasetTomo")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = OSCEM["subtomo/EMDatasetTomo"]
+    class_class_curie: ClassVar[str] = "oscem:subtomo/EMDatasetTomo"
     class_name: ClassVar[str] = "EMDatasetTomo"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EMDatasetTomo")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/EMDatasetTomo")
 
     acquisition: Union[dict, AcquisitionSubTomo] = None
     instrument: Union[dict, Instrument] = None
@@ -1215,7 +1215,7 @@ class Range(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = TYPES["Range"]
     class_class_curie: ClassVar[str] = "types:Range"
     class_name: ClassVar[str] = "Range"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Range")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Range")
 
     minimal: Optional[Union[dict, "QuantitySI"]] = None
     maximal: Optional[Union[dict, "QuantitySI"]] = None
@@ -1240,7 +1240,7 @@ class Series(Range):
     class_class_uri: ClassVar[URIRef] = TYPES["Series"]
     class_class_curie: ClassVar[str] = "types:Series"
     class_name: ClassVar[str] = "Series"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Series")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Series")
 
     increment: Optional[Union[dict, "QuantitySI"]] = None
 
@@ -1261,7 +1261,7 @@ class TiltAngle(Series):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/TiltAngle"]
     class_class_curie: ClassVar[str] = "tomo:graphy/TiltAngle"
     class_name: ClassVar[str] = "TiltAngle"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/TiltAngle")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/TiltAngle")
 
     minimal: Union[dict, "QuantitySI"] = None
     maximal: Union[dict, "QuantitySI"] = None
@@ -1296,7 +1296,7 @@ class ImageSize(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = TYPES["ImageSize"]
     class_class_curie: ClassVar[str] = "types:ImageSize"
     class_name: ClassVar[str] = "ImageSize"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/ImageSize")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/ImageSize")
 
     height: Optional[int] = None
     width: Optional[int] = None
@@ -1321,7 +1321,7 @@ class BoundingBox2D(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = TYPES["BoundingBox2D"]
     class_class_curie: ClassVar[str] = "types:BoundingBox2D"
     class_name: ClassVar[str] = "BoundingBox2D"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/BoundingBox2D")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/BoundingBox2D")
 
     x_min: Optional[Union[dict, "QuantitySI"]] = None
     x_max: Optional[Union[dict, "QuantitySI"]] = None
@@ -1354,7 +1354,7 @@ class QuantityValue(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = QUDT["quantityValue"]
     class_class_curie: ClassVar[str] = "qudt:quantityValue"
     class_name: ClassVar[str] = "QuantityValue"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/QuantityValue")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/QuantityValue")
 
     unit: str = None
     value: float = None
@@ -1383,7 +1383,7 @@ class QuantitySI(QuantityValue):
     class_class_uri: ClassVar[URIRef] = TYPES["QuantitySI"]
     class_class_curie: ClassVar[str] = "types:QuantitySI"
     class_name: ClassVar[str] = "QuantitySI"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/QuantitySI")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/QuantitySI")
 
     unit: str = None
     value: float = None
@@ -1411,7 +1411,7 @@ class Descriptor(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = TYPES["Descriptor"]
     class_class_curie: ClassVar[str] = "types:Descriptor"
     class_name: ClassVar[str] = "Descriptor"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Descriptor")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Descriptor")
 
     descriptor_name: str = None
     descriptor_thing: Optional[Union[dict, Any]] = None
@@ -1432,7 +1432,7 @@ class Descriptors(Descriptor):
     class_class_uri: ClassVar[URIRef] = TYPES["Descriptors"]
     class_class_curie: ClassVar[str] = "types:Descriptors"
     class_name: ClassVar[str] = "Descriptors"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Descriptors")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/subtomo/Descriptors")
 
     descriptor_name: str = None
 

@@ -3,7 +3,7 @@
 
 Collection angle set, min and max values in mrad.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/collection_angle](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/collection_angle)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/collection_angle](https://w3id.org/oscem-schemas/latest/env_tomo/collection_angle)
 
 
 ## Domain and Range

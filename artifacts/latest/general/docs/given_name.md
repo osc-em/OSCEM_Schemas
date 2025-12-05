@@ -3,7 +3,7 @@
 
 first name
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/given_name](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/given_name)
+URI: [https://w3id.org/oscem-schemas/latest/general/given_name](https://w3id.org/oscem-schemas/latest/general/given_name)
 
 
 ## Domain and Range

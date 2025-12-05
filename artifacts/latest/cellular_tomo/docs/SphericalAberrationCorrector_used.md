@@ -3,7 +3,7 @@
 
 whether a specific instrument was used during data acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SphericalAberrationCorrector_used](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SphericalAberrationCorrector_used)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/SphericalAberrationCorrector_used](https://w3id.org/oscem-schemas/latest/cellular_tomo/SphericalAberrationCorrector_used)
 
 
 ## Domain and Range

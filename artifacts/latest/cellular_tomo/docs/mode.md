@@ -3,7 +3,7 @@
 
 Mode of the detector, e.g. "counting", "ScanningDetector", "ImagingDetector", etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/mode](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/mode)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/mode](https://w3id.org/oscem-schemas/latest/cellular_tomo/mode)
 
 
 ## Domain and Range

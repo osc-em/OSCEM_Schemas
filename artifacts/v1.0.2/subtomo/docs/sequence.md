@@ -3,7 +3,7 @@
 
 Full sequence of the sample as in the data, i.e., cleaved tags should also be removed from sequence here
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/sequence](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/sequence)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/sequence](https://w3id.org/oscem-schemas/latest/subtomo/sequence)
 
 
 ## Domain and Range

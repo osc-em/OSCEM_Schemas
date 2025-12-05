@@ -3,7 +3,7 @@
 
 Resolution-related metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Resolution](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Resolution)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Resolution](https://w3id.org/oscem-schemas/latest/spa/Resolution)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<output_avg_resolution%200..1-++[Resolution&#124;resolution_histogram:string%20%3F],[QuantityValue]<output_max_resolution%200..1-++[Resolution],[QuantityValue]<output_min_resolution%200..1-++[Resolution],[CTFs]++-%20resolution%200..1>[Resolution],[CTFs]++-%20resolution(i)%200..1>[Resolution],[QuantityValue],[CTFs])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<output_avg_resolution%200..1-++[Resolution&#124;resolution_histogram:string%20%3F],[QuantityValue]<output_max_resolution%200..1-++[Resolution],[QuantityValue]<output_min_resolution%200..1-++[Resolution],[CTFs]++-%20resolution%200..1>[Resolution],[CTFs]++-%20resolution(i)%200..1>[Resolution],[QuantityValue],[CTFs])

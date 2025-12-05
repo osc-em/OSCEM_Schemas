@@ -3,7 +3,7 @@
 
 Indicates the type of volume
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/volume_type](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/volume_type)
+URI: [https://w3id.org/oscem-schemas/latest/spa/volume_type](https://w3id.org/oscem-schemas/latest/spa/volume_type)
 
 
 ## Domain and Range

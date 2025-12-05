@@ -3,7 +3,7 @@
 
 List of authors associated with the project
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Organizational_authors](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Organizational_authors)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Organizational_authors](https://w3id.org/oscem-schemas/latest/cellular_tomo/Organizational_authors)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Microscope information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Instrument_microscope](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Instrument_microscope)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Instrument_microscope](https://w3id.org/oscem-schemas/latest/subtomo/Instrument_microscope)
 
 
 ## Domain and Range

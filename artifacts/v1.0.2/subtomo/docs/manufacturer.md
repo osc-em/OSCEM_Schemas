@@ -3,7 +3,7 @@
 
 The name of the manufacturer
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/manufacturer](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/manufacturer)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/manufacturer](https://w3id.org/oscem-schemas/latest/subtomo/manufacturer)
 
 
 ## Domain and Range

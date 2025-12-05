@@ -3,7 +3,7 @@
 
 What type of higher order structure your sample forms - if any.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/OverallMolecule_assembly](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/OverallMolecule_assembly)
+URI: [https://w3id.org/oscem-schemas/latest/spa/OverallMolecule_assembly](https://w3id.org/oscem-schemas/latest/spa/OverallMolecule_assembly)
 
 
 ## Domain and Range

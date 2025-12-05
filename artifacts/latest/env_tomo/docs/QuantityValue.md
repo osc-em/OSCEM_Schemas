@@ -3,7 +3,7 @@
 
 if a value has a unit, it should be given as a unit value pair.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/QuantityValue](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/QuantityValue)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/QuantityValue](https://w3id.org/oscem-schemas/latest/env_tomo/QuantityValue)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Grant]++-%20budget%200..1>[QuantityValue&#124;unit:string;value:float],[QuantityValue]^-[QuantitySI],[QuantitySI],[Grant])](https://yuml.me/diagram/nofunky;dir:TB/class/[Grant]++-%20budget%200..1>[QuantityValue&#124;unit:string;value:float],[QuantityValue]^-[QuantitySI],[QuantitySI],[Grant])

@@ -3,7 +3,7 @@
 
 Machine estimated defocus, min and max values in µm. Has a tendency to be off.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/calibrated_defocus](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/calibrated_defocus)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/calibrated_defocus](https://w3id.org/oscem-schemas/latest/cellular_tomo/calibrated_defocus)
 
 
 ## Domain and Range

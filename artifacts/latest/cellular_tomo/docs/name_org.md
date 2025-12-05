@@ -3,7 +3,7 @@
 
 Name of the organization
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/name_org](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/name_org)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/name_org](https://w3id.org/oscem-schemas/latest/cellular_tomo/name_org)
 
 
 ## Domain and Range

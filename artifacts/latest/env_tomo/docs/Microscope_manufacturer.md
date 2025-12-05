@@ -3,7 +3,7 @@
 
 The name of the manufacturer
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Microscope_manufacturer](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Microscope_manufacturer)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Microscope_manufacturer](https://w3id.org/oscem-schemas/latest/env_tomo/Microscope_manufacturer)
 
 
 ## Domain and Range

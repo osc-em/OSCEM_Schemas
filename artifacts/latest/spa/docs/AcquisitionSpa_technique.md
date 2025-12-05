@@ -3,7 +3,7 @@
 
 Single particle acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/AcquisitionSpa_technique](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/AcquisitionSpa_technique)
+URI: [https://w3id.org/oscem-schemas/latest/spa/AcquisitionSpa_technique](https://w3id.org/oscem-schemas/latest/spa/AcquisitionSpa_technique)
 
 
 ## Domain and Range

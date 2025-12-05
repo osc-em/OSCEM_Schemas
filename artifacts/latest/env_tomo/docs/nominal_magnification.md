@@ -3,7 +3,7 @@
 
 Magnification level as indicated by the instrument, no unit
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/nominal_magnification](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/nominal_magnification)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/nominal_magnification](https://w3id.org/oscem-schemas/latest/env_tomo/nominal_magnification)
 
 
 ## Domain and Range

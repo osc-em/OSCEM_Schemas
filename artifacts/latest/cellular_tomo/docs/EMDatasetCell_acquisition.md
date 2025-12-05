@@ -3,7 +3,7 @@
 
 Describe the data acquisition parameters
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetCell_acquisition](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetCell_acquisition)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetCell_acquisition](https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetCell_acquisition)
 
 
 ## Domain and Range

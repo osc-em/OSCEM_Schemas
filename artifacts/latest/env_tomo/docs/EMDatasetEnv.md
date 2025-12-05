@@ -3,7 +3,7 @@
 
 Cryo electron tomography dataset of an environmental sample
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetEnv](https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetEnv)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetEnv],[SampleEnv]<sample%200..1-++[EMDatasetEnv],[Instrument]<instrument%201..1-++[EMDatasetEnv],[AcquisitionEnvTomo]<acquisition%201..1-++[EMDatasetEnv],[EMDatasetBase]^-[EMDatasetEnv],[EMDatasetBase],[AcquisitionEnvTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetEnv],[SampleEnv]<sample%200..1-++[EMDatasetEnv],[Instrument]<instrument%201..1-++[EMDatasetEnv],[AcquisitionEnvTomo]<acquisition%201..1-++[EMDatasetEnv],[EMDatasetBase]^-[EMDatasetEnv],[EMDatasetBase],[AcquisitionEnvTomo])

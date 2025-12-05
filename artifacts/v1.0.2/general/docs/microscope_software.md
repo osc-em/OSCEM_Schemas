@@ -3,7 +3,7 @@
 
 Software used for instrument control,
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/microscope_software](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/microscope_software)
+URI: [https://w3id.org/oscem-schemas/latest/general/microscope_software](https://w3id.org/oscem-schemas/latest/general/microscope_software)
 
 
 ## Domain and Range

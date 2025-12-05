@@ -3,7 +3,7 @@
 
 Whether an energy filter was used and its specifics.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/energy_filter](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/energy_filter)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/energy_filter](https://w3id.org/oscem-schemas/latest/cellular_tomo/energy_filter)
 
 
 ## Domain and Range

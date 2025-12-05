@@ -3,7 +3,7 @@
 
 Class representing classes 3D metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes3D](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes3D)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Classes3D](https://w3id.org/oscem-schemas/latest/spa/Classes3D)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Volume],[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes3D&#124;particles_per_3Dclass:integer%20*;images_classes_3D:string%20%3F],[QuantityValue]<resolution_classes_3D%200..1-++[Classes3D],[Volume]<volume%200..*-++[Classes3D],[Processing]++-%20classes3D%200..1>[Classes3D],[Processing]++-%20classes3D(i)%200..1>[Classes3D])](https://yuml.me/diagram/nofunky;dir:TB/class/[Volume],[QuantityValue],[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Classes3D&#124;particles_per_3Dclass:integer%20*;images_classes_3D:string%20%3F],[QuantityValue]<resolution_classes_3D%200..1-++[Classes3D],[Volume]<volume%200..*-++[Classes3D],[Processing]++-%20classes3D%200..1>[Classes3D],[Processing]++-%20classes3D(i)%200..1>[Classes3D])

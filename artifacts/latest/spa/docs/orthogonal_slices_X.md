@@ -3,7 +3,7 @@
 
 Filename of orthogonal slices in X direction
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/orthogonal_slices_X](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/orthogonal_slices_X)
+URI: [https://w3id.org/oscem-schemas/latest/spa/orthogonal_slices_X](https://w3id.org/oscem-schemas/latest/spa/orthogonal_slices_X)
 
 
 ## Domain and Range

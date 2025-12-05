@@ -3,7 +3,7 @@
 
 Maximum resolution
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_max_resolution](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_max_resolution)
+URI: [https://w3id.org/oscem-schemas/latest/spa/output_max_resolution](https://w3id.org/oscem-schemas/latest/spa/output_max_resolution)
 
 
 ## Domain and Range

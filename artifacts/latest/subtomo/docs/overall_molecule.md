@@ -3,7 +3,7 @@
 
 Description of the overall molecule
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/overall_molecule](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/overall_molecule)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/overall_molecule](https://w3id.org/oscem-schemas/latest/subtomo/overall_molecule)
 
 
 ## Domain and Range

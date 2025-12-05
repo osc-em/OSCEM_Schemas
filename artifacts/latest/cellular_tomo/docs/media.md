@@ -3,7 +3,7 @@
 
 What growth media was used
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/media](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/media)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/media](https://w3id.org/oscem-schemas/latest/cellular_tomo/media)
 
 
 ## Domain and Range

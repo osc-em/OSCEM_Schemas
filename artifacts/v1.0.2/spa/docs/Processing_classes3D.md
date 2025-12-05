@@ -3,7 +3,7 @@
 
 Classes 3D metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing_classes3D](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing_classes3D)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Processing_classes3D](https://w3id.org/oscem-schemas/latest/spa/Processing_classes3D)
 
 
 ## Domain and Range

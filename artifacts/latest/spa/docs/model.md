@@ -3,7 +3,7 @@
 
 The model of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/model](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/model)
+URI: [https://w3id.org/oscem-schemas/latest/spa/model](https://w3id.org/oscem-schemas/latest/spa/model)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Classes 2D metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/classes2D](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/classes2D)
+URI: [https://w3id.org/oscem-schemas/latest/spa/classes2D](https://w3id.org/oscem-schemas/latest/spa/classes2D)
 
 
 ## Domain and Range

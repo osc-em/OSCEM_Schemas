@@ -3,7 +3,7 @@
 
 Movement of the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/beamshift](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/beamshift)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/beamshift](https://w3id.org/oscem-schemas/latest/env_tomo/beamshift)
 
 
 ## Domain and Range

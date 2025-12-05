@@ -3,7 +3,7 @@
 
 Defocus-related metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Defocus](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Defocus)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Defocus](https://w3id.org/oscem-schemas/latest/spa/Defocus)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<output_avg_defocus%200..1-++[Defocus&#124;defocus_histogram:string%20%3F;defocus_micrograph_examples:string%20%3F],[QuantityValue]<output_max_defocus%200..1-++[Defocus],[QuantityValue]<output_min_defocus%200..1-++[Defocus],[CTFs]++-%20defocus%200..1>[Defocus],[CTFs]++-%20defocus(i)%200..1>[Defocus],[CTFs])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<output_avg_defocus%200..1-++[Defocus&#124;defocus_histogram:string%20%3F;defocus_micrograph_examples:string%20%3F],[QuantityValue]<output_max_defocus%200..1-++[Defocus],[QuantityValue]<output_min_defocus%200..1-++[Defocus],[CTFs]++-%20defocus%200..1>[Defocus],[CTFs]++-%20defocus(i)%200..1>[Defocus],[CTFs])

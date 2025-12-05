@@ -3,7 +3,7 @@
 
 the value of a field with a unit
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/QuantityValue_value](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/QuantityValue_value)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/QuantityValue_value](https://w3id.org/oscem-schemas/latest/cellular_tomo/QuantityValue_value)
 
 
 ## Domain and Range

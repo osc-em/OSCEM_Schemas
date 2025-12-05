@@ -3,7 +3,7 @@
 
 Where the sample was taken from, i.e., natural host, recombinantly expressed, etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/OverallMolecule_source](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/OverallMolecule_source)
+URI: [https://w3id.org/oscem-schemas/latest/general/OverallMolecule_source](https://w3id.org/oscem-schemas/latest/general/OverallMolecule_source)
 
 
 ## Domain and Range

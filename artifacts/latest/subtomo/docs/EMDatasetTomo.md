@@ -3,7 +3,7 @@
 
 Cryo electron tomography dataset, with a focus on a single protein (complex) & subtomogram averaging
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EMDatasetTomo](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EMDatasetTomo)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/EMDatasetTomo](https://w3id.org/oscem-schemas/latest/subtomo/EMDatasetTomo)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleMolecular],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetTomo],[SampleMolecular]<sample%200..1-++[EMDatasetTomo],[Instrument]<instrument%201..1-++[EMDatasetTomo],[AcquisitionSubTomo]<acquisition%201..1-++[EMDatasetTomo],[EMDatasetBase]^-[EMDatasetTomo],[EMDatasetBase],[AcquisitionSubTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleMolecular],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetTomo],[SampleMolecular]<sample%200..1-++[EMDatasetTomo],[Instrument]<instrument%201..1-++[EMDatasetTomo],[AcquisitionSubTomo]<acquisition%201..1-++[EMDatasetTomo],[EMDatasetBase]^-[EMDatasetTomo],[EMDatasetBase],[AcquisitionSubTomo])

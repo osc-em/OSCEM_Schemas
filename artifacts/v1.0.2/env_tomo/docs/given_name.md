@@ -3,7 +3,7 @@
 
 first name
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/given_name](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/given_name)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/given_name](https://w3id.org/oscem-schemas/latest/env_tomo/given_name)
 
 
 ## Domain and Range

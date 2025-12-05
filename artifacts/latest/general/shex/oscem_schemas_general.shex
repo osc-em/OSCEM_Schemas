@@ -1,11 +1,16 @@
 # metamodel_version: 1.7.0
-BASE <https://w3id.org/oscem-schemas/latest/oscem-schemas-general/>
+BASE <https://w3id.org/oscem-schemas/latest/general/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
+PREFIX acquisition: <https://w3id.org/oscem-schemas/latest/acquisition>
+PREFIX instrument: <https://w3id.org/oscem-schemas/latest/instrument>
+PREFIX sample: <https://w3id.org/oscem-schemas/latest/sample>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX organizational: <https://w3id.org/oscem-schemas/latest/organizational/>
+PREFIX oscem: <https://w3id.org/oscem-schemas/latest/>
+PREFIX custom_types: <https://w3id.org/oscem-schemas/latest/custom_types>
 
 
 linkml:String xsd:string
@@ -46,70 +51,53 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<https://w3id.org/oscem-schemas/latest/acquisitionAcquisition>  (
+acquisition:Acquisition  (
     CLOSED {
-       (  $<https://w3id.org/oscem-schemas/latest/acquisitionAcquisition_tes> ( 
-             <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> @linkml:String ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionscreen_current>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionnominal_defocus>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesRange> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_defocus>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesRange> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionnominal_magnification> @linkml:Integer ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitioncalibrated_magnification> @linkml:Integer ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionholder> @linkml:String ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionholder_cryogen> @linkml:String ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitiontemperature>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesRange> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionmicroscope_software> @linkml:String ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitiondetectors>
-             @<https://w3id.org/oscem-schemas/latest/acquisitionDetector> + ;
-             <https://w3id.org/oscem-schemas/latest/acquisitiondose_per_movie>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionenergy_filter>
-             @<https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionimage_size>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitiondate_time> @linkml:Datetime ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionexposure_time>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitioncryogen> @linkml:String ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionframes_per_movie> @linkml:Integer ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitiongrids_imaged> @linkml:Integer ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionimages_generated> @linkml:Integer ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionbinning_camera>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionpixel_size>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionspecialist_optics>
-             @<https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionbeamshift>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionbeamtilt>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionimageshift>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitionbeamtiltgroups> @linkml:Integer ? ;
-             <https://w3id.org/oscem-schemas/latest/acquisitiongainref_flip_rotate> @linkml:String ?
+       (  $acquisition:Acquisition_tes (  acquisition:technique @linkml:String ? ;
+             acquisition:screen_current @custom_types:QuantitySI ? ;
+             acquisition:nominal_defocus @custom_types:Range ? ;
+             acquisition:calibrated_defocus @custom_types:Range ? ;
+             acquisition:nominal_magnification @linkml:Integer ? ;
+             acquisition:calibrated_magnification @linkml:Integer ? ;
+             acquisition:holder @linkml:String ? ;
+             acquisition:holder_cryogen @linkml:String ? ;
+             acquisition:temperature @custom_types:Range ? ;
+             acquisition:microscope_software @linkml:String ? ;
+             acquisition:detectors @acquisition:Detector + ;
+             acquisition:dose_per_movie @custom_types:QuantitySI ? ;
+             acquisition:energy_filter @acquisition:EnergyFilter ? ;
+             acquisition:image_size @custom_types:ImageSize ? ;
+             acquisition:date_time @linkml:Datetime ;
+             acquisition:exposure_time @custom_types:QuantitySI ? ;
+             acquisition:cryogen @linkml:String ? ;
+             acquisition:frames_per_movie @linkml:Integer ? ;
+             acquisition:grids_imaged @linkml:Integer ? ;
+             acquisition:images_generated @linkml:Integer ? ;
+             acquisition:binning_camera @custom_types:ImageSize ;
+             acquisition:pixel_size @custom_types:QuantitySI ;
+             acquisition:specialist_optics @acquisition:SpecialistOptics ? ;
+             acquisition:beamshift @custom_types:BoundingBox2D ? ;
+             acquisition:beamtilt @custom_types:BoundingBox2D ? ;
+             acquisition:imageshift @custom_types:BoundingBox2D ? ;
+             acquisition:beamtiltgroups @linkml:Integer ? ;
+             acquisition:gainref_flip_rotate @linkml:String ?
           ) ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/acquisitionAcquisition> ] ?
+          rdf:type [ acquisition:Acquisition ] ?
        )
-    } OR @<https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionSpa>
+    } OR @acquisition:AcquisitionSpa
 )
 
-<https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionSpa> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionSpa_tes> ( 
-          &<https://w3id.org/oscem-schemas/latest/acquisitionAcquisition_tes> ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/acquisitionAcquisition> ] ? ;
-          <https://w3id.org/oscem-schemas/latest/acquisitiontechnique> @linkml:String
+acquisition:AcquisitionSpa CLOSED {
+    (  $acquisition:AcquisitionSpa_tes (  &acquisition:Acquisition_tes ;
+          rdf:type [ acquisition:Acquisition ] ? ;
+          acquisition:technique @linkml:String
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/acquisitionAcquisitionSpa> ] ?
+       rdf:type [ acquisition:AcquisitionSpa ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/custom_typesAny> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/custom_typesAny_tes> rdf:type . * ;
+custom_types:Any CLOSED {
+    (  $custom_types:Any_tes rdf:type . * ;
        rdf:type [ linkml:Any ] ?
     )
 }
@@ -133,103 +121,82 @@ organizational:Author CLOSED {
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/custom_typesx_min> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
-          ? ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesx_max> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
-          ? ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesy_min> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
-          ? ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesy_max> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
-          ?
+custom_types:BoundingBox2D CLOSED {
+    (  $custom_types:BoundingBox2D_tes (  custom_types:x_min @custom_types:QuantitySI ? ;
+          custom_types:x_max @custom_types:QuantitySI ? ;
+          custom_types:y_min @custom_types:QuantitySI ? ;
+          custom_types:y_max @custom_types:QuantitySI ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> ] ?
+       rdf:type [ custom_types:BoundingBox2D ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/acquisitionused> @linkml:Boolean ;
-          <https://w3id.org/oscem-schemas/latest/acquisitioninstrument_type> @linkml:String
+acquisition:ChromaticAberrationCorrector CLOSED {
+    (  $acquisition:ChromaticAberrationCorrector_tes (  acquisition:used @linkml:Boolean ;
+          acquisition:instrument_type @linkml:String
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector> ] ?
+       rdf:type [ acquisition:ChromaticAberrationCorrector ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor>  (
+custom_types:Descriptor  (
     {
-       (  $<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor_tes> ( 
-             <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> @linkml:String ;
-             <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesAny> ?
+       (  $custom_types:Descriptor_tes (  custom_types:descriptor_name @linkml:String ;
+             custom_types:descriptor_thing @custom_types:Any ?
           ) ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> ] ?
+          rdf:type [ custom_types:Descriptor ] ?
        )
-    } OR @<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors>
+    } OR @custom_types:Descriptors
 )
 
-<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/custom_typesDescriptors_tes> ( 
-          &<https://w3id.org/oscem-schemas/latest/custom_typesDescriptor_tes> ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> ] ?
+custom_types:Descriptors CLOSED {
+    (  $custom_types:Descriptors_tes (  &custom_types:Descriptor_tes ;
+          rdf:type [ custom_types:Descriptor ] ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ] ?
+       rdf:type [ custom_types:Descriptors ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/acquisitionDetector> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/acquisitionDetector_tes> (  <https://w3id.org/oscem-schemas/latest/custom_typesname>
-          @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/acquisitionmode> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/acquisitiondispersion>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-          <https://w3id.org/oscem-schemas/latest/acquisitioncollection_angle>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesRange> ?
+acquisition:Detector CLOSED {
+    (  $acquisition:Detector_tes (  custom_types:name @linkml:String ? ;
+          acquisition:mode @linkml:String ? ;
+          acquisition:dispersion @custom_types:QuantitySI ? ;
+          acquisition:collection_angle @custom_types:Range ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/acquisitionDetector> ] ?
+       rdf:type [ acquisition:Detector ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/OSCEM_schemasEMDatasetBase>  (
+oscem:EMDatasetBase  (
     {
-       (  $<https://w3id.org/oscem-schemas/latest/OSCEM_schemasEMDatasetBase_tes> ( 
-             <https://w3id.org/oscem-schemas/latest/OSCEM_schemasacquisition>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesAny> ? ;
-             <https://w3id.org/oscem-schemas/latest/OSCEM_schemasinstrument>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesAny> ? ;
-             <https://w3id.org/oscem-schemas/latest/OSCEM_schemassample> @<https://w3id.org/oscem-schemas/latest/custom_typesAny> ?
-             ;
-             <https://w3id.org/oscem-schemas/latest/OSCEM_schemasorganizational>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesAny> ?
+       (  $oscem:EMDatasetBase_tes (  acquisition: @custom_types:Any ? ;
+             instrument: @custom_types:Any ? ;
+             sample: @custom_types:Any ? ;
+             oscem:organizational @custom_types:Any ?
           ) ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/OSCEM_schemasEMDatasetBase> ] ?
+          rdf:type [ oscem:EMDatasetBase ] ?
        )
     } OR @<EMDatasetGeneral>
 )
 
 <EMDatasetGeneral> CLOSED {
-    (  $<EMDatasetGeneral_tes> (  &<https://w3id.org/oscem-schemas/latest/OSCEM_schemasEMDatasetBase_tes> ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/OSCEM_schemasEMDatasetBase> ] ? ;
-          <https://w3id.org/oscem-schemas/latest/OSCEM_schemasacquisition>
-          @<https://w3id.org/oscem-schemas/latest/acquisitionAcquisition> ;
-          <https://w3id.org/oscem-schemas/latest/OSCEM_schemasinstrument>
-          @<https://w3id.org/oscem-schemas/latest/instrumentInstrument> ;
-          <https://w3id.org/oscem-schemas/latest/OSCEM_schemassample> @<https://w3id.org/oscem-schemas/latest/sampleSample> ? ;
-          <https://w3id.org/oscem-schemas/latest/OSCEM_schemasorganizational> @organizational:Organizational ?
+    (  $<EMDatasetGeneral_tes> (  &oscem:EMDatasetBase_tes ;
+          rdf:type [ oscem:EMDatasetBase ] ? ;
+          acquisition: @acquisition:Acquisition ;
+          instrument: @instrument:Instrument ;
+          sample: @sample:Sample ? ;
+          oscem:organizational @organizational:Organizational ?
        ) ;
        rdf:type [ <EMDatasetGeneral> ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/acquisitionused> @linkml:Boolean ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesmodel> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/acquisitionwidth_energy_filter>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+acquisition:EnergyFilter CLOSED {
+    (  $acquisition:EnergyFilter_tes (  acquisition:used @linkml:Boolean ;
+          custom_types:model @linkml:String ? ;
+          acquisition:width_energy_filter @custom_types:QuantitySI
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/acquisitionEnergyFilter> ] ?
+       rdf:type [ acquisition:EnergyFilter ] ?
     )
 }
 
@@ -249,7 +216,7 @@ organizational:Grant CLOSED {
     (  $organizational:Grant_tes (  organizational:grant_name @linkml:String ? ;
           organizational:start_date @linkml:Datetime ? ;
           organizational:end_date @linkml:Datetime ? ;
-          organizational:budget @<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue> ? ;
+          organizational:budget @custom_types:QuantityValue ? ;
           schema1:identifier @linkml:String ? ;
           organizational:country @linkml:String ?
        ) ;
@@ -257,87 +224,75 @@ organizational:Grant CLOSED {
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/sampleGrid> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/sampleGrid_tes> (  <https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer>
-          @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplematerial> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplemesh> @linkml:Float ? ;
-          <https://w3id.org/oscem-schemas/latest/samplefilm_support> @linkml:Boolean ? ;
-          <https://w3id.org/oscem-schemas/latest/samplefilm_material> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplefilm_topology> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplefilm_thickness> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplepretreatment_type> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplepretreatment_time>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-          <https://w3id.org/oscem-schemas/latest/samplepretreatment_pressure>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-          <https://w3id.org/oscem-schemas/latest/samplepretreatment_atmosphere> @linkml:String ?
+sample:Grid CLOSED {
+    (  $sample:Grid_tes (  custom_types:manufacturer @linkml:String ? ;
+          sample:material @linkml:String ? ;
+          sample:mesh @linkml:Float ? ;
+          sample:film_support @linkml:Boolean ? ;
+          sample:film_material @linkml:String ? ;
+          sample:film_topology @linkml:String ? ;
+          sample:film_thickness @linkml:String ? ;
+          sample:pretreatment_type @linkml:String ? ;
+          sample:pretreatment_time @custom_types:QuantitySI ? ;
+          sample:pretreatment_pressure @custom_types:QuantitySI ? ;
+          sample:pretreatment_atmosphere @linkml:String ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/sampleGrid> ] ?
+       rdf:type [ sample:Grid ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/custom_typesImageSize> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/custom_typesImageSize_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/custom_typesheight> @linkml:Integer ? ;
-          <https://w3id.org/oscem-schemas/latest/custom_typeswidth> @linkml:Integer ?
+custom_types:ImageSize CLOSED {
+    (  $custom_types:ImageSize_tes (  custom_types:height @linkml:Integer ? ;
+          custom_types:width @linkml:Integer ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> ] ?
+       rdf:type [ custom_types:ImageSize ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/instrumentInstrument> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/instrumentInstrument_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/instrumentmicroscope>
-          @<https://w3id.org/oscem-schemas/latest/instrumentMicroscope> ;
-          <https://w3id.org/oscem-schemas/latest/instrumentillumination> @linkml:String ;
-          <https://w3id.org/oscem-schemas/latest/instrumentimaging> @linkml:String ;
-          <https://w3id.org/oscem-schemas/latest/instrumentelectron_source> @linkml:String ;
-          <https://w3id.org/oscem-schemas/latest/instrumentacceleration_voltage>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-          <https://w3id.org/oscem-schemas/latest/instrumentc2_aperture>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-          <https://w3id.org/oscem-schemas/latest/instrumentcs> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-          <https://w3id.org/oscem-schemas/latest/instrumentoperating_mode> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/instrumentbeam_convergence>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ?
+instrument:Instrument CLOSED {
+    (  $instrument:Instrument_tes (  instrument:microscope @instrument:Microscope ;
+          instrument:illumination @linkml:String ;
+          instrument:imaging @linkml:String ;
+          instrument:electron_source @linkml:String ;
+          instrument:acceleration_voltage @custom_types:QuantitySI ;
+          instrument:c2_aperture @custom_types:QuantitySI ? ;
+          instrument:cs @custom_types:QuantitySI ? ;
+          instrument:operating_mode @linkml:String ? ;
+          instrument:beam_convergence @custom_types:QuantitySI ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/instrumentInstrument> ] ?
+       rdf:type [ instrument:Instrument ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/sampleLigand> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/sampleLigand_tes> (  <https://w3id.org/oscem-schemas/latest/samplepresent>
-          @linkml:Boolean ? ;
-          <https://w3id.org/oscem-schemas/latest/samplesmiles> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplereference> @linkml:String ?
+sample:Ligand CLOSED {
+    (  $sample:Ligand_tes (  sample:present @linkml:Boolean ? ;
+          sample:smiles @linkml:String ? ;
+          sample:reference @linkml:String ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/sampleLigand> ] ?
+       rdf:type [ sample:Ligand ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/instrumentMicroscope> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/instrumentMicroscope_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/custom_typesmodel> @linkml:String ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesmanufacturer> @linkml:String ?
+instrument:Microscope CLOSED {
+    (  $instrument:Microscope_tes (  custom_types:model @linkml:String ;
+          custom_types:manufacturer @linkml:String ?
        ) ;
        rdf:type [ schema1:Microscope ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/sampleMolecule> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/sampleMolecule_tes> (  <https://w3id.org/oscem-schemas/latest/samplename_mol>
-          @linkml:String ;
-          <https://w3id.org/oscem-schemas/latest/samplemolecular_type> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplemolecular_class> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplesequence> @linkml:String ;
-          <https://w3id.org/oscem-schemas/latest/samplenatural_source> @linkml:String ;
-          <https://w3id.org/oscem-schemas/latest/sampletaxonomy_id_source> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/sampleexpression_system> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/sampletaxonomy_id_expression> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplegene_name> @linkml:String ?
+sample:Molecule CLOSED {
+    (  $sample:Molecule_tes (  sample:name_mol @linkml:String ;
+          sample:molecular_type @linkml:String ? ;
+          sample:molecular_class @linkml:String ? ;
+          sample:sequence @linkml:String ;
+          sample:natural_source @linkml:String ;
+          sample:taxonomy_id_source @linkml:String ? ;
+          sample:expression_system @linkml:String ? ;
+          sample:taxonomy_id_expression @linkml:String ? ;
+          sample:gene_name @linkml:String ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/sampleMolecule> ] ?
+       rdf:type [ sample:Molecule ] ?
     )
 }
 
@@ -350,25 +305,22 @@ organizational:Organizational CLOSED {
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/sampleOverallMolecule> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/sampleOverallMolecule_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/samplemolecular_overall_type> [
+sample:OverallMolecule CLOSED {
+    (  $sample:OverallMolecule_tes (  sample:molecular_overall_type [
              <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#CELL>
              <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#COMPLEX>
              <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#ORGANELLE%20OR%20CELLULAR%20COMPONENT>
              <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#RIBOSOME>
              <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#TISSUE>
              <https://w3id.org/oscem-schemas/latest/sampleMoleculeClassEnum#VIRUS> ] ? ;
-          <https://w3id.org/oscem-schemas/latest/samplename_sample> @linkml:String ;
-          <https://w3id.org/oscem-schemas/latest/samplesource> @linkml:String ;
-          <https://w3id.org/oscem-schemas/latest/samplemolecular_weight>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-          <https://w3id.org/oscem-schemas/latest/sampleassembly> [
-             <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#FILAMENT>
+          sample:name_sample @linkml:String ;
+          sample:source @linkml:String ;
+          sample:molecular_weight @custom_types:QuantitySI ? ;
+          sample:assembly [ <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#FILAMENT>
              <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#HELICAL%20ARRAY>
              <https://w3id.org/oscem-schemas/latest/sampleAssemblyEnum#PARTICLE> ] ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/sampleOverallMolecule> ] ?
+       rdf:type [ sample:OverallMolecule ] ?
     )
 }
 
@@ -385,128 +337,108 @@ organizational:Person  (
     } OR @organizational:Author
 )
 
-<https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/acquisitionused> @linkml:Boolean ;
-          <https://w3id.org/oscem-schemas/latest/acquisitioninstrument_type> @linkml:String
+acquisition:Phaseplate CLOSED {
+    (  $acquisition:Phaseplate_tes (  acquisition:used @linkml:Boolean ;
+          acquisition:instrument_type @linkml:String
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate> ] ?
+       rdf:type [ acquisition:Phaseplate ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI_tes> ( 
-          &<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue_tes> ;
+custom_types:QuantitySI CLOSED {
+    (  $custom_types:QuantitySI_tes (  &custom_types:QuantityValue_tes ;
           rdf:type [ qudt:quantityValue ] ? ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> @linkml:Float ? ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> @linkml:String ?
+          custom_types:valueSI @linkml:Float ? ;
+          custom_types:unitSI @linkml:String ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ] ?
+       rdf:type [ custom_types:QuantitySI ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue>  (
+custom_types:QuantityValue  (
     CLOSED {
-       (  $<https://w3id.org/oscem-schemas/latest/custom_typesQuantityValue_tes> (  qudt:hasUnit @linkml:String ;
+       (  $custom_types:QuantityValue_tes (  qudt:hasUnit @linkml:String ;
              qudt:hasQuantityKind @linkml:Float
           ) ;
           rdf:type [ qudt:quantityValue ] ?
        )
-    } OR @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
+    } OR @custom_types:QuantitySI
 )
 
-<https://w3id.org/oscem-schemas/latest/custom_typesRange>  (
+custom_types:Range  (
     CLOSED {
-       (  $<https://w3id.org/oscem-schemas/latest/custom_typesRange_tes> ( 
-             <https://w3id.org/oscem-schemas/latest/custom_typesminimal>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-             <https://w3id.org/oscem-schemas/latest/custom_typesmaximal>
-             @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ?
+       (  $custom_types:Range_tes (  custom_types:minimal @custom_types:QuantitySI ? ;
+             custom_types:maximal @custom_types:QuantitySI ?
           ) ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesRange> ] ?
+          rdf:type [ custom_types:Range ] ?
        )
-    } OR @<https://w3id.org/oscem-schemas/latest/custom_typesSeries>
+    } OR @custom_types:Series
 )
 
-<https://w3id.org/oscem-schemas/latest/sampleSample>  (
+sample:Sample  (
     CLOSED {
-       (  $<https://w3id.org/oscem-schemas/latest/sampleSample_tes> (  <https://w3id.org/oscem-schemas/latest/custom_typesname>
-             @linkml:String ;
-             <https://w3id.org/oscem-schemas/latest/custom_typesdescription> @linkml:String ;
-             <https://w3id.org/oscem-schemas/latest/sampleoverall_molecule>
-             @<https://w3id.org/oscem-schemas/latest/sampleOverallMolecule> ? ;
-             <https://w3id.org/oscem-schemas/latest/samplemolecule> @<https://w3id.org/oscem-schemas/latest/sampleMolecule> * ;
-             <https://w3id.org/oscem-schemas/latest/sampleligands> @<https://w3id.org/oscem-schemas/latest/sampleLigand> * ;
-             <https://w3id.org/oscem-schemas/latest/samplespecimen> @<https://w3id.org/oscem-schemas/latest/sampleSpecimen> ? ;
-             <https://w3id.org/oscem-schemas/latest/samplegrid> @<https://w3id.org/oscem-schemas/latest/sampleGrid> ?
+       (  $sample:Sample_tes (  custom_types:name @linkml:String ;
+             custom_types:description @linkml:String ;
+             sample:overall_molecule @sample:OverallMolecule ? ;
+             sample:molecule @sample:Molecule * ;
+             sample:ligands @sample:Ligand * ;
+             sample:specimen @sample:Specimen ? ;
+             sample:grid @sample:Grid ?
           ) ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/sampleSample> ] ?
+          rdf:type [ sample:Sample ] ?
        )
-    } OR @<https://w3id.org/oscem-schemas/latest/sampleSampleMolecular>
+    } OR @sample:SampleMolecular
 )
 
-<https://w3id.org/oscem-schemas/latest/sampleSampleMolecular> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/sampleSampleMolecular_tes> ( 
-          &<https://w3id.org/oscem-schemas/latest/sampleSample_tes> ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/sampleSample> ] ? ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesname> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesdescription> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/sampleoverall_molecule>
-          @<https://w3id.org/oscem-schemas/latest/sampleOverallMolecule>
+sample:SampleMolecular CLOSED {
+    (  $sample:SampleMolecular_tes (  &sample:Sample_tes ;
+          rdf:type [ sample:Sample ] ? ;
+          custom_types:name @linkml:String ? ;
+          custom_types:description @linkml:String ? ;
+          sample:overall_molecule @sample:OverallMolecule
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/sampleSampleMolecular> ] ?
+       rdf:type [ sample:SampleMolecular ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/custom_typesSeries> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/custom_typesSeries_tes> ( 
-          &<https://w3id.org/oscem-schemas/latest/custom_typesRange_tes> ;
-          rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesRange> ] ? ;
-          <https://w3id.org/oscem-schemas/latest/custom_typesincrement>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ?
+custom_types:Series CLOSED {
+    (  $custom_types:Series_tes (  &custom_types:Range_tes ;
+          rdf:type [ custom_types:Range ] ? ;
+          custom_types:increment @custom_types:QuantitySI ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/custom_typesSeries> ] ?
+       rdf:type [ custom_types:Series ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/acquisitionphaseplate>
-          @<https://w3id.org/oscem-schemas/latest/acquisitionPhaseplate> ? ;
-          <https://w3id.org/oscem-schemas/latest/acquisitionspherical_aberration_corrector>
-          @<https://w3id.org/oscem-schemas/latest/acquisitionSphericalAberrationCorrector> ? ;
-          <https://w3id.org/oscem-schemas/latest/acquisitionchromatic_aberration_corrector>
-          @<https://w3id.org/oscem-schemas/latest/acquisitionChromaticAberrationCorrector> ?
+acquisition:SpecialistOptics CLOSED {
+    (  $acquisition:SpecialistOptics_tes (  acquisition:phaseplate @acquisition:Phaseplate ? ;
+          acquisition:spherical_aberration_corrector @acquisition:SphericalAberrationCorrector ? ;
+          acquisition:chromatic_aberration_corrector @acquisition:ChromaticAberrationCorrector ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/acquisitionSpecialistOptics> ] ?
+       rdf:type [ acquisition:SpecialistOptics ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/sampleSpecimen> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/sampleSpecimen_tes> (  <https://w3id.org/oscem-schemas/latest/samplebuffer>
-          @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/sampleconcentration>
-          @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ? ;
-          <https://w3id.org/oscem-schemas/latest/sampleph> @linkml:Float ? ;
-          <https://w3id.org/oscem-schemas/latest/samplevitrification> @linkml:Boolean ? ;
-          <https://w3id.org/oscem-schemas/latest/samplevitrification_cryogen> @linkml:String ? ;
-          <https://w3id.org/oscem-schemas/latest/samplehumidity> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ?
-          ;
-          <https://w3id.org/oscem-schemas/latest/sampletemperature> @<https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI>
-          ? ;
-          <https://w3id.org/oscem-schemas/latest/samplestaining> @linkml:Boolean ? ;
-          <https://w3id.org/oscem-schemas/latest/sampleembedding> @linkml:Boolean ? ;
-          <https://w3id.org/oscem-schemas/latest/sampleshadowing> @linkml:Boolean ?
+sample:Specimen CLOSED {
+    (  $sample:Specimen_tes (  sample:buffer @linkml:String ? ;
+          sample:concentration @custom_types:QuantitySI ? ;
+          sample:ph @linkml:Float ? ;
+          sample:vitrification @linkml:Boolean ? ;
+          sample:vitrification_cryogen @linkml:String ? ;
+          sample:humidity @custom_types:QuantitySI ? ;
+          sample:temperature @custom_types:QuantitySI ? ;
+          sample:staining @linkml:Boolean ? ;
+          sample:embedding @linkml:Boolean ? ;
+          sample:shadowing @linkml:Boolean ?
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/sampleSpecimen> ] ?
+       rdf:type [ sample:Specimen ] ?
     )
 }
 
-<https://w3id.org/oscem-schemas/latest/acquisitionSphericalAberrationCorrector> CLOSED {
-    (  $<https://w3id.org/oscem-schemas/latest/acquisitionSphericalAberrationCorrector_tes> ( 
-          <https://w3id.org/oscem-schemas/latest/acquisitionused> @linkml:Boolean ;
-          <https://w3id.org/oscem-schemas/latest/acquisitioninstrument_type> @linkml:String
+acquisition:SphericalAberrationCorrector CLOSED {
+    (  $acquisition:SphericalAberrationCorrector_tes (  acquisition:used @linkml:Boolean ;
+          acquisition:instrument_type @linkml:String
        ) ;
-       rdf:type [ <https://w3id.org/oscem-schemas/latest/acquisitionSphericalAberrationCorrector> ] ?
+       rdf:type [ acquisition:SphericalAberrationCorrector ] ?
     )
 }

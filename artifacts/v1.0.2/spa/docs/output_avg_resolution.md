@@ -3,7 +3,7 @@
 
 Average value of resolution
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_avg_resolution](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_avg_resolution)
+URI: [https://w3id.org/oscem-schemas/latest/spa/output_avg_resolution](https://w3id.org/oscem-schemas/latest/spa/output_avg_resolution)
 
 
 ## Domain and Range

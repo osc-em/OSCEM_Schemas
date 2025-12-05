@@ -3,7 +3,7 @@
 
 Filename of micrographs shown as examples in descending order based on the number of particles
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Coordinates_micrograph_examples](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Coordinates_micrograph_examples)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Coordinates_micrograph_examples](https://w3id.org/oscem-schemas/latest/spa/Coordinates_micrograph_examples)
 
 
 ## Domain and Range

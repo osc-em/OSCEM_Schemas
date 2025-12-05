@@ -3,7 +3,7 @@
 
 OSC-EM Metadata for a dataset
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetBase](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EMDatasetBase)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetBase](https://w3id.org/oscem-schemas/latest/cellular_tomo/EMDatasetBase)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[EMDatasetCell],[Any]<organizational%200..1-++[EMDatasetBase],[Any]<sample%200..1-++[EMDatasetBase],[Any]<instrument%200..1-++[EMDatasetBase],[Any]<acquisition%200..1-++[EMDatasetBase],[EMDatasetBase]^-[EMDatasetCell],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[EMDatasetCell],[Any]<organizational%200..1-++[EMDatasetBase],[Any]<sample%200..1-++[EMDatasetBase],[Any]<instrument%200..1-++[EMDatasetBase],[Any]<acquisition%200..1-++[EMDatasetBase],[EMDatasetBase]^-[EMDatasetCell],[Any])

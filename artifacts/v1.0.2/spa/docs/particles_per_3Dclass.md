@@ -3,7 +3,7 @@
 
 Number of particles per 3D class
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/particles_per_3Dclass](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/particles_per_3Dclass)
+URI: [https://w3id.org/oscem-schemas/latest/spa/particles_per_3Dclass](https://w3id.org/oscem-schemas/latest/spa/particles_per_3Dclass)
 
 
 ## Domain and Range

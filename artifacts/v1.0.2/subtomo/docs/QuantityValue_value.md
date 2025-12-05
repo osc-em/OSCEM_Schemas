@@ -3,7 +3,7 @@
 
 the value of a field with a unit
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/QuantityValue_value](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/QuantityValue_value)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/QuantityValue_value](https://w3id.org/oscem-schemas/latest/subtomo/QuantityValue_value)
 
 
 ## Domain and Range

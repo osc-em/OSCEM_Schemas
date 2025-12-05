@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Descriptors](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Descriptors)
+URI: [https://w3id.org/oscem-schemas/latest/general/Descriptors](https://w3id.org/oscem-schemas/latest/general/Descriptors)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptor]^-[Descriptors&#124;descriptor_name(i):string],[Descriptor],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptor]^-[Descriptors&#124;descriptor_name(i):string],[Descriptor],[Any])

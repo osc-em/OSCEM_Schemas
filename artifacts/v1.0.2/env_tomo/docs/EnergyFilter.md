@@ -3,7 +3,7 @@
 
 A device used to filter for electrons with specific energy.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EnergyFilter](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EnergyFilter)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/EnergyFilter](https://w3id.org/oscem-schemas/latest/env_tomo/EnergyFilter)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<width_energy_filter%201..1-++[EnergyFilter&#124;used:boolean;model:string%20%3F],[Acquisition]++-%20energy_filter%200..1>[EnergyFilter],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<width_energy_filter%201..1-++[EnergyFilter&#124;used:boolean;model:string%20%3F],[Acquisition]++-%20energy_filter%200..1>[EnergyFilter],[Acquisition])

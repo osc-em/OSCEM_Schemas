@@ -3,7 +3,7 @@
 
 Filename of histogram for particle number per micrograph
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/particles_histogram](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/particles_histogram)
+URI: [https://w3id.org/oscem-schemas/latest/spa/particles_histogram](https://w3id.org/oscem-schemas/latest/spa/particles_histogram)
 
 
 ## Domain and Range

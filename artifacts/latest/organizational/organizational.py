@@ -1,5 +1,5 @@
 # Auto generated from organizational.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T15:42:49
+# Generation date: 2025-12-05T16:04:43
 # Schema: Organizational
 #
 # id: https://w3id.org/oscem-schemas/latest/organizational

@@ -3,7 +3,7 @@
 
 Type of organization, academic, commercial, governmental, etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Author_type_org](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Author_type_org)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Author_type_org](https://w3id.org/oscem-schemas/latest/cellular_tomo/Author_type_org)
 
 
 ## Domain and Range

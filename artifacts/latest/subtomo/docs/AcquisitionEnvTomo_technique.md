@@ -3,7 +3,7 @@
 
 Environmental tomography
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionEnvTomo_technique](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionEnvTomo_technique)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionEnvTomo_technique](https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionEnvTomo_technique)
 
 
 ## Domain and Range

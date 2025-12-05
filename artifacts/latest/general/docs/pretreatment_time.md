@@ -3,7 +3,7 @@
 
 Length of time of the pretreatment in s
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/pretreatment_time](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/pretreatment_time)
+URI: [https://w3id.org/oscem-schemas/latest/general/pretreatment_time](https://w3id.org/oscem-schemas/latest/general/pretreatment_time)
 
 
 ## Domain and Range

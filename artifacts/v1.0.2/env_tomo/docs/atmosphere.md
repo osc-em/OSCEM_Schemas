@@ -3,7 +3,7 @@
 
 What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/atmosphere](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/atmosphere)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/atmosphere](https://w3id.org/oscem-schemas/latest/env_tomo/atmosphere)
 
 
 ## Domain and Range

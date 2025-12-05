@@ -3,7 +3,7 @@
 
 Mode of illumination used during data collection
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/illumination](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/illumination)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/illumination](https://w3id.org/oscem-schemas/latest/cellular_tomo/illumination)
 
 
 ## Domain and Range

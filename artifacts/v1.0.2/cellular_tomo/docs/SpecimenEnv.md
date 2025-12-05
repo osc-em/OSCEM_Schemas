@@ -3,7 +3,7 @@
 
 base information on the acquisition and treatment of the sample itself.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SpecimenEnv](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SpecimenEnv)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/SpecimenEnv](https://w3id.org/oscem-schemas/latest/cellular_tomo/SpecimenEnv)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv]++-%20specimen_env%201..1>[SpecimenEnv&#124;organism:string%20%2B;tissue:string%20%3F;source_env:string%20%3F;location:string%20%3F;collection_date:date%20%3F;handling:string%20%3F],[SampleEnv]++-%20specimen_env(i)%200..1>[SpecimenEnv],[SampleEnv])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleEnv]++-%20specimen_env%201..1>[SpecimenEnv&#124;organism:string%20%2B;tissue:string%20%3F;source_env:string%20%3F;location:string%20%3F;collection_date:date%20%3F;handling:string%20%3F],[SampleEnv]++-%20specimen_env(i)%200..1>[SpecimenEnv],[SampleEnv])

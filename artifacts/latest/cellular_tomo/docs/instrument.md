@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/instrument](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/instrument)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/instrument](https://w3id.org/oscem-schemas/latest/cellular_tomo/instrument)
 
 
 ## Domain and Range

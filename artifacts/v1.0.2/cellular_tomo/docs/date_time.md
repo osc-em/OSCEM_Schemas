@@ -3,7 +3,7 @@
 
 Time and date of the data acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/date_time](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/date_time)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/date_time](https://w3id.org/oscem-schemas/latest/cellular_tomo/date_time)
 
 
 ## Domain and Range

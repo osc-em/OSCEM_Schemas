@@ -3,7 +3,7 @@
 
 The name of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/SampleMolecular_name](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/SampleMolecular_name)
+URI: [https://w3id.org/oscem-schemas/latest/spa/SampleMolecular_name](https://w3id.org/oscem-schemas/latest/spa/SampleMolecular_name)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Mode of imaging used during data collection
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Instrument_imaging](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Instrument_imaging)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Instrument_imaging](https://w3id.org/oscem-schemas/latest/env_tomo/Instrument_imaging)
 
 
 ## Domain and Range

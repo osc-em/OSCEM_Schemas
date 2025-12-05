@@ -3,7 +3,7 @@
 
 List of grants associated with the project
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/grants](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/grants)
+URI: [https://w3id.org/oscem-schemas/latest/spa/grants](https://w3id.org/oscem-schemas/latest/spa/grants)
 
 
 ## Domain and Range

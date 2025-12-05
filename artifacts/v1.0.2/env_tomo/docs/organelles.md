@@ -3,7 +3,7 @@
 
 What organelles; if any; are present?
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/organelles](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/organelles)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/organelles](https://w3id.org/oscem-schemas/latest/env_tomo/organelles)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/SampleMolecular](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/SampleMolecular)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/SampleMolecular](https://w3id.org/oscem-schemas/latest/subtomo/SampleMolecular)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[OverallMolecule]<overall_molecule%201..1-++[SampleMolecular&#124;name:string%20%3F;description:string%20%3F],[EMDatasetTomo]++-%20sample%200..1>[SampleMolecular],[Sample]^-[SampleMolecular],[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[Specimen],[OverallMolecule]<overall_molecule%201..1-++[SampleMolecular&#124;name:string%20%3F;description:string%20%3F],[EMDatasetTomo]++-%20sample%200..1>[SampleMolecular],[Sample]^-[SampleMolecular],[Sample],[OverallMolecule],[Molecule],[Ligand],[Grid],[EMDatasetTomo])

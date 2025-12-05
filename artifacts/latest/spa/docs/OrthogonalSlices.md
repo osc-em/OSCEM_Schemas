@@ -3,7 +3,7 @@
 
 Class for the orthogonal slices
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/OrthogonalSlices](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/OrthogonalSlices)
+URI: [https://w3id.org/oscem-schemas/latest/spa/OrthogonalSlices](https://w3id.org/oscem-schemas/latest/spa/OrthogonalSlices)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Volumes],[Volume],[Volume]++-%20orthogonal_slices%200..1>[OrthogonalSlices&#124;orthogonal_slices_X:string%20%3F;orthogonal_slices_Y:string%20%3F;orthogonal_slices_Z:string%20%3F],[Volumes]++-%20orthogonal_slices%200..1>[OrthogonalSlices],[Volume]++-%20orthogonal_slices(i)%200..1>[OrthogonalSlices],[Volumes]++-%20orthogonal_slices(i)%200..1>[OrthogonalSlices])](https://yuml.me/diagram/nofunky;dir:TB/class/[Volumes],[Volume],[Volume]++-%20orthogonal_slices%200..1>[OrthogonalSlices&#124;orthogonal_slices_X:string%20%3F;orthogonal_slices_Y:string%20%3F;orthogonal_slices_Z:string%20%3F],[Volumes]++-%20orthogonal_slices%200..1>[OrthogonalSlices],[Volume]++-%20orthogonal_slices(i)%200..1>[OrthogonalSlices],[Volumes]++-%20orthogonal_slices(i)%200..1>[OrthogonalSlices])

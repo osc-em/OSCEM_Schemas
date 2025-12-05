@@ -12,40 +12,40 @@ types:BoundingBox2D a owl:Class,
     rdfs:label "BoundingBox2D" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:x_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:y_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty types:x_min ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty types:y_max ],
         [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty types:x_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty types:x_min ],
         [ a owl:Restriction ;
-            owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty types:y_max ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty types:y_min ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty types:y_min ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty types:y_max ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty types:x_max ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty types:x_max ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty types:y_min ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty types:x_max ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty types:x_min ] ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:y_min ] ;
     skos:definition "an axis-aligned 2D bounding box (float units)" ;
     skos:inScheme types: .
 
@@ -54,21 +54,21 @@ types:ImageSize a owl:Class,
     rdfs:label "ImageSize" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty types:height ],
+            owl:onProperty types:width ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty types:height ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty types:height ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty types:width ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty types:width ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty types:height ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:height ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:width ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
             owl:onProperty types:width ] ;
     skos:definition "size of a 2D image (in integer units)" ;
     skos:inScheme types: .
@@ -77,13 +77,13 @@ types:Series a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Series" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty types:increment ],
-        [ a owl:Restriction ;
             owl:allValuesFrom types:QuantitySI ;
             owl:onProperty types:increment ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty types:increment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty types:increment ],
         types:Range ;
     skos:definition "A series of numbers constructed from min, max, and increment" ;
@@ -107,31 +107,31 @@ sample:SampleMolecular a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SampleMolecular" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty sample:overall_molecule ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty sample:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty sample:name ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sample:overall_molecule ],
         [ a owl:Restriction ;
-            owl:allValuesFrom owl:Thing ;
-            owl:onProperty sample:description ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sample:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty sample:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sample:overall_molecule ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom owl:Thing ;
-            owl:onProperty sample:overall_molecule ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom owl:Thing ;
+            owl:minCardinality 0 ;
             owl:onProperty sample:name ],
         sample:Sample ;
     skos:inScheme sample: .
@@ -140,20 +140,20 @@ types:Descriptor a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Descriptor" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty types:descriptor_name ],
-        [ a owl:Restriction ;
             owl:allValuesFrom types:Any ;
             owl:onProperty types:descriptor_thing ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty types:descriptor_name ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:descriptor_thing ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty types:descriptor_thing ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty types:descriptor_thing ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:descriptor_name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty types:descriptor_name ] ;
@@ -170,15 +170,6 @@ types:QuantityValue a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "QuantityValue" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty types:value ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty types:value ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty types:unit ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty types:value ],
         [ a owl:Restriction ;
@@ -186,7 +177,16 @@ types:QuantityValue a owl:Class,
             owl:onProperty types:unit ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty types:unit ] ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:unit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty types:value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:value ] ;
     skos:definition "if a value has a unit, it should be given as a unit value pair." ;
     skos:exactMatch <qudt:quantityValue> ;
     skos:inScheme types: .
@@ -195,22 +195,22 @@ types:Range a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Range" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty types:maximal ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty types:minimal ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty types:minimal ],
+            owl:onProperty types:maximal ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty types:minimal ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty types:maximal ],
+            owl:onProperty types:minimal ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty types:maximal ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty types:minimal ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
             owl:onProperty types:maximal ] ;
     skos:definition "A range constructed from min and max" ;
     skos:inScheme types: .
@@ -219,41 +219,41 @@ sample:Sample a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Sample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom sample:Molecule ;
-            owl:onProperty sample:molecule ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty types:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:specimen ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty types:name ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty types:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:grid ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:molecule ],
         [ a owl:Restriction ;
             owl:allValuesFrom sample:Ligand ;
             owl:onProperty sample:ligands ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sample:Specimen ;
+            owl:minCardinality 0 ;
             owl:onProperty sample:specimen ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sample:OverallMolecule ;
+            owl:minCardinality 0 ;
             owl:onProperty sample:overall_molecule ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:molecule ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:Molecule ;
+            owl:onProperty sample:molecule ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty types:description ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom sample:Grid ;
             owl:onProperty sample:grid ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:OverallMolecule ;
+            owl:onProperty sample:overall_molecule ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sample:Specimen ;
+            owl:onProperty sample:specimen ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:specimen ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sample:overall_molecule ],
@@ -261,20 +261,20 @@ sample:Sample a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty sample:ligands ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:specimen ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sample:Grid ;
-            owl:onProperty sample:grid ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:overall_molecule ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty types:description ],
+            owl:minCardinality 1 ;
+            owl:onProperty types:name ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty types:name ] ;
+            owl:onProperty types:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:grid ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:grid ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:description ] ;
     skos:definition "Unifying class to describe the full sample." ;
     skos:inScheme sample: .
 
@@ -307,104 +307,104 @@ sample:Grid a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Grid" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:film_topology ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sample:film_support ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:material ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:pretreatment_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:film_thickness ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sample:pretreatment_pressure ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:mesh ],
+            owl:onProperty sample:film_topology ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty sample:mesh ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:film_material ],
+            owl:onProperty sample:pretreatment_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty types:manufacturer ],
+            owl:onProperty sample:film_material ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:pretreatment_type ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sample:film_thickness ],
         [ a owl:Restriction ;
             owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty sample:pretreatment_pressure ],
+            owl:onProperty sample:pretreatment_time ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:material ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:manufacturer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty sample:film_thickness ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sample:film_support ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:film_topology ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:pretreatment_type ],
+            owl:onProperty sample:pretreatment_time ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sample:mesh ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:pretreatment_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:film_support ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:film_topology ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:film_material ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:material ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:film_support ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:pretreatment_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty types:manufacturer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:film_material ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty sample:material ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:film_thickness ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty types:manufacturer ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty sample:pretreatment_atmosphere ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:mesh ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:pretreatment_pressure ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sample:pretreatment_pressure ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty sample:pretreatment_atmosphere ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:pretreatment_atmosphere ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:pretreatment_time ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:film_topology ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:material ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty types:manufacturer ],
-        [ a owl:Restriction ;
             owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty sample:pretreatment_time ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:film_topology ],
+            owl:onProperty sample:pretreatment_pressure ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sample:pretreatment_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:film_material ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty types:manufacturer ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:film_material ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:pretreatment_atmosphere ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:film_support ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:pretreatment_time ] ;
+            owl:onProperty sample:pretreatment_atmosphere ] ;
     skos:definition "Details on the grid used in the experiment." ;
     skos:inScheme sample: .
 
@@ -413,31 +413,31 @@ sample:Ligand a owl:Class,
     rdfs:label "Ligand" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty sample:present ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:present ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty sample:smiles ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sample:present ],
+            owl:onProperty sample:reference ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sample:reference ],
+            owl:onProperty sample:smiles ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sample:present ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:reference ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:reference ],
+            owl:onProperty sample:smiles ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Boolean ;
             owl:onProperty sample:present ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:smiles ],
+            owl:onProperty sample:reference ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sample:smiles ] ;
+            owl:onProperty sample:reference ] ;
     skos:definition "Information on ligands if present." ;
     skos:inScheme sample: .
 
@@ -445,32 +445,23 @@ sample:Molecule a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Molecule" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:sequence ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sample:molecular_class ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:taxonomy_id_source ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:taxonomy_id_expression ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:molecular_class ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sample:taxonomy_id_expression ],
+            owl:onProperty sample:expression_system ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:taxonomy_id_expression ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
             owl:onProperty sample:name_mol ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:gene_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sample:natural_source ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:molecular_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sample:sequence ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sample:molecular_type ],
@@ -478,40 +469,46 @@ sample:Molecule a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty sample:natural_source ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:taxonomy_id_source ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty sample:molecular_type ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:sequence ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:sequence ],
+            owl:onProperty sample:natural_source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:natural_source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:taxonomy_id_expression ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sample:gene_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty sample:sequence ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:taxonomy_id_expression ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:expression_system ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:molecular_type ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sample:gene_name ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:expression_system ],
+            owl:minCardinality 0 ;
+            owl:onProperty sample:taxonomy_id_source ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:molecular_class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:expression_system ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty sample:name_mol ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:taxonomy_id_expression ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:gene_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sample:name_mol ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
@@ -520,11 +517,14 @@ sample:Molecule a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty sample:taxonomy_id_source ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty sample:expression_system ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:natural_source ] ;
+            owl:onProperty sample:taxonomy_id_source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:gene_name ] ;
     skos:definition "More detailed information about individual molecules." ;
     skos:inScheme sample: .
 
@@ -568,50 +568,50 @@ sample:OverallMolecule a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OverallMolecule" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:molecular_overall_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:name_sample ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:molecular_weight ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty sample:assembly ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:name_sample ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:molecular_weight ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:name_sample ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sample:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:assembly ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
             owl:onProperty sample:molecular_weight ],
         [ a owl:Restriction ;
             owl:allValuesFrom sample:MoleculeClassEnum ;
             owl:onProperty sample:molecular_overall_type ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sample:source ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:molecular_overall_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:molecular_weight ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:name_sample ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:assembly ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:molecular_overall_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:source ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sample:name_sample ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:assembly ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:source ],
-        [ a owl:Restriction ;
             owl:allValuesFrom sample:AssemblyEnum ;
             owl:onProperty sample:assembly ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:name_sample ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty sample:molecular_weight ] ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:molecular_overall_type ] ;
     skos:definition "Description of the overall molecule" ;
     skos:inScheme sample: .
 
@@ -622,92 +622,92 @@ sample:Specimen a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty sample:vitrification_cryogen ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:buffer ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty sample:vitrification_cryogen ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:vitrification_cryogen ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:humidity ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:shadowing ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:shadowing ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:ph ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:vitrification ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty sample:shadowing ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:buffer ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:ph ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty sample:staining ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:temperature ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty sample:concentration ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:vitrification ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:temperature ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sample:buffer ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sample:embedding ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sample:staining ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty sample:vitrification ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:embedding ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty sample:embedding ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom types:QuantitySI ;
             owl:onProperty sample:temperature ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:staining ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:humidity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom types:QuantitySI ;
-            owl:onProperty sample:humidity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sample:concentration ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty sample:ph ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:shadowing ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sample:concentration ] ;
+            owl:onProperty sample:ph ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:staining ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:humidity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:shadowing ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:concentration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:vitrification_cryogen ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty sample:concentration ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:vitrification_cryogen ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:concentration ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:staining ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty sample:humidity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:ph ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty sample:buffer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:vitrification ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:embedding ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:vitrification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:embedding ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:vitrification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:temperature ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom types:QuantitySI ;
+            owl:onProperty sample:temperature ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sample:buffer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty sample:shadowing ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:staining ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:humidity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sample:buffer ] ;
     skos:definition "Description of specimen handling." ;
     skos:inScheme sample: .
 
@@ -1158,17 +1158,17 @@ types:QuantitySI a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "QuantitySI" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty types:valueSI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty types:valueSI ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty types:unitSI ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty types:unitSI ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty types:valueSI ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty types:valueSI ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty types:valueSI ],

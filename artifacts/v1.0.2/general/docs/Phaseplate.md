@@ -3,7 +3,7 @@
 
 Used to modulate the phase of the electron wave.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Phaseplate](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Phaseplate)
+URI: [https://w3id.org/oscem-schemas/latest/general/Phaseplate](https://w3id.org/oscem-schemas/latest/general/Phaseplate)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics]++-%20phaseplate%200..1>[Phaseplate&#124;used:boolean;instrument_type:string],[SpecialistOptics])](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics]++-%20phaseplate%200..1>[Phaseplate&#124;used:boolean;instrument_type:string],[SpecialistOptics])

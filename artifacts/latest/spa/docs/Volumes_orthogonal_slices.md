@@ -3,7 +3,7 @@
 
 orthogonal slices of volume
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Volumes_orthogonal_slices](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Volumes_orthogonal_slices)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Volumes_orthogonal_slices](https://w3id.org/oscem-schemas/latest/spa/Volumes_orthogonal_slices)
 
 
 ## Domain and Range

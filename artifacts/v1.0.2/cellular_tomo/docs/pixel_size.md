@@ -3,7 +3,7 @@
 
 Pixel size, in Angstrom
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/pixel_size](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/pixel_size)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/pixel_size](https://w3id.org/oscem-schemas/latest/cellular_tomo/pixel_size)
 
 
 ## Domain and Range

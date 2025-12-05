@@ -3,7 +3,7 @@
 
 A range constructed from min and max
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Range](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Range)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Range](https://w3id.org/oscem-schemas/latest/spa/Range)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[QuantitySI]<maximal%200..1-++[Range],[QuantitySI]<minimal%200..1-++[Range],[Acquisition]++-%20calibrated_defocus%200..1>[Range],[Detector]++-%20collection_angle%200..1>[Range],[Acquisition]++-%20nominal_defocus%200..1>[Range],[Acquisition]++-%20temperature%200..1>[Range],[Range]^-[Series],[QuantitySI],[Detector],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Series],[QuantitySI]<maximal%200..1-++[Range],[QuantitySI]<minimal%200..1-++[Range],[Acquisition]++-%20calibrated_defocus%200..1>[Range],[Detector]++-%20collection_angle%200..1>[Range],[Acquisition]++-%20nominal_defocus%200..1>[Range],[Acquisition]++-%20temperature%200..1>[Range],[Range]^-[Series],[QuantitySI],[Detector],[Acquisition])

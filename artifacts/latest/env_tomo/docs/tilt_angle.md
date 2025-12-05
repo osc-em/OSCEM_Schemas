@@ -3,7 +3,7 @@
 
 The min, max and increment of the tilt angle in a tomography session. Unit is degree.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/tilt_angle](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/tilt_angle)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/tilt_angle](https://w3id.org/oscem-schemas/latest/env_tomo/tilt_angle)
 
 
 ## Domain and Range

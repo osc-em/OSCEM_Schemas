@@ -3,7 +3,7 @@
 
 Target defocus set, min and max values in nm.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/nominal_defocus](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/nominal_defocus)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/nominal_defocus](https://w3id.org/oscem-schemas/latest/cellular_tomo/nominal_defocus)
 
 
 ## Domain and Range

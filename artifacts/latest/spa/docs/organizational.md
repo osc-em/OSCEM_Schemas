@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/organizational](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/organizational)
+URI: [https://w3id.org/oscem-schemas/latest/spa/organizational](https://w3id.org/oscem-schemas/latest/spa/organizational)
 
 
 ## Domain and Range

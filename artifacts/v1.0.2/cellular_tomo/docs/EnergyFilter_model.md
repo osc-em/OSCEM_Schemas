@@ -3,7 +3,7 @@
 
 The model of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EnergyFilter_model](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/EnergyFilter_model)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/EnergyFilter_model](https://w3id.org/oscem-schemas/latest/cellular_tomo/EnergyFilter_model)
 
 
 ## Domain and Range

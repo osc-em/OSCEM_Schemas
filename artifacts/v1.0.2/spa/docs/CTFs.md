@@ -3,7 +3,7 @@
 
 Class representing Contrast Transfer Function (CTF) metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs)
+URI: [https://w3id.org/oscem-schemas/latest/spa/CTFs](https://w3id.org/oscem-schemas/latest/spa/CTFs)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Resolution],[Processing],[Descriptors],[Defocus],[Descriptors]<descriptors%200..*-++[CTFs&#124;amplitude_contrast:float%20%3F],[Astigmatism]<astigmatism%200..1-++[CTFs],[Resolution]<resolution%200..1-++[CTFs],[Defocus]<defocus%200..1-++[CTFs],[Processing]++-%20ctfs%200..1>[CTFs],[Processing]++-%20ctfs(i)%200..1>[CTFs],[Astigmatism])](https://yuml.me/diagram/nofunky;dir:TB/class/[Resolution],[Processing],[Descriptors],[Defocus],[Descriptors]<descriptors%200..*-++[CTFs&#124;amplitude_contrast:float%20%3F],[Astigmatism]<astigmatism%200..1-++[CTFs],[Resolution]<resolution%200..1-++[CTFs],[Defocus]<defocus%200..1-++[CTFs],[Processing]++-%20ctfs%200..1>[CTFs],[Processing]++-%20ctfs(i)%200..1>[CTFs],[Astigmatism])

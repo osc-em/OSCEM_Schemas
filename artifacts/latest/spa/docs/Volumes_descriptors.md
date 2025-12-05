@@ -3,7 +3,7 @@
 
 List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Volumes_descriptors](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Volumes_descriptors)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Volumes_descriptors](https://w3id.org/oscem-schemas/latest/spa/Volumes_descriptors)
 
 
 ## Domain and Range

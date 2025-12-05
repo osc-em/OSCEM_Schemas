@@ -3,7 +3,7 @@
 
 Link to a reference of your ligand, i.e., CCD, PubChem, etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/reference](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/reference)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/reference](https://w3id.org/oscem-schemas/latest/subtomo/reference)
 
 
 ## Domain and Range

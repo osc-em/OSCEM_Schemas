@@ -3,7 +3,7 @@
 
 maximum x
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/x_max](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/x_max)
+URI: [https://w3id.org/oscem-schemas/latest/spa/x_max](https://w3id.org/oscem-schemas/latest/spa/x_max)
 
 
 ## Domain and Range

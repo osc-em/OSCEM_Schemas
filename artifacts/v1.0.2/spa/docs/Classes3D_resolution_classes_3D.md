@@ -3,7 +3,7 @@
 
 Resolution of volume
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes3D_resolution_classes_3D](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes3D_resolution_classes_3D)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Classes3D_resolution_classes_3D](https://w3id.org/oscem-schemas/latest/spa/Classes3D_resolution_classes_3D)
 
 
 ## Domain and Range

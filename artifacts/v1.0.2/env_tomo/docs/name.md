@@ -3,7 +3,7 @@
 
 The name of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/name](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/name)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/name](https://w3id.org/oscem-schemas/latest/env_tomo/name)
 
 
 ## Domain and Range

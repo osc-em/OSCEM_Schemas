@@ -3,7 +3,7 @@
 
 how the sample was frozen.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Freezing](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Freezing)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Freezing](https://w3id.org/oscem-schemas/latest/env_tomo/Freezing)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<temperature_env%200..1-++[Freezing&#124;cryogen_sample_env:string%20%3F;method:FreezingMethodEnum%20%3F;blotting:boolean%20%3F;atmosphere:string%20%3F;details:string%20%3F],[QuantitySI]<humidity_env%200..1-++[Freezing],[SampleEnv]++-%20freezing%200..1>[Freezing],[SampleEnv])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<temperature_env%200..1-++[Freezing&#124;cryogen_sample_env:string%20%3F;method:FreezingMethodEnum%20%3F;blotting:boolean%20%3F;atmosphere:string%20%3F;details:string%20%3F],[QuantitySI]<humidity_env%200..1-++[Freezing],[SampleEnv]++-%20freezing%200..1>[Freezing],[SampleEnv])

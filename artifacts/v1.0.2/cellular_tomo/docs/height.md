@@ -3,7 +3,7 @@
 
 The height of a given item - unit depends on item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/height](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/height)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/height](https://w3id.org/oscem-schemas/latest/cellular_tomo/height)
 
 
 ## Domain and Range

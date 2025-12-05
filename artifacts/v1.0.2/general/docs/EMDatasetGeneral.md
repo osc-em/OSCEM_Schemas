@@ -3,7 +3,7 @@
 
 General dataset for TEM/STEM and EELS/EDX spectroscopy.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/EMDatasetGeneral](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/EMDatasetGeneral)
+URI: [https://w3id.org/oscem-schemas/latest/general/EMDatasetGeneral](https://w3id.org/oscem-schemas/latest/general/EMDatasetGeneral)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetGeneral],[Sample]<sample%200..1-++[EMDatasetGeneral],[Instrument]<instrument%201..1-++[EMDatasetGeneral],[Acquisition]<acquisition%201..1-++[EMDatasetGeneral],[EMDatasetBase]^-[EMDatasetGeneral],[EMDatasetBase],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetGeneral],[Sample]<sample%200..1-++[EMDatasetGeneral],[Instrument]<instrument%201..1-++[EMDatasetGeneral],[Acquisition]<acquisition%201..1-++[EMDatasetGeneral],[EMDatasetBase]^-[EMDatasetGeneral],[EMDatasetBase],[Acquisition])

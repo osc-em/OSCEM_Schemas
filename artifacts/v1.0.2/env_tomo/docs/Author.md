@@ -3,7 +3,7 @@
 
 Details on the person performing the experiment.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Author](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Author)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Author](https://w3id.org/oscem-schemas/latest/env_tomo/Author)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;family_name:string;given_name:string;email:string;job_title(i):boolean%20%3F;telephone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Organizational],[Organizational]++-%20authors%201..*>[Author&#124;orcid:string%20%3F;country:string%20%3F;role:string%20%3F;name_org:string%20%3F;type_org:OrganizationTypeEnum;family_name:string;given_name:string;email:string;job_title(i):boolean%20%3F;telephone(i):string%20%3F],[Organizational]++-%20authors(i)%200..*>[Author],[Person]^-[Author])

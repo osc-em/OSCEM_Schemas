@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/tomogram_features](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/tomogram_features)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/tomogram_features](https://w3id.org/oscem-schemas/latest/cellular_tomo/tomogram_features)
 
 
 ## Domain and Range

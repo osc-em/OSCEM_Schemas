@@ -3,7 +3,7 @@
 
 Processing information on the dataset
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/processing](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/processing)
+URI: [https://w3id.org/oscem-schemas/latest/spa/processing](https://w3id.org/oscem-schemas/latest/spa/processing)
 
 
 ## Domain and Range

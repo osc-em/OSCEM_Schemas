@@ -3,7 +3,7 @@
 
 minimum y
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/y_min](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/y_min)
+URI: [https://w3id.org/oscem-schemas/latest/spa/y_min](https://w3id.org/oscem-schemas/latest/spa/y_min)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/acquisition](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/acquisition)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/acquisition](https://w3id.org/oscem-schemas/latest/cellular_tomo/acquisition)
 
 
 ## Domain and Range

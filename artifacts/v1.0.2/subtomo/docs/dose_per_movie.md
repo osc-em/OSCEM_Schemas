@@ -3,7 +3,7 @@
 
 Average dose per image/movie/tilt - given in electrons per square Angstrom
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/dose_per_movie](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/dose_per_movie)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/dose_per_movie](https://w3id.org/oscem-schemas/latest/subtomo/dose_per_movie)
 
 
 ## Domain and Range

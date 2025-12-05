@@ -3,7 +3,7 @@
 
 email
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Author_email](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Author_email)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Author_email](https://w3id.org/oscem-schemas/latest/cellular_tomo/Author_email)
 
 
 ## Domain and Range

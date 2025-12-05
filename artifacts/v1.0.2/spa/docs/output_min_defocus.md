@@ -3,7 +3,7 @@
 
 Minimum defocus
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_min_defocus](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_min_defocus)
+URI: [https://w3id.org/oscem-schemas/latest/spa/output_min_defocus](https://w3id.org/oscem-schemas/latest/spa/output_min_defocus)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Mode of the detector, e.g. "counting", "ScanningDetector", "ImagingDetector", etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/mode](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/mode)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/mode](https://w3id.org/oscem-schemas/latest/subtomo/mode)
 
 
 ## Domain and Range

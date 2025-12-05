@@ -3,7 +3,7 @@
 
 Grant
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Grant](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Grant)
+URI: [https://w3id.org/oscem-schemas/latest/general/Grant](https://w3id.org/oscem-schemas/latest/general/Grant)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<budget%200..1-++[Grant&#124;grant_name:string%20%3F;start_date:datetime%20%3F;end_date:datetime%20%3F;project_id:string%20%3F;country:string%20%3F],[Organizational]++-%20grants%200..*>[Grant],[Organizational])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<budget%200..1-++[Grant&#124;grant_name:string%20%3F;start_date:datetime%20%3F;end_date:datetime%20%3F;project_id:string%20%3F;country:string%20%3F],[Organizational]++-%20grants%200..*>[Grant],[Organizational])

@@ -3,7 +3,7 @@
 
 Type of cryogen used in the holder - if the holder is cooled seperately
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/holder_cryogen](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/holder_cryogen)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/holder_cryogen](https://w3id.org/oscem-schemas/latest/subtomo/holder_cryogen)
 
 
 ## Domain and Range

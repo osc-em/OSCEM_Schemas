@@ -3,7 +3,7 @@
 
 value of a given field in respect to its SI unit
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/valueSI](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/valueSI)
+URI: [https://w3id.org/oscem-schemas/latest/general/valueSI](https://w3id.org/oscem-schemas/latest/general/valueSI)
 
 
 ## Domain and Range

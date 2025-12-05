@@ -3,7 +3,7 @@
 
 Width of the energy filter used.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EnergyFilter_width_energy_filter](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EnergyFilter_width_energy_filter)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/EnergyFilter_width_energy_filter](https://w3id.org/oscem-schemas/latest/subtomo/EnergyFilter_width_energy_filter)
 
 
 ## Domain and Range

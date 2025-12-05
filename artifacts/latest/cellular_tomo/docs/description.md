@@ -3,7 +3,7 @@
 
 The description of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/description](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/description)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/description](https://w3id.org/oscem-schemas/latest/cellular_tomo/description)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Number of particles per 2D class
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes2D_particles_per_2Dclass](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes2D_particles_per_2Dclass)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Classes2D_particles_per_2Dclass](https://w3id.org/oscem-schemas/latest/spa/Classes2D_particles_per_2Dclass)
 
 
 ## Domain and Range

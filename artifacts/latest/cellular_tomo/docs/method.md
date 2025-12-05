@@ -3,7 +3,7 @@
 
 freezing method - such as plunge freezing, high pressure freezing etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/method](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/method)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/method](https://w3id.org/oscem-schemas/latest/cellular_tomo/method)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Type of organization, academic, commercial, governmental, etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/type_org](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/type_org)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/type_org](https://w3id.org/oscem-schemas/latest/env_tomo/type_org)
 
 
 ## Domain and Range

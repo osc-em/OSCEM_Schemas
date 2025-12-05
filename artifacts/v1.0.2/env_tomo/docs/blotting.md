@@ -3,7 +3,7 @@
 
 whether blotting was performed.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/blotting](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/blotting)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/blotting](https://w3id.org/oscem-schemas/latest/env_tomo/blotting)
 
 
 ## Domain and Range

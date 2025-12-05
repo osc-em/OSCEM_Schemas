@@ -3,7 +3,7 @@
 
 Mode of imaging used during data collection
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/imaging](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/imaging)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/imaging](https://w3id.org/oscem-schemas/latest/subtomo/imaging)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Time of data acquisition per movie/tilt - in s
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/exposure_time](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/exposure_time)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/exposure_time](https://w3id.org/oscem-schemas/latest/cellular_tomo/exposure_time)
 
 
 ## Domain and Range

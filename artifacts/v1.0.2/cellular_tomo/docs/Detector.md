@@ -3,7 +3,7 @@
 
 Class representing a detector
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Detector](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Detector)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Detector](https://w3id.org/oscem-schemas/latest/cellular_tomo/Detector)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Range],[QuantitySI],[Range]<collection_angle%200..1-++[Detector&#124;name:string%20%3F;mode:string%20%3F],[QuantitySI]<dispersion%200..1-++[Detector],[Acquisition]++-%20detectors%201..*>[Detector],[Acquisition]++-%20detectors(i)%200..*>[Detector],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Range],[QuantitySI],[Range]<collection_angle%200..1-++[Detector&#124;name:string%20%3F;mode:string%20%3F],[QuantitySI]<dispersion%200..1-++[Detector],[Acquisition]++-%20detectors%201..*>[Detector],[Acquisition]++-%20detectors(i)%200..*>[Detector],[Acquisition])

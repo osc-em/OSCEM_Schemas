@@ -3,7 +3,7 @@
 
 Pixel size, in Angstrom
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/pixel_size](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/pixel_size)
+URI: [https://w3id.org/oscem-schemas/latest/spa/pixel_size](https://w3id.org/oscem-schemas/latest/spa/pixel_size)
 
 
 ## Domain and Range

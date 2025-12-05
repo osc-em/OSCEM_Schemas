@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetBase_sample](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetBase_sample)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetBase_sample](https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetBase_sample)
 
 
 ## Domain and Range

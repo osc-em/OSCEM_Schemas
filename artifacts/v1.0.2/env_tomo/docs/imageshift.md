@@ -3,7 +3,7 @@
 
 Movement of the Beam below the image in order to shift the image on the detector. Given in µm.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/imageshift](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/imageshift)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/imageshift](https://w3id.org/oscem-schemas/latest/env_tomo/imageshift)
 
 
 ## Domain and Range

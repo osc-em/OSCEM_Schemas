@@ -3,7 +3,7 @@
 
 Atmospheric conditions in the chamber during pretreatment, i.e., addition of specific gases, etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Grid_pretreatment_atmosphere](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Grid_pretreatment_atmosphere)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Grid_pretreatment_atmosphere](https://w3id.org/oscem-schemas/latest/subtomo/Grid_pretreatment_atmosphere)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Topology of the support film
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/film_topology](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/film_topology)
+URI: [https://w3id.org/oscem-schemas/latest/general/film_topology](https://w3id.org/oscem-schemas/latest/general/film_topology)
 
 
 ## Domain and Range

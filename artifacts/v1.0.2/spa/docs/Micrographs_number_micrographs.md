@@ -3,7 +3,7 @@
 
 Number of micrographs
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Micrographs_number_micrographs](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Micrographs_number_micrographs)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Micrographs_number_micrographs](https://w3id.org/oscem-schemas/latest/spa/Micrographs_number_micrographs)
 
 
 ## Domain and Range

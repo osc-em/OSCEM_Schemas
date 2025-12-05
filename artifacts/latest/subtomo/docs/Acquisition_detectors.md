@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Acquisition_detectors](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Acquisition_detectors)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Acquisition_detectors](https://w3id.org/oscem-schemas/latest/subtomo/Acquisition_detectors)
 
 
 ## Domain and Range

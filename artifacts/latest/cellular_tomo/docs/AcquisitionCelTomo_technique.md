@@ -3,7 +3,7 @@
 
 Cellular tomography
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/AcquisitionCelTomo_technique](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/AcquisitionCelTomo_technique)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/AcquisitionCelTomo_technique](https://w3id.org/oscem-schemas/latest/cellular_tomo/AcquisitionCelTomo_technique)
 
 
 ## Domain and Range

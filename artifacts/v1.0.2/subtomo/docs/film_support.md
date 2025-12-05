@@ -3,7 +3,7 @@
 
 Whether a support film was used
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/film_support](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/film_support)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/film_support](https://w3id.org/oscem-schemas/latest/subtomo/film_support)
 
 
 ## Domain and Range

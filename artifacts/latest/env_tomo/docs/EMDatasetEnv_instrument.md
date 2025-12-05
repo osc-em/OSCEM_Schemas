@@ -3,7 +3,7 @@
 
 Describe the instrument used to acquire the data
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv_instrument](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv_instrument)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetEnv_instrument](https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetEnv_instrument)
 
 
 ## Domain and Range

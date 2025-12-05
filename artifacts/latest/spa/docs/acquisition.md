@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/acquisition](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/acquisition)
+URI: [https://w3id.org/oscem-schemas/latest/spa/acquisition](https://w3id.org/oscem-schemas/latest/spa/acquisition)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Temperature during data collection, in K with min and max values.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/temperature_range](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/temperature_range)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/temperature_range](https://w3id.org/oscem-schemas/latest/env_tomo/temperature_range)
 
 
 ## Domain and Range

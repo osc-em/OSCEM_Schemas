@@ -3,7 +3,7 @@
 
 Filename of orthogonal slices in Y direction
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/OrthogonalSlices_orthogonal_slices_Y](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/OrthogonalSlices_orthogonal_slices_Y)
+URI: [https://w3id.org/oscem-schemas/latest/spa/OrthogonalSlices_orthogonal_slices_Y](https://w3id.org/oscem-schemas/latest/spa/OrthogonalSlices_orthogonal_slices_Y)
 
 
 ## Domain and Range

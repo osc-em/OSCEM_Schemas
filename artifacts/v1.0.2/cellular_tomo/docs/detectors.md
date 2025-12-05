@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/detectors](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/detectors)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/detectors](https://w3id.org/oscem-schemas/latest/cellular_tomo/detectors)
 
 
 ## Domain and Range

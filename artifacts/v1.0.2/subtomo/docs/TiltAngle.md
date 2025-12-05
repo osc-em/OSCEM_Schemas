@@ -3,7 +3,7 @@
 
 The min, max and increment of the tilt angle in a tomography session. Unit is degree.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/TiltAngle](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/TiltAngle)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/TiltAngle](https://w3id.org/oscem-schemas/latest/subtomo/TiltAngle)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI]<increment%201..1-++[TiltAngle],[QuantitySI]<maximal%201..1-++[TiltAngle],[QuantitySI]<minimal%201..1-++[TiltAngle],[AcquisitionTomo]++-%20tilt_angle%201..1>[TiltAngle],[AcquisitionTomo]++-%20tilt_angle(i)%200..1>[TiltAngle],[Series]^-[TiltAngle],[Series],[QuantitySI],[AcquisitionTomo])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI]<increment%201..1-++[TiltAngle],[QuantitySI]<maximal%201..1-++[TiltAngle],[QuantitySI]<minimal%201..1-++[TiltAngle],[AcquisitionTomo]++-%20tilt_angle%201..1>[TiltAngle],[AcquisitionTomo]++-%20tilt_angle(i)%200..1>[TiltAngle],[Series]^-[TiltAngle],[Series],[QuantitySI],[AcquisitionTomo])

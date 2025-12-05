@@ -3,7 +3,7 @@
 
 size of a 2D image (in integer units)
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/ImageSize](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/ImageSize)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/ImageSize](https://w3id.org/oscem-schemas/latest/subtomo/ImageSize)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Acquisition]++-%20binning_camera%201..1>[ImageSize&#124;height:integer%20%3F;width:integer%20%3F],[Acquisition]++-%20binning_camera(i)%200..1>[ImageSize],[Acquisition]++-%20image_size%200..1>[ImageSize],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Acquisition]++-%20binning_camera%201..1>[ImageSize&#124;height:integer%20%3F;width:integer%20%3F],[Acquisition]++-%20binning_camera(i)%200..1>[ImageSize],[Acquisition]++-%20image_size%200..1>[ImageSize],[Acquisition])

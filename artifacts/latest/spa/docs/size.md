@@ -3,7 +3,7 @@
 
 Size of the volume
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/size](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/size)
+URI: [https://w3id.org/oscem-schemas/latest/spa/size](https://w3id.org/oscem-schemas/latest/spa/size)
 
 
 ## Domain and Range

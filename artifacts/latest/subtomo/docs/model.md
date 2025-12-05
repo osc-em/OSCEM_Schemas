@@ -3,7 +3,7 @@
 
 The model of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/model](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/model)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/model](https://w3id.org/oscem-schemas/latest/subtomo/model)
 
 
 ## Domain and Range

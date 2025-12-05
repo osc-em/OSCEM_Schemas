@@ -3,7 +3,7 @@
 
 Mode of imaging used during data collection
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/imaging](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/imaging)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/imaging](https://w3id.org/oscem-schemas/latest/cellular_tomo/imaging)
 
 
 ## Domain and Range

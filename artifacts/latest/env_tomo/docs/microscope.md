@@ -3,7 +3,7 @@
 
 Microscope information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/microscope](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/microscope)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/microscope](https://w3id.org/oscem-schemas/latest/env_tomo/microscope)
 
 
 ## Domain and Range

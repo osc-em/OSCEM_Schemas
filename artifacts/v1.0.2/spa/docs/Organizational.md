@@ -3,7 +3,7 @@
 
 Overarching category for authors and grants
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Organizational](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Organizational)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Organizational](https://w3id.org/oscem-schemas/latest/spa/Organizational)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%200..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetSpa]++-%20organizational%200..1>[Organizational],[Grant],[Funder],[EMDatasetSpa],[Author])](https://yuml.me/diagram/nofunky;dir:TB/class/[Funder]<funder%200..*-++[Organizational],[Author]<authors%201..*-++[Organizational],[Grant]<grants%200..*-++[Organizational],[EMDatasetSpa]++-%20organizational%200..1>[Organizational],[Grant],[Funder],[EMDatasetSpa],[Author])

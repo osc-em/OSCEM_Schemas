@@ -3,7 +3,7 @@
 
 Name/composition of the (chemical) sample buffer during grid preparation
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Specimen_buffer](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Specimen_buffer)
+URI: [https://w3id.org/oscem-schemas/latest/general/Specimen_buffer](https://w3id.org/oscem-schemas/latest/general/Specimen_buffer)
 
 
 ## Domain and Range

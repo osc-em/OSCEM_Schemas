@@ -3,7 +3,7 @@
 
 The width of a given item - unit depends on item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/width](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/width)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/width](https://w3id.org/oscem-schemas/latest/cellular_tomo/width)
 
 
 ## Domain and Range

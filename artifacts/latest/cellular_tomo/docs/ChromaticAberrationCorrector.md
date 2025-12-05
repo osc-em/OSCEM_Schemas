@@ -3,7 +3,7 @@
 
 Special device used to correct instrument inherent chromatic aberration.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/ChromaticAberrationCorrector](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/ChromaticAberrationCorrector)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/ChromaticAberrationCorrector](https://w3id.org/oscem-schemas/latest/cellular_tomo/ChromaticAberrationCorrector)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics]++-%20chromatic_aberration_corrector%200..1>[ChromaticAberrationCorrector&#124;used:boolean;instrument_type:string],[SpecialistOptics])](https://yuml.me/diagram/nofunky;dir:TB/class/[SpecialistOptics]++-%20chromatic_aberration_corrector%200..1>[ChromaticAberrationCorrector&#124;used:boolean;instrument_type:string],[SpecialistOptics])

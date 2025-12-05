@@ -3,7 +3,7 @@
 
 Microscope information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/microscope](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/microscope)
+URI: [https://w3id.org/oscem-schemas/latest/spa/microscope](https://w3id.org/oscem-schemas/latest/spa/microscope)
 
 
 ## Domain and Range

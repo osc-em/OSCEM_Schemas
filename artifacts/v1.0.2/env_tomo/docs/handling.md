@@ -3,7 +3,7 @@
 
 What was done to the sample, please give an overview of relevant treatments.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/handling](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/handling)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/handling](https://w3id.org/oscem-schemas/latest/env_tomo/handling)
 
 
 ## Domain and Range

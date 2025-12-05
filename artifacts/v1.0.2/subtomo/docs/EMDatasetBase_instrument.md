@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EMDatasetBase_instrument](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/EMDatasetBase_instrument)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/EMDatasetBase_instrument](https://w3id.org/oscem-schemas/latest/subtomo/EMDatasetBase_instrument)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Role of the author, for example principal investigator
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/role](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/role)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/role](https://w3id.org/oscem-schemas/latest/cellular_tomo/role)
 
 
 ## Domain and Range

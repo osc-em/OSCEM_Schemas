@@ -3,7 +3,7 @@
 
 Country of the institution
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/country](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/country)
+URI: [https://w3id.org/oscem-schemas/latest/spa/country](https://w3id.org/oscem-schemas/latest/spa/country)
 
 
 ## Domain and Range

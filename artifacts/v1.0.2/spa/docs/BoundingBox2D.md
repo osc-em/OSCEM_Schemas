@@ -3,7 +3,7 @@
 
 an axis-aligned 2D bounding box (float units)
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/BoundingBox2D](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/BoundingBox2D)
+URI: [https://w3id.org/oscem-schemas/latest/spa/BoundingBox2D](https://w3id.org/oscem-schemas/latest/spa/BoundingBox2D)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<y_max%200..1-++[BoundingBox2D],[QuantitySI]<y_min%200..1-++[BoundingBox2D],[QuantitySI]<x_max%200..1-++[BoundingBox2D],[QuantitySI]<x_min%200..1-++[BoundingBox2D],[Acquisition]++-%20beamshift%200..1>[BoundingBox2D],[Acquisition]++-%20beamtilt%200..1>[BoundingBox2D],[Acquisition]++-%20imageshift%200..1>[BoundingBox2D],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[QuantitySI]<y_max%200..1-++[BoundingBox2D],[QuantitySI]<y_min%200..1-++[BoundingBox2D],[QuantitySI]<x_max%200..1-++[BoundingBox2D],[QuantitySI]<x_min%200..1-++[BoundingBox2D],[Acquisition]++-%20beamshift%200..1>[BoundingBox2D],[Acquisition]++-%20beamtilt%200..1>[BoundingBox2D],[Acquisition]++-%20imageshift%200..1>[BoundingBox2D],[Acquisition])

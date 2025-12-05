@@ -3,7 +3,7 @@
 
 The tilt axis angle of a tomography series
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/AcquisitionTomo_tilt_axis_angle](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/AcquisitionTomo_tilt_axis_angle)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/AcquisitionTomo_tilt_axis_angle](https://w3id.org/oscem-schemas/latest/cellular_tomo/AcquisitionTomo_tilt_axis_angle)
 
 
 ## Domain and Range

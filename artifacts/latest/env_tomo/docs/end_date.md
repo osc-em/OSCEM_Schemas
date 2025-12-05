@@ -3,7 +3,7 @@
 
 end date
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/end_date](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/end_date)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/end_date](https://w3id.org/oscem-schemas/latest/env_tomo/end_date)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Class describing volume(s) obtained
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Volume](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Volume)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Volume](https://w3id.org/oscem-schemas/latest/spa/Volume)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[IsosurfaceImages]<isosurface_images%200..1-++[Volume],[OrthogonalSlices]<orthogonal_slices%200..1-++[Volume],[Classes3D]++-%20volume%200..*>[Volume],[Classes3D]++-%20volume(i)%200..*>[Volume],[OrthogonalSlices],[IsosurfaceImages],[Classes3D])](https://yuml.me/diagram/nofunky;dir:TB/class/[IsosurfaceImages]<isosurface_images%200..1-++[Volume],[OrthogonalSlices]<orthogonal_slices%200..1-++[Volume],[Classes3D]++-%20volume%200..*>[Volume],[Classes3D]++-%20volume(i)%200..*>[Volume],[OrthogonalSlices],[IsosurfaceImages],[Classes3D])

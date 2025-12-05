@@ -3,7 +3,7 @@
 
 Gain image filename
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies_gain_image](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies_gain_image)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Movies_gain_image](https://w3id.org/oscem-schemas/latest/spa/Movies_gain_image)
 
 
 ## Domain and Range

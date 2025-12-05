@@ -3,7 +3,7 @@
 
 The name of the item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/name](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/name)
+URI: [https://w3id.org/oscem-schemas/latest/general/name](https://w3id.org/oscem-schemas/latest/general/name)
 
 
 ## Domain and Range

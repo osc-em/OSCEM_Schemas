@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/organizational](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/organizational)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/organizational](https://w3id.org/oscem-schemas/latest/cellular_tomo/organizational)
 
 
 ## Domain and Range

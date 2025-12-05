@@ -3,7 +3,7 @@
 
 Dispersion of an analytical detector, in eV
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/dispersion](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/dispersion)
+URI: [https://w3id.org/oscem-schemas/latest/general/dispersion](https://w3id.org/oscem-schemas/latest/general/dispersion)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 the unit of a given value
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/unit](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/unit)
+URI: [https://w3id.org/oscem-schemas/latest/spa/unit](https://w3id.org/oscem-schemas/latest/spa/unit)
 
 
 ## Domain and Range

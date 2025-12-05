@@ -3,7 +3,7 @@
 
 Information on authors and grants
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv_organizational](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv_organizational)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetEnv_organizational](https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetEnv_organizational)
 
 
 ## Domain and Range

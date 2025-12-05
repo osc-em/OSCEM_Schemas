@@ -3,7 +3,7 @@
 
 The width of a given item - unit depends on item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/width](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/width)
+URI: [https://w3id.org/oscem-schemas/latest/general/width](https://w3id.org/oscem-schemas/latest/general/width)
 
 
 ## Domain and Range

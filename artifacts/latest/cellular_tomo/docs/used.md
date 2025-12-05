@@ -3,7 +3,7 @@
 
 whether a specific instrument was used during data acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/used](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/used)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/used](https://w3id.org/oscem-schemas/latest/cellular_tomo/used)
 
 
 ## Domain and Range

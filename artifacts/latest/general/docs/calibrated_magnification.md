@@ -3,7 +3,7 @@
 
 Calculated magnification, no unit
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/calibrated_magnification](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/calibrated_magnification)
+URI: [https://w3id.org/oscem-schemas/latest/general/calibrated_magnification](https://w3id.org/oscem-schemas/latest/general/calibrated_magnification)
 
 
 ## Domain and Range

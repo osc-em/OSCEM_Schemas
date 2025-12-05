@@ -633,7 +633,7 @@ CREATE TABLE "Organizational_authors" (
 	PRIMARY KEY ("Organizational_id", authors_id),
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id),
 	FOREIGN KEY(authors_id) REFERENCES "Author" (id)
-);CREATE INDEX "ix_Organizational_authors_authors_id" ON "Organizational_authors" (authors_id);CREATE INDEX "ix_Organizational_authors_Organizational_id" ON "Organizational_authors" ("Organizational_id");
+);CREATE INDEX "ix_Organizational_authors_Organizational_id" ON "Organizational_authors" ("Organizational_id");CREATE INDEX "ix_Organizational_authors_authors_id" ON "Organizational_authors" (authors_id);
 CREATE TABLE "Organizational_funder" (
 	"Organizational_id" INTEGER,
 	funder_id INTEGER,
@@ -951,7 +951,7 @@ CREATE TABLE "Organizational_grants" (
 	PRIMARY KEY ("Organizational_id", grants_id),
 	FOREIGN KEY("Organizational_id") REFERENCES "Organizational" (id),
 	FOREIGN KEY(grants_id) REFERENCES "Grant" (id)
-);CREATE INDEX "ix_Organizational_grants_Organizational_id" ON "Organizational_grants" ("Organizational_id");CREATE INDEX "ix_Organizational_grants_grants_id" ON "Organizational_grants" (grants_id);
+);CREATE INDEX "ix_Organizational_grants_grants_id" ON "Organizational_grants" (grants_id);CREATE INDEX "ix_Organizational_grants_Organizational_id" ON "Organizational_grants" ("Organizational_id");
 CREATE TABLE "EMDatasetEnv" (
 	id INTEGER NOT NULL,
 	acquisition_id INTEGER NOT NULL,

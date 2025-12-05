@@ -3,7 +3,7 @@
 
 Description of the overall molecule
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/OverallMolecule](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/OverallMolecule)
+URI: [https://w3id.org/oscem-schemas/latest/general/OverallMolecule](https://w3id.org/oscem-schemas/latest/general/OverallMolecule)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleMolecular],[Sample],[QuantitySI],[QuantitySI]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[SampleMolecular]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule%200..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleMolecular],[Sample],[QuantitySI],[QuantitySI]<molecular_weight%200..1-++[OverallMolecule&#124;molecular_overall_type:MoleculeClassEnum%20%3F;name_sample:string;source:string;assembly:AssemblyEnum%20%3F],[SampleMolecular]++-%20overall_molecule%201..1>[OverallMolecule],[Sample]++-%20overall_molecule%200..1>[OverallMolecule],[Sample]++-%20overall_molecule(i)%200..1>[OverallMolecule])

@@ -3,7 +3,7 @@
 
 maximum x
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/x_max](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/x_max)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/x_max](https://w3id.org/oscem-schemas/latest/cellular_tomo/x_max)
 
 
 ## Domain and Range

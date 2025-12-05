@@ -3,7 +3,7 @@
 
 the geographical location of your source, optimally in a geographic coordinate system.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/location](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/location)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/location](https://w3id.org/oscem-schemas/latest/env_tomo/location)
 
 
 ## Domain and Range

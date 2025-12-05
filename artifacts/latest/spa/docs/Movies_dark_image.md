@@ -3,7 +3,7 @@
 
 Dark image filename
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies_dark_image](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies_dark_image)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Movies_dark_image](https://w3id.org/oscem-schemas/latest/spa/Movies_dark_image)
 
 
 ## Domain and Range

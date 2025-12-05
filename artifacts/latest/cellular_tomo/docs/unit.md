@@ -3,7 +3,7 @@
 
 the unit of a given value
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/unit](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/unit)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/unit](https://w3id.org/oscem-schemas/latest/cellular_tomo/unit)
 
 
 ## Domain and Range

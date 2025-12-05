@@ -3,7 +3,7 @@
 
 Defocus metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs_defocus](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs_defocus)
+URI: [https://w3id.org/oscem-schemas/latest/spa/CTFs_defocus](https://w3id.org/oscem-schemas/latest/spa/CTFs_defocus)
 
 
 ## Domain and Range

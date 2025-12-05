@@ -3,7 +3,7 @@
 
 person
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/person](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/person)
+URI: [https://w3id.org/oscem-schemas/latest/general/person](https://w3id.org/oscem-schemas/latest/general/person)
 
 
 ## Domain and Range

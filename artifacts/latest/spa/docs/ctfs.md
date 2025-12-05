@@ -3,7 +3,7 @@
 
 CTFs metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/ctfs](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/ctfs)
+URI: [https://w3id.org/oscem-schemas/latest/spa/ctfs](https://w3id.org/oscem-schemas/latest/spa/ctfs)
 
 
 ## Domain and Range

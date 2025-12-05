@@ -3,7 +3,7 @@
 
 where is this sample from? i.e. Hospital
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/source_env](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/source_env)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/source_env](https://w3id.org/oscem-schemas/latest/env_tomo/source_env)
 
 
 ## Domain and Range

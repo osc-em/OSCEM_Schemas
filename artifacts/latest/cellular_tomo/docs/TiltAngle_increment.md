@@ -3,7 +3,7 @@
 
 Increment between elements of a series
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/TiltAngle_increment](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/TiltAngle_increment)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/TiltAngle_increment](https://w3id.org/oscem-schemas/latest/cellular_tomo/TiltAngle_increment)
 
 
 ## Domain and Range

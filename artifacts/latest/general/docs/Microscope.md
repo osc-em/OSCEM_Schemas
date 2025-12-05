@@ -3,7 +3,7 @@
 
 Microscope information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Microscope](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Microscope)
+URI: [https://w3id.org/oscem-schemas/latest/general/Microscope](https://w3id.org/oscem-schemas/latest/general/Microscope)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]++-%20microscope%201..1>[Microscope&#124;model:string;manufacturer:string%20%3F],[Instrument]++-%20microscope(i)%200..1>[Microscope],[Instrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]++-%20microscope%201..1>[Microscope&#124;model:string;manufacturer:string%20%3F],[Instrument]++-%20microscope(i)%200..1>[Microscope],[Instrument])

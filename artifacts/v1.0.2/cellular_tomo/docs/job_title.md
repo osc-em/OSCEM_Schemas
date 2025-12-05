@@ -3,7 +3,7 @@
 
 job title
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/job_title](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/job_title)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/job_title](https://w3id.org/oscem-schemas/latest/cellular_tomo/job_title)
 
 
 ## Domain and Range

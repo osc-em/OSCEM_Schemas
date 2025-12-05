@@ -3,7 +3,7 @@
 
 List of grants associated with the project
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/grants](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/grants)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/grants](https://w3id.org/oscem-schemas/latest/cellular_tomo/grants)
 
 
 ## Domain and Range

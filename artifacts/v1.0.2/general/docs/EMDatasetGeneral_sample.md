@@ -3,7 +3,7 @@
 
 Sample information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/EMDatasetGeneral_sample](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/EMDatasetGeneral_sample)
+URI: [https://w3id.org/oscem-schemas/latest/general/EMDatasetGeneral_sample](https://w3id.org/oscem-schemas/latest/general/EMDatasetGeneral_sample)
 
 
 ## Domain and Range

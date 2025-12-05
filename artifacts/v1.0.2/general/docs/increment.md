@@ -3,7 +3,7 @@
 
 Increment between elements of a series
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/increment](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/increment)
+URI: [https://w3id.org/oscem-schemas/latest/general/increment](https://w3id.org/oscem-schemas/latest/general/increment)
 
 
 ## Domain and Range

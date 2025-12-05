@@ -3,7 +3,7 @@
 
 Filename of the image containing 3D class images
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes3D_images_classes_3D](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Classes3D_images_classes_3D)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Classes3D_images_classes_3D](https://w3id.org/oscem-schemas/latest/spa/Classes3D_images_classes_3D)
 
 
 ## Domain and Range

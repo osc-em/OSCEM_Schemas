@@ -3,7 +3,7 @@
 
 Resolution of volume
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/vol_resolution](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/vol_resolution)
+URI: [https://w3id.org/oscem-schemas/latest/spa/vol_resolution](https://w3id.org/oscem-schemas/latest/spa/vol_resolution)
 
 
 ## Domain and Range

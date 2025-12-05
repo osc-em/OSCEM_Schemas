@@ -3,7 +3,7 @@
 
 Unifying class to describe the full sample.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SampleEnv](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SampleEnv)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/SampleEnv](https://w3id.org/oscem-schemas/latest/cellular_tomo/SampleEnv)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[TomogramFeatures]<tomogram_features%200..1-++[SampleEnv],[Thinning]<thinning%200..1-++[SampleEnv],[Freezing]<freezing%200..1-++[SampleEnv],[SpecimenEnv]<specimen_env%201..1-++[SampleEnv],[SampleEnv]^-[SampleCell],[SampleCell],[Freezing])](https://yuml.me/diagram/nofunky;dir:TB/class/[TomogramFeatures],[Thinning],[SpecimenEnv],[TomogramFeatures]<tomogram_features%200..1-++[SampleEnv],[Thinning]<thinning%200..1-++[SampleEnv],[Freezing]<freezing%200..1-++[SampleEnv],[SpecimenEnv]<specimen_env%201..1-++[SampleEnv],[SampleEnv]^-[SampleCell],[SampleCell],[Freezing])

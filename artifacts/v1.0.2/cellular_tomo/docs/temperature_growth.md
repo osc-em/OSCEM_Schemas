@@ -3,7 +3,7 @@
 
 Temperature of the sample; in K.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/temperature_growth](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/temperature_growth)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/temperature_growth](https://w3id.org/oscem-schemas/latest/cellular_tomo/temperature_growth)
 
 
 ## Domain and Range

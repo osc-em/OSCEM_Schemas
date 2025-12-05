@@ -3,7 +3,7 @@
 
 Class representing micrographs metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Micrographs](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Micrographs)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Micrographs](https://w3id.org/oscem-schemas/latest/spa/Micrographs)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Processing],[Descriptors]<descriptors%200..*-++[Micrographs&#124;number_micrographs:float],[Processing]++-%20micrographs%200..1>[Micrographs],[Processing]++-%20micrographs(i)%200..1>[Micrographs],[Descriptors])](https://yuml.me/diagram/nofunky;dir:TB/class/[Processing],[Descriptors]<descriptors%200..*-++[Micrographs&#124;number_micrographs:float],[Processing]++-%20micrographs%200..1>[Micrographs],[Processing]++-%20micrographs(i)%200..1>[Micrographs],[Descriptors])

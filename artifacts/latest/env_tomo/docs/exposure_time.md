@@ -3,7 +3,7 @@
 
 Time of data acquisition per movie/tilt - in s
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/exposure_time](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/exposure_time)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/exposure_time](https://w3id.org/oscem-schemas/latest/env_tomo/exposure_time)
 
 
 ## Domain and Range

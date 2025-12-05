@@ -3,7 +3,7 @@
 
 Whether the sample was stained
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Specimen_staining](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Specimen_staining)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Specimen_staining](https://w3id.org/oscem-schemas/latest/subtomo/Specimen_staining)
 
 
 ## Domain and Range

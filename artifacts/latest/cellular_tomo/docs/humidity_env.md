@@ -3,7 +3,7 @@
 
 humidity of the atmosphere right before/ during freezing; in %.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/humidity_env](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/humidity_env)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/humidity_env](https://w3id.org/oscem-schemas/latest/cellular_tomo/humidity_env)
 
 
 ## Domain and Range

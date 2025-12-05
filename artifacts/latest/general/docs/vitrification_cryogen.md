@@ -3,7 +3,7 @@
 
 Which cryogen was used for vitrification
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/vitrification_cryogen](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/vitrification_cryogen)
+URI: [https://w3id.org/oscem-schemas/latest/general/vitrification_cryogen](https://w3id.org/oscem-schemas/latest/general/vitrification_cryogen)
 
 
 ## Domain and Range

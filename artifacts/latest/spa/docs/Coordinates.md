@@ -3,7 +3,7 @@
 
 Class representing coordinates metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Coordinates](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Coordinates)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Coordinates](https://w3id.org/oscem-schemas/latest/spa/Coordinates)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Coordinates&#124;number_particles:integer;particles_per_micrograph:float%20%3F;num_source_micrographs:integer%20%3F;particles_histogram:string%20%3F;micrograph_examples:string%20%3F],[Processing]++-%20coordinates%200..1>[Coordinates],[Processing]++-%20coordinates(i)%200..1>[Coordinates])](https://yuml.me/diagram/nofunky;dir:TB/class/[Processing],[Descriptors],[Descriptors]<descriptors%200..*-++[Coordinates&#124;number_particles:integer;particles_per_micrograph:float%20%3F;num_source_micrographs:integer%20%3F;particles_histogram:string%20%3F;micrograph_examples:string%20%3F],[Processing]++-%20coordinates%200..1>[Coordinates],[Processing]++-%20coordinates(i)%200..1>[Coordinates])

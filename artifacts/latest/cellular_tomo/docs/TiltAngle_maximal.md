@@ -3,7 +3,7 @@
 
 Maximal value of a given dataset property
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/TiltAngle_maximal](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/TiltAngle_maximal)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/TiltAngle_maximal](https://w3id.org/oscem-schemas/latest/cellular_tomo/TiltAngle_maximal)
 
 
 ## Domain and Range

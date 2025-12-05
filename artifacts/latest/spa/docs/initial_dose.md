@@ -3,7 +3,7 @@
 
 Initial dose
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/initial_dose](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/initial_dose)
+URI: [https://w3id.org/oscem-schemas/latest/spa/initial_dose](https://w3id.org/oscem-schemas/latest/spa/initial_dose)
 
 
 ## Domain and Range

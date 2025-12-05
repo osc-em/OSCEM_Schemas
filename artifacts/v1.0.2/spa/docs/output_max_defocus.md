@@ -3,7 +3,7 @@
 
 Maximum defocus
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_max_defocus](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_max_defocus)
+URI: [https://w3id.org/oscem-schemas/latest/spa/output_max_defocus](https://w3id.org/oscem-schemas/latest/spa/output_max_defocus)
 
 
 ## Domain and Range

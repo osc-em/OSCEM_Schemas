@@ -3,7 +3,7 @@
 
 What was the target thickness of the lamella; in nm.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/target_thickness](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/target_thickness)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/target_thickness](https://w3id.org/oscem-schemas/latest/cellular_tomo/target_thickness)
 
 
 ## Domain and Range

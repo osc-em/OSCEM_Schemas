@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/acquisition](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/acquisition)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/acquisition](https://w3id.org/oscem-schemas/latest/subtomo/acquisition)
 
 
 ## Domain and Range

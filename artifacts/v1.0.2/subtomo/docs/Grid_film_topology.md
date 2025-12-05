@@ -3,7 +3,7 @@
 
 Topology of the support film
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Grid_film_topology](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Grid_film_topology)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Grid_film_topology](https://w3id.org/oscem-schemas/latest/subtomo/Grid_film_topology)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 minimum x
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/x_min](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/x_min)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/x_min](https://w3id.org/oscem-schemas/latest/env_tomo/x_min)
 
 
 ## Domain and Range

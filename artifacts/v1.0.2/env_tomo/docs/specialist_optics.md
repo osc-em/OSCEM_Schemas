@@ -3,7 +3,7 @@
 
 Any type of special optics, such as a phaseplate
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/specialist_optics](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/specialist_optics)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/specialist_optics](https://w3id.org/oscem-schemas/latest/env_tomo/specialist_optics)
 
 
 ## Domain and Range

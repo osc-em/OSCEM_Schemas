@@ -3,7 +3,7 @@
 
 Mean number of particles per micrograph
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/particles_per_micrograph](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/particles_per_micrograph)
+URI: [https://w3id.org/oscem-schemas/latest/spa/particles_per_micrograph](https://w3id.org/oscem-schemas/latest/spa/particles_per_micrograph)
 
 
 ## Domain and Range

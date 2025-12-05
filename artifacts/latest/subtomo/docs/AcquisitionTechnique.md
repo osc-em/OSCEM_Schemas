@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionTechnique](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/AcquisitionTechnique)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionTechnique](https://w3id.org/oscem-schemas/latest/subtomo/AcquisitionTechnique)
 
 
 ## Permissible Values

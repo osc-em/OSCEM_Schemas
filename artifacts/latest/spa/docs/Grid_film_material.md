@@ -3,7 +3,7 @@
 
 Type of material the support film is made of
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Grid_film_material](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Grid_film_material)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Grid_film_material](https://w3id.org/oscem-schemas/latest/spa/Grid_film_material)
 
 
 ## Domain and Range

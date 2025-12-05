@@ -3,7 +3,7 @@
 
 Initial dose
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies_initial_dose](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies_initial_dose)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Movies_initial_dose](https://w3id.org/oscem-schemas/latest/spa/Movies_initial_dose)
 
 
 ## Domain and Range

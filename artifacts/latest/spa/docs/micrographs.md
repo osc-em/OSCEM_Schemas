@@ -3,7 +3,7 @@
 
 Micrographs metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/micrographs](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/micrographs)
+URI: [https://w3id.org/oscem-schemas/latest/spa/micrographs](https://w3id.org/oscem-schemas/latest/spa/micrographs)
 
 
 ## Domain and Range

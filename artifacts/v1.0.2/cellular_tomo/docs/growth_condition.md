@@ -3,7 +3,7 @@
 
 How the specimen was grown
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/growth_condition](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/growth_condition)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/growth_condition](https://w3id.org/oscem-schemas/latest/cellular_tomo/growth_condition)
 
 
 ## Domain and Range

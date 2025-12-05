@@ -374,7 +374,7 @@ CREATE TABLE "Classes3D_volume" (
 	PRIMARY KEY ("Classes3D_id", volume_id),
 	FOREIGN KEY("Classes3D_id") REFERENCES "Classes3D" (id),
 	FOREIGN KEY(volume_id) REFERENCES "Volume" (id)
-);CREATE INDEX "ix_Classes3D_volume_Classes3D_id" ON "Classes3D_volume" ("Classes3D_id");CREATE INDEX "ix_Classes3D_volume_volume_id" ON "Classes3D_volume" (volume_id);
+);CREATE INDEX "ix_Classes3D_volume_volume_id" ON "Classes3D_volume" (volume_id);CREATE INDEX "ix_Classes3D_volume_Classes3D_id" ON "Classes3D_volume" ("Classes3D_id");
 CREATE TABLE "Classes3D_descriptors" (
 	"Classes3D_id" INTEGER,
 	descriptors_id INTEGER,
@@ -417,7 +417,7 @@ CREATE TABLE "CTFs_descriptors" (
 	PRIMARY KEY ("CTFs_id", descriptors_id),
 	FOREIGN KEY("CTFs_id") REFERENCES "CTFs" (id),
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
-);CREATE INDEX "ix_CTFs_descriptors_descriptors_id" ON "CTFs_descriptors" (descriptors_id);CREATE INDEX "ix_CTFs_descriptors_CTFs_id" ON "CTFs_descriptors" ("CTFs_id");
+);CREATE INDEX "ix_CTFs_descriptors_CTFs_id" ON "CTFs_descriptors" ("CTFs_id");CREATE INDEX "ix_CTFs_descriptors_descriptors_id" ON "CTFs_descriptors" (descriptors_id);
 CREATE TABLE "Processing_volumes" (
 	"Processing_id" INTEGER,
 	volumes_id INTEGER,

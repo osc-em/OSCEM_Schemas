@@ -3,7 +3,7 @@
 
 whether blotting was performed.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/blotting](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/blotting)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/blotting](https://w3id.org/oscem-schemas/latest/cellular_tomo/blotting)
 
 
 ## Domain and Range

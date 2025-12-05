@@ -3,7 +3,7 @@
 
 The name of the manufacturer
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/manufacturer](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/manufacturer)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/manufacturer](https://w3id.org/oscem-schemas/latest/cellular_tomo/manufacturer)
 
 
 ## Domain and Range

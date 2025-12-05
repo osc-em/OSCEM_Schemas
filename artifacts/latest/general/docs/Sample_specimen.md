@@ -3,7 +3,7 @@
 
 Description of the specimen
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Sample_specimen](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Sample_specimen)
+URI: [https://w3id.org/oscem-schemas/latest/general/Sample_specimen](https://w3id.org/oscem-schemas/latest/general/Sample_specimen)
 
 
 ## Domain and Range

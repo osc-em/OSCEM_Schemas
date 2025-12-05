@@ -3,7 +3,7 @@
 
 Increment between elements of a series
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/TiltAngle_increment](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/TiltAngle_increment)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/TiltAngle_increment](https://w3id.org/oscem-schemas/latest/subtomo/TiltAngle_increment)
 
 
 ## Domain and Range

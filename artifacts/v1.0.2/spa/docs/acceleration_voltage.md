@@ -3,7 +3,7 @@
 
 Voltage used for the electron acceleration, in kV
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/acceleration_voltage](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/acceleration_voltage)
+URI: [https://w3id.org/oscem-schemas/latest/spa/acceleration_voltage](https://w3id.org/oscem-schemas/latest/spa/acceleration_voltage)
 
 
 ## Domain and Range

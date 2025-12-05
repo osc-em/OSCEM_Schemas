@@ -3,7 +3,7 @@
 
 Environmental temperature just before vitrification, in K
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Specimen_temperature](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Specimen_temperature)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Specimen_temperature](https://w3id.org/oscem-schemas/latest/spa/Specimen_temperature)
 
 
 ## Domain and Range

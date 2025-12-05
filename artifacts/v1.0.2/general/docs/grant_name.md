@@ -3,7 +3,7 @@
 
 name of the grant
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/grant_name](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/grant_name)
+URI: [https://w3id.org/oscem-schemas/latest/general/grant_name](https://w3id.org/oscem-schemas/latest/general/grant_name)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 What type of cellular features are present in your tomograms?
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/cellular_features](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/cellular_features)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/cellular_features](https://w3id.org/oscem-schemas/latest/cellular_tomo/cellular_features)
 
 
 ## Domain and Range

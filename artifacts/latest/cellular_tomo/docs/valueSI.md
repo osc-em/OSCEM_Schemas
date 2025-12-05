@@ -3,7 +3,7 @@
 
 value of a given field in respect to its SI unit
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/valueSI](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/valueSI)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/valueSI](https://w3id.org/oscem-schemas/latest/cellular_tomo/valueSI)
 
 
 ## Domain and Range

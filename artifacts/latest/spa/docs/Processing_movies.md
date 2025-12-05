@@ -3,7 +3,7 @@
 
 Movies metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing_movies](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing_movies)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Processing_movies](https://w3id.org/oscem-schemas/latest/spa/Processing_movies)
 
 
 ## Domain and Range

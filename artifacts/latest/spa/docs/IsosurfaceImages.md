@@ -3,7 +3,7 @@
 
 Class for the isosurface images
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/IsosurfaceImages](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/IsosurfaceImages)
+URI: [https://w3id.org/oscem-schemas/latest/spa/IsosurfaceImages](https://w3id.org/oscem-schemas/latest/spa/IsosurfaceImages)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Volumes],[Volume],[Volume]++-%20isosurface_images%200..1>[IsosurfaceImages&#124;front_view:string%20%3F;side_view:string%20%3F;top_view:string%20%3F],[Volumes]++-%20isosurface_images%200..1>[IsosurfaceImages],[Volume]++-%20isosurface_images(i)%200..1>[IsosurfaceImages],[Volumes]++-%20isosurface_images(i)%200..1>[IsosurfaceImages])](https://yuml.me/diagram/nofunky;dir:TB/class/[Volumes],[Volume],[Volume]++-%20isosurface_images%200..1>[IsosurfaceImages&#124;front_view:string%20%3F;side_view:string%20%3F;top_view:string%20%3F],[Volumes]++-%20isosurface_images%200..1>[IsosurfaceImages],[Volume]++-%20isosurface_images(i)%200..1>[IsosurfaceImages],[Volumes]++-%20isosurface_images(i)%200..1>[IsosurfaceImages])

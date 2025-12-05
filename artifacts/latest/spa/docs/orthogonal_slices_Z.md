@@ -3,7 +3,7 @@
 
 Filename of orthogonal slices in Z direction
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/orthogonal_slices_Z](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/orthogonal_slices_Z)
+URI: [https://w3id.org/oscem-schemas/latest/spa/orthogonal_slices_Z](https://w3id.org/oscem-schemas/latest/spa/orthogonal_slices_Z)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 whether a specific instrument was used during data acquisition
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/ChromaticAberrationCorrector_used](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/ChromaticAberrationCorrector_used)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/ChromaticAberrationCorrector_used](https://w3id.org/oscem-schemas/latest/subtomo/ChromaticAberrationCorrector_used)
 
 
 ## Domain and Range

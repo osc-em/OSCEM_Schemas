@@ -3,7 +3,7 @@
 
 Class representing movies metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Movies)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Movies](https://w3id.org/oscem-schemas/latest/spa/Movies)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Processing],[Descriptors]<descriptors%200..*-++[Movies&#124;gain_image:string%20%3F;dark_image:string%20%3F],[QuantityValue]<initial_dose%200..1-++[Movies],[QuantityValue]<dose_per_image%200..1-++[Movies],[Processing]++-%20movies%200..1>[Movies],[Processing]++-%20movies(i)%200..1>[Movies],[Descriptors])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Processing],[Descriptors]<descriptors%200..*-++[Movies&#124;gain_image:string%20%3F;dark_image:string%20%3F],[QuantityValue]<initial_dose%200..1-++[Movies],[QuantityValue]<dose_per_image%200..1-++[Movies],[Processing]++-%20movies%200..1>[Movies],[Processing]++-%20movies(i)%200..1>[Movies],[Descriptors])

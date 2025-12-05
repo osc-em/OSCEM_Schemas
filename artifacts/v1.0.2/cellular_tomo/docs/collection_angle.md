@@ -3,7 +3,7 @@
 
 Collection angle set, min and max values in mrad.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/collection_angle](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/collection_angle)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/collection_angle](https://w3id.org/oscem-schemas/latest/cellular_tomo/collection_angle)
 
 
 ## Domain and Range

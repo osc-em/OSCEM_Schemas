@@ -3,7 +3,7 @@
 
 Scientific name of the organism used to produce the molecule of interest
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Molecule_expression_system](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Molecule_expression_system)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Molecule_expression_system](https://w3id.org/oscem-schemas/latest/subtomo/Molecule_expression_system)
 
 
 ## Domain and Range

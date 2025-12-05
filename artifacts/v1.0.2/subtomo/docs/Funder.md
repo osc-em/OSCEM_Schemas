@@ -3,7 +3,7 @@
 
 Description of the project funding
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Funder](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/Funder)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/Funder](https://w3id.org/oscem-schemas/latest/subtomo/Funder)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Organizational],[Organizational]++-%20funder%200..*>[Funder&#124;funder_name:string%20%3F;type_org:OrganizationTypeEnum%20%3F;country:string%20%3F],[Organizational]++-%20funder(i)%200..*>[Funder])](https://yuml.me/diagram/nofunky;dir:TB/class/[Organizational],[Organizational]++-%20funder%200..*>[Funder&#124;funder_name:string%20%3F;type_org:OrganizationTypeEnum%20%3F;country:string%20%3F],[Organizational]++-%20funder(i)%200..*>[Funder])

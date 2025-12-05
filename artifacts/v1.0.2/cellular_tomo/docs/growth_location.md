@@ -3,7 +3,7 @@
 
 In/on what kind of surface/container the cells were grown; i.e. directly on a grid
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/growth_location](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/growth_location)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/growth_location](https://w3id.org/oscem-schemas/latest/cellular_tomo/growth_location)
 
 
 ## Domain and Range

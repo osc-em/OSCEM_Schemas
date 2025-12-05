@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Acquisition_detectors](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Acquisition_detectors)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Acquisition_detectors](https://w3id.org/oscem-schemas/latest/cellular_tomo/Acquisition_detectors)
 
 
 ## Domain and Range

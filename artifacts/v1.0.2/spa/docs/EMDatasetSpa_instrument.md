@@ -3,7 +3,7 @@
 
 Describe the instrument used to acquire the data
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/EMDatasetSpa_instrument](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/EMDatasetSpa_instrument)
+URI: [https://w3id.org/oscem-schemas/latest/spa/EMDatasetSpa_instrument](https://w3id.org/oscem-schemas/latest/spa/EMDatasetSpa_instrument)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Instrument used for thinning the sample
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/instrument_thin](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/instrument_thin)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/instrument_thin](https://w3id.org/oscem-schemas/latest/env_tomo/instrument_thin)
 
 
 ## Domain and Range

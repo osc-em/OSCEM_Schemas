@@ -3,7 +3,7 @@
 
 Filename of the resolution values histogram
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Resolution_resolution_histogram](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Resolution_resolution_histogram)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Resolution_resolution_histogram](https://w3id.org/oscem-schemas/latest/spa/Resolution_resolution_histogram)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Volume metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing_volumes](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Processing_volumes)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Processing_volumes](https://w3id.org/oscem-schemas/latest/spa/Processing_volumes)
 
 
 ## Domain and Range

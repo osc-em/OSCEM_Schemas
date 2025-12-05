@@ -3,7 +3,7 @@
 
 freezing method - such as plunge freezing, high pressure freezing etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/method](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/method)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/method](https://w3id.org/oscem-schemas/latest/env_tomo/method)
 
 
 ## Domain and Range

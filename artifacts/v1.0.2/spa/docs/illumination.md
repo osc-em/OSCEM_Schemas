@@ -3,7 +3,7 @@
 
 Mode of illumination used during data collection
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/illumination](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/illumination)
+URI: [https://w3id.org/oscem-schemas/latest/spa/illumination](https://w3id.org/oscem-schemas/latest/spa/illumination)
 
 
 ## Domain and Range

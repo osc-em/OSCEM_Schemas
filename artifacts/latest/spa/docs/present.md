@@ -3,7 +3,7 @@
 
 Whether the model contains any ligands
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/present](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/present)
+URI: [https://w3id.org/oscem-schemas/latest/spa/present](https://w3id.org/oscem-schemas/latest/spa/present)
 
 
 ## Domain and Range

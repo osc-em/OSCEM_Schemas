@@ -3,7 +3,7 @@
 
 A series of numbers constructed from min, max, and increment
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Series](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Series)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Series](https://w3id.org/oscem-schemas/latest/spa/Series)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI]<increment%200..1-++[Series],[Range]^-[Series],[Range],[QuantitySI])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI]<increment%200..1-++[Series],[Range]^-[Series],[Range],[QuantitySI])

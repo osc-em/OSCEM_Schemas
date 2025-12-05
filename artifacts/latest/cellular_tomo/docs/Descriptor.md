@@ -3,7 +3,7 @@
 
 List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Descriptor](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Descriptor)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Descriptor](https://w3id.org/oscem-schemas/latest/cellular_tomo/Descriptor)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptors],[Any]<descriptor_thing%200..1-++[Descriptor&#124;descriptor_name:string],[Descriptor]^-[Descriptors],[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Descriptors],[Any]<descriptor_thing%200..1-++[Descriptor&#124;descriptor_name:string],[Descriptor]^-[Descriptors],[Any])

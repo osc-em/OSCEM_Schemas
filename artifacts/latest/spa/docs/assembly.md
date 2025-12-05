@@ -3,7 +3,7 @@
 
 What type of higher order structure your sample forms - if any.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/assembly](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/assembly)
+URI: [https://w3id.org/oscem-schemas/latest/spa/assembly](https://w3id.org/oscem-schemas/latest/spa/assembly)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Class representing a detector
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Detector](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Detector)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Detector](https://w3id.org/oscem-schemas/latest/spa/Detector)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Range],[QuantitySI],[Range]<collection_angle%200..1-++[Detector&#124;name:string%20%3F;mode:string%20%3F],[QuantitySI]<dispersion%200..1-++[Detector],[Acquisition]++-%20detectors%201..*>[Detector],[Acquisition]++-%20detectors(i)%200..*>[Detector],[Acquisition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Range],[QuantitySI],[Range]<collection_angle%200..1-++[Detector&#124;name:string%20%3F;mode:string%20%3F],[QuantitySI]<dispersion%200..1-++[Detector],[Acquisition]++-%20detectors%201..*>[Detector],[Acquisition]++-%20detectors(i)%200..*>[Detector],[Acquisition])

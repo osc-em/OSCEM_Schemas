@@ -3,7 +3,7 @@
 
 Allowed molecular assembly values - compatible with the EMDB.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/AssemblyEnum](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/AssemblyEnum)
+URI: [https://w3id.org/oscem-schemas/latest/general/AssemblyEnum](https://w3id.org/oscem-schemas/latest/general/AssemblyEnum)
 
 
 ## Permissible Values

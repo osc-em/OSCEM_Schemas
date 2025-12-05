@@ -3,7 +3,7 @@
 
 Specialist device to correct for spherical aberration of the microscope lenses
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/spherical_aberration_corrector](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/spherical_aberration_corrector)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/spherical_aberration_corrector](https://w3id.org/oscem-schemas/latest/cellular_tomo/spherical_aberration_corrector)
 
 
 ## Domain and Range

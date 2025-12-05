@@ -3,7 +3,7 @@
 
 Thickness of the support film
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Grid_film_thickness](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Grid_film_thickness)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Grid_film_thickness](https://w3id.org/oscem-schemas/latest/spa/Grid_film_thickness)
 
 
 ## Domain and Range

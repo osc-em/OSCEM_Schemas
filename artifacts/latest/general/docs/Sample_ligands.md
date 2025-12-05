@@ -3,7 +3,7 @@
 
 List of ligands associated with the sample
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Sample_ligands](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/Sample_ligands)
+URI: [https://w3id.org/oscem-schemas/latest/general/Sample_ligands](https://w3id.org/oscem-schemas/latest/general/Sample_ligands)
 
 
 ## Domain and Range

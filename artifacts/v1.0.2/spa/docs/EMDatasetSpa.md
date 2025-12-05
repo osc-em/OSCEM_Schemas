@@ -3,7 +3,7 @@
 
 Single particle cryo electron microscopy dataset
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/EMDatasetSpa](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/EMDatasetSpa)
+URI: [https://w3id.org/oscem-schemas/latest/spa/EMDatasetSpa](https://w3id.org/oscem-schemas/latest/spa/EMDatasetSpa)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleMolecular],[Processing],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetSpa],[SampleMolecular]<sample%200..1-++[EMDatasetSpa],[Instrument]<instrument%201..1-++[EMDatasetSpa],[AcquisitionSpa]<acquisition%201..1-++[EMDatasetSpa],[Processing]<processing%200..1-++[EMDatasetSpa],[EMDatasetBase]^-[EMDatasetSpa],[EMDatasetBase],[AcquisitionSpa])](https://yuml.me/diagram/nofunky;dir:TB/class/[SampleMolecular],[Processing],[Organizational],[Instrument],[Organizational]<organizational%200..1-++[EMDatasetSpa],[SampleMolecular]<sample%200..1-++[EMDatasetSpa],[Instrument]<instrument%201..1-++[EMDatasetSpa],[AcquisitionSpa]<acquisition%201..1-++[EMDatasetSpa],[Processing]<processing%200..1-++[EMDatasetSpa],[EMDatasetBase]^-[EMDatasetSpa],[EMDatasetBase],[AcquisitionSpa])

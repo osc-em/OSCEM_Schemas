@@ -3,7 +3,7 @@
 
 The total electron beam current hitting the viewing screen, in nA.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/screen_current](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/screen_current)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/screen_current](https://w3id.org/oscem-schemas/latest/subtomo/screen_current)
 
 
 ## Domain and Range

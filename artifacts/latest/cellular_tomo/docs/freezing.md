@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/freezing](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/freezing)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/freezing](https://w3id.org/oscem-schemas/latest/cellular_tomo/freezing)
 
 
 ## Domain and Range

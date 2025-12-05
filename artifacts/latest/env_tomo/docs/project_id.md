@@ -3,7 +3,7 @@
 
 project id
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/project_id](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/project_id)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/project_id](https://w3id.org/oscem-schemas/latest/env_tomo/project_id)
 
 
 ## Domain and Range

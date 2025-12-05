@@ -3,7 +3,7 @@
 
 Filename of the defocus values histogram
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Defocus_defocus_histogram](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Defocus_defocus_histogram)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Defocus_defocus_histogram](https://w3id.org/oscem-schemas/latest/spa/Defocus_defocus_histogram)
 
 
 ## Domain and Range

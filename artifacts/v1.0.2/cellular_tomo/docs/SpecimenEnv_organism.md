@@ -3,7 +3,7 @@
 
 the organism(s) present in your sample, if not perfectly defined try to asses as close as possible.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SpecimenEnv_organism](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/SpecimenEnv_organism)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/SpecimenEnv_organism](https://w3id.org/oscem-schemas/latest/cellular_tomo/SpecimenEnv_organism)
 
 
 ## Domain and Range

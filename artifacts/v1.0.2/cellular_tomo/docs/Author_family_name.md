@@ -3,7 +3,7 @@
 
 last name
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Author_family_name](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Author_family_name)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Author_family_name](https://w3id.org/oscem-schemas/latest/cellular_tomo/Author_family_name)
 
 
 ## Domain and Range

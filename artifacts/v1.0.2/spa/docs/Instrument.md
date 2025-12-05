@@ -3,7 +3,7 @@
 
 Instrument values, mostly constant across a data collection.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Instrument](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Instrument)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Instrument](https://w3id.org/oscem-schemas/latest/spa/Instrument)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[Microscope],[QuantitySI]<beam_convergence%200..1-++[Instrument&#124;illumination:string;imaging:string;electron_source:string;operating_mode:string%20%3F],[QuantitySI]<cs%200..1-++[Instrument],[QuantitySI]<c2_aperture%200..1-++[Instrument],[QuantitySI]<acceleration_voltage%201..1-++[Instrument],[Microscope]<microscope%201..1-++[Instrument],[EMDatasetSpa]++-%20instrument%201..1>[Instrument],[EMDatasetSpa])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantitySI],[Microscope],[QuantitySI]<beam_convergence%200..1-++[Instrument&#124;illumination:string;imaging:string;electron_source:string;operating_mode:string%20%3F],[QuantitySI]<cs%200..1-++[Instrument],[QuantitySI]<c2_aperture%200..1-++[Instrument],[QuantitySI]<acceleration_voltage%201..1-++[Instrument],[Microscope]<microscope%201..1-++[Instrument],[EMDatasetSpa]++-%20instrument%201..1>[Instrument],[EMDatasetSpa])

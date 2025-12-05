@@ -3,7 +3,7 @@
 
 Volume metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/volumes](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/volumes)
+URI: [https://w3id.org/oscem-schemas/latest/spa/volumes](https://w3id.org/oscem-schemas/latest/spa/volumes)
 
 
 ## Domain and Range

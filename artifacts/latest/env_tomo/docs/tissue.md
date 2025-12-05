@@ -3,7 +3,7 @@
 
 if the sample is a tissue sample please indicate what type of tissue.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/tissue](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/tissue)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/tissue](https://w3id.org/oscem-schemas/latest/env_tomo/tissue)
 
 
 ## Domain and Range

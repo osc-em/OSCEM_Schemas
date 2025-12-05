@@ -3,7 +3,7 @@
 
 The size of the image in pixels, height and width given.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/image_size](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/image_size)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/image_size](https://w3id.org/oscem-schemas/latest/cellular_tomo/image_size)
 
 
 ## Domain and Range

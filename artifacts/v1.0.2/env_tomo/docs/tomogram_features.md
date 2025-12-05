@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/tomogram_features](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/tomogram_features)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/tomogram_features](https://w3id.org/oscem-schemas/latest/env_tomo/tomogram_features)
 
 
 ## Domain and Range

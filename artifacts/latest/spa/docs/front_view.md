@@ -3,7 +3,7 @@
 
 Filename of the front view isosurface image
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/front_view](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/front_view)
+URI: [https://w3id.org/oscem-schemas/latest/spa/front_view](https://w3id.org/oscem-schemas/latest/spa/front_view)
 
 
 ## Domain and Range

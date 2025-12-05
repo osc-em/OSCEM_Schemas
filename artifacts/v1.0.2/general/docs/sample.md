@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/sample](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/sample)
+URI: [https://w3id.org/oscem-schemas/latest/general/sample](https://w3id.org/oscem-schemas/latest/general/sample)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 What was the atmosphere the sample was in, elaborate on any special gases present etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/atmosphere_growth](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/atmosphere_growth)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/atmosphere_growth](https://w3id.org/oscem-schemas/latest/cellular_tomo/atmosphere_growth)
 
 
 ## Domain and Range

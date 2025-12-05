@@ -3,7 +3,7 @@
 
 Minimum resolution
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Resolution_output_min_resolution](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Resolution_output_min_resolution)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Resolution_output_min_resolution](https://w3id.org/oscem-schemas/latest/spa/Resolution_output_min_resolution)
 
 
 ## Domain and Range

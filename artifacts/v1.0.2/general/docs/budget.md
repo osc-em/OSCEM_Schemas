@@ -3,7 +3,7 @@
 
 budget
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/budget](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/budget)
+URI: [https://w3id.org/oscem-schemas/latest/general/budget](https://w3id.org/oscem-schemas/latest/general/budget)
 
 
 ## Domain and Range

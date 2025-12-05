@@ -3,7 +3,7 @@
 
 Another way to move the beam above the sample for data collection purposes that does not require movement of the stage. Given in mrad.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/beamtilt](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/beamtilt)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/beamtilt](https://w3id.org/oscem-schemas/latest/cellular_tomo/beamtilt)
 
 
 ## Domain and Range

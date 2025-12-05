@@ -3,7 +3,7 @@
 
 the value of a field with a unit
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/value](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/value)
+URI: [https://w3id.org/oscem-schemas/latest/spa/value](https://w3id.org/oscem-schemas/latest/spa/value)
 
 
 ## Domain and Range

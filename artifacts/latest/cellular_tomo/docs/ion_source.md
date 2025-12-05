@@ -3,7 +3,7 @@
 
 what ion source was used?
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/ion_source](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/ion_source)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/ion_source](https://w3id.org/oscem-schemas/latest/cellular_tomo/ion_source)
 
 
 ## Domain and Range

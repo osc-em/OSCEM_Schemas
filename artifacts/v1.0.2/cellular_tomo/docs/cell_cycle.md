@@ -3,7 +3,7 @@
 
 What was the targeted cell cycle state, if any
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/cell_cycle](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/cell_cycle)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/cell_cycle](https://w3id.org/oscem-schemas/latest/cellular_tomo/cell_cycle)
 
 
 ## Domain and Range

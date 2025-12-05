@@ -3,7 +3,7 @@
 
 Specifies which Acquisition subschema/class is in use.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/technique](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/technique)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/technique](https://w3id.org/oscem-schemas/latest/cellular_tomo/technique)
 
 
 ## Domain and Range

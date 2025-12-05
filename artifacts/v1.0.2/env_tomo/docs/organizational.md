@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/organizational](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/organizational)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/organizational](https://w3id.org/oscem-schemas/latest/env_tomo/organizational)
 
 
 ## Domain and Range

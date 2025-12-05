@@ -3,7 +3,7 @@
 
 The total electron beam current hitting the viewing screen, in nA.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/screen_current](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/screen_current)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/screen_current](https://w3id.org/oscem-schemas/latest/cellular_tomo/screen_current)
 
 
 ## Domain and Range

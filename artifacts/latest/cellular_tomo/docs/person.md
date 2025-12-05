@@ -3,7 +3,7 @@
 
 person
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/person](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/person)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/person](https://w3id.org/oscem-schemas/latest/cellular_tomo/person)
 
 
 ## Domain and Range

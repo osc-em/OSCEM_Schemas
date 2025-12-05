@@ -3,7 +3,7 @@
 
 Name defining the descriptor
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/descriptor_name](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/descriptor_name)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/descriptor_name](https://w3id.org/oscem-schemas/latest/env_tomo/descriptor_name)
 
 
 ## Domain and Range

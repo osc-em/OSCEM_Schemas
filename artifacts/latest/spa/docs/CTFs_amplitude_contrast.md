@@ -3,7 +3,7 @@
 
 Amplitude contrast
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs_amplitude_contrast](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/CTFs_amplitude_contrast)
+URI: [https://w3id.org/oscem-schemas/latest/spa/CTFs_amplitude_contrast](https://w3id.org/oscem-schemas/latest/spa/CTFs_amplitude_contrast)
 
 
 ## Domain and Range

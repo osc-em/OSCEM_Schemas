@@ -3,7 +3,7 @@
 
 Maximal value of a given dataset property
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/maximal](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/maximal)
+URI: [https://w3id.org/oscem-schemas/latest/general/maximal](https://w3id.org/oscem-schemas/latest/general/maximal)
 
 
 ## Domain and Range

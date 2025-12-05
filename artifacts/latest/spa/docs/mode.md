@@ -3,7 +3,7 @@
 
 Mode of the detector, e.g. "counting", "ScanningDetector", "ImagingDetector", etc.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/mode](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/mode)
+URI: [https://w3id.org/oscem-schemas/latest/spa/mode](https://w3id.org/oscem-schemas/latest/spa/mode)
 
 
 ## Domain and Range

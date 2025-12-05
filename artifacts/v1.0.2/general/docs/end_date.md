@@ -3,7 +3,7 @@
 
 end date
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/end_date](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/end_date)
+URI: [https://w3id.org/oscem-schemas/latest/general/end_date](https://w3id.org/oscem-schemas/latest/general/end_date)
 
 
 ## Domain and Range

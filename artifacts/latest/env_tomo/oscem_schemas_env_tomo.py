@@ -1,8 +1,8 @@
 # Auto generated from oscem_schemas_env_tomo.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T15:43:14
+# Generation date: 2025-12-05T16:05:09
 # Schema: EnvironmentalTomography
 #
-# id: https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo
+# id: https://w3id.org/oscem-schemas/latest/env_tomo
 # description: Schema for the Open Standards Community for Electron Microscopy (OSC-EM)
 # license: CC-BY
 
@@ -68,12 +68,12 @@ CUSTOM_TYPES = CurieNamespace('custom_types', 'https://w3id.org/oscem-schemas/la
 INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/oscem-schemas/latest/instrument')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 ORGANIZATIONAL = CurieNamespace('organizational', 'https://w3id.org/oscem-schemas/latest/organizational/')
-OSCEM = CurieNamespace('oscem', 'https://w3id.org/oscem-schemas/latest/OSCEM_schemas')
+OSCEM = CurieNamespace('oscem', 'https://w3id.org/oscem-schemas/latest/')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 SAMPLE_ENV = CurieNamespace('sample_env', 'https://w3id.org/oscem-schemas/latest/environmental_sample')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 TOMO = CurieNamespace('tomo', 'https://w3id.org/oscem-schemas/latest/tomo')
-DEFAULT_ = CurieNamespace('', 'https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/')
+DEFAULT_ = CurieNamespace('', 'https://w3id.org/oscem-schemas/latest/env_tomo/')
 
 
 # Types
@@ -93,7 +93,7 @@ class Acquisition(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["Acquisition"]
     class_class_curie: ClassVar[str] = "acquisition:Acquisition"
     class_name: ClassVar[str] = "Acquisition"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Acquisition")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Acquisition")
 
     detectors: Union[Union[dict, "Detector"], list[Union[dict, "Detector"]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -228,7 +228,7 @@ class AcquisitionSpa(Acquisition):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["AcquisitionSpa"]
     class_class_curie: ClassVar[str] = "acquisition:AcquisitionSpa"
     class_name: ClassVar[str] = "AcquisitionSpa"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/AcquisitionSpa")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/AcquisitionSpa")
 
     detectors: Union[Union[dict, "Detector"], list[Union[dict, "Detector"]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -255,7 +255,7 @@ class EnergyFilter(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["EnergyFilter"]
     class_class_curie: ClassVar[str] = "acquisition:EnergyFilter"
     class_name: ClassVar[str] = "EnergyFilter"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EnergyFilter")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/EnergyFilter")
 
     used: Union[bool, Bool] = None
     width_energy_filter: Union[dict, "QuantitySI"] = None
@@ -288,7 +288,7 @@ class SpecialistOptics(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["SpecialistOptics"]
     class_class_curie: ClassVar[str] = "acquisition:SpecialistOptics"
     class_name: ClassVar[str] = "SpecialistOptics"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/SpecialistOptics")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/SpecialistOptics")
 
     phaseplate: Optional[Union[dict, "Phaseplate"]] = None
     spherical_aberration_corrector: Optional[Union[dict, "SphericalAberrationCorrector"]] = None
@@ -317,7 +317,7 @@ class Phaseplate(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["Phaseplate"]
     class_class_curie: ClassVar[str] = "acquisition:Phaseplate"
     class_name: ClassVar[str] = "Phaseplate"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Phaseplate")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Phaseplate")
 
     used: Union[bool, Bool] = None
     instrument_type: str = None
@@ -346,7 +346,7 @@ class SphericalAberrationCorrector(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["SphericalAberrationCorrector"]
     class_class_curie: ClassVar[str] = "acquisition:SphericalAberrationCorrector"
     class_name: ClassVar[str] = "SphericalAberrationCorrector"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/SphericalAberrationCorrector")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/SphericalAberrationCorrector")
 
     used: Union[bool, Bool] = None
     instrument_type: str = None
@@ -375,7 +375,7 @@ class ChromaticAberrationCorrector(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["ChromaticAberrationCorrector"]
     class_class_curie: ClassVar[str] = "acquisition:ChromaticAberrationCorrector"
     class_name: ClassVar[str] = "ChromaticAberrationCorrector"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/ChromaticAberrationCorrector")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/ChromaticAberrationCorrector")
 
     used: Union[bool, Bool] = None
     instrument_type: str = None
@@ -404,7 +404,7 @@ class Detector(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ACQUISITION["Detector"]
     class_class_curie: ClassVar[str] = "acquisition:Detector"
     class_name: ClassVar[str] = "Detector"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Detector")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Detector")
 
     name: Optional[str] = None
     mode: Optional[str] = None
@@ -437,7 +437,7 @@ class Instrument(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = INSTRUMENT["Instrument"]
     class_class_curie: ClassVar[str] = "instrument:Instrument"
     class_name: ClassVar[str] = "Instrument"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Instrument")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Instrument")
 
     microscope: Union[dict, "Microscope"] = None
     illumination: str = None
@@ -500,7 +500,7 @@ class Microscope(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SCHEMA["Microscope"]
     class_class_curie: ClassVar[str] = "schema:Microscope"
     class_name: ClassVar[str] = "Microscope"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Microscope")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Microscope")
 
     model: str = None
     manufacturer: Optional[str] = None
@@ -527,7 +527,7 @@ class SampleEnv(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["SampleEnv"]
     class_class_curie: ClassVar[str] = "sample_env:SampleEnv"
     class_name: ClassVar[str] = "SampleEnv"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/SampleEnv")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/SampleEnv")
 
     specimen_env: Union[dict, "SpecimenEnv"] = None
     freezing: Optional[Union[dict, "Freezing"]] = None
@@ -562,7 +562,7 @@ class SpecimenEnv(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["SpecimenEnv"]
     class_class_curie: ClassVar[str] = "sample_env:SpecimenEnv"
     class_name: ClassVar[str] = "SpecimenEnv"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/SpecimenEnv")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/SpecimenEnv")
 
     organism: Union[str, list[str]] = None
     tissue: Optional[str] = None
@@ -606,7 +606,7 @@ class Freezing(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["Freezing"]
     class_class_curie: ClassVar[str] = "sample_env:Freezing"
     class_name: ClassVar[str] = "Freezing"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Freezing")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Freezing")
 
     cryogen_sample_env: Optional[str] = None
     method: Optional[Union[str, "FreezingMethodEnum"]] = None
@@ -651,7 +651,7 @@ class Thinning(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["Thinning"]
     class_class_curie: ClassVar[str] = "sample_env:Thinning"
     class_name: ClassVar[str] = "Thinning"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Thinning")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Thinning")
 
     method_thin: Optional[str] = None
     instrument_thin: Optional[str] = None
@@ -688,7 +688,7 @@ class TomogramFeatures(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SAMPLE_ENV["TomogramFeatures"]
     class_class_curie: ClassVar[str] = "sample_env:TomogramFeatures"
     class_name: ClassVar[str] = "TomogramFeatures"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/TomogramFeatures")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/TomogramFeatures")
 
     cellular_features: Optional[str] = None
     organelles: Optional[Union[str, list[str]]] = empty_list()
@@ -719,7 +719,7 @@ class AcquisitionTomo(Acquisition):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionTomo"]
     class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionTomo"
     class_name: ClassVar[str] = "AcquisitionTomo"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/AcquisitionTomo")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/AcquisitionTomo")
 
     detectors: Union[Union[dict, Detector], list[Union[dict, Detector]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -749,7 +749,7 @@ class AcquisitionSubTomo(AcquisitionTomo):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionSubTomo"]
     class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionSubTomo"
     class_name: ClassVar[str] = "AcquisitionSubTomo"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/AcquisitionSubTomo")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/AcquisitionSubTomo")
 
     detectors: Union[Union[dict, Detector], list[Union[dict, Detector]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -775,7 +775,7 @@ class AcquisitionEnvTomo(AcquisitionTomo):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionEnvTomo"]
     class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionEnvTomo"
     class_name: ClassVar[str] = "AcquisitionEnvTomo"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/AcquisitionEnvTomo")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/AcquisitionEnvTomo")
 
     detectors: Union[Union[dict, Detector], list[Union[dict, Detector]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -801,7 +801,7 @@ class AcquisitionCelTomo(AcquisitionTomo):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/AcquisitionCelTomo"]
     class_class_curie: ClassVar[str] = "tomo:graphy/AcquisitionCelTomo"
     class_name: ClassVar[str] = "AcquisitionCelTomo"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/AcquisitionCelTomo")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/AcquisitionCelTomo")
 
     detectors: Union[Union[dict, Detector], list[Union[dict, Detector]]] = None
     date_time: Union[str, XSDDateTime] = None
@@ -830,7 +830,7 @@ class Organizational(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Organizational"]
     class_class_curie: ClassVar[str] = "organizational:Organizational"
     class_name: ClassVar[str] = "Organizational"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Organizational")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Organizational")
 
     authors: Union[Union[dict, "Author"], list[Union[dict, "Author"]]] = None
     grants: Optional[Union[Union[dict, "Grant"], list[Union[dict, "Grant"]]]] = empty_list()
@@ -864,7 +864,7 @@ class Person(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SCHEMA["Person"]
     class_class_curie: ClassVar[str] = "schema:Person"
     class_name: ClassVar[str] = "Person"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Person")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Person")
 
     family_name: Optional[str] = None
     given_name: Optional[str] = None
@@ -901,7 +901,7 @@ class Author(Person):
     class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Author"]
     class_class_curie: ClassVar[str] = "organizational:Author"
     class_name: ClassVar[str] = "Author"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Author")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Author")
 
     type_org: Union[str, "OrganizationTypeEnum"] = None
     family_name: str = None
@@ -958,7 +958,7 @@ class Grant(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SCHEMA["Grant"]
     class_class_curie: ClassVar[str] = "schema:Grant"
     class_name: ClassVar[str] = "Grant"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Grant")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Grant")
 
     grant_name: Optional[str] = None
     start_date: Optional[Union[str, XSDDateTime]] = None
@@ -999,7 +999,7 @@ class Funder(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ORGANIZATIONAL["Funder"]
     class_class_curie: ClassVar[str] = "organizational:Funder"
     class_name: ClassVar[str] = "Funder"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Funder")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Funder")
 
     funder_name: Optional[str] = None
     type_org: Optional[Union[str, "OrganizationTypeEnum"]] = None
@@ -1028,7 +1028,7 @@ class EMDatasetBase(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = OSCEM["EMDatasetBase"]
     class_class_curie: ClassVar[str] = "oscem:EMDatasetBase"
     class_name: ClassVar[str] = "EMDatasetBase"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetBase")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetBase")
 
     acquisition: Optional[Union[dict, "Any"]] = None
     instrument: Optional[Union[dict, "Any"]] = None
@@ -1042,10 +1042,10 @@ class EMDatasetEnv(EMDatasetBase):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = OSCEM["env_tomo/EMDatasetEnv"]
+    class_class_curie: ClassVar[str] = "oscem:env_tomo/EMDatasetEnv"
     class_name: ClassVar[str] = "EMDatasetEnv"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/EMDatasetEnv")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/EMDatasetEnv")
 
     acquisition: Union[dict, AcquisitionEnvTomo] = None
     instrument: Union[dict, Instrument] = None
@@ -1084,7 +1084,7 @@ class Range(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = TYPES["Range"]
     class_class_curie: ClassVar[str] = "types:Range"
     class_name: ClassVar[str] = "Range"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Range")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Range")
 
     minimal: Optional[Union[dict, "QuantitySI"]] = None
     maximal: Optional[Union[dict, "QuantitySI"]] = None
@@ -1109,7 +1109,7 @@ class Series(Range):
     class_class_uri: ClassVar[URIRef] = TYPES["Series"]
     class_class_curie: ClassVar[str] = "types:Series"
     class_name: ClassVar[str] = "Series"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Series")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Series")
 
     increment: Optional[Union[dict, "QuantitySI"]] = None
 
@@ -1130,7 +1130,7 @@ class TiltAngle(Series):
     class_class_uri: ClassVar[URIRef] = TOMO["graphy/TiltAngle"]
     class_class_curie: ClassVar[str] = "tomo:graphy/TiltAngle"
     class_name: ClassVar[str] = "TiltAngle"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/TiltAngle")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/TiltAngle")
 
     minimal: Union[dict, "QuantitySI"] = None
     maximal: Union[dict, "QuantitySI"] = None
@@ -1165,7 +1165,7 @@ class ImageSize(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = TYPES["ImageSize"]
     class_class_curie: ClassVar[str] = "types:ImageSize"
     class_name: ClassVar[str] = "ImageSize"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/ImageSize")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/ImageSize")
 
     height: Optional[int] = None
     width: Optional[int] = None
@@ -1190,7 +1190,7 @@ class BoundingBox2D(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = TYPES["BoundingBox2D"]
     class_class_curie: ClassVar[str] = "types:BoundingBox2D"
     class_name: ClassVar[str] = "BoundingBox2D"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/BoundingBox2D")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/BoundingBox2D")
 
     x_min: Optional[Union[dict, "QuantitySI"]] = None
     x_max: Optional[Union[dict, "QuantitySI"]] = None
@@ -1223,7 +1223,7 @@ class QuantityValue(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = QUDT["quantityValue"]
     class_class_curie: ClassVar[str] = "qudt:quantityValue"
     class_name: ClassVar[str] = "QuantityValue"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/QuantityValue")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/QuantityValue")
 
     unit: str = None
     value: float = None
@@ -1252,7 +1252,7 @@ class QuantitySI(QuantityValue):
     class_class_uri: ClassVar[URIRef] = TYPES["QuantitySI"]
     class_class_curie: ClassVar[str] = "types:QuantitySI"
     class_name: ClassVar[str] = "QuantitySI"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/QuantitySI")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/QuantitySI")
 
     unit: str = None
     value: float = None
@@ -1280,7 +1280,7 @@ class Descriptor(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = TYPES["Descriptor"]
     class_class_curie: ClassVar[str] = "types:Descriptor"
     class_name: ClassVar[str] = "Descriptor"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Descriptor")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Descriptor")
 
     descriptor_name: str = None
     descriptor_thing: Optional[Union[dict, Any]] = None
@@ -1301,7 +1301,7 @@ class Descriptors(Descriptor):
     class_class_uri: ClassVar[URIRef] = TYPES["Descriptors"]
     class_class_curie: ClassVar[str] = "types:Descriptors"
     class_name: ClassVar[str] = "Descriptors"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Descriptors")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/oscem-schemas/latest/env_tomo/Descriptors")
 
     descriptor_name: str = None
 

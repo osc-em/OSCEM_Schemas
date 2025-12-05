@@ -3,7 +3,7 @@
 
 Minimal value of a given dataset property
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/minimal](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/minimal)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/minimal](https://w3id.org/oscem-schemas/latest/subtomo/minimal)
 
 
 ## Domain and Range

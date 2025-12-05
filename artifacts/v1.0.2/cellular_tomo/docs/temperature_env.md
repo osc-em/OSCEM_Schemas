@@ -3,7 +3,7 @@
 
 temperature of the sample right before freezing; in K.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/temperature_env](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/temperature_env)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/temperature_env](https://w3id.org/oscem-schemas/latest/cellular_tomo/temperature_env)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 budget
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/budget](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/budget)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/budget](https://w3id.org/oscem-schemas/latest/cellular_tomo/budget)
 
 
 ## Domain and Range

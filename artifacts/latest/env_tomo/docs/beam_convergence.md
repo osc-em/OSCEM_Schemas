@@ -3,7 +3,7 @@
 
 Refers to how tightly or widely the electron beam is focused onto the sample, in mrad. Typically low convergence for TEM and high for STEM.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/beam_convergence](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/beam_convergence)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/beam_convergence](https://w3id.org/oscem-schemas/latest/env_tomo/beam_convergence)
 
 
 ## Domain and Range

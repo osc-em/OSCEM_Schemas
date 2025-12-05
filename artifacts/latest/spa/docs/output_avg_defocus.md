@@ -3,7 +3,7 @@
 
 Average value of defocus
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_avg_defocus](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/output_avg_defocus)
+URI: [https://w3id.org/oscem-schemas/latest/spa/output_avg_defocus](https://w3id.org/oscem-schemas/latest/spa/output_avg_defocus)
 
 
 ## Domain and Range

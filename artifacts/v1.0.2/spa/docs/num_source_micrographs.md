@@ -3,7 +3,7 @@
 
 Total number of micrographs from which coordinates come from
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/num_source_micrographs](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/num_source_micrographs)
+URI: [https://w3id.org/oscem-schemas/latest/spa/num_source_micrographs](https://w3id.org/oscem-schemas/latest/spa/num_source_micrographs)
 
 
 ## Domain and Range

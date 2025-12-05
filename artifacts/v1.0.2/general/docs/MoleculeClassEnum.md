@@ -3,7 +3,7 @@
 
 Allowed molecule class values - compatible with the EMDB.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/MoleculeClassEnum](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/MoleculeClassEnum)
+URI: [https://w3id.org/oscem-schemas/latest/general/MoleculeClassEnum](https://w3id.org/oscem-schemas/latest/general/MoleculeClassEnum)
 
 
 ## Permissible Values

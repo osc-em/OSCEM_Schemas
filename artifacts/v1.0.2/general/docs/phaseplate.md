@@ -3,7 +3,7 @@
 
 Phaseplate is a special optics device that can be used to enhance contrast
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-general/phaseplate](https://w3id.org/oscem-schemas/latest/oscem-schemas-general/phaseplate)
+URI: [https://w3id.org/oscem-schemas/latest/general/phaseplate](https://w3id.org/oscem-schemas/latest/general/phaseplate)
 
 
 ## Domain and Range

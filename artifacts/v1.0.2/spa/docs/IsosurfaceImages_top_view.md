@@ -3,7 +3,7 @@
 
 Filename of the top view isosurface image
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/IsosurfaceImages_top_view](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/IsosurfaceImages_top_view)
+URI: [https://w3id.org/oscem-schemas/latest/spa/IsosurfaceImages_top_view](https://w3id.org/oscem-schemas/latest/spa/IsosurfaceImages_top_view)
 
 
 ## Domain and Range

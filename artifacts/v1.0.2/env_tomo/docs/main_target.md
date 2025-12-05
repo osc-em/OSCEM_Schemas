@@ -3,7 +3,7 @@
 
 What was the main biological target of your research for this tomogram?
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/main_target](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/main_target)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/main_target](https://w3id.org/oscem-schemas/latest/env_tomo/main_target)
 
 
 ## Domain and Range

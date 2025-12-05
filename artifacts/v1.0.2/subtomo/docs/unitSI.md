@@ -3,7 +3,7 @@
 
 the SI unit attached to a si value
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/unitSI](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/unitSI)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/unitSI](https://w3id.org/oscem-schemas/latest/subtomo/unitSI)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/freezing](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/freezing)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/freezing](https://w3id.org/oscem-schemas/latest/env_tomo/freezing)
 
 
 ## Domain and Range

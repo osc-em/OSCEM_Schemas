@@ -3,7 +3,7 @@
 
 Details of a given specialist instrument
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/SphericalAberrationCorrector_instrument_type](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/SphericalAberrationCorrector_instrument_type)
+URI: [https://w3id.org/oscem-schemas/latest/spa/SphericalAberrationCorrector_instrument_type](https://w3id.org/oscem-schemas/latest/spa/SphericalAberrationCorrector_instrument_type)
 
 
 ## Domain and Range

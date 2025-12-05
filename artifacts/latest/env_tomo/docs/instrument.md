@@ -3,7 +3,7 @@
 
 
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/instrument](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/instrument)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/instrument](https://w3id.org/oscem-schemas/latest/env_tomo/instrument)
 
 
 ## Domain and Range

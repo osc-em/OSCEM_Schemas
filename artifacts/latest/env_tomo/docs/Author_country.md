@@ -3,7 +3,7 @@
 
 Country of the institution
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Author_country](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/Author_country)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/Author_country](https://w3id.org/oscem-schemas/latest/env_tomo/Author_country)
 
 
 ## Domain and Range

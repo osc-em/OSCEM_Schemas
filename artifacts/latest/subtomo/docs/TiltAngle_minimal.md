@@ -3,7 +3,7 @@
 
 Minimal value of a given dataset property
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/TiltAngle_minimal](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/TiltAngle_minimal)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/TiltAngle_minimal](https://w3id.org/oscem-schemas/latest/subtomo/TiltAngle_minimal)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 the cryogen used to freeze the sample, i.e. ethane
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/cryogen_sample_env](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/cryogen_sample_env)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/cryogen_sample_env](https://w3id.org/oscem-schemas/latest/env_tomo/cryogen_sample_env)
 
 
 ## Domain and Range

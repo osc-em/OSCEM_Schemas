@@ -3,7 +3,7 @@
 
 The thinning method used, such as FIB milling.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/method_thin](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/method_thin)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/method_thin](https://w3id.org/oscem-schemas/latest/cellular_tomo/method_thin)
 
 
 ## Domain and Range

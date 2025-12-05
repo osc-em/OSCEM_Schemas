@@ -3,7 +3,7 @@
 
 Description of the specimen
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/specimen](https://w3id.org/oscem-schemas/latest/oscem-schemas-subtomo/specimen)
+URI: [https://w3id.org/oscem-schemas/latest/subtomo/specimen](https://w3id.org/oscem-schemas/latest/subtomo/specimen)
 
 
 ## Domain and Range

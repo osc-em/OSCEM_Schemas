@@ -3,7 +3,7 @@
 
 Total number of particles
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Coordinates_number_particles](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/Coordinates_number_particles)
+URI: [https://w3id.org/oscem-schemas/latest/spa/Coordinates_number_particles](https://w3id.org/oscem-schemas/latest/spa/Coordinates_number_particles)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 the SI unit attached to a si value
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/unitSI](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/unitSI)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/unitSI](https://w3id.org/oscem-schemas/latest/cellular_tomo/unitSI)
 
 
 ## Domain and Range

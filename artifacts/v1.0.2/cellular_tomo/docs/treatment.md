@@ -3,7 +3,7 @@
 
 Were there any special treatment conditions; such as addition of certain chemicals etc
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/treatment](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/treatment)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/treatment](https://w3id.org/oscem-schemas/latest/cellular_tomo/treatment)
 
 
 ## Domain and Range

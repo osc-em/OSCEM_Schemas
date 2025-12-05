@@ -3,7 +3,7 @@
 
 List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/descriptors](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/descriptors)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/descriptors](https://w3id.org/oscem-schemas/latest/cellular_tomo/descriptors)
 
 
 ## Domain and Range

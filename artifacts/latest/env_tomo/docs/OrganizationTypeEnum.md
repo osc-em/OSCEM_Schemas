@@ -3,7 +3,7 @@
 
 Allowed values for authors organizations.
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/OrganizationTypeEnum](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/OrganizationTypeEnum)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/OrganizationTypeEnum](https://w3id.org/oscem-schemas/latest/env_tomo/OrganizationTypeEnum)
 
 
 ## Permissible Values

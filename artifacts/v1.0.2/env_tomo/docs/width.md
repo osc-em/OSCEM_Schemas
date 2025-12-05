@@ -3,7 +3,7 @@
 
 The width of a given item - unit depends on item
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/width](https://w3id.org/oscem-schemas/latest/oscem-schemas-env-tomo/width)
+URI: [https://w3id.org/oscem-schemas/latest/env_tomo/width](https://w3id.org/oscem-schemas/latest/env_tomo/width)
 
 
 ## Domain and Range

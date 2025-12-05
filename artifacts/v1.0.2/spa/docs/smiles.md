@@ -3,7 +3,7 @@
 
 Provide a valid SMILES string of your ligand
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/smiles](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/smiles)
+URI: [https://w3id.org/oscem-schemas/latest/spa/smiles](https://w3id.org/oscem-schemas/latest/spa/smiles)
 
 
 ## Domain and Range

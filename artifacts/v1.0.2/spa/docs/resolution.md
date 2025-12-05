@@ -3,7 +3,7 @@
 
 Resolution metadata
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/resolution](https://w3id.org/oscem-schemas/latest/oscem-schemas-spa/resolution)
+URI: [https://w3id.org/oscem-schemas/latest/spa/resolution](https://w3id.org/oscem-schemas/latest/spa/resolution)
 
 
 ## Domain and Range

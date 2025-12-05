@@ -3,7 +3,7 @@
 
 Operating mode of the microscope, i.e. "TEM", "STEM"
 
-URI: [https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Instrument_operating_mode](https://w3id.org/oscem-schemas/latest/oscem-schemas-cellular-tomo/Instrument_operating_mode)
+URI: [https://w3id.org/oscem-schemas/latest/cellular_tomo/Instrument_operating_mode](https://w3id.org/oscem-schemas/latest/cellular_tomo/Instrument_operating_mode)
 
 
 ## Domain and Range
