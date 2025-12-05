@@ -9,11 +9,11 @@
     sh:description "an axis-aligned 2D bounding box (float units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "minimum y" ;
+            sh:description "maximum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
@@ -21,11 +21,11 @@
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_max> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "maximum x" ;
+            sh:description "minimum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "minimum x" ;
             sh:maxCount 1 ;
@@ -38,19 +38,19 @@
     sh:closed false ;
     sh:description "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
-        [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> a sh:NodeShape ;
@@ -58,17 +58,17 @@
     sh:description "size of a 2D image (in integer units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "The height of a given item - unit depends on item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesheight> ],
-        [ sh:datatype xsd:integer ;
             sh:description "The width of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typeswidth> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The height of a given item - unit depends on item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesheight> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesImageSize> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesRange> a sh:NodeShape ;
@@ -76,17 +76,17 @@
     sh:description "A range constructed from min and max" ;
     sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Minimal value of a given dataset property" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Minimal value of a given dataset property" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesRange> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesSeries> a sh:NodeShape ;
@@ -94,6 +94,12 @@
     sh:description "A series of numbers constructed from min, max, and increment" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "Increment between elements of a series" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -104,31 +110,19 @@
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Increment between elements of a series" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesSeries> .
 
 processing:Processing a sh:NodeShape ;
     sh:closed true ;
     sh:description "Set of parameters describing the data processing" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DClasses3D> ;
-            sh:description "Classes 3D metadata" ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsCTFs> ;
+            sh:description "CTFs metadata" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path processing:classes3D ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/moviesMovies> ;
-            sh:description "Movies metadata" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path processing:movies ],
+            sh:order 2 ;
+            sh:path processing:ctfs ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/classes2DClasses2D> ;
             sh:description "Classes 2D metadata" ;
             sh:maxCount 1 ;
@@ -147,30 +141,30 @@ processing:Processing a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path processing:micrographs ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/moviesMovies> ;
+            sh:description "Movies metadata" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path processing:movies ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DClasses3D> ;
+            sh:description "Classes 3D metadata" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path processing:classes3D ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/volumesVolumes> ;
             sh:description "Volume metadata" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
-            sh:path processing:volumes ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsCTFs> ;
-            sh:description "CTFs metadata" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path processing:ctfs ] ;
+            sh:path processing:volumes ] ;
     sh:targetClass processing:Processing .
 
 <https://w3id.org/oscem-schemas/latest/classes2DClasses2D> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing classes 2D metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <qudt:quantityValue> ;
-            sh:description "Resolution of classes 2D" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes2Dresolution_classes_2D> ],
-        [ sh:datatype xsd:integer ;
+    sh:property [ sh:datatype xsd:integer ;
             sh:description "Number of particles per 2D class" ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
@@ -185,19 +179,24 @@ processing:Processing a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes2Dimages_classes_2D> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes2Dimages_classes_2D> ],
+        [ sh:class <qudt:quantityValue> ;
+            sh:description "Resolution of classes 2D" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes2Dresolution_classes_2D> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/classes2DClasses2D> .
 
 <https://w3id.org/oscem-schemas/latest/classes3DClasses3D> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing classes 3D metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Filename of the image containing 3D class images" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dimages_classes_3D> ],
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DVolume> ;
+            sh:description "Describes volume(s) obtained" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dvolume> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
             sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -214,11 +213,12 @@ processing:Processing a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/classes3Dresolution_classes_3D> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DVolume> ;
-            sh:description "Describes volume(s) obtained" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dvolume> ] ;
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of the image containing 3D class images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dimages_classes_3D> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/classes3DClasses3D> .
 
 <https://w3id.org/oscem-schemas/latest/classes3DVolume> a sh:NodeShape ;
@@ -243,42 +243,42 @@ processing:Processing a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing coordinates metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
-            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
-        [ sh:datatype xsd:integer ;
+    sh:property [ sh:datatype xsd:integer ;
             sh:description "Total number of micrographs from which coordinates come from" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/coordinatesnum_source_micrographs> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Total number of particles" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of histogram for particle number per micrograph" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesnumber_particles> ],
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesparticles_histogram> ],
         [ sh:datatype xsd:float ;
             sh:description "Mean number of particles per micrograph" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/coordinatesparticles_per_micrograph> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
         [ sh:datatype xsd:string ;
             sh:description "Filename of micrographs shown as examples in descending order based on the number of particles" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/coordinatesmicrograph_examples> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Filename of histogram for particle number per micrograph" ;
+        [ sh:datatype xsd:integer ;
+            sh:description "Total number of particles" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesparticles_histogram> ] ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/coordinatesnumber_particles> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/coordinatesCoordinates> .
 
 <https://w3id.org/oscem-schemas/latest/ctfsAstigmatism> a sh:NodeShape ;
@@ -303,36 +303,48 @@ processing:Processing a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/ctfsdefocus> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsAstigmatism> ;
+            sh:description "Astigmatism metadata" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsastigmatism> ],
         [ sh:datatype xsd:float ;
             sh:description "Amplitude contrast" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/ctfsamplitude_contrast> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
-            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsResolution> ;
             sh:description "Resolution metadata" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/ctfsresolution> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/ctfsAstigmatism> ;
-            sh:description "Astigmatism metadata" ;
-            sh:maxCount 1 ;
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsastigmatism> ] ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/ctfsCTFs> .
 
 <https://w3id.org/oscem-schemas/latest/ctfsDefocus> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Defocus-related metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <qudt:quantityValue> ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Filename of micrographs shown as examples in ascending order of defocus value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsdefocus_micrograph_examples> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of the defocus values histogram" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsdefocus_histogram> ],
+        [ sh:class <qudt:quantityValue> ;
             sh:description "Minimum defocus" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -349,38 +361,14 @@ processing:Processing a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_avg_defocus> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Filename of micrographs shown as examples in ascending order of defocus value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsdefocus_micrograph_examples> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Filename of the defocus values histogram" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsdefocus_histogram> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_avg_defocus> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/ctfsDefocus> .
 
 <https://w3id.org/oscem-schemas/latest/ctfsResolution> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Resolution-related metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Filename of the resolution values histogram" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsresolution_histogram> ],
-        [ sh:class <qudt:quantityValue> ;
-            sh:description "Minimum resolution" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_min_resolution> ],
-        [ sh:class <qudt:quantityValue> ;
+    sh:property [ sh:class <qudt:quantityValue> ;
             sh:description "Maximum resolution" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -391,7 +379,19 @@ processing:Processing a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_avg_resolution> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_avg_resolution> ],
+        [ sh:class <qudt:quantityValue> ;
+            sh:description "Minimum resolution" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsoutput_min_resolution> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of the resolution values histogram" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/ctfsresolution_histogram> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/ctfsResolution> .
 
 <https://w3id.org/oscem-schemas/latest/micrographsMicrographs> a sh:NodeShape ;
@@ -421,61 +421,37 @@ processing:Processing a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Dark image filename" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/moviesdark_image> ],
         [ sh:class <qudt:quantityValue> ;
             sh:description "Dose per image" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/moviesdose_per_image> ],
-        [ sh:class <qudt:quantityValue> ;
-            sh:description "Initial dose" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Dark image filename" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/moviesinitial_dose> ],
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/moviesdark_image> ],
         [ sh:datatype xsd:string ;
             sh:description "Gain image filename" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/moviesgain_image> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/moviesgain_image> ],
+        [ sh:class <qudt:quantityValue> ;
+            sh:description "Initial dose" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/moviesinitial_dose> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/moviesMovies> .
 
 <https://w3id.org/oscem-schemas/latest/volumesVolumes> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Class representing volume metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
-            sh:description "Number of particles associated to volume" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/volumesvol_number_particles> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> ;
-            sh:description "orthogonal slices of volume" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices> ],
-        [ sh:datatype xsd:string ;
-            sh:description "Indicates the type of volume" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/volumesvolume_type> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
-            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
-        [ sh:class <qudt:quantityValue> ;
+    sh:property [ sh:class <qudt:quantityValue> ;
             sh:description "Resolution of volume" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -487,6 +463,30 @@ processing:Processing a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://w3id.org/oscem-schemas/latest/classes3Disosurface_images> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> ;
+            sh:description "List of custom descriptors for user-defined key-value pairs describing how movies were obtained or any related information" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptors> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> ;
+            sh:description "orthogonal slices of volume" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of particles associated to volume" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/volumesvol_number_particles> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Indicates the type of volume" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/volumesvolume_type> ],
         [ sh:datatype xsd:integer ;
             sh:description "Size of the volume" ;
             sh:nodeKind sh:Literal ;
@@ -505,12 +505,6 @@ linkml:Any a sh:NodeShape ;
     sh:description "Class for the isosurface images" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Filename of the top view isosurface image" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dtop_view> ],
-        [ sh:datatype xsd:string ;
             sh:description "Filename of the side view isosurface image" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -521,7 +515,13 @@ linkml:Any a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dfront_view> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dfront_view> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of the top view isosurface image" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dtop_view> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/classes3DIsosurfaceImages> .
 
 <https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> a sh:NodeShape ;
@@ -529,12 +529,6 @@ linkml:Any a sh:NodeShape ;
     sh:description "Class for the orthogonal slices" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Filename of orthogonal slices in Z direction" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_Z> ],
-        [ sh:datatype xsd:string ;
             sh:description "Filename of orthogonal slices in X direction" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -545,32 +539,44 @@ linkml:Any a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_Y> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_Y> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Filename of orthogonal slices in Z direction" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/classes3Dorthogonal_slices_Z> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/classes3DOrthogonalSlices> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
-        [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> a sh:NodeShape ;
     sh:closed true ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "the SI unit attached to a si value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
+        [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -584,12 +590,6 @@ linkml:Any a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <qudt:hasUnit> ],
-        [ sh:datatype xsd:string ;
-            sh:description "the SI unit attached to a si value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ],
         [ sh:datatype xsd:float ;
             sh:description "value of a given field in respect to its SI unit" ;
             sh:maxCount 1 ;
@@ -602,19 +602,19 @@ linkml:Any a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
     sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "the value of a field with a unit" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <qudt:hasQuantityKind> ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "the unit of a given value" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <qudt:hasUnit> ] ;
+            sh:path <qudt:hasUnit> ],
+        [ sh:datatype xsd:float ;
+            sh:description "the value of a field with a unit" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <qudt:hasQuantityKind> ] ;
     sh:targetClass <qudt:quantityValue> .
 

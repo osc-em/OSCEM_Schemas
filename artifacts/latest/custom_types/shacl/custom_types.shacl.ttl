@@ -15,12 +15,6 @@ custom_types:BoundingBox2D a sh:NodeShape ;
             sh:order 2 ;
             sh:path custom_types:y_min ],
         [ sh:class custom_types:QuantitySI ;
-            sh:description "maximum x" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path custom_types:x_max ],
-        [ sh:class custom_types:QuantitySI ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -31,7 +25,13 @@ custom_types:BoundingBox2D a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path custom_types:x_min ] ;
+            sh:path custom_types:x_min ],
+        [ sh:class custom_types:QuantitySI ;
+            sh:description "maximum x" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path custom_types:x_max ] ;
     sh:targetClass custom_types:BoundingBox2D .
 
 custom_types:Descriptor a sh:NodeShape ;
@@ -76,23 +76,23 @@ custom_types:ImageSize a sh:NodeShape ;
     sh:description "size of a 2D image (in integer units)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "The width of a given item - unit depends on item" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path custom_types:width ],
-        [ sh:datatype xsd:integer ;
             sh:description "The height of a given item - unit depends on item" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path custom_types:height ] ;
+            sh:path custom_types:height ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The width of a given item - unit depends on item" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path custom_types:width ] ;
     sh:targetClass custom_types:ImageSize .
 
 custom_types:Range a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( custom_types:increment rdf:type ) ;
+    sh:ignoredProperties ( rdf:type custom_types:increment ) ;
     sh:property [ sh:class custom_types:QuantitySI ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -134,7 +134,7 @@ custom_types:Series a sh:NodeShape ;
 <qudt:quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( custom_types:unitSI custom_types:valueSI rdf:type ) ;
+    sh:ignoredProperties ( rdf:type custom_types:valueSI custom_types:unitSI ) ;
     sh:property [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
@@ -167,13 +167,6 @@ custom_types:QuantitySI a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path custom_types:unitSI ],
-        [ sh:datatype xsd:string ;
-            sh:description "the unit of a given value" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <qudt:hasUnit> ],
         [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
@@ -186,6 +179,13 @@ custom_types:QuantitySI a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path custom_types:valueSI ] ;
+            sh:path custom_types:valueSI ],
+        [ sh:datatype xsd:string ;
+            sh:description "the unit of a given value" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <qudt:hasUnit> ] ;
     sh:targetClass custom_types:QuantitySI .
 

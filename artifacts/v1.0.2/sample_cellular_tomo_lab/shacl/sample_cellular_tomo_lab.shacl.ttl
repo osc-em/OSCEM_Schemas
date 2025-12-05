@@ -8,16 +8,11 @@ cellular_tomo:SampleCell a sh:NodeShape ;
     sh:closed true ;
     sh:description "Unifying class to describe the full sample with growth conditions" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplefreezing> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features> ],
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplethinning> ],
         [ sh:class cellular_tomo:GrowthCondition ;
             sh:description "How the specimen was grown" ;
             sh:maxCount 1 ;
@@ -30,11 +25,16 @@ cellular_tomo:SampleCell a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> ;
+        [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplethinning> ] ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplefreezing> ] ;
     sh:targetClass cellular_tomo:SampleCell .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesBoundingBox2D> a sh:NodeShape ;
@@ -48,17 +48,17 @@ cellular_tomo:SampleCell a sh:NodeShape ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesy_min> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "maximum x" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "minimum x" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_min> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "maximum x" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesx_max> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "maximum y" ;
             sh:maxCount 1 ;
@@ -71,19 +71,19 @@ cellular_tomo:SampleCell a sh:NodeShape ;
     sh:closed false ;
     sh:description "List of custom descriptors for user-defined key-value pairs describing how micrographs were obtained or any related information" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class linkml:Any ;
+            sh:description "Description of the descriptor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ],
+        [ sh:datatype xsd:string ;
             sh:description "Name defining the descriptor" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ],
-        [ sh:class linkml:Any ;
-            sh:description "Description of the descriptor" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_thing> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesdescriptor_name> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesDescriptor> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesDescriptors> a sh:NodeShape ;
@@ -125,7 +125,7 @@ cellular_tomo:SampleCell a sh:NodeShape ;
 <https://w3id.org/oscem-schemas/latest/custom_typesRange> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A range constructed from min and max" ;
-    sh:ignoredProperties ( rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ) ;
+    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesincrement> rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -145,11 +145,11 @@ cellular_tomo:SampleCell a sh:NodeShape ;
     sh:description "A series of numbers constructed from min, max, and increment" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Maximal value of a given dataset property" ;
+            sh:description "Increment between elements of a series" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ],
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Minimal value of a given dataset property" ;
             sh:maxCount 1 ;
@@ -157,44 +157,44 @@ cellular_tomo:SampleCell a sh:NodeShape ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/custom_typesminimal> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "Increment between elements of a series" ;
+            sh:description "Maximal value of a given dataset property" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesincrement> ] ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesmaximal> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesSeries> .
 
 <https://w3id.org/oscem-schemas/latest/environmental_sampleSampleEnv> a sh:NodeShape ;
     sh:closed true ;
     sh:description "Unifying class to describe the full sample." ;
-    sh:ignoredProperties ( rdf:type cellular_tomo:growth_condition ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> ;
+    sh:ignoredProperties ( cellular_tomo:growth_condition rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features> ],
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplefreezing> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv> ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplespecimen_env> ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampletomogram_features> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplethinning> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplefreezing> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplethinning> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/environmental_sampleSampleEnv> .
 
 <qudt:quantityValue> a sh:NodeShape ;
     sh:closed true ;
     sh:description "if a value has a unit, it should be given as a unit value pair." ;
-    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> ) ;
+    sh:ignoredProperties ( <https://w3id.org/oscem-schemas/latest/custom_typesunitSI> rdf:type <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ) ;
     sh:property [ sh:datatype xsd:float ;
             sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
@@ -215,7 +215,19 @@ cellular_tomo:GrowthCondition a sh:NodeShape ;
     sh:closed true ;
     sh:description "How the cells were grown" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "In/on what kind of surface/container the cells were grown; i.e. directly on a grid" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path cellular_tomo:growth_location ],
+        [ sh:datatype xsd:string ;
+            sh:description "What growth media was used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path cellular_tomo:media ],
+        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "Temperature of the sample; in K." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -228,29 +240,17 @@ cellular_tomo:GrowthCondition a sh:NodeShape ;
             sh:order 4 ;
             sh:path cellular_tomo:atmosphere_growth ],
         [ sh:datatype xsd:string ;
-            sh:description "Were there any special treatment conditions; such as addition of certain chemicals etc" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path cellular_tomo:treatment ],
-        [ sh:datatype xsd:string ;
-            sh:description "In/on what kind of surface/container the cells were grown; i.e. directly on a grid" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path cellular_tomo:growth_location ],
-        [ sh:datatype xsd:string ;
             sh:description "What was the targeted cell cycle state, if any" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path cellular_tomo:cell_cycle ],
         [ sh:datatype xsd:string ;
-            sh:description "What growth media was used" ;
+            sh:description "Were there any special treatment conditions; such as addition of certain chemicals etc" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path cellular_tomo:media ] ;
+            sh:order 3 ;
+            sh:path cellular_tomo:treatment ] ;
     sh:targetClass cellular_tomo:GrowthCondition .
 
 linkml:Any a sh:NodeShape ;
@@ -263,29 +263,35 @@ linkml:Any a sh:NodeShape ;
     sh:closed true ;
     sh:description "how the sample was frozen." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Any further comments on the freezing process go here." ;
+    sh:property [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
+            sh:description "temperature of the sample right before freezing; in K." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampledetails> ],
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampletemperature_env> ],
+        [ sh:description "freezing method - such as plunge freezing, high pressure freezing etc." ;
+            sh:in ( "plunge_freezing" "high_pressure_freezing" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplemethod> ],
         [ sh:datatype xsd:boolean ;
             sh:description "whether blotting was performed." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampleblotting> ],
-        [ sh:description "freezing method - such as plunge freezing, high pressure freezing etc." ;
-            sh:in ( "plunge_freezing" "high_pressure_freezing" ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplemethod> ],
         [ sh:datatype xsd:string ;
-            sh:description "the cryogen used to freeze the sample, i.e. ethane" ;
+            sh:description "What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplecryogen_sample_env> ],
+            sh:order 5 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampleatmosphere> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Any further comments on the freezing process go here." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampledetails> ],
         [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
             sh:description "humidity of the atmosphere right before/ during freezing; in %." ;
             sh:maxCount 1 ;
@@ -293,17 +299,11 @@ linkml:Any a sh:NodeShape ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplehumidity_env> ],
         [ sh:datatype xsd:string ;
-            sh:description "What was the atmosphere the sample was in right before freezing, elaborate on any special gases present etc." ;
+            sh:description "the cryogen used to freeze the sample, i.e. ethane" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampleatmosphere> ],
-        [ sh:class <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> ;
-            sh:description "temperature of the sample right before freezing; in K." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampletemperature_env> ] ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplecryogen_sample_env> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/environmental_sampleFreezing> .
 
 <https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv> a sh:NodeShape ;
@@ -311,23 +311,11 @@ linkml:Any a sh:NodeShape ;
     sh:description "base information on the acquisition and treatment of the sample itself." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "the geographical location of your source, optimally in a geographic coordinate system." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplelocation> ],
-        [ sh:datatype xsd:string ;
             sh:description "if the sample is a tissue sample please indicate what type of tissue." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampletissue> ],
-        [ sh:datatype xsd:date ;
-            sh:description "When the sample was collected" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplecollection_date> ],
         [ sh:datatype xsd:string ;
             sh:description "What was done to the sample, please give an overview of relevant treatments." ;
             sh:maxCount 1 ;
@@ -335,24 +323,42 @@ linkml:Any a sh:NodeShape ;
             sh:order 5 ;
             sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplehandling> ],
         [ sh:datatype xsd:string ;
-            sh:description "where is this sample from? i.e. Hospital" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplesource_env> ],
-        [ sh:datatype xsd:string ;
             sh:description "the organism(s) present in your sample, if not perfectly defined try to asses as close as possible." ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampleorganism> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampleorganism> ],
+        [ sh:datatype xsd:date ;
+            sh:description "When the sample was collected" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplecollection_date> ],
+        [ sh:datatype xsd:string ;
+            sh:description "the geographical location of your source, optimally in a geographic coordinate system." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplelocation> ],
+        [ sh:datatype xsd:string ;
+            sh:description "where is this sample from? i.e. Hospital" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplesource_env> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/environmental_sampleSpecimenEnv> .
 
 <https://w3id.org/oscem-schemas/latest/environmental_sampleThinning> a sh:NodeShape ;
     sh:closed true ;
     sh:description "how the frozen sample was thinned by i.e. FiB-milling" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:description "whether a lift out was performed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplelift_out> ],
+        [ sh:datatype xsd:string ;
             sh:description "Instrument used for thinning the sample" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -364,12 +370,6 @@ linkml:Any a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampletarget_thickness> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "whether a lift out was performed" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplelift_out> ],
         [ sh:datatype xsd:string ;
             sh:description "The thinning method used, such as FIB milling." ;
             sh:maxCount 1 ;
@@ -389,6 +389,17 @@ linkml:Any a sh:NodeShape ;
     sh:description "what was the target of the tomograms, and what area of a cell do they cover." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "What organelles; if any; are present?" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampleorganelles> ],
+        [ sh:datatype xsd:string ;
+            sh:description "What type of cellular features are present in your tomograms?" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplecellular_features> ],
+        [ sh:datatype xsd:string ;
             sh:description "What was the main biological target of your research for this tomogram?" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -399,18 +410,7 @@ linkml:Any a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampledetails_tomo> ],
-        [ sh:datatype xsd:string ;
-            sh:description "What type of cellular features are present in your tomograms?" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_samplecellular_features> ],
-        [ sh:datatype xsd:string ;
-            sh:description "What organelles; if any; are present?" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampleorganelles> ] ;
+            sh:path <https://w3id.org/oscem-schemas/latest/environmental_sampledetails_tomo> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/environmental_sampleTomogramFeatures> .
 
 <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> a sh:NodeShape ;
@@ -418,11 +418,12 @@ linkml:Any a sh:NodeShape ;
     sh:description "unit value extended to have two additional fields si_value and si_unit" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
-            sh:description "value of a given field in respect to its SI unit" ;
+            sh:description "the value of a field with a unit" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ],
+            sh:order 3 ;
+            sh:path <qudt:hasQuantityKind> ],
         [ sh:datatype xsd:string ;
             sh:description "the SI unit attached to a si value" ;
             sh:maxCount 1 ;
@@ -437,11 +438,10 @@ linkml:Any a sh:NodeShape ;
             sh:order 2 ;
             sh:path <qudt:hasUnit> ],
         [ sh:datatype xsd:float ;
-            sh:description "the value of a field with a unit" ;
+            sh:description "value of a given field in respect to its SI unit" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <qudt:hasQuantityKind> ] ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/oscem-schemas/latest/custom_typesvalueSI> ] ;
     sh:targetClass <https://w3id.org/oscem-schemas/latest/custom_typesQuantitySI> .
 

@@ -1,5 +1,5 @@
 # Auto generated from classes2D.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T13:07:19
+# Generation date: 2025-12-05T14:38:22
 # Schema: Classes2D
 #
 # id: https://w3id.org/oscem-schemas/latest/classes2D

@@ -334,7 +334,7 @@ CREATE TABLE "Movies_descriptors" (
 	PRIMARY KEY ("Movies_id", descriptors_id),
 	FOREIGN KEY("Movies_id") REFERENCES "Movies" (id),
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
-);CREATE INDEX "ix_Movies_descriptors_descriptors_id" ON "Movies_descriptors" (descriptors_id);CREATE INDEX "ix_Movies_descriptors_Movies_id" ON "Movies_descriptors" ("Movies_id");
+);CREATE INDEX "ix_Movies_descriptors_Movies_id" ON "Movies_descriptors" ("Movies_id");CREATE INDEX "ix_Movies_descriptors_descriptors_id" ON "Movies_descriptors" (descriptors_id);
 CREATE TABLE "Micrographs_descriptors" (
 	"Micrographs_id" INTEGER,
 	descriptors_id INTEGER,

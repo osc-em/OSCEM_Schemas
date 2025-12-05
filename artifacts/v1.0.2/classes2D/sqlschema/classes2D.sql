@@ -135,4 +135,4 @@ CREATE TABLE "Classes2D_descriptors" (
 	PRIMARY KEY ("Classes2D_id", descriptors_id),
 	FOREIGN KEY("Classes2D_id") REFERENCES "Classes2D" (id),
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
-);CREATE INDEX "ix_Classes2D_descriptors_Classes2D_id" ON "Classes2D_descriptors" ("Classes2D_id");CREATE INDEX "ix_Classes2D_descriptors_descriptors_id" ON "Classes2D_descriptors" (descriptors_id);
+);CREATE INDEX "ix_Classes2D_descriptors_descriptors_id" ON "Classes2D_descriptors" (descriptors_id);CREATE INDEX "ix_Classes2D_descriptors_Classes2D_id" ON "Classes2D_descriptors" ("Classes2D_id");

@@ -123,4 +123,4 @@ CREATE TABLE "Micrographs_descriptors" (
 	PRIMARY KEY ("Micrographs_id", descriptors_id),
 	FOREIGN KEY("Micrographs_id") REFERENCES "Micrographs" (id),
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
-);CREATE INDEX "ix_Micrographs_descriptors_descriptors_id" ON "Micrographs_descriptors" (descriptors_id);CREATE INDEX "ix_Micrographs_descriptors_Micrographs_id" ON "Micrographs_descriptors" ("Micrographs_id");
+);CREATE INDEX "ix_Micrographs_descriptors_Micrographs_id" ON "Micrographs_descriptors" ("Micrographs_id");CREATE INDEX "ix_Micrographs_descriptors_descriptors_id" ON "Micrographs_descriptors" (descriptors_id);

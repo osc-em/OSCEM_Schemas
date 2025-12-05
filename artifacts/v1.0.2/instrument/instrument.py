@@ -1,5 +1,5 @@
 # Auto generated from instrument.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T13:07:33
+# Generation date: 2025-12-05T14:38:37
 # Schema: Instrument
 #
 # id: https://w3id.org/oscem-schemas/latest/instrument

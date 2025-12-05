@@ -181,4 +181,4 @@ CREATE TABLE "Classes3D_descriptors" (
 	PRIMARY KEY ("Classes3D_id", descriptors_id),
 	FOREIGN KEY("Classes3D_id") REFERENCES "Classes3D" (id),
 	FOREIGN KEY(descriptors_id) REFERENCES "Descriptors" (id)
-);CREATE INDEX "ix_Classes3D_descriptors_Classes3D_id" ON "Classes3D_descriptors" ("Classes3D_id");CREATE INDEX "ix_Classes3D_descriptors_descriptors_id" ON "Classes3D_descriptors" (descriptors_id);
+);CREATE INDEX "ix_Classes3D_descriptors_descriptors_id" ON "Classes3D_descriptors" (descriptors_id);CREATE INDEX "ix_Classes3D_descriptors_Classes3D_id" ON "Classes3D_descriptors" ("Classes3D_id");
